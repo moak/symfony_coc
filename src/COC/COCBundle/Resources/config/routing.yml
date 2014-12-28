@@ -1,0 +1,3 @@
+coc_homepage:
+    path:     /
+    defaults: { _controller: COCBundle:Default:index }

@@ -1,0 +1,25 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<div class="row">
+
+    {% include 'UserBundle:Modules:module_left_connected.html.twig' %}
+
+
+    <div class="col-md-9">
+
+        <h2>Modifier mes informations</h2>
+        <hr>
+
+        <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+            {{ form_widget(form) }}
+            <div>
+                <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+            </div>
+        </form>
+
+    </div>
+
+
+
+</div>
