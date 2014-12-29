@@ -1,6 +1,6 @@
 <?php
 
-namespace COC\COCBundle\DataFixtures\ORM;
+namespace User\UserBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -36,22 +36,36 @@ class LoadUserData extends AbstractFixture implements FixtureInterface, Containe
         $user1->setUsername('admin');
         $user1->getSalt(md5(uniqid()));
         $user1->setEmail('barbot.max@gmail.com');
+        $user1->setPlainPassword('admin');
 
-        $encoder = $this->container
-            ->get('security.encoder_factory')
-            ->getEncoder($user1)
-        ;
+        $encoder = $this->container->get('security.encoder_factory')->getEncoder($user1);
+
         $user1->setPassword($encoder->encodePassword('secret', $user1->getSalt()));
 
 
         $manager->persist($user1);
         $manager->flush();
 
+
+
+        $userManager = $this->container->get('fos_user.user_manager');
+
+        $userAdmin = $userManager->createUser();
+
+        $userAdmin->setUsername('System');
+        $userAdmin->setEmail('system@example.com');
+        $userAdmin->setPlainPassword('test');
+        $userAdmin->setEnabled(true);
+
+        $userManager->updateUser($userAdmin, true);
+
+
         $this->addReference('user1', $user1);
+        $this->addReference('user2', $userAdmin);
     }
 
     public function getOrder()
     {
-        return 5; // the order in which fixtures will be loaded
+        return 3; // the order in which fixtures will be loaded
     }
 }
