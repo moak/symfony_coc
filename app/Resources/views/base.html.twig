@@ -9,7 +9,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Heroic Features - Start Bootstrap Template</title>
+    {% block title %}
+        <title>Heroic Features - Start Bootstrap Template</title>
+    {% endblock %}
+
+
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/heroic-features.css') }}" />
@@ -40,6 +44,23 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{{ path('coc_homepage') }}">Home</a></li>
+                    <li><a href="{{ path('coc_user_info') }}">Classement</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Plans de base <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">HDV 5</a></li>
+                            <li><a href="#">HDV 6</a></li>
+                            <li><a href="#">HDV 7</a></li>
+                            <li><a href="#">HDV 8</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Extras</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
                         <a href="#page-top"></a>
@@ -75,9 +96,9 @@
 
 
 
-        <link rel="stylesheet" href="{{ asset('js/jquery.js') }}" />
-        <link rel="stylesheet" href="{{ asset('js/bootstrap.min.js') }}" />
 
+        <script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
 
         {% block javascripts %}{% endblock %}
     </body>

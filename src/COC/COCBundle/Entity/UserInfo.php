@@ -14,7 +14,7 @@ class UserInfo
 {
     /**
      * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", inversedBy="userInfos")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
      */
     protected $user;
 
@@ -25,6 +25,7 @@ class UserInfo
     protected $season;
 
 
+
     /**
      * @var integer
      *
@@ -33,6 +34,13 @@ class UserInfo
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string")
+     */
+    private $name;
 
     /**
      * @var integer
@@ -270,5 +278,28 @@ class UserInfo
     public function getSeason()
     {
         return $this->season;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return UserInfo
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }

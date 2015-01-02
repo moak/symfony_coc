@@ -12,4 +12,31 @@ use Doctrine\ORM\EntityRepository;
  */
 class SeasonRepository extends EntityRepository
 {
+    public function getActualSeason()
+    {
+        $start = new \DateTime();
+
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.start <= :start')
+            ->orderBy('u.id', 'DESC')
+            ->setParameter('start', $start)
+            ->setMaxResults(1);
+
+        //var_dump($qb->getQuery()->getResult());
+        return $qb->getQuery()->getSingleResult();
+    }
+
+    public function getSeason($season)
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.id <= :season')
+            ->orderBy('u.id', 'DESC')
+            ->setParameter('season', $season)
+            ->setMaxResults(1);
+
+        //var_dump($qb->getQuery()->getResult());
+        return $qb->getQuery()->getSingleResult();
+    }
 }

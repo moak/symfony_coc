@@ -21,23 +21,25 @@ class LoadUserInfoData extends AbstractFixture implements OrderedFixtureInterfac
     public function load(ObjectManager $manager)
     {
         $userInfo1 = new UserInfo();
+        $userInfo1->setName('lol');
         $userInfo1->setAttackWon('20');
         $userInfo1->setHallTown('8');
-        $userInfo1->setLevel('60');
+        $userInfo1->setLevel('50');
         $userInfo1->setTroopReceived('120');
         $userInfo1->setTroopSent('123');
         $userInfo1->setTrophy('1120');
-        $userInfo1->setUser($this->getReference('user1'));
+        //$userInfo1->setUser($this->getReference('user1'));
         $userInfo1->setSeason($this->getReference('season1'));
 
         $userInfo2 = new UserInfo();
+        $userInfo2->setName('Lu');
         $userInfo2->setAttackWon('20');
         $userInfo2->setHallTown('8');
         $userInfo2->setLevel('60');
         $userInfo2->setTroopReceived('220');
         $userInfo2->setTroopSent('223');
         $userInfo2->setTrophy('2220');
-        $userInfo2->setUser($this->getReference('user2'));
+        //$userInfo2->setUser($this->getReference('user2'));
         $userInfo2->setSeason($this->getReference('season1'));
 
         $manager->persist($userInfo1);

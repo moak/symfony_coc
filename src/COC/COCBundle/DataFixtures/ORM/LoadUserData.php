@@ -37,7 +37,7 @@ class LoadUserData extends AbstractFixture implements FixtureInterface, Containe
         $user1->getSalt(md5(uniqid()));
         $user1->setEmail('barbot.max@gmail.com');
         $user1->setPlainPassword('admin');
-
+        $user1->setEnabled(true);
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($user1);
 
         $user1->setPassword($encoder->encodePassword('secret', $user1->getSalt()));
@@ -56,6 +56,7 @@ class LoadUserData extends AbstractFixture implements FixtureInterface, Containe
         $userAdmin->setEmail('system@example.com');
         $userAdmin->setPlainPassword('test');
         $userAdmin->setEnabled(true);
+        $userAdmin->getSalt(md5(uniqid()));
 
         $userManager->updateUser($userAdmin, true);
 

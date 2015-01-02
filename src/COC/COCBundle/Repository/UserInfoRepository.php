@@ -12,4 +12,38 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserInfoRepository extends EntityRepository
 {
+    public function findUserInfo()
+    {
+        //$em = $this->getDoctrine()->getManager();
+      //  $season = $em->getRepository('COCBundle:Season')->getActualSeason();
+
+        $now = new \DateTime();
+        // $now = new \DateTime('Y-m-d H:i:s');
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            //->where('u.season = :season')
+            ->orderBy('u.id', 'DESC');
+           // ->setParameter('season', $season);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findUserInfoBySeason($season)
+    {
+        //$em = $this->getDoctrine()->getManager();
+        //  $season = $em->getRepository('COCBundle:Season')->getActualSeason();
+
+        $now = new \DateTime();
+        // $now = new \DateTime('Y-m-d H:i:s');
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.season = :season')
+            ->orderBy('u.level', 'DESC')
+         ->setParameter('season', $season);
+
+        return $qb->getQuery()->getResult();
+    }
+
+
+
 }
