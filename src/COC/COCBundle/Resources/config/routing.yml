@@ -22,4 +22,28 @@ coc_user_info_delete:
     path:     /delete/{id}
     defaults: { _controller: COCBundle:UserInfo:delete }
 
+coc_users:
+    path:     /users
+    defaults: { _controller: UserBundle:User:index }
+
+coc_images:
+    path:     /images
+    defaults: { _controller: COCBundle:Image:index }
+
+coc_images_category:
+    path:     /images/category/{id}
+    defaults: { _controller: COCBundle:Image:category }
+
+coc_image_add:
+    path:     /images/add
+    defaults: { _controller: COCBundle:Image:add }
+
+coc_image_edit:
+    path:     /images/edit/{id}
+    defaults: { _controller: COCBundle:Image:edit }
+
+coc_image_delete:
+    path:     /images/delete/{id}
+    defaults: { _controller: COCBundle:Image:delete }
+
 
