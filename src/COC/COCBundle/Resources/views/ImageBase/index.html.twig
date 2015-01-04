@@ -1,0 +1,28 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <!-- Page Content -->
+    <div class="container">
+
+
+        <div class="row">
+
+            <h2>Toutes les bases</h2>
+            {{ render(controller('COCBundle:ImageBase:template', { 'id': 5 })) }}
+            {{ render(controller('COCBundle:ImageBase:template', { 'id': 6 })) }}
+            {{ render(controller('COCBundle:ImageBase:template', { 'id': 7 })) }}
+            {{ render(controller('COCBundle:ImageBase:template', { 'id': 8 })) }}
+            {{ render(controller('COCBundle:ImageBase:template', { 'id': 9 })) }}
+
+        </div>
+
+
+    </div>
+    <!-- /.container -->
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery.tablesorter.min.js') }}" type="text/javascript"></script>
+{% endblock %}

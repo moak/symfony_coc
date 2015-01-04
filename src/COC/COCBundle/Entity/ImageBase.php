@@ -14,19 +14,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\ImageRepository")
  */
-class Image
+class ImageBase
 {
     /**
      * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", inversedBy="images")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\CategoryImage", inversedBy="images")
-     * @ORM\JoinColumn(name="category_image_id", referencedColumnName="id")
-     */
-    protected $categoryImage;
 
     /**
      * @var integer
@@ -38,9 +32,11 @@ class Image
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
      */
-    public $name;
+    public $hall_town;
+
+  
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -255,5 +251,51 @@ class Image
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set hall_town
+     *
+     * @param integer $hallTown
+     * @return ImageBase
+     */
+    public function setHallTown($hallTown)
+    {
+        $this->hall_town = $hallTown;
+
+        return $this;
+    }
+
+    /**
+     * Get hall_town
+     *
+     * @return integer 
+     */
+    public function getHallTown()
+    {
+        return $this->hall_town;
+    }
+
+    /**
+     * Set type
+     *
+     * @param integer $type
+     * @return ImageBase
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return integer 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

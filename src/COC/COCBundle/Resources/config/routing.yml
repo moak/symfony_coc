@@ -47,3 +47,29 @@ coc_image_delete:
     defaults: { _controller: COCBundle:Image:delete }
 
 
+coc_images_base:
+    path:     /imagesBase
+    defaults: { _controller: COCBundle:ImageBase:index }
+
+coc_images_base_category:
+    path:     /imagesBase/category/{id}
+    defaults: { _controller: COCBundle:ImageBase:category }
+
+coc_images_base_template:
+    path:     /imagesBase/template/{id}
+    defaults: { _controller: COCBundle:ImageBase:template }
+
+
+coc_images_base_add:
+    path:     /imagesBase/add
+    defaults: { _controller: COCBundle:ImageBase:add }
+
+coc_image_base_edit:
+    path:     /imagesBase/edit/{id}
+    defaults: { _controller: COCBundle:ImageBase:edit }
+
+coc_image_delete:
+    path:     /imagesBase/delete/{id}
+    defaults: { _controller: COCBundle:ImageBase:delete }
+
+
