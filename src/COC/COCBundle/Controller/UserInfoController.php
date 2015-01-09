@@ -30,18 +30,16 @@ class UserInfoController extends Controller
             $list = $em->getRepository('COCBundle:UserInfo')->findUserInfoBySeason($season);
             // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
             // var_dump($season);
-            return $this->render('COCBundle:UserInfo:index.html.twig', array('userInfos' => $list, 'form' => $form->createView() , 'season'=> $test));
+            return $this->render('COCBundle:UserInfo:index.html.twig', array('userInfos' => $list, 'form' => $form->createView() , 'season'=> $test, 'previous' => false));
         }
         $em = $this->getDoctrine()->getManager();
         $currentSeason = $em->getRepository('COCBundle:Season')->getActualSeason();
+        $previousSeason = $em->getRepository('COCBundle:Season')->getPreviousSeason($currentSeason);
 
-      //  var_dump($currentSeason);
-        $list = $em->getRepository('COCBundle:UserInfo')->findUserInfoBySeason($currentSeason);
+        $list = $em->getRepository('COCBundle:UserInfo')->findUserInfoBySeason($previousSeason);
 
-        // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
-        // var_dump($season);
 
-        return $this->render('COCBundle:UserInfo:index.html.twig', array('userInfos' => $list, 'form' => $form->createView(), 'season'=> $currentSeason));
+        return $this->render('COCBundle:UserInfo:index.html.twig', array('userInfos' => $list, 'form' => $form->createView(), 'season'=> $previousSeason , 'previous' => true));
     }
 
     public function showAction($id)

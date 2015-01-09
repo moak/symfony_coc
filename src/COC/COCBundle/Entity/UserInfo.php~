@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class UserInfo
 {
     /**
-     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", inversedBy="userInfos")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="userInfos")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
      */
     protected $user;

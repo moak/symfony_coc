@@ -1,0 +1,7 @@
+{% if wars|length != 0 %}
+    {% for war in wars %}
+       {{ war.start }}
+    {% endfor %}
+{% else %}
+    Aucune guerre trouvée.
+{% endif %}

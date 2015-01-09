@@ -9,15 +9,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Image
+ * ImageBestAttack
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\ImageRepository")
+ * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\ImageBaseRepository")
  */
 class ImageBase
 {
     /**
-     * @ORM\ManyToOne(targetEntity="User\UserBundle\Entity\User", inversedBy="images")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="images")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;

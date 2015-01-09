@@ -16,16 +16,30 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new JMS\AopBundle\JMSAopBundle(),
+            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
+            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
 
-            new COC\COCBundle\COCBundle(),
-            new User\UserBundle\UserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Sonata\AdminBundle\SonataAdminBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new \Sonata\CoreBundle\SonataCoreBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+
+            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
+            new COC\COCBundle\COCBundle(),
+
+            // calendar
+            new ADesigns\CalendarBundle\ADesignsCalendarBundle(),
+
+
 
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-            $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();

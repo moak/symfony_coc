@@ -2,6 +2,35 @@ coc_homepage:
     path:     /
     defaults: { _controller: COCBundle:Default:index }
 
+
+coc_players:
+    path:     /players
+    defaults: { _controller: COCBundle:Player:index }
+
+coc_player_show:
+    path:     /player/show/{id}
+    defaults: { _controller: COCBundle:Player:show }
+
+coc_player_edit:
+    path:     /player/edit/{id}
+    defaults: { _controller: COCBundle:Player:edit }
+
+coc_player_add:
+    path:     /player/add
+    defaults: { _controller: COCBundle:Player:add }
+
+coc_player_delete:
+    path:     /player/delete/{id}
+    defaults: { _controller: COCBundle:Player:delete }
+
+
+
+coc_users:
+    path:     /users
+    defaults: { _controller: UserBundle:User:index }
+
+
+
 coc_user_info:
     path:     /userInfo
     defaults: { _controller: COCBundle:UserInfo:index }
@@ -26,25 +55,21 @@ coc_users:
     path:     /users
     defaults: { _controller: UserBundle:User:index }
 
-coc_images:
-    path:     /images
-    defaults: { _controller: COCBundle:Image:index }
+coc_imagesBestAttack:
+    path:     /imagesBestAttack
+    defaults: { _controller: COCBundle:ImageBestAttack:index }
 
-coc_images_category:
-    path:     /images/category/{id}
-    defaults: { _controller: COCBundle:Image:category }
+coc_imageBestAttack_add:
+    path:     /imagesBestAttack/add
+    defaults: { _controller: COCBundle:ImageBestAttack:add }
 
-coc_image_add:
-    path:     /images/add
-    defaults: { _controller: COCBundle:Image:add }
+coc_imageBestAttack_edit:
+    path:     /imagesBestAttack/edit/{id}
+    defaults: { _controller: COCBundle:ImageBestAttack:edit }
 
-coc_image_edit:
-    path:     /images/edit/{id}
-    defaults: { _controller: COCBundle:Image:edit }
-
-coc_image_delete:
-    path:     /images/delete/{id}
-    defaults: { _controller: COCBundle:Image:delete }
+coc_imageBestAttack_delete:
+    path:     /imagesBestAttack/delete/{id}
+    defaults: { _controller: COCBundle:ImageBestAttack:delete }
 
 
 coc_images_base:
@@ -72,4 +97,16 @@ coc_image_delete:
     path:     /imagesBase/delete/{id}
     defaults: { _controller: COCBundle:ImageBase:delete }
 
+
+coc_videos:
+    path:     /videos
+    defaults: { _controller: COCBundle:Video:index }
+
+coc_video_add:
+    path:     /video/add
+    defaults: { _controller: COCBundle:Video:add }
+
+coc_video_edit:
+    path:     /video/edit/{id}
+    defaults: { _controller: COCBundle:Video:edit }
 

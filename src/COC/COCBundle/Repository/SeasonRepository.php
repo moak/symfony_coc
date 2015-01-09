@@ -39,4 +39,17 @@ class SeasonRepository extends EntityRepository
         //var_dump($qb->getQuery()->getResult());
         return $qb->getQuery()->getSingleResult();
     }
+
+    public function getPreviousSeason($season)
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.id <= :season')
+            ->orderBy('u.id', 'DESC')
+            ->setParameter('season', $season->getId() - 1)
+            ->setMaxResults(1);
+
+        //var_dump($qb->getQuery()->getResult());
+        return $qb->getQuery()->getSingleResult();
+    }
 }

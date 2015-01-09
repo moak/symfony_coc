@@ -1,0 +1,45 @@
+services:
+    sonata.admin.imageBestAttack:
+        class: COC\COCBundle\Admin\ImageBestAttackAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Images", label: "Meilleures attaques" }
+        arguments:
+            - ~
+            - COC\COCBundle\Entity\ImageBestAttack
+            - ~
+        calls:
+            - [ setTranslationDomain, [COCBundle]]
+
+    sonata.admin.video:
+            class: COC\COCBundle\Admin\VideoAdmin
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: "Videos", label: "Vidéos" }
+            arguments:
+                - ~
+                - COC\COCBundle\Entity\Video
+                - ~
+            calls:
+                - [ setTranslationDomain, [COCBundle]]
+
+    sonata.admin.player:
+                class: COC\COCBundle\Admin\PlayerAdmin
+                tags:
+                    - { name: sonata.admin, manager_type: orm, group: "Membres", label: "membres" }
+                arguments:
+                    - ~
+                    - COC\COCBundle\Entity\Player
+                    - ~
+                calls:
+                    - [ setTranslationDomain, [COCBundle]]
+
+    sonata.admin.war:
+                    class: COC\COCBundle\Admin\WarAdmin
+                    tags:
+                        - { name: sonata.admin, manager_type: orm, group: "Guerre de clan", label: "Guerre" }
+                    arguments:
+                        - ~
+                        - COC\COCBundle\Entity\War
+                        - ~
+                    calls:
+                        - [ setTranslationDomain, [COCBundle]]
+

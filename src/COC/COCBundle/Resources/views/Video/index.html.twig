@@ -1,0 +1,47 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+
+
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <h2>Vidéos</h2>
+        <hr>
+            <a class="btn btn-normal btn-success" href="{{ path('coc_video_add') }}">Ajouter une vidéo</a>
+
+        <div class="row">
+            <br>
+            {% if videos|length != 0 %}
+                {% for video in videos %}
+                    <div class="col-sm-6 col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-center">{{ video.title }}</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <p>{{ video.url| raw  }}</p>
+                            </div>
+                            <div class="panel-footer">
+                                <p>By Seyaa</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                Aucune vidéo trouvée.
+            {% endif %}
+        </div>
+
+
+    </div>
+    <!-- /.container -->
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery.tablesorter.min.js') }}" type="text/javascript"></script>
+{% endblock %}
