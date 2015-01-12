@@ -12,4 +12,32 @@ use Doctrine\ORM\EntityRepository;
  */
 class WarRepository extends EntityRepository
 {
+    public function getWarInProgress()
+    {
+        $now = new \DateTime();
+        // $now = new \DateTime('Y-m-d H:i:s');
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.start <= :now')
+            ->orderBy('u.id', 'DESC')
+           ->setParameter('now', $now);
+
+        $query = $qb->getQuery();
+        $result = $query->getResult();
+
+        return $result;
+    }
+
+    public function getFutureWars()
+    {
+        $now = new \DateTime();
+
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.start >= :now')
+            ->orderBy('u.id', 'DESC')
+            ->setParameter('now', $now);
+
+        return $qb->getQuery()->getResult();
+    }
 }

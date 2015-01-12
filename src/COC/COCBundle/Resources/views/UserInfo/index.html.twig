@@ -72,10 +72,6 @@
                     <th>Troops received</th>
                     <th>Troops sent</th>
                     <th>Victories</th>
-                    <th data-hide="all">
-
-                    </th>
-
                 </tr>
             </thead>
             <tbody>
@@ -88,14 +84,6 @@
                             <td>{{ info.troopReceived }}</td>
                             <td>{{ info.troopSent }}</td>
                             <td>{{ info.attackWon }}</td>
-                            <td>
-                                <p>
-                                    <img class="img-responsive" src="{{ asset('images/mortier.jpg') }}" align="left" /> <b>4 - 4 - 3</b>
-                                </p> <p>
-                                    <img class="img-responsive" src="{{ asset('images/anti_aerien.jpg') }}" align="left" /> <b>5 - 2 - 4</b>
-                                </p>
-
-                            </td>
                         </tr>
                     {% endfor %}
                 {% else %}

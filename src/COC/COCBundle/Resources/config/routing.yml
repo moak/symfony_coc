@@ -2,7 +2,6 @@ coc_homepage:
     path:     /
     defaults: { _controller: COCBundle:Default:index }
 
-
 coc_players:
     path:     /players
     defaults: { _controller: COCBundle:Player:index }

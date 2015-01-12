@@ -21,22 +21,15 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
-            new Sonata\AdminBundle\SonataAdminBundle(),
-            new Sonata\BlockBundle\SonataBlockBundle(),
-            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new \Sonata\CoreBundle\SonataCoreBundle(),
+
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
 
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new COC\COCBundle\COCBundle(),
-
-            // calendar
-            new ADesigns\CalendarBundle\ADesignsCalendarBundle(),
-
-
-
+            new COC\AdminBundle\AdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

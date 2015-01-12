@@ -1,0 +1,54 @@
+{% extends "::base_admin.html.twig" %}
+
+{% block body %}
+
+    <!-- Page Content -->
+    <div class="container">
+        <hr>
+        {# form_start(form, {'action': path('coc_homepage'), 'method': 'GET'}) }} #}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom de compte</th>
+                    <th>Compte assigné</th>
+                    <th>Joueur</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            {% if users|length != 0 %}
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        {% if user.player.id is defined %}
+                            <td>Oui</td>
+                            <td>{{ user.player.name }}</td>
+                        {% else %}
+                            <td>Non</td>
+                            <td>-</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td>-</td>
+                    <td>0 user trouvé</td>
+                    <td>-</td>
+
+                    <td></td>
+                </tr>
+            {% endif %}
+            </tbody>
+        </table>
+        <hr>
+
+
+    </div>
+    <!-- /.container -->
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/footable.js') }}" type="text/javascript"></script>
+{% endblock %}

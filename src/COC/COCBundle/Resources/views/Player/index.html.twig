@@ -4,48 +4,59 @@
 
     <!-- Page Content -->
     <div class="container">
-
-        <h2>Membres du clan</h2>
         <hr>
+        {# form_start(form, {'action': path('coc_homepage'), 'method': 'GET'}) }} #}
 
-        <table class="table table-hover tablesorter" id="myTable">
+        <table class="table">
             <thead>
-                <tr>
-                    <th>Level</th>
-                    <th>Nom du joueur</th>
-                    <th>Trophies</th>
-                    <th>Troops received</th>
-                    <th>Troops sent</th>
-                    <th>Victories</th>
+            <tr>
+                <th>Nom du joueur</th>
+                <th>Level</th>
+                <th>Défences</th>
+                <th>Laboratoire</th>
+                <th data-hide="all">
 
-                </tr>
+                </th>
+
+            </tr>
             </thead>
             <tbody>
 
-                {% if players|length != 0 %}
+            {% if players|length != 0 %}
+                {% for player in players %}
+                    <tr>
+                        <td>{{ player.name }}</td>
+                        <td>{{ player.level }}</td>
+                        <td>13000</td>
+                        <td>9845</td>
+                        <td>
 
-                    {% for player in players %}
-                        <tr>
-                            <td>{{ player.level }}</td>
-                            <td>{{ player.name }}</td>
-                            <td>{{ player.trophy }}</td>
-                            <td>{{ player.troopReceived }}</td>
-                            <td>{{ player.troopSent }}</td>
-                            <td>{{ player.attackWon }}</td>
-                        </tr>
-                    {% endfor %}
-                {% else %}
-                   <tr>
-                        <td></td>
-                        <td>-</td>
-                        <td>0 joueur trouvé</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                       <td></td>
-                   </tr>
-                {% endif %}
+                            <p><img class="img-responsive" src="{{ asset('images/tower_archer.jpg') }}" align="left" /> <b>{{ player.towerArcher1 }} - {{ player.towerArcher2 }} - {{ player.towerArcher3 }} - {{ player.towerArcher4 }}</b></p>
+
+                            <p><img class="img-responsive" src="{{ asset('images/canon.jpg') }}" align="left" /> <b>{{ player.canon1 }} - {{ player.canon2 }} - {{ player.canon3 }} - {{ player.canon4 }}</b></p>
+                            <p><img class="img-responsive" src="{{ asset('images/mortier.jpg') }}" align="left" /> <b>{{ player.mortar1 }} - {{ player.mortar2 }} - {{ player.mortar3 }}</b></p>
+                            <p><img class="img-responsive" src="{{ asset('images/anti_aerien.jpg') }}" align="left" /> <b>5 - 2 - 4</b></p>
+                            <p><img class="img-responsive" src="{{ asset('images/dragon.png') }}" align="left" /> <b>{{ player.dragon }}</b></p>
+                            <p>
+                                <img class="img-responsive" src="{{ asset('images/wizard.jpg') }}" align="block" /> <b>{{ player.wizard }}</b>
+                                <img class="img-responsive" src="{{ asset('images/barbar.jpg') }}" align="block" /> <b>{{ player.barbar }}</b>
+                            </p>
+
+
+
+
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td>-</td>
+                    <td>0 joueur trouvé</td>
+                    <td>-</td>
+
+                    <td></td>
+                </tr>
+            {% endif %}
             </tbody>
         </table>
         <hr>
@@ -65,5 +76,5 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/jquery.tablesorter.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/footable.js') }}" type="text/javascript"></script>
 {% endblock %}

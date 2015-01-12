@@ -1,7 +1,19 @@
-{% if wars|length != 0 %}
-    {% for war in wars %}
-       {{ war.start }}
-    {% endfor %}
+{% if warInProgress %}
+   <p> Gerre en cours : Yes
+       {% if isInPreparation != 0 %}
+           (jour de préparation)
+       {% else %}
+           (jour de guerre)
+       {% endif %}
+
+   </p>
+    <p>Start {{ warInProgress.start|date('Y-m-d H:s') }} - End {{ warInProgress.end|date('Y-m-d H:s') }}</p>
+
 {% else %}
-    Aucune guerre trouvée.
+    <p>Aucune guerre en cours.</p>
 {% endif %}
+
+<hr>
+
+{{ render(controller('COCBundle:War:futureWars')) }}
+

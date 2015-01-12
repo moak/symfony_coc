@@ -1,0 +1,8 @@
+{% if futureWars %}
+    {% for war in futureWars %}
+       <p> Prochaine guerre: {{ war.start|date('d M à H:s') }}</p>
+    {% endfor %}
+
+{% else %}
+    <p>Aucune prochaine guerre renseignée.</p>
+{% endif %}

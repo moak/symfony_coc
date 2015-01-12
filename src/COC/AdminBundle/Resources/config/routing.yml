@@ -1,0 +1,33 @@
+admin:
+    path:     /admin
+    defaults: { _controller: AdminBundle:Default:index }
+
+
+admin_users:
+    path:     /admin/users
+    defaults: { _controller: AdminBundle:UserAdmin:index }
+
+
+
+admin_players:
+    path:     /admin/players
+    defaults: { _controller: AdminBundle:PlayerAdmin:index }
+
+admin_player_add:
+    path:     /admin/player/add
+    defaults: { _controller: AdminBundle:PlayerAdmin:add }
+
+
+
+
+admin_wars:
+    path:     /admin/wars
+    defaults: { _controller: AdminBundle:WarAdmin:index }
+
+admin_war_add:
+    path:     /admin/war/add
+    defaults: { _controller: AdminBundle:WarAdmin:add }
+
+admin_war_delete:
+    path:     /admin/war/delete/{id}
+    defaults: { _controller: AdminBundle:WarAdmin:delete }

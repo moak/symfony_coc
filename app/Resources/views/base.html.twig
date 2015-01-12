@@ -48,7 +48,14 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{{ path('coc_homepage') }}">Home</a></li>
-                <li><a href="{{ path('coc_user_info') }}">Classement</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Classements <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ path('coc_players') }}">Classement général</a></li>
+                        <li><a href="{{ path('coc_user_info') }}">Classement saison</a></li>
+                    </ul>
+                </li>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Plans de base <span class="caret"></span></a>
@@ -62,8 +69,16 @@
                         <li><a href="{{ path('coc_images_base_category', {'id': 9 }) }}">HDV 9</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ path('coc_imagesBestAttack') }}">Meilleures attaques</a></li>
-                <li><a href="{{ path('coc_videos') }}">Vidéos</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Média <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ path('coc_imagesBestAttack') }}">Meilleures attaques</a></li>
+                        <li><a href="{{ path('coc_videos') }}">Vidéos</a></li>
+                    </ul>
+                </li>
+
+
 
 
             </ul>
@@ -73,13 +88,14 @@
                     <a href="#page-top"></a>
                 </li>
 
-                {% if app.user %}
+                {% if is_granted('ROLE_USER') %}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ app.user.username }} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             {%  if app.user.player.level is defined %}
                                 <li><a href="{{ path('coc_player_edit', {'id': app.user.player.id }) }}">Actualiser joueur</a></li>
                             {% endif %}
+
                             <li class="divider"></li>
                             <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                         </ul>
