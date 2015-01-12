@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2015 at 02:13 AM
+-- Generation Time: Jan 12, 2015 at 03:14 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `fos_user` (
   UNIQUE KEY `UNIQ_957A647992FC23A8` (`username_canonical`),
   UNIQUE KEY `UNIQ_957A6479A0D96FBF` (`email_canonical`),
   UNIQUE KEY `UNIQ_957A647999E6F5DF` (`player_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -175,14 +175,16 @@ CREATE TABLE IF NOT EXISTS `fos_user_user` (
   UNIQUE KEY `UNIQ_C560D76192FC23A8` (`username_canonical`),
   UNIQUE KEY `UNIQ_C560D761A0D96FBF` (`email_canonical`),
   UNIQUE KEY `UNIQ_C560D76199E6F5DF` (`player_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `fos_user_user`
 --
 
 INSERT INTO `fos_user_user` (`id`, `username`, `username_canonical`, `email`, `email_canonical`, `enabled`, `salt`, `password`, `last_login`, `locked`, `expired`, `expires_at`, `confirmation_token`, `password_requested_at`, `roles`, `credentials_expired`, `credentials_expire_at`, `created_at`, `updated_at`, `date_of_birth`, `firstname`, `lastname`, `website`, `biography`, `gender`, `locale`, `timezone`, `phone`, `facebook_uid`, `facebook_name`, `facebook_data`, `twitter_uid`, `twitter_name`, `twitter_data`, `gplus_uid`, `gplus_name`, `gplus_data`, `token`, `two_step_code`, `player_id`) VALUES
-(4, 'admin', 'admin', 'admin@admin.com', 'admin@admin.com', 1, 'bdnb0gjkoa8s4ckk888cosgsww0sg80', '2dCOhjClUClJMwW9Pa85xa9T5MITXOn+cGnxNexLkShSKxri7zNnIKov5wHu66aU0/MNfNkodY5QmUnSQ40reQ==', '2015-01-09 01:18:46', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:10:"ROLE_ADMIN";}', 0, NULL, '2015-01-06 23:50:39', '2015-01-09 01:18:46', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 1);
+(4, 'admin', 'admin', 'admin@admin.com', 'admin@admin.com', 1, 'bdnb0gjkoa8s4ckk888cosgsww0sg80', '2dCOhjClUClJMwW9Pa85xa9T5MITXOn+cGnxNexLkShSKxri7zNnIKov5wHu66aU0/MNfNkodY5QmUnSQ40reQ==', '2015-01-11 05:03:10', 0, 0, NULL, NULL, NULL, 'a:1:{i:0;s:10:"ROLE_ADMIN";}', 0, NULL, '2015-01-06 23:50:39', '2015-01-11 05:03:10', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 1),
+(5, 'test', 'test', 'tets@test.com', 'tets@test.com', 1, 'qooonmaqtu8804go0cko0gcwk4w0880', 'tlPsDTkkqVVktKCi/Az53kHRdo/+7tCaOW/szYcs8+YKeFnKcYLG8wKA58vA2vB2q254AWtOVuENfO0TlLqztg==', NULL, 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '2015-01-10 14:12:29', '2015-01-10 14:12:29', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, NULL),
+(6, 'saiyya', 'saiyya', 'christianba27@orange.fr', 'christianba27@orange.fr', 1, 'oe8g3tsji9wg0gsws8g8k4cg0oos4s', 'BDaOeRcUgzLExk5fNe5PCXX8bKeWICdZc9mod+LJRurC7ZynbBf4LKzSzHridUhP/nBd0nHeXm2q3DmIaBetwg==', '2015-01-10 15:48:07', 0, 0, NULL, NULL, NULL, 'a:0:{}', 0, NULL, '2015-01-10 15:38:24', '2015-01-10 15:48:07', NULL, NULL, NULL, NULL, NULL, 'u', NULL, NULL, NULL, NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 'null', NULL, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -300,65 +302,67 @@ CREATE TABLE IF NOT EXISTS `player` (
   `season_id` int(11) DEFAULT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `hall_town` int(11) NOT NULL,
-  `troop_received` int(11) NOT NULL,
-  `troop_sent` int(11) NOT NULL,
-  `attack_won` int(11) NOT NULL,
-  `level` int(11) NOT NULL,
-  `trophy` int(11) NOT NULL,
-  `tower_archer1` int(11) NOT NULL,
-  `tower_archer2` int(11) NOT NULL,
-  `tower_archer3` int(11) NOT NULL,
-  `tower_archer4` int(11) NOT NULL,
-  `tower_archer5` int(11) NOT NULL,
-  `tower_archer6` int(11) NOT NULL,
-  `tower_magic1` int(11) NOT NULL,
-  `tower_magic2` int(11) NOT NULL,
-  `tower_magic3` int(11) NOT NULL,
-  `tower_magic4` int(11) NOT NULL,
-  `mortar1` int(11) NOT NULL,
-  `mortar2` int(11) NOT NULL,
-  `mortar3` int(11) NOT NULL,
-  `mortar4` int(11) NOT NULL,
-  `tesla1` int(11) NOT NULL,
-  `tesla2` int(11) NOT NULL,
-  `tesla3` int(11) NOT NULL,
-  `king` int(11) NOT NULL,
-  `queen` int(11) NOT NULL,
-  `arcx1` int(11) NOT NULL,
-  `arcx2` int(11) NOT NULL,
-  `arcx3` int(11) NOT NULL,
-  `archer` int(11) NOT NULL,
-  `barbar` int(11) NOT NULL,
-  `gobelin` int(11) NOT NULL,
-  `geant` int(11) NOT NULL,
-  `wall_breaker` int(11) NOT NULL,
-  `ballon` int(11) NOT NULL,
-  `wizard` int(11) NOT NULL,
-  `healer` int(11) NOT NULL,
-  `dragon` int(11) NOT NULL,
-  `pekka` int(11) NOT NULL,
-  `potion_heal` int(11) NOT NULL,
-  `potion_boost` int(11) NOT NULL,
-  `potion_damage` int(11) NOT NULL,
-  `potion_green` int(11) NOT NULL,
-  `canon1` int(11) NOT NULL,
-  `canon2` int(11) NOT NULL,
-  `canon3` int(11) NOT NULL,
-  `canon4` int(11) NOT NULL,
-  `canon5` int(11) NOT NULL,
-  `canon6` int(11) NOT NULL,
-  `inferno1` int(11) NOT NULL,
-  `inferno2` int(11) NOT NULL,
+  `troop_received` int(11) DEFAULT NULL,
+  `troop_sent` int(11) DEFAULT NULL,
+  `attack_won` int(11) DEFAULT NULL,
+  `level` int(11) DEFAULT NULL,
+  `trophy` int(11) DEFAULT NULL,
+  `tower_archer1` int(11) DEFAULT NULL,
+  `tower_archer2` int(11) DEFAULT NULL,
+  `tower_archer3` int(11) DEFAULT NULL,
+  `tower_archer4` int(11) DEFAULT NULL,
+  `tower_archer5` int(11) DEFAULT NULL,
+  `tower_archer6` int(11) DEFAULT NULL,
+  `tower_magic1` int(11) DEFAULT NULL,
+  `tower_magic2` int(11) DEFAULT NULL,
+  `tower_magic3` int(11) DEFAULT NULL,
+  `tower_magic4` int(11) DEFAULT NULL,
+  `mortar1` int(11) DEFAULT NULL,
+  `mortar2` int(11) DEFAULT NULL,
+  `mortar3` int(11) DEFAULT NULL,
+  `mortar4` int(11) DEFAULT NULL,
+  `tesla1` int(11) DEFAULT NULL,
+  `tesla2` int(11) DEFAULT NULL,
+  `tesla3` int(11) DEFAULT NULL,
+  `king` int(11) DEFAULT NULL,
+  `queen` int(11) DEFAULT NULL,
+  `arcx1` int(11) DEFAULT NULL,
+  `arcx2` int(11) DEFAULT NULL,
+  `arcx3` int(11) DEFAULT NULL,
+  `archer` int(11) DEFAULT NULL,
+  `barbar` int(11) DEFAULT NULL,
+  `gobelin` int(11) DEFAULT NULL,
+  `geant` int(11) DEFAULT NULL,
+  `wall_breaker` int(11) DEFAULT NULL,
+  `ballon` int(11) DEFAULT NULL,
+  `wizard` int(11) DEFAULT NULL,
+  `healer` int(11) DEFAULT NULL,
+  `dragon` int(11) DEFAULT NULL,
+  `pekka` int(11) DEFAULT NULL,
+  `potion_heal` int(11) DEFAULT NULL,
+  `potion_boost` int(11) DEFAULT NULL,
+  `potion_damage` int(11) DEFAULT NULL,
+  `potion_green` int(11) DEFAULT NULL,
+  `canon1` int(11) DEFAULT NULL,
+  `canon2` int(11) DEFAULT NULL,
+  `canon3` int(11) DEFAULT NULL,
+  `canon4` int(11) DEFAULT NULL,
+  `canon5` int(11) DEFAULT NULL,
+  `canon6` int(11) DEFAULT NULL,
+  `inferno1` int(11) DEFAULT NULL,
+  `inferno2` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_9FB57F534EC001D1` (`season_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `player`
 --
 
 INSERT INTO `player` (`id`, `season_id`, `name`, `hall_town`, `troop_received`, `troop_sent`, `attack_won`, `level`, `trophy`, `tower_archer1`, `tower_archer2`, `tower_archer3`, `tower_archer4`, `tower_archer5`, `tower_archer6`, `tower_magic1`, `tower_magic2`, `tower_magic3`, `tower_magic4`, `mortar1`, `mortar2`, `mortar3`, `mortar4`, `tesla1`, `tesla2`, `tesla3`, `king`, `queen`, `arcx1`, `arcx2`, `arcx3`, `archer`, `barbar`, `gobelin`, `geant`, `wall_breaker`, `ballon`, `wizard`, `healer`, `dragon`, `pekka`, `potion_heal`, `potion_boost`, `potion_damage`, `potion_green`, `canon1`, `canon2`, `canon3`, `canon4`, `canon5`, `canon6`, `inferno1`, `inferno2`) VALUES
-(1, 3, 'Seyaa', 7, 132, 1651, 5, 78, 1232, 8, 8, 8, 8, 8, 0, 5, 5, 5, 0, 6, 6, 6, 5, 3, 3, 2, 0, 0, 0, 0, 0, 4, 4, 0, 5, 4, 3, 5, 3, 2, 1, 0, 0, 0, 0, 9, 9, 9, 9, 9, 0, 0, 0);
+(1, 3, 'Seyaa', 7, 132, 1651, 5, 78, 1232, 8, 8, 8, 8, 8, 0, 5, 5, 5, 0, 6, 6, 6, 5, 3, 3, 2, 0, 0, 0, 0, 0, 4, 4, 0, 5, 4, 3, 5, 3, 2, 1, 0, 0, 0, 0, 10, 9, 9, 9, 9, 0, 0, 0),
+(2, 3, 'Saiyya', 8, 20, 25, 28, 59, 1267, 8, 8, -188888, 8, 8, 7, 3, 4, 5, 0, 5, 5, 5, 4, 1, 1, 1, 0, 0, 0, 0, 0, 4, 4, 0, 4, 3, 1, 4, 2, 2, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8, 8, 0, 0),
+(3, NULL, 'ghjghj', 14, 41, 41, 41, 41, 41, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -495,10 +499,17 @@ CREATE TABLE IF NOT EXISTS `war` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `start` datetime NOT NULL,
   `end` datetime NOT NULL,
-  `status` int(11) NOT NULL,
   `result` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
+
+--
+-- Dumping data for table `war`
+--
+
+INSERT INTO `war` (`id`, `start`, `end`, `result`) VALUES
+(7, '2015-01-09 23:00:00', '2015-01-11 23:00:00', 0),
+(21, '2015-01-14 00:00:00', '2015-01-16 00:00:00', 0);
 
 --
 -- Constraints for dumped tables
@@ -526,8 +537,8 @@ ALTER TABLE `fos_user_user`
 -- Constraints for table `fos_user_user_group`
 --
 ALTER TABLE `fos_user_user_group`
-  ADD CONSTRAINT `FK_B3C77447FE54D947` FOREIGN KEY (`group_id`) REFERENCES `fos_user_group` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `FK_B3C77447A76ED395` FOREIGN KEY (`user_id`) REFERENCES `fos_user_user` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `FK_B3C77447A76ED395` FOREIGN KEY (`user_id`) REFERENCES `fos_user_user` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_B3C77447FE54D947` FOREIGN KEY (`group_id`) REFERENCES `fos_user_group` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `image`
@@ -558,8 +569,8 @@ ALTER TABLE `player`
 -- Constraints for table `userinfo`
 --
 ALTER TABLE `userinfo`
-  ADD CONSTRAINT `FK_34B0844EA76ED395` FOREIGN KEY (`user_id`) REFERENCES `fos_user_user` (`id`),
-  ADD CONSTRAINT `FK_34B0844E4EC001D1` FOREIGN KEY (`season_id`) REFERENCES `season` (`id`);
+  ADD CONSTRAINT `FK_34B0844E4EC001D1` FOREIGN KEY (`season_id`) REFERENCES `season` (`id`),
+  ADD CONSTRAINT `FK_34B0844EA76ED395` FOREIGN KEY (`user_id`) REFERENCES `fos_user_user` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
