@@ -19,6 +19,7 @@ class WarRepository extends EntityRepository
         $qb = $this->createQueryBuilder('u')
             ->select('u')
             ->where('u.start <= :now')
+            ->andWhere('u.end >= :now')
             ->orderBy('u.id', 'DESC')
            ->setParameter('now', $now);
 
