@@ -4,6 +4,7 @@ namespace COC\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Application\Sonata\UserBundle\Entity\User;
+use COC\COCBundle\Form\Type\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
@@ -41,19 +42,45 @@ class UserAdminController extends Controller
     public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $war = $em->getRepository('COCBundle:War')->find($id);
+        $user = $em->getRepository('ApplicationSonataUserBundle:User')->find($id);
 
-        if(!$war)
+        if(!$user)
         {
-            throw $this->createNotFoundException('No war found');
+            throw $this->createNotFoundException('No user found');
         }
         $em = $this->getDoctrine()->getManager();
-        $em->remove($war);
+        $em->remove($user);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('admin_wars'));
+        return $this->redirect($this->generateUrl('admin_users'));
 
     }
+
+
+    public function editAction ($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('ApplicationSonataUserBundle:User')->find($id);
+
+        $form = $this->get('form.factory')->create(new UserType(), $user );
+
+        if ($form->handleRequest($request)->isValid())
+        {
+            var_dump($form);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return $this->redirect($this->generateUrl('admin_users'));
+        }
+
+        return $this->render('AdminBundle:UserAdmin:edit.html.twig', array(
+            'form'      =>  $form->createView(),
+            'user'  => $user
+        ));
+    }
+
+
+
 
 
 

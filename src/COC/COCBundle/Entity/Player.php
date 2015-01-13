@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Player
 {
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     /**
      * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Season", inversedBy="players")
      * @ORM\JoinColumn(name="season_id", referencedColumnName="id")

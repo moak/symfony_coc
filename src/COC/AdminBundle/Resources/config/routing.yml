@@ -3,9 +3,19 @@ admin:
     defaults: { _controller: AdminBundle:Default:index }
 
 
+
 admin_users:
     path:     /admin/users
     defaults: { _controller: AdminBundle:UserAdmin:index }
+
+admin_user_edit:
+    path:     /admin/user/edit/{id}
+    defaults: { _controller: AdminBundle:UserAdmin:edit }
+
+admin_user_delete:
+    path:     /admin/user/delete/{id}
+    defaults: { _controller: AdminBundle:UserAdmin:delete }
+
 
 
 
@@ -26,6 +36,8 @@ admin_player_delete:
     defaults: { _controller: AdminBundle:PlayerAdmin:delete }
 
 
+
+
 admin_wars:
     path:     /admin/wars
     defaults: { _controller: AdminBundle:WarAdmin:index }
@@ -41,6 +53,9 @@ admin_war_edit:
 admin_war_delete:
     path:     /admin/war/delete/{id}
     defaults: { _controller: AdminBundle:WarAdmin:delete }
+
+
+
 
 
 admin_videos:

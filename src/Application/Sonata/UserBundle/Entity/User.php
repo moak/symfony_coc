@@ -57,4 +57,19 @@ class User extends BaseUser
 
 
 
+    /**
+     * Set player
+     *
+     * @param \COC\COCBundle\Entity\Player $player
+     * @return User
+     */
+    public function setPlayer(\COC\COCBundle\Entity\Player $player = null)
+    {
+        $this->player = $player;
+
+        return $this;
+    }
+
+
+
 }

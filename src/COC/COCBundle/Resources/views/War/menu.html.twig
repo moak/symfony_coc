@@ -1,19 +1,27 @@
-{% if warInProgress %}
-   <p> Gerre en cours : Yes
-       {% if isInPreparation != 0 %}
-           (jour de préparation)
-       {% else %}
-           (jour de guerre)
-       {% endif %}
+<div class="panel panel-default">
 
-   </p>
-    <p>{{ warInProgress.start|date('d M H:s') }} / {{ warInProgress.end|date('d M H:s') }}</p>
+        {% if warInProgress %}
+        <div class="panel-heading">Guerre de clan en cours !</div>
+        <div class="panel-body">
+                {% if isInPreparation != 0 %}
+                    Jour de préparation
+                {% else %}
+                    Jour de guerre
+                {% endif %}
 
-{% else %}
-    <p>Aucune guerre en cours.</p>
-{% endif %}
+            ({{ warInProgress.start|date('d M H:s') }} / {{ warInProgress.end|date('d M H:s') }})
 
-<hr>
+        {% else %}
+            <div class="panel-heading">Guerre de clan</div>
+            <div class="panel-body">
+            <p>Aucune guerre en cours.</p>
+        {% endif %}
 
-{{ render(controller('COCBundle:War:futureWars')) }}
+        <hr>
+
+       Future guerre: {{ render(controller('COCBundle:War:futureWars')) }}
+    </div>
+</div>
+
+
 

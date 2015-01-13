@@ -95,7 +95,9 @@
                             {%  if app.user.player.level is defined %}
                                 <li><a href="{{ path('coc_player_edit', {'id': app.user.player.id }) }}">Actualiser joueur</a></li>
                             {% endif %}
-
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li><a href="{{ path('admin') }}">Administration</a></li>
+                            {% endif %}
                             <li class="divider"></li>
                             <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                         </ul>

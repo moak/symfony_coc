@@ -60,6 +60,7 @@ class PlayerAdminController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
+
             $em->persist($player);
             $em->flush();
             return $this->redirect($this->generateUrl('admin_players'));
