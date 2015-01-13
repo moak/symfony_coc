@@ -44,35 +44,35 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="troop_received", type="integer")
+     * @ORM\Column(name="troop_received", type="integer", nullable=true)
      */
     private $troopReceived;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="troop_sent", type="integer")
+     * @ORM\Column(name="troop_sent", type="integer", nullable=true)
      */
     private $troopSent;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="attack_won", type="integer")
+     * @ORM\Column(name="attack_won", type="integer", nullable=true)
      */
     private $attackWon;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="level", type="integer")
+     * @ORM\Column(name="level", type="integer", nullable=true)
      */
     private $level;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="trophy", type="integer")
+     * @ORM\Column(name="trophy", type="integer", nullable=true)
      */
     private $trophy;
 
@@ -80,14 +80,14 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="canon1", type="integer")
+     * @ORM\Column(name="canon1", type="integer", nullable=true)
      */
     private $canon1;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="canon2", type="integer")
+     * @ORM\Column(name="canon2", type="integer", nullable=true)
      */
     private $canon2;
 
@@ -95,21 +95,21 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="canon3", type="integer")
+     * @ORM\Column(name="canon3", type="integer", nullable=true)
      */
     private $canon3;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="canon4", type="integer")
+     * @ORM\Column(name="canon4", type="integer", nullable=true)
      */
     private $canon4;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="canon5", type="integer")
+     * @ORM\Column(name="canon5", type="integer", nullable=true)
      */
     private $canon5;
 
@@ -117,7 +117,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="canon6", type="integer")
+     * @ORM\Column(name="canon6", type="integer", nullable=true)
      */
     private $canon6;
 
@@ -126,7 +126,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer1", type="integer")
+     * @ORM\Column(name="tower_archer1", type="integer", nullable=true)
      */
     private $tower_archer1;
 
@@ -134,7 +134,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer2", type="integer")
+     * @ORM\Column(name="tower_archer2", type="integer", nullable=true)
      */
     private $tower_archer2;
 
@@ -142,7 +142,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer3", type="integer")
+     * @ORM\Column(name="tower_archer3", type="integer", nullable=true)
      */
     private $tower_archer3;
 
@@ -150,7 +150,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer4", type="integer")
+     * @ORM\Column(name="tower_archer4", type="integer", nullable=true)
      */
     private $tower_archer4;
 
@@ -158,7 +158,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer5", type="integer")
+     * @ORM\Column(name="tower_archer5", type="integer", nullable=true)
      */
     private $tower_archer5;
 
@@ -166,7 +166,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer6", type="integer")
+     * @ORM\Column(name="tower_archer6", type="integer", nullable=true)
      */
     private $tower_archer6;
 
@@ -174,7 +174,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_magic1", type="integer")
+     * @ORM\Column(name="tower_magic1", type="integer", nullable=true)
      */
     private $tower_magic1;
 
@@ -182,7 +182,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_magic2", type="integer")
+     * @ORM\Column(name="tower_magic2", type="integer", nullable=true)
      */
     private $tower_magic2;
 
@@ -190,7 +190,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_magic3", type="integer")
+     * @ORM\Column(name="tower_magic3", type="integer", nullable=true)
      */
     private $tower_magic3;
 
@@ -198,7 +198,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_magic4", type="integer")
+     * @ORM\Column(name="tower_magic4", type="integer", nullable=true)
      */
     private $tower_magic4;
 
@@ -206,7 +206,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="mortar1", type="integer")
+     * @ORM\Column(name="mortar1", type="integer", nullable=true)
      */
     private $mortar1;
 
@@ -214,7 +214,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="mortar2", type="integer")
+     * @ORM\Column(name="mortar2", type="integer", nullable=true)
      */
     private $mortar2;
 
@@ -222,7 +222,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="mortar3", type="integer")
+     * @ORM\Column(name="mortar3", type="integer", nullable=true)
      */
     private $mortar3;
 
@@ -230,14 +230,14 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="mortar4", type="integer")
+     * @ORM\Column(name="mortar4", type="integer", nullable=true)
      */
     private $mortar4;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tesla1", type="integer")
+     * @ORM\Column(name="tesla1", type="integer", nullable=true)
      */
     private $tesla1;
 
@@ -245,7 +245,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tesla2", type="integer")
+     * @ORM\Column(name="tesla2", type="integer", nullable=true)
      */
     private $tesla2;
 
@@ -253,14 +253,14 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tesla3", type="integer")
+     * @ORM\Column(name="tesla3", type="integer", nullable=true)
      */
     private $tesla3;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="inferno1", type="integer")
+     * @ORM\Column(name="inferno1", type="integer", nullable=true)
      */
     private $inferno1;
 
@@ -268,7 +268,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="inferno2", type="integer")
+     * @ORM\Column(name="inferno2", type="integer", nullable=true)
      */
     private $inferno2;
     
@@ -276,7 +276,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="king", type="integer")
+     * @ORM\Column(name="king", type="integer", nullable=true)
      */
     private $king;
 
@@ -284,7 +284,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="queen", type="integer")
+     * @ORM\Column(name="queen", type="integer", nullable=true)
      */
     private $queen;
 
@@ -292,7 +292,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="arcx1", type="integer")
+     * @ORM\Column(name="arcx1", type="integer", nullable=true)
      */
     private $arcx1;
 
@@ -300,7 +300,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="arcx2", type="integer")
+     * @ORM\Column(name="arcx2", type="integer", nullable=true)
      */
     private $arcx2;
 
@@ -308,7 +308,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="arcx3", type="integer")
+     * @ORM\Column(name="arcx3", type="integer", nullable=true)
      */
     private $arcx3;
 
@@ -317,7 +317,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="archer", type="integer")
+     * @ORM\Column(name="archer", type="integer", nullable=true)
      */
     private $archer;
 
@@ -325,7 +325,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="barbar", type="integer")
+     * @ORM\Column(name="barbar", type="integer", nullable=true)
      */
     private $barbar;
 
@@ -333,21 +333,21 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="gobelin", type="integer")
+     * @ORM\Column(name="gobelin", type="integer", nullable=true)
      */
     private $gobelin;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="geant", type="integer")
+     * @ORM\Column(name="geant", type="integer", nullable=true)
      */
     private $geant;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="wall_breaker", type="integer")
+     * @ORM\Column(name="wall_breaker", type="integer", nullable=true)
      */
     private $wall_breaker;
 
@@ -355,7 +355,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="ballon", type="integer")
+     * @ORM\Column(name="ballon", type="integer", nullable=true)
      */
     private $ballon;
 
@@ -363,7 +363,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="wizard", type="integer")
+     * @ORM\Column(name="wizard", type="integer", nullable=true)
      */
     private $wizard;
 
@@ -371,7 +371,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="healer", type="integer")
+     * @ORM\Column(name="healer", type="integer", nullable=true)
      */
     private $healer;
 
@@ -379,7 +379,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="dragon", type="integer")
+     * @ORM\Column(name="dragon", type="integer", nullable=true)
      */
     private $dragon;
 
@@ -387,7 +387,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="pekka", type="integer")
+     * @ORM\Column(name="pekka", type="integer", nullable=true)
      */
     private $pekka;
 
@@ -396,7 +396,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="potion_heal", type="integer")
+     * @ORM\Column(name="potion_heal", type="integer", nullable=true)
      */
     private $potion_heal;
 
@@ -404,7 +404,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="potion_boost", type="integer")
+     * @ORM\Column(name="potion_boost", type="integer", nullable=true)
      */
     private $potion_boost;
 
@@ -413,7 +413,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="potion_damage", type="integer")
+     * @ORM\Column(name="potion_damage", type="integer", nullable=true)
      */
     private $potion_damage;
 
@@ -421,7 +421,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="potion_green", type="integer")
+     * @ORM\Column(name="potion_green", type="integer", nullable=true)
      */
     private $potion_green;
 
@@ -575,28 +575,6 @@ class Player
         return $this->trophy;
     }
 
-    /**
-     * Set user
-     *
-     * @param \User\UserBundle\Entity\User $user
-     * @return UserInfo
-     */
-    public function setUser(\User\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \User\UserBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 
     /**
      * Set season
@@ -1654,5 +1632,74 @@ class Player
     public function getInferno2()
     {
         return $this->inferno2;
+    }
+
+    /**
+     * Set attack
+     *
+     * @param integer $attack
+     * @return Player
+     */
+    public function setAttack($attack)
+    {
+        $this->attack = $attack;
+
+        return $this;
+    }
+
+    /**
+     * Get attack
+     *
+     * @return integer 
+     */
+    public function getAttack()
+    {
+        return $this->attack;
+    }
+
+    /**
+     * Set defence
+     *
+     * @param integer $defence
+     * @return Player
+     */
+    public function setDefence($defence)
+    {
+        $this->defence = $defence;
+
+        return $this;
+    }
+
+    /**
+     * Get defence
+     *
+     * @return integer 
+     */
+    public function getDefence()
+    {
+        return $this->defence;
+    }
+
+    /**
+     * Set total
+     *
+     * @param integer $total
+     * @return Player
+     */
+    public function setTotal($total)
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    /**
+     * Get total
+     *
+     * @return integer 
+     */
+    public function getTotal()
+    {
+        return $this->total;
     }
 }

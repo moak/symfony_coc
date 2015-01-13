@@ -8,7 +8,15 @@
 
         <div class="row">
 
-            <h2>Toutes les bases</h2>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Toutes les bases</h1>
+                    <a class="btn pull-right btn-normal btn-success" href="{{ path('coc_images_base_add') }}">Ajouter une base</a>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+
+
             {{ render(controller('COCBundle:ImageBase:template', { 'id': 5 })) }}
             {{ render(controller('COCBundle:ImageBase:template', { 'id': 6 })) }}
             {{ render(controller('COCBundle:ImageBase:template', { 'id': 7 })) }}

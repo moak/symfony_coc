@@ -1633,4 +1633,73 @@ class Player
     {
         return $this->inferno2;
     }
+
+    /**
+     * Set attack
+     *
+     * @param integer $attack
+     * @return Player
+     */
+    public function setAttack($attack)
+    {
+        $this->attack = $attack;
+
+        return $this;
+    }
+
+    /**
+     * Get attack
+     *
+     * @return integer 
+     */
+    public function getAttack()
+    {
+        return $this->attack;
+    }
+
+    /**
+     * Set defence
+     *
+     * @param integer $defence
+     * @return Player
+     */
+    public function setDefence($defence)
+    {
+        $this->defence = $defence;
+
+        return $this;
+    }
+
+    /**
+     * Get defence
+     *
+     * @return integer 
+     */
+    public function getDefence()
+    {
+        return $this->defence;
+    }
+
+    /**
+     * Set total
+     *
+     * @param integer $total
+     * @return Player
+     */
+    public function setTotal($total)
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    /**
+     * Get total
+     *
+     * @return integer 
+     */
+    public function getTotal()
+    {
+        return $this->total;
+    }
 }

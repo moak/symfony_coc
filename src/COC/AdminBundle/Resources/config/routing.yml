@@ -17,7 +17,13 @@ admin_player_add:
     path:     /admin/player/add
     defaults: { _controller: AdminBundle:PlayerAdmin:add }
 
+admin_player_edit:
+    path:     /admin/player/edit/{id}
+    defaults: { _controller: AdminBundle:PlayerAdmin:edit }
 
+admin_player_delete:
+    path:     /admin/player/delete/{id}
+    defaults: { _controller: AdminBundle:PlayerAdmin:delete }
 
 
 admin_wars:
@@ -28,6 +34,27 @@ admin_war_add:
     path:     /admin/war/add
     defaults: { _controller: AdminBundle:WarAdmin:add }
 
+admin_war_edit:
+    path:     /admin/war/edit/{id}
+    defaults: { _controller: AdminBundle:WarAdmin:edit }
+
 admin_war_delete:
     path:     /admin/war/delete/{id}
     defaults: { _controller: AdminBundle:WarAdmin:delete }
+
+
+admin_videos:
+    path:     /admin/videos
+    defaults: { _controller: AdminBundle:VideoAdmin:index }
+
+admin_video_add:
+    path:     /admin/video/add
+    defaults: { _controller: AdminBundle:VideoAdmin:add }
+
+admin_video_edit:
+    path:     /admin/video/edit/{id}
+    defaults: { _controller: AdminBundle:VideoAdmin:edit }
+
+admin_video_delete:
+    path:     /admin/video/delete/{id}
+    defaults: { _controller: AdminBundle:VideoAdmin:delete }

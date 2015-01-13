@@ -1,13 +1,11 @@
-
-<h3><a href="{{ path('coc_images_base_category', {'id': hall_town }) }}">Hôtel de ville {{ hall_town }}</a>
-
-    <a class="btn pull-right btn-normal btn-success" href="{{ path('coc_images_base_add') }}">Ajouter une base</a>
-</h3>
-
-<hr>
 <div class="row">
 
+
     {% if images|length != 0 %}
+        <h3><a href="{{ path('coc_images_base_category', {'id': hall_town }) }}">Hôtel de ville {{ hall_town }}</a>
+
+        </h3>
+
         {% for image in images %}
             <div class="col-sm-6 col-md-4">
                 <div class="panel panel-default">
@@ -22,8 +20,6 @@
                 </div>
             </div>
         {% endfor %}
-    {% else %}
-        Aucune base trouvée.
     {% endif %}
 </div>
 

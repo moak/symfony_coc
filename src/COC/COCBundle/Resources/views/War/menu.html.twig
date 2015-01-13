@@ -7,7 +7,7 @@
        {% endif %}
 
    </p>
-    <p>Start {{ warInProgress.start|date('Y-m-d H:s') }} - End {{ warInProgress.end|date('Y-m-d H:s') }}</p>
+    <p>{{ warInProgress.start|date('d M H:s') }} / {{ warInProgress.end|date('d M H:s') }}</p>
 
 {% else %}
     <p>Aucune guerre en cours.</p>

@@ -19,9 +19,9 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Guerre de clan</th>
-                <th>Debut</th>
-                <th>Fin</th>
+                <th>Guerres de clan</th>
+                <th>Date</th>
+                <th>Résultat</th>
                 <th></th>
             </tr>
             </thead>
@@ -30,10 +30,25 @@
             {% if wars|length != 0 %}
                 {% for war in wars %}
                     <tr>
-                        <td>{{ loop.index }}</td>
-                        <td>{{ war.start|date('Y-m-d H:s') }}</td>
-                        <td>{{ war.end|date('Y-m-d H:s') }}</td>
-                        <td> <a href="{{ path('admin_war_delete', { 'id': war.id }) }}" class="btn btn-default btn-danger">Supprimer</a></td>
+                        <td>
+                            CsP vs
+                            {% if war.opponent %}
+                                {{ war.opponent }}
+                            {% else %}
+                                En attente
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ war.start|date('d M H:s') }} ({{ war.start|date('U')|timeago }})
+                        </td>
+                        <td>
+                            {{ war.result|result }}
+                        </td>
+
+                        <td>
+                            <a href="{{ path('admin_war_edit', { 'id': war.id }) }}" class="btn btn-default btn-info">Editer</a>
+                            <a href="{{ path('admin_war_delete', { 'id': war.id }) }}" class="btn btn-default btn-danger">Supprimer</a>
+                        </td>
 
                     </tr>
                 {% endfor %}

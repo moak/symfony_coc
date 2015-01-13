@@ -1,14 +1,11 @@
 {% extends "::base_admin.html.twig" %}
 
- {% block title %}
-     <title>Nouvelle guerre de clan</title>
- {% endblock %}
-
 {% block body %}
 
 
+
     <div class="container">
-        <h2>Nouvelle guerre</h2>
+        <h2>Edition video</h2>
 
         <div class="well">
             {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
@@ -18,44 +15,30 @@
 
             <div class="form-group">
                 {# Génération du label. #}
-                {{ form_label(form.start, 'Date', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.title, 'Title', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
 
                 {# Affichage des erreurs pour ce champ précis. #}
-                {{ form_errors(form.start) }}
+                {{ form_errors(form.title) }}
 
                 <div class="col-sm-4">
                     {# Génération de l'input. #}
-                    {{ form_widget(form.start, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
                 </div>
             </div>
-
 
             <div class="form-group">
                 {# Génération du label. #}
-                {{ form_label(form.opponent, 'Ennemie', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.url, 'URL', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
 
                 {# Affichage des erreurs pour ce champ précis. #}
-                {{ form_errors(form.opponent) }}
+                {{ form_errors(form.url) }}
 
                 <div class="col-sm-4">
                     {# Génération de l'input. #}
-                    {{ form_widget(form.opponent, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(form.url, {'attr': {'class': 'form-control'}}) }}
                 </div>
             </div>
 
-
-            <div class="form-group">
-                {# Génération du label. #}
-                {{ form_label(form.result, 'Résultat', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-
-                {# Affichage des erreurs pour ce champ précis. #}
-                {{ form_errors(form.result) }}
-
-                <div class="col-sm-4">
-                    {# Génération de l'input. #}
-                    {{ form_widget(form.result, {'attr': {'class': 'form-control'}}) }}
-                </div>
-            </div>
 
             <div class="form-group">
 
@@ -65,6 +48,7 @@
                     {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
                 </div>
             </div>
+
             {# Génération automatique des champs pas encore écrits.
                Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
                et tous les champs cachés (type « hidden »). #}
@@ -77,5 +61,10 @@
         {# form_start(form, {'action': path('coc_homepage'), 'method': 'GET'}) }} #}
         {{ form(form)}}
     </div>
-{% endblock %}
 
+
+
+    {# form_start(form, {'action': path('coc_homepage'), 'method': 'GET'}) }} #}
+    {{ form(form)}}
+
+{% endblock %}

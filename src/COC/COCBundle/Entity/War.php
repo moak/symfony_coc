@@ -42,6 +42,12 @@ class War
      */
     private $result;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="opponent", type="string", nullable=true)
+     */
+    private $opponent;
 
     /**
      * Get id
@@ -151,4 +157,27 @@ class War
 
 
 
+
+    /**
+     * Set opponent
+     *
+     * @param string $opponent
+     * @return War
+     */
+    public function setOpponent($opponent)
+    {
+        $this->opponent = $opponent;
+
+        return $this;
+    }
+
+    /**
+     * Get opponent
+     *
+     * @return string 
+     */
+    public function getOpponent()
+    {
+        return $this->opponent;
+    }
 }

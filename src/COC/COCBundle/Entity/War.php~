@@ -5,7 +5,7 @@ namespace COC\COCBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * War
+ * WarAdmin
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\WarRepository")
@@ -38,17 +38,16 @@ class War
     /**
      * @var integer
      *
-     * @ORM\Column(name="status", type="integer")
-     */
-    private $status;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="result", type="integer")
      */
     private $result;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="opponent", type="string", nullable=true)
+     */
+    private $opponent;
 
     /**
      * Get id
@@ -151,4 +150,11 @@ class War
     {
         return $this->result;
     }
+
+    function __construct() {
+        $this->result = 0;
+    }
+
+
+
 }

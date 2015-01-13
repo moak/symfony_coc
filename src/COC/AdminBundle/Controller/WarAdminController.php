@@ -38,6 +38,29 @@ class WarAdminController extends Controller
     }
 
 
+    public function editAction ($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $war = $em->getRepository('COCBundle:War')->find($id);
+
+        $form = $this->get('form.factory')->create(new WarType(), $war );
+
+        if ($form->handleRequest($request)->isValid())
+        {
+            $start = clone $war->getStart();
+            $war->setEnd($start->modify('+2 day'));
+            $em->persist($war);
+            $em->flush();
+            return $this->redirect($this->generateUrl('admin_wars'));
+        }
+
+        return $this->render('AdminBundle:WarAdmin:edit.html.twig', array(
+            'form'      =>  $form->createView(),
+            'player'  => $war
+        ));
+    }
+
+
     public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
