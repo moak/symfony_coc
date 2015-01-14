@@ -60,7 +60,7 @@ class PlayerAdminController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
-
+            $player->setLastUpdate(new \DateTime());
             $em->persist($player);
             $em->flush();
             return $this->redirect($this->generateUrl('admin_players'));
@@ -82,6 +82,7 @@ class PlayerAdminController extends Controller
         if ($form->handleRequest($request)->isValid())
         {
             $em = $this->getDoctrine()->getManager();
+            $player->setLastUpdate(new \DateTime());
             $em->persist($player);
             $em->flush();
             return $this->redirect($this->generateUrl('admin_players'));

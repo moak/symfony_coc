@@ -12,5 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class playerRepository extends EntityRepository
 {
-
+    public function getHistory()
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->orderBy('u.last_update', 'DESC')
+            ->setMaxResults( 3 );
+        //var_dump($qb->getQuery()->getResult());
+        return $qb->getQuery()->getResult();
+    }
 }

@@ -22,6 +22,11 @@ coc_player_delete:
     path:     /player/delete/{id}
     defaults: { _controller: COCBundle:Player:delete }
 
+coc_players_history:
+    path:     /players/history
+    defaults: { _controller: COCBundle:Player:historyPlayers }
+
+
 
 
 coc_users:

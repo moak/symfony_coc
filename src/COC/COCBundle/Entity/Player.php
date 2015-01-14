@@ -17,6 +17,15 @@ class Player
         return $this->name;
     }
 
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="last_update", type="datetime")
+     */
+    private $last_update;
+
+
     /**
      * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Season", inversedBy="players")
      * @ORM\JoinColumn(name="season_id", referencedColumnName="id")
@@ -1706,5 +1715,28 @@ class Player
     public function getTotal()
     {
         return $this->total;
+    }
+
+    /**
+     * Set last_update
+     *
+     * @param \DateTime $lastUpdate
+     * @return Player
+     */
+    public function setLastUpdate($lastUpdate)
+    {
+        $this->last_update = $lastUpdate;
+
+        return $this;
+    }
+
+    /**
+     * Get last_update
+     *
+     * @return \DateTime 
+     */
+    public function getLastUpdate()
+    {
+        return $this->last_update;
     }
 }

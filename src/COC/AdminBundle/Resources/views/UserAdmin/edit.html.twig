@@ -3,9 +3,22 @@
 {% block body %}
 
 
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Edition compte</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+
+    <ol class="breadcrumb">
+        <li><a href="{{ path('admin') }}"><p class="fa fa-home"></p> Dashboard</a></li>
+        <li><a href="{{ path('admin_users') }}">Comptes</a></li>
+        <li class="active">Editer un compte</li>
+    </ol>
 
     <div class="container">
-        <h2>Edition compte</h2>
+
 
         <div class="well">
             {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
@@ -15,7 +28,7 @@
 
             <div class="form-group">
                 {# Génération du label. #}
-                {{ form_label(form.player, 'Joueur', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.player, 'Joueur assigné', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
 
                 {# Affichage des erreurs pour ce champ précis. #}
                 {{ form_errors(form.player) }}

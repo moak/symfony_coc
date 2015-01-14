@@ -3,8 +3,7 @@
 namespace COC\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Application\Sonata\UserBundle\Entity\User;
-use COC\COCBundle\Form\Type\UserType;
+use Application\Sonata\UserBundle\Form\Type\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
@@ -61,9 +60,7 @@ class UserAdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('ApplicationSonataUserBundle:User')->find($id);
-
         $form = $this->get('form.factory')->create(new UserType(), $user );
-
         if ($form->handleRequest($request)->isValid())
         {
             var_dump($form);
@@ -72,7 +69,6 @@ class UserAdminController extends Controller
             $em->flush();
             return $this->redirect($this->generateUrl('admin_users'));
         }
-
         return $this->render('AdminBundle:UserAdmin:edit.html.twig', array(
             'form'      =>  $form->createView(),
             'user'  => $user

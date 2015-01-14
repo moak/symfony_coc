@@ -2,11 +2,23 @@
 
 {% block body %}
 
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Edition du joueur {{ player.name }}</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
 
+
+    <ol class="breadcrumb">
+        <li><a href="{{ path('admin') }}"><p class="fa fa-home"></p> Dashboard</a></li>
+        <li><a href="{{ path('admin_players') }}">Joueurs</a></li>
+        <li class="active">Editer un joueur</li>
+    </ol>
 
     <div class="container">
 
-        <h2>Edition du joueur {{ player.name }}</h2>
+
         <hr>
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-primary">
