@@ -16,7 +16,7 @@ class playerRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('u')
             ->select('u')
-            ->orderBy('u.last_update', 'DESC')
+            ->orderBy('u.updatedAt', 'DESC')
             ->setMaxResults( 3 );
         //var_dump($qb->getQuery()->getResult());
         return $qb->getQuery()->getResult();

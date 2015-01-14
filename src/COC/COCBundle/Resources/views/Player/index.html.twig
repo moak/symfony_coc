@@ -37,7 +37,7 @@
                         <td>{{ totals[loop.index-1]['defence'] }}</td>
                         <td>{{ totals[loop.index-1]['attack'] }}</td>
                         <td>{{ totals[loop.index-1]['defence'] + totals[loop.index-1]['attack']}}</td>
-                        <td>{{ player.lastUpdate|date('U')|timeago }}</td>
+                        <td>{{ player.updatedAt|date('U')|timeago }}</td>
 
                     </tr>
                 {% endfor %}

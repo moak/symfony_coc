@@ -27,32 +27,42 @@ class PlayerController extends Controller
         return $this->render('COCBundle:Player:index.html.twig', array('players' => $players));
     }
 
+    public function getScore($score)
+    {
+        $tmp = $score - 1;
+        $tmp = $tmp * $score;
+        $tmp = $tmp / 2;
+        return $tmp;
+    }
     private function getTotalAttack($player)
     {
-        return $player->getArcher() +
-        $player->getBarbar() +
-        $player->getGeant() +
-        $player->getWizard() +
-        $player->getDragon() +
-        $player->getWallBreaker() +
-        $player->getPekka() +
-        $player->getBallon() +
-        $player->getHealer() +
-        $player->getGobelin() +
-        $player->getPotionHeal() +
-        $player->getPotionDamage() +
-        $player->getPotionBoost() +
-        $player->getPotionGreen();
+        $total = $this->getScore($player->getArcher()) +
+        $this->getScore($player->getBarbar() )+
+        $this->getScore($player->getGeant()) +
+        $this->getScore($player->getWizard()) +
+        $this->getScore($player->getDragon()) +
+        $this->getScore($player->getWallBreaker()) +
+        $this->getScore( $player->getPekka()) +
+        $this->getScore( $player->getBallon()) +
+        $this->getScore( $player->getHealer()) +
+        $this->getScore(  $player->getGobelin()) +
+        $this->getScore(  $player->getPotionHeal()) +
+        $this->getScore(  $player->getPotionDamage()) +
+        $this->getScore( $player->getPotionBoost()) +
+        $this->getScore(  $player->getPotionGreen());
+
+        return $total;
     }
 
     private function getTotalDefence($player)
     {
-        return  $player->getCanon1() +  $player->getCanon2() + $player->getCanon3() +  $player->getCanon4() +
-        $player->getMortar1() +  $player->getMortar2() + $player->getMortar3() +$player->getMortar4() +
-        $player->getTesla1() + $player->getTesla2() + $player->getTesla3() +
-        $player->getTowerMagic1() + $player->getTowerMagic2() + $player->getTowerMagic3() + $player->getTowerMagic4() +
-        $player->getTowerArcher1() + $player->getTowerArcher2() + $player->getTowerArcher3() + $player->getTowerArcher4() +
-        $player->getKing() + $player->getQueen();
+        return
+            $this->getScore($player->getCanon1()) +  $this->getScore($player->getCanon2()) + $this->getScore($player->getCanon3()) +  $this->getScore($player->getCanon4()) + $this->getScore($player->getCanon5()) +
+            $this->getScore($player->getMortar1()) +  $this->getScore($player->getMortar2()) + $this->getScore($player->getMortar3()) + $this->getScore($player->getMortar4()) +
+            $this->getScore($player->getTesla1()) + $this->getScore($player->getTesla2()) + $this->getScore($player->getTesla3()) +
+            $this->getScore($player->getTowerMagic1()) + $this->getScore($player->getTowerMagic2()) + $this->getScore($player->getTowerMagic3()) + $this->getScore($player->getTowerMagic4()) +
+            $this->getScore($player->getTowerArcher1()) + $this->getScore($player->getTowerArcher2()) + $this->getScore($player->getTowerArcher3()) + $this->getScore($player->getTowerArcher4()) + $this->getScore($player->getTowerArcher5()) +
+            $this->getScore($player->getKing()) +$this->getScore( $player->getQueen());
     }
 
 

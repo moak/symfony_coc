@@ -11,7 +11,7 @@
                     {% for history in histories %}
                         <a href="" class="list-group-item">
                             <i class="fa fa-twitter fa-fw"></i> {{ history.name }} a modifié son profil
-                                        <span class="pull-right text-muted small"><em>{{ history.lastUpdate|date('U')|timeago  }}</em>
+                                        <span class="pull-right text-muted small"><em>{{ history.updatedAt|date('U')|timeago  }}</em>
                                         </span>
                         </a>
                     {% endfor %}

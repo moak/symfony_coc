@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="Player")
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\PlayerRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Player
 {
@@ -19,11 +20,9 @@ class Player
 
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="last_update", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
-    private $last_update;
+    private $updatedAt;
 
 
     /**
@@ -1717,26 +1716,35 @@ class Player
         return $this->total;
     }
 
+
     /**
-     * Set last_update
+     * @ORM\PreUpdate
+     */
+    public function updateDate()
+    {
+        $this->setUpdatedAt(new \Datetime());
+    }
+
+    /**
+     * Set updatedAt
      *
-     * @param \DateTime $lastUpdate
+     * @param \DateTime $updatedAt
      * @return Player
      */
-    public function setLastUpdate($lastUpdate)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->last_update = $lastUpdate;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
     /**
-     * Get last_update
+     * Get updatedAt
      *
      * @return \DateTime 
      */
-    public function getLastUpdate()
+    public function getUpdatedAt()
     {
-        return $this->last_update;
+        return $this->updatedAt;
     }
 }

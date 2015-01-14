@@ -7,8 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UserInfo
  *
- * @ORM\Table()
+ * @ORM\Table(name="Player")
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\PlayerRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Player
 {
@@ -19,11 +20,9 @@ class Player
 
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="last_update", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
-    private $last_update;
+    private $updatedAt;
 
 
     /**
@@ -1715,5 +1714,14 @@ class Player
     public function getTotal()
     {
         return $this->total;
+    }
+
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function updateDate()
+    {
+        $this->setUpdatedAt(new \Datetime());
     }
 }
