@@ -17,8 +17,6 @@ admin_user_delete:
     defaults: { _controller: AdminBundle:UserAdmin:delete }
 
 
-
-
 admin_players:
     path:     /admin/players
     defaults: { _controller: AdminBundle:PlayerAdmin:index }
@@ -34,6 +32,26 @@ admin_player_edit:
 admin_player_delete:
     path:     /admin/player/delete/{id}
     defaults: { _controller: AdminBundle:PlayerAdmin:delete }
+
+
+
+
+admin_bestAttacks:
+    path:     /admin/bestAttacks
+    defaults: { _controller: AdminBundle:BestAttackAdmin:index }
+
+admin_bestAttack_add:
+    path:     /admin/bestAttack/add
+    defaults: { _controller: AdminBundle:BestAttackAdmin:add }
+
+admin_bestAttack_edit:
+    path:     /admin/bestAttack/edit/{id}
+    defaults: { _controller: AdminBundle:BestAttackAdmin:edit }
+
+admin_bestAttack_delete:
+    path:     /admin/bestAttack/delete/{id}
+    defaults: { _controller: AdminBundle:BestAttackAdmin:delete }
+
 
 
 

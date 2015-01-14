@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * ImageBestAttack
  *
- * @ORM\Table()
+ * @ORM\Table(name="ImageBestAttack")
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\ImageBestAttackRepository")
  */
 class ImageBestAttack

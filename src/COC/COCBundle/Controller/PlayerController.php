@@ -16,12 +16,15 @@ class PlayerController extends Controller
         $em = $this->getDoctrine()->getManager();
         $players = $em->getRepository('COCBundle:Player')->findAll();
 
-        foreach($players as $key => $value) {
-            $totals[$key]['attack'] = $this->getTotalAttack($value);
-            $totals[$key]['defence'] = $this->getTotalDefence($value);
+        if ($players)
+        {
+            foreach($players as $key => $value) {
+                $totals[$key]['attack'] = $this->getTotalAttack($value);
+                $totals[$key]['defence'] = $this->getTotalDefence($value);
+            }
+            return $this->render('COCBundle:Player:index.html.twig', array('players' => $players , 'totals' => $totals));
         }
-
-        return $this->render('COCBundle:Player:index.html.twig', array('players' => $players , 'totals' => $totals));
+        return $this->render('COCBundle:Player:index.html.twig', array('players' => $players));
     }
 
     private function getTotalAttack($player)

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Video
  *
- * @ORM\Table()
+ * @ORM\Table(name="Video")
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\VideoRepository")
  */
 class Video

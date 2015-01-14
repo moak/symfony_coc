@@ -25,8 +25,6 @@ class UserInfoController extends Controller
 
             $em = $this->getDoctrine()->getManager();
             $test = $em->getRepository('COCBundle:Season')->getSeason($season);
-
-
             $list = $em->getRepository('COCBundle:UserInfo')->findUserInfoBySeason($season);
             // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
             // var_dump($season);
@@ -37,7 +35,6 @@ class UserInfoController extends Controller
         $previousSeason = $em->getRepository('COCBundle:Season')->getPreviousSeason($currentSeason);
 
         $list = $em->getRepository('COCBundle:UserInfo')->findUserInfoBySeason($previousSeason);
-
 
         return $this->render('COCBundle:UserInfo:index.html.twig', array('userInfos' => $list, 'form' => $form->createView(), 'season'=> $previousSeason , 'previous' => true));
     }

@@ -9,9 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * ImageBestAttack
+ * ImageBase
  *
- * @ORM\Table()
+ * @ORM\Table(name="ImageBase")
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\ImageBaseRepository")
  */
 class ImageBase
