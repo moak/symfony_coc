@@ -5,7 +5,7 @@ namespace COC\AdminBundle\Controller;
 use COC\COCBundle\Entity\ImageBestAttack;
 use COC\COCBundle\Form\Type\ImageBestAttackAdminType;
 use Symfony\Component\HttpFoundation\Request;
-use COC\COCBundle\Form\Type\VideoType;
+use COC\COCBundle\Form\Type\ImageBestAttackType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class BestAttackAdminController extends Controller
@@ -59,7 +59,7 @@ class BestAttackAdminController extends Controller
     {
         $bestAttack = new ImageBestAttack();
         $em = $this->getDoctrine()->getManager();
-        $form = $this->get('form.factory')->create(new ImageBestAttackAdminType(), $bestAttack);
+        $form = $this->get('form.factory')->create(new ImageBestAttackType(), $bestAttack);
 
         if ($form->handleRequest($request)->isValid())
         {

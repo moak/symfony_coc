@@ -13,7 +13,7 @@ class ImageBaseType extends AbstractType
     {
         $builder
             ->add('hall_town')
-            ->add('file')
+            ->add('file', 'file')
             ->add('save', 'submit', array('label' => 'Sauvegarder'));
     }
 
