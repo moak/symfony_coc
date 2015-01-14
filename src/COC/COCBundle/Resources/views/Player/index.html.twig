@@ -2,23 +2,30 @@
 
 {% block body %}
 
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Liste des joueurs</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+
     <!-- Page Content -->
     <div class="container">
-        <hr>
-        {# form_start(form, {'action': path('coc_homepage'), 'method': 'GET'}) }} #}
-
+        
         <table class="table">
             <thead>
-            <tr>
-                <th>Nom du joueur</th>
-                <th>Level</th>
-                <th>Défences</th>
-                <th>Laboratoire</th>
-                <th data-hide="all">
+                <tr>
+                    <th>Nom</th>
+                    <th>Level</th>
+                    <th>Défence</th>
+                    <th>Attaque</th>
+                    <th>Total</th>
+                    <th>Mis à jour</th>
 
-                </th>
-
-            </tr>
+                </tr>
             </thead>
             <tbody>
 
@@ -27,25 +34,11 @@
                     <tr>
                         <td>{{ player.name }}</td>
                         <td>{{ player.level }}</td>
-                        <td>13000</td>
-                        <td>9845</td>
-                        <td>
+                        <td>{{ totals[loop.index-1]['defence'] }}</td>
+                        <td>{{ totals[loop.index-1]['attack'] }}</td>
+                        <td>{{ totals[loop.index-1]['defence'] + totals[loop.index-1]['attack']}}</td>
+                        <td>{{ player.lastUpdate|date('U')|timeago }}</td>
 
-                            <p><img class="img-responsive" src="{{ asset('images/tower_archer.jpg') }}" align="left" /> <b>{{ player.towerArcher1 }} - {{ player.towerArcher2 }} - {{ player.towerArcher3 }} - {{ player.towerArcher4 }}</b></p>
-
-                            <p><img class="img-responsive" src="{{ asset('images/canon.jpg') }}" align="left" /> <b>{{ player.canon1 }} - {{ player.canon2 }} - {{ player.canon3 }} - {{ player.canon4 }}</b></p>
-                            <p><img class="img-responsive" src="{{ asset('images/mortier.jpg') }}" align="left" /> <b>{{ player.mortar1 }} - {{ player.mortar2 }} - {{ player.mortar3 }}</b></p>
-                            <p><img class="img-responsive" src="{{ asset('images/anti_aerien.jpg') }}" align="left" /> <b>5 - 2 - 4</b></p>
-                            <p><img class="img-responsive" src="{{ asset('images/dragon.png') }}" align="left" /> <b>{{ player.dragon }}</b></p>
-                            <p>
-                                <img class="img-responsive" src="{{ asset('images/wizard.jpg') }}" align="block" /> <b>{{ player.wizard }}</b>
-                                <img class="img-responsive" src="{{ asset('images/barbar.jpg') }}" align="block" /> <b>{{ player.barbar }}</b>
-                            </p>
-
-
-
-
-                        </td>
                     </tr>
                 {% endfor %}
             {% else %}
@@ -61,15 +54,7 @@
         </table>
         <hr>
 
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
-        </footer>
-
+    </div>
     </div>
     <!-- /.container -->
 

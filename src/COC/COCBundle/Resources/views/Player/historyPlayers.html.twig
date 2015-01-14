@@ -1,0 +1,34 @@
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-bell fa-fw"></i> Dernières mise à jour
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="list-group">
+
+                {% if histories|length != 0 %}
+                    {% for history in histories %}
+                        <a href="" class="list-group-item">
+                            <i class="fa fa-twitter fa-fw"></i> {{ history.name }} a modifié son profil
+                                        <span class="pull-right text-muted small"><em>{{ history.lastUpdate|date('U')|timeago  }}</em>
+                                        </span>
+                        </a>
+                    {% endfor %}
+                {% else %}
+                    <a href="#" class="list-group-item">
+                        <i class="fa fa-twitter fa-fw"></i> 0
+                    </a>
+                {% endif %}
+
+
+            </div>
+            <!-- /.list-group -->
+            <a href="#" class="btn btn-default btn-block">Afficher historique complet</a>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+
+
+
+

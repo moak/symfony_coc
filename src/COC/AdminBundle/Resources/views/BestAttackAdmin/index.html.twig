@@ -1,0 +1,62 @@
+{% extends "::base_admin.html.twig" %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Meilleures attaques</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+
+    <ol class="breadcrumb">
+        <li><a href="{{ path('admin') }}"><p class="fa fa-home"></p> Dashboard</a></li>
+        <li class="active">Meilleures attaques</li>
+    </ol>
+
+
+
+    <!-- Page Content -->
+    <div class="container">
+
+
+        <hr>
+            <a class="btn btn-normal btn-success" href="{{ path('admin_bestAttack_add') }}">Ajouter une attaque</a>
+
+        <div class="row">
+            <br>
+            {% if images|length != 0 %}
+                {% for image in images %}
+                    <div class="col-sm-6 col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-center">{{ loop.index }} (<b>Gold</b>: {{ image.gold }} , <b>Elixir</b>: {{ image.elixir }}) </h3>
+                            </div>
+                            <div class="panel-body">
+                                <a rel="gallery-1"  href="{{ asset(image.getWebPath) }}" class="swipebox" title="">
+                                    <img  class="img-responsive" src="{{ asset(image.getWebPath) }}" />
+                                </a>
+
+                            </div>
+                            <div class="panel-footer">
+                                    <a class="btn btn-danger alert pull-right" href="{{ path('admin_bestAttack_delete' , {'id': image.id }) }}">Supprimer</a>
+                                    <a class="btn btn-info " href="{{ path('admin_bestAttack_edit' , {'id': image.id }) }}">Editer</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                Aucune base trouvée.
+            {% endif %}
+        </div>
+
+
+    </div>
+    <!-- /.container -->
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery.tablesorter.min.js') }}" type="text/javascript"></script>
+{% endblock %}
