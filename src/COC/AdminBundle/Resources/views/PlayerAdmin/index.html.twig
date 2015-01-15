@@ -44,7 +44,7 @@
                         <td>{{ totals[loop.index-1]['defence'] }}</td>
                         <td>{{ totals[loop.index-1]['attack'] }}</td>
                         <td>{{ totals[loop.index-1]['defence'] + totals[loop.index-1]['attack']}}</td>
-                        <td>{{ player.lastUpdate|date('U')|timeago }}</td>
+                        <td>{{ player.updatedAt|date('U')|timeago }}</td>
                         <td>
                             <a href="{{ path('admin_player_edit', { 'id': player.id }) }}" class="btn btn-default btn-info">Editer</a>
                             <a href="{{ path('admin_player_delete', { 'id': player.id }) }}" class="btn btn-circle btn-danger alert">Suppprimer</a>

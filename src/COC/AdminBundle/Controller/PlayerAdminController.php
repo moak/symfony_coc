@@ -22,7 +22,7 @@ class PlayerAdminController extends Controller
                 $totals[$key]['attack'] = $this->getTotalAttack($value);
                 $totals[$key]['defence'] = $this->getTotalDefence($value);
             }
-            return $this->render('COCBundle:Player:index.html.twig', array('players' => $players , 'totals' => $totals));
+            return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('players' => $players , 'totals' => $totals));
         }
 
         return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('players' => $players));
@@ -64,7 +64,6 @@ class PlayerAdminController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
-            $player->setLastUpdate(new \DateTime());
             $em->persist($player);
             $em->flush();
             return $this->redirect($this->generateUrl('admin_players'));
@@ -86,7 +85,6 @@ class PlayerAdminController extends Controller
         if ($form->handleRequest($request)->isValid())
         {
             $em = $this->getDoctrine()->getManager();
-            $player->setLastUpdate(new \DateTime());
             $em->persist($player);
             $em->flush();
             return $this->redirect($this->generateUrl('admin_players'));
