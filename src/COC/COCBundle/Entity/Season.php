@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Season
  *
- * @ORM\Table(name="Season")
+ * @ORM\Table(name="season")
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\SeasonRepository")
  */
 class Season

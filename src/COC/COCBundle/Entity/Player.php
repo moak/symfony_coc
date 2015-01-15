@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UserInfo
  *
- * @ORM\Table(name="Player")
+ * @ORM\Table(name="player")
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\PlayerRepository")
  * @ORM\HasLifecycleCallbacks()
  */
