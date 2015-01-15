@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * WarAdmin
  *
- * @ORM\Table(name="War")
+ * @ORM\Table(name="war")
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\WarRepository")
  */
 class War
