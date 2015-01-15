@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UserInfo
  *
- * @ORM\Table(name="userInfo")
+ * @ORM\Table(name="userinfo")
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\UserInfoRepository")
  */
 class UserInfo
