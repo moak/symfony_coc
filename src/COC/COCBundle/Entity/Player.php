@@ -25,11 +25,7 @@ class Player
     private $updatedAt;
 
 
-    /**
-     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Season", inversedBy="players")
-     * @ORM\JoinColumn(name="season_id", referencedColumnName="id")
-     */
-    protected $season;
+
 
     /**
      * @var integer
@@ -43,16 +39,16 @@ class Player
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string")
+     * @ORM\Column(name="name", type="string", nullable=true)
      */
     private $name;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="hall_town", type="integer")
+     * @ORM\Column(name="hall_town", type="integer", nullable=true)
      */
-    private $hallTown;
+    private $hallTown  ;
 
     /**
      * @var integer
@@ -80,7 +76,7 @@ class Player
      *
      * @ORM\Column(name="level", type="integer", nullable=true)
      */
-    private $level;
+    private $level = 0;
 
     /**
      * @var integer

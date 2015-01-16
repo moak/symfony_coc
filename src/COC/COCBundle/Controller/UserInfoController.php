@@ -10,24 +10,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class UserInfoController extends Controller
 {
-    public function indexAction(Request $request)
+   /* public function indexAction(Request $request)
     {
         $form = $this->get('form.factory')->create(new SeasonType(), null);
         if ($request->isMethod('POST'))
         {
             $data = $request->request->all();
-           // print_r($data);
-            $season = $data['season'];
 
-           // //print_r($data['season']);
-            // string
-            $season = $season['season'];
+            $season = $data['season'];
 
             $em = $this->getDoctrine()->getManager();
             $test = $em->getRepository('COCBundle:Season')->getSeason($season);
             $list = $em->getRepository('COCBundle:UserInfo')->findUserInfoBySeason($season);
-            // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
-            // var_dump($season);
+
             return $this->render('COCBundle:UserInfo:index.html.twig', array('userInfos' => $list, 'form' => $form->createView() , 'season'=> $test, 'previous' => false));
         }
         $em = $this->getDoctrine()->getManager();
@@ -38,7 +33,17 @@ class UserInfoController extends Controller
 
         return $this->render('COCBundle:UserInfo:index.html.twig', array('userInfos' => $list, 'form' => $form->createView(), 'season'=> $previousSeason , 'previous' => true));
     }
+*/
 
+    public function indexAction()
+    {
+        $form = $this->get('form.factory')->create(new SeasonType(), null);
+        $em = $this->getDoctrine()->getManager();
+        $list = $em->getRepository('COCBundle:UserInfo')->findAll();
+
+        return $this->render('COCBundle:UserInfo:index.html.twig', array('userInfos' => $list, 'form' => $form->createView(),  'previous' => true));
+
+    }
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();

@@ -11,9 +11,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PlayerController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $form = $this->get('form.factory')->create(new SeasonType(), null);
         $em = $this->getDoctrine()->getManager();
+
+        if ($request->isMethod('POST'))
+        {
+            $data = $request->request->all();
+            $season = $data['season'];
+
+            $em = $this->getDoctrine()->getManager();
+
+            $players = $em->getRepository('COCBundle:PlayerHistory')->findAll();
+
+            foreach($players as $key => $value) {
+                $totals[$key]['attack'] = $this->getTotalAttack($value);
+                $totals[$key]['defence'] = $this->getTotalDefence($value);
+            }
+
+            return $this->render('COCBundle:Player:index.html.twig', array('players' => $players, 'totals' => $totals, 'form' => $form->createView()));
+        }
+
+
         $players = $em->getRepository('COCBundle:Player')->findAll();
 
         if ($players)
@@ -22,8 +42,10 @@ class PlayerController extends Controller
                 $totals[$key]['attack'] = $this->getTotalAttack($value);
                 $totals[$key]['defence'] = $this->getTotalDefence($value);
             }
-            return $this->render('COCBundle:Player:index.html.twig', array('players' => $players , 'totals' => $totals));
+            return $this->render('COCBundle:Player:index.html.twig', array('players' => $players , 'totals' => $totals,'form' => $form->createView() ));
         }
+
+
         return $this->render('COCBundle:Player:index.html.twig', array('players' => $players));
     }
 
@@ -93,8 +115,22 @@ class PlayerController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
+            $playerHistory = new PlayerHistory();
+            $playerHistory->setPlayer($player);
+            $playerHistory->setName($player->getName());
+            $playerHistory->setTrophy($player->getTrophy());
+            $playerHistory->setLevel($player->getLevel());
+            $playerHistory->setTroopSent($player->getTroopSent());
+
+            $em = $this->getDoctrine()->getManager();
+            $season = $em->getRepository('COCBundle:Season')->findOneById('1');
+
+            $playerHistory->setSeason($season);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($player);
+            $em->persist($playerHistory);
+
             $em->flush();
             return $this->redirect($this->generateUrl('coc_players'));
         }
@@ -105,10 +141,10 @@ class PlayerController extends Controller
         ));
     }
 
-    public function historyPlayersAction ()
+    public function historyPlayersAction ($number)
     {
         $em = $this->getDoctrine()->getManager();
-        $histories = $em->getRepository('COCBundle:Player')->getHistory();
+        $histories = $em->getRepository('COCBundle:Player')->getHistory($number);
 
         return $this->render('COCBundle:Player:historyPlayers.html.twig', array(
             'histories'      =>  $histories,

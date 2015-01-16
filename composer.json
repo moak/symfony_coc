@@ -19,6 +19,9 @@
         "jms/security-extra-bundle": "1.5.*",
         "kriswallsmith/assetic": "1.1.*",
 
+        "doctrine/doctrine-fixtures-bundle": "2.2.*",
+        "bcc/cron-manager-bundle": "v2.6",
+
         "friendsofsymfony/user-bundle": "~1.3",
         "sonata-project/user-bundle": "~2.2"
     },

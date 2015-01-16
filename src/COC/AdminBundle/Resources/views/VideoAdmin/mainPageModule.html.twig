@@ -1,0 +1,13 @@
+
+    {% if videos is defined %}
+        {% for video in videos %}
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ video.title }}</div>
+                <div class="panel-body">
+                    {{ video.url | raw}}
+                    <p><a href="{{ path('coc_videos') }}"><button class="btn btn-block btn-danger">Toutes les vidéos</button></a></p>
+                </div>
+            </div>
+        {% endfor %}
+
+    {% endif %}

@@ -6,14 +6,59 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Liste des joueurs</h1>
+            <h1 class="page-header">Classement général</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
 
 
-    <!-- Page Content -->
     <div class="container">
+
+
+        <div class="well">
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+            {# Les erreurs générales du formulaire. #}
+            {{ form_errors(form) }}
+
+            <div class="form-group">
+                {# Génération du label. #}
+                {{ form_label(form.season, 'Rechercher par saison', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.season) }}
+
+
+                <div class="col-sm-4">
+                    {# Génération de l'input. #}
+
+
+                    {{ form_widget(form.season, { 'attr': {'class': 'form-control select_group'}, 'empty_value': '-- Add to Group --' }) }}
+
+
+                </div>
+
+                <div class="col-sm-4">
+                    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                </div>
+
+            </div>
+
+
+
+
+            {# Génération automatique des champs pas encore écrits.
+               Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+               et tous les champs cachés (type « hidden »). #}
+            {{ form_rest(form) }}
+
+            {# Fermeture de la balise <form> du formulaire HTML #}
+            {{ form_end(form) }}
+
+
+        </div>
+
 
         <table class="table">
             <thead>

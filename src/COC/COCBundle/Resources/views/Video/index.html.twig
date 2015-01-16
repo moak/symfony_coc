@@ -10,6 +10,7 @@
 
         <h2>Vidéos</h2>
         <hr>
+
             <a class="btn btn-normal btn-success" href="{{ path('coc_video_add') }}">Ajouter une vidéo</a>
 
         <div class="row">
@@ -26,7 +27,7 @@
                                 <p>{{ video.url| raw  }}</p>
                             </div>
                             <div class="panel-footer">
-                                <p>By Seyaa</p>
+                                <p>Posté par {{ video.user.username }} <i><small>{{ video.createdAt|date('U')|timeago }}</small></i></p>
                             </div>
                         </div>
                     </div>

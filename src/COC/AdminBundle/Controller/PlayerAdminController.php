@@ -11,6 +11,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PlayerAdminController extends Controller
 {
+
+    public function listModuleAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $players = $em->getRepository('COCBundle:Player')->findAll();
+
+        if ($players)
+        {
+            foreach($players as $key => $value) {
+                $totals[$key]['attack'] = $this->getTotalAttack($value);
+                $totals[$key]['defence'] = $this->getTotalDefence($value);
+            }
+            return $this->render('AdminBundle:PlayerAdmin:listModule.html.twig', array('players' => $players , 'totals' => $totals));
+        }
+
+        return $this->render('AdminBundle:PlayerAdmin:listModule.html.twig', array('players' => $players));
+    }
+
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();

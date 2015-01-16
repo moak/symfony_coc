@@ -1,0 +1,41 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Level</th>
+            <th>Défence</th>
+            <th>Attaque</th>
+            <th>Total</th>
+            <th>Date de mise à jour</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+    {% if players|length != 0 %}
+        {% for player in players %}
+            <tr>
+                <td>{{ player.name }}</td>
+                <td>{{ player.level }}</td>
+                <td>{{ totals[loop.index-1]['defence'] }}</td>
+                <td>{{ totals[loop.index-1]['attack'] }}</td>
+                <td>{{ totals[loop.index-1]['defence'] + totals[loop.index-1]['attack']}}</td>
+                <td>{{ player.updatedAt|date('U')|timeago }}</td>
+                <td>
+                    <a href="{{ path('admin_player_edit', { 'id': player.id }) }}" class="btn btn-default btn-info">Editer</a>
+                    <a href="{{ path('admin_player_delete', { 'id': player.id }) }}" class="btn btn-circle btn-danger alert">Suppprimer</a>
+                </td>
+
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td>-</td>
+            <td>0 joueur trouvé</td>
+            <td>-</td>
+
+            <td></td>
+        </tr>
+    {% endif %}
+    </tbody>
+</table>

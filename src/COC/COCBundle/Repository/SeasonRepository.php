@@ -14,13 +14,13 @@ class SeasonRepository extends EntityRepository
 {
     public function getActualSeason()
     {
-        $start = new \DateTime();
+        $now = new \DateTime();
 
         $qb = $this->createQueryBuilder('u')
             ->select('u')
             ->where('u.start <= :start')
             ->orderBy('u.id', 'DESC')
-            ->setParameter('start', $start)
+            ->setParameter('start', $now)
             ->setMaxResults(1);
 
         //var_dump($qb->getQuery()->getResult());
@@ -29,6 +29,7 @@ class SeasonRepository extends EntityRepository
 
     public function getSeason($season)
     {
+        var_dump($season);
         $qb = $this->createQueryBuilder('u')
             ->select('u')
             ->where('u.id <= :season')
@@ -36,7 +37,7 @@ class SeasonRepository extends EntityRepository
             ->setParameter('season', $season)
             ->setMaxResults(1);
 
-        //var_dump($qb->getQuery()->getResult());
+        var_dump($qb->getQuery()->getResult());
         return $qb->getQuery()->getSingleResult();
     }
 

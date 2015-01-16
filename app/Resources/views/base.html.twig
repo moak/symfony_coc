@@ -48,14 +48,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{{ path('coc_homepage') }}">Home</a></li>
+                <li><a href="{{ path('coc_players') }}">Classement</a></li>
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Classements <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ path('coc_players') }}">Classement général</a></li>
-                        <li><a href="{{ path('coc_user_info') }}">Classement saison</a></li>
-                    </ul>
-                </li>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Plans de base <span class="caret"></span></a>
@@ -96,7 +90,7 @@
                                 <li><a href="{{ path('coc_player_edit', {'id': app.user.player.id }) }}">Actualiser joueur</a></li>
                             {% endif %}
                             {% if is_granted('ROLE_ADMIN') %}
-                                <li><a href="{{ path('admin') }}">Administration</a></li>
+                                <li><a target="_blank" href="{{ path('admin') }}">Administration</a></li>
                             {% endif %}
                             <li class="divider"></li>
                             <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>

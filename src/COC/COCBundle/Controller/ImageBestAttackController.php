@@ -68,6 +68,7 @@ class ImageBestAttackController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
+            $image->setUser($this->get('security.context')->getToken()->getUser());
             $image->upload();
             $em->persist($image);
             $em->flush();

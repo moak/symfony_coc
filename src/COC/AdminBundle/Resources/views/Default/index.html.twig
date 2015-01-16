@@ -30,7 +30,7 @@
                             <i class="fa fa-comments fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">17</div>
+                            <div class="huge">{{ numberPlayers }}</div>
                             <div>Joueurs</div>
                         </div>
                     </div>
@@ -124,6 +124,7 @@
                     <!-- /.panel-heading -->
                     <div class="panel-body">
 
+                        {{ render(controller('AdminBundle:PlayerAdmin:listModule')) }}
 
 
 
@@ -133,7 +134,7 @@
 
             </div>
             <div class="col-lg-4">
-                {{ render(controller('COCBundle:Player:historyPlayers')) }}
+                {{ render(controller('COCBundle:Player:historyPlayers' , {'number' : 4 })) }}
             </div>
 
 

@@ -35,6 +35,10 @@ class VideoController extends Controller
         $em = $this->getDoctrine()->getManager();
         $list = $em->getRepository('COCBundle:Video')->findAll();
 
+        foreach($list as $key => $value) {
+            $list[$key]->setUrl($this->convertYoutube($list[$key]->getUrl()));
+        }
+
         // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
         // var_dump($season);
 
@@ -78,7 +82,7 @@ class VideoController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
-            $video->setUrl($this->convertYoutube($video->getUrl()));
+            $video->setUser($this->get('security.context')->getToken()->getUser());
             $em->persist($video);
             $em->flush();
             return $this->redirect($this->generateUrl('coc_videos'));

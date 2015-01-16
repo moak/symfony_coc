@@ -22,11 +22,12 @@ class AppKernel extends Kernel
 
             new FOS\UserBundle\FOSUserBundle(),
 
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-
+            new BCC\CronManagerBundle\BCCCronManagerBundle(),
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new COC\COCBundle\COCBundle(),
             new COC\AdminBundle\AdminBundle(),

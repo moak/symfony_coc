@@ -13,10 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
 class UserInfo
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="userInfos")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Player", inversedBy="userInfos")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id", nullable=true)
      */
-    protected $user;
+    protected $player;
 
     /**
      * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Season", inversedBy="userInfos")
@@ -35,19 +35,7 @@ class UserInfo
      */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string")
-     */
-    private $name;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="hall_town", type="integer")
-     */
-    private $hallTown;
 
     /**
      * @var integer
@@ -70,12 +58,6 @@ class UserInfo
      */
     private $attackWon;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="level", type="integer")
-     */
-    private $level;
 
     /**
      * @var integer
@@ -83,6 +65,7 @@ class UserInfo
      * @ORM\Column(name="trophy", type="integer")
      */
     private $trophy;
+
 
 
 
@@ -94,29 +77,6 @@ class UserInfo
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set hallTown
-     *
-     * @param integer $hallTown
-     * @return UserInfo
-     */
-    public function setHallTown($hallTown)
-    {
-        $this->hallTown = $hallTown;
-
-        return $this;
-    }
-
-    /**
-     * Get hallTown
-     *
-     * @return integer 
-     */
-    public function getHallTown()
-    {
-        return $this->hallTown;
     }
 
     /**
@@ -189,29 +149,6 @@ class UserInfo
     }
 
     /**
-     * Set level
-     *
-     * @param integer $level
-     * @return UserInfo
-     */
-    public function setLevel($level)
-    {
-        $this->level = $level;
-
-        return $this;
-    }
-
-    /**
-     * Get level
-     *
-     * @return integer 
-     */
-    public function getLevel()
-    {
-        return $this->level;
-    }
-
-    /**
      * Set trophy
      *
      * @param integer $trophy
@@ -237,10 +174,10 @@ class UserInfo
     /**
      * Set user
      *
-     * @param \User\UserBundle\Entity\User $user
+     * @param \Application\Sonata\UserBundle\Entity\User $user
      * @return UserInfo
      */
-    public function setUser(\User\UserBundle\Entity\User $user = null)
+    public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -250,7 +187,7 @@ class UserInfo
     /**
      * Get user
      *
-     * @return \User\UserBundle\Entity\User 
+     * @return \Application\Sonata\UserBundle\Entity\User 
      */
     public function getUser()
     {
@@ -281,25 +218,25 @@ class UserInfo
     }
 
     /**
-     * Set name
+     * Set player
      *
-     * @param string $name
+     * @param \COC\COCBundle\Entity\Player $player
      * @return UserInfo
      */
-    public function setName($name)
+    public function setPlayer(\COC\COCBundle\Entity\Player $player = null)
     {
-        $this->name = $name;
+        $this->player = $player;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get player
      *
-     * @return string 
+     * @return \COC\COCBundle\Entity\Player 
      */
-    public function getName()
+    public function getPlayer()
     {
-        return $this->name;
+        return $this->player;
     }
 }

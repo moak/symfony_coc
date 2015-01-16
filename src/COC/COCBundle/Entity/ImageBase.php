@@ -125,6 +125,12 @@ class ImageBase
 
 
 
+
+
+
+
+
+
     /**
      * Get id
      *
@@ -133,124 +139,6 @@ class ImageBase
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set path
-     *
-     * @param string $path
-     * @return Image
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-
-        return $this;
-    }
-
-    /**
-     * Get path
-     *
-     * @return string 
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     * @return Image
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string 
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \User\UserBundle\Entity\User $user
-     * @return Image
-     */
-    public function setUser(\User\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \User\UserBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set categoryImage
-     *
-     * @param \COC\COCBundle\Entity\CategoryImage $categoryImage
-     * @return Image
-     */
-    public function setCategoryImage(\COC\COCBundle\Entity\CategoryImage $categoryImage = null)
-    {
-        $this->categoryImage = $categoryImage;
-
-        return $this;
-    }
-
-    /**
-     * Get categoryImage
-     *
-     * @return \COC\COCBundle\Entity\CategoryImage 
-     */
-    public function getCategoryImage()
-    {
-        return $this->categoryImage;
-    }
-
-
-
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Image
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -277,25 +165,48 @@ class ImageBase
     }
 
     /**
-     * Set type
+     * Set path
      *
-     * @param integer $type
+     * @param string $path
      * @return ImageBase
      */
-    public function setType($type)
+    public function setPath($path)
     {
-        $this->type = $type;
+        $this->path = $path;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Get path
      *
-     * @return integer 
+     * @return string 
      */
-    public function getType()
+    public function getPath()
     {
-        return $this->type;
+        return $this->path;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $user
+     * @return ImageBase
+     */
+    public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

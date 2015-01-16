@@ -4,19 +4,23 @@ namespace COC\AdminBundle\Controller;
 
 use COC\COCBundle\Entity\Video;
 use Symfony\Component\HttpFoundation\Request;
-use COC\COCBundle\Form\Type\VideoType;
+use COC\COCBundle\Form\Type\VideoAdminType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class VideoAdminController extends Controller
 {
-    public function templateAction($id)
+    public function mainPageModuleAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository('COCBundle:ImageBase')->findBy(
-            array('hall_town' => $id)
-
+        $list = $em->getRepository('COCBundle:Video')->findBy(
+            array('published' => '1')
         );
-        return $this->render('AdminBundle:ImageBase:template.html.twig', array('images' => $list , 'hall_town' => $id ));
+        foreach($list as $key => $value) {
+            $list[$key]->setUrl($this->convertYoutube($list[$key]->getUrl()));
+        }
+
+
+        return $this->render('AdminBundle:VideoAdmin:mainPageModule.html.twig', array('videos' => $list));
     }
 
 
@@ -24,6 +28,14 @@ class VideoAdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $list = $em->getRepository('COCBundle:Video')->findAll();
+
+
+        foreach($list as $key => $value) {
+            $list[$key]->setUrl($this->convertYoutube($list[$key]->getUrl()));
+        }
+
+      //  $video->setUrl($this->convertYoutube($video->getUrl()));
+
 
         // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
         // var_dump($season);
@@ -37,7 +49,7 @@ class VideoAdminController extends Controller
         //$userInfo = $em->getRepository('COCBundle:ImageBase')->findOneByUser($id);
         $video = $em->getRepository('COCBundle:Video')->find($id);
 
-        $form = $this->get('form.factory')->create(new VideoType(), $video);
+        $form = $this->get('form.factory')->create(new VideoAdminType(), $video);
 
         if ($form->handleRequest($request)->isValid())
         {
@@ -53,7 +65,6 @@ class VideoAdminController extends Controller
         ));
     }
 
-
     public function convertYoutube($string) {
         return preg_replace("/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i", "<iframe width='100%' height='200' src=\"//www.youtube.com/embed/$2\" allowfullscreen></iframe>",
             $string
@@ -64,11 +75,11 @@ class VideoAdminController extends Controller
     {
         $video = new Video();
         $em = $this->getDoctrine()->getManager();
-        $form = $this->get('form.factory')->create(new VideoType(), $video);
+        $form = $this->get('form.factory')->create(new VideoAdminType(), $video);
 
         if ($form->handleRequest($request)->isValid())
         {
-            $video->setUrl($this->convertYoutube($video->getUrl()));
+            $video->setUser($this->get('security.context')->getToken()->getUser());
             $em->persist($video);
             $em->flush();
             return $this->redirect($this->generateUrl('admin_videos'));

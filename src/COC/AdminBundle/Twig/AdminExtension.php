@@ -9,9 +9,21 @@ class AdminExtension extends \Twig_Extension
         return array(
             new \Twig_SimpleFilter('result', array($this, 'resultFilter')),
             new \Twig_SimpleFilter('timeago', array($this, 'timeagoFilter')),
+            new \Twig_SimpleFilter('boolean', array($this, 'booleanFilter')),
         );
     }
 
+    public function booleanFilter($boolean)
+    {
+        if ( $boolean == 1)
+        {
+            return "Oui";
+        }
+        else
+        {
+            return "Non";
+        }
+    }
     public function resultFilter($number)
     {
         switch ($number)

@@ -9,9 +9,21 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="video")
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\VideoRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Video
 {
+    /**
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="videos")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
+     */
+    private $user;
+
+    /**
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
+     */
+    private $createdAt;
+
     /**
      * @var integer
      *
@@ -22,11 +34,20 @@ class Video
     private $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="published", type="boolean", nullable=true)
+     */
+    private $published;
+
+
+    /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=100, nullable=true)
      */
     private $title;
+
 
     /**
      * @var string
@@ -114,4 +135,84 @@ class Video
     {
         return $this->title;
     }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     * @return Video
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean 
+     */
+    public function getPublished()
+    {
+        return $this->published;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $user
+     * @return Video
+     */
+    public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function updateDate()
+    {
+        $this->setCreatedAt(new \Datetime());
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Player
+     */
+    public function setCreatedAt($updatedAt)
+    {
+        $this->createdAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+
 }

@@ -13,15 +13,22 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="imagebestattack")
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\ImageBestAttackRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class ImageBestAttack
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="images")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="imagesbestattack")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
-    
+
+
+    /**
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
+     */
+    private $createdAt;
+
     /**
      * @var integer
      *
@@ -190,13 +197,14 @@ class ImageBestAttack
         return $this->alt;
     }
 
+
     /**
      * Set user
      *
-     * @param \User\UserBundle\Entity\User $user
-     * @return Image
+     * @param \Application\Sonata\UserBundle\Entity\User $user
+     * @return Video
      */
-    public function setUser(\User\UserBundle\Entity\User $user = null)
+    public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -206,35 +214,13 @@ class ImageBestAttack
     /**
      * Get user
      *
-     * @return \User\UserBundle\Entity\User 
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getUser()
     {
         return $this->user;
     }
 
-    /**
-     * Set categoryImage
-     *
-     * @param \COC\COCBundle\Entity\CategoryImage $categoryImage
-     * @return Image
-     */
-    public function setCategoryImage(\COC\COCBundle\Entity\CategoryImage $categoryImage = null)
-    {
-        $this->categoryImage = $categoryImage;
-
-        return $this;
-    }
-
-    /**
-     * Get categoryImage
-     *
-     * @return \COC\COCBundle\Entity\CategoryImage 
-     */
-    public function getCategoryImage()
-    {
-        return $this->categoryImage;
-    }
 
 
 
@@ -330,4 +316,38 @@ class ImageBestAttack
     {
         return $this->elixir;
     }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function updateDate()
+    {
+        $this->setCreatedAt(new \Datetime());
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Player
+     */
+    public function setCreatedAt($updatedAt)
+    {
+        $this->createdAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+
+
 }

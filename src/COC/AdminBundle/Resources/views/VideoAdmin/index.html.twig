@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Ajouter un vidéo</h1>
+            <h1 class="page-header">Ajouter une vidéo</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -18,34 +18,42 @@
 
     <!-- Page Content -->
     <div class="container">
-
-
+        <a class="btn btn-normal btn-success" href="{{ path('admin_video_add') }}">Ajouter une vidéo</a>
         <hr>
-            <a class="btn btn-normal btn-success" href="{{ path('coc_video_add') }}">Ajouter une vidéo</a>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Lien youtube</th>
+                <th>Publiée</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
 
-        <div class="row">
-            <br>
             {% if videos|length != 0 %}
                 {% for video in videos %}
-                    <div class="col-sm-6 col-md-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title text-center">{{ video.title }}</h3>
-                            </div>
-                            <div class="panel-body">
-
-                                <p>{{ video.url| raw  }}</p>
-                            </div>
-                            <div class="panel-footer">
-                                <a href="{{ path('admin_video_delete', { 'id': video.id }) }}" class="btn btn-default btn-danger">Supprimer</a>
-                            </div>
-                        </div>
-                    </div>
+                    <tr>
+                        <td>{{ video.title }}</td>
+                        <td>{{ video.url| raw }}</td>
+                        <td>{{ video.published|boolean }}</td>
+                        <td>
+                            <a href="{{ path('admin_video_edit', { 'id': video.id }) }}" class="btn btn-default btn-info">Editer</a>
+                            <a href="{{ path('admin_video_delete', { 'id': video.id }) }}" class="btn btn-default btn-danger alert">Supprimer</a>
+                        </td>
+                    </tr>
                 {% endfor %}
             {% else %}
-                Aucune vidéo trouvée.
+                <tr>
+                    <td>-</td>
+                    <td>0 vidéo trouvée</td>
+                    <td>-</td>
+
+                    <td></td>
+                </tr>
             {% endif %}
-        </div>
+            </tbody>
+        </table>
 
 
     </div>
