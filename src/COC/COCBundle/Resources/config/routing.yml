@@ -4,7 +4,7 @@ coc_homepage:
 
 coc_players:
     path:     /players
-    defaults: { _controller: COCBundle:Player:index }
+    defaults: { _controller: COCBundle:Player:index}
 
 coc_player_show:
     path:     /player/show/{id}

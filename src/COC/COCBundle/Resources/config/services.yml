@@ -2,3 +2,7 @@ services:
 #    coc.example:
 #        class: COC\COCBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+    coc_cocbundle.calculate_player_info:
+        class: COC\COCBundle\Services\CalculatePlayerInfosService
+        arguments: [@doctrine.orm.entity_manager]

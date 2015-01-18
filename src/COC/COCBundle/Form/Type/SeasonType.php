@@ -9,10 +9,16 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class SeasonType extends AbstractType
 {
+    protected $season ;
+
+    public function _construct($season){
+        $this->season = $season ;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('season', 'entity', array ('class' => 'COC\COCBundle\Entity\Season'))
+            ->add('season', 'entity', array ('class' => 'COC\COCBundle\Entity\Season', 'property' => 'name', 'data' => 1 ))
             ->add('save', 'submit', array('label' => 'Rechercher'));
     }
 

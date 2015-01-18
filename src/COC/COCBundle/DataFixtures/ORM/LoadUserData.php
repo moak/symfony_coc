@@ -23,7 +23,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
 
     public function load(ObjectManager $manager)
     {
-
+/*
         $userManager = $this->container->get('fos_user.user_manager');
 
         $user1 = $userManager->createUser();
@@ -59,7 +59,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $manager->persist($user3);
         $manager->persist($user4);
 
-        $manager->flush();
+        $manager->flush();*/
     }
 
     /**

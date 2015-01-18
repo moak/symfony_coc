@@ -28,6 +28,12 @@ class PlayerHistory extends Player
      */
     private $id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Season", inversedBy="playerHistory")
+     * @ORM\JoinColumn(name="season_id", referencedColumnName="id", nullable=true)
+     */
+    private $season;
+
 
     /**
      * Set hall_town
@@ -54,4 +60,46 @@ class PlayerHistory extends Player
 
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function updateDate()
+    {
+        // Add your code here
+    }
+
+    /**
+     * Set season
+     *
+     * @param \COC\COCBundle\Entity\Season $season
+     * @return PlayerHistory
+     */
+    public function setSeason(\COC\COCBundle\Entity\Season $season = null)
+    {
+        $this->season = $season;
+
+        return $this;
+    }
+
+    /**
+     * Get season
+     *
+     * @return \COC\COCBundle\Entity\Season 
+     */
+    public function getSeason()
+    {
+        return $this->season;
+    }
 }

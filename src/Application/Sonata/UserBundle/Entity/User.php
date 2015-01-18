@@ -25,6 +25,11 @@ class User extends BaseUser
     private $player;
 
     /**
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Video", mappedBy="user")
+     **/
+    private $videos ;
+
+    /**
      * Get user
      *
      * @return \COC\COCBundle\Entity\Player
@@ -70,6 +75,45 @@ class User extends BaseUser
         return $this;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add videos
+     *
+     * @param \COC\COCBundle\Entity\Video $videos
+     * @return User
+     */
+    public function addVideo(\COC\COCBundle\Entity\Video $videos)
+    {
+        $this->videos[] = $videos;
 
+        return $this;
+    }
+
+    /**
+     * Remove videos
+     *
+     * @param \COC\COCBundle\Entity\Video $videos
+     */
+    public function removeVideo(\COC\COCBundle\Entity\Video $videos)
+    {
+        $this->videos->removeElement($videos);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVideos()
+    {
+        return $this->videos;
+    }
 }

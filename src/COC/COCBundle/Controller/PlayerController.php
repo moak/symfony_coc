@@ -13,21 +13,42 @@ class PlayerController extends Controller
 {
     public function indexAction(Request $request)
     {
-        $form = $this->get('form.factory')->create(new SeasonType(), null);
         $em = $this->getDoctrine()->getManager();
+
+        $seasonActuel = $em->getRepository('COCBundle:Season')->getActualSeason();
+
+        $data = $request->request->all();
+        $idSeason = $data['season']['season'];
+
+        if(empty($idSeason)){
+            $idSeason = 0 ;
+        }
+
+
+        $form = $this->get('form.factory')->create(new SeasonType($idSeason), null);
+
+
+        $calculateInfosService = $this->container->get('coc_cocbundle.calculate_player_info') ;
 
         if ($request->isMethod('POST'))
         {
+
             $data = $request->request->all();
-            $season = $data['season'];
+            $idSeason = $data['season']['season'];
 
-            $em = $this->getDoctrine()->getManager();
+            $season = $em->getRepository('COCBundle:Season')->findOneById($idSeason);
 
-            $players = $em->getRepository('COCBundle:PlayerHistory')->findAll();
+            if($season == $seasonActuel){
+                $players = $em->getRepository('COCBundle:Player')->findAll();
+            }else{
+                $players = $em->getRepository('COCBundle:PlayerHistory')->findOneBySeason($season);
+            }
 
-            foreach($players as $key => $value) {
-                $totals[$key]['attack'] = $this->getTotalAttack($value);
-                $totals[$key]['defence'] = $this->getTotalDefence($value);
+            if(!empty($players)){
+                foreach($players as $key => $value) {
+                    $totals[$key]['attack'] = $calculateInfosService->getTotalAttack($value);
+                    $totals[$key]['defence'] = $calculateInfosService->getTotalDefence($value);
+                }
             }
 
             return $this->render('COCBundle:Player:index.html.twig', array('players' => $players, 'totals' => $totals, 'form' => $form->createView()));
@@ -39,8 +60,8 @@ class PlayerController extends Controller
         if ($players)
         {
             foreach($players as $key => $value) {
-                $totals[$key]['attack'] = $this->getTotalAttack($value);
-                $totals[$key]['defence'] = $this->getTotalDefence($value);
+                $totals[$key]['attack'] = $calculateInfosService->getTotalAttack($value);
+                $totals[$key]['defence'] = $calculateInfosService->getTotalDefence($value);
             }
             return $this->render('COCBundle:Player:index.html.twig', array('players' => $players , 'totals' => $totals,'form' => $form->createView() ));
         }
@@ -49,43 +70,7 @@ class PlayerController extends Controller
         return $this->render('COCBundle:Player:index.html.twig', array('players' => $players));
     }
 
-    public function getScore($score)
-    {
-        $tmp = $score - 1;
-        $tmp = $tmp * $score;
-        $tmp = $tmp / 2;
-        return $tmp;
-    }
-    private function getTotalAttack($player)
-    {
-        $total = $this->getScore($player->getArcher()) +
-        $this->getScore($player->getBarbar() )+
-        $this->getScore($player->getGeant()) +
-        $this->getScore($player->getWizard()) +
-        $this->getScore($player->getDragon()) +
-        $this->getScore($player->getWallBreaker()) +
-        $this->getScore( $player->getPekka()) +
-        $this->getScore( $player->getBallon()) +
-        $this->getScore( $player->getHealer()) +
-        $this->getScore(  $player->getGobelin()) +
-        $this->getScore(  $player->getPotionHeal()) +
-        $this->getScore(  $player->getPotionDamage()) +
-        $this->getScore( $player->getPotionBoost()) +
-        $this->getScore(  $player->getPotionGreen());
 
-        return $total;
-    }
-
-    private function getTotalDefence($player)
-    {
-        return
-            $this->getScore($player->getCanon1()) +  $this->getScore($player->getCanon2()) + $this->getScore($player->getCanon3()) +  $this->getScore($player->getCanon4()) + $this->getScore($player->getCanon5()) +
-            $this->getScore($player->getMortar1()) +  $this->getScore($player->getMortar2()) + $this->getScore($player->getMortar3()) + $this->getScore($player->getMortar4()) +
-            $this->getScore($player->getTesla1()) + $this->getScore($player->getTesla2()) + $this->getScore($player->getTesla3()) +
-            $this->getScore($player->getTowerMagic1()) + $this->getScore($player->getTowerMagic2()) + $this->getScore($player->getTowerMagic3()) + $this->getScore($player->getTowerMagic4()) +
-            $this->getScore($player->getTowerArcher1()) + $this->getScore($player->getTowerArcher2()) + $this->getScore($player->getTowerArcher3()) + $this->getScore($player->getTowerArcher4()) + $this->getScore($player->getTowerArcher5()) +
-            $this->getScore($player->getKing()) +$this->getScore( $player->getQueen());
-    }
 
 
 

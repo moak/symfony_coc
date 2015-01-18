@@ -13,4 +13,8 @@ class DefaultController extends Controller
 
         return $this->render('AdminBundle:Default:index.html.twig' , array('numberPlayers'=> $numberPlayers));
     }
+
+    public function menuAction(){
+        return $this->render('AdminBundle:Default:menu.html.twig' , array());
+    }
 }

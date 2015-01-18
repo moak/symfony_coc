@@ -434,6 +434,11 @@ class Player
      */
     private $potion_green;
 
+    /**
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\PlayerHistory", mappedBy="player")
+     **/
+    private $playerhistories ;
+
 
 
     /**
@@ -1745,5 +1750,45 @@ class Player
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->playerhistories = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add playerhistories
+     *
+     * @param \COC\COCBundle\Entity\PlayerHistory $playerhistories
+     * @return Player
+     */
+    public function addPlayerhistory(\COC\COCBundle\Entity\PlayerHistory $playerhistories)
+    {
+        $this->playerhistories[] = $playerhistories;
+
+        return $this;
+    }
+
+    /**
+     * Remove playerhistories
+     *
+     * @param \COC\COCBundle\Entity\PlayerHistory $playerhistories
+     */
+    public function removePlayerhistory(\COC\COCBundle\Entity\PlayerHistory $playerhistories)
+    {
+        $this->playerhistories->removeElement($playerhistories);
+    }
+
+    /**
+     * Get playerhistories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlayerhistories()
+    {
+        return $this->playerhistories;
     }
 }
