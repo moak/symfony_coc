@@ -13,10 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Player
 {
-    public function __toString()
-    {
-        return $this->name;
-    }
+
 
 
     /**
@@ -439,7 +436,11 @@ class Player
      **/
     private $playerhistories ;
 
-
+    /**
+     * @ORM\OneToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="player",cascade={"persist"})
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     **/
+    private $user;
 
     /**
      * Get id
@@ -1759,6 +1760,7 @@ class Player
         $this->playerhistories = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+
     /**
      * Add playerhistories
      *
@@ -1790,5 +1792,33 @@ class Player
     public function getPlayerhistories()
     {
         return $this->playerhistories;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $user
+     * @return Player
+     */
+    public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    public function __toString()
+    {
+        return (string)$this->name;
     }
 }

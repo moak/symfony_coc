@@ -2,8 +2,9 @@
 
 namespace COC\AdminBundle\Controller;
 
+use COC\COCBundle\Entity\Player;
 use Symfony\Component\HttpFoundation\Request;
-use Application\Sonata\UserBundle\Form\Type\UserType;
+use COC\AdminBundle\Form\Type\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
@@ -60,11 +61,18 @@ class UserAdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('ApplicationSonataUserBundle:User')->find($id);
-        $form = $this->get('form.factory')->create(new UserType(), $user );
+
+        $form = $this->get('form.factory')->create(new UserType() );
         if ($form->handleRequest($request)->isValid())
         {
-            var_dump($form);
+            $data = $request->request->all();
+
+            $idPlayer = $data['player']['player'] ;
+            $player = $em->getRepository('COCBundle:Player')->findOneById($idPlayer);
+
             $em = $this->getDoctrine()->getManager();
+            $user->setPlayer($player);
+            $player->setUser($user);
             $em->persist($user);
             $em->flush();
             return $this->redirect($this->generateUrl('admin_users'));

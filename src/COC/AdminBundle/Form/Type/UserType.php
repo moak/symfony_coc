@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Sonata\UserBundle\Form\Type;
+namespace COC\AdminBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -12,21 +12,27 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('player', 'entity', array ('class' => 'COC\COCBundle\Entity\Player'))
+            ->add('player', 'entity',
+                array ('class' => 'COCBundle:Player',
+                    'property' => 'name',
+                    'mapped'=>false,
+                    'query_builder' => function(\COC\COCBundle\Repository\PlayerRepository $p) {
+                        return $p->getNotAssociedToUser();
+                    }))
             ->add('save', 'submit', array('label' => 'Sauvegarder'));
     }
 
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array('data_class' => 'Application\Sonata\UserBundle\Entity\User' ));
+        $resolver->setDefaults(array('data_class' => 'COC\COCBundle\Entity\Player' ));
 
     }
 
 
     public function getName()
     {
-        return 'users';
+        return 'player';
     }
 }
 
