@@ -35,7 +35,7 @@ class PlayerController extends Controller
 
             if($season == $seasonActuel){
                 echo "season = season actuelle";
-                $players = $em->getRepository('COCBundle:Player')->findAll();
+                $players = $em->getRepository('COCBundle:Player')->getPlayers();
             }else{
                 echo "season !!!= season actuelle";
                // $players = $em->getRepository('COCBundle:PlayerHistory')->findAll();

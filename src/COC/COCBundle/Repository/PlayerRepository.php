@@ -26,6 +26,15 @@ class PlayerRepository extends EntityRepository
     }
 
 
+    public function getPlayers()
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->orderBy('u.level', 'DESC');
+
+        return $qb->getQuery()->getResult();
+    }
+
 
     public function getNumberPlayers()
     {
