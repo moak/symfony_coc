@@ -57,7 +57,7 @@ class PlayerController extends Controller
         }
 
 
-        $players = $em->getRepository('COCBundle:Player')->findAll();
+        $players = $em->getRepository('COCBundle:Player')->getPlayers();
 
         if ($players)
         {
