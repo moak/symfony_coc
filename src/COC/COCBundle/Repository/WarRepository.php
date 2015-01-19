@@ -29,6 +29,14 @@ class WarRepository extends EntityRepository
         return $result;
     }
 
+    public function getNumberWars()
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u');
+
+        return count($qb->getQuery()->getResult());
+    }
+
     public function getFutureWars()
     {
         $now = new \DateTime();

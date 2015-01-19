@@ -12,4 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class VideoRepository extends EntityRepository
 {
+    public function getNumberVideos()
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u');
+
+        return count($qb->getQuery()->getResult());
+    }
 }
