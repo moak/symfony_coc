@@ -45,6 +45,15 @@ class UserInfoRepository extends EntityRepository
     }
 
 
+    public function getNumberUsers()
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u');
+
+        return count($qb->getQuery()->getResult());
+    }
+
+
 
 
 

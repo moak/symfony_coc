@@ -4,18 +4,50 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: uppercase;
+    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background: url('../images/bg.jpg')  ;
+
 }
 
-.hero-spacer {
-    margin-top: 50px;
+.navbar-default {
+
+    background: #340000;
+    background: rgba(255,255,255,0.9);
+    height: 50px;
 }
 
-.hero-feature {
-    margin-bottom: 30px;
+.navbar-brand {
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
+
+
+
+.main
+{
+    float: none;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+    background: #fff;
+    background: rgba(255,255,255,0.9);
+
+}
 
 
 

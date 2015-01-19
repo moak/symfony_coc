@@ -12,7 +12,7 @@ class LoadSeasonData extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
         $season1 = new Season();
-        $season1->setName('Saison 1');
+        $season1->setName('Saison 1 - Janvier');
         $datetime = new DateTime();
         $datetime->setDate(2015,1,5);
         $datetime->setTime(6,0,0);
@@ -24,7 +24,7 @@ class LoadSeasonData extends AbstractFixture implements OrderedFixtureInterface
         $season1->setEnd($datetime);
 
         $season2 = new Season();
-        $season2->setName('Saison 2');
+        $season2->setName('Saison 2 - Janvier');
         $datetime = new DateTime();
         $datetime->setDate(2015,1,19);
         $datetime->setTime(6,0,0);

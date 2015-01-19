@@ -11,8 +11,11 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $numberPlayers = $em->getRepository('COCBundle:Player')->getNumberPlayers();
+        $numberBases = $em->getRepository('COCBundle:ImageBase')->getNumberBases();
+        $numberVideos = $em->getRepository('COCBundle:Video')->getNumberVideos();
 
-        return $this->render('AdminBundle:Default:index.html.twig' , array('numberPlayers'=> $numberPlayers));
+
+        return $this->render('AdminBundle:Default:index.html.twig' , array('numberPlayers'=> $numberPlayers, 'numberBases'=> $numberBases, 'numberVideos' => $numberVideos));
     }
 
     public function menuAction()

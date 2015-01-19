@@ -8,13 +8,6 @@
         <div class="row">
             <div class="col-sm-8 feature">
 
-
-                <div class="well">Who the fuck knows what should I put just here ! </div>
-                <div class="well">Who the fuck knows what should I put just here ! </div>
-                <div class="well">Who the fuck knows what should I put just here ! </div>
-                <div class="well">Who the fuck knows what should I put just here ! </div>
-
-
                 <!-- Title -->
                 <div class="row">
                     <div class="col-lg-12">
@@ -42,7 +35,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">Classement des joueurs</div>
                             <div class="panel-body">
-                                <p><img class="img-responsive" src="{{ asset('images/classement.jpg') }}"></p>
+                                <p><a href="{{ path('coc_players') }}"><img class="img-responsive" src="{{ asset('images/2015-01-16 13.32.49.png') }}"></a></p>
                                 <p><a href="hdv5.php"><button class="btn btn-block btn-danger">Plus d'info</button></a></p>
                             </div>
                         </div>
@@ -52,7 +45,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">Meilleures attaques</div>
                             <div class="panel-body">
-                                <p><img class="img-responsive" src="{{ asset('images/2014-12-28 02.09.46.png') }}"></p>
+                                <p><a href="{{ path('coc_imagesBestAttack') }}"><img class="img-responsive" src="{{ asset('images/2014-12-28 02.09.46.png') }}"></a></p>
                                 <p><a href="hdv5.php"><button class="btn btn-block btn-success">Plus d'info</button></a></p>
                             </div>
                         </div>
@@ -69,7 +62,7 @@
                 
                 {{ render(controller('COCBundle:War:menu')) }}
 
-                {{ render(controller('COCBundle:Player:historyPlayers', { 'number': 5 })) }}
+                {{ render(controller('COCBundle:Player:historyPlayers', { 'number': 6 })) }}
                 {{ render(controller('AdminBundle:VideoAdmin:mainPageModule')) }}
 
 
@@ -85,7 +78,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; 2014</p>
+
                 </div>
             </div>
         </footer>
