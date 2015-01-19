@@ -32,7 +32,7 @@ class PlayerType extends AbstractType
             ->add('mortar4' , 'integer', array ('required'  => false))
 
 
-            ->add('tower_magic1' , 'integer', array ('required'  => false))
+            ->add('tower_magic1' , 'integer', array ('required'  => false ))
             ->add('tower_magic2' , 'integer', array ('required'  => false))
             ->add('tower_magic3' , 'integer', array ('required'  => false))
             ->add('tower_magic4' , 'integer', array ('required'  => false))
@@ -48,17 +48,17 @@ class PlayerType extends AbstractType
             ->add('tesla2' , 'integer', array ('required'  => false))
             ->add('tesla3' , 'integer', array ('required'  => false))
 
-            ->add('barbar' , 'integer', array ('required'  => false))
-            ->add('archer' , 'integer', array ('required'  => false))
-            ->add('geant' , 'integer', array ('required'  => false))
-            ->add('wall_breaker' , 'integer', array ('required'  => false))
-            ->add('ballon' , 'integer', array ('required'  => false))
-            ->add('wizard' , 'integer', array ('required'  => false))
-            ->add('healer' , 'integer', array ('required'  => false))
-            ->add('dragon' , 'integer', array ('required'  => false))
-            ->add('pekka' , 'integer', array ('required'  => false))
+            ->add('barbar' , 'choice', array('choices' => array(1, 2, 3, 4,5, 6)))
+            ->add('archer' , 'choice', array('choices' => array(1, 2, 3, 4,5, 6)))
+            ->add('geant' , 'choice', array('choices' => array(1, 2, 3, 4,5, 6)))
+            ->add('wall_breaker', 'choice', array('choices' => array(1, 2, 3, 4,5, 6)))
+            ->add('ballon' , 'choice', array('choices' => array(1, 2, 3, 4,5, 6)))
+            ->add('wizard' , 'choice', array('choices' => array(1, 2, 3, 4,5, 6)))
+            ->add('healer' , 'choice', array('choices' => array(1, 2, 3, 4,5, 6)))
+            ->add('dragon' , 'choice', array('choices' => array(1, 2, 3, 4,5, 6)))
+            //->add('pekka' , 'integer', array ('required'  => false))
 
-
+            ->add('pekka', 'choice', array('choices' => array(1, 2, 3, 4,5, 6)))
 
             // ->add('utilisateurs', 'entity', array ('class' => 'Utilisateurs\UtilisateursBundle\Entity\Utilisateurs'))
             ->add('save', 'submit', array('label' => 'Sauvegarder'));
