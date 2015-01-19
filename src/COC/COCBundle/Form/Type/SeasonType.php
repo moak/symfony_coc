@@ -11,9 +11,6 @@ class SeasonType extends AbstractType
 {
     protected $season ;
 
-    public function _construct($season){
-        $this->season = $season ;
-    }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

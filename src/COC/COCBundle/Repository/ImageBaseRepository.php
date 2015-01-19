@@ -12,5 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class ImageBaseRepository extends EntityRepository
 {
+    public function getNumberBases()
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u');
 
+        return count($qb->getQuery()->getResult());
+    }
 }

@@ -7,6 +7,23 @@ use Doctrine\ORM\EntityRepository;
 
 class UserRepository extends EntityRepository
 {
+    public function getNumberUsers()
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u');
+
+        return count($qb->getQuery()->getResult());
+    }
+
+    public function getNumberUsersNonAssigned()
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.player is NULL');
+        return count($qb->getQuery()->getResult());
+    }
+
+
     public function getNonAssignedUsers()
     {
         $qb = $this->createQueryBuilder('u')
@@ -17,16 +34,6 @@ class UserRepository extends EntityRepository
 
         return $qb;
     }
-
-
-
-
-
-
-
-
-
-
 
 
     public function findUserInfoBySeason($season)
@@ -44,8 +51,6 @@ class UserRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
-
-
 
 
 

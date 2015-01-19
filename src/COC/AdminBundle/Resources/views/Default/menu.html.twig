@@ -37,28 +37,22 @@
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
 
-                <li>
-                    <a target="_blank" href="{{ path('coc_homepage') }}"><i class="fa fa-dashboard fa-fw"></i> Aller sur le site</a>
-                </li>
 
                 <li>
                     <a href="{{ path('admin') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
 
                 <li>
-                    <a href="#"><i class="fa fa-files-o fa-fw"></i>Comptes <span class="badge">1 475</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="{{ path('admin_users') }}">Liste des comptes</a>
-                        </li>
+                    <a target="_blank" href="{{ path('coc_homepage') }}"><i class="fa fa-dashboard fa-fw"></i> Aller sur le site</a>
+                </li>
 
-                    </ul>
-                    <!-- /.nav-second-level -->
+                <li>
+                    <a href="{{ path('admin_users') }}"><span class="badge">{{ numberUsers }}</span> Comptes ({{ numberUsersNonAssigned }})</a>
                 </li>
 
 
                 <li>
-                    <a href="#"><i class="fa fa-files-o fa-fw"></i>Joueurs <span class="badge">55 147</span><span class="fa arrow"></span></a>
+                    <a href="#"><span class="badge">{{ numberPlayers }}</span> Joueurs <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="{{ path('admin_players') }}">Liste des joueurs</a>
@@ -74,7 +68,7 @@
 
 
                 <li>
-                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Guerres de clan<span class="fa arrow"></span></a>
+                    <a href="#"><span class="badge">{{ numberWars }}</span></i> Guerres de clan <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="{{ path('admin_wars') }}">Liste guerre de clan</a>
@@ -88,7 +82,7 @@
 
 
                 <li>
-                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Plans de base<span class="fa arrow"></span></a>
+                    <a href="#"><span class="badge">{{ numberBases }}</span></i> Plans de base  <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="">Ajouter une base</a>
@@ -102,7 +96,7 @@
 
 
                 <li>
-                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Vidéos<span class="fa arrow"></span></a>
+                    <a href="#"><span class="badge">{{ numberVideos }}</span> Vidéos <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="{{ path('admin_video_add') }}">Ajouter une vidéos</a>
@@ -115,7 +109,7 @@
 
 
                 <li>
-                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Meilleures attaques<span class="fa arrow"></span></a>
+                    <a href="#"><span class="badge">{{ numberBestAttacks }}</span></i> Meilleures attaques <span class="fa arrow"></span></a>
 
                     <ul class="nav nav-second-level">
                         <li>

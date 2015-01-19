@@ -12,5 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class PlayerHistoryRepository extends EntityRepository
 {
+    public function findHistoryBySeason($season)
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.season = :season')
+            ->orderBy('u.level', 'DESC')
+            ->setParameter('season', $season);
 
+        return $qb->getQuery()->getResult();
+    }
 }

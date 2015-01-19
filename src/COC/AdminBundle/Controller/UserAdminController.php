@@ -57,6 +57,30 @@ class UserAdminController extends Controller
     }
 
 
+    public function dissociateAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('ApplicationSonataUserBundle:User')->findOneByPlayer($id);
+
+
+        if(!$user)
+        {
+            throw $this->createNotFoundException('No user found');
+        }
+        $em = $this->getDoctrine()->getManager();
+        $user->setPlayer(null);
+
+        $em->flush();
+
+        $player = $em->getRepository('COCBundle:Player')->find($id);
+        $player->setUser(null);
+
+        $em->flush();
+        return $this->redirect($this->generateUrl('admin_users'));
+
+    }
+
+
     public function editAction ($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();

@@ -22,4 +22,12 @@ class ImageBestAttackRepository extends EntityRepository
         //var_dump($qb->getQuery()->getResult());
         return $qb->getQuery()->getResult();
     }
+
+    public function getNumberBestAttacks()
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u');
+
+        return count($qb->getQuery()->getResult());
+    }
 }

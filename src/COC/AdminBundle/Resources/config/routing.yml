@@ -16,6 +16,11 @@ admin_user_delete:
     path:     /admin/user/delete/{id}
     defaults: { _controller: AdminBundle:UserAdmin:delete }
 
+admin_user_dissociate:
+    path:     /admin/user/dissociate/{id}
+    defaults: { _controller: AdminBundle:UserAdmin:dissociate }
+
+
 
 admin_players:
     path:     /admin/players
@@ -32,6 +37,7 @@ admin_player_edit:
 admin_player_delete:
     path:     /admin/player/delete/{id}
     defaults: { _controller: AdminBundle:PlayerAdmin:delete }
+
 
 
 

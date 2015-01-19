@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * References :
  *   working with object : http://www.doctrine-project.org/projects/orm/2.0/docs/reference/working-with-objects/en
  *
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Application\Sonata\UserBundle\Repository\UserRepository")
  * @ORM\Table(name="fos_user_user")
  */
 class User extends BaseUser

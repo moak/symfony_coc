@@ -15,43 +15,45 @@ class PlayerController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $seasonActuel = $em->getRepository('COCBundle:Season')->getActualSeason();
-
-        $data = $request->request->all();
-        $idSeason = $data['season']['season'];
-
-        if(empty($idSeason)){
-            $idSeason = 0 ;
-        }
-
-
-        $form = $this->get('form.factory')->create(new SeasonType($idSeason), null);
-
-
+        $form = $this->get('form.factory')->create(new SeasonType(), null);
         $calculateInfosService = $this->container->get('coc_cocbundle.calculate_player_info') ;
 
         if ($request->isMethod('POST'))
         {
-
+            $seasonActuel = $em->getRepository('COCBundle:Season')->getActualSeason();
             $data = $request->request->all();
             $idSeason = $data['season']['season'];
 
+            if(empty($idSeason)){
+                $idSeason = 0 ;
+            }
+            $data = $request->request->all();
+            $idSeason = $data['season']['season'];
+            print_r("=> " . $idSeason);
             $season = $em->getRepository('COCBundle:Season')->findOneById($idSeason);
 
+
             if($season == $seasonActuel){
+                echo "season = season actuelle";
                 $players = $em->getRepository('COCBundle:Player')->findAll();
             }else{
+                echo "season !!!= season actuelle";
+               // $players = $em->getRepository('COCBundle:PlayerHistory')->findAll();
                 $players = $em->getRepository('COCBundle:PlayerHistory')->findOneBySeason($season);
             }
 
             if(!empty($players)){
+                echo "<br>players non vides";
                 foreach($players as $key => $value) {
                     $totals[$key]['attack'] = $calculateInfosService->getTotalAttack($value);
                     $totals[$key]['defence'] = $calculateInfosService->getTotalDefence($value);
                 }
+                return $this->render('COCBundle:Player:index.html.twig', array('players' => $players, 'totals' => $totals, 'form' => $form->createView()));
             }
-
-            return $this->render('COCBundle:Player:index.html.twig', array('players' => $players, 'totals' => $totals, 'form' => $form->createView()));
+            else
+            {
+                return $this->render('COCBundle:Player:index.html.twig', array('players' => $players, 'totals' => 0, 'form' => $form->createView()));
+            }
         }
 
 
@@ -100,22 +102,8 @@ class PlayerController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
-            $playerHistory = new PlayerHistory();
-            $playerHistory->setPlayer($player);
-            $playerHistory->setName($player->getName());
-            $playerHistory->setTrophy($player->getTrophy());
-            $playerHistory->setLevel($player->getLevel());
-            $playerHistory->setTroopSent($player->getTroopSent());
-
-            $em = $this->getDoctrine()->getManager();
-            $season = $em->getRepository('COCBundle:Season')->findOneById('1');
-
-            $playerHistory->setSeason($season);
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($player);
-            $em->persist($playerHistory);
-
             $em->flush();
             return $this->redirect($this->generateUrl('coc_players'));
         }

@@ -11,8 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\PlayerHistoryRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class PlayerHistory extends Player
+class PlayerHistory
 {
+
     /**
      * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Player", inversedBy="playerhistories")
      * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
