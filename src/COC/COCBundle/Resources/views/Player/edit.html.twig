@@ -1,9 +1,7 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-
-
-
+    <link rel="stylesheet" href="{{ asset('css/player_edit.css') }}" />
     <div class="container">
 
         <h2>Edition du joueur {{ player.name }}</h2>
@@ -17,7 +15,7 @@
                         </a>
                     </h4>
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" >
                     <div class="panel-body">
 
 
@@ -35,7 +33,7 @@
                             <div class="col-sm-4">
 
                                 {# Génération de l'input. #}
-                                {{ form_widget(form.hall_town, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_widget(form.hall_town, {'attr': {'class': 'form-control hall-town-level'}}) }}
                             </div>
                         </div>
 
@@ -117,303 +115,207 @@
                         </a>
                     </h4>
                 </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body">
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.canon1, 'Canon1', {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.canon1) }}
-
-                            <div class="col-sm-1">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.canon1, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.canon2, 'Canon 2', {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.canon2) }}
-
-                            <div class="col-sm-1">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.canon2, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.canon3, 'Canon 3', {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.canon3) }}
-
-                            <div class="col-sm-1">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.canon3, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.canon4, 'Canon 4', {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.canon4) }}
-
-                            <div class="col-sm-1">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.canon4, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.canon5, 'Canon 5', {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.canon5) }}
-
-                            <div class="col-sm-1">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.canon5, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.canon6, 'Canon 6', {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.canon6) }}
-
-                            <div class="col-sm-1">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.canon6, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-                        <!-- TOWER ARCHER-->
-
-                        <div class="form-group">
-                            {{ form_label(form.tower_archer1, 'Tour archer 1', {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
-                            {{ form_errors(form.tower_archer1) }}
-                            <div class="col-sm-1">
-                                {{ form_widget(form.tower_archer1, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {{ form_label(form.tower_archer2, 'Tour archer 2', {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
-                            {{ form_errors(form.tower_archer2) }}
-                            <div class="col-sm-1">
-                                {{ form_widget(form.tower_archer2, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {{ form_label(form.tower_archer3, 'Tour archer 3', {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
-                            {{ form_errors(form.tower_archer3) }}
-                            <div class="col-sm-1">
-                                {{ form_widget(form.tower_archer3, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {{ form_label(form.tower_archer4, 'Tour archer 4', {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
-                            {{ form_errors(form.tower_archer4) }}
-                            <div class="col-sm-1">
-                                {{ form_widget(form.tower_archer4, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {{ form_label(form.tower_archer5, 'Tour archer 5', {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
-                            {{ form_errors(form.tower_archer5) }}
-                            <div class="col-sm-1">
-                                {{ form_widget(form.tower_archer5, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {{ form_label(form.tower_archer6, 'Tour archer 6', {'label_attr': {'class': 'col-sm-1 control-label'}}) }}
-                            {{ form_errors(form.tower_archer6) }}
-                            <div class="col-sm-1">
-                                {{ form_widget(form.tower_archer6, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.tesla1, 'Tesla 1', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.tesla1) }}
-
-                            <div class="col-sm-2">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.tesla1, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.tesla2, 'Tesla 2', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.tesla2) }}
-
-                            <div class="col-sm-2">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.tesla2, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.tesla3, 'Tesla 3', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.tesla3) }}
-
-                            <div class="col-sm-2">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.tesla3, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.mortar1, 'Mortier 1', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.mortar1) }}
-
-                            <div class="col-sm-1">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.mortar1, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-                        <div class="form-group horizon">
-                            {# Génération du label. #}
-                            {{ form_label(form.mortar2, 'Mortier 2', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.mortar2) }}
-
-                            <div class="col-sm-1">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.mortar2, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.mortar3, 'Mortier 3', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.mortar3) }}
-
-                            <div class="col-sm-1">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.mortar3, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.mortar4, 'Mortier 4', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.mortar4) }}
-
-                            <div class="col-sm-1">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.mortar4, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.tower_magic1, 'Tour de magie 1', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.tower_magic1) }}
-
-                            <div class="col-sm-1">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.tower_magic1, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.tower_magic2, 'Tour de magie 2', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.tower_magic2) }}
-
-                            <div class="col-sm-1">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.tower_magic2, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.tower_magic3, 'Tour de magie 3', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.tower_magic3) }}
-
-                            <div class="col-sm-1">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.tower_magic3, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.tower_magic4, 'Tour de magie 4', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.tower_magic4) }}
-
-                            <div class="col-sm-1">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.tower_magic4, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-
-
+                <div id="collapseTwo" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body defences">
+						<!-- CANNON -->
+						<div class="row" data-town-hall-level-min="1">
+							<div class="col-sm-2" data-town-hall-level-min="1">
+								<div class="form-group">
+									{{ form_label(form.canon1, 'Canon 1', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.canon1) }}
+									{{ form_widget(form.canon1, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="1">
+								<div class="form-group">
+									{{ form_label(form.canon2, 'Canon 2', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.canon2) }}
+									{{ form_widget(form.canon2, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="5">
+								<div class="form-group">
+									{{ form_label(form.canon3, 'Canon 3', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.canon3) }}
+									{{ form_widget(form.canon3, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="5">
+								<div class="form-group">
+									{{ form_label(form.canon4, 'Canon 4', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.canon4) }}
+									{{ form_widget(form.canon4, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="7">
+								<div class="form-group">
+									{{ form_label(form.canon5, 'Canon 5', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.canon5) }}
+									{{ form_widget(form.canon5, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="10">
+								<div class="form-group">
+									{{ form_label(form.canon6, 'Canon 6', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.canon6) }}
+									{{ form_widget(form.canon6, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+						</div>
+						<hr  data-town-hall-level-min="2"/>
+						<!-- CANNON FIN -->	
+						<!-- ARCHER TOUR -->
+						<div class="row" data-town-hall-level-min="2">
+							<div class="col-sm-2" data-town-hall-level-min="2">
+								<div class="form-group">
+									{{ form_label(form.tower_archer1, 'Tour archer 1', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.tower_archer1) }}
+									{{ form_widget(form.tower_archer1, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="4">
+								<div class="form-group">
+									{{ form_label(form.tower_archer2, 'Tour archer 2', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.tower_archer2) }}
+									{{ form_widget(form.tower_archer2, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="5">
+								<div class="form-group">
+									{{ form_label(form.tower_archer3, 'Tour archer 3', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.tower_archer3) }}
+									{{ form_widget(form.tower_archer3, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="7">
+								<div class="form-group">
+									{{ form_label(form.tower_archer4, 'Tour archer 4', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.tower_archer4) }}
+									{{ form_widget(form.tower_archer4, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="8">
+								<div class="form-group">
+									{{ form_label(form.tower_archer5, 'Tour archer 5', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.tower_archer5) }}
+									{{ form_widget(form.tower_archer5, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="9">
+								<div class="form-group">
+									{{ form_label(form.tower_archer6, 'Tour archer 6', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.tower_archer6) }}
+									{{ form_widget(form.tower_archer6, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="10">
+								<div class="form-group">
+									{{ form_label(form.tower_archer6, 'Tour archer 7', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.tower_archer6) }}
+									{{ form_widget(form.tower_archer6, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+						</div>
+						<hr data-town-hall-level-min="7"/>
+						<!-- ARCHER TOUR FIN -->
+						<!-- TESLA TOUR -->
+						<div class="row" data-town-hall-level-min="7">
+							<div class="col-sm-2" data-town-hall-level-min="7">
+								<div class="form-group">
+									{{ form_label(form.tesla1, 'Tour tesla 1', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.tesla1) }}
+									{{ form_widget(form.tesla1, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="7">
+								<div class="form-group">
+									{{ form_label(form.tesla2, 'Tour tesla 2', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.tesla2) }}
+									{{ form_widget(form.tesla2, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="8">
+								<div class="form-group">
+									{{ form_label(form.tesla3, 'Tour tesla 3', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.tesla3) }}
+									{{ form_widget(form.tesla3, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="9">
+								<div class="form-group">
+									{{ form_label(form.tesla3, 'Tour tesla 4', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.tesla3) }}
+									{{ form_widget(form.tesla3, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+						</div>
+						<hr data-town-hall-level-min="3"/>
+						<!-- TESLA TOUR FIN -->    
+						<!-- MORTIER TOUR -->
+						<div class="row" data-town-hall-level-min="3">
+							<div class="col-sm-2" data-town-hall-level-min="3">
+								<div class="form-group">
+									{{ form_label(form.mortar1, 'Mortier 1', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.mortar1) }}
+									{{ form_widget(form.mortar1, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="6">
+								<div class="form-group">
+									{{ form_label(form.mortar2, 'Mortier 2', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.mortar2) }}
+									{{ form_widget(form.mortar2, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="7">
+								<div class="form-group">
+									{{ form_label(form.mortar3, 'Mortier 3', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.mortar3) }}
+									{{ form_widget(form.mortar3, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="8">
+								<div class="form-group">
+									{{ form_label(form.mortar4, 'Mortier 4', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.mortar4) }}
+									{{ form_widget(form.mortar4, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+						</div>
+						<hr data-town-hall-level-min="5"/>
+						<!-- MORTIER TOUR FIN -->   
+						<!-- MAGIC TOUR -->
+						<div class="row" data-town-hall-level-min="5">
+							<div class="col-sm-2" data-town-hall-level-min="5">
+								<div class="form-group">
+									{{ form_label(form.tower_magic1, 'Tour de magie 1', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.tower_magic1) }}
+									{{ form_widget(form.tower_magic1, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="6">
+								<div class="form-group">
+									{{ form_label(form.tower_magic2, 'Tour de magie 2', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.tower_magic2) }}
+									{{ form_widget(form.tower_magic2, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="8">
+								<div class="form-group">
+									{{ form_label(form.tower_magic3, 'Tour de magie 3', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.tower_magic3) }}
+									{{ form_widget(form.tower_magic3, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-sm-2" data-town-hall-level-min="9">
+								<div class="form-group">
+									{{ form_label(form.tower_magic4, 'Tour de magie 4', {'label_attr': {'class': 'control-label'}}) }}
+									{{ form_errors(form.tower_magic4) }}
+									{{ form_widget(form.tower_magic4, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+						</div>
+						<!-- MAGIC TOUR FIN -->   
                     </div>
                 </div>
             </div>
@@ -577,13 +479,9 @@
 
     </div><!-- end panel warning -->
 
-
-
-
-
-
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('js/footable.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/player_edit.js') }}" type="text/javascript"></script>
 {% endblock %}
