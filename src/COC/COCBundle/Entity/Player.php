@@ -14,14 +14,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Player
 {
 
-
-
     /**
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
-
-
 
 
     /**
@@ -89,6 +85,37 @@ class Player
      * @ORM\Column(name="canon1", type="integer", nullable=true)
      */
     private $canon1;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="air_defence1", type="integer", nullable=true)
+     */
+    private $air_defence1;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="air_defence2", type="integer", nullable=true)
+     */
+    private $air_defence2;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="air_defence3", type="integer", nullable=true)
+     */
+    private $air_defence3;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="air_defence4", type="integer", nullable=true)
+     */
+    private $air_defence4;
 
     /**
      * @var integer
@@ -435,6 +462,8 @@ class Player
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\PlayerHistory", mappedBy="player")
      **/
     private $playerhistories ;
+
+
 
     /**
      * @ORM\OneToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="player",cascade={"persist"})
@@ -1820,5 +1849,97 @@ class Player
     public function __toString()
     {
         return (string)$this->name;
+    }
+
+    /**
+     * Set air_defence1
+     *
+     * @param integer $airDefence1
+     * @return Player
+     */
+    public function setAirDefence1($airDefence1)
+    {
+        $this->air_defence1 = $airDefence1;
+
+        return $this;
+    }
+
+    /**
+     * Get air_defence1
+     *
+     * @return integer 
+     */
+    public function getAirDefence1()
+    {
+        return $this->air_defence1;
+    }
+
+    /**
+     * Set air_defence2
+     *
+     * @param integer $airDefence2
+     * @return Player
+     */
+    public function setAirDefence2($airDefence2)
+    {
+        $this->air_defence2 = $airDefence2;
+
+        return $this;
+    }
+
+    /**
+     * Get air_defence2
+     *
+     * @return integer 
+     */
+    public function getAirDefence2()
+    {
+        return $this->air_defence2;
+    }
+
+    /**
+     * Set air_defence3
+     *
+     * @param integer $airDefence3
+     * @return Player
+     */
+    public function setAirDefence3($airDefence3)
+    {
+        $this->air_defence3 = $airDefence3;
+
+        return $this;
+    }
+
+    /**
+     * Get air_defence3
+     *
+     * @return integer 
+     */
+    public function getAirDefence3()
+    {
+        return $this->air_defence3;
+    }
+
+    /**
+     * Set air_defence4
+     *
+     * @param integer $airDefence4
+     * @return Player
+     */
+    public function setAirDefence4($airDefence4)
+    {
+        $this->air_defence4 = $airDefence4;
+
+        return $this;
+    }
+
+    /**
+     * Get air_defence4
+     *
+     * @return integer 
+     */
+    public function getAirDefence4()
+    {
+        return $this->air_defence4;
     }
 }

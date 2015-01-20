@@ -111,7 +111,7 @@
                 <div class="panel-heading" role="tab" id="headingTwo">
                     <h4 class="panel-title">
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Défences
+                            Défence
                         </a>
                     </h4>
                 </div>
@@ -249,6 +249,44 @@
 								</div>
 							</div>
 						</div>
+
+                        <!-- AERIEN TOUR -->
+                        <hr data-town-hall-level-min="4"/>
+                        <!-- ARCHER TOUR FIN -->
+                        <!-- TESLA TOUR -->
+                        <div class="row" data-town-hall-level-min="4">
+                            <div class="col-sm-2" data-town-hall-level-min="4">
+                                <div class="form-group">
+                                    {{ form_label(form.air_defence1, 'Anti aérien 1', {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.air_defence1) }}
+                                    {{ form_widget(form.air_defence1, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="7">
+                                <div class="form-group">
+                                    {{ form_label(form.air_defence2, 'Anti aérien 2', {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.air_defence2) }}
+                                    {{ form_widget(form.air_defence2, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="8">
+                                <div class="form-group">
+                                    {{ form_label(form.air_defence3, 'Anti aérien 3', {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.air_defence3) }}
+                                    {{ form_widget(form.air_defence3, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="9">
+                                <div class="form-group">
+                                    {{ form_label(form.air_defence4, 'Anti aérien 4', {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.air_defence4) }}
+                                    {{ form_widget(form.air_defence4, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                        </div>
+
+
+
 						<hr data-town-hall-level-min="3"/>
 						<!-- TESLA TOUR FIN -->    
 						<!-- MORTIER TOUR -->
@@ -315,7 +353,62 @@
 								</div>
 							</div>
 						</div>
-						<!-- MAGIC TOUR FIN -->   
+						<!-- MAGIC TOUR FIN -->
+
+                        <!-- ARC X  -->
+                        <hr data-town-hall-level-min="9"/>
+                        <!-- ARCHER TOUR FIN -->
+                        <!-- TESLA TOUR -->
+                        <div class="row" data-town-hall-level-min="9">
+                            <div class="col-sm-2" data-town-hall-level-min="9">
+                                <div class="form-group">
+                                    {{ form_label(form.arcx1, 'Arc-X 1', {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.arcx1) }}
+                                    {{ form_widget(form.arcx1, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="9">
+                                <div class="form-group">
+                                    {{ form_label(form.arcx2, 'Arc-X 2', {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.arcx2) }}
+                                    {{ form_widget(form.arcx2, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="10">
+                                <div class="form-group">
+                                    {{ form_label(form.arcx3, 'Arc-X 3', {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.arcx3) }}
+                                    {{ form_widget(form.arcx3, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ARC X FIN -->
+
+
+                        <!-- INFERNO TOWER  -->
+                        <hr data-town-hall-level-min="9"/>
+                        <!-- ARCHER TOUR FIN -->
+                        <!-- TESLA TOUR -->
+                        <div class="row" data-town-hall-level-min="10">
+                            <div class="col-sm-2" data-town-hall-level-min="10">
+                                <div class="form-group">
+                                    {{ form_label(form.inferno1, 'Inferno1', {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.inferno1) }}
+                                    {{ form_widget(form.inferno1, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="10">
+                                <div class="form-group">
+                                    {{ form_label(form.inferno2, 'Inferno 2', {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.inferno2) }}
+                                    {{ form_widget(form.inferno2, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- INFERNO TOWER FIN -->
+
+
                     </div>
                 </div>
             </div>
@@ -323,7 +416,7 @@
                 <div class="panel-heading" role="tab" id="headingThree">
                     <h4 class="panel-title">
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Laboratoire
+                            Attaque
                         </a>
                     </h4>
                 </div>

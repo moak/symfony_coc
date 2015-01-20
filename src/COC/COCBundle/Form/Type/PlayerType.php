@@ -31,6 +31,10 @@ class PlayerType extends AbstractType
             ->add('mortar3' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5, 6, 7)))
             ->add('mortar4' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5, 6, 7)))
 
+            ->add('air_defence1' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5, 6, 7)))
+            ->add('air_defence2' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5, 6, 7)))
+            ->add('air_defence3' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5, 6, 7)))
+            ->add('air_defence4' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5, 6, 7)))
 
             ->add('tower_magic1' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5, 6, 7)))
             ->add('tower_magic2' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5, 6, 7)))
@@ -44,9 +48,19 @@ class PlayerType extends AbstractType
             ->add('tower_archer5' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10)))
             ->add('tower_archer6' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10)))
 
+            ->add('king',  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10, 11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40)))
+            ->add('queen',  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10, 11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40)))
+
             ->add('tesla1' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5)))
             ->add('tesla2' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5)))
             ->add('tesla3' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5)))
+
+            ->add('inferno1' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5)))
+            ->add('inferno2' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5)))
+
+            ->add('arcx1' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5)))
+            ->add('arcx2' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5)))
+            ->add('arcx3' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5)))
 
             ->add('barbar' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
             ->add('archer' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
@@ -56,9 +70,8 @@ class PlayerType extends AbstractType
             ->add('wizard' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
             ->add('healer' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
             ->add('dragon' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
-            //->add('pekka' , 'integer', array ('required'  => false))
+            ->add('pekka' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
 
-            ->add('pekka', 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
 
             // ->add('utilisateurs', 'entity', array ('class' => 'Utilisateurs\UtilisateursBundle\Entity\Utilisateurs'))
             ->add('save', 'submit', array('label' => 'Sauvegarder'));
