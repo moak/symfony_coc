@@ -1,0 +1,6 @@
+echo Mise à jour de composer;
+sudo php composer.phar update;
+echo Droits ecriture à annotations - cache - logs;
+sudo chmod -R 777 app/cache app/logs;
+echo console update force;
+sudo php app/console doctrine:schema:update --force
