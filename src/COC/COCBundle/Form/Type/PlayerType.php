@@ -25,6 +25,7 @@ class PlayerType extends AbstractType
             ->add('canon4' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10)))
             ->add('canon5' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10)))
             ->add('canon6' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10)))
+            ->add('canon7' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10)))
 
             ->add('mortar1' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5, 6, 7)))
             ->add('mortar2' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5, 6, 7)))
@@ -47,6 +48,7 @@ class PlayerType extends AbstractType
             ->add('tower_archer4' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10)))
             ->add('tower_archer5' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10)))
             ->add('tower_archer6' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10)))
+            ->add('tower_archer7' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10)))
 
             ->add('king',  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10, 11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40)))
             ->add('queen',  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10, 11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40)))

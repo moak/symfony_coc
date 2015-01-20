@@ -7,29 +7,18 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UserInfo
  *
- * @ORM\Table(name="Player")
+ * @ORM\Table(name="player")
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\PlayerRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Player
 {
-    public function __toString()
-    {
-        return $this->name;
-    }
-
 
     /**
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
 
-
-    /**
-     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Season", inversedBy="players")
-     * @ORM\JoinColumn(name="season_id", referencedColumnName="id")
-     */
-    protected $season;
 
     /**
      * @var integer
@@ -43,16 +32,16 @@ class Player
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string")
+     * @ORM\Column(name="name", type="string", nullable=true)
      */
     private $name;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="hall_town", type="integer")
+     * @ORM\Column(name="hall_town", type="integer", nullable=true)
      */
-    private $hallTown;
+    private $hallTown  ;
 
     /**
      * @var integer
@@ -80,7 +69,7 @@ class Player
      *
      * @ORM\Column(name="level", type="integer", nullable=true)
      */
-    private $level;
+    private $level = 0;
 
     /**
      * @var integer
@@ -96,6 +85,37 @@ class Player
      * @ORM\Column(name="canon1", type="integer", nullable=true)
      */
     private $canon1;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="air_defence1", type="integer", nullable=true)
+     */
+    private $air_defence1;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="air_defence2", type="integer", nullable=true)
+     */
+    private $air_defence2;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="air_defence3", type="integer", nullable=true)
+     */
+    private $air_defence3;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="air_defence4", type="integer", nullable=true)
+     */
+    private $air_defence4;
 
     /**
      * @var integer
@@ -182,6 +202,13 @@ class Player
      * @ORM\Column(name="tower_archer6", type="integer", nullable=true)
      */
     private $tower_archer6;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tower_archer7", type="integer", nullable=true)
+     */
+    private $tower_archer7;
 
 
     /**
@@ -404,6 +431,51 @@ class Player
      */
     private $pekka;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="minion", type="integer", nullable=true)
+     */
+    private $minion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rider", type="integer", nullable=true)
+     */
+    private $rider;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="valkyrie", type="integer", nullable=true)
+     */
+    private $valkyrie;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="golem", type="integer", nullable=true)
+     */
+    private $golem;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="witch", type="integer", nullable=true)
+     */
+    private $witch;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lava", type="integer", nullable=true)
+     */
+    private $lava;
+
 
 
     /**
@@ -438,7 +510,18 @@ class Player
      */
     private $potion_green;
 
+    /**
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\PlayerHistory", mappedBy="player")
+     **/
+    private $playerhistories ;
 
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="player",cascade={"persist"})
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     **/
+    private $user;
 
     /**
      * Get id
@@ -1717,11 +1800,336 @@ class Player
     }
 
 
+
+
     /**
      * @ORM\PreUpdate
+     * @ORM\PrePersist
      */
     public function updateDate()
     {
         $this->setUpdatedAt(new \Datetime());
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Player
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->playerhistories = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+    /**
+     * Add playerhistories
+     *
+     * @param \COC\COCBundle\Entity\PlayerHistory $playerhistories
+     * @return Player
+     */
+    public function addPlayerhistory(\COC\COCBundle\Entity\PlayerHistory $playerhistories)
+    {
+        $this->playerhistories[] = $playerhistories;
+
+        return $this;
+    }
+
+    /**
+     * Remove playerhistories
+     *
+     * @param \COC\COCBundle\Entity\PlayerHistory $playerhistories
+     */
+    public function removePlayerhistory(\COC\COCBundle\Entity\PlayerHistory $playerhistories)
+    {
+        $this->playerhistories->removeElement($playerhistories);
+    }
+
+    /**
+     * Get playerhistories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlayerhistories()
+    {
+        return $this->playerhistories;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $user
+     * @return Player
+     */
+    public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    public function __toString()
+    {
+        return (string)$this->name;
+    }
+
+    /**
+     * Set air_defence1
+     *
+     * @param integer $airDefence1
+     * @return Player
+     */
+    public function setAirDefence1($airDefence1)
+    {
+        $this->air_defence1 = $airDefence1;
+
+        return $this;
+    }
+
+    /**
+     * Get air_defence1
+     *
+     * @return integer 
+     */
+    public function getAirDefence1()
+    {
+        return $this->air_defence1;
+    }
+
+    /**
+     * Set air_defence2
+     *
+     * @param integer $airDefence2
+     * @return Player
+     */
+    public function setAirDefence2($airDefence2)
+    {
+        $this->air_defence2 = $airDefence2;
+
+        return $this;
+    }
+
+    /**
+     * Get air_defence2
+     *
+     * @return integer 
+     */
+    public function getAirDefence2()
+    {
+        return $this->air_defence2;
+    }
+
+    /**
+     * Set air_defence3
+     *
+     * @param integer $airDefence3
+     * @return Player
+     */
+    public function setAirDefence3($airDefence3)
+    {
+        $this->air_defence3 = $airDefence3;
+
+        return $this;
+    }
+
+    /**
+     * Get air_defence3
+     *
+     * @return integer 
+     */
+    public function getAirDefence3()
+    {
+        return $this->air_defence3;
+    }
+
+    /**
+     * Set air_defence4
+     *
+     * @param integer $airDefence4
+     * @return Player
+     */
+    public function setAirDefence4($airDefence4)
+    {
+        $this->air_defence4 = $airDefence4;
+
+        return $this;
+    }
+
+    /**
+     * Get air_defence4
+     *
+     * @return integer 
+     */
+    public function getAirDefence4()
+    {
+        return $this->air_defence4;
+    }
+
+    /**
+     * Set minion
+     *
+     * @param integer $minion
+     * @return Player
+     */
+    public function setMinion($minion)
+    {
+        $this->minion = $minion;
+
+        return $this;
+    }
+
+    /**
+     * Get minion
+     *
+     * @return integer 
+     */
+    public function getMinion()
+    {
+        return $this->minion;
+    }
+
+    /**
+     * Set rider
+     *
+     * @param integer $rider
+     * @return Player
+     */
+    public function setRider($rider)
+    {
+        $this->rider = $rider;
+
+        return $this;
+    }
+
+    /**
+     * Get rider
+     *
+     * @return integer 
+     */
+    public function getRider()
+    {
+        return $this->rider;
+    }
+
+    /**
+     * Set valkyrie
+     *
+     * @param integer $valkyrie
+     * @return Player
+     */
+    public function setValkyrie($valkyrie)
+    {
+        $this->valkyrie = $valkyrie;
+
+        return $this;
+    }
+
+    /**
+     * Get valkyrie
+     *
+     * @return integer 
+     */
+    public function getValkyrie()
+    {
+        return $this->valkyrie;
+    }
+
+    /**
+     * Set golem
+     *
+     * @param integer $golem
+     * @return Player
+     */
+    public function setGolem($golem)
+    {
+        $this->golem = $golem;
+
+        return $this;
+    }
+
+    /**
+     * Get golem
+     *
+     * @return integer 
+     */
+    public function getGolem()
+    {
+        return $this->golem;
+    }
+
+    /**
+     * Set witch
+     *
+     * @param integer $witch
+     * @return Player
+     */
+    public function setWitch($witch)
+    {
+        $this->witch = $witch;
+
+        return $this;
+    }
+
+    /**
+     * Get witch
+     *
+     * @return integer 
+     */
+    public function getWitch()
+    {
+        return $this->witch;
+    }
+
+    /**
+     * Set lava
+     *
+     * @param integer $lava
+     * @return Player
+     */
+    public function setLava($lava)
+    {
+        $this->lava = $lava;
+
+        return $this;
+    }
+
+    /**
+     * Get lava
+     *
+     * @return integer 
+     */
+    public function getLava()
+    {
+        return $this->lava;
     }
 }
