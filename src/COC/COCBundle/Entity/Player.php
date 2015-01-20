@@ -305,6 +305,15 @@ class Player
      */
     private $tesla3;
 
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tesla4", type="integer", nullable=true)
+     */
+    private $tesla4;
+
+
     /**
      * @var integer
      *
@@ -2185,5 +2194,28 @@ class Player
     public function getCanon7()
     {
         return $this->canon7;
+    }
+
+    /**
+     * Set tesla4
+     *
+     * @param integer $tesla4
+     * @return Player
+     */
+    public function setTesla4($tesla4)
+    {
+        $this->tesla4 = $tesla4;
+
+        return $this;
+    }
+
+    /**
+     * Get tesla4
+     *
+     * @return integer 
+     */
+    public function getTesla4()
+    {
+        return $this->tesla4;
     }
 }
