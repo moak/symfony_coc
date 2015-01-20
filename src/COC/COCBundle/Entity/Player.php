@@ -2163,4 +2163,27 @@ class Player
     {
         return $this->tower_archer7;
     }
+
+    /**
+     * Set canon7
+     *
+     * @param integer $canon7
+     * @return Player
+     */
+    public function setCanon7($canon7)
+    {
+        $this->canon7 = $canon7;
+
+        return $this;
+    }
+
+    /**
+     * Get canon7
+     *
+     * @return integer 
+     */
+    public function getCanon7()
+    {
+        return $this->canon7;
+    }
 }
