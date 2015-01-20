@@ -65,12 +65,20 @@ class PlayerType extends AbstractType
             ->add('barbar' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
             ->add('archer' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
             ->add('geant' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
+            ->add('gobelin' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
             ->add('wall_breaker', 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
             ->add('ballon' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
             ->add('wizard' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
             ->add('healer' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
             ->add('dragon' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
             ->add('pekka' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
+
+            ->add('minion' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
+            ->add('rider' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
+            ->add('valkyrie' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
+            ->add('golem' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
+            ->add('witch' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
+            ->add('lava' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
 
 
             // ->add('utilisateurs', 'entity', array ('class' => 'Utilisateurs\UtilisateursBundle\Entity\Utilisateurs'))

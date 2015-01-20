@@ -424,134 +424,173 @@
                     <div class="panel-body">
 
                         <div class="col-sm-12">
+                            <!-- ATTACK -->
+                            <div class="row" data-town-hall-level-min="1">
+                                <div class="col-sm-2" data-town-hall-level-min="1">
+                                    <div class="form-group">
+                                        {{ form_label(form.barbar, 'Barbar', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.barbar) }}
+                                        {{ form_widget(form.barbar, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
 
-                            <div class="form-group">
-                                {# Génération du label. #}
-                                {{ form_label(form.archer, 'Archers', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                                <div class="col-sm-2" data-town-hall-level-min="1">
+                                    <div class="form-group">
+                                        {{ form_label(form.archer, 'Archer', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.archer) }}
+                                        {{ form_widget(form.archer, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
 
-                                {# Affichage des erreurs pour ce champ précis. #}
-                                {{ form_errors(form.archer) }}
+                                <div class="col-sm-2" data-town-hall-level-min="1">
+                                    <div class="form-group">
+                                        {{ form_label(form.gobelin, 'Gobelin', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.gobelin) }}
+                                        {{ form_widget(form.gobelin, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
 
-                                <div class="col-sm-4">
-                                    {# Génération de l'input. #}
-                                    {{ form_widget(form.archer, {'attr': {'class': 'form-control'}}) }}
+
+                                <div class="col-sm-2" data-town-hall-level-min="2">
+                                    <div class="form-group">
+                                        {{ form_label(form.geant, 'Géant', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.geant) }}
+                                        {{ form_widget(form.geant, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="2">
+                                    <div class="form-group">
+                                        {{ form_label(form.wall_breaker, 'Casse-brique', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.wall_breaker) }}
+                                        {{ form_widget(form.wall_breaker, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="2">
+                                    <div class="form-group">
+                                        {{ form_label(form.ballon, 'Mongolfière', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.ballon) }}
+                                        {{ form_widget(form.ballon, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- ROW END -->
+
+
+                            <!-- ATTACK -->
+                            <div class="row" data-town-hall-level-min="3">
+                                <div class="col-sm-2" data-town-hall-level-min="3">
+                                    <div class="form-group">
+                                        {{ form_label(form.wizard, 'Sorcier', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.wizard) }}
+                                        {{ form_widget(form.wizard, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-2" data-town-hall-level-min="5">
+                                    <div class="form-group">
+                                        {{ form_label(form.healer, 'Guérisseuse', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.healer) }}
+                                        {{ form_widget(form.healer, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-2" data-town-hall-level-min="5">
+                                    <div class="form-group">
+                                        {{ form_label(form.dragon, 'Dragon', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.dragon) }}
+                                        {{ form_widget(form.dragon, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="6">
+                                    <div class="form-group">
+                                        {{ form_label(form.pekka, 'Pekka', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.pekka) }}
+                                        {{ form_widget(form.pekka, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="7">
+                                    <div class="form-group">
+                                        {{ form_label(form.king, 'Roi', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.king) }}
+                                        {{ form_widget(form.king, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="9">
+                                    <div class="form-group">
+                                        {{ form_label(form.queen, 'Reine', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.queen) }}
+                                        {{ form_widget(form.queen, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
                                 </div>
                             </div>
+                            <!-- ROW END -->
 
 
-                            <div class="form-group">
-                                {# Génération du label. #}
-                                {{ form_label(form.geant, 'Géants', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                            <!-- ATTACK -->
+                            <div class="row" data-town-hall-level-min="7">
+                                <div class="col-sm-2" data-town-hall-level-min="7">
+                                    <div class="form-group">
+                                        {{ form_label(form.minion, 'Gargouille', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.minion) }}
+                                        {{ form_widget(form.minion, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
 
-                                {# Affichage des erreurs pour ce champ précis. #}
-                                {{ form_errors(form.geant) }}
+                                <div class="col-sm-2" data-town-hall-level-min="7">
+                                    <div class="form-group">
+                                        {{ form_label(form.rider, 'Chevaucheur', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.rider) }}
+                                        {{ form_widget(form.rider, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
 
-                                <div class="col-sm-4">
-                                    {# Génération de l'input. #}
-                                    {{ form_widget(form.geant, {'attr': {'class': 'form-control'}}) }}
+
+                                <div class="col-sm-2" data-town-hall-level-min="8">
+                                    <div class="form-group">
+                                        {{ form_label(form.valkyrie, 'Valkyrie', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.valkyrie) }}
+                                        {{ form_widget(form.valkyrie, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-2" data-town-hall-level-min="8">
+                                    <div class="form-group">
+                                        {{ form_label(form.golem, 'Golem', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.golem) }}
+                                        {{ form_widget(form.golem, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="9">
+                                    <div class="form-group">
+                                        {{ form_label(form.witch, 'Sorciere', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.witch) }}
+                                        {{ form_widget(form.witch, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="9">
+                                    <div class="form-group">
+                                        {{ form_label(form.lava, 'Molosse de lave', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.lava) }}
+                                        {{ form_widget(form.lava, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                {# Génération du label. #}
-                                {{ form_label(form.wall_breaker, 'Casse brique', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                                {# Affichage des erreurs pour ce champ précis. #}
-                                {{ form_errors(form.wall_breaker) }}
-
-                                <div class="col-sm-4">
-                                    {# Génération de l'input. #}
-                                    {{ form_widget(form.wall_breaker, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                {# Génération du label. #}
-                                {{ form_label(form.healer, 'Guerisseuse', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                                {# Affichage des erreurs pour ce champ précis. #}
-                                {{ form_errors(form.healer) }}
-
-                                <div class="col-sm-4">
-                                    {# Génération de l'input. #}
-                                    {{ form_widget(form.healer, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                {# Génération du label. #}
-                                {{ form_label(form.barbar, 'Barbar', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                                {# Affichage des erreurs pour ce champ précis. #}
-                                {{ form_errors(form.barbar) }}
-
-                                <div class="col-sm-4">
-                                    {# Génération de l'input. #}
-                                    {{ form_widget(form.barbar, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                {# Génération du label. #}
-                                {{ form_label(form.ballon, 'Montgolfiere', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                                {# Affichage des erreurs pour ce champ précis. #}
-                                {{ form_errors(form.ballon) }}
-
-                                <div class="col-sm-4">
-                                    {# Génération de l'input. #}
-                                    {{ form_widget(form.ballon, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                {# Génération du label. #}
-                                {{ form_label(form.wizard, 'Sorcier', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                                {# Affichage des erreurs pour ce champ précis. #}
-                                {{ form_errors(form.wizard) }}
-
-                                <div class="col-sm-4">
-                                    {# Génération de l'input. #}
-                                    {{ form_widget(form.wizard, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                {# Génération du label. #}
-                                {{ form_label(form.dragon, 'Dragon', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                                {# Affichage des erreurs pour ce champ précis. #}
-                                {{ form_errors(form.dragon) }}
-
-                                <div class="col-sm-4">
-                                    {# Génération de l'input. #}
-                                    {{ form_widget(form.dragon, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                {# Génération du label. #}
-                                {{ form_label(form.pekka, 'Pekka', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-
-                                {# Affichage des erreurs pour ce champ précis. #}
-                                {{ form_errors(form.pekka) }}
-
-
-                                <div class="col-sm-4">
-
-                                    {# Génération de l'input. #}
-                                    {{ form_widget(form.pekka, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
+                            <!-- ROW END -->
+                            
 
                         </div>
-
+                        <!-- ATTACK END -->
                     </div>
                 </div>
             </div>
