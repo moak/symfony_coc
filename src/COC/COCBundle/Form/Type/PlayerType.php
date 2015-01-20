@@ -76,6 +76,12 @@ class PlayerType extends AbstractType
             ->add('dragon' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
             ->add('pekka' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
 
+            ->add('potion_damage' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5, 6, 7)))
+            ->add('potion_heal' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5, 6, 7)))
+            ->add('potion_green' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5, 6, 7)))
+            ->add('potion_freeze' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5, 6, 7)))
+            ->add('potion_boost' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5, 6, 7)))
+
             ->add('minion' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
             ->add('rider' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
             ->add('valkyrie' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))

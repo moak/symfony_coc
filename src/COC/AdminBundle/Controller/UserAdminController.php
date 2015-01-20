@@ -77,7 +77,26 @@ class UserAdminController extends Controller
 
         $em->flush();
         return $this->redirect($this->generateUrl('admin_users'));
+    }
 
+    public function setRoleAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository('ApplicationSonataUserBundle:User')->find($id);
+
+        if(!$user)
+        {
+            throw $this->createNotFoundException('No user found');
+        }
+        $user->addRole("ROLE_ADMIN");
+        $em->flush();
+
+        $token = $this->get( 'security.context' )->getToken();
+
+        // flush document manager or sth like that
+        $token->setAuthenticated( false );
+
+        return $this->redirect($this->generateUrl('admin_users'));
     }
 
 

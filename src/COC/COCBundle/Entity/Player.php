@@ -523,12 +523,19 @@ class Player
     private $potion_green;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="potion_freeze", type="integer", nullable=true)
+     */
+    private $potion_freeze;
+
+
+    /**
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\PlayerHistory", mappedBy="player")
      **/
     private $playerhistories ;
 
-
-
+    
     /**
      * @ORM\OneToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="player",cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
@@ -2212,5 +2219,28 @@ class Player
     public function getTesla4()
     {
         return $this->tesla4;
+    }
+
+    /**
+     * Set potion_freeze
+     *
+     * @param integer $potionFreeze
+     * @return Player
+     */
+    public function setPotionFreeze($potionFreeze)
+    {
+        $this->potion_freeze = $potionFreeze;
+
+        return $this;
+    }
+
+    /**
+     * Get potion_freeze
+     *
+     * @return integer 
+     */
+    public function getPotionFreeze()
+    {
+        return $this->potion_freeze;
     }
 }

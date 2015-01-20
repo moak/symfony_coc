@@ -156,6 +156,9 @@ class Player
 
 
 
+
+
+
     /**
      * @var integer
      *
@@ -296,6 +299,15 @@ class Player
      * @ORM\Column(name="tesla3", type="integer", nullable=true)
      */
     private $tesla3;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tesla4", type="integer", nullable=true)
+     */
+    private $tesla4;
+
 
     /**
      * @var integer
@@ -511,12 +523,19 @@ class Player
     private $potion_green;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="potion_freeze", type="integer", nullable=true)
+     */
+    private $potion_freeze;
+
+
+    /**
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\PlayerHistory", mappedBy="player")
      **/
     private $playerhistories ;
 
-
-
+    
     /**
      * @ORM\OneToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="player",cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
@@ -2131,5 +2150,74 @@ class Player
     public function getLava()
     {
         return $this->lava;
+    }
+
+    /**
+     * Set tower_archer7
+     *
+     * @param integer $towerArcher7
+     * @return Player
+     */
+    public function setTowerArcher7($towerArcher7)
+    {
+        $this->tower_archer7 = $towerArcher7;
+
+        return $this;
+    }
+
+    /**
+     * Get tower_archer7
+     *
+     * @return integer 
+     */
+    public function getTowerArcher7()
+    {
+        return $this->tower_archer7;
+    }
+
+    /**
+     * Set canon7
+     *
+     * @param integer $canon7
+     * @return Player
+     */
+    public function setCanon7($canon7)
+    {
+        $this->canon7 = $canon7;
+
+        return $this;
+    }
+
+    /**
+     * Get canon7
+     *
+     * @return integer 
+     */
+    public function getCanon7()
+    {
+        return $this->canon7;
+    }
+
+    /**
+     * Set tesla4
+     *
+     * @param integer $tesla4
+     * @return Player
+     */
+    public function setTesla4($tesla4)
+    {
+        $this->tesla4 = $tesla4;
+
+        return $this;
+    }
+
+    /**
+     * Get tesla4
+     *
+     * @return integer 
+     */
+    public function getTesla4()
+    {
+        return $this->tesla4;
     }
 }

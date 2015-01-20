@@ -589,6 +589,45 @@
                             <!-- ROW END -->
 
 
+                            <hr data-town-hall-level-min="1"/>
+
+                            <div class="row" data-town-hall-level-min="1">
+                                <div class="col-sm-2" data-town-hall-level-min="1">
+                                    <div class="form-group">
+                                        {{ form_label(form.potion_damage, 'Potion dommage', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.potion_damage) }}
+                                        {{ form_widget(form.potion_damage, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" data-town-hall-level-min="6">
+                                    <div class="form-group">
+                                        {{ form_label(form.potion_heal, 'Potion soin', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.potion_heal) }}
+                                        {{ form_widget(form.potion_heal, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" data-town-hall-level-min="7">
+                                    <div class="form-group">
+                                        {{ form_label(form.potion_boost, 'Potion rage', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.potion_boost) }}
+                                        {{ form_widget(form.potion_boost, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" data-town-hall-level-min="8">
+                                    <div class="form-group">
+                                        {{ form_label(form.potion_green, 'Potion saut', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.potion_green) }}
+                                        {{ form_widget(form.potion_green, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" data-town-hall-level-min="8">
+                                    <div class="form-group">
+                                        {{ form_label(form.potion_freeze, 'Potion gel', {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.potion_freeze) }}
+                                        {{ form_widget(form.potion_freeze, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- ATTACK END -->
                     </div>

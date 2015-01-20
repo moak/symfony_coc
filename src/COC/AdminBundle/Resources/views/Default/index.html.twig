@@ -27,7 +27,7 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-comments fa-5x"></i>
+                            <i class="fa fa-user fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">{{ numberPlayers }}</div>
@@ -35,9 +35,64 @@
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="{{ path('admin_players') }}">
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
+                        <span class="pull-left">Tous les joueurs</span>
+                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            {% if numberUsersNonAssigned > 0 %}
+                <div class="panel panel-red">
+            {% else %}
+                <div class="panel panel-green">
+            {% endif %}
+
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            {% if numberUsersNonAssigned > 0 %}
+                                <i class="fa fa-times fa-5x"></i>
+                            {% else %}
+                                <i class="fa fa-check fa-5x"></i>
+                            {% endif %}
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{ numberUsersNonAssigned }}</div>
+                            <div>Compte non assignés</div>
+                        </div>
+                    </div>
+                </div>
+
+                    <a href="{{ path('admin_users') }}">
+                        <div class="panel-footer">
+                            <span class="pull-left">Assigner joueur</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="panel panel-yellow">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i class="fa fa-camera fa-5x"></i>
+                        </div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{ numberBases }}</div>
+                            <div>Nombre de bases</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="">
+                    <div class="panel-footer">
+                        <span class="pull-left">Liste des bases</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
@@ -49,51 +104,7 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-tasks fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">2</div>
-                            <div>Compte non assignés</div>
-                        </div>
-                    </div>
-                </div>
-
-                    <div class="panel-footer">
-                        <a href="#"><span class="pull-left">Nouvau joueur</span></a>
-                        <span class="pull-right"> <a href="#">Tous les joueurs <i class="fa fa-arrow-circle-right"></i></a></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="panel panel-yellow">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-shopping-cart fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">{{ numberBases }}</div>
-                            <div>Nombre de bases</div>
-                        </div>
-                    </div>
-                </div>
-                <a href="#">
-                    <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="panel panel-red">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-support fa-5x"></i>
+                            <i class="fa fa-video-camera fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">{{ numberVideos }}</div>
@@ -101,9 +112,9 @@
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="{{ path('admin_videos') }}">
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
+                        <span class="pull-left">Liste des vidéos</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>

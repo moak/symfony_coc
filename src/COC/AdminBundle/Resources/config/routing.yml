@@ -20,6 +20,9 @@ admin_user_dissociate:
     path:     /admin/user/dissociate/{id}
     defaults: { _controller: AdminBundle:UserAdmin:dissociate }
 
+admin_user_setRole:
+    path:     /admin/user/role/{id}
+    defaults: { _controller: AdminBundle:UserAdmin:setRole }
 
 
 admin_players:

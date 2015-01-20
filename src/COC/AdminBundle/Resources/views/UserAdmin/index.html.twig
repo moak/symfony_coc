@@ -1,5 +1,15 @@
 {% extends "::base_admin.html.twig" %}
 
+
+{% set is_super_admin = false %}
+{% if app.security.token.user.roles is iterable %}
+    {% for role in app.security.token.user.roles %}
+        {% if role == 'ROLE_SUPER_ADMIN' and role == 'ROLE_ADMIN'  %}
+            {% set is_admin = true %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
 {% block body %}
 
     <div class="row">
@@ -23,9 +33,9 @@
             <thead>
                 <tr>
                     <th>Nom de compte</th>
-                    <th>Compte assigné</th>
+                    <th>Joueur assigné</th>
                     <th>Nom du joueur</th>
-                    <th></th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,19 +44,26 @@
                 {% for user in users %}
                     <tr>
                         <td>{{ user.username }}</td>
+
                         {% if user.player.id is defined %}
                             <td>Oui</td>
                             <td>{{ user.player.name }}</td>
                         {% else %}
-                            <td>Non</td>
+                            <td>Aucun</td>
                             <td><a href="{{ path('admin_user_edit', { 'id': user.id }) }}"><button class="btn btn-default btn-success">Assigner joueur</button></a></td>
                         {% endif %}
                         <td>
 
+
+                        {% if user.player.id is defined %}
+                            <a href="{{ path('admin_user_dissociate', { 'id': user.player.id }) }}"><button class="btn btn-default btn-success">Dissocier (cliquez 2 fois)</button></a>
+                        {% endif %}
+
+
+
+                        {% if is_granted('ROLE_SUPER_ADMIN')%}
                             <a href="{{ path('admin_user_delete', { 'id': user.id }) }}" class="btn btn-default btn-danger alert">Supprimer</a>
-                            {% if user.player.id is defined %}
-                                <a href="{{ path('admin_user_dissociate', { 'id': user.player.id }) }}"><button class="btn btn-default btn-success">Dissocier</button></a>
-                            {% endif %}
+                        {% endif %}
 
                         </td>
                     </tr>

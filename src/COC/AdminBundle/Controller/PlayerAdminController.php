@@ -12,6 +12,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class PlayerAdminController extends Controller
 {
 
+
+
     public function listModuleAction()
     {
         $em = $this->getDoctrine()->getManager();
