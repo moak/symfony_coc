@@ -155,12 +155,7 @@ class Player
     private $canon6;
 
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="canon7", type="integer", nullable=true)
-     */
-    private $canon7;
+
 
 
 
