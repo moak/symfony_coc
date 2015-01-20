@@ -51,7 +51,7 @@ class CalculatePlayerInfosService {
             $this->getScore(  $player->getPotionGreen());
             $this->getScore(  $player->getPotionFreeze());
 
-        return $total;
+        return $total * 5;
     }
 
     public function getTotalDefence($player)
