@@ -424,6 +424,51 @@ class Player
      */
     private $pekka;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="minion", type="integer", nullable=true)
+     */
+    private $minion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rider", type="integer", nullable=true)
+     */
+    private $rider;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="valkyrie", type="integer", nullable=true)
+     */
+    private $valkyrie;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="golem", type="integer", nullable=true)
+     */
+    private $golem;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="witch", type="integer", nullable=true)
+     */
+    private $witch;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lava", type="integer", nullable=true)
+     */
+    private $lava;
+
 
 
     /**
@@ -1941,5 +1986,143 @@ class Player
     public function getAirDefence4()
     {
         return $this->air_defence4;
+    }
+
+    /**
+     * Set minion
+     *
+     * @param integer $minion
+     * @return Player
+     */
+    public function setMinion($minion)
+    {
+        $this->minion = $minion;
+
+        return $this;
+    }
+
+    /**
+     * Get minion
+     *
+     * @return integer 
+     */
+    public function getMinion()
+    {
+        return $this->minion;
+    }
+
+    /**
+     * Set rider
+     *
+     * @param integer $rider
+     * @return Player
+     */
+    public function setRider($rider)
+    {
+        $this->rider = $rider;
+
+        return $this;
+    }
+
+    /**
+     * Get rider
+     *
+     * @return integer 
+     */
+    public function getRider()
+    {
+        return $this->rider;
+    }
+
+    /**
+     * Set valkyrie
+     *
+     * @param integer $valkyrie
+     * @return Player
+     */
+    public function setValkyrie($valkyrie)
+    {
+        $this->valkyrie = $valkyrie;
+
+        return $this;
+    }
+
+    /**
+     * Get valkyrie
+     *
+     * @return integer 
+     */
+    public function getValkyrie()
+    {
+        return $this->valkyrie;
+    }
+
+    /**
+     * Set golem
+     *
+     * @param integer $golem
+     * @return Player
+     */
+    public function setGolem($golem)
+    {
+        $this->golem = $golem;
+
+        return $this;
+    }
+
+    /**
+     * Get golem
+     *
+     * @return integer 
+     */
+    public function getGolem()
+    {
+        return $this->golem;
+    }
+
+    /**
+     * Set witch
+     *
+     * @param integer $witch
+     * @return Player
+     */
+    public function setWitch($witch)
+    {
+        $this->witch = $witch;
+
+        return $this;
+    }
+
+    /**
+     * Get witch
+     *
+     * @return integer 
+     */
+    public function getWitch()
+    {
+        return $this->witch;
+    }
+
+    /**
+     * Set lava
+     *
+     * @param integer $lava
+     * @return Player
+     */
+    public function setLava($lava)
+    {
+        $this->lava = $lava;
+
+        return $this;
+    }
+
+    /**
+     * Get lava
+     *
+     * @return integer 
+     */
+    public function getLava()
+    {
+        return $this->lava;
     }
 }
