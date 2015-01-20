@@ -203,6 +203,13 @@ class Player
      */
     private $tower_archer6;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tower_archer7", type="integer", nullable=true)
+     */
+    private $tower_archer7;
+
 
     /**
      * @var integer
@@ -2124,5 +2131,28 @@ class Player
     public function getLava()
     {
         return $this->lava;
+    }
+
+    /**
+     * Set tower_archer7
+     *
+     * @param integer $towerArcher7
+     * @return Player
+     */
+    public function setTowerArcher7($towerArcher7)
+    {
+        $this->tower_archer7 = $towerArcher7;
+
+        return $this;
+    }
+
+    /**
+     * Get tower_archer7
+     *
+     * @return integer 
+     */
+    public function getTowerArcher7()
+    {
+        return $this->tower_archer7;
     }
 }
