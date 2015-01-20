@@ -56,6 +56,7 @@ class PlayerType extends AbstractType
             ->add('tesla1' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5)))
             ->add('tesla2' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5)))
             ->add('tesla3' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5)))
+            ->add('tesla4' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5)))
 
             ->add('inferno1' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5)))
             ->add('inferno2' , 'choice', array('choices' => array(0, 1, 2, 3, 4, 5)))
