@@ -71,7 +71,7 @@ class PlayerRepository extends EntityRepository
 
             )
 
-            ->orderBy('totalDefence','DESC');
+            ->orderBy('total','DESC');
 
         return $qb->getQuery()->getResult();
     }
