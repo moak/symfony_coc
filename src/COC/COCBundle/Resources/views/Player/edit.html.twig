@@ -4,102 +4,34 @@
     <link rel="stylesheet" href="{{ asset('css/player_edit.css') }}" />
     <div class="container">
 
-        <h2>Edition du joueur {{ player.name }}</h2>
+        <h2>Editer mon joueur</h2>
         <hr>
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
             <div class="panel panel-primary">
-                <div class="panel-heading" role="tab" id="headingOne">
-                    <h4 class="panel-title">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                           Général
-                        </a>
-                    </h4>
+                <div class="panel-heading">
+                    <h4 class="panel-title">Général</h4>
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" >
+                <div>
                     <div class="panel-body">
-
-
                         {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-                        {# Les erreurs générales du formulaire. #}
                         {{ form_errors(form) }}
 
                         <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.hall_town, 'Hotel de ville', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
 
-                            {# Affichage des erreurs pour ce champ précis. #}
+                            {{ form_label(form.hall_town, 'Hotel de ville', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                             {{ form_errors(form.hall_town) }}
 
                             <div class="col-sm-4">
-
-                                {# Génération de l'input. #}
                                 {{ form_widget(form.hall_town, {'attr': {'class': 'form-control hall-town-level'}}) }}
                             </div>
                         </div>
 
                         <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.troopReceived, 'Troupes recues', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.troopReceived) }}
-
-                            <div class="col-sm-4">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.troopReceived, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.troopSent, 'Troupes envoyées', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.troopSent) }}
-
-                            <div class="col-sm-4">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.troopSent, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            {# Génération du label. #}
                             {{ form_label(form.level, 'Niveau', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
                             {{ form_errors(form.level) }}
 
                             <div class="col-sm-4">
-                                {# Génération de l'input. #}
                                 {{ form_widget(form.level, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.trophy, 'Trophés', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.trophy) }}
-
-                            <div class="col-sm-4">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.trophy, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            {# Génération du label. #}
-                            {{ form_label(form.attackWon, 'Attaques victorieuses', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-
-                            {# Affichage des erreurs pour ce champ précis. #}
-                            {{ form_errors(form.attackWon) }}
-
-                            <div class="col-sm-4">
-                                {# Génération de l'input. #}
-                                {{ form_widget(form.attackWon, {'attr': {'class': 'form-control'}}) }}
                             </div>
                         </div>
 
