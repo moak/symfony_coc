@@ -51,7 +51,30 @@ class PlayerRepository extends EntityRepository
             (p.tower_magic1 + 1) * p.tower_magic1 / 2 + (p.tower_magic1 + 1) * p.tower_magic1 / 2 + (p.tower_magic3 + 1) * p.tower_magic3 / 2 + (p.tower_magic4+ 1) * p.tower_magic4 / 2
             as totalDefence,
 
-            (((p.archer + 1) * p.archer / 2)  + ((p.barbar + 1) * p.barbar / 2) + ((p.geant+ 1) * p.geant/ 2) + ((p.wizard + 1) * p.wizard / 2) + ((p.dragon + 1) * p.dragon / 2) + ((p.wall_breaker + 1) * p.wall_breaker / 2) + ((p.pekka + 1) * p.pekka / 2) + ((p.ballon + 1) * p.ballon / 2) + ((p.healer + 1) * p.healer / 2) + ((p.gobelin + 1) * p.gobelin / 2) + ((p.minion + 1) * p.minion / 2) + ((p.rider + 1) * p.rider / 2) + ((p.valkyrie + 1) * p.valkyrie / 2) + ((p.golem + 1) * p.golem / 2) + ((p.lava + 1) * p.lava / 2) + ((p.witch + 1) * p.witch / 2) + ((p.king + 1) * p.king / 2) + ((p.queen + 1) * p.queen / 2) + ((p.potion_heal + 1) * p.potion_heal / 2) + ((p.potion_boost + 1) * p.potion_boost / 2) + ((p.potion_damage + 1) * p.potion_damage / 2) + ((p.potion_green + 1) * p.potion_green / 2) + ((p.potion_freeze + 1) * p.potion_freeze / 2) ) * 5
+            (((p.archer + 1) * p.archer / 2)  +
+            ((p.barbar + 1) * p.barbar / 2) +
+            ((p.geant + 1) * p.geant / 2) +
+            ((p.wizard + 1) * p.wizard / 2) +
+            ((p.dragon + 1) * p.dragon / 2) +
+            ((p.wall_breaker + 1) * p.wall_breaker / 2) +
+            ((p.pekka + 1) * p.pekka / 2) +
+            ((p.ballon + 1) * p.ballon / 2) +
+            ((p.healer + 1) * p.healer / 2) +
+            ((p.gobelin + 1) * p.gobelin / 2) +
+            ((p.minion + 1) * p.minion / 2) +
+            ((p.rider + 1) * p.rider / 2) +
+            ((p.valkyrie + 1) * p.valkyrie / 2) +
+            ((p.golem + 1) * p.golem / 2) +
+            ((p.lava + 1) * p.lava / 2) +
+            ((p.witch + 1) * p.witch / 2) +
+            ((p.king + 1) * p.king / 2) +
+            ((p.queen + 1) * p.queen / 2) +
+            ((p.potion_heal + 1) * p.potion_heal / 2) +
+            ((p.potion_boost + 1) * p.potion_boost / 2) +
+            ((p.potion_damage + 1) * p.potion_damage / 2) +
+            ((p.potion_green + 1) * p.potion_green / 2) +
+            ((p.potion_freeze + 1) * p.potion_freeze / 2) )
+
             as totalAttack,
 
             (p.mortar1 + 1) * p.mortar1 / 2 + (p.mortar1 + 1) * p.mortar1 / 2 + (p.mortar3 + 1) * p.mortar3 / 2 + (p.mortar4+ 1) * p.mortar4 / 2 +
@@ -62,7 +85,7 @@ class PlayerRepository extends EntityRepository
             (p.tower_archer1 + 1) * p.tower_archer1 / 2 + (p.tower_archer1 + 1) * p.tower_archer1 / 2 + (p.tower_archer3 + 1) * p.tower_archer3 / 2 + (p.tower_archer4+ 1) * p.tower_archer4 / 2 + (p.tower_archer5+ 1) * p.tower_archer5 / 2 + (p.tower_archer6+ 1) * p.tower_archer6 / 2 +(p.tower_archer1 + 1) * p.tower_archer1 / 2 + (p.tower_archer1 + 1) * p.tower_archer1 / 2 + (p.tower_archer3 + 1) * p.tower_archer3 / 2 + (p.tower_archer4+ 1) * p.tower_archer4 / 2 + (p.tower_archer5+ 1) * p.tower_archer5 / 2 + (p.tower_archer6+ 1) * p.tower_archer6 / 2 + + (p.tower_archer6+ 1) * p.tower_archer6 / 2 +
             (p.air_defence1 + 1) * p.air_defence1 / 2 + (p.air_defence1 + 1) * p.air_defence1 / 2 + (p.air_defence3 + 1) * p.air_defence3 / 2 + (p.air_defence4+ 1) * p.air_defence4 / 2 +
             (p.tower_magic1 + 1) * p.tower_magic1 / 2 + (p.tower_magic1 + 1) * p.tower_magic1 / 2 + (p.tower_magic3 + 1) * p.tower_magic3 / 2 + (p.tower_magic4+ 1) * p.tower_magic4 / 2 +
-             (((p.archer + 1) * p.archer / 2)  + ((p.barbar + 1) * p.barbar / 2) + ((p.geant+ 1) * p.geant/ 2) + ((p.wizard + 1) * p.wizard / 2) + ((p.dragon + 1) * p.dragon / 2) + ((p.wall_breaker + 1) * p.wall_breaker / 2) + ((p.pekka + 1) * p.pekka / 2) + ((p.ballon + 1) * p.ballon / 2) + ((p.healer + 1) * p.healer / 2) + ((p.gobelin + 1) * p.gobelin / 2) + ((p.minion + 1) * p.minion / 2) + ((p.rider + 1) * p.rider / 2) + ((p.valkyrie + 1) * p.valkyrie / 2) + ((p.golem + 1) * p.golem / 2) + ((p.lava + 1) * p.lava / 2) + ((p.witch + 1) * p.witch / 2) + ((p.king + 1) * p.king / 2) + ((p.queen + 1) * p.queen / 2) + ((p.potion_heal + 1) * p.potion_heal / 2) + ((p.potion_boost + 1) * p.potion_boost / 2) + ((p.potion_damage + 1) * p.potion_damage / 2) + ((p.potion_green + 1) * p.potion_green / 2) + ((p.potion_freeze + 1) * p.potion_freeze / 2) ) * 5
+             (((p.archer + 1) * p.archer / 2)  + ((p.barbar + 1) * p.barbar / 2) + ((p.geant+ 1) * p.geant/ 2) + ((p.wizard + 1) * p.wizard / 2) + ((p.dragon + 1) * p.dragon / 2) + ((p.wall_breaker + 1) * p.wall_breaker / 2) + ((p.pekka + 1) * p.pekka / 2) + ((p.ballon + 1) * p.ballon / 2) + ((p.healer + 1) * p.healer / 2) + ((p.gobelin + 1) * p.gobelin / 2) + ((p.minion + 1) * p.minion / 2) + ((p.rider + 1) * p.rider / 2) + ((p.valkyrie + 1) * p.valkyrie / 2) + ((p.golem + 1) * p.golem / 2) + ((p.lava + 1) * p.lava / 2) + ((p.witch + 1) * p.witch / 2) + ((p.king + 1) * p.king / 2) + ((p.queen + 1) * p.queen / 2) + ((p.potion_heal + 1) * p.potion_heal / 2) + ((p.potion_boost + 1) * p.potion_boost / 2) + ((p.potion_damage + 1) * p.potion_damage / 2) + ((p.potion_green + 1) * p.potion_green / 2) + ((p.potion_freeze + 1) * p.potion_freeze / 2) ) * 4
             as total
 
 
