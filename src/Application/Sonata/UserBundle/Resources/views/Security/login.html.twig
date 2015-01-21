@@ -13,35 +13,38 @@
 
     <div class="row">
 
-        <div class="col-md-6">
-            <h4>Pas encore inscrit ?</h4>
-            <p>nous vous invitons à vous inscrireafin de passer votre commande et de manger équilibré</p>
 
-            <a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary" role="button">Inscription</a>
-
-
-        </div>
-
-
-        <div class="col-md-6">
-            <h4>Connexion</h4>
+        <div class="col-md-12">
 
             <form class="form form-horizontal" role="form" action="{{ path("fos_user_security_check") }}" method="post">
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
                 <div class="form-group">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="username">{{ 'security.login.username'|trans }}</label>
                         <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="password">{{ 'security.login.password'|trans }}</label>
                         <input class="form-control" type="password" id="password" name="_password" required="required" />
                     </div>
                 </div>
 
-                <input type="submit" class="btn btn-primary" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <input type="checkbox" id="remember_me" name="_remember_me" checked />
+                        <label for="remember_me">Keep me logged in</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <input type="submit" class="btn btn-primary" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                    </div>
+                </div>
+
+
 
                 {% if error %}
                     {{ error|trans }}
@@ -54,7 +57,7 @@
 
         </div>
 
-        <a href="{{ path('fos_user_resetting_request') }}">Mot de passe perdu ?</a>
+       <!-- <a href="{##} path('fos_user_resetting_request') }}">Mot de passe perdu ?</a>
     </div><!-- End row -->
 
 {% endblock fos_user_content %}
