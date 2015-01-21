@@ -14,9 +14,8 @@ class PlayerController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
         $form = $this->get('form.factory')->create(new SeasonType(), null);
-        $calculateInfosService = $this->container->get('coc_cocbundle.calculate_player_info') ;
+       // $calculateInfosService = $this->container->get('coc_cocbundle.calculate_player_info') ;
 
         if ($request->isMethod('POST'))
         {
@@ -29,46 +28,35 @@ class PlayerController extends Controller
             }
             $data = $request->request->all();
             $idSeason = $data['season']['season'];
-            print_r("=> " . $idSeason);
             $season = $em->getRepository('COCBundle:Season')->findOneById($idSeason);
 
-
-            if($season == $seasonActuel){
+            if($season == $seasonActuel)
+            {
                 echo "season = season actuelle";
-                $players = $em->getRepository('COCBundle:Player')->getPlayers();
-            }else{
+                $players = $em->getRepository('COCBundle:Player')->getAllPlayers();
+            }
+            else
+            {
                 echo "season !!!= season actuelle";
                // $players = $em->getRepository('COCBundle:PlayerHistory')->findAll();
                 $players = $em->getRepository('COCBundle:PlayerHistory')->findOneBySeason($season);
             }
 
-            if(!empty($players)){
-                echo "<br>players non vides";
-                foreach($players as $key => $value) {
-                    $totals[$key]['attack'] = $calculateInfosService->getTotalAttack($value);
-                    $totals[$key]['defence'] = $calculateInfosService->getTotalDefence($value);
-                }
-                return $this->render('COCBundle:Player:index.html.twig', array('players' => $players, 'totals' => $totals, 'form' => $form->createView()));
+            if(!empty($players))
+            {
+                return $this->render('COCBundle:Player:index.html.twig', array('players' => $players , 'form' => $form->createView() ));
             }
             else
             {
-                return $this->render('COCBundle:Player:index.html.twig', array('players' => $players, 'totals' => 0, 'form' => $form->createView()));
+                return $this->render('COCBundle:Player:index.html.twig', array('players' => $players , 'form' => $form->createView() ));
             }
         }
 
-
-        $players = $em->getRepository('COCBundle:Player')->getPlayers();
-
+        $players = $em->getRepository('COCBundle:Player')->getAllPlayers();
         if ($players)
         {
-            foreach($players as $key => $value) {
-                $totals[$key]['attack'] = $calculateInfosService->getTotalAttack($value);
-                $totals[$key]['defence'] = $calculateInfosService->getTotalDefence($value);
-            }
-            return $this->render('COCBundle:Player:index.html.twig', array('players' => $players , 'totals' => $totals,'form' => $form->createView() ));
+            return $this->render('COCBundle:Player:index.html.twig', array('players' => $players , 'form' => $form->createView() ));
         }
-
-
         return $this->render('COCBundle:Player:index.html.twig', array('players' => $players));
     }
 

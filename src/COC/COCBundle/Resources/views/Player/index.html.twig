@@ -71,9 +71,9 @@
                     <tr>
                         <td>{{ player.name }}</td>
                         <td>{{ player.level }}</td>
-                        <td>{{ totals[loop.index-1]['defence'] }}</td>
-                        <td>{{ totals[loop.index-1]['attack'] }}</td>
-                        <td>{{ totals[loop.index-1]['defence'] + totals[loop.index-1]['attack']}}</td>
+                        <td>{{ player.totalDefence|round }}</td>
+                        <td>{{ player.totalAttack|round }}</td>
+                        <td>{{ player.total|round }}</td>
                         <td>{{ player.updatedAt|date('U')|timeago }}</td>
 
                     </tr>

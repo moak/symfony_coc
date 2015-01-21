@@ -15,6 +15,7 @@ class CalculatePlayerInfosService {
     }
 
 
+
     public function getScore($score)
     {
         if ( $score == 1)
@@ -31,6 +32,8 @@ class CalculatePlayerInfosService {
     }
     public function getTotalAttack($player)
     {
+
+
         $total = $this->getScore($player->getArcher()) +
             $this->getScore($player->getBarbar() )+
             $this->getScore($player->getGeant()) +
