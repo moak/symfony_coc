@@ -17,9 +17,16 @@ class CalculatePlayerInfosService {
 
     public function getScore($score)
     {
-        $tmp = $score - 1;
-        $tmp = $tmp * $score;
-        $tmp = $tmp / 2;
+        if ( $score == 1)
+        {
+            $tmp = 1;
+        }
+        else
+        {
+            $tmp = $score - 1;
+            $tmp = $tmp * $score;
+            $tmp = $tmp / 2;
+        }
         return $tmp;
     }
     public function getTotalAttack($player)
