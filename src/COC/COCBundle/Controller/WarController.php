@@ -7,6 +7,15 @@ use Symfony\Component\Validator\Constraints\DateTime;
 
 class WarController extends Controller
 {
+    public function indexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $wars = $em->getRepository('COCBundle:War')->findAll();
+
+        return $this->render('COCBundle:War:index.html.twig', array('wars' => $wars));
+    }
+
+
     public function menuAction()
     {
         $em = $this->getDoctrine()->getManager();

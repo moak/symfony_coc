@@ -1,0 +1,66 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Guerres de clan</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Guerres de clan</th>
+                <th>Date</th>
+                <th>Résultat</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% if wars|length != 0 %}
+                {% for war in wars %}
+                    <tr>
+                        <td>
+                            CsP vs
+                            {% if war.opponent %}
+                                {{ war.opponent }}
+                            {% else %}
+                                En attente
+                            {% endif %}
+                        </td>
+                        <td>
+                            {{ war.start|date('d M H:s') }} ({{ war.start|date('U')|timeago }})
+                        </td>
+                        <td>
+                            {{ war.result|result }}
+                        </td>
+
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td>-</td>
+                    <td>0 guerre de clan trouvée</td>
+                    <td>-</td>
+
+                    <td></td>
+                </tr>
+            {% endif %}
+            </tbody>
+        </table>
+        <hr>
+
+
+    </div>
+    <!-- /.container -->
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/footable.js') }}" type="text/javascript"></script>
+{% endblock %}

@@ -27,6 +27,11 @@ coc_players_history:
     defaults: { _controller: COCBundle:Player:historyPlayers }
 
 
+coc_wars:
+    path:     /wars
+    defaults: { _controller: COCBundle:War:index }
+
+
 
 coc_users:
     path:     /users

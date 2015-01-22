@@ -12,7 +12,7 @@
             ({{ warInProgress.start|date('d M H:s') }} / {{ warInProgress.end|date('d M H:s') }})
 
         {% else %}
-            <div class="panel-heading">Guerre de clan</div>
+            <div class="panel-heading">Guerre de clan  (<a href="{{ path('coc_wars') }}">Historique</a>)</div>
             <div class="panel-body">
             <p>Aucune guerre en cours.</p>
         {% endif %}
