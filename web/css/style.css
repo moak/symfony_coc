@@ -1,0 +1,7 @@
+.supercell-font{
+	font-family: Supercell-Magic;
+}
+.white-on-black{
+	color:white;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
