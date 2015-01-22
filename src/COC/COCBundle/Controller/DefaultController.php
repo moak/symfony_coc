@@ -21,7 +21,8 @@ class DefaultController extends Controller
        // $numberWars = $em->getRepository('COCBundle:War')->getNumberWars();
         $numberBestAttacks = $em->getRepository('COCBundle:ImageBestAttack')->getNumberBestAttacks();
         $numberUsersNonAssigned = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsersNonAssigned();
+        $numberImagesBonus = $em->getRepository('COCBundle:ImageBonus')->getNumberImagesBonus();
 
-        return $this->render('COCBundle:Default:menu.html.twig' , array('numberUsersNonAssigned' => $numberUsersNonAssigned,'numberVideos' => $numberVideos, 'numberBestAttacks' => $numberBestAttacks, 'numberBases' => $numberBases));
+        return $this->render('COCBundle:Default:menu.html.twig' , array('numberImagesBonus' => $numberImagesBonus,'numberUsersNonAssigned' => $numberUsersNonAssigned,'numberVideos' => $numberVideos, 'numberBestAttacks' => $numberBestAttacks, 'numberBases' => $numberBases));
     }
 }

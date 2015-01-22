@@ -33,10 +33,11 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Média <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="badge">{{ numberBestAttacks + numberVideos + numberImagesBonus }}</span> Média <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ path('coc_imagesBestAttack') }}"><span class="badge">{{ numberBestAttacks }}</span> Meilleures attaques   </a></li>
                         <li><a href="{{ path('coc_videos') }}"><span class="badge">{{ numberVideos }}</span> Vidéos </a></li>
+                        <li><a href="{{ path('coc_imagesBonus') }}"><span class="badge">{{ numberImagesBonus }}</span> Bonus </a></li>
                     </ul>
                 </li>
 

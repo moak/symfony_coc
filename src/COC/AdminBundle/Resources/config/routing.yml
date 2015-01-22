@@ -100,3 +100,20 @@ admin_video_edit:
 admin_video_delete:
     path:     /admin/video/delete/{id}
     defaults: { _controller: AdminBundle:VideoAdmin:delete }
+
+
+admin_imagesBonus:
+    path:     /admin/imagesBonus
+    defaults: { _controller: AdminBundle:ImageBonusAdmin:index }
+
+admin_bestAttack_add:
+    path:     /admin/bestAttack/add
+    defaults: { _controller: AdminBundle:ImageBonusAdmin:add }
+
+admin_bestAttack_edit:
+    path:     /admin/bestAttack/edit/{id}
+    defaults: { _controller: AdminBundle:ImageBonusAdmin:edit }
+
+admin_bestAttack_delete:
+    path:     /admin/bestAttack/delete/{id}
+    defaults: { _controller: AdminBundle:ImageBonusAdmin:delete }

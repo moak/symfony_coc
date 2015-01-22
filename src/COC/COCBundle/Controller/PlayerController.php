@@ -80,8 +80,10 @@ class PlayerController extends Controller
         return $this->render('COCBundle:Player:show.html.twig', array('player' => $player));
     }
 
-    public function editAction ($id, Request $request)
+    public function editAction (Request $request)
     {
+        $user= $this->get('security.context')->getToken()->getUser();
+        $id = $user->getId();
         $em = $this->getDoctrine()->getManager();
         //$userInfo = $em->getRepository('COCBundle:Player')->findOneByUser($id);
         $player = $em->getRepository('COCBundle:Player')->find($id);

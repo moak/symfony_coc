@@ -9,27 +9,25 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6
+{
     text-transform: uppercase;
     font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
 }
-
-
-body {
+body
+{
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     background: url('../images/bg.jpg')  no-repeat fixed 100% 100%;
-
 }
 
 
-.navbar-brand {
+.navbar-brand
+{
     text-transform: uppercase;
     letter-spacing: 2px;
 }
-
-
 
 
 .main
@@ -43,9 +41,6 @@ body {
 
 }
 
-
-
-
 .clickable{
     cursor: pointer;
 }
@@ -54,5 +49,3 @@ body {
     margin-top: -20px;
     font-size: 15px;
 }
-
-

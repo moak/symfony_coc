@@ -11,7 +11,7 @@ coc_player_show:
     defaults: { _controller: COCBundle:Player:show }
 
 coc_player_edit:
-    path:     /player/edit/{id}
+    path:     /player/edit
     defaults: { _controller: COCBundle:Player:edit }
 
 coc_player_add:
@@ -27,33 +27,6 @@ coc_players_history:
     defaults: { _controller: COCBundle:Player:historyPlayers }
 
 
-
-
-coc_users:
-    path:     /users
-    defaults: { _controller: UserBundle:User:index }
-
-
-
-coc_user_info:
-    path:     /userInfo
-    defaults: { _controller: COCBundle:UserInfo:index }
-
-coc_user_info_show:
-    path:     /userInfo/{id}
-    defaults: { _controller: COCBundle:UserInfo:show }
-
-coc_user_info_edit:
-    path:     /userInfo/edit/{id}
-    defaults: { _controller: COCBundle:UserInfo:edit }
-
-coc_user_info_add:
-    path:     /add
-    defaults: { _controller: COCBundle:UserInfo:add }
-
-coc_user_info_delete:
-    path:     /delete/{id}
-    defaults: { _controller: COCBundle:UserInfo:delete }
 
 coc_users:
     path:     /users
@@ -74,6 +47,7 @@ coc_imageBestAttack_edit:
 coc_imageBestAttack_delete:
     path:     /imagesBestAttack/delete/{id}
     defaults: { _controller: COCBundle:ImageBestAttack:delete }
+
 
 
 coc_images_base:
@@ -114,3 +88,21 @@ coc_video_edit:
     path:     /video/edit/{id}
     defaults: { _controller: COCBundle:Video:edit }
 
+
+
+
+coc_imagesBonus:
+    path:     /imagesBonus
+    defaults: { _controller: COCBundle:ImageBonus:index }
+
+coc_imageBonus_add:
+    path:     /imagesBonus/add
+    defaults: { _controller: COCBundle:ImageBonus:add }
+
+coc_imageBonus_edit:
+    path:     /imagesBonus/edit/{id}
+    defaults: { _controller: COCBundle:ImageBonus:edit }
+
+coc_imageBonus_delete:
+    path:     /imagesBonus/delete/{id}
+    defaults: { _controller: COCBundle:ImageBonus:delete }

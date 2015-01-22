@@ -85,6 +85,23 @@ class PlayerType extends AbstractType
             ->add('witch' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
             ->add('lava' ,  'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
 
+            ->add('gold1' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
+            ->add('gold2' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
+            ->add('gold3' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
+            ->add('gold4' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
+            ->add('gold5' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
+            ->add('gold6' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
+            ->add('gold7' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
+
+            ->add('elixir1' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
+            ->add('elixir2' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
+            ->add('elixir3' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
+            ->add('elixir4' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
+            ->add('elixir5' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
+            ->add('elixir6' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
+            ->add('elixir7' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
+
+
 
             // ->add('utilisateurs', 'entity', array ('class' => 'Utilisateurs\UtilisateursBundle\Entity\Utilisateurs'))
             ->add('save', 'submit', array('label' => 'Sauvegarder'));
