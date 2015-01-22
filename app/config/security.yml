@@ -63,4 +63,12 @@ security:
         # This config requires being logged for the whole site and having the admin role for the admin part.
         # Change these rules to adapt them to your needs
         - { path: ^/admin, role: [ROLE_ADMIN] }
+        - { path: ^/imagesBase/add, role: [ROLE_USER] }
+        - { path: ^/videos/add, role: [ROLE_USER] }
+        - { path: ^/imagesBonus/add, role: [ROLE_USER] }
+        - { path: ^/imagesBestAttack/add, role: [ROLE_USER] }
+
+
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+

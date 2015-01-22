@@ -2,6 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: @BCCCronManagerBundle/Resources/config/assetic.yml }
+    - { resource: @ApplicationSonataUserBundle/Resources/config/services.yml }
 framework:
     #esi:             ~
     translator:      { fallback: "%locale%" }
@@ -68,4 +69,6 @@ fos_user:
     user_class: Application\Sonata\UserBundle\Entity\User
     group:
         group_class: Application\Sonata\UserBundle\Entity\Group
-
+    registration:
+        form:
+            type: application_user_registration

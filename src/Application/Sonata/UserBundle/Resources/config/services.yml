@@ -1,0 +1,6 @@
+# src/Uae/UserBundle/Resources/config/services.yml
+services:
+    application_user.registration.form.type:
+        class: Application\Sonata\UserBundle\Form\Type\RegistrationFormType
+        tags:
+            - { name: form.type, alias: application_user_registration }
