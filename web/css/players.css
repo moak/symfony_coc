@@ -1,0 +1,37 @@
+.classement-list p{
+	width: 50%;
+}
+
+.classement-list .cannon span, 
+.classement-list .mortar span, 
+.classement-list .arc-x span, 
+.classement-list .inferno span, 
+.classement-list .wizard span,
+.classement-list .archer-tower span,
+.classement-list .tesla span,
+.classement-list .anti-air span{
+	position: absolute;
+	margin-top: 5px;
+	margin-left: 40px;
+}
+
+.classement-list .archer-tower img,
+.classement-list .anti-air img{
+	width: 25px;
+}
+
+.classement-list .tesla img,
+.classement-list .wizard img,
+.classement-list .inferno img{
+	width: 36px;
+}
+
+.classement-list .cannon img,
+.classement-list .mortar img,
+.classement-list .arc-x img{
+	width: 35px;
+}
+
+.exp-title{
+	font-size: 11px;
+}

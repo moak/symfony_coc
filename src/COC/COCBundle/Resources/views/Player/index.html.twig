@@ -1,6 +1,7 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
+<link rel="stylesheet" href="{{ asset('css/players.css') }}" />
 
 <div class="container">
 
@@ -52,23 +53,25 @@
         </div>
 
 
-        <table class="table">
+        <table class="table classement-list">
             <thead>
                 <tr>
-                    <th>Nom</th>
-                    <th>Level</th>
-                    <th>Défence</th>
-                    <th>Attaque</th>
-                    <th>Total</th>
-                    <th>Mis à jour</th>
+                	<th></th>
+                    <th class="supercell-font">Nom</th>
+                    <th class="supercell-font">Level</th>
+                    <th class="supercell-font">Défence</th>
+                    <th class="supercell-font">Attaque</th>
+                    <th class="supercell-font">Total</th>
+                    <th class="supercell-font">Mis à jour</th>
 
                 </tr>
             </thead>
             <tbody>
-
+            
             {% if players|length != 0 %}
                 {% for player in players %}
                     <tr>
+                    	<td><span class="glyphicon glyphicon-plus" aria-hidden="true" data-name="{{ player.name }}"></span></td>
                         <td>{{ player.name }}</td>
                         <td>{{ player.level }}</td>
                         <td>{{ player.totalDefence|round }}</td>
@@ -76,6 +79,71 @@
                         <td>{{ player.total|round }}</td>
                         <td>{{ player.updatedAt|date('U')|timeago }}</td>
 
+                    </tr>
+                    <tr class="hidden expendables" id="{{ player.name }}">
+                    	<td></td>
+                    	<td colspan="5">
+                    		<div class="row">
+                    			<div class="col-md-4">
+                    				<p class="supercell-font white-on-black exp-title">Défense</p>
+                    				<div class="clearfix">
+										<!-- CAONNONS -->
+										<p class="cannon pull-left">
+											<span>test</span>
+											<img src="{{ asset('images/Buildings/Cannon/100px-Cannon6.png') }}" />
+										</p>
+										<!-- MORTIER -->
+										<p class="mortar pull-right">
+											<span>test</span>
+											<img src="{{ asset('images/Buildings/Mortar/mortar.png') }}" />
+										</p>
+                    				</div>
+                    				<div class="clearfix">
+										<!-- ARCHER -->
+										<p class="archer-tower pull-left">
+											<span>test</span>
+											<img src="{{ asset('images/Buildings/Archer_tower/75px-Archer_Tower4.png') }}" />
+										</p>
+										<!-- WIZARD -->
+										<p class="wizard pull-left">
+											<span>test</span>
+											<img src="{{ asset('images/Buildings/Wizard/wizard.png') }}" />
+										</p>
+                    				</div>
+                    				<div class="clearfix">
+										<!-- ANTI AERIEN -->
+										<p class="anti-air pull-left">
+											<span>test</span>
+											<img src="{{ asset('images/Buildings/Anti-air/anti-air.png') }}"/>
+										</p>
+										<!-- TESLA -->
+										<p class="tesla pull-left">
+											<span>test</span>
+											<img src="{{ asset('images/Buildings/Tesla/tesla.png') }}" />
+										</p>
+									</div>
+                    				<div class="clearfix">
+										<!-- ARC-X -->
+										<p class="arc-x pull-left">
+											<span>test</span>
+											<img src="{{ asset('images/Buildings/Arc-X/arc-x.png') }}"/>
+										</p>
+										<!-- INFERNO -->
+										<p class="inferno pull-left">
+											<span>test</span>
+											<img src="{{ asset('images/Buildings/Inferno/inferno.png') }}"/>
+										</p>
+									</div>
+                    			</div>
+                    			<div class="col-md-4">
+                    				<p class="supercell-font white-on-black">Laboratoire</p>
+                    				<p>
+                    					
+                    				</p>
+                    			</div>
+                    		</div>
+                    	</td>
+                    	<td></td>
                     </tr>
                 {% endfor %}
             {% else %}
@@ -109,5 +177,6 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('js/players.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/footable.js') }}" type="text/javascript"></script>
 {% endblock %}
