@@ -1,11 +1,11 @@
 
 $( "body" ).on( "click", ".glyphicon-plus", function() {	
-	$('.glyphicon-minus').addClass('glyphicon-plus').removeClass('glyphicon-minus');
+	//$('.glyphicon-minus').addClass('glyphicon-plus').removeClass('glyphicon-minus');
 	$(this).removeClass('glyphicon-plus').addClass('glyphicon-minus');
-	$(".expendables").addClass("hidden");
+	//$(".expendables").addClass("hidden");
 	$("#" + $(this).data("name")).removeClass('hidden');
 });
 $( "body" ).on( "click", ".glyphicon-minus", function() {	
 	$(this).removeClass('glyphicon-minus').addClass('glyphicon-plus');
-	$(".expendables").addClass("hidden");
+	$(this).parent().parent().next('tr').addClass("hidden");
 });

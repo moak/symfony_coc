@@ -82,60 +82,112 @@
                     </tr>
                     <tr class="hidden expendables" id="{{ player.name }}">
                     	<td></td>
-                    	<td colspan="5">
+                    	<td colspan="6">
                     		<div class="row">
-                    			<div class="col-md-4">
+                    			<div class="col-md-12">
                     				<p class="supercell-font white-on-black exp-title">Défense</p>
                     				<div class="clearfix">
 										<!-- CAONNONS -->
-										<p class="cannon pull-left">
-											<span>test</span>
+										{% if player.canon1 != 0 %}
+										<p class="cannon">
+											<span>
+												{{player.canon1}}
+												{% if player.canon2 != 0 %} - {{player.canon2}} {% endif %}
+												{% if player.canon3 != 0 %} - {{player.canon3}} {% endif %}
+												{% if player.canon4 != 0 %} - {{player.canon4}} {% endif %}
+												{% if player.canon5 != 0 %} - {{player.canon5}} {% endif %}
+												{% if player.canon6 != 0 %} - {{player.canon6}} {% endif %}
+											</span>
 											<img src="{{ asset('images/Buildings/Cannon/100px-Cannon6.png') }}" />
 										</p>
-										<!-- MORTIER -->
-										<p class="mortar pull-right">
-											<span>test</span>
-											<img src="{{ asset('images/Buildings/Mortar/mortar.png') }}" />
-										</p>
-                    				</div>
-                    				<div class="clearfix">
+										{% endif %}
 										<!-- ARCHER -->
-										<p class="archer-tower pull-left">
-											<span>test</span>
+										{% if player.tower_archer1 != 0 %}
+										<p class="archer-tower">
+											<span>
+												{{player.tower_archer1}}
+												{% if player.tower_archer2 != 0 %} - {{player.tower_archer2}} {% endif %}
+												{% if player.tower_archer3 != 0 %} - {{player.tower_archer3}} {% endif %}
+												{% if player.tower_archer4 != 0 %} - {{player.tower_archer4}} {% endif %}
+												{% if player.tower_archer5 != 0 %} - {{player.tower_archer5}} {% endif %}
+												{% if player.tower_archer6 != 0 %} - {{player.tower_archer6}} {% endif %}
+												{% if player.tower_archer7 != 0 %} - {{player.tower_archer7}} {% endif %}
+											</span>
 											<img src="{{ asset('images/Buildings/Archer_tower/75px-Archer_Tower4.png') }}" />
 										</p>
-										<!-- WIZARD -->
-										<p class="wizard pull-left">
-											<span>test</span>
-											<img src="{{ asset('images/Buildings/Wizard/wizard.png') }}" />
+										{% endif %}
+										<!-- MORTIER -->
+										{% if player.mortar1 != 0 %} 
+										<p class="mortar">
+											<span>
+												{{player.mortar1}}
+												{% if player.mortar2 != 0 %} - {{player.mortar2}} {% endif %}
+												{% if player.mortar3 != 0 %} - {{player.mortar3}} {% endif %}
+												{% if player.mortar4 != 0 %} - {{player.mortar4}} {% endif %}
+											</span>
+											<img src="{{ asset('images/Buildings/Mortar/mortar.png') }}" />
 										</p>
-                    				</div>
-                    				<div class="clearfix">
+										{% endif %}
 										<!-- ANTI AERIEN -->
-										<p class="anti-air pull-left">
-											<span>test</span>
+										{% if player.air_defence1 != 0 %} 
+										<p class="anti-air">
+											<span>
+												{{player.air_defence1}}
+												{% if player.air_defence2 != 0 %} - {{player.air_defence2}} {% endif %}
+												{% if player.air_defence3 != 0 %} - {{player.air_defence3}} {% endif %}
+												{% if player.air_defence4 != 0 %} - {{player.air_defence4}} {% endif %}
+											</span>
 											<img src="{{ asset('images/Buildings/Anti-air/anti-air.png') }}"/>
 										</p>
+										{% endif %}
+										<!-- WIZARD -->
+										{% if player.tower_magic1 != 0 %} 
+										<p class="wizard">
+											<span>
+												{{player.tower_magic1}} 
+												{% if player.tower_magic2 != 0 %} - {{player.tower_magic2}} {% endif %}
+												{% if player.tower_magic3 != 0 %} - {{player.tower_magic3}} {% endif %}
+												{% if player.tower_magic4 != 0 %} - {{player.tower_magic4}} {% endif %}
+											</span>
+											<img src="{{ asset('images/Buildings/Wizard/wizard.png') }}" />
+										</p>
+										{% endif %}
 										<!-- TESLA -->
-										<p class="tesla pull-left">
-											<span>test</span>
+										{% if player.tesla1 != 0 %}
+										<p class="tesla">
+											<span>
+												{{player.tesla1}}
+												{% if player.tesla2 != 0 %} - {{player.tesla2}} {% endif %}
+												{% if player.tesla3 != 0 %} - {{player.tesla3}} {% endif %}
+												{% if player.tesla4 != 0 %} - {{player.tesla4}} {% endif %}
+											</span>
 											<img src="{{ asset('images/Buildings/Tesla/tesla.png') }}" />
 										</p>
-									</div>
-                    				<div class="clearfix">
+										{% endif %}
 										<!-- ARC-X -->
-										<p class="arc-x pull-left">
-											<span>test</span>
+										{% if player.arcx1 != 0 %}
+										<p class="arc-x">
+											<span>
+												 {{player.arcx1}} 
+												{% if player.arcx2 != 0 %} - {{player.arcx2}} {% endif %}	
+												{% if player.arcx3 != 0 %} - {{player.arcx3}} {% endif %}	
+											</span>
 											<img src="{{ asset('images/Buildings/Arc-X/arc-x.png') }}"/>
 										</p>
+										{% endif %}
 										<!-- INFERNO -->
-										<p class="inferno pull-left">
-											<span>test</span>
+										{% if player.inferno1 != 0 %}
+										<p class="inferno">
+											<span>
+												 {{player.inferno1}} 
+												{% if player.inferno2 != 0 %} - {{player.inferno2}} {% endif %}	
+											</span>
 											<img src="{{ asset('images/Buildings/Inferno/inferno.png') }}"/>
 										</p>
+										{% endif %}
 									</div>
                     			</div>
-                    			<div class="col-md-4">
+                    			<div class="col-md-12">
                     				<p class="supercell-font white-on-black">Laboratoire</p>
                     				<p>
                     					

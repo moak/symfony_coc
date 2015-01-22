@@ -43,7 +43,7 @@ class PlayerRepository extends EntityRepository
             p.mortar1, p.mortar2, p.mortar3, p.mortar4,
             p.inferno1, p.inferno2,
             p.tesla1, p.tesla2, p.tesla3, p.tesla4,
-            p.arcx1, p.arcx2,
+            p.arcx1, p.arcx2, p.arcx3,
             p.air_defence1, p.air_defence2, p.air_defence3, p.air_defence4,
             p.tower_magic1, p.tower_magic2, p.tower_magic3, p.tower_magic4,
             p.canon1, p.canon2, p.canon3, p.canon4, p.canon5, p.canon6,
