@@ -36,3 +36,21 @@
 .exp-title{
 	/*font-size: 11px;*/
 }
+
+.portrait{
+	display: inline-block;
+}
+.portrait div{
+	position: relative;
+	color : white;
+	top: 44px;
+	left: 7px;
+}
+
+.expendables{
+	/*background-color: rgba(80, 232, 77, 0.2)*/
+}
+
+.expendables h5{
+	margin-left : 17px;
+}
