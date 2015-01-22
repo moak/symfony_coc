@@ -39,7 +39,20 @@ class PlayerRepository extends EntityRepository
     public function getAllPlayers()
     {
         $qb = $this->createQueryBuilder('p')
-            ->select('p.level, p.name, p.mortar1, p.updatedAt,
+            ->select('p.level, p.name,
+            p.mortar1, p.mortar2, p.mortar3, p.mortar4,
+            p.inferno1, p.inferno2,
+            p.tesla1, p.tesla2, p.tesla3, p.tesla4,
+            p.arcx1, p.arcx2,
+            p.air_defence1, p.air_defence2, p.air_defence3, p.air_defence4,
+            p.tower_magic1, p.tower_magic2, p.tower_magic3, p.tower_magic4,
+            p.canon1, p.canon2, p.canon3, p.canon4, p.canon5, p.canon6,
+            p.tower_archer1, p.tower_archer2, p.tower_archer3, p.tower_archer4, p.tower_archer5, p.tower_archer6, p.tower_archer7,
+
+            p.archer, p.barbar, p.geant, p.wizard, p.dragon, p.wall_breaker, p.pekka, p.ballon, p.healer, p.gobelin, p.minion, p.rider, p.valkyrie, p.golem, p.rider, p.golem, p.lava,
+            p.witch, p.queen, p.king, p.potion_heal, p.potion_boost,  p.potion_green, p.potion_freeze, p.potion_damage,
+
+            p.updatedAt,
 
             (p.mortar1 + 1) * p.mortar1 / 2 + (p.mortar2 + 1) * p.mortar2 / 2 + (p.mortar3 + 1) * p.mortar3 / 2 + (p.mortar4+ 1) * p.mortar4 / 2 +
             (p.inferno1 + 1) * p.inferno1 / 2 + (p.inferno2 + 1) * p.inferno1 / 2 +
