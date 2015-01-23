@@ -2,6 +2,8 @@
 
 namespace COC\COCBundle\Controller;
 
+use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Model\UserInterface;
 use COC\COCBundle\Entity\Player;
 use COC\COCBundle\Entity\PlayerHistory;
 use COC\COCBundle\Form\Type\SeasonType;
@@ -82,12 +84,11 @@ class PlayerController extends Controller
 
     public function editAction (Request $request)
     {
-        $user= $this->get('security.context')->getToken()->getUser();
-        $id = $user->getId();
+        $user = $this->getUser();
+        $userId = $user->getId();
+        
         $em = $this->getDoctrine()->getManager();
-        //$userInfo = $em->getRepository('COCBundle:Player')->findOneByUser($id);
-        $player = $em->getRepository('COCBundle:Player')->find($id);
-
+        $player = $em->getRepository('COCBundle:Player')->findOneByUser($userId);
         $form = $this->get('form.factory')->create(new PlayerType(), $player );
 
         if ($form->handleRequest($request)->isValid())
