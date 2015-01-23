@@ -188,13 +188,13 @@
 								<h5 class="supercell-font white-on-black">Laboratoire</h5>
 								<div class="col-md-3">
 									<div class="portrait">
-										<div>{% if player.queen != 0 %}{{player.queen}}{% endif %}</div>
-										<img src="{% if player.queen != 0 %}{{ asset('images/laboratoire/queen.jpg') }}{% else %}{{ asset('images/laboratoire/queen0.jpg') }}{% endif %}"/>
-									</div>
-									<div class="portrait">
 										<div>{% if player.king != 0 %}{{player.king}}{% endif %}</div>
 										<img src="{% if player.king != 0 %}{{ asset('images/laboratoire/king.jpg') }}{% else %}{{ asset('images/laboratoire/king0.jpg') }}{% endif %}"/>
 									</div>
+                                    <div class="portrait">
+                                        <div>{% if player.queen != 0 %}{{player.queen}}{% endif %}</div>
+                                        <img src="{% if player.queen != 0 %}{{ asset('images/laboratoire/queen.jpg') }}{% else %}{{ asset('images/laboratoire/queen0.jpg') }}{% endif %}"/>
+                                    </div>
 								</div>
 								<div class="col-md-7">
 									<div class="portrait">
