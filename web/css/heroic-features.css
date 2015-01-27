@@ -4,6 +4,12 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+
+@font-face {
+    font-family:"Supercell-Magic";
+    src: url("../fonts/supercell.ttf") /* TTF file for CSS3 browsers */
+}
+
 h1,
 h2,
 h3,
@@ -11,15 +17,15 @@ h4,
 h5,
 h6
 {
-    text-transform: uppercase;
-    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
+    font-family:'Supercell-Magic', sans-serif;
 }
 body
 {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     background: url('../images/bg.jpg')  no-repeat fixed 100% 100%;
+
 }
 
 

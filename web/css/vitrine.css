@@ -5,8 +5,15 @@ body
 
 }
 
-.intro-header {
+@font-face {
+    font-family:"Supercell-Magic";
+    src: url("../fonts/supercell.ttf") /* TTF file for CSS3 browsers */
+}
 
+
+
+.intro-header {
+    font-family:'Supercell-Magic', sans-serif;
     text-align: center;
     color: #f8f8f8;
     background: url(../images/intro-bg.jpg);
@@ -32,21 +39,28 @@ body
     border-bottom: 1px solid #e7e7e7;
 }
 
-
+.section-heading
+{
+    font-family:'Supercell-Magic', sans-serif;
+}
 .banner {
-    padding: 100px 0;
+    padding: 50px 0;
     color: #f8f8f8;
     background: url(../images/banner-bg.jpg) no-repeat center center;
     background-size: cover;
 }
 
+
+
 .banner h2 {
-    text-align: center;
+    font-family:'Supercell-Magic', sans-serif;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 4em;
+    font-size: 3em;
+
 }
 
 footer {
+
     padding: 50px 0;
     background-color: #f8f8f8;
 }
