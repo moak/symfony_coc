@@ -29,6 +29,20 @@ class WarRepository extends EntityRepository
         return $result;
     }
 
+    public function getNextWar()
+    {
+        $now = new \DateTime();
+
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.start >= :now')
+            ->orderBy('u.id', 'DESC')
+            ->setParameter('now', $now)
+            ->setMaxResults( 1 );
+
+        return $qb->getQuery()->getResult();
+
+    }
     public function getNumberWars()
     {
         $qb = $this->createQueryBuilder('u')
@@ -37,16 +51,5 @@ class WarRepository extends EntityRepository
         return count($qb->getQuery()->getResult());
     }
 
-    public function getFutureWars()
-    {
-        $now = new \DateTime();
 
-        $qb = $this->createQueryBuilder('u')
-            ->select('u')
-            ->where('u.start >= :now')
-            ->orderBy('u.id', 'DESC')
-            ->setParameter('now', $now);
-
-        return $qb->getQuery()->getResult();
-    }
 }

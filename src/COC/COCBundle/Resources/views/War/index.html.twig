@@ -3,57 +3,42 @@
 {% block body %}
 
     <div class="container">
-
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Guerres de clan</h1>
             </div>
-            <!-- /.col-lg-12 -->
         </div>
 
-
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Guerres de clan</th>
-                <th>Date</th>
-                <th>Résultat</th>
-            </tr>
-            </thead>
-            <tbody>
-
             {% if wars|length != 0 %}
+            <table class="table">
+                <thead>
+                   <tr>
+                       <th>Guerre de clan</th>
+                       <th>Date</th>
+                       <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody>
                 {% for war in wars %}
                     <tr>
                         <td>
-                            CsP vs
                             {% if war.opponent %}
-                                {{ war.opponent }}
+                                CsP vs {{ war.opponent }}
                             {% else %}
                                 En attente
                             {% endif %}
                         </td>
-                        <td>
-                            {{ war.start|date('d M H:s') }} ({{ war.start|date('U')|timeago }})
-                        </td>
-                        <td>
-                            {{ war.result|result }}
-                        </td>
-
+                        <td>{{ war.start|date('d M à H:s') }}</td>
+                        <td>{{ war.result|result }}</td>
                     </tr>
-                {% endfor %}
-            {% else %}
-                <tr>
-                    <td>-</td>
-                    <td>0 guerre de clan trouvée</td>
-                    <td>-</td>
 
-                    <td></td>
-                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <p>0 guerre de clan trouvée</p>
             {% endif %}
-            </tbody>
-        </table>
-        <hr>
+
 
 
     </div>

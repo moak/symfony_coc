@@ -4,22 +4,23 @@
         <div class="panel-heading">Guerre de clan en cours !</div>
         <div class="panel-body">
                 {% if isInPreparation != 0 %}
-                    Jour de préparation
+                    Jour de préparation (commence à {{ warInProgress.start|date_modify("+1 day")|date('d M H:s') }})
                 {% else %}
-                    Jour de guerre
+                    Jour de guerre (se termine à {{ warInProgress.end|date('d M H:s') }})
                 {% endif %}
 
-            ({{ warInProgress.start|date('d M H:s') }} / {{ warInProgress.end|date('d M H:s') }})
-
         {% else %}
-            <div class="panel-heading">Guerre de clan  (<a href="{{ path('coc_wars') }}">Historique</a>)</div>
+            <div class="panel-heading">Guerres de clan  <p class="pull-right"><a href="{{ path('coc_wars') }}">Historique <span class="badge">{{ numberWars }}</span></a></p></div>
             <div class="panel-body">
-            <p>Aucune guerre en cours.</p>
+                Prochaine guerre:
+                {% if nextWar|length !=0 %}
+                    {{ nextWar[0].start|date('d M  à H:s') }}
+                {% else %}
+                    <p>aucune</p>
+                {% endif %}
         {% endif %}
 
-        <hr>
 
-       Future guerre: {{ render(controller('COCBundle:War:futureWars')) }}
     </div>
 </div>
 
