@@ -17,10 +17,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 class ImageBase
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="images")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="imagebases")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
      */
-    protected $user;
+    private $user;
+
+
 
     /**
      * @var integer
@@ -34,14 +36,13 @@ class ImageBase
     /**
      * @ORM\Column(type="integer")
      */
-    public $hall_town;
+    private $hall_town;
 
-  
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    public $path;
+    private $path;
 
     public function upload()
     {
@@ -124,13 +125,6 @@ class ImageBase
 
 
 
-
-
-
-
-
-
-
     /**
      * Get id
      *
@@ -191,7 +185,7 @@ class ImageBase
      * Set user
      *
      * @param \Application\Sonata\UserBundle\Entity\User $user
-     * @return ImageBase
+     * @return Video
      */
     public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null)
     {
@@ -203,7 +197,7 @@ class ImageBase
     /**
      * Get user
      *
-     * @return \Application\Sonata\UserBundle\Entity\User 
+     * @return \Application\Sonata\UserBundle\Entity\User
      */
     public function getUser()
     {

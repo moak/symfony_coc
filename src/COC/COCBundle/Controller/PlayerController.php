@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PlayerController extends Controller
 {
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $form = $this->get('form.factory')->create(new SeasonType(), null);
@@ -86,7 +86,7 @@ class PlayerController extends Controller
     {
         $user = $this->getUser();
         $userId = $user->getId();
-        
+
         $em = $this->getDoctrine()->getManager();
         $player = $em->getRepository('COCBundle:Player')->findOneByUser($userId);
         $form = $this->get('form.factory')->create(new PlayerType(), $player );

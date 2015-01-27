@@ -15,6 +15,13 @@ class Player
 {
 
     /**
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="players")
+     * @ORM\JoinColumn(name="clan_id", referencedColumnName="id", nullable=true)
+     */
+    private $clan;
+
+
+    /**
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
@@ -529,6 +536,104 @@ class Player
      */
     private $potion_freeze;
 
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="gold1", type="integer", nullable=true)
+     */
+    private $gold1;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="gold2", type="integer", nullable=true)
+     */
+    private $gold2;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="gold3", type="integer", nullable=true)
+     */
+    private $gold3;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="gold4", type="integer", nullable=true)
+     */
+    private $gold4;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="gold5", type="integer", nullable=true)
+     */
+    private $gold5;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="gold6", type="integer", nullable=true)
+     */
+
+    private $gold6;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="gold7", type="integer", nullable=true)
+     */
+    private $gold7;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="elixir1", type="integer", nullable=true)
+     */
+    private $elixir1;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="elixir2", type="integer", nullable=true)
+     */
+    private $elixir2;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="elixir3", type="integer", nullable=true)
+     */
+    private $elixir3;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="elixir4", type="integer", nullable=true)
+     */
+    private $elixir4;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="elixir5", type="integer", nullable=true)
+     */
+    private $elixir5;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="elixir6", type="integer", nullable=true)
+     */
+    private $elixir6;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="elixir7", type="integer", nullable=true)
+     */
+    private $elixir7;
 
     /**
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\PlayerHistory", mappedBy="player")
@@ -2219,5 +2324,350 @@ class Player
     public function getTesla4()
     {
         return $this->tesla4;
+    }
+
+    /**
+     * Set potion_freeze
+     *
+     * @param integer $potionFreeze
+     * @return Player
+     */
+    public function setPotionFreeze($potionFreeze)
+    {
+        $this->potion_freeze = $potionFreeze;
+
+        return $this;
+    }
+
+    /**
+     * Get potion_freeze
+     *
+     * @return integer 
+     */
+    public function getPotionFreeze()
+    {
+        return $this->potion_freeze;
+    }
+
+    /**
+     * Set gold1
+     *
+     * @param integer $gold1
+     * @return Player
+     */
+    public function setGold1($gold1)
+    {
+        $this->gold1 = $gold1;
+
+        return $this;
+    }
+
+    /**
+     * Get gold1
+     *
+     * @return integer 
+     */
+    public function getGold1()
+    {
+        return $this->gold1;
+    }
+
+    /**
+     * Set gold2
+     *
+     * @param integer $gold2
+     * @return Player
+     */
+    public function setGold2($gold2)
+    {
+        $this->gold2 = $gold2;
+
+        return $this;
+    }
+
+    /**
+     * Get gold2
+     *
+     * @return integer 
+     */
+    public function getGold2()
+    {
+        return $this->gold2;
+    }
+
+    /**
+     * Set gold3
+     *
+     * @param integer $gold3
+     * @return Player
+     */
+    public function setGold3($gold3)
+    {
+        $this->gold3 = $gold3;
+
+        return $this;
+    }
+
+    /**
+     * Get gold3
+     *
+     * @return integer 
+     */
+    public function getGold3()
+    {
+        return $this->gold3;
+    }
+
+    /**
+     * Set gold4
+     *
+     * @param integer $gold4
+     * @return Player
+     */
+    public function setGold4($gold4)
+    {
+        $this->gold4 = $gold4;
+
+        return $this;
+    }
+
+    /**
+     * Get gold4
+     *
+     * @return integer 
+     */
+    public function getGold4()
+    {
+        return $this->gold4;
+    }
+
+    /**
+     * Set gold5
+     *
+     * @param integer $gold5
+     * @return Player
+     */
+    public function setGold5($gold5)
+    {
+        $this->gold5 = $gold5;
+
+        return $this;
+    }
+
+    /**
+     * Get gold5
+     *
+     * @return integer 
+     */
+    public function getGold5()
+    {
+        return $this->gold5;
+    }
+
+    /**
+     * Set gold6
+     *
+     * @param integer $gold6
+     * @return Player
+     */
+    public function setGold6($gold6)
+    {
+        $this->gold6 = $gold6;
+
+        return $this;
+    }
+
+    /**
+     * Get gold6
+     *
+     * @return integer 
+     */
+    public function getGold6()
+    {
+        return $this->gold6;
+    }
+
+    /**
+     * Set gold7
+     *
+     * @param integer $gold7
+     * @return Player
+     */
+    public function setGold7($gold7)
+    {
+        $this->gold7 = $gold7;
+
+        return $this;
+    }
+
+    /**
+     * Get gold7
+     *
+     * @return integer 
+     */
+    public function getGold7()
+    {
+        return $this->gold7;
+    }
+
+    /**
+     * Set elixir1
+     *
+     * @param integer $elixir1
+     * @return Player
+     */
+    public function setElixir1($elixir1)
+    {
+        $this->elixir1 = $elixir1;
+
+        return $this;
+    }
+
+    /**
+     * Get elixir1
+     *
+     * @return integer 
+     */
+    public function getElixir1()
+    {
+        return $this->elixir1;
+    }
+
+    /**
+     * Set elixir2
+     *
+     * @param integer $elixir2
+     * @return Player
+     */
+    public function setElixir2($elixir2)
+    {
+        $this->elixir2 = $elixir2;
+
+        return $this;
+    }
+
+    /**
+     * Get elixir2
+     *
+     * @return integer 
+     */
+    public function getElixir2()
+    {
+        return $this->elixir2;
+    }
+
+    /**
+     * Set elixir3
+     *
+     * @param integer $elixir3
+     * @return Player
+     */
+    public function setElixir3($elixir3)
+    {
+        $this->elixir3 = $elixir3;
+
+        return $this;
+    }
+
+    /**
+     * Get elixir3
+     *
+     * @return integer 
+     */
+    public function getElixir3()
+    {
+        return $this->elixir3;
+    }
+
+    /**
+     * Set elixir4
+     *
+     * @param integer $elixir4
+     * @return Player
+     */
+    public function setElixir4($elixir4)
+    {
+        $this->elixir4 = $elixir4;
+
+        return $this;
+    }
+
+    /**
+     * Get elixir4
+     *
+     * @return integer 
+     */
+    public function getElixir4()
+    {
+        return $this->elixir4;
+    }
+
+    /**
+     * Set elixir5
+     *
+     * @param integer $elixir5
+     * @return Player
+     */
+    public function setElixir5($elixir5)
+    {
+        $this->elixir5 = $elixir5;
+
+        return $this;
+    }
+
+    /**
+     * Get elixir5
+     *
+     * @return integer 
+     */
+    public function getElixir5()
+    {
+        return $this->elixir5;
+    }
+
+    /**
+     * Set elixir6
+     *
+     * @param integer $elixir6
+     * @return Player
+     */
+    public function setElixir6($elixir6)
+    {
+        $this->elixir6 = $elixir6;
+
+        return $this;
+    }
+
+    /**
+     * Get elixir6
+     *
+     * @return integer 
+     */
+    public function getElixir6()
+    {
+        return $this->elixir6;
+    }
+
+    /**
+     * Set elixir7
+     *
+     * @param integer $elixir7
+     * @return Player
+     */
+    public function setElixir7($elixir7)
+    {
+        $this->elixir7 = $elixir7;
+
+        return $this;
+    }
+
+    /**
+     * Get elixir7
+     *
+     * @return integer 
+     */
+    public function getElixir7()
+    {
+        return $this->elixir7;
     }
 }

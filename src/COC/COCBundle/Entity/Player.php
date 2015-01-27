@@ -15,6 +15,13 @@ class Player
 {
 
     /**
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="players")
+     * @ORM\JoinColumn(name="clan_id", referencedColumnName="id", nullable=true)
+     */
+    private $clan;
+
+
+    /**
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
@@ -2662,5 +2669,28 @@ class Player
     public function getElixir7()
     {
         return $this->elixir7;
+    }
+
+    /**
+     * Set clan
+     *
+     * @param \COC\COCBundle\Entity\Clan $clan
+     * @return Player
+     */
+    public function setClan(\COC\COCBundle\Entity\Clan $clan = null)
+    {
+        $this->clan = $clan;
+
+        return $this;
+    }
+
+    /**
+     * Get clan
+     *
+     * @return \COC\COCBundle\Entity\Clan 
+     */
+    public function getClan()
+    {
+        return $this->clan;
     }
 }

@@ -3,3 +3,8 @@ services:
         class: COC\AdminBundle\Twig\AdminExtension
         tags:
             - { name: twig.extension }
+
+    coc_adminbundle.image_type_extension:
+            class: COC\COCBundle\Form\Extension\ImageTypeExtension
+            tags:
+                - { name: form.type_extension, alias: file }

@@ -13,7 +13,7 @@ class ImageBonusType extends AbstractType
     {
         $builder
             ->add('title', null)
-            ->add('file')
+            ->add('file', 'file', array('image_path' => 'webPath'))
             ->add('save', 'submit', array('label' => 'Sauvegarder'));
     }
 

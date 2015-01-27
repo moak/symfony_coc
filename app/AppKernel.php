@@ -25,12 +25,15 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
+            new Liip\ImagineBundle\LiipImagineBundle(),
+
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
             new BCC\CronManagerBundle\BCCCronManagerBundle(),
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new COC\COCBundle\COCBundle(),
             new COC\AdminBundle\AdminBundle(),
+            new coc\VitrineBundle\VitrineBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

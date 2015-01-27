@@ -1,9 +1,9 @@
-coc_homepage:
-    path:     /
+coc:
+    path:     /coc/{id_clan}
     defaults: { _controller: COCBundle:Default:index }
 
 coc_players:
-    path:     /players
+    path:     /coc/{id_clan}/players
     defaults: { _controller: COCBundle:Player:index}
 
 coc_player_show:
@@ -92,6 +92,20 @@ coc_video_add:
 coc_video_edit:
     path:     /video/edit/{id}
     defaults: { _controller: COCBundle:Video:edit }
+
+
+
+coc_clans:
+    path:     /clans
+    defaults: { _controller: COCBundle:Clan:index }
+
+coc_clan_add:
+    path:     /clan/add
+    defaults: { _controller: COCBundle:Clan:add }
+
+coc_clan_edit:
+    path:     /clan/edit/{id}
+    defaults: { _controller: COCBundle:Clan:edit }
 
 
 

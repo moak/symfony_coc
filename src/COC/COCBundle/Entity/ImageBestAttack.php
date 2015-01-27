@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class ImageBestAttack
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="imagesbestattack")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="imageBestAttacks")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
@@ -57,7 +57,7 @@ class ImageBestAttack
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    public $path;
+    private $path;
 
     public function upload()
     {

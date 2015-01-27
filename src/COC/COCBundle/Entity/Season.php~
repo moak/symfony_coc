@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Season
  *
- * @ORM\Table()
+ * @ORM\Table(name="season")
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\SeasonRepository")
  */
 class Season
@@ -42,7 +42,10 @@ class Season
      */
     private $end;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\PlayerHistory", mappedBy="season")
+     **/
+    private $playerHistory ;
 
     /**
      * Get id
@@ -128,4 +131,44 @@ class Season
         return $this->name;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->playerHistory = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add playerHistory
+     *
+     * @param \COC\COCBundle\Entity\PlayerHistory $playerHistory
+     * @return Season
+     */
+    public function addPlayerHistory(\COC\COCBundle\Entity\PlayerHistory $playerHistory)
+    {
+        $this->playerHistory[] = $playerHistory;
+
+        return $this;
+    }
+
+    /**
+     * Remove playerHistory
+     *
+     * @param \COC\COCBundle\Entity\PlayerHistory $playerHistory
+     */
+    public function removePlayerHistory(\COC\COCBundle\Entity\PlayerHistory $playerHistory)
+    {
+        $this->playerHistory->removeElement($playerHistory);
+    }
+
+    /**
+     * Get playerHistory
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlayerHistory()
+    {
+        return $this->playerHistory;
+    }
 }
