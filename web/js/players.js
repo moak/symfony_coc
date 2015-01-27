@@ -4,7 +4,7 @@ $( document ).ready(function(){
 
 	// récupération des row à stocker
 	$( ".expendables" ).each(function( index ) {
-		myArray[$(this).attr('id')] = $(this).html();
+		myArray[$(this).attr('id')] = $(this).find('td').html();
 		alert($(this).html());
 	});
 	$(".expendables").remove();

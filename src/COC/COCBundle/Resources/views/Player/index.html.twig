@@ -82,10 +82,9 @@
 
                     </tr>
                     <tr class="hidden expendables" id="{{ player.name }}">
-                    	<td></td>
                     	<td colspan="5">
                     		<div class="row">
-                    				<h5 class="supercell-font white-on-black exp-title">Défense</h5>
+                    				<span class="supercell-font white-on-black exp-title clearfix">Défense</span>
 										<!-- CAONNONS -->
 										{% if player.canon1 != 0 %}
 										<div class="col-md-3 cannon">
@@ -185,8 +184,8 @@
 										</div>
 										{% endif %}
                     			</div>
-							<div class="row">
-								<h5 class="supercell-font white-on-black">Laboratoire</h5>
+							<div class="row"><br />
+								<span class="supercell-font white-on-black clearfix">Laboratoire</span>
 								<div class="col-md-3">
 									<div class="portrait">
 										<div>{% if player.king != 0 %}{{player.king}}{% endif %}</div>
