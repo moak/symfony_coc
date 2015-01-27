@@ -2,6 +2,7 @@
 
 {% block body %}
 <link rel="stylesheet" href="{{ asset('css/players.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/dataTables_BS3.css') }}" />
 
 <div class="container">
 
@@ -53,16 +54,16 @@
         </div>
 
 
-        <table class="table classement-list">
+        <table class="table classement-list datatable">
             <thead>
                 <tr>
-                	<th></th>
+                	<th  class="no-sort"></th>
                     <th class="supercell-font">Nom</th>
                     <th class="supercell-font">Level</th>
                     <th class="supercell-font">Défence</th>
                     <th class="supercell-font">Attaque</th>
                     <th class="supercell-font">Total</th>
-                    <th class="supercell-font">Mis à jour</th>
+                    <th class="supercell-font no-sort">Mis à jour</th>
 
                 </tr>
             </thead>
@@ -71,7 +72,7 @@
             {% if players|length != 0 %}
                 {% for player in players %}
                     <tr>
-                    	<td><span class="glyphicon glyphicon-plus" aria-hidden="true" data-name="{{ player.name }}"></span></td>
+                    	<td><span class="glyphicon glyphicon-plus-sign expand" data-name="{{ player.name }}"></span></td>
                         <td>{{ player.name }}</td>
                         <td>{{ player.level }}</td>
                         <td>{{ player.totalDefence|round }}</td>
@@ -316,6 +317,8 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('js/dataTables.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/dataTables_BS3.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/players.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/footable.js') }}" type="text/javascript"></script>
 {% endblock %}
