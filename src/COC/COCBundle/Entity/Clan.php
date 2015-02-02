@@ -24,15 +24,11 @@ class Clan
      */
     private $id;
 
-    /**
-     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Player", mappedBy="player")
-     **/
-    private $players ;
 
     /**
      * @ORM\OneToMany(targetEntity="Application\Sonata\UserBundle\Entity\User", mappedBy="user")
      **/
-    private $users ;
+    private $user ;
 
 
     /**
@@ -134,7 +130,7 @@ class Clan
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -157,7 +153,7 @@ class Clan
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -180,7 +176,7 @@ class Clan
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -210,7 +206,7 @@ class Clan
     /**
      * Get path
      *
-     * @return string 
+     * @return string
      */
     public function getPath()
     {
@@ -243,7 +239,7 @@ class Clan
     /**
      * Get players
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPlayers()
     {
@@ -276,10 +272,20 @@ class Clan
     /**
      * Get users
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

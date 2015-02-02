@@ -23,7 +23,6 @@ class ImageBonus
      */
     protected $user;
 
-
     /**
      * @var string
      *
@@ -31,11 +30,11 @@ class ImageBonus
      */
     private $title;
 
+
     /**
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
     private $createdAt;
-
 
     /**
      * @var integer
@@ -48,89 +47,33 @@ class ImageBonus
 
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\OneToOne(targetEntity="COC\COCBundle\Entity\Image", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $path;
-
-    public function upload()
-    {
-        // the file property can be empty if the field is not required
-        if (null === $this->getFile()) {
-            return;
-        }
-
-        // use the original file name here but you should
-        // sanitize it at least to avoid any security issues
-
-        // move takes the target directory and then the
-        // target filename to move to
-        $this->getFile()->move(
-            $this->getUploadRootDir(),
-            $this->getFile()->getClientOriginalName()
-        );
-
-        // set the path property to the filename where you've saved the file
-        $this->path = $this->getFile()->getClientOriginalName();
-
-        // clean up the file property as you won't need it anymore
-        $this->file = null;
-    }
-
-
-    public function getAbsolutePath()
-    {
-        return null === $this->path
-            ? null
-            : $this->getUploadRootDir().'/'.$this->path;
-    }
-
+    private $image;
 
     /**
-     * @Assert\File(maxSize="6000000")
-     */
-    private $file;
-
-    /**
-     * Sets file.
+     * Set image
      *
-     * @param UploadedFile $file
+     * @param \COC\COCBundle\Entity\Image $image
+     * @return ImageBase
      */
-    public function setFile(UploadedFile $file = null)
+    public function setImage(\COC\COCBundle\Entity\Image $image = null)
     {
-        $this->file = $file;
+        $this->image = $image;
+
+        return $this;
     }
 
     /**
-     * Get file.
+     * Get image
      *
-     * @return UploadedFile
+     * @return \COC\COCBundle\Entity\Image
      */
-    public function getFile()
+    public function getImage()
     {
-        return $this->file;
+        return $this->image;
     }
-    public function getWebPath()
-    {
-        return null === $this->path
-            ? null
-            : $this->getUploadDir().'/'.$this->path;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded
-        // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw up
-        // when displaying uploaded doc/image in the view.
-        return 'uploads/documents';
-    }
-
-
 
 
 
@@ -143,53 +86,6 @@ class ImageBonus
     {
         return $this->id;
     }
-
-    /**
-     * Set path
-     *
-     * @param string $path
-     * @return Image
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-
-        return $this;
-    }
-
-    /**
-     * Get path
-     *
-     * @return string 
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     * @return Image
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string 
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-
 
     /**
      * Set user

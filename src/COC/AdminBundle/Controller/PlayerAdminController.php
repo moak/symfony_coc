@@ -4,16 +4,13 @@ namespace COC\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use COC\COCBundle\Entity\Player;
-use COC\COCBundle\Form\Type\PlayerAdminType;
+use COC\COCBundle\Form\Type\SeasonType;
 use COC\COCBundle\Form\Type\PlayerType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class PlayerAdminController extends Controller
 {
-
-
-
     public function listModuleAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -31,20 +28,52 @@ class PlayerAdminController extends Controller
         return $this->render('AdminBundle:PlayerAdmin:listModule.html.twig', array('players' => $players));
     }
 
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $players = $em->getRepository('COCBundle:Player')->findAll();
+        $form = $this->get('form.factory')->create(new SeasonType(), null);
+        // $calculateInfosService = $this->container->get('coc_cocbundle.calculate_player_info') ;
 
-        if ($players)
+        if ($request->isMethod('POST'))
         {
-            foreach($players as $key => $value) {
-                $totals[$key]['attack'] = $this->getTotalAttack($value);
-                $totals[$key]['defence'] = $this->getTotalDefence($value);
+            $seasonActuel = $em->getRepository('COCBundle:Season')->getActualSeason();
+            $data = $request->request->all();
+            $idSeason = $data['season']['season'];
+
+            if(empty($idSeason)){
+                $idSeason = 0 ;
             }
-            return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('players' => $players , 'totals' => $totals));
+            $data = $request->request->all();
+            $idSeason = $data['season']['season'];
+            $season = $em->getRepository('COCBundle:Season')->findOneById($idSeason);
+
+            if($season == $seasonActuel)
+            {
+                echo "season = season actuelle";
+                $players = $em->getRepository('COCBundle:Player')->getAllPlayers();
+            }
+            else
+            {
+                echo "season !!!= season actuelle";
+                // $players = $em->getRepository('COCBundle:PlayerHistory')->findAll();
+                $players = $em->getRepository('COCBundle:PlayerHistory')->findOneBySeason($season);
+            }
+
+            if(!empty($players))
+            {
+                return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('players' => $players , 'form' => $form->createView() ));
+            }
+            else
+            {
+                return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('players' => $players , 'form' => $form->createView() ));
+            }
         }
 
+        $players = $em->getRepository('COCBundle:Player')->getAllPlayers();
+        if ($players)
+        {
+            return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('players' => $players , 'form' => $form->createView() ));
+        }
         return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('players' => $players));
     }
 

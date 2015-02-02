@@ -18,6 +18,7 @@ class WarType extends AbstractType
                 'required'  => false,
             ))
             ->add('opponent' , null)
+            ->add('image', new ImageType(), array('required'  => false,))
             // ->add('utilisateurs', 'entity', array ('class' => 'Utilisateurs\UtilisateursBundle\Entity\Utilisateurs'))
             ->add('save', 'submit', array('label' => 'Sauvegarder'));
     }

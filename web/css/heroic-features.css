@@ -28,6 +28,10 @@ body
 
 }
 
+.btn-normal{
+    font-family:'Supercell-Magic', sans-serif;
+    font-weight: 400;
+}
 
 .navbar-brand
 {

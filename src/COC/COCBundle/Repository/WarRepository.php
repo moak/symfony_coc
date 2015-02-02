@@ -46,10 +46,13 @@ class WarRepository extends EntityRepository
     public function getNumberWars()
     {
         $qb = $this->createQueryBuilder('u')
-            ->select('u');
+            ->select('u')
+            ->where('u.result != 0');
 
         return count($qb->getQuery()->getResult());
     }
+
+
 
 
 }

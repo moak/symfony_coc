@@ -7,28 +7,33 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 
-class ImageBestAttackType extends AbstractType
+
+class ImageType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('gold', 'integer')
-            ->add('elixir', 'integer')
-            ->add('image', new ImageType())
-            ->add('save', 'submit', array('label' => 'Sauvegarder'));
+            ->add('file','file', array('required' => true));
+
     }
-
-
+    /**
+     * @param OptionsResolverInterface $resolver
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'COC\COCBundle\Entity\ImageBestAttack',
+            'data_class' => 'COC\COCBundle\Entity\Image'
         ));
     }
-
-
+    /**
+     * @return string
+     */
     public function getName()
     {
-        return 'imagesBestAttack';
+        return 'image';
     }
 }

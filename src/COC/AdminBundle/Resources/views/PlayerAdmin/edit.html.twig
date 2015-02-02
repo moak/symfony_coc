@@ -6,7 +6,10 @@
 
     <h2>Editer mon joueur</h2>
     <hr>
+
+
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <!-- PANEL 1 -->
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h4 class="panel-title">Général</h4>
@@ -17,28 +20,24 @@
                 {{ form_errors(form) }}
 
                 <div class="form-group">
-
                     {{ form_label(form.hall_town, 'Hotel de ville', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                     {{ form_errors(form.hall_town) }}
-
                     <div class="col-sm-4">
                         {{ form_widget(form.hall_town, {'attr': {'class': 'form-control hall-town-level'}}) }}
                     </div>
                 </div>
-
                 <div class="form-group">
                     {{ form_label(form.level, 'Niveau', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                     {{ form_errors(form.level) }}
-
                     <div class="col-sm-4">
                         {{ form_widget(form.level, {'attr': {'class': 'form-control'}}) }}
                     </div>
                 </div>
 
-
             </div>
         </div>
     </div>
+    <!-- PANEL 2 -->
     <div class="panel panel-success">
     <div class="panel-heading" role="tab" id="headingTwo">
         <h4 class="panel-title">
@@ -148,8 +147,8 @@
             </div>
         </div>
     </div>
-    <hr data-town-hall-level-min="7"/>
     <!-- ARCHER TOUR FIN -->
+    <hr data-town-hall-level-min="7"/>
     <!-- TESLA TOUR -->
     <div class="row" data-town-hall-level-min="7">
         <div class="col-sm-2" data-town-hall-level-min="7">
@@ -181,10 +180,8 @@
             </div>
         </div>
     </div>
-
     <!-- AERIEN TOUR -->
     <hr data-town-hall-level-min="4"/>
-    <!-- ARCHER TOUR FIN -->
     <!-- TESLA TOUR -->
     <div class="row" data-town-hall-level-min="4">
         <div class="col-sm-2" data-town-hall-level-min="4">
@@ -216,11 +213,8 @@
             </div>
         </div>
     </div>
-
-
-
-    <hr data-town-hall-level-min="3"/>
     <!-- TESLA TOUR FIN -->
+    <hr data-town-hall-level-min="3"/>
     <!-- MORTIER TOUR -->
     <div class="row" data-town-hall-level-min="3">
         <div class="col-sm-2" data-town-hall-level-min="3">
@@ -252,8 +246,8 @@
             </div>
         </div>
     </div>
-    <hr data-town-hall-level-min="5"/>
     <!-- MORTIER TOUR FIN -->
+    <hr data-town-hall-level-min="5"/>
     <!-- MAGIC TOUR -->
     <div class="row" data-town-hall-level-min="5">
         <div class="col-sm-2" data-town-hall-level-min="5">
@@ -286,11 +280,8 @@
         </div>
     </div>
     <!-- MAGIC TOUR FIN -->
-
-    <!-- ARC X  -->
     <hr data-town-hall-level-min="9"/>
-    <!-- ARCHER TOUR FIN -->
-    <!-- TESLA TOUR -->
+    <!-- ARC X  -->
     <div class="row" data-town-hall-level-min="9">
         <div class="col-sm-2" data-town-hall-level-min="9">
             <div class="form-group">
@@ -315,12 +306,8 @@
         </div>
     </div>
     <!-- ARC X FIN -->
-
-
-    <!-- INFERNO TOWER  -->
     <hr data-town-hall-level-min="9"/>
-    <!-- ARCHER TOUR FIN -->
-    <!-- TESLA TOUR -->
+    <!-- INFERNO TOWER  -->
     <div class="row" data-town-hall-level-min="10">
         <div class="col-sm-2" data-town-hall-level-min="10">
             <div class="form-group">
@@ -339,11 +326,10 @@
 
     </div>
     <!-- INFERNO TOWER FIN -->
-
-
     </div>
     </div>
     </div>
+    <!-- PANEL 3 -->
     <div class="panel panel-warning">
     <div class="panel-heading" role="tab" id="headingThree">
         <h4 class="panel-title">
@@ -353,218 +339,338 @@
         </h4>
     </div>
     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-    <div class="panel-body">
+        <div class="panel-body">
+            <div class="row" data-town-hall-level-min="1">
+                <!-- ATTACK -->
+                <div class="col-sm-2" data-town-hall-level-min="1">
+                    <div class="form-group">
+                        {{ form_label(form.barbar, 'Barbar', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.barbar) }}
+                        {{ form_widget(form.barbar, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
 
-    <div class="col-sm-12">
-    <!-- ATTACK -->
-    <div class="row" data-town-hall-level-min="1">
-        <div class="col-sm-2" data-town-hall-level-min="1">
-            <div class="form-group">
-                {{ form_label(form.barbar, 'Barbar', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.barbar) }}
-                {{ form_widget(form.barbar, {'attr': {'class': 'form-control'}}) }}
+                <div class="col-sm-2" data-town-hall-level-min="1">
+                    <div class="form-group">
+                        {{ form_label(form.archer, 'Archer', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.archer) }}
+                        {{ form_widget(form.archer, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-2" data-town-hall-level-min="1">
+                    <div class="form-group">
+                        {{ form_label(form.gobelin, 'Gobelin', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.gobelin) }}
+                        {{ form_widget(form.gobelin, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+
+                <div class="col-sm-2" data-town-hall-level-min="2">
+                    <div class="form-group">
+                        {{ form_label(form.geant, 'Géant', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.geant) }}
+                        {{ form_widget(form.geant, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-2" data-town-hall-level-min="2">
+                    <div class="form-group">
+                        {{ form_label(form.wall_breaker, 'Casse-brique', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.wall_breaker) }}
+                        {{ form_widget(form.wall_breaker, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-2" data-town-hall-level-min="2">
+                    <div class="form-group">
+                        {{ form_label(form.ballon, 'Mongolfière', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.ballon) }}
+                        {{ form_widget(form.ballon, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-2" data-town-hall-level-min="3">
+                    <div class="form-group">
+                        {{ form_label(form.wizard, 'Sorcier', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.wizard) }}
+                        {{ form_widget(form.wizard, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+
+                <div class="col-sm-2" data-town-hall-level-min="5">
+                    <div class="form-group">
+                        {{ form_label(form.healer, 'Guérisseuse', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.healer) }}
+                        {{ form_widget(form.healer, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+
+                <div class="col-sm-2" data-town-hall-level-min="7">
+                    <div class="form-group">
+                        {{ form_label(form.dragon, 'Dragon', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.dragon) }}
+                        {{ form_widget(form.dragon, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-2" data-town-hall-level-min="8">
+                    <div class="form-group">
+                        {{ form_label(form.pekka, 'Pekka', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.pekka) }}
+                        {{ form_widget(form.pekka, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-2" data-town-hall-level-min="7">
+                    <div class="form-group">
+                        {{ form_label(form.king, 'Roi', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.king) }}
+                        {{ form_widget(form.king, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-2" data-town-hall-level-min="9">
+                    <div class="form-group">
+                        {{ form_label(form.queen, 'Reine', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.queen) }}
+                        {{ form_widget(form.queen, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+
+                <!-- ATTACK -->
+                <div class="col-sm-2" data-town-hall-level-min="7">
+                    <div class="form-group">
+                        {{ form_label(form.minion, 'Gargouille', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.minion) }}
+                        {{ form_widget(form.minion, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-2" data-town-hall-level-min="7">
+                    <div class="form-group">
+                        {{ form_label(form.rider, 'Chevaucheur', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.rider) }}
+                        {{ form_widget(form.rider, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+
+                <div class="col-sm-2" data-town-hall-level-min="8">
+                    <div class="form-group">
+                        {{ form_label(form.valkyrie, 'Valkyrie', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.valkyrie) }}
+                        {{ form_widget(form.valkyrie, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+
+                <div class="col-sm-2" data-town-hall-level-min="8">
+                    <div class="form-group">
+                        {{ form_label(form.golem, 'Golem', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.golem) }}
+                        {{ form_widget(form.golem, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-2" data-town-hall-level-min="9">
+                    <div class="form-group">
+                        {{ form_label(form.witch, 'Sorciere', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.witch) }}
+                        {{ form_widget(form.witch, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-2" data-town-hall-level-min="10">
+                    <div class="form-group">
+                        {{ form_label(form.lava, 'Molosse de lave', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.lava) }}
+                        {{ form_widget(form.lava, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <!-- ROW END -->
+            </div>
+            <hr data-town-hall-level-min="1"/>
+            <div class="row" data-town-hall-level-min="1">
+                <div class="col-sm-2" data-town-hall-level-min="1">
+                    <div class="form-group">
+                        {{ form_label(form.potion_damage, 'Potion dommage', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.potion_damage) }}
+                        {{ form_widget(form.potion_damage, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-2" data-town-hall-level-min="6">
+                    <div class="form-group">
+                        {{ form_label(form.potion_heal, 'Potion soin', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.potion_heal) }}
+                        {{ form_widget(form.potion_heal, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-2" data-town-hall-level-min="7">
+                    <div class="form-group">
+                        {{ form_label(form.potion_boost, 'Potion rage', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.potion_boost) }}
+                        {{ form_widget(form.potion_boost, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-2" data-town-hall-level-min="9">
+                    <div class="form-group">
+                        {{ form_label(form.potion_green, 'Potion saut', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.potion_green) }}
+                        {{ form_widget(form.potion_green, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="col-sm-2" data-town-hall-level-min="10">
+                    <div class="form-group">
+                        {{ form_label(form.potion_freeze, 'Potion gel', {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.potion_freeze) }}
+                        {{ form_widget(form.potion_freeze, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="col-sm-2" data-town-hall-level-min="1">
-            <div class="form-group">
-                {{ form_label(form.archer, 'Archer', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.archer) }}
-                {{ form_widget(form.archer, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-
-        <div class="col-sm-2" data-town-hall-level-min="1">
-            <div class="form-group">
-                {{ form_label(form.gobelin, 'Gobelin', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.gobelin) }}
-                {{ form_widget(form.gobelin, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-
-
-        <div class="col-sm-2" data-town-hall-level-min="2">
-            <div class="form-group">
-                {{ form_label(form.geant, 'Géant', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.geant) }}
-                {{ form_widget(form.geant, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-
-        <div class="col-sm-2" data-town-hall-level-min="2">
-            <div class="form-group">
-                {{ form_label(form.wall_breaker, 'Casse-brique', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.wall_breaker) }}
-                {{ form_widget(form.wall_breaker, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-
-        <div class="col-sm-2" data-town-hall-level-min="2">
-            <div class="form-group">
-                {{ form_label(form.ballon, 'Mongolfière', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.ballon) }}
-                {{ form_widget(form.ballon, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-
-    </div>
-    <!-- ROW END -->
-
-
-    <!-- ATTACK -->
-    <div class="row" data-town-hall-level-min="3">
-        <div class="col-sm-2" data-town-hall-level-min="3">
-            <div class="form-group">
-                {{ form_label(form.wizard, 'Sorcier', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.wizard) }}
-                {{ form_widget(form.wizard, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-
-
-        <div class="col-sm-2" data-town-hall-level-min="5">
-            <div class="form-group">
-                {{ form_label(form.healer, 'Guérisseuse', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.healer) }}
-                {{ form_widget(form.healer, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-
-
-        <div class="col-sm-2" data-town-hall-level-min="7">
-            <div class="form-group">
-                {{ form_label(form.dragon, 'Dragon', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.dragon) }}
-                {{ form_widget(form.dragon, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-
-        <div class="col-sm-2" data-town-hall-level-min="8">
-            <div class="form-group">
-                {{ form_label(form.pekka, 'Pekka', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.pekka) }}
-                {{ form_widget(form.pekka, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-
-        <div class="col-sm-2" data-town-hall-level-min="7">
-            <div class="form-group">
-                {{ form_label(form.king, 'Roi', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.king) }}
-                {{ form_widget(form.king, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-
-        <div class="col-sm-2" data-town-hall-level-min="9">
-            <div class="form-group">
-                {{ form_label(form.queen, 'Reine', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.queen) }}
-                {{ form_widget(form.queen, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-    </div>
-    <!-- ROW END -->
-
-
-    <!-- ATTACK -->
-    <div class="row" data-town-hall-level-min="7">
-        <div class="col-sm-2" data-town-hall-level-min="7">
-            <div class="form-group">
-                {{ form_label(form.minion, 'Gargouille', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.minion) }}
-                {{ form_widget(form.minion, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-
-        <div class="col-sm-2" data-town-hall-level-min="7">
-            <div class="form-group">
-                {{ form_label(form.rider, 'Chevaucheur', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.rider) }}
-                {{ form_widget(form.rider, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-
-
-        <div class="col-sm-2" data-town-hall-level-min="8">
-            <div class="form-group">
-                {{ form_label(form.valkyrie, 'Valkyrie', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.valkyrie) }}
-                {{ form_widget(form.valkyrie, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-
-
-        <div class="col-sm-2" data-town-hall-level-min="8">
-            <div class="form-group">
-                {{ form_label(form.golem, 'Golem', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.golem) }}
-                {{ form_widget(form.golem, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-
-        <div class="col-sm-2" data-town-hall-level-min="9">
-            <div class="form-group">
-                {{ form_label(form.witch, 'Sorciere', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.witch) }}
-                {{ form_widget(form.witch, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-
-        <div class="col-sm-2" data-town-hall-level-min="10">
-            <div class="form-group">
-                {{ form_label(form.lava, 'Molosse de lave', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.lava) }}
-                {{ form_widget(form.lava, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-    </div>
-    <!-- ROW END -->
-
-
-    <hr data-town-hall-level-min="1"/>
-
-    <div class="row" data-town-hall-level-min="1">
-        <div class="col-sm-2" data-town-hall-level-min="1">
-            <div class="form-group">
-                {{ form_label(form.potion_damage, 'Potion dommage', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.potion_damage) }}
-                {{ form_widget(form.potion_damage, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-        <div class="col-sm-2" data-town-hall-level-min="6">
-            <div class="form-group">
-                {{ form_label(form.potion_heal, 'Potion soin', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.potion_heal) }}
-                {{ form_widget(form.potion_heal, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-        <div class="col-sm-2" data-town-hall-level-min="7">
-            <div class="form-group">
-                {{ form_label(form.potion_boost, 'Potion rage', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.potion_boost) }}
-                {{ form_widget(form.potion_boost, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-        <div class="col-sm-2" data-town-hall-level-min="9">
-            <div class="form-group">
-                {{ form_label(form.potion_green, 'Potion saut', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.potion_green) }}
-                {{ form_widget(form.potion_green, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
-        <div class="col-sm-2" data-town-hall-level-min="10">
-            <div class="form-group">
-                {{ form_label(form.potion_freeze, 'Potion gel', {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.potion_freeze) }}
-                {{ form_widget(form.potion_freeze, {'attr': {'class': 'form-control'}}) }}
-            </div>
-        </div>
+        <!-- ATTACK END -->
     </div>
     </div>
-    <!-- ATTACK END -->
+    <!-- PANEL 3 -->
+    <div class="panel panel-info">
+        <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Ressources
+                </a>
+            </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+            <div class="panel-body">
+                <!-- ATTACK -->
+                <div class="row" data-town-hall-level-min="1">
+                    <div class="col-sm-2" data-town-hall-level-min="1">
+                        <div class="form-group">
+                            {{ form_label(form.gold1, 'Mine Or 1', {'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.gold1) }}
+                            {{ form_widget(form.gold1, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2" data-town-hall-level-min="2">
+                        <div class="form-group">
+                            {{ form_label(form.gold2, 'Mine Or 2', {'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.gold2) }}
+                            {{ form_widget(form.gold2, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2" data-town-hall-level-min="3">
+                        <div class="form-group">
+                            {{ form_label(form.gold3, 'Mine Or 3', {'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.gold3) }}
+                            {{ form_widget(form.gold3, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-2" data-town-hall-level-min="4">
+                        <div class="form-group">
+                            {{ form_label(form.gold4, 'Mine Or 4', {'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.gold4) }}
+                            {{ form_widget(form.gold4, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2" data-town-hall-level-min="5">
+                        <div class="form-group">
+                            {{ form_label(form.gold5, 'Mine Or 5', {'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.gold5) }}
+                            {{ form_widget(form.gold5, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2" data-town-hall-level-min="6">
+                        <div class="form-group">
+                            {{ form_label(form.gold6, 'Mine Or 6', {'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.gold6) }}
+                            {{ form_widget(form.gold6, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-2" data-town-hall-level-min="10">
+                        <div class="form-group">
+                            {{ form_label(form.gold7, 'Mine Or 7', {'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.gold7) }}
+                            {{ form_widget(form.gold7, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <!-- ROW END -->
+                </div>
+                <!-- GOLD FIN-->
+                <hr data-town-hall-level-min="1"/>
+                <!-- ELIXIR -->
+                <div class="row" data-town-hall-level-min="1">
+                    <div class="col-sm-2" data-town-hall-level-min="1">
+                        <div class="form-group">
+                            {{ form_label(form.elixir1, 'Elixir 1', {'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.elixir1) }}
+                            {{ form_widget(form.elixir1, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2" data-town-hall-level-min="2">
+                        <div class="form-group">
+                            {{ form_label(form.elixir2, 'Elixir 2', {'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.elixir2) }}
+                            {{ form_widget(form.elixir2, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2" data-town-hall-level-min="3">
+                        <div class="form-group">
+                            {{ form_label(form.elixir3, 'Elixir 3', {'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.elixir3) }}
+                            {{ form_widget(form.elixir3, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2" data-town-hall-level-min="4">
+                        <div class="form-group">
+                            {{ form_label(form.elixir4, 'Elixir 4', {'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.elixir4) }}
+                            {{ form_widget(form.elixir4, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2" data-town-hall-level-min="5">
+                        <div class="form-group">
+                            {{ form_label(form.elixir5, 'Elixir 5', {'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.elixir5) }}
+                            {{ form_widget(form.elixir5, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2" data-town-hall-level-min="6">
+                        <div class="form-group">
+                            {{ form_label(form.elixir6, 'Elixir 6', {'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.elixir6) }}
+                            {{ form_widget(form.elixir6, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2" data-town-hall-level-min="10">
+                        <div class="form-group">
+                            {{ form_label(form.elixir7, 'Elixir7', {'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.elixir7) }}
+                            {{ form_widget(form.elixir7, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <!-- ELIXIR FIN -->
+            </div>
+        </div>
     </div>
-    </div>
-    </div>
+
     </div>
 
     <div class="form-group">
@@ -582,9 +688,39 @@
 
     </div><!-- end panel warning -->
 
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $('.dataTable').dataTable();
+        });
+    </script>
+    <table class="dataTable">
+        <thead>
+        <tr>
+            <th>A</th>
+            <th>B</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        </tbody>
+    </table>
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/footable.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/player_edit.js') }}" type="text/javascript"></script>
 {% endblock %}

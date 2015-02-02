@@ -12,8 +12,15 @@ class ImageBaseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('hall_town')
-            ->add('file', 'file')
+            ->add('hall_town',  'choice', array('choices' => array(
+                '' => 'Choisir hotel de ville',
+                '5' => '5',
+                '6' => '6',
+                '7' => '7',
+                '8' => '8',
+                '9' => '9',
+            ), ))
+            ->add('image', new ImageType())
             ->add('save', 'submit', array('label' => 'Sauvegarder'));
     }
 

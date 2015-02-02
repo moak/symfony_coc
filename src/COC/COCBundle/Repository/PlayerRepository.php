@@ -39,7 +39,7 @@ class PlayerRepository extends EntityRepository
     public function getAllPlayers()
     {
         $qb = $this->createQueryBuilder('p')
-            ->select('p.level, p.name,
+            ->select('p.id, p.level, p.name,
             p.mortar1, p.mortar2, p.mortar3, p.mortar4,
             p.inferno1, p.inferno2,
             p.tesla1, p.tesla2, p.tesla3, p.tesla4,

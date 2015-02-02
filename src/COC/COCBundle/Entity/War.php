@@ -50,6 +50,37 @@ class War
     private $opponent;
 
     /**
+     * @ORM\OneToOne(targetEntity="COC\COCBundle\Entity\Image", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $image;
+
+    /**
+     * Set image
+     *
+     * @param \COC\COCBundle\Entity\Image $image
+     * @return ImageBase
+     */
+    public function setImage(\COC\COCBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \COC\COCBundle\Entity\Image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+
+    
+    /**
      * Get id
      *
      * @return integer 

@@ -5,12 +5,13 @@
     <!-- Page Content -->
     <div class="container">
 
-        <h3><a href="{{ path('coc_images_base_category', {'id': hall_town }) }}">Hôtel de ville {{ hall_town }}</a>
-
-            <a class="btn pull-right btn-normal btn-success" href="{{ path('coc_images_base_add') }}">Ajouter une base</a>
-        </h3>
+        <h2>Hôtel de ville {{ hall_town }}</h2>
 
         <hr>
+
+        <p><a class="btn btn-normal btn-success" href="{{ path('coc_images_base_add') }}">Ajouter une base</a></p>
+
+        <br>
         <div class="row">
 
             {% if images|length != 0 %}
@@ -18,18 +19,16 @@
                     <div class="col-sm-6 col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Base {{ loop.index }}</h3>
+                                <h3 class="panel-title">Base {{ loop.index }} ({{ image.user.username }})</h3>
                             </div>
                             <div class="panel-body">
-                                <a rel="gallery-1"  href="{{ asset(image.getWebPath) }}" class="swipebox" title="">
-                                    <img  class="img-responsive" src="{{ asset(image.getWebPath) }}" />
+                                <a rel="gallery-1"  href="{{ asset('uploads/' ~ image.image.path) }}" class="swipebox" title="">
+                                    <img  class="img-responsive" src="{{ asset('uploads/' ~ image.image.path) }}" />
                                 </a>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
-            {% else %}
-                Aucune base trouvée.
             {% endif %}
         </div>
 

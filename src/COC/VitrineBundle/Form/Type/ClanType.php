@@ -5,6 +5,8 @@ namespace COC\VitrineBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Application\Sonata\UserBundle\Form\Type\RegistrationFormType ;
+
 
 
 class ClanType extends AbstractType
@@ -12,8 +14,8 @@ class ClanType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', 'text', array('attr' => array('placeholder' => 'Nom de compte',), 'label' => false,))
-            ->add('name', 'text', array('attr' => array('placeholder' => 'Your name',), 'label' => false,))
+            ->add('name', null)
+            ->add('user', new RegistrationFormType())
             ->add('save', 'submit', array('label' => 'Sauvegarder'));
     }
 

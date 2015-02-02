@@ -1,51 +1,49 @@
-{% extends "::base.html.twig" %}
+    {% extends "::base.html.twig" %}
 
-{% block body %}
+    {% block body %}
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Guerres de clan</h1>
+        <!-- Page Content -->
+        <div class="container">
+
+            <h2>Guerres de clan</h2>
+            <hr>
+            <div class="row">
+                <br>
+                {% if wars|length != 0 %}
+                    {% for war in wars %}
+                        <div class="col-sm-6 col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title text-center">{{ war.opponent }}</small></h3>
+                                </div>
+                                <div class="panel-body">
+                                    {% if war.image.path is defined %}
+                                        <a rel="gallery-1"  href="{{ asset('uploads/' ~ war.image.path) }}" class="swipebox" title="">
+                                            <img  class="img-responsive" src="{{ asset('uploads/' ~ war.image.path) }}" />
+                                        </a>
+                                    {%  else %}
+                                        sdf
+                                    {% endif %}
+                                    </a>
+                                </div>
+                                <div class="panel-footer">
+                                    <h3 class="panel-title text-center"> {{ war.result|result }}  <small>({{ war.start|date('U')|timeago }})</small></h3>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h3>Le clan n'a pas encore combattu.</h3>
+                {% endif %}
             </div>
+
         </div>
+        <!-- /.container -->
 
-            {% if wars|length != 0 %}
-            <table class="table">
-                <thead>
-                   <tr>
-                       <th>Guerre de clan</th>
-                       <th>Date</th>
-                       <th>Résultat</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for war in wars %}
-                    <tr>
-                        <td>
-                            {% if war.opponent %}
-                                CsP vs {{ war.opponent }}
-                            {% else %}
-                                En attente
-                            {% endif %}
-                        </td>
-                        <td>{{ war.start|date('d M à H:s') }}</td>
-                        <td>{{ war.result|result }}</td>
-                    </tr>
+    {% endblock %}
 
-                {% endfor %}
-                </tbody>
-            </table>
-            {% else %}
-                <p>0 guerre de clan trouvée</p>
-            {% endif %}
+    {% block javascripts %}
+        <script src="{{ asset('js/footable.js') }}" type="text/javascript"></script>
+    {% endblock %}
 
 
-
-    </div>
-    <!-- /.container -->
-
-{% endblock %}
-
-{% block javascripts %}
-    <script src="{{ asset('js/footable.js') }}" type="text/javascript"></script>
-{% endblock %}

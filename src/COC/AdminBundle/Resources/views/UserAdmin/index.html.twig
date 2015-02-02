@@ -35,7 +35,8 @@
                     <th>Nom de compte</th>
                     <th>Joueur assigné</th>
                     <th>Nom du joueur</th>
-                    <th>Action</th>
+                    <th>Association</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -50,21 +51,20 @@
                             <td>{{ user.player.name }}</td>
                         {% else %}
                             <td>Aucun</td>
-                            <td><a href="{{ path('admin_user_edit', { 'id': user.id }) }}"><button class="btn btn-default btn-success">Assigner joueur</button></a></td>
+                            <td>-</td>
                         {% endif %}
                         <td>
+                            {% if user.player.id is defined %}
+                                <a href="{{ path('admin_user_dissociate', { 'id': user.player.id }) }}"><button class="btn btn-default btn-warning">Dissocier (cliquez 2 fois)</button></a>
+                            {% else %}
+                                <a href="{{ path('admin_user_edit', { 'id': user.id }) }}"><button class="btn btn-default btn-success">Assigner joueur</button></a>
+                            {% endif %}
+                        </td>
 
-
-                        {% if user.player.id is defined %}
-                            <a href="{{ path('admin_user_dissociate', { 'id': user.player.id }) }}"><button class="btn btn-default btn-success">Dissocier (cliquez 2 fois)</button></a>
-                        {% endif %}
-
-
-
-                        {% if is_granted('ROLE_SUPER_ADMIN')%}
-                            <a href="{{ path('admin_user_delete', { 'id': user.id }) }}" class="btn btn-default btn-danger alert">Supprimer</a>
-                        {% endif %}
-
+                        <td>
+                            {% if is_granted('ROLE_SUPER_ADMIN')%}
+                                <a href="{{ path('admin_user_delete', { 'id': user.id }) }}" class="btn btn-default btn-danger alert">Supprimer</a>
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}

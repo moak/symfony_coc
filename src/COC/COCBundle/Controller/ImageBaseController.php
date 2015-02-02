@@ -87,7 +87,6 @@ class ImageBaseController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
-            $image->upload();
             $em->persist($image);
             $em->flush();
             return $this->redirect($this->generateUrl('coc_images_base'));

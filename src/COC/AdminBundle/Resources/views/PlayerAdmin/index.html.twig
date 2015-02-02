@@ -9,13 +9,10 @@
         <!-- /.col-lg-12 -->
     </div>
 
-
-
     <ol class="breadcrumb">
         <li><a href="{{ path('admin') }}"><p class="fa fa-home"></p> Dashboard</a></li>
         <li class="active">Joueurs</li>
     </ol>
-
 
     <!-- Page Content -->
     <div class="container">
@@ -42,9 +39,10 @@
                     <tr>
                         <td>{{ player.name }}</td>
                         <td>{{ player.level }}</td>
-                        <td>{{ totals[loop.index-1]['defence'] }}</td>
-                        <td>{{ totals[loop.index-1]['attack'] }}</td>
-                        <td>{{ totals[loop.index-1]['defence'] + totals[loop.index-1]['attack']}}</td>
+                        <td>{{ player.totalDefence|round}}</td>
+                        <td>{{ player.totalAttack|round}}</td>
+                        <td>{{ player.total|round}}</td>
+
                         <td>{{ player.updatedAt|date('U')|timeago }}</td>
                         <td>
                             <a href="{{ path('admin_player_edit', { 'id': player.id }) }}" class="btn btn-default btn-info">Editer</a>
@@ -65,10 +63,7 @@
             </tbody>
         </table>
         <hr>
-
-
     </div>
-    <!-- /.container -->
 
 {% endblock %}
 

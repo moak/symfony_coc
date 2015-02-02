@@ -14,15 +14,11 @@
             {{ form_errors(form) }}
 
             <div class="form-group">
-                {# Génération du label. #}
-                {{ form_label(form.file, 'Photo', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-
-                {# Affichage des erreurs pour ce champ précis. #}
-                {{ form_errors(form.file) }}
+                {{ form_label(form.image, 'Image', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(form.image) }}
 
                 <div class="col-sm-4">
-                    {# Génération de l'input. #}
-                    {{ form_widget(form.file, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
                 </div>
             </div>
 

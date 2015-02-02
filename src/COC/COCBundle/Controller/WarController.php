@@ -10,7 +10,7 @@ class WarController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $wars = $em->getRepository('COCBundle:War')->findAll();
+        $wars = $em->getRepository('COCBundle:War')->findBy( array('result' => '1', 'result' => '2'));
 
         return $this->render('COCBundle:War:index.html.twig', array('wars' => $wars));
     }
