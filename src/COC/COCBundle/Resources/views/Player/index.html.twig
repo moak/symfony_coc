@@ -58,6 +58,7 @@
             <thead>
                 <tr>
                 	<th  class="no-sort"></th>
+                    <th class="supercell-font">#</th>
                     <th class="supercell-font">Nom</th>
                     <th class="supercell-font">Level</th>
                     <th class="supercell-font">Défence</th>
@@ -71,8 +72,9 @@
             
             {% if players|length != 0 %}
                 {% for player in players %}
-                    <tr>
+                    <tr data-name="{{ player.name }}" class="positionable">
                     	<td><span class="glyphicon glyphicon-plus-sign expand" data-name="{{ player.name }}"></span></td>
+                        <td class="position"></td>
                         <td>{{ player.name }}</td>
                         <td>{{ player.level }}</td>
                         <td>{{ player.totalDefence|round }}</td>
@@ -81,8 +83,8 @@
                         <td>{{ player.updatedAt|date('U')|timeago }}</td>
 
                     </tr>
-                    <tr class="hidden expendables" id="{{ player.name }}">
-                    	<td colspan="5">
+                    <tr class="hidden expendables hidden" id="{{ player.name }}" data-total-points="{{ player.total|round }}">
+                    	<td colspan="6">
                     		<div class="row">
                     				<span class="supercell-font white-on-black exp-title clearfix">Défense</span>
 										<!-- CAONNONS -->
