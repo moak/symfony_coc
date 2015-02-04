@@ -10,7 +10,7 @@
                 {% endif %}
 
         {% else %}
-            <div class="panel-heading">Guerres de clan  <p class="pull-right"><a href="{{ path('coc_wars') }}">Historique <span class="badge">{{ numberWars }}</span></a></p></div>
+            <div class="panel-heading">Guerres de clan  <p class="pull-right"><a href="{{ path('coc_wars', {'id_clan': clan.id}) }}">Historique <span class="badge">{{ numberWars }}</span></a></p></div>
             <div class="panel-body">
                 Prochaine guerre:
                 {% if nextWar|length !=0 %}

@@ -1,4 +1,5 @@
 {% extends "::base_admin.html.twig" %}
+{% set id_clan = clan.id %}
 
  {% block title %}
      <title>Ajouter un joueur</title>
@@ -14,8 +15,8 @@
     </div>
 
     <ol class="breadcrumb">
-        <li><a href="{{ path('admin') }}"><p class="fa fa-home"></p> Dashboard</a></li>
-        <li><a href="{{ path('admin_players') }}">Joueurs</a></li>
+        <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a></li>
+        <li><a href="{{ path('admin_players', { 'id_clan': clan.id }) }}">Joueurs</a></li>
         <li class="active">Ajouter un joueur</li>
     </ol>
 

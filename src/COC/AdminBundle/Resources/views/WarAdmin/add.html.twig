@@ -1,4 +1,5 @@
 {% extends "::base_admin.html.twig" %}
+{% set id_clan = clan.id %}
 
  {% block title %}
      <title>Nouvelle guerre de clan</title>
@@ -15,8 +16,8 @@
 
 
     <ol class="breadcrumb">
-        <li><a href="{{ path('admin') }}"><p class="fa fa-home"></p> Dashboard</a></li>
-        <li><a href="{{ path('admin_wars') }}">Guerres de clan</a></li>
+        <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a></li>
+        <li><a href="{{ path('admin_wars', { 'id_clan': clan.id }) }}">Guerres de clan</a></li>
         <li class="active">Ajouter une guerre</li>
     </ol>
 

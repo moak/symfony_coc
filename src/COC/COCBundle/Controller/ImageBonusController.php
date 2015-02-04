@@ -9,21 +9,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ImageBonusController extends Controller
 {
-    public function indexAction()
+    public function indexAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $list = $em->getRepository('COCBundle:ImageBonus')->findAll();
 
+        $service = $this->container->get('coc_cocbundle.clan_info') ;
+        $clan = $service->getClan($id_clan);
         // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
         // var_dump($season);
 
-        return $this->render('COCBundle:ImageBonus:index.html.twig', array('images' => $list));
+        return $this->render('COCBundle:ImageBonus:index.html.twig', array('clan' =>  $clan,'images' => $list));
     }
 
-    public function showAction($id)
+    public function showAction($id, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $list = $em->getRepository('COCBundle:ImageBonus')->findOneByUser($id);
+
+        $service = $this->container->get('coc_cocbundle.clan_info') ;
+        $clan = $service->getClan($id_clan);
 
         if (!$list)
         {
@@ -32,14 +37,17 @@ class ImageBonusController extends Controller
             );
         }
 
-        return $this->render('COCBundle:ImageBonus:show.html.twig', array('info' => $list));
+        return $this->render('COCBundle:ImageBonus:show.html.twig', array('clan' =>  $clan, 'info' => $list));
     }
 
-    public function editAction ($id, Request $request)
+    public function editAction ($id, Request $request, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         //$userInfo = $em->getRepository('COCBundle:ImageBonus')->findOneByUser($id);
         $image = $em->getRepository('COCBundle:ImageBonus')->find($id);
+
+        $service = $this->container->get('coc_cocbundle.clan_info') ;
+        $clan = $service->getClan($id_clan);
 
         $form = $this->get('form.factory')->create(new ImageBonusType(), $image);
 
@@ -51,18 +59,21 @@ class ImageBonusController extends Controller
             return $this->redirect($this->generateUrl('coc_imagesBonus'));
         }
 
-        return $this->render('COCBundle:ImageBonus:edit.html.twig', array(
+        return $this->render('COCBundle:ImageBonus:edit.html.twig', array('clan' =>  $clan,
                 'form'      =>  $form->createView(),
                 'image'  => $image
         ));
     }
 
 
-    public function addAction (Request $request)
+    public function addAction (Request $request, $id_clan)
     {
         $image = new ImageBonus();
         $em = $this->getDoctrine()->getManager();
         $form = $this->get('form.factory')->create(new ImageBonusType(), $image);
+
+        $service = $this->container->get('coc_cocbundle.clan_info') ;
+        $clan = $service->getClan($id_clan);
 
         if ($form->handleRequest($request)->isValid())
         {
@@ -70,18 +81,19 @@ class ImageBonusController extends Controller
 
             $em->persist($image);
             $em->flush();
-            return $this->redirect($this->generateUrl('coc_imagesBonus'));
+            return $this->redirect($this->generateUrl('coc_imagesBonus', array('id_clan' =>  $clan->getId())));
         }
 
-        return $this->render('COCBundle:ImageBonus:add.html.twig', array(
+        return $this->render('COCBundle:ImageBonus:add.html.twig', array('clan' =>  $clan,
             'form'      =>  $form->createView(),
         ));
     }
 
-    public function deleteAction($id)
+    public function deleteAction($id, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $image = $em->getRepository('COCBundle:ImageBonus')->find($id);
+
 
         if(!$image)
         {

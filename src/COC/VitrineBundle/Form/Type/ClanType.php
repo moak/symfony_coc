@@ -15,7 +15,7 @@ class ClanType extends AbstractType
     {
         $builder
             ->add('name', null)
-            ->add('user', new RegistrationFormType())
+
             ->add('save', 'submit', array('label' => 'Sauvegarder'));
     }
 

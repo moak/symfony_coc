@@ -11,6 +11,26 @@ body
 }
 
 
+.modal-dialog {
+    width: 400px;
+}
+.modal-footer {
+    height: 70px;
+    margin: 0;
+}
+.modal-footer .btn {
+    font-weight: bold;
+}
+.modal-footer .progress {
+    display: none;
+    height: 32px;
+    margin: 0;
+}
+.input-group-addon {
+    color: #fff;
+    background: #3276B1;
+}
+
 
 .intro-header {
     font-family:'Supercell-Magic', sans-serif;

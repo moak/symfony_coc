@@ -1,44 +1,44 @@
 admin:
-    path:     /admin
+    path:     coc/{id_clan}/admin
     defaults: { _controller: AdminBundle:Default:index }
 
 
 
 admin_users:
-    path:     /admin/users
+    path:     coc/{id_clan}/admin/users
     defaults: { _controller: AdminBundle:UserAdmin:index }
 
 admin_user_edit:
-    path:     /admin/user/edit/{id}
+    path:     coc/{id_clan}/admin/user/edit/{id}
     defaults: { _controller: AdminBundle:UserAdmin:edit }
 
 admin_user_delete:
-    path:     /admin/user/delete/{id}
+    path:     coc/{id_clan}/admin/user/delete/{id}
     defaults: { _controller: AdminBundle:UserAdmin:delete }
 
 admin_user_dissociate:
-    path:     /admin/user/dissociate/{id}
+    path:     coc/{id_clan}/admin/user/dissociate/{id}
     defaults: { _controller: AdminBundle:UserAdmin:dissociate }
 
 admin_user_setRole:
-    path:     /admin/user/role/{id}
+    path:     coc/{id_clan}/admin/user/role/{id}
     defaults: { _controller: AdminBundle:UserAdmin:setRole }
 
 
 admin_players:
-    path:     /admin/players
+    path:     coc/{id_clan}/admin/players
     defaults: { _controller: AdminBundle:PlayerAdmin:index }
 
 admin_player_add:
-    path:     /admin/player/add
+    path:     coc/{id_clan}/admin/player/add
     defaults: { _controller: AdminBundle:PlayerAdmin:add }
 
 admin_player_edit:
-    path:     /admin/player/edit/{id}
+    path:     coc/{id_clan}/admin/player/edit/{id}
     defaults: { _controller: AdminBundle:PlayerAdmin:edit }
 
 admin_player_delete:
-    path:     /admin/player/delete/{id}
+    path:     coc/{id_clan}/admin/player/delete/{id}
     defaults: { _controller: AdminBundle:PlayerAdmin:delete }
 
 
@@ -46,39 +46,54 @@ admin_player_delete:
 
 
 admin_bestAttacks:
-    path:     /admin/bestAttacks
+    path:     coc/{id_clan}/admin/bestAttacks
     defaults: { _controller: AdminBundle:BestAttackAdmin:index }
 
 admin_bestAttack_add:
-    path:     /admin/bestAttack/add
+    path:     coc/{id_clan}/admin/bestAttack/add
     defaults: { _controller: AdminBundle:BestAttackAdmin:add }
 
 admin_bestAttack_edit:
-    path:     /admin/bestAttack/edit/{id}
+    path:     coc/{id_clan}/admin/bestAttack/edit/{id}
     defaults: { _controller: AdminBundle:BestAttackAdmin:edit }
 
 admin_bestAttack_delete:
-    path:     /admin/bestAttack/delete/{id}
+    path:     coc/{id_clan}/admin/bestAttack/delete/{id}
     defaults: { _controller: AdminBundle:BestAttackAdmin:delete }
 
 
+admin_bases:
+    path:     coc/{id_clan}/admin/bases
+    defaults: { _controller: AdminBundle:ImageBaseAdmin:index }
+
+admin_base_add:
+    path:     coc/{id_clan}/admin/base/add
+    defaults: { _controller: AdminBundle:ImageBaseAdmin:add }
+
+admin_base_edit:
+    path:     coc/{id_clan}/admin/base/edit/{id}
+    defaults: { _controller: AdminBundle:ImageBaseAdmin:edit }
+
+admin_base_delete:
+    path:     coc/{id_clan}/admin/base/delete/{id}
+    defaults: { _controller: AdminBundle:ImageBaseAdmin:delete }
 
 
 
 admin_wars:
-    path:     /admin/wars
+    path:     coc/{id_clan}/admin/wars
     defaults: { _controller: AdminBundle:WarAdmin:index }
 
 admin_war_add:
-    path:     /admin/war/add
+    path:     coc/{id_clan}/admin/war/add
     defaults: { _controller: AdminBundle:WarAdmin:add }
 
 admin_war_edit:
-    path:     /admin/war/edit/{id}
+    path:     coc/{id_clan}/admin/war/edit/{id}
     defaults: { _controller: AdminBundle:WarAdmin:edit }
 
 admin_war_delete:
-    path:     /admin/war/delete/{id}
+    path:     coc/{id_clan}/admin/war/delete/{id}
     defaults: { _controller: AdminBundle:WarAdmin:delete }
 
 
@@ -86,34 +101,34 @@ admin_war_delete:
 
 
 admin_videos:
-    path:     /admin/videos
+    path:     coc/{id_clan}/admin/videos
     defaults: { _controller: AdminBundle:VideoAdmin:index }
 
 admin_video_add:
-    path:     /admin/video/add
+    path:     coc/{id_clan}/admin/video/add
     defaults: { _controller: AdminBundle:VideoAdmin:add }
 
 admin_video_edit:
-    path:     /admin/video/edit/{id}
+    path:     coc/{id_clan}/admin/video/edit/{id}
     defaults: { _controller: AdminBundle:VideoAdmin:edit }
 
 admin_video_delete:
-    path:     /admin/video/delete/{id}
+    path:     coc/{id_clan}/admin/video/delete/{id}
     defaults: { _controller: AdminBundle:VideoAdmin:delete }
 
 
 admin_imagesBonus:
-    path:     /admin/imagesBonus
+    path:     coc/{id_clan}/admin/imagesBonus
     defaults: { _controller: AdminBundle:ImageBonusAdmin:index }
 
-admin_bestAttack_add:
-    path:     /admin/bestAttack/add
+admin_imageBonus_add:
+    path:     coc/{id_clan}/admin/imageBonus/add
     defaults: { _controller: AdminBundle:ImageBonusAdmin:add }
 
-admin_bestAttack_edit:
-    path:     /admin/bestAttack/edit/{id}
+admin_imageBonus_edit:
+    path:     coc/{id_clan}/admin/imageBonus/edit/{id}
     defaults: { _controller: AdminBundle:ImageBonusAdmin:edit }
 
-admin_bestAttack_delete:
-    path:     /admin/bestAttack/delete/{id}
+admin_imageBonus_delete:
+    path:     coc/{id_clan}/admin/imageBonus/delete/{id}
     defaults: { _controller: AdminBundle:ImageBonusAdmin:delete }

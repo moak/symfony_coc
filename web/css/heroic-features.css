@@ -10,6 +10,11 @@
     src: url("../fonts/supercell.ttf") /* TTF file for CSS3 browsers */
 }
 
+.supercell-font
+{
+    font-family:'Supercell-Magic', sans-serif;
+}
+
 h1,
 h2,
 h3,
@@ -28,6 +33,11 @@ body
 
 }
 
+.navbar-nav
+{
+    font-family: 'Oxygen', sans-serif;
+
+}
 .btn-normal{
     font-family:'Supercell-Magic', sans-serif;
     font-weight: 400;

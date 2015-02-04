@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function indexAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -15,11 +15,12 @@ class DefaultController extends Controller
         $numberVideos = $em->getRepository('COCBundle:Video')->getNumberVideos();
         $numberUsersNonAssigned = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsersNonAssigned();
         $numberImagesBonus = $em->getRepository('COCBundle:ImageBonus')->getNumberImagesBonus();
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
-        return $this->render('AdminBundle:Default:index.html.twig' , array('numberImagesBonus'=> $numberImagesBonus,'numberPlayers'=> $numberPlayers,'numberUsersNonAssigned' => $numberUsersNonAssigned, 'numberBases'=> $numberBases, 'numberVideos' => $numberVideos));
+        return $this->render('AdminBundle:Default:index.html.twig' , array('clan' => $clan, 'numberImagesBonus'=> $numberImagesBonus,'numberPlayers'=> $numberPlayers,'numberUsersNonAssigned' => $numberUsersNonAssigned, 'numberBases'=> $numberBases, 'numberVideos' => $numberVideos));
     }
 
-    public function menuAction()
+    public function menuAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $numberUsers = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsers();
@@ -32,7 +33,8 @@ class DefaultController extends Controller
         $numberWars = $em->getRepository('COCBundle:War')->getNumberWars();
         $numberBestAttacks = $em->getRepository('COCBundle:ImageBestAttack')->getNumberBestAttacks();
         $numberUsersNonAssigned = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsersNonAssigned();
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
-        return $this->render('AdminBundle:Default:menu.html.twig' , array('numberImagesBonus'=> $numberImagesBonus, 'numberPlayers' => $numberPlayers,'numberWars' => $numberWars,'numberUsersNonAssigned' => $numberUsersNonAssigned,'numberVideos' => $numberVideos, 'numberBestAttacks' => $numberBestAttacks, 'numberUsers' => $numberUsers,'numberBases' => $numberBases));
+        return $this->render('AdminBundle:Default:menu.html.twig' , array('clan' => $clan, 'numberImagesBonus'=> $numberImagesBonus, 'numberPlayers' => $numberPlayers,'numberWars' => $numberWars,'numberUsersNonAssigned' => $numberUsersNonAssigned,'numberVideos' => $numberVideos, 'numberBestAttacks' => $numberBestAttacks, 'numberUsers' => $numberUsers,'numberBases' => $numberBases));
     }
 }

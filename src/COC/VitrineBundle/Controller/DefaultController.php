@@ -25,7 +25,6 @@ class DefaultController extends Controller
             $em->flush();
         }
 
-
         return $this->render('VitrineBundle:Default:index.html.twig', array(
             'form'      =>  $form->createView(),
         ));

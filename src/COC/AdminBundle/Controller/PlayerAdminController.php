@@ -5,34 +5,34 @@ namespace COC\AdminBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use COC\COCBundle\Entity\Player;
 use COC\COCBundle\Form\Type\SeasonType;
+use COC\COCBundle\Form\Type\PlayerAdminType;
 use COC\COCBundle\Form\Type\PlayerType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class PlayerAdminController extends Controller
 {
-    public function listModuleAction()
+    public function listModuleAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
-        $players = $em->getRepository('COCBundle:Player')->findAll();
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+
+        $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
 
         if ($players)
         {
-            foreach($players as $key => $value) {
-                $totals[$key]['attack'] = $this->getTotalAttack($value);
-                $totals[$key]['defence'] = $this->getTotalDefence($value);
-            }
-            return $this->render('AdminBundle:PlayerAdmin:listModule.html.twig', array('players' => $players , 'totals' => $totals));
+            return $this->render('AdminBundle:PlayerAdmin:listModule.html.twig', array('clan' => $clan, 'players' => $players));
         }
 
-        return $this->render('AdminBundle:PlayerAdmin:listModule.html.twig', array('players' => $players));
+        return $this->render('AdminBundle:PlayerAdmin:listModule.html.twig', array('clan' => $clan, 'players' => null));
     }
 
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $form = $this->get('form.factory')->create(new SeasonType(), null);
         // $calculateInfosService = $this->container->get('coc_cocbundle.calculate_player_info') ;
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         if ($request->isMethod('POST'))
         {
@@ -61,73 +61,48 @@ class PlayerAdminController extends Controller
 
             if(!empty($players))
             {
-                return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('players' => $players , 'form' => $form->createView() ));
+                return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('clan' => $clan , 'players' => $players , 'form' => $form->createView() ));
             }
             else
             {
-                return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('players' => $players , 'form' => $form->createView() ));
+                return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('clan' => $clan ,'players' => $players , 'form' => $form->createView() ));
             }
         }
 
-        $players = $em->getRepository('COCBundle:Player')->getAllPlayers();
+        $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
         if ($players)
         {
-            return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('players' => $players , 'form' => $form->createView() ));
+            return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('clan' => $clan ,'players' => $players , 'form' => $form->createView() ));
         }
-        return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('players' => $players));
+        return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('clan' => $clan ,'players' => $players));
     }
 
-    private function getTotalAttack($player)
-    {
-        return $player->getArcher() +
-        $player->getBarbar() +
-        $player->getGeant() +
-        $player->getWizard() +
-        $player->getDragon() +
-        $player->getWallBreaker() +
-        $player->getPekka() +
-        $player->getBallon() +
-        $player->getHealer() +
-        $player->getGobelin() +
-        $player->getPotionHeal() +
-        $player->getPotionDamage() +
-        $player->getPotionBoost() +
-        $player->getPotionGreen();
-    }
-
-    private function getTotalDefence($player)
-    {
-        return  $player->getCanon1() +  $player->getCanon2() + $player->getCanon3() +  $player->getCanon4() +
-                $player->getMortar1() +  $player->getMortar2() + $player->getMortar3() +$player->getMortar4() +
-                $player->getTesla1() + $player->getTesla2() + $player->getTesla3() +
-                $player->getTowerMagic1() + $player->getTowerMagic2() + $player->getTowerMagic3() + $player->getTowerMagic4() +
-                $player->getTowerArcher1() + $player->getTowerArcher2() + $player->getTowerArcher3() + $player->getTowerArcher4() +
-                $player->getKing() + $player->getQueen();
-    }
-
-    public function addAction (Request $request)
+    public function addAction (Request $request, $id_clan)
     {
         $player = new Player();
         $em = $this->getDoctrine()->getManager();
         $form = $this->get('form.factory')->create(new PlayerAdminType(), $player);
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         if ($form->handleRequest($request)->isValid())
         {
+            $player->setClan($clan);
             $em->persist($player);
             $em->flush();
-            return $this->redirect($this->generateUrl('admin_players'));
+            return $this->redirect($this->generateUrl('admin_players', array('id_clan' =>  $clan->getId())));
         }
 
-        return $this->render('AdminBundle:PlayerAdmin:add.html.twig', array(
+        return $this->render('AdminBundle:PlayerAdmin:add.html.twig', array('clan' => $clan ,
             'form'      =>  $form->createView(),
         ));
     }
 
 
-    public function editAction ($id, Request $request)
+    public function editAction ($id, Request $request, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $player = $em->getRepository('COCBundle:Player')->find($id);
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         $form = $this->get('form.factory')->create(new PlayerType(), $player );
 
@@ -136,20 +111,21 @@ class PlayerAdminController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($player);
             $em->flush();
-            return $this->redirect($this->generateUrl('admin_players'));
+            return $this->redirect($this->generateUrl('admin_players', array('id_clan' =>  $clan->getId())));
         }
 
-        return $this->render('AdminBundle:PlayerAdmin:edit.html.twig', array(
+        return $this->render('AdminBundle:PlayerAdmin:edit.html.twig', array('clan' => $clan ,
             'form'      =>  $form->createView(),
             'player'  => $player
         ));
     }
 
 
-    public function deleteAction($id)
+    public function deleteAction($id, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $player = $em->getRepository('COCBundle:Player')->find($id);
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         if(!$player)
         {

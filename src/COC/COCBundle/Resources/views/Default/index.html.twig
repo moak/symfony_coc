@@ -1,9 +1,12 @@
 {% extends "::base.html.twig" %}
+{% set id_clan = clan.id %}
+{% set active = "home" %}
 
 {% block body %}
 
     <!-- Page Content -->
     <div class="container">
+
 
         <div class="row">
             <div class="col-sm-8 feature">
@@ -11,22 +14,25 @@
                 <!-- Title -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3>Fonctionalités</h3>
+                        <h3>Clan {{ clan.name }}</h3>
                         <hr>
+                        <div class="well supercell-font">
+                            {{ clan.description }}
+                        </div>
                     </div>
                 </div>
                 <!-- /.row -->
 
                 <!-- Page Features -->
-                <div class="row">
+                <div class="row supercell-font">
 
 
                     <div class="col-sm-4 feature">
                         <div class="panel panel-default">
                             <div class="panel-heading">Bases de guerre de clan</div>
                             <div class="panel-body">
-                                <p><img class="img-responsive" src="{{ ('images/2014-12-11 22.07.05.png') | imagine_filter('my_thumb') }}"></p>
-                                <p><a href="hdv5.php"><button class="btn btn-block btn-info">Plus d'info</button></a></p>
+                                <p><a href="{{ path('coc_images_base', {'id_clan': clan.id }) }}"><img class="img-responsive" src="{{ ('images/2014-12-11 22.07.05.png') | imagine_filter('my_thumb') }}"></a></p>
+                                <p><a href="{{ path('coc_images_base', {'id_clan': clan.id }) }}"><button class="btn btn-block btn-info">Plus d'info</button></a></p>
                             </div>
                         </div>
                     </div><!-- end features -->
@@ -36,8 +42,8 @@
                             <div class="panel-heading">Classement des joueurs</div>
                             <div class="panel-body">
 
-                                <p><a href="{{ path('coc_players', {'id_clan': 5 }) }}"><img class="img-responsive" src="{{ ('images/2015-01-16 13.32.49.png') | imagine_filter('my_thumb') }}"></a></p>
-                                <p><a href="hdv5.php"><button class="btn btn-block btn-danger">Plus d'info</button></a></p>
+                                <p><a href="{{ path('coc_players', {'id_clan': clan.id }) }}"><img class="img-responsive" src="{{ ('images/2015-01-16 13.32.49.png') | imagine_filter('my_thumb') }}"></a></p>
+                                <p><a href="{{ path('coc_players', {'id_clan': clan.id }) }}"><button class="btn btn-block btn-danger">Plus d'info</button></a></p>
                             </div>
                         </div>
                     </div><!-- end features -->
@@ -46,8 +52,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">Meilleures attaques</div>
                             <div class="panel-body">
-                                <p><a href="{{ path('coc_imagesBestAttack') }}"><img class="img-responsive" src="{{ ('images/2014-12-28 02.09.46.png') | imagine_filter('my_thumb') }}"></a></p>
-                                <p><a href="hdv5.php"><button class="btn btn-block btn-success">Plus d'info</button></a></p>
+                                <p><a href="{{ path('coc_imagesBestAttack', {'id_clan': clan.id }) }}"><img class="img-responsive" src="{{ ('images/2014-12-28 02.09.46.png') | imagine_filter('my_thumb') }}"></a></p>
+                                <p><a href="{{ path('coc_imagesBestAttack', {'id_clan': clan.id }) }}"><button class="btn btn-block btn-success">Plus d'info</button></a></p>
                             </div>
                         </div>
                     </div><!-- end features -->
@@ -60,11 +66,11 @@
             </div>
             <div class="col-sm-4 feature">
 
-                
-                {{ render(controller('COCBundle:War:menu')) }}
+
+                {{ render(controller('COCBundle:War:menu', {'id_clan': clan.id })) }}
 
                 {{ render(controller('COCBundle:Player:historyPlayers', { 'number': 6 })) }}
-                {{ render(controller('AdminBundle:VideoAdmin:mainPageModule')) }}
+                {{ render(controller('AdminBundle:VideoAdmin:mainPageModule', {'id_clan': clan.id })) }}
 
 
             </div>

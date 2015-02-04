@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/swipebox.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/footable.core.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-
+    <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 	<script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('js/jquery.swipebox.min.js') }}" type="text/javascript"></script>
@@ -32,7 +32,7 @@
 </head>
 <body>
 
-{{ render(controller('COCBundle:Default:menu')) }}
+{{ render(controller('COCBundle:Default:menu' , {'id_clan' : id_clan , 'active' : active })) }}
 
 <div class="main">
 {% block body %}{% endblock %}

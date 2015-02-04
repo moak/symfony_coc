@@ -2,33 +2,23 @@ coc:
     path:     /coc/{id_clan}
     defaults: { _controller: COCBundle:Default:index }
 
+
 coc_players:
     path:     /coc/{id_clan}/players
     defaults: { _controller: COCBundle:Player:index}
 
-coc_player_show:
-    path:     /player/show/{id}
-    defaults: { _controller: COCBundle:Player:show }
-
 coc_player_edit:
-    path:     /player/edit
+    path:     /coc/{id_clan}/player/edit
     defaults: { _controller: COCBundle:Player:edit }
-
-coc_player_add:
-    path:     /player/add
-    defaults: { _controller: COCBundle:Player:add }
-
-coc_player_delete:
-    path:     /player/delete/{id}
-    defaults: { _controller: COCBundle:Player:delete }
 
 coc_players_history:
     path:     /players/history
     defaults: { _controller: COCBundle:Player:historyPlayers }
 
 
+
 coc_wars:
-    path:     /wars
+    path:     /coc/{id_clan}/wars
     defaults: { _controller: COCBundle:War:index }
 
 
@@ -37,91 +27,82 @@ coc_users:
     path:     /users
     defaults: { _controller: UserBundle:User:index }
 
+
+
+
 coc_imagesBestAttack:
-    path:     /imagesBestAttack
+    path:     /coc/{id_clan}/imagesBestAttack
     defaults: { _controller: COCBundle:ImageBestAttack:index }
 
 coc_imageBestAttack_add:
-    path:     /imagesBestAttack/add
+    path:     /coc/{id_clan}/imagesBestAttack/add
     defaults: { _controller: COCBundle:ImageBestAttack:add }
 
 coc_imageBestAttack_edit:
-    path:     /imagesBestAttack/edit/{id}
+    path:     /coc/{id_clan}/imagesBestAttack/edit/{id}
     defaults: { _controller: COCBundle:ImageBestAttack:edit }
 
 coc_imageBestAttack_delete:
-    path:     /imagesBestAttack/delete/{id}
+    path:     /coc/{id_clan}/imagesBestAttack/delete/{id}
     defaults: { _controller: COCBundle:ImageBestAttack:delete }
 
 
 
+
 coc_images_base:
-    path:     /imagesBase
+    path:     /coc/{id_clan}/imagesBase
     defaults: { _controller: COCBundle:ImageBase:index }
 
 coc_images_base_category:
-    path:     /imagesBase/category/{id}
+    path:     /coc/{id_clan}/imagesBase/category/{id}
     defaults: { _controller: COCBundle:ImageBase:category }
 
 coc_images_base_template:
-    path:     /imagesBase/template/{id}
+    path:     /coc/{id_clan}/imagesBase/template/{id}
     defaults: { _controller: COCBundle:ImageBase:template }
 
-
 coc_images_base_add:
-    path:     /imagesBase/add
+    path:     /coc/{id_clan}/imagesBase/add
     defaults: { _controller: COCBundle:ImageBase:add }
 
 coc_image_base_edit:
-    path:     /imagesBase/edit/{id}
+    path:     /coc/{id_clan}/imagesBase/edit/{id}
     defaults: { _controller: COCBundle:ImageBase:edit }
 
 coc_image_delete:
-    path:     /imagesBase/delete/{id}
+    path:     /coc/{id_clan}/imagesBase/delete/{id}
     defaults: { _controller: COCBundle:ImageBase:delete }
 
 
+
+
 coc_videos:
-    path:     /videos
+    path:     /coc/{id_clan}/videos
     defaults: { _controller: COCBundle:Video:index }
 
 coc_video_add:
-    path:     /video/add
+    path:     /coc/{id_clan}/video/add
     defaults: { _controller: COCBundle:Video:add }
 
 coc_video_edit:
-    path:     /video/edit/{id}
+    path:     /coc/{id_clan}/video/edit/{id}
     defaults: { _controller: COCBundle:Video:edit }
-
-
-
-coc_clans:
-    path:     /clans
-    defaults: { _controller: COCBundle:Clan:index }
-
-coc_clan_add:
-    path:     /clan/add
-    defaults: { _controller: COCBundle:Clan:add }
-
-coc_clan_edit:
-    path:     /clan/edit/{id}
-    defaults: { _controller: COCBundle:Clan:edit }
 
 
 
 
 coc_imagesBonus:
-    path:     /imagesBonus
+    path:     /coc/{id_clan}/imagesBonus
     defaults: { _controller: COCBundle:ImageBonus:index }
 
 coc_imageBonus_add:
-    path:     /imagesBonus/add
+    path:     /coc/{id_clan}/imagesBonus/add
     defaults: { _controller: COCBundle:ImageBonus:add }
 
 coc_imageBonus_edit:
-    path:     /imagesBonus/edit/{id}
+    path:     /coc/{id_clan}/imagesBonus/edit/{id}
     defaults: { _controller: COCBundle:ImageBonus:edit }
 
 coc_imageBonus_delete:
-    path:     /imagesBonus/delete/{id}
+    path:     /coc/{id_clan}/imagesBonus/delete/{id}
     defaults: { _controller: COCBundle:ImageBonus:delete }

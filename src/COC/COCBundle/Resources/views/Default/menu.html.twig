@@ -9,41 +9,40 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="">Clash of clan</a>
+            <a class="navbar-brand supercell-font" href="{{ path('coc', {'id_clan': clan.id }) }}">{{ clan.name }}</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="">Home</a></li>
-                <li><a href="{{ path('coc_players', {'id_clan': 5 }) }}">Classement</a></li>
+                {% if active == "home" %} <li class="active"> {% else %} <li>{% endif %}<a href="{{ path('coc', {'id_clan': clan.id }) }}">Home</a></li>
+                {% if active == "classement" %} <li class="active"> {% else %} <li>{% endif %}<a href="{{ path('coc_players', {'id_clan': clan.id }) }}">Classement</a></li>
 
-
-                <li class="dropdown">
+                {% if active == "base" %} <li class="active dropdown"> {% else %} <li class="dropdown">{% endif %}
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="badge"> {{ numberBases }}</span> Plans de base <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ path('coc_images_base') }}">Toutes les bases</a></li>
+                        <li><a href="{{ path('coc_images_base', {'id_clan': clan.id }) }}">Toutes les bases</a></li>
                         <li class="divider"></li>
-                        <li><a href="{{ path('coc_images_base_category', {'id': 5 }) }}">HDV 5</a></li>
-                        <li><a href="{{ path('coc_images_base_category', {'id': 6 }) }}">HDV 6</a></li>
-                        <li><a href="{{ path('coc_images_base_category', {'id': 7 }) }}">HDV 7</a></li>
-                        <li><a href="{{ path('coc_images_base_category', {'id': 8 }) }}">HDV 8</a></li>
-                        <li><a href="{{ path('coc_images_base_category', {'id': 9 }) }}">HDV 9</a></li>
+                        <li><a href="{{ path('coc_images_base_category', {'id': 5, 'id_clan': clan.id} ) }}">HDV 5</a></li>
+                        <li><a href="{{ path('coc_images_base_category', {'id': 6, 'id_clan': clan.id} ) }}">HDV 6</a></li>
+                        <li><a href="{{ path('coc_images_base_category', {'id': 7, 'id_clan': clan.id} ) }}">HDV 7</a></li>
+                        <li><a href="{{ path('coc_images_base_category', {'id': 8, 'id_clan': clan.id} ) }}">HDV 8</a></li>
+                        <li><a href="{{ path('coc_images_base_category', {'id': 9, 'id_clan': clan.id} ) }}">HDV 9</a></li>
                     </ul>
                 </li>
 
-                <li class="dropdown">
+                {% if active == "media" %} <li class="active dropdown"> {% else %} <li class="dropdown">{% endif %}
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="badge">{{ numberBestAttacks + numberVideos + numberImagesBonus }}</span> Média <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ path('coc_imagesBestAttack') }}"><span class="badge">{{ numberBestAttacks }}</span> Meilleures attaques   </a></li>
-                        <li><a href="{{ path('coc_videos') }}"><span class="badge">{{ numberVideos }}</span> Vidéos </a></li>
-                        <li><a href="{{ path('coc_imagesBonus') }}"><span class="badge">{{ numberImagesBonus }}</span> Bonus </a></li>
+                        <li><a href="{{ path('coc_imagesBestAttack', {'id_clan': clan.id }) }}"><span class="badge">{{ numberBestAttacks }}</span> Meilleures attaques   </a></li>
+                        <li><a href="{{ path('coc_videos', {'id_clan': clan.id }) }}"><span class="badge">{{ numberVideos }}</span> Vidéos </a></li>
+                        <li><a href="{{ path('coc_imagesBonus', {'id_clan': clan.id }) }}"><span class="badge">{{ numberImagesBonus }}</span> Bonus </a></li>
                     </ul>
                 </li>
 
                 {% if is_granted('ROLE_USER') %}
                     {%  if app.user.player.level is defined %}
-                        <li><a href="{{ path('coc_player_edit', {'id': app.user.player.id }) }}"><b>Editer mon joueur</b></a></li>
+                        <li><a href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b>Editer mon joueur</b></a></li>
                     {% endif %}
                 {% endif %}
 
@@ -64,7 +63,7 @@
                         <ul class="dropdown-menu" role="menu">
 
                             {% if is_granted('ROLE_ADMIN') %}
-                                <li><a target="_blank" href="{{ path('admin') }}">Administration</a></li>
+                                <li><a target="_blank" href="{{ path('admin', {'id_clan': clan.id }) }}">Administration</a></li>
                             {% endif %}
                             {% if is_granted('ROLE_USER') %}
                                 <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>

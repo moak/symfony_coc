@@ -2,7 +2,7 @@
 
 
     {% if images|length != 0 %}
-        <h3><a href="{{ path('coc_images_base_category', {'id': hall_town }) }}">Hôtel de ville {{ hall_town }}</a>
+        <h3><a href="{{ path('coc_images_base_category', {'id': hall_town , 'id_clan': clan.id }) }}">Hôtel de ville {{ hall_town }}</a>
 
         </h3>
 

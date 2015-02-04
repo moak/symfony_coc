@@ -1,20 +1,37 @@
 {% extends "::base_admin.html.twig" %}
 {% set id_clan = clan.id %}
 
+ {% block title %}
+     <title>Ajouter un joueur</title>
+ {% endblock %}
+
 {% block body %}
 
-    <div class="container">
-        <h2>Edition image</h2>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Ajouter une base</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
 
+
+    <ol class="breadcrumb">
+        <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a></li>
+        <li><a href="{{ path('admin_bestAttacks', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Bases</a></li>
+        <li class="active">Ajouter une base</li>
+    </ol>
+
+    <div class="container">
         <div class="well">
             {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
             {{ form_errors(form) }}
 
             <div class="form-group">
+                {{ form_label(form.image, 'Image', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(form.image) }}
 
-                <div class="col-sm-3"></div>
                 <div class="col-sm-4">
-                    <img src="{{ asset('uploads/' ~ bestAttack.image.path) }}">
+                    {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
                 </div>
             </div>
 
@@ -29,6 +46,7 @@
             <div class="form-group">
                 {{ form_label(form.elixir, 'Elixir', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                 {{ form_errors(form.elixir) }}
+
                 <div class="col-sm-4">
                     {{ form_widget(form.elixir, {'attr': {'class': 'form-control'}}) }}
                 </div>
@@ -45,9 +63,8 @@
             {{ form_end(form) }}
         </div>
 
+        {# form_start(form, {'action': path('coc_homepage'), 'method': 'GET'}) }} #}
         {{ form(form)}}
     </div>
-
-
-
 {% endblock %}
+

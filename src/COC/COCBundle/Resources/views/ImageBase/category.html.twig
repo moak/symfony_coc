@@ -1,4 +1,6 @@
 {% extends "::base.html.twig" %}
+{% set id_clan = clan.id %}
+{% set active = "base" %}
 
 {% block body %}
 
@@ -9,7 +11,7 @@
 
         <hr>
 
-        <p><a class="btn btn-normal btn-success" href="{{ path('coc_images_base_add') }}">Ajouter une base</a></p>
+        <p><a class="btn btn-normal btn-success" href="{{ path('coc_images_base_add', {'id_clan': clan.id }) }}">Ajouter une base</a></p>
 
         <br>
         <div class="row">

@@ -9,19 +9,21 @@ use COC\COCBundle\Form\Type\WarType;
 
 class WarAdminController extends Controller
 {
-    public function indexAction()
+    public function indexAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $wars = $em->getRepository('COCBundle:War')->findAll();
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
-        return $this->render('AdminBundle:WarAdmin:index.html.twig', array('wars' => $wars));
+        return $this->render('AdminBundle:WarAdmin:index.html.twig', array('wars' => $wars, 'clan'=> $clan));
     }
 
-    public function addAction (Request $request)
+    public function addAction (Request $request, $id_clan)
     {
         $war = new War();
         $em = $this->getDoctrine()->getManager();
         $form = $this->get('form.factory')->create(new WarType(), $war);
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         if ($form->handleRequest($request)->isValid())
         {
@@ -29,19 +31,20 @@ class WarAdminController extends Controller
             $war->setEnd($start->modify('+2 day'));
             $em->persist($war);
             $em->flush();
-            return $this->redirect($this->generateUrl('admin_wars'));
+            return $this->redirect($this->generateUrl('admin_wars', array('id_clan' =>  $clan->getId())));
         }
 
-        return $this->render('AdminBundle:WarAdmin:add.html.twig', array(
+        return $this->render('AdminBundle:WarAdmin:add.html.twig', array( 'clan'=> $clan,
             'form'      =>  $form->createView(),
         ));
     }
 
 
-    public function editAction ($id, Request $request)
+    public function editAction ($id, Request $request, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $war = $em->getRepository('COCBundle:War')->find($id);
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         $form = $this->get('form.factory')->create(new WarType(), $war );
 
@@ -51,20 +54,21 @@ class WarAdminController extends Controller
             $war->setEnd($start->modify('+2 day'));
             $em->persist($war);
             $em->flush();
-            return $this->redirect($this->generateUrl('admin_wars'));
+            return $this->redirect($this->generateUrl('admin_wars', array('id_clan' =>  $clan->getId())));
         }
 
-        return $this->render('AdminBundle:WarAdmin:edit.html.twig', array(
+        return $this->render('AdminBundle:WarAdmin:edit.html.twig', array( 'clan'=> $clan,
             'form'      =>  $form->createView(),
             'player'  => $war
         ));
     }
 
 
-    public function deleteAction($id)
+    public function deleteAction($id, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $war = $em->getRepository('COCBundle:War')->find($id);
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         if(!$war)
         {
@@ -74,7 +78,7 @@ class WarAdminController extends Controller
         $em->remove($war);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('admin_wars'));
+        return $this->redirect($this->generateUrl('admin_wars', array('id_clan' =>  $clan->getId())));
 
     }
 

@@ -9,14 +9,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class VideoController extends Controller
 {
-    public function categoryAction($id)
+    public function categoryAction($id, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $list = $em->getRepository('COCBundle:ImageBase')->findBy(
             array('hall_town' => $id)
 
         );
-        return $this->render('COCBundle:ImageBase:category.html.twig', array('images' => $list , 'hall_town' => $id ));
+        $service = $this->container->get('coc_cocbundle.clan_info') ;
+        $clan = $service->getClan($id_clan);
+        return $this->render('COCBundle:ImageBase:category.html.twig', array('clan' => $clan,'images' => $list , 'hall_town' => $id ));
     }
 
     public function templateAction($id)
@@ -30,10 +32,13 @@ class VideoController extends Controller
     }
 
 
-    public function indexAction()
+    public function indexAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $list = $em->getRepository('COCBundle:Video')->findAll();
+
+        $service = $this->container->get('coc_cocbundle.clan_info') ;
+        $clan = $service->getClan($id_clan);
 
         foreach($list as $key => $value) {
             $list[$key]->setUrl($this->convertYoutube($list[$key]->getUrl()));
@@ -42,11 +47,14 @@ class VideoController extends Controller
         // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
         // var_dump($season);
 
-        return $this->render('COCBundle:Video:index.html.twig', array('videos' => $list));
+        return $this->render('COCBundle:Video:index.html.twig', array('clan' => $clan,'videos' => $list));
     }
 
-    public function editAction ($id, Request $request)
+    public function editAction ($id, Request $request, $id_clan)
     {
+        $service = $this->container->get('coc_cocbundle.clan_info') ;
+        $clan = $service->getClan($id_clan);
+
         $em = $this->getDoctrine()->getManager();
         //$userInfo = $em->getRepository('COCBundle:ImageBase')->findOneByUser($id);
         $video = $em->getRepository('COCBundle:Video')->find($id);
@@ -74,21 +82,24 @@ class VideoController extends Controller
         );
     }
 
-    public function addAction (Request $request)
+    public function addAction (Request $request, $id_clan)
     {
         $video = new Video();
         $em = $this->getDoctrine()->getManager();
         $form = $this->get('form.factory')->create(new VideoType(), $video);
+
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan) ;
+
 
         if ($form->handleRequest($request)->isValid())
         {
             $video->setUser($this->get('security.context')->getToken()->getUser());
             $em->persist($video);
             $em->flush();
-            return $this->redirect($this->generateUrl('coc_videos'));
+            return $this->redirect($this->generateUrl('coc_videos', array('id_clan' =>  $clan->getId())));
         }
 
-        return $this->render('COCBundle:Video:add.html.twig', array(
+        return $this->render('COCBundle:Video:add.html.twig', array('clan' => $clan,
             'form'      =>  $form->createView(),
         ));
     }
@@ -97,6 +108,7 @@ class VideoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $video = $em->getRepository('COCBundle:Video')->find($id);
+
 
         if(!$video)
         {

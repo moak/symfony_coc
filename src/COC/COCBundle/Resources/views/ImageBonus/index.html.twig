@@ -1,4 +1,6 @@
 {% extends "::base.html.twig" %}
+{% set id_clan = clan.id %}
+{% set active = "media" %}
 
 {% block body %}
 
@@ -7,7 +9,7 @@
 
         <h2>Bonus</h2>
         <hr>
-            <a class="btn btn-normal btn-success" href="{{ path('coc_imageBonus_add') }}">Ajouter une image</a>
+            <a class="btn btn-normal btn-success" href="{{ path('coc_imageBonus_add', {'id_clan': clan.id }) }}">Ajouter une image</a>
 
         <div class="row">
             <br>

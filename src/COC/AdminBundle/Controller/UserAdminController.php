@@ -10,19 +10,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class UserAdminController extends Controller
 {
-    public function indexAction()
+    public function indexAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $users = $em->getRepository('ApplicationSonataUserBundle:User')->findAll();
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
-        return $this->render('AdminBundle:UserAdmin:index.html.twig', array('users' => $users));
+        return $this->render('AdminBundle:UserAdmin:index.html.twig', array('clan' => $clan,'users' => $users));
     }
 
-    public function addAction (Request $request)
+    public function addAction (Request $request, $id_clan)
     {
         $war = new War();
         $em = $this->getDoctrine()->getManager();
         $form = $this->get('form.factory')->create(new WarType(), $war);
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         if ($form->handleRequest($request)->isValid())
         {
@@ -30,7 +32,7 @@ class UserAdminController extends Controller
             $war->setEnd($start->modify('+2 day'));
             $em->persist($war);
             $em->flush();
-            return $this->redirect($this->generateUrl('admin_wars'));
+            return $this->redirect($this->generateUrl('admin_wars', array('id_clan' =>  $clan->getId())));
         }
 
         return $this->render('AdminBundle:WarAdmin:add.html.twig', array(
@@ -39,10 +41,11 @@ class UserAdminController extends Controller
     }
 
 
-    public function deleteAction($id)
+    public function deleteAction($id, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('ApplicationSonataUserBundle:User')->find($id);
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         if(!$user)
         {
@@ -52,16 +55,16 @@ class UserAdminController extends Controller
         $em->remove($user);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('admin_users'));
+        return $this->redirect($this->generateUrl('admin_users', array('id_clan' =>  $clan->getId())));
 
     }
 
 
-    public function dissociateAction($id)
+    public function dissociateAction($id, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('ApplicationSonataUserBundle:User')->findOneByPlayer($id);
-
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         if(!$user)
         {
@@ -79,10 +82,11 @@ class UserAdminController extends Controller
         return $this->redirect($this->generateUrl('admin_users'));
     }
 
-    public function setRoleAction($id)
+    public function setRoleAction($id, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('ApplicationSonataUserBundle:User')->find($id);
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         if(!$user)
         {
@@ -100,10 +104,11 @@ class UserAdminController extends Controller
     }
 
 
-    public function editAction ($id, Request $request)
+    public function editAction ($id, Request $request, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('ApplicationSonataUserBundle:User')->find($id);
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         $form = $this->get('form.factory')->create(new UserType() );
         if ($form->handleRequest($request)->isValid())
@@ -118,7 +123,8 @@ class UserAdminController extends Controller
             $player->setUser($user);
             $em->persist($user);
             $em->flush();
-            return $this->redirect($this->generateUrl('admin_users'));
+
+            return $this->redirect($this->generateUrl('admin_users', array('id_clan' =>  $clan->getId())));
         }
         return $this->render('AdminBundle:UserAdmin:edit.html.twig', array(
             'form'      =>  $form->createView(),

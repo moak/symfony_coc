@@ -36,7 +36,7 @@ class PlayerRepository extends EntityRepository
         return $qb->getResult();
     }
 
-    public function getAllPlayers()
+    public function getAllPlayers($id_clan)
     {
         $qb = $this->createQueryBuilder('p')
             ->select('p.id, p.level, p.name,
@@ -131,7 +131,9 @@ class PlayerRepository extends EntityRepository
 
             )
 
-            ->orderBy('total','DESC');
+            ->where('p.clan = :clan')
+
+            ->setParameter('clan', $id_clan);
 
         return $qb->getQuery()->getResult();
     }

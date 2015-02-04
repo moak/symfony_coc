@@ -1,4 +1,6 @@
 {% extends "::base.html.twig" %}
+{% set id_clan = clan.id %}
+{% set active = "base" %}
 
 {% block body %}
 
@@ -11,17 +13,17 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Toutes les bases</h1>
-                    <a class="btn btn-normal btn-success" href="{{ path('coc_images_base_add') }}">Ajouter une base</a>
+                    <a class="btn btn-normal btn-success" href="{{ path('coc_images_base_add', {'id_clan': clan.id }) }}">Ajouter une base</a>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
 
 
-            {{ render(controller('COCBundle:ImageBase:template', { 'id': 5 })) }}
-            {{ render(controller('COCBundle:ImageBase:template', { 'id': 6 })) }}
-            {{ render(controller('COCBundle:ImageBase:template', { 'id': 7 })) }}
-            {{ render(controller('COCBundle:ImageBase:template', { 'id': 8 })) }}
-            {{ render(controller('COCBundle:ImageBase:template', { 'id': 9 })) }}
+            {{ render(controller('COCBundle:ImageBase:template', { 'id': 5 , 'id_clan': clan.id })) }}
+            {{ render(controller('COCBundle:ImageBase:template', { 'id': 6 , 'id_clan': clan.id })) }}
+            {{ render(controller('COCBundle:ImageBase:template', { 'id': 7 , 'id_clan': clan.id })) }}
+            {{ render(controller('COCBundle:ImageBase:template', { 'id': 8 , 'id_clan': clan.id })) }}
+            {{ render(controller('COCBundle:ImageBase:template', { 'id': 9 , 'id_clan': clan.id })) }}
 
         </div>
 

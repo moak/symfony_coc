@@ -13,14 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Player
 {
-
+    
     /**
      * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="players")
-     * @ORM\JoinColumn(name="clan_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $clan;
-
-
 
 
     /**

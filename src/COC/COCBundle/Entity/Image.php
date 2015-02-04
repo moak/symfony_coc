@@ -40,7 +40,7 @@ class Image
     /**
      * @ORM\Column(type="string",length=255, nullable=true)
      */
-    public $path;
+    private $path;
     public $file;
 
     public function getUploadRootDir()

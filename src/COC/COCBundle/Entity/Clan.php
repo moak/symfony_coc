@@ -26,9 +26,10 @@ class Clan
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Application\Sonata\UserBundle\Entity\User", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Player", mappedBy="player")
      **/
-    private $user ;
+    private $players ;
+
 
 
     /**
@@ -40,91 +41,6 @@ class Clan
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $description;
-
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $path;
-
-    public function upload()
-    {
-        // the file property can be empty if the field is not required
-        if (null === $this->getFile()) {
-            return;
-        }
-
-        // use the original file name here but you should
-        // sanitize it at least to avoid any security issues
-
-        // move takes the target directory and then the
-        // target filename to move to
-        $this->getFile()->move(
-            $this->getUploadRootDir(),
-            $this->getFile()->getClientOriginalName()
-        );
-
-        // set the path property to the filename where you've saved the file
-        $this->path = $this->getFile()->getClientOriginalName();
-
-        // clean up the file property as you won't need it anymore
-        $this->file = null;
-    }
-
-
-    public function getAbsolutePath()
-    {
-        return null === $this->path
-            ? null
-            : $this->getUploadRootDir().'/'.$this->path;
-    }
-
-
-    /**
-     * @Assert\File(maxSize="6000000")
-     */
-    private $file;
-
-    /**
-     * Sets file.
-     *
-     * @param UploadedFile $file
-     */
-    public function setFile(UploadedFile $file = null)
-    {
-        $this->file = $file;
-    }
-
-    /**
-     * Get file.
-     *
-     * @return UploadedFile
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
-    public function getWebPath()
-    {
-        return null === $this->path
-            ? null
-            : $this->getUploadDir().'/'.$this->path;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded
-        // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw up
-        // when displaying uploaded doc/image in the view.
-        return 'uploads/documents';
-    }
-
 
 
     /**
@@ -190,28 +106,6 @@ class Clan
         $this->players = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Set path
-     *
-     * @param string $path
-     * @return Clan
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-
-        return $this;
-    }
-
-    /**
-     * Get path
-     *
-     * @return string
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
 
     /**
      * Add players
@@ -246,46 +140,16 @@ class Clan
         return $this->players;
     }
 
-    /**
-     * Add users
-     *
-     * @param \Application\Sonata\UserBundle\Entity\User $users
-     * @return Clan
-     */
-    public function addUser(\Application\Sonata\UserBundle\Entity\User $users)
-    {
-        $this->users[] = $users;
 
-        return $this;
-    }
+  
 
     /**
-     * Remove users
+     * Get player
      *
-     * @param \Application\Sonata\UserBundle\Entity\User $users
+     * @return \Doctrine\Common\Collections\Collection 
      */
-    public function removeUser(\Application\Sonata\UserBundle\Entity\User $users)
+    public function getPlayer()
     {
-        $this->users->removeElement($users);
-    }
-
-    /**
-     * Get users
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUsers()
-    {
-        return $this->users;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUser()
-    {
-        return $this->user;
+        return $this->player;
     }
 }

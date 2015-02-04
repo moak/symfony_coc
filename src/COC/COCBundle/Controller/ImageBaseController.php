@@ -9,42 +9,56 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ImageBaseController extends Controller
 {
-    public function categoryAction($id)
+    public function categoryAction($id, $id_clan)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $service = $this->container->get('coc_cocbundle.clan_info') ;
+        $clan = $service->getClan($id_clan);
+
+        $list = $em->getRepository('COCBundle:ImageBase')->findBy(
+            array('hall_town' => $id)
+        );
+
+        return $this->render('COCBundle:ImageBase:category.html.twig', array('clan' =>  $clan,'images' => $list , 'hall_town' => $id ));
+    }
+
+    public function templateAction($id, $id_clan)
+    {
+        $service = $this->container->get('coc_cocbundle.clan_info') ;
+        $clan = $service->getClan($id_clan);
+
         $em = $this->getDoctrine()->getManager();
         $list = $em->getRepository('COCBundle:ImageBase')->findBy(
             array('hall_town' => $id)
 
         );
-        return $this->render('COCBundle:ImageBase:category.html.twig', array('images' => $list , 'hall_town' => $id ));
-    }
-
-    public function templateAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository('COCBundle:ImageBase')->findBy(
-            array('hall_town' => $id)
-
-        );
-        return $this->render('COCBundle:ImageBase:template.html.twig', array('images' => $list , 'hall_town' => $id ));
+        return $this->render('COCBundle:ImageBase:template.html.twig', array('clan' =>  $clan,'images' => $list , 'hall_town' => $id ));
     }
 
 
-    public function indexAction()
+    public function indexAction($id_clan)
     {
+        $service = $this->container->get('coc_cocbundle.clan_info') ;
+        $clan = $service->getClan($id_clan);
+
+
         $em = $this->getDoctrine()->getManager();
         $list = $em->getRepository('COCBundle:ImageBase')->findAll();
 
         // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
         // var_dump($season);
 
-        return $this->render('COCBundle:ImageBase:index.html.twig', array('images' => $list));
+        return $this->render('COCBundle:ImageBase:index.html.twig', array('clan' =>  $clan, 'images' => $list));
     }
 
-    public function showAction($id)
+    public function showAction($id, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $list = $em->getRepository('COCBundle:ImageBase')->findOneByUser($id);
+
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan) ;
+
 
         if (!$list)
         {
@@ -53,23 +67,24 @@ class ImageBaseController extends Controller
             );
         }
 
-        return $this->render('COCBundle:ImageBase:show.html.twig', array('info' => $list));
+        return $this->render('COCBundle:ImageBase:show.html.twig', array('clan' =>  $clan,'info' => $list));
     }
 
-    public function editAction ($id, Request $request)
+    public function editAction ($id, Request $request, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         //$userInfo = $em->getRepository('COCBundle:ImageBase')->findOneByUser($id);
         $image = $em->getRepository('COCBundle:ImageBase')->find($id);
 
         $form = $this->get('form.factory')->create(new ImageType(), $image);
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan) ;
 
         if ($form->handleRequest($request)->isValid())
         {
             $em = $this->getDoctrine()->getManager();
             $em->persist($image);
             $em->flush();
-            return $this->redirect($this->generateUrl('coc_images_base'));
+            return $this->redirect($this->generateUrl('coc_images_base', array('id_clan' =>  $clan->getId())));
         }
 
         return $this->render('COCBundle:ImageBase:edit.html.twig', array(
@@ -79,25 +94,28 @@ class ImageBaseController extends Controller
     }
 
 
-    public function addAction (Request $request)
+    public function addAction (Request $request, $id_clan)
     {
         $image = new ImageBase();
         $em = $this->getDoctrine()->getManager();
         $form = $this->get('form.factory')->create(new ImageBaseType(), $image);
 
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan) ;
+
         if ($form->handleRequest($request)->isValid())
         {
+            $image->setUser($this->get('security.context')->getToken()->getUser());
             $em->persist($image);
             $em->flush();
-            return $this->redirect($this->generateUrl('coc_images_base'));
+            return $this->redirect($this->generateUrl('coc_images_base', array('id_clan' =>  $clan->getId())));
         }
 
-        return $this->render('COCBundle:ImageBase:add.html.twig', array(
+        return $this->render('COCBundle:ImageBase:add.html.twig', array('clan' =>  $clan,
             'form'      =>  $form->createView(),
         ));
     }
 
-    public function deleteAction($id)
+    public function deleteAction($id, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $image = $em->getRepository('COCBundle:ImageBase')->find($id);

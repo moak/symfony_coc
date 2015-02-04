@@ -11,3 +11,6 @@ services:
         class: COC\COCBundle\Services\CalculatePlayerInfosService
         arguments: [@doctrine.orm.entity_manager]
 
+    coc_cocbundle.clan_info:
+            class: COC\COCBundle\Services\ClanService
+            arguments: [@doctrine.orm.entity_manager]

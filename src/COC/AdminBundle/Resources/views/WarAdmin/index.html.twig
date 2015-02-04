@@ -1,4 +1,5 @@
 {% extends "::base_admin.html.twig" %}
+{% set id_clan = clan.id %}
 
 {% block body %}
 
@@ -11,12 +12,12 @@
 
 
     <ol class="breadcrumb">
-        <li><a href="{{ path('admin') }}"><p class="fa fa-home"></p> Dashboard</a></li>
+        <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a></li>
         <li class="active">Guerres de clan</li>
     </ol>
     <!-- Page Content -->
     <div class="container">
-        <a href="{{ path('admin_war_add')}}"><button class="btn btn-default btn-success">Nouvelle guerre</button></a>
+        <a href="{{ path('admin_war_add', { 'id_clan': clan.id })}}"><button class="btn btn-default btn-success">Nouvelle guerre</button></a>
         <hr>
         {# form_start(form, {'action': path('coc_homepage'), 'method': 'GET'}) }} #}
 
@@ -50,8 +51,8 @@
                         </td>
 
                         <td>
-                            <a href="{{ path('admin_war_edit', { 'id': war.id }) }}" class="btn btn-default btn-info">Editer</a>
-                            <a href="{{ path('admin_war_delete', { 'id': war.id }) }}" class="btn btn-default btn-danger">Supprimer</a>
+                            <a href="{{ path('admin_war_edit', { 'id': war.id, 'id_clan' : clan.id }) }}" class="btn btn-default btn-info">Editer</a>
+                            <a href="{{ path('admin_war_delete', { 'id': war.id, 'id_clan' : clan.id }) }}" class="btn btn-default btn-danger">Supprimer</a>
                         </td>
 
                     </tr>

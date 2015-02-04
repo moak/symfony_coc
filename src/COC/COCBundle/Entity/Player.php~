@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Player
 {
-
+    
     /**
      * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="players")
      * @ORM\JoinColumn(name="clan_id", referencedColumnName="id", nullable=true)
@@ -2670,4 +2670,31 @@ class Player
     {
         return $this->elixir7;
     }
+
+    /**
+     * Set clan
+     *
+     * @param \COC\COCBundle\Entity\Clan $clan
+     * @return Player
+     */
+    public function setClan(\COC\COCBundle\Entity\Clan $clan = null)
+    {
+        $this->clan = $clan;
+
+        return $this;
+    }
+
+    /**
+     * Get clan
+     *
+     * @return \COC\COCBundle\Entity\Clan 
+     */
+    public function getClan()
+    {
+        return $this->clan;
+    }
+
+
+
+
 }

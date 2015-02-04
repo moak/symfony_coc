@@ -1,42 +1,19 @@
 <?php
-
 namespace COC\COCBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\Constraints as Assert;
-
+use Symfony\Component\validator\Constraints as Assert;
 /**
- * Image
+ * Media
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\ImageRepository")
+ * @ORM\Table("image")
+ * @ORM\Entity(repositoryClass="CP\CPBundle\Repository\ImageRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Image
 {
-    /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="images")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     */
-    protected $user;
-    
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="gold", type="integer")
-     */
-    private $gold;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="elixir", type="integer")
-     */
-    private $elexir;
-
-
+    private $temp;
     /**
      * @var integer
      *
@@ -45,63 +22,55 @@ class Image
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\COlumn(name="updated_at",type="datetime", nullable=false)
+     */
+    private $updateAt;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\PostLoad()
      */
-    public $name;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    public $path;
-
-    public function upload()
+    public function postLoad()
     {
-        // the file property can be empty if the field is not required
-        if (null === $this->getFile()) {
-            return;
-        }
-
-        // use the original file name here but you should
-        // sanitize it at least to avoid any security issues
-
-        // move takes the target directory and then the
-        // target filename to move to
-        $this->getFile()->move(
-            $this->getUploadRootDir(),
-            $this->getFile()->getClientOriginalName()
-        );
-
-        // set the path property to the filename where you've saved the file
-        $this->path = $this->getFile()->getClientOriginalName();
-
-        // clean up the file property as you won't need it anymore
-        $this->file = null;
+        $this->updateAt = new \DateTime();
     }
 
+    /**
+     * @ORM\Column(type="string",length=255, nullable=true)
+     */
+    private $path;
+    public $file;
+
+    public function getUploadRootDir()
+    {
+        return __dir__ . '/../../../../web/uploads';
+    }
 
     public function getAbsolutePath()
     {
-        return null === $this->path
-            ? null
-            : $this->getUploadRootDir().'/'.$this->path;
+        return null === $this->path ? null : $this->getUploadRootDir() . '/' . $this->path;
     }
 
-
-    /**
-     * @Assert\File(maxSize="6000000")
-     */
-    private $file;
-
-    /**
-     * Sets file.
-     *
-     * @param UploadedFile $file
-     */
-    public function setFile(UploadedFile $file = null)
+    public function getAssetPath()
     {
-        $this->file = $file;
+        return 'uploads/' . $this->path;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getPath()
+    {
+        return $this->path;
     }
 
     /**
@@ -113,156 +82,112 @@ class Image
     {
         return $this->file;
     }
-    public function getWebPath()
-    {
-        return null === $this->path
-            ? null
-            : $this->getUploadDir().'/'.$this->path;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded
-        // documents should be saved
-        return __DIR__.'/../../../../web/'.$this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw up
-        // when displaying uploaded doc/image in the view.
-        return 'uploads/documents';
-    }
-
-
-
-
 
     /**
-     * Get id
+     * Sets file.
      *
-     * @return integer 
+     * @param UploadedFile $file
      */
-    public function getId()
+    public function setFile(UploadedFile $file = null)
     {
-        return $this->id;
+        $this->file = $file;
+        // check if we have an old image path
+        if (isset($this->path)) {
+            // store the old name to delete after the update
+            $this->temp = $this->path;
+            $this->path = null;
+        } else {
+            $this->path = 'initial';
+        }
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        $this->updateAt = new \DateTime();
+
+        if (null !== $this->getFile()) {
+            // do whatever you want to generate a unique name
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this->path = $filename.'.'.$this->getFile()->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        $this->getFile()->move($this->getUploadRootDir(), $this->path);
+
+        // check if we have an old image
+        if (isset($this->temp)) {
+            // delete the old image
+            unlink($this->getUploadRootDir().'/'.$this->temp);
+            // clear the temp image path
+            $this->temp = null;
+        }
+        $this->file = null;
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        $file = $this->getAbsolutePath();
+        if (file_exists($file) &&  is_writable($file))
+        {
+            unlink ( $file );
+        }
+
+
+    }
+
+    /**
+     * Set updateAt
+     *
+     * @param \DateTime $updateAt
+     * @return Media
+     */
+    public function setUpdateAt($updateAt)
+    {
+        $this->updateAt = $updateAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updateAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
     }
 
     /**
      * Set path
      *
      * @param string $path
-     * @return Image
+     * @return Media
      */
     public function setPath($path)
     {
         $this->path = $path;
 
         return $this;
-    }
-
-    /**
-     * Get path
-     *
-     * @return string 
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    /**
-     * Set alt
-     *
-     * @param string $alt
-     * @return Image
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * Get alt
-     *
-     * @return string 
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \User\UserBundle\Entity\User $user
-     * @return Image
-     */
-    public function setUser(\User\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \User\UserBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set categoryImage
-     *
-     * @param \COC\COCBundle\Entity\CategoryImage $categoryImage
-     * @return Image
-     */
-    public function setCategoryImage(\COC\COCBundle\Entity\CategoryImage $categoryImage = null)
-    {
-        $this->categoryImage = $categoryImage;
-
-        return $this;
-    }
-
-    /**
-     * Get categoryImage
-     *
-     * @return \COC\COCBundle\Entity\CategoryImage 
-     */
-    public function getCategoryImage()
-    {
-        return $this->categoryImage;
-    }
-
-
-
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Image
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 }

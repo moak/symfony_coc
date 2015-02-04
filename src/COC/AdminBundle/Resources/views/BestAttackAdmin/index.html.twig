@@ -1,4 +1,5 @@
 {% extends "::base_admin.html.twig" %}
+{% set id_clan = clan.id %}
 
 {% block body %}
 
@@ -11,7 +12,7 @@
 
 
     <ol class="breadcrumb">
-        <li><a href="{{ path('admin') }}"><p class="fa fa-home"></p> Dashboard</a></li>
+        <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a></li>
         <li class="active">Meilleures attaques</li>
     </ol>
 
@@ -33,8 +34,8 @@
                                 </a>
                             </div>
                             <div class="panel-footer">
-                                    <a class="btn btn-danger alert pull-right" href="{{ path('admin_bestAttack_delete' , {'id': image.id }) }}">Supprimer</a>
-                                    <a class="btn btn-info " href="{{ path('admin_bestAttack_edit' , {'id': image.id }) }}">Editer</a>
+                                    <a class="btn btn-danger alert pull-right" href="{{ path('admin_bestAttack_delete' , {'id': image.id , 'id_clan': clan.id}) }}">Supprimer</a>
+                                    <a class="btn btn-info " href="{{ path('admin_bestAttack_edit' , {'id': image.id , 'id_clan': clan.id }) }}">Editer</a>
                             </div>
                         </div>
                     </div>
