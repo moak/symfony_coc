@@ -6,33 +6,26 @@ $( document ).ready(function(){
 	// récupération des row à stocker
 	$( ".expendables" ).each(function( index ) {
 		myArray[index] = {
+            name : $(this).attr('id'),
             html : $(this).find('td').html(),
             score : $(this).data('total-points'),
             position : ""
         }
-        myArrayTwo[$(this).attr('id')] = index;
 	});
 
     $(".expendables").remove();
 
-    myArray.sort(function(a,b){
-        if(a.score > b.score)
-            return -1;
-        if(a.score < b.score)
-            return 1;
-        return 0;
+    var i = 1;
+
+    myArray.sort(function(a,b) { return parseFloat(b.score) - parseFloat(a.score) } ).forEach(function(entry) {
+        entry.position = i++;
+        myArrayTwo[entry.name] = myArray.indexOf(entry);
     });
 
-    var i = 1;
-    myArray.forEach(function(entry) {
-        entry.position = i++;
-        console.log(entry);
-    });
 
     // affectation de la position
     $("tr.positionable").each(function(){
         $(this).find(".position").html(myArray[myArrayTwo[$(this).data('name')]]["position"]);
-
     });
 
 	// génération du DataTable
