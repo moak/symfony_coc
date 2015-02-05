@@ -22,6 +22,12 @@ class War
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="wars")
+     * @ORM\JoinColumn(name="clan_id", referencedColumnName="id")
+     */
+    private $clan;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="start", type="datetime")

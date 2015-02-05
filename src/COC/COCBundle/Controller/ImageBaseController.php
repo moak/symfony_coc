@@ -30,7 +30,7 @@ class ImageBaseController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $list = $em->getRepository('COCBundle:ImageBase')->findBy(
-            array('hall_town' => $id)
+            array('hall_town' => $id, 'clan' => $clan)
 
         );
         return $this->render('COCBundle:ImageBase:template.html.twig', array('clan' =>  $clan,'images' => $list , 'hall_town' => $id ));
@@ -44,7 +44,7 @@ class ImageBaseController extends Controller
 
 
         $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository('COCBundle:ImageBase')->findAll();
+        $list = $em->getRepository('COCBundle:ImageBase')->findBy( array('clan' => $id_clan));
 
         // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
         // var_dump($season);
@@ -104,7 +104,10 @@ class ImageBaseController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
-            $image->setUser($this->get('security.context')->getToken()->getUser());
+            $user = $this->get('security.context')->getToken()->getUser();
+            $image->setUser($user);
+            $image->setClan($user->getClan());
+
             $em->persist($image);
             $em->flush();
             return $this->redirect($this->generateUrl('coc_images_base', array('id_clan' =>  $clan->getId())));

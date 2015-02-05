@@ -14,6 +14,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Video
 {
     /**
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="imagebases")
+     * @ORM\JoinColumn(name="clan_id", referencedColumnName="id")
+     */
+    private $clan;
+
+    
+    /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="videos")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
      */
@@ -215,4 +222,27 @@ class Video
     }
 
 
+
+    /**
+     * Set clan
+     *
+     * @param \COC\COCBundle\Entity\Clan $clan
+     * @return Video
+     */
+    public function setClan(\COC\COCBundle\Entity\Clan $clan = null)
+    {
+        $this->clan = $clan;
+
+        return $this;
+    }
+
+    /**
+     * Get clan
+     *
+     * @return \COC\COCBundle\Entity\Clan 
+     */
+    public function getClan()
+    {
+        return $this->clan;
+    }
 }

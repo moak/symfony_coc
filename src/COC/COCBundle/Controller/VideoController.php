@@ -35,7 +35,7 @@ class VideoController extends Controller
     public function indexAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository('COCBundle:Video')->findAll();
+        $list = $em->getRepository('COCBundle:Video')->findBy( array('clan' => $id_clan));
 
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
@@ -43,6 +43,7 @@ class VideoController extends Controller
         foreach($list as $key => $value) {
             $list[$key]->setUrl($this->convertYoutube($list[$key]->getUrl()));
         }
+
 
         // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
         // var_dump($season);

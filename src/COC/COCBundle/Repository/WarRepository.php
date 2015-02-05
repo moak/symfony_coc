@@ -43,11 +43,12 @@ class WarRepository extends EntityRepository
         return $qb->getQuery()->getResult();
 
     }
-    public function getNumberWars()
+    public function getNumberEntities($clan)
     {
         $qb = $this->createQueryBuilder('u')
+            ->where('u.clan = :clan')
             ->select('u')
-            ->where('u.result != 0');
+            ->setParameter('clan', $clan);
 
         return count($qb->getQuery()->getResult());
     }

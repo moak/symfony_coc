@@ -24,6 +24,12 @@ class User extends BaseUser
     private $player;
 
     /**
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="players")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $clan;
+    
+    /**
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Video", mappedBy="user")
      **/
     private $videos ;
@@ -33,6 +39,7 @@ class User extends BaseUser
      **/
     private $imagebases ;
 
+    
     /**
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBonus", mappedBy="user")
      **/
@@ -239,6 +246,30 @@ class User extends BaseUser
 
 
 
+
+
+    /**
+     * Set clan
+     *
+     * @param \COC\COCBundle\Entity\Clan $clan
+     * @return User
+     */
+    public function setClan(\COC\COCBundle\Entity\Clan $clan = null)
+    {
+        $this->clan = $clan;
+
+        return $this;
+    }
+
+    /**
+     * Get clan
+     *
+     * @return \COC\COCBundle\Entity\Clan 
+     */
+    public function getClan()
+    {
+        return $this->clan;
+    }
 
 
 }

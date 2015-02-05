@@ -22,6 +22,12 @@ class War
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="wars")
+     * @ORM\JoinColumn(name="clan_id", referencedColumnName="id")
+     */
+    private $clan;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="start", type="datetime")
@@ -210,5 +216,28 @@ class War
     public function getOpponent()
     {
         return $this->opponent;
+    }
+
+    /**
+     * Set clan
+     *
+     * @param \COC\COCBundle\Entity\Clan $clan
+     * @return War
+     */
+    public function setClan(\COC\COCBundle\Entity\Clan $clan = null)
+    {
+        $this->clan = $clan;
+
+        return $this;
+    }
+
+    /**
+     * Get clan
+     *
+     * @return \COC\COCBundle\Entity\Clan 
+     */
+    public function getClan()
+    {
+        return $this->clan;
     }
 }

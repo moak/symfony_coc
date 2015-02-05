@@ -12,21 +12,25 @@ use Doctrine\ORM\EntityRepository;
  */
 class ImageBestAttackRepository extends EntityRepository
 {
-    public function getBestAttacks()
+    public function getBestAttacks($clan)
     {
         $qb = $this->createQueryBuilder('u')
             ->select('u')
-            ->orderBy('u.elixir + u.gold', 'DESC');
+            ->where('u.clan = :clan')
+            ->orderBy('u.elixir + u.gold', 'DESC')
+            ->setParameter('clan', $clan);
 
 
         //var_dump($qb->getQuery()->getResult());
         return $qb->getQuery()->getResult();
     }
 
-    public function getNumberBestAttacks()
+    public function getNumberEntities($clan)
     {
         $qb = $this->createQueryBuilder('u')
-            ->select('u');
+            ->where('u.clan = :clan')
+            ->select('u')
+            ->setParameter('clan', $clan);
 
         return count($qb->getQuery()->getResult());
     }

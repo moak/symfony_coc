@@ -10,7 +10,7 @@ class WarController extends Controller
     public function indexAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
-        $wars = $em->getRepository('COCBundle:War')->findBy( array('result' => '1', 'result' => '2'));
+        $wars = $em->getRepository('COCBundle:War')->findBy( array('result' => '1', 'result' => '2', 'clan' => $id_clan));
 
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
@@ -21,12 +21,13 @@ class WarController extends Controller
 
     public function menuAction($id_clan)
     {
-        $em = $this->getDoctrine()->getManager();
-        $warInProgress = $em->getRepository('COCBundle:War')->getWarInProgress();
-        $numberWars = $em->getRepository('COCBundle:War')->getNumberWars();
-        $nextWar = $em->getRepository('COCBundle:War')->getNextWar();
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
+        $em = $this->getDoctrine()->getManager();
+        $warInProgress = $em->getRepository('COCBundle:War')->getWarInProgress();
+        $numberWars = $em->getRepository('COCBundle:War')->getNumberEntities($clan);
+        $nextWar = $em->getRepository('COCBundle:War')->getNextWar();
+
         $isInPreparation = 0;
 
         if (!empty($warInProgress[0])) {

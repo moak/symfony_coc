@@ -23,12 +23,12 @@ class DefaultController extends Controller
         $clan = $service->getClan($id_clan);
 
        // $numberPlayers = $em->getRepository('COCBundle:Player')->getNumberPlayers();
-        $numberBases = $em->getRepository('COCBundle:ImageBase')->getNumberBases();
-        $numberVideos = $em->getRepository('COCBundle:Video')->getNumberVideos();
+        $numberBases = $em->getRepository('COCBundle:ImageBase')->getNumberEntities($clan);
+        $numberVideos = $em->getRepository('COCBundle:Video')->getNumberEntities($clan);
        // $numberWars = $em->getRepository('COCBundle:War')->getNumberWars();
-        $numberBestAttacks = $em->getRepository('COCBundle:ImageBestAttack')->getNumberBestAttacks();
+        $numberBestAttacks = $em->getRepository('COCBundle:ImageBestAttack')->getNumberEntities($clan);
         $numberUsersNonAssigned = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsersNonAssigned();
-        $numberImagesBonus = $em->getRepository('COCBundle:ImageBonus')->getNumberImagesBonus();
+        $numberImagesBonus = $em->getRepository('COCBundle:ImageBonus')->getNumberEntities($clan);
 
         return $this->render('COCBundle:Default:menu.html.twig' , array( 'active' => $active,  'clan' => $clan, 'numberImagesBonus' => $numberImagesBonus,'numberUsersNonAssigned' => $numberUsersNonAssigned,'numberVideos' => $numberVideos, 'numberBestAttacks' => $numberBestAttacks, 'numberBases' => $numberBases));
     }

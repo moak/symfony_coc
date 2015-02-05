@@ -161,10 +161,12 @@ class PlayerRepository extends EntityRepository
 }
 
 
-    public function getNumberPlayers()
+    public function getNumberEntities($clan)
     {
         $qb = $this->createQueryBuilder('u')
-            ->select('u');
+            ->where('u.clan = :clan')
+            ->select('u')
+            ->setParameter('clan', $clan);
 
         return count($qb->getQuery()->getResult());
     }

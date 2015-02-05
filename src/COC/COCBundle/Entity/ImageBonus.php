@@ -18,6 +18,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 class ImageBonus
 {
     /**
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="imagebonuses")
+     * @ORM\JoinColumn(name="clan_id", referencedColumnName="id")
+     */
+    private $clan;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="imagebonuses")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
@@ -175,5 +181,28 @@ class ImageBonus
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set clan
+     *
+     * @param \COC\COCBundle\Entity\Clan $clan
+     * @return ImageBonus
+     */
+    public function setClan(\COC\COCBundle\Entity\Clan $clan = null)
+    {
+        $this->clan = $clan;
+
+        return $this;
+    }
+
+    /**
+     * Get clan
+     *
+     * @return \COC\COCBundle\Entity\Clan 
+     */
+    public function getClan()
+    {
+        return $this->clan;
     }
 }

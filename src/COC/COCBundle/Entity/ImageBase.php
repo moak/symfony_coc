@@ -32,6 +32,12 @@ class ImageBase
     private $user;
 
     /**
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="imagebases")
+     * @ORM\JoinColumn(name="clan_id", referencedColumnName="id")
+     */
+    private $clan;
+
+    /**
      * @ORM\OneToOne(targetEntity="COC\COCBundle\Entity\Image", cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=true)
      */
@@ -122,5 +128,28 @@ class ImageBase
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set clan
+     *
+     * @param \COC\COCBundle\Entity\Clan $clan
+     * @return ImageBase
+     */
+    public function setClan(\COC\COCBundle\Entity\Clan $clan = null)
+    {
+        $this->clan = $clan;
+
+        return $this;
+    }
+
+    /**
+     * Get clan
+     *
+     * @return \COC\COCBundle\Entity\Clan 
+     */
+    public function getClan()
+    {
+        return $this->clan;
     }
 }

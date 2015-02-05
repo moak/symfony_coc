@@ -16,7 +16,7 @@ class ImageBestAttackController extends Controller
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
         $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository('COCBundle:ImageBestAttack')->getBestAttacks();
+        $list = $em->getRepository('COCBundle:ImageBestAttack')->getBestAttacks($clan);
 
         // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
         // var_dump($season);
@@ -74,7 +74,10 @@ class ImageBestAttackController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
-            $image->setUser($this->get('security.context')->getToken()->getUser());
+            $user = $this->get('security.context')->getToken()->getUser();
+            $image->setUser($user);
+            $image->setClan($user->getClan());
+
             $em->persist($image);
             $em->flush();
             return $this->redirect($this->generateUrl('coc_imagesBestAttack', array('id_clan' =>  $clan->getId())));

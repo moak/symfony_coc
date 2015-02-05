@@ -12,7 +12,7 @@ class ImageBonusController extends Controller
     public function indexAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository('COCBundle:ImageBonus')->findAll();
+        $list = $em->getRepository('COCBundle:ImageBonus')->findBy( array('clan' => $id_clan));
 
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
@@ -77,8 +77,9 @@ class ImageBonusController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
-            $image->setUser($this->get('security.context')->getToken()->getUser());
-
+            $user = $this->get('security.context')->getToken()->getUser();
+            $image->setUser($user);
+            $image->setClan($user->getClan());
             $em->persist($image);
             $em->flush();
             return $this->redirect($this->generateUrl('coc_imagesBonus', array('id_clan' =>  $clan->getId())));
