@@ -101,7 +101,7 @@ class PlayerController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($player);
             $em->flush();
-            return $this->redirect($this->generateUrl('coc_players'));
+            return $this->redirect($this->generateUrl('coc_players', array('id_clan' =>  $clan->getId())));
         }
 
         return $this->render('COCBundle:Player:edit.html.twig', array('clan' =>  $clan,
