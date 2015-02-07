@@ -1,0 +1,109 @@
+{% extends "::base.html.twig" %}
+{% set id_clan = clan.id %}
+{% set active = "classement" %}
+
+{% block body %}
+<link rel="stylesheet" href="{{ asset('css/players.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/dataTables_BS3.css') }}" />
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Activité des joueurs</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+
+    <div class="container">
+
+
+        <div class="well">
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+            {# Les erreurs générales du formulaire. #}
+            {{ form_errors(form) }}
+
+            <div class="form-group">
+                {# Génération du label. #}
+                {{ form_label(form.season, 'Rechercher par saison', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.season) }}
+
+
+                <div class="col-sm-4">
+                    {# Génération de l'input. #}
+
+
+                    {{ form_widget(form.season, { 'attr': {'class': 'form-control select_group'}, 'empty_value': '-- Add to Group --' }) }}
+
+
+                </div>
+
+                <div class="col-sm-4">
+                    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                </div>
+
+            </div>
+
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+
+
+        </div>
+
+
+        <table class="table classement-list datatable">
+            <thead>
+                <tr>
+                	<th  class="no-sort"></th>
+                    <th class="supercell-font">#</th>
+                    <th class="supercell-font">Nom</th>
+                    <th class="supercell-font">Troupes envoyées</th>
+                    <th class="supercell-font">Troupes recues</th>
+                    <th class="supercell-font">Attaques gagnées</th>
+
+                </tr>
+            </thead>
+            <tbody>
+            
+            {% if players|length != 0 %}
+                {% for player in players %}
+                    <tr data-name="{{ player.name }}" class="positionable">
+                    	<td><span class="glyphicon glyphicon-plus-sign expand" data-name="{{ player.name }}"></span></td>
+                        <td class="position"></td>
+                        <td>{{ player.name }}</td>
+                        <td>{{ player.troopSent }}</td>
+                        <td>{{ player.troopReceived }}</td>
+                        <td>{{ player.attackWon }}</td>
+
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td>-</td>
+                    <td>0 joueur trouvé</td>
+                    <td>-</td>
+
+                    <td></td>
+                </tr>
+            {% endif %}
+            </tbody>
+        </table>
+        <hr>
+
+
+    </div>
+    </div>
+    <!-- /.container -->
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/dataTables.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/dataTables_BS3.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/players.js') }}" type="text/javascript"></script>
+{% endblock %}

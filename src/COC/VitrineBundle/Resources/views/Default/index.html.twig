@@ -100,10 +100,8 @@
                     <h2>Créer un clan</h2>
                 </div>
                 <div class="col-lg-6">
-                    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-                    {{ form_errors(form) }}
-                    {{ form_rest(form) }}
-                    {{ form_end(form) }}
+
+                    {{ include('VitrineBundle:Default:registration_clan.html.twig') }}
                 </div>
             </div>
 
