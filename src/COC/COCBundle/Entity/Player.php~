@@ -16,9 +16,15 @@ class Player
     
     /**
      * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="players")
-     * @ORM\JoinColumn(name="clan_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $clan;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Season", inversedBy="playerHistory")
+     * @ORM\JoinColumn(name="season_id", referencedColumnName="id", nullable=true)
+     */
+    private $season;
 
 
     /**

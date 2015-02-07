@@ -50,6 +50,13 @@ class User extends BaseUser
      **/
     private $imageBestAttacks;
 
+    private $clanName;
+
+    public function getClanName()
+    {
+        return $this->clanName;
+    }
+
     /**
      * Get user
      *

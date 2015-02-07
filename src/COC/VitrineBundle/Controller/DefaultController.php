@@ -1,11 +1,13 @@
 <?php
 
-namespace coc\VitrineBundle\Controller;
+namespace COC\VitrineBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use COC\VitrineBundle\Form\Type\ClanType;
+use Application\Sonata\UserBundle\Form\Type\RegistrationClanFormType;
 use Symfony\Component\HttpFoundation\Request;
-use COC\COCBundle\Entity\Clan;
+use Application\Sonata\UserBundle\Entity\User;
+
+
 
 
 class DefaultController extends Controller
@@ -13,15 +15,15 @@ class DefaultController extends Controller
 
     public function indexAction(Request $request)
     {
-        $clan = new Clan();
-        $form = $this->get('form.factory')->create(new ClanType(), $clan);
+        $user = new User();
+        $form = $this->get('form.factory')->create(new RegistrationClanFormType($user->getClan()), $user);
 
         $form->handleRequest($request);
 
         if ($form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($clan);
+            $em->persist($user);
             $em->flush();
         }
 

@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PlayerController extends Controller
 {
-    public function indexAction(Request $request, $id_clan)
+    public function indexAction(Request $request, $id_clan, $type)
     {
         $em = $this->getDoctrine()->getManager();
         $form = $this->get('form.factory')->create(new SeasonType(), null);
@@ -36,35 +36,46 @@ class PlayerController extends Controller
 
             if($season == $seasonActuel)
             {
-                echo "season = season actuelle";
+             //   echo "season = season actuelle";
                 $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
             }
             else
             {
-                echo "season !!!= season actuelle";
+             //   echo "season !!!= season actuelle";
                // $players = $em->getRepository('COCBundle:PlayerHistory')->findAll();
-                $players = $em->getRepository('COCBundle:PlayerHistory')->findOneBySeason($season);
+                $players = $em->getRepository('COCBundle:PlayerHistory')->findHistoryBySeason($season);
             }
 
+          //  var_dump($players);
             if(!empty($players))
             {
-                return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));
+                if ( $type == 0)
+                    return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));
+                else
+                    return $this->render('COCBundle:Player:activity.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));
+
             }
             else
             {
-                return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));
-            }
+                if ( $type == 0)
+                    return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));
+                else
+                    return $this->render('COCBundle:Player:activity.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));            }
         }
 
         $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
         if ($players)
         {
-            return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));
-        }
+            if ( $type == 0)
+                return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));
+            else
+                return $this->render('COCBundle:Player:activity.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));        }
         else
         {
-            return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'form' => $form->createView() , 'players' => null));
-        }
+            if ( $type == 0)
+                return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));
+            else
+                return $this->render('COCBundle:Player:activity.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));        }
 
     }
 
@@ -101,7 +112,7 @@ class PlayerController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($player);
             $em->flush();
-            return $this->redirect($this->generateUrl('coc_players', array('id_clan' =>  $clan->getId())));
+            return $this->redirect($this->generateUrl('coc_players', array('type' => 0, 'id_clan' =>  $clan->getId())));
         }
 
         return $this->render('COCBundle:Player:edit.html.twig', array('clan' =>  $clan,

@@ -4,7 +4,7 @@ coc:
 
 
 coc_players:
-    path:     /coc/{id_clan}/players
+    path:     /coc/{id_clan}/{type}/players
     defaults: { _controller: COCBundle:Player:index}
 
 coc_player_edit:

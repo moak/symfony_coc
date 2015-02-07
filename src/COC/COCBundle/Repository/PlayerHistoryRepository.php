@@ -22,4 +22,19 @@ class PlayerHistoryRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    public function updatePlayerHistory($players, $actualSeason)
+    {
+        $queryBuilder
+            ->insert('users')
+            ->values(
+                array(
+                    'name' => '?',
+                    'password' => '?'
+                )
+            )
+            ->setParameter(0, $username)
+            ->setParameter(1, $password)
+        ;
+    }
 }

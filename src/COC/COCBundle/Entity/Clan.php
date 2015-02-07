@@ -415,4 +415,10 @@ class Clan
     {
         return $this->wars;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
 }

@@ -21,6 +21,7 @@ class Player
     private $clan;
 
 
+
     /**
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */

@@ -1,65 +1,78 @@
-{# extends "FOSUserBundle::layout.html.twig" #}
+{%  extends "::base_bootstrap.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
 
 {% block fos_user_content %}
 
-
-    <div class="page-header">
-        <h1>Connexion</h1>
-    </div>
-
+{% block body %}
 
     <div class="row">
 
+        <div class="container">
+            <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">Log in</div>
+                        <!--<div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>-->
+                    </div>
 
-        <div class="col-md-12">
+                    <div style="padding-top:30px" class="panel-body" >
 
-            <form class="form form-horizontal" role="form" action="{{ path("fos_user_security_check") }}" method="post">
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                <div class="form-group">
-                    <div class="col-md-4">
-                        <label for="username">{{ 'security.login.username'|trans }}</label>
-                        <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                        <form class="form form-horizontal" role="form" action="{{ path("fos_user_security_check") }}" method="post">
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                            <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                            </div>
+                            <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    <input class="form-control" type="password" id="password" name="_password" required="required" />
+
+                            </div>
+
+                            <div style="margin-bottom: 25px" class="input-group">
+                                    <input type="checkbox" id="remember_me" name="_remember_me" checked />
+                                    <label for="remember_me">Rester connecter</label>
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <input type="submit" class="btn btn-primary" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <div class="col-md-12 control">
+                                    <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                        Pas encore de clan?
+                                        <a href="{{ path('vitrine_homepage') }}">
+                                            Créer un clan ici
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% if error %}
+                                {{ error|trans }}
+                            {% endif %}
+
+
+                        </form>
+
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-4">
-                        <label for="password">{{ 'security.login.password'|trans }}</label>
-                        <input class="form-control" type="password" id="password" name="_password" required="required" />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-4">
-                        <input type="checkbox" id="remember_me" name="_remember_me" checked />
-                        <label for="remember_me">Keep me logged in</label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-4">
-                        <input type="submit" class="btn btn-primary" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-                    </div>
-                </div>
-
-
-
-                {% if error %}
-                    {{ error|trans }}
-                {% endif %}
-
-
-
-            </form>
-
+            </div>
 
         </div>
 
-       <!-- <a href="{##} path('fos_user_resetting_request') }}">Mot de passe perdu ?</a>
-    </div><!-- End row -->
-
+        {% endblock %}
 {% endblock fos_user_content %}
 
 
