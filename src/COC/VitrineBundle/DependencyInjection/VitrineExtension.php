@@ -1,6 +1,6 @@
 <?php
 
-namespace coc\VitrineBundle\DependencyInjection;
+namespace COC\VitrineBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
