@@ -33,7 +33,7 @@ class AppKernel extends Kernel
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new COC\COCBundle\COCBundle(),
             new COC\AdminBundle\AdminBundle(),
-            new coc\VitrineBundle\VitrineBundle(),
+            new COC\VitrineBundle\VitrineBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace coc\VitrineBundle;
+namespace COC\VitrineBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
