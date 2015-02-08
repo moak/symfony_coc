@@ -15,12 +15,12 @@ class PlayerController extends Controller
 {
     public function indexAction(Request $request, $id_clan, $type)
     {
+
         $em = $this->getDoctrine()->getManager();
+        $actualSeason = $em->getRepository('COCBundle:Season')->getActualSeason();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
-        $form = $this->get('form.factory')->create(new SeasonType($clan), null);
+        $form = $this->get('form.factory')->create(new SeasonType($clan, $actualSeason), null);
        // $calculateInfosService = $this->container->get('coc_cocbundle.calculate_player_info') ;
-
-
 
         if ($request->isMethod('POST'))
         {
@@ -50,11 +50,9 @@ class PlayerController extends Controller
                     return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));
                 else
                     return $this->render('COCBundle:Player:activity.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));
-
             }
             else
             {
-
                 if ( $type == 0)
                     return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => null , 'form' => $form->createView() ));
                 else

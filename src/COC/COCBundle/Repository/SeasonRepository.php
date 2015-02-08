@@ -29,7 +29,6 @@ class SeasonRepository extends EntityRepository
 
     public function getSeason($season)
     {
-        var_dump($season);
         $qb = $this->createQueryBuilder('u')
             ->select('u')
             ->where('u.id <= :season')
