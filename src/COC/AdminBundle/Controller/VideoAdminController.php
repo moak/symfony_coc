@@ -14,7 +14,7 @@ class VideoAdminController extends Controller
         $em = $this->getDoctrine()->getManager();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
         $list = $em->getRepository('COCBundle:Video')->findBy(
-            array('published' => '1')
+            array('published' => '1', 'clan' => $clan)
         );
         foreach($list as $key => $value) {
             $list[$key]->setUrl($this->convertYoutube($list[$key]->getUrl()));
@@ -83,6 +83,7 @@ class VideoAdminController extends Controller
         if ($form->handleRequest($request)->isValid())
         {
             $video->setUser($this->get('security.context')->getToken()->getUser());
+            $video->setClan($this->container->get('coc_cocbundle.clan_info')->getClan($id_clan));
             $em->persist($video);
             $em->flush();
             return $this->redirect($this->generateUrl('admin_videos', array('id_clan' =>  $clan->getId())));

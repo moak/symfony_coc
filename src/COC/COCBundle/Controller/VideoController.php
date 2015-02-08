@@ -9,27 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class VideoController extends Controller
 {
-    public function categoryAction($id, $id_clan)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository('COCBundle:ImageBase')->findBy(
-            array('hall_town' => $id)
 
-        );
-        $service = $this->container->get('coc_cocbundle.clan_info') ;
-        $clan = $service->getClan($id_clan);
-        return $this->render('COCBundle:ImageBase:category.html.twig', array('clan' => $clan,'images' => $list , 'hall_town' => $id ));
-    }
 
-    public function templateAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository('COCBundle:ImageBase')->findBy(
-            array('hall_town' => $id)
-
-        );
-        return $this->render('COCBundle:ImageBase:template.html.twig', array('images' => $list , 'hall_town' => $id ));
-    }
 
 
     public function indexAction($id_clan)
@@ -37,8 +18,8 @@ class VideoController extends Controller
         $em = $this->getDoctrine()->getManager();
         $list = $em->getRepository('COCBundle:Video')->findBy( array('clan' => $id_clan));
 
-        $service = $this->container->get('coc_cocbundle.clan_info') ;
-        $clan = $service->getClan($id_clan);
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan) ;
+
 
         foreach($list as $key => $value) {
             $list[$key]->setUrl($this->convertYoutube($list[$key]->getUrl()));
@@ -53,8 +34,7 @@ class VideoController extends Controller
 
     public function editAction ($id, Request $request, $id_clan)
     {
-        $service = $this->container->get('coc_cocbundle.clan_info') ;
-        $clan = $service->getClan($id_clan);
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan) ;
 
         $em = $this->getDoctrine()->getManager();
         //$userInfo = $em->getRepository('COCBundle:ImageBase')->findOneByUser($id);

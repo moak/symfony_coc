@@ -24,10 +24,9 @@ admin_user_setRole:
     path:     coc/{id_clan}/admin/user/role/{id}
     defaults: { _controller: AdminBundle:UserAdmin:setRole }
 
-
 admin_players:
-    path:     coc/{id_clan}/admin/players
-    defaults: { _controller: AdminBundle:PlayerAdmin:index }
+   path:     coc/{id_clan}/admin/players/{type}
+   defaults: { _controller: AdminBundle:PlayerAdmin:index }
 
 admin_player_add:
     path:     coc/{id_clan}/admin/player/add
@@ -36,6 +35,10 @@ admin_player_add:
 admin_player_edit:
     path:     coc/{id_clan}/admin/player/edit/{id}
     defaults: { _controller: AdminBundle:PlayerAdmin:edit }
+
+admin_player_editHistory:
+    path:     coc/{id_clan}/admin/player/editHistory/{id}
+    defaults: { _controller: AdminBundle:PlayerAdmin:editHistory }
 
 admin_player_delete:
     path:     coc/{id_clan}/admin/player/delete/{id}

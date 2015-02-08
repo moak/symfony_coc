@@ -34,12 +34,16 @@ class PlayerCommand extends ContainerAwareCommand
         $em = $this->getContainer()->get('doctrine')->getManager();
         $actualSeason = $em->getRepository('COCBundle:Season')->getActualSeason();
         $players = $em->getRepository('COCBundle:Player')->findAll();
+        $season = $em->getRepository('COCBundle:Season')->find(5);
 
+        print($season->getId());
         foreach ($players as $player)
         {
+
+
             $playerHistory = new PlayerHistory();
             $playerHistory->setClan($player->getClan());
-            $playerHistory->setSeason($actualSeason);
+            $playerHistory->setSeason($season);
             $playerHistory->setName($player->getName());
             $playerHistory->setLevel($player->getLevel());
             $playerHistory->setHallTown($player->getHallTown());
@@ -136,7 +140,7 @@ class PlayerCommand extends ContainerAwareCommand
 
 
 
-            $output->writeln($playerHistory);
+           // $output->writeln($playerHistory);
             $em->persist($playerHistory);
             $em->flush();
 

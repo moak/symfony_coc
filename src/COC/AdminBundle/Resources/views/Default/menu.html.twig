@@ -47,6 +47,11 @@
                 </li>
 
                 <li>
+                    <a href="{{ path('admin_players', { 'id_clan': clan.id , 'type' : '0'}) }}">Joueurs actifs</a>
+                </li>
+
+
+                <li>
                     <a href="{{ path('admin_users', { 'id_clan': clan.id }) }}"><span class="badge">{{ numberUsers }}</span> Comptes ({{ numberUsersNonAssigned }})</a>
                 </li>
 
@@ -55,7 +60,7 @@
                     <a href="#"><span class="badge">{{ numberPlayers }}</span> Joueurs <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ path('admin_players', { 'id_clan': clan.id }) }}">Liste des joueurs</a>
+                            <a href="{{ path('admin_players', { 'id_clan': clan.id, 'type' : '1' }) }}">Liste des joueurs</a>
                         </li>
 
                         <li>
@@ -64,6 +69,7 @@
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
+
 
 
 

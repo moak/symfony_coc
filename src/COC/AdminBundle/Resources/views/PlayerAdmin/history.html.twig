@@ -1,0 +1,124 @@
+{% extends "::base_admin.html.twig" %}
+{% set id_clan = clan.id %}
+
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('css/players.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/dataTables_BS3.css') }}" />
+
+    <div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Classement général</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+
+    <div class="container">
+
+
+    <div class="well">
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+        {# Les erreurs générales du formulaire. #}
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            {# Génération du label. #}
+            {{ form_label(form.season, 'Rechercher par saison', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+
+            {# Affichage des erreurs pour ce champ précis. #}
+            {{ form_errors(form.season) }}
+
+
+            <div class="col-sm-4">
+                {# Génération de l'input. #}
+
+
+                {{ form_widget(form.season, { 'attr': {'class': 'form-control select_group'}, 'empty_value': '-- Add to Group --' }) }}
+
+
+            </div>
+
+            <div class="col-sm-4">
+                {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+            </div>
+
+        </div>
+
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+
+
+    </div>
+
+
+    <table class="table classement-list datatable">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Noom</th>
+        <th>Troupes envoyées</th>
+        <th>Troupes recues</th>
+        <th>Attaques gagnées</th>
+        <th>Trophé</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    {% if players|length != 0 %}
+        {% for player in players %}
+            <tr data-name="{{ player.name }}" class="positionable">
+                <td class="position"></td>
+                <td>{{ player.name }}</td>
+                <td>{{ player.troopSent }}</td>
+                <td>{{ player.troopReceived }}</td>
+                <td>{{ player.attackWon }}</td>
+                <td>{{ player.trophy }}</td>
+                <td>{{ player.trophy }}</td>
+                {% if type == 0 %}
+                    <td><a href="{{ path('admin_player_edit', {'id_clan' : clan.id , 'id': player.id}) }}" class="btn btn-default btn-info">Editer</a></td>
+                {% else %}
+                    <td><a href="{{ path('admin_player_editHistory', {'id_clan' : clan.id , 'id': player.id}) }}" class="btn btn-default btn-info">Editer</a></td>
+                {% endif %}
+
+            </tr>
+            <tr class="hidden expendables hidden" id="{{ player.name }}" data-total-points="">
+            <td colspan="6">
+                <div class="row">
+
+                </div>
+                <hr />
+            </td>
+            <td></td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td>-</td>
+            <td>0 joueur trouvé</td>
+            <td>-</td>
+
+            <td></td>
+        </tr>
+    {% endif %}
+    </tbody>
+    </table>
+    <hr>
+
+    </div>
+
+    </div>
+    </div>
+    <!-- /.container -->
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/dataTables.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/dataTables_BS3.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/players.js') }}" type="text/javascript"></script>
+{% endblock %}

@@ -16,9 +16,10 @@ class PlayerController extends Controller
     public function indexAction(Request $request, $id_clan, $type)
     {
         $em = $this->getDoctrine()->getManager();
-        $form = $this->get('form.factory')->create(new SeasonType(), null);
-       // $calculateInfosService = $this->container->get('coc_cocbundle.calculate_player_info') ;
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+        $form = $this->get('form.factory')->create(new SeasonType($clan), null);
+       // $calculateInfosService = $this->container->get('coc_cocbundle.calculate_player_info') ;
+
 
 
         if ($request->isMethod('POST'))
@@ -36,17 +37,13 @@ class PlayerController extends Controller
 
             if($season == $seasonActuel)
             {
-             //   echo "season = season actuelle";
                 $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
             }
             else
             {
-             //   echo "season !!!= season actuelle";
-               // $players = $em->getRepository('COCBundle:PlayerHistory')->findAll();
-                $players = $em->getRepository('COCBundle:PlayerHistory')->findHistoryBySeason($season);
+                $players = $em->getRepository('COCBundle:PlayerHistory')->findBySeason($season, $clan);
             }
 
-          //  var_dump($players);
             if(!empty($players))
             {
                 if ( $type == 0)
@@ -57,10 +54,11 @@ class PlayerController extends Controller
             }
             else
             {
+
                 if ( $type == 0)
-                    return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));
+                    return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => null , 'form' => $form->createView() ));
                 else
-                    return $this->render('COCBundle:Player:activity.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));            }
+                    return $this->render('COCBundle:Player:activity.html.twig', array('clan' => $clan, 'players' => null , 'form' => $form->createView() ));            }
         }
 
         $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
@@ -121,13 +119,14 @@ class PlayerController extends Controller
         ));
     }
 
-    public function historyPlayersAction ($number)
+    public function historyPlayersAction ($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
-        $histories = $em->getRepository('COCBundle:Player')->getHistory($number);
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+        $players = $em->getRepository('COCBundle:Player')->getAllPlayersModule($clan);
 
         return $this->render('COCBundle:Player:historyPlayers.html.twig', array(
-            'histories'      =>  $histories,
+            'players'      =>  $players,
         ));
     }
 

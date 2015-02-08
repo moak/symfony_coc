@@ -42,7 +42,7 @@
                 </li>
 
                 {% if active == "media" %} <li class="active dropdown"> {% else %} <li class="dropdown">{% endif %}
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="badge">{{ numberBestAttacks + numberVideos + numberImagesBonus }}</span> Média <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="badge">{{ numberVideos + numberImagesBonus }}</span> Média <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ path('coc_videos', {'id_clan': clan.id }) }}"><span class="badge">{{ numberVideos }}</span> Vidéos </a></li>
                         <li><a href="{{ path('coc_imagesBonus', {'id_clan': clan.id }) }}"><span class="badge">{{ numberImagesBonus }}</span> Bonus </a></li>
@@ -50,7 +50,7 @@
                 </li>
 
                 {% if is_granted('ROLE_USER') %}
-                    {%  if app.user.player.level is defined %}
+                    {%  if app.user.player.level is defined and clan.id == app.user.player.clan.id %}
                         <li><a href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b>Editer mon joueur</b></a></li>
                     {% endif %}
                 {% endif %}
@@ -62,17 +62,19 @@
                     <a href="#page-top"></a>
                 </li>
 
-                {% if is_granted('ROLE_USER') %}
+                {% if is_granted('ROLE_USER')  %}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ app.user.username }}
-                            {% if is_granted('ROLE_ADMIN') %}
+                            {% if is_granted('ROLE_ADMIN') and clan.id == app.user.player.clan.id %}
                                 <span class="badge">{{  numberUsersNonAssigned }}</span>
                             {% endif %}
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
 
-                            {% if is_granted('ROLE_ADMIN') %}
+                            {% if is_granted('ROLE_ADMIN') and clan.id == app.user.player.clan.id %}
                                 <li><a target="_blank" href="{{ path('admin', {'id_clan': clan.id }) }}">Administration</a></li>
+                            {% else %}
+                                <li><a target="_blank" href="{{ path('coc', {'id_clan': app.user.player.clan.id }) }}">Mon clan</a></li>
                             {% endif %}
                             {% if is_granted('ROLE_USER') %}
                                 <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>

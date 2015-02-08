@@ -1,7 +1,7 @@
 <div class="panel panel-default">
 
         {% if warInProgress %}
-        <div class="panel-heading">Guerre de clan en cours !</div>
+        <div class="panel-heading">Guerre en cours !</div>
         <div class="panel-body">
                 {% if isInPreparation != 0 %}
                     Jour de préparation (commence à {{ warInProgress.start|date_modify("+1 day")|date('d M H:s') }})
@@ -10,11 +10,11 @@
                 {% endif %}
 
         {% else %}
-            <div class="panel-heading">Guerres de clan  <p class="pull-right"><a href="{{ path('coc_wars', {'id_clan': clan.id}) }}">Historique <span class="badge">{{ numberWars }}</span></a></p></div>
+            <div class="panel-heading supercell-font">Guerres  <p class="pull-right"><a href="{{ path('coc_wars', {'id_clan': clan.id}) }}">Historique <span class="badge">{{ numberWars }}</span></a></p></div>
             <div class="panel-body">
 
                 {% if nextWar|length !=0 %}
-                    Prochaine guerre:  {{ nextWar[0].start|date('d M  à H:s') }}
+                   <p> Prochaine guerre:  {{ nextWar[0].start|date('d M  à H:s') }}</p>
                 {% else %}
                     <p>Prochaine guerre: aucune</p>
                 {% endif %}

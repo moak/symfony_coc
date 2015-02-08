@@ -1,24 +1,36 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <i class="fa fa-bell fa-fw"></i> Dernières mise à jour
+            <p class="supercell-font">Classement des joueurs</p>
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
             <div class="list-group">
 
-                {% if histories|length != 0 %}
-                    {% for history in histories %}
-                        <a href="" class="list-group-item">
-                            <i class="fa fa-twitter fa-fw"></i> {{ history.name }} a modifié son profil
-                                        <span class="pull-right text-muted small"><em>{{ history.updatedAt|date('U')|timeago  }}</em>
-                                        </span>
-                        </a>
+                {% if players|length != 0 %}
+                    <table class="table classement-list datatable">
+                        <thead>
+                            <tr>
+                                <th class="supercell-font">Nom</th>
+                                <th class="supercell-font">Niv</th>
+                                <th class="supercell-font">Total</th>
+                                <th class="supercell-font no-sort"></th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                    {% for player in players %}
+                        <tr data-name="{{ player.name }}" class="positionable">
+                            <td>{{ player.name }}</td>
+                            <td>{{ player.level }}</td>
+                            <td>{{ player.total|round }}</td>
+                            <td>{{ player.updatedAt|date('U')|timeago }}</td>
+
+                        </tr>
                     {% endfor %}
                 {% else %}
                     <a href="#" class="list-group-item">
                         <i class="fa fa-twitter fa-fw"></i>
-                        Aucune joueur n'a encore modifié son profil.
+                        <p>Ce clan n'a encore aucun membre.</p>
                     </a>
                 {% endif %}
 

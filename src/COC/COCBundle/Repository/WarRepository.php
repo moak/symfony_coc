@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class WarRepository extends EntityRepository
 {
-    public function getWarInProgress()
+    public function getWarInProgress($clan)
     {
         $now = new \DateTime();
         // $now = new \DateTime('Y-m-d H:i:s');
@@ -20,7 +20,9 @@ class WarRepository extends EntityRepository
             ->select('u')
             ->where('u.start <= :now')
             ->andWhere('u.end >= :now')
+            ->andWhere('u.clan = :clan')
             ->orderBy('u.id', 'DESC')
+            ->setParameter('clan', $clan)
            ->setParameter('now', $now);
 
         $query = $qb->getQuery();
@@ -29,14 +31,16 @@ class WarRepository extends EntityRepository
         return $result;
     }
 
-    public function getNextWar()
+    public function getNextWar($clan)
     {
         $now = new \DateTime();
 
         $qb = $this->createQueryBuilder('u')
             ->select('u')
             ->where('u.start >= :now')
+            ->andWhere('u.clan = :clan')
             ->orderBy('u.id', 'DESC')
+            ->setParameter('clan', $clan)
             ->setParameter('now', $now)
             ->setMaxResults( 1 );
 
