@@ -46,10 +46,20 @@
                     <a target="_blank" href="{{ path('coc' , { 'id_clan': clan.id }) }}"><i class="fa fa-arrow-circle-right fa-fw"></i> Aller sur le site</a>
                 </li>
 
-                <li>
-                    <a href="{{ path('admin_players', { 'id_clan': clan.id , 'type' : '0'}) }}">Joueurs actifs</a>
-                </li>
 
+                <li>
+                    <a href="#"><span class="badge">{{ numberPlayers }}</span> Joueurs actifs <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ path('admin_players_actual_season', { 'id_clan': clan.id }) }}">Saison en cours</a>
+                        </li>
+
+                        <li>
+                            <a href="">Historique saisons</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
 
                 <li>
                     <a href="{{ path('admin_users', { 'id_clan': clan.id }) }}"><span class="badge">{{ numberUsers }}</span> Comptes ({{ numberUsersNonAssigned }})</a>
@@ -60,7 +70,7 @@
                     <a href="#"><span class="badge">{{ numberPlayers }}</span> Joueurs <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ path('admin_players', { 'id_clan': clan.id, 'type' : '1' }) }}">Liste des joueurs</a>
+                            <a href="{{ path('admin_players', { 'id_clan': clan.id, 'type' : '0' }) }}">Liste des joueurs</a>
                         </li>
 
                         <li>

@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use COC\COCBundle\Entity\Player;
 use COC\COCBundle\Entity\PlayerHistory;
 use COC\COCBundle\Form\Type\SeasonType;
-use COC\COCBundle\Form\Type\PlayerHistoryType;
+use COC\COCBundle\Form\Type\PlayerActualSeasonType;
 use COC\COCBundle\Form\Type\PlayerAdminType;
 use COC\COCBundle\Form\Type\PlayerType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -29,66 +29,61 @@ class PlayerAdminController extends Controller
         return $this->render('AdminBundle:PlayerAdmin:listModule.html.twig', array('clan' => $clan, 'players' => null));
     }
 
-    public function indexAction(Request $request, $id_clan, $type)
+
+    public function indexAction($id_clan)
     {
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
         $em = $this->getDoctrine()->getManager();
         $form = $this->get('form.factory')->create(new SeasonType($clan), null);
-        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
-
-        if ($request->isMethod('POST'))
-        {
-            $seasonActuel = $em->getRepository('COCBundle:Season')->getActualSeason();
-            $data = $request->request->all();
-            $idSeason = $data['season']['season'];
-
-            if(empty($idSeason)){
-                $idSeason = 0 ;
-            }
-
-            $season = $em->getRepository('COCBundle:Season')->findOneById($idSeason);
-
-            if($season == $seasonActuel)
-            {
-                $type = 1;
-                $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
-            }
-            else
-            {
-                $type = 0;
-                $players = $em->getRepository('COCBundle:PlayerHistory')->findBySeason($season, $clan);
-            }
-
-            if(!empty($players))
-            {
-                if ($type == 1)
-                    return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('type' => $type, 'clan' => $clan , 'players' => $players , 'form' => $form->createView() ));
-                else
-                    return $this->render('AdminBundle:PlayerAdmin:history.html.twig', array('type' => $type,'clan' => $clan , 'players' => $players , 'form' => $form->createView() ));
-
-            }
-            else
-            {
-                if ($type == 1)
-                    return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('type' => $type, 'clan' => $clan , 'players' => $players , 'form' => $form->createView() ));
-                else
-                    return $this->render('AdminBundle:PlayerAdmin:history.html.twig', array('type' => $type, 'clan' => $clan , 'players' => $players , 'form' => $form->createView() ));
-            }
-        }
-
         $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
+
         if ($players)
         {
-            if ($type == 1)
-                return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('type' => '1', 'clan' => $clan , 'players' => $players , 'form' => $form->createView() ));
-            else
-                return $this->render('AdminBundle:PlayerAdmin:history.html.twig', array('type' => '1', 'clan' => $clan , 'players' => $players , 'form' => $form->createView() ));
+            return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('clan' => $clan , 'players' => $players , 'form' => $form->createView() ));
         }
-        if ($type == 1)
-            return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('type' => '1','clan' => $clan , 'players' => $players , 'form' => $form->createView() ));
         else
-            return $this->render('AdminBundle:PlayerAdmin:history.html.twig', array('type' => '1','clan' => $clan , 'players' => $players , 'form' => $form->createView() ));
+            return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('clan' => $clan , 'players' => null , 'form' => $form->createView() ));
     }
+
+
+    public function indexPlayerActualSeasonAction($id_clan)
+    {
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->get('form.factory')->create(new SeasonType($clan), null);
+        $players = $em->getRepository('COCBundle:Player')->findByClan($clan);
+
+        if ($players)
+        {
+            return $this->render('AdminBundle:PlayerAdmin:indexPlayerActualSeason.html.twig', array('clan' => $clan , 'players' => $players , 'form' => $form->createView() ));
+        }
+        else
+            return $this->render('AdminBundle:PlayerAdmin:indexPlayerActualSeason.html.twig', array('clan' => $clan , 'players' => null , 'form' => $form->createView() ));
+    }
+
+    public function editPlayerActualSeasonAction ($id, Request $request, $id_clan)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $player = $em->getRepository('COCBundle:Player')->find($id);
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+
+        $form = $this->get('form.factory')->create(new PlayerActualSeasonType(), $player );
+
+        if ($form->handleRequest($request)->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($player);
+            $em->flush();
+            return $this->redirect($this->generateUrl('admin_players_actual_season', array('type' => '1','id_clan' =>  $clan->getId())));
+        }
+
+        return $this->render('AdminBundle:PlayerAdmin:editPlayerActualSeason.html.twig', array('clan' => $clan ,
+            'form'      =>  $form->createView(),
+            'player'  => $player
+        ));
+    }
+
+
 
     public function addAction (Request $request, $id_clan)
     {
@@ -109,6 +104,7 @@ class PlayerAdminController extends Controller
             'form'      =>  $form->createView(),
         ));
     }
+
 
 
     public function editAction ($id, Request $request, $id_clan)
@@ -132,30 +128,6 @@ class PlayerAdminController extends Controller
             'player'  => $player
         ));
     }
-
-
-    public function editHistoryAction ($id, Request $request, $id_clan)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $playerHistory = $em->getRepository('COCBundle:PlayerHistory')->find($id);
-        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
-
-        $form = $this->get('form.factory')->create(new PlayerHistoryType(), $playerHistory );
-
-        if ($form->handleRequest($request)->isValid())
-        {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($playerHistory);
-            $em->flush();
-            return $this->redirect($this->generateUrl('admin_players', array('type' => '0', 'id_clan' =>  $clan->getId())));
-        }
-
-        return $this->render('AdminBundle:PlayerAdmin:editHistory.html.twig', array('clan' => $clan ,
-            'form'      =>  $form->createView(),
-            'player'  => $playerHistory
-        ));
-    }
-
 
 
     public function deleteAction($id, $id_clan)
