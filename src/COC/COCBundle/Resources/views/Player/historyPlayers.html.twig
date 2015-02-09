@@ -1,4 +1,3 @@
-
     <div class="panel panel-default">
         <div class="panel-heading">
             <p class="supercell-font">Classement des joueurs</p>
@@ -6,7 +5,6 @@
         <!-- /.panel-heading -->
         <div class="panel-body">
             <div class="list-group">
-
                 {% if players|length != 0 %}
                     <table class="table classement-list datatable">
                         <thead>
@@ -17,31 +15,26 @@
                                 <th class="supercell-font no-sort"></th>
                             </tr>
                         </thead>
-                    <tbody>
-                    {% for player in players %}
-                        <tr data-name="{{ player.name }}" class="positionable">
-                            <td>{{ player.name }}</td>
-                            <td>{{ player.level }}</td>
-                            <td>{{ player.total|round }}</td>
-                            <td>{{ player.updatedAt|date('U')|timeago }}</td>
-
-                        </tr>
-                    {% endfor %}
+                        <tbody>
+                        {% for player in players %}
+                            <tr data-name="{{ player.name }}" class="positionable">
+                                <td>{{ player.name }}</td>
+                                <td>{{ player.level }}</td>
+                                <td>{{ player.total|round }}</td>
+                                <td>{{ player.updatedAt|date('U')|timeago }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
                 {% else %}
                     <a href="#" class="list-group-item">
                         <i class="fa fa-twitter fa-fw"></i>
                         <p>Ce clan n'a encore aucun membre.</p>
                     </a>
                 {% endif %}
-
-
             </div>
-            <!-- /.list-group -->
-           <!-- <a href="#" class="btn btn-default btn-block">Afficher historique complet</a>-->
         </div>
-        <!-- /.panel-body -->
     </div>
-
 
 
 
