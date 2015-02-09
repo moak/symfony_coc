@@ -54,37 +54,37 @@ class Clan
 
 
     /**
-     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Player", mappedBy="player")
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Player", mappedBy="clan")
      **/
     private $players ;
 
     /**
-     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\War", mappedBy="war")
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\War", mappedBy="clan")
      **/
     private $wars ;
 
     /**
-     * @ORM\OneToMany(targetEntity="Application\Sonata\UserBundle\Entity\User", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="Application\Sonata\UserBundle\Entity\User", mappedBy="clan")
      **/
     private $users ;
 
     /**
-     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBonus", mappedBy="imagebonus")
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBonus", mappedBy="clan")
      **/
     private $imagebonuses;
 
     /**
-     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBestAttack", mappedBy="imagebestattack")
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBestAttack", mappedBy="clan")
      **/
     private $imagebestattacks;
 
     /**
-     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Video", mappedBy="video")
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Video", mappedBy="clan")
      **/
     private $videos;
 
     /**
-     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBase", mappedBy="imagebase")
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBase", mappedBy="clan")
      **/
     private $imagebases;
 

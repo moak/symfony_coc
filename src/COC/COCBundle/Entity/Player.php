@@ -20,6 +20,10 @@ class Player
      */
     private $clan;
 
+    /**
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\PlayerHistory", mappedBy="player")
+     **/
+    private $playerhistories ;
 
 
     /**
@@ -636,10 +640,7 @@ class Player
      */
     private $elixir7;
 
-    /**
-     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\PlayerHistory", mappedBy="player")
-     **/
-    private $playerhistories ;
+
 
     
     /**

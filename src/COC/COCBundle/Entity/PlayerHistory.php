@@ -19,6 +19,12 @@ class PlayerHistory
      */
     private $clan;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Player", inversedBy="playerhistories")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
+     */
+    protected $player;
+
 
     /**
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)

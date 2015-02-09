@@ -18,13 +18,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 class ImageBestAttack
 {
     /**
-     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="imageBestAttacks")
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="imagebestattacks")
      * @ORM\JoinColumn(name="clan_id", referencedColumnName="id")
      */
     private $clan;
 
+
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="imageBestAttacks")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="imagebestattacks")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;

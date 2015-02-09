@@ -14,12 +14,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Video
 {
     /**
-     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="imagebases")
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="videos")
      * @ORM\JoinColumn(name="clan_id", referencedColumnName="id")
      */
     private $clan;
 
-    
+
+
     /**
      * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="videos")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)

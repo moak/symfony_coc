@@ -24,11 +24,13 @@ class User extends BaseUser
     private $player;
 
     /**
-     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="players")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="users")
+     * @ORM\JoinColumn(name="clan_id", referencedColumnName="id")
      */
     private $clan;
-    
+
+
+
     /**
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Video", mappedBy="user")
      **/
@@ -39,7 +41,6 @@ class User extends BaseUser
      **/
     private $imagebases ;
 
-    
     /**
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBonus", mappedBy="user")
      **/
@@ -48,25 +49,9 @@ class User extends BaseUser
     /**
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBestAttack", mappedBy="user")
      **/
-    private $imageBestAttacks;
+    private $imagebestattacks;
 
-    private $clanName;
-
-    public function getClanName()
-    {
-        return $this->clanName;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \COC\COCBundle\Entity\Player
-     */
-    public function getPlayer()
-    {
-        return $this->player;
-    }
-
+    
 
     /**
      * @var integer $id
@@ -79,16 +64,26 @@ class User extends BaseUser
 
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->imagebases = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->imagebonuses = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->imagebestattacks = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->groups = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
-     * @return integer $id
+     * @return integer 
      */
     public function getId()
     {
         return $this->id;
     }
-
-
 
     /**
      * Set player
@@ -104,15 +99,36 @@ class User extends BaseUser
     }
 
     /**
-     * Constructor
+     * Get player
+     *
+     * @return \COC\COCBundle\Entity\Player 
      */
-    public function __construct()
+    public function getPlayer()
     {
-        parent::__construct();
-        $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->imagebases = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->imageBestAttacks = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->imagebonuses = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->player;
+    }
+
+    /**
+     * Set clan
+     *
+     * @param \COC\COCBundle\Entity\Clan $clan
+     * @return User
+     */
+    public function setClan(\COC\COCBundle\Entity\Clan $clan = null)
+    {
+        $this->clan = $clan;
+
+        return $this;
+    }
+
+    /**
+     * Get clan
+     *
+     * @return \COC\COCBundle\Entity\Clan 
+     */
+    public function getClan()
+    {
+        return $this->clan;
     }
 
     /**
@@ -141,13 +157,12 @@ class User extends BaseUser
     /**
      * Get videos
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getVideos()
     {
         return $this->videos;
     }
- 
 
     /**
      * Add imagebases
@@ -175,15 +190,12 @@ class User extends BaseUser
     /**
      * Get imagebases
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getImagebases()
     {
         return $this->imagebases;
     }
-
-
-
 
     /**
      * Add imagebonuses
@@ -219,64 +231,38 @@ class User extends BaseUser
     }
 
     /**
-     * Add imageBestAttacks
+     * Add imagebestattacks
      *
-     * @param \COC\COCBundle\Entity\ImageBestAttack $imageBestAttacks
+     * @param \COC\COCBundle\Entity\ImageBestAttack $imagebestattacks
      * @return User
      */
-    public function addImageBestAttack(\COC\COCBundle\Entity\ImageBestAttack $imageBestAttacks)
+    public function addImagebestattack(\COC\COCBundle\Entity\ImageBestAttack $imagebestattacks)
     {
-        $this->imageBestAttacks[] = $imageBestAttacks;
+        $this->imagebestattacks[] = $imagebestattacks;
 
         return $this;
     }
 
     /**
-     * Remove imageBestAttacks
+     * Remove imagebestattacks
      *
-     * @param \COC\COCBundle\Entity\ImageBestAttack $imageBestAttacks
+     * @param \COC\COCBundle\Entity\ImageBestAttack $imagebestattacks
      */
-    public function removeImageBestAttack(\COC\COCBundle\Entity\ImageBestAttack $imageBestAttacks)
+    public function removeImagebestattack(\COC\COCBundle\Entity\ImageBestAttack $imagebestattacks)
     {
-        $this->imageBestAttacks->removeElement($imageBestAttacks);
+        $this->imagebestattacks->removeElement($imagebestattacks);
     }
 
     /**
-     * Get imageBestAttacks
+     * Get imagebestattacks
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getImageBestAttacks()
+    public function getImagebestattacks()
     {
-        return $this->imageBestAttacks;
+        return $this->imagebestattacks;
     }
 
-
-
-
-
-    /**
-     * Set clan
-     *
-     * @param \COC\COCBundle\Entity\Clan $clan
-     * @return User
-     */
-    public function setClan(\COC\COCBundle\Entity\Clan $clan = null)
-    {
-        $this->clan = $clan;
-
-        return $this;
-    }
-
-    /**
-     * Get clan
-     *
-     * @return \COC\COCBundle\Entity\Clan 
-     */
-    public function getClan()
-    {
-        return $this->clan;
-    }
 
 
 }

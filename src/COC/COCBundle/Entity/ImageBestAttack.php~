@@ -18,18 +18,17 @@ use Symfony\Component\Validator\Constraints as Assert;
 class ImageBestAttack
 {
     /**
-     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="imagebestattacks")
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="imageBestAttacks")
      * @ORM\JoinColumn(name="clan_id", referencedColumnName="id")
      */
     private $clan;
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="imageBestAttacks")
+     * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="imagebestattacks")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
-
 
     /**
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
@@ -253,4 +252,27 @@ class ImageBestAttack
 
 
 
+
+    /**
+     * Set clan
+     *
+     * @param \COC\COCBundle\Entity\Clan $clan
+     * @return ImageBestAttack
+     */
+    public function setClan(\COC\COCBundle\Entity\Clan $clan = null)
+    {
+        $this->clan = $clan;
+
+        return $this;
+    }
+
+    /**
+     * Get clan
+     *
+     * @return \COC\COCBundle\Entity\Clan 
+     */
+    public function getClan()
+    {
+        return $this->clan;
+    }
 }
