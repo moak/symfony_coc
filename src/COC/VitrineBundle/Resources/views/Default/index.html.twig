@@ -16,7 +16,7 @@
                         <ul class="list-inline intro-social-buttons">
                             {% if not is_granted('ROLE_USER') or  not is_granted('ROLE_ADMIN') %}
                             <li>
-                                <a href="#register" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Créer un clan</span></a>
+                                <a href="{{ path('fos_user_registration_register') }}" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Créer un clan</span></a>
                             </li>
                             {% endif %}
                             <li>
