@@ -18,10 +18,10 @@
                 {% if active == "home" %} <li class="active"> {% else %} <li>{% endif %}<a href="{{ path('coc', {'id_clan': clan.id }) }}">Home</a></li>
 
                 {% if active == "classement" %} <li class="active dropdown"> {% else %} <li class="dropdown">{% endif %}
-                    <a href="#" class="dropdown-toggle" data-step="2" data-intro="Consultez les classements du clan." data-toggle="dropdown" role="button" aria-expanded="false">Classements <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-step="2" data-intro="Consultez les classements du clan." data-toggle="dropdown" role="button" aria-expanded="false"> <span class="badge">{{ numberPlayers }}</span> Classements <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}"> Classement joueurs  <span class="badge">{{ numberPlayers }}</span> </a></li>
-                        <li><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '1' }) }}"> Joueurs actifs <span class="badge">{{ numberPlayers }}</span>  </a></li>
+                        <li><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}"> Classement joueurs</a></li>
+                        <li><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '1' }) }}"> Joueurs actifs</a></li>
 
                         <li><a href="{{ path('coc_imagesBestAttack', {'id_clan': clan.id }) }}">Meilleures attaques  <span class="badge">{{ numberBestAttacks }}</span>  </a></li>
 
