@@ -83,6 +83,7 @@ class Clan
      **/
     private $videos;
 
+
     /**
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBase", mappedBy="clan")
      **/

@@ -49,8 +49,15 @@
         </div>
     </div>
 
-
-  
+    <div class="form-group">
+        {{ form_label(form.clanName, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        <div class="col-sm-6">
+            {{ form_widget(form.clanName, {'attr': {'class': 'form-control'}}) }}
+            {% if form.clanName.vars.errors[0].message is defined %}
+                <span class="help-block">{{ form.clanName.vars.errors[0].message }}</span>
+            {% endif %}
+        </div>
+    </div>
 
 
     <button class="btn btn-primary" type="submit">{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}</button>

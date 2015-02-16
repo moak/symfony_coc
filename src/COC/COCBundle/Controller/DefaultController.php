@@ -22,14 +22,14 @@ class DefaultController extends Controller
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
 
-       // $numberPlayers = $em->getRepository('COCBundle:Player')->getNumberPlayers();
+        $numberPlayers = $em->getRepository('COCBundle:Player')->getNumberEntities($clan);
         $numberBases = $em->getRepository('COCBundle:ImageBase')->getNumberEntities($clan);
         $numberVideos = $em->getRepository('COCBundle:Video')->getNumberEntities($clan);
        // $numberWars = $em->getRepository('COCBundle:War')->getNumberWars();
         $numberBestAttacks = $em->getRepository('COCBundle:ImageBestAttack')->getNumberEntities($clan);
-        $numberUsersNonAssigned = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsersNonAssigned();
+        $numberUsersNonAssigned = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsersNonAssigned($clan);
         $numberImagesBonus = $em->getRepository('COCBundle:ImageBonus')->getNumberEntities($clan);
 
-        return $this->render('COCBundle:Default:menu.html.twig' , array( 'active' => $active,  'clan' => $clan, 'numberImagesBonus' => $numberImagesBonus,'numberUsersNonAssigned' => $numberUsersNonAssigned,'numberVideos' => $numberVideos, 'numberBestAttacks' => $numberBestAttacks, 'numberBases' => $numberBases));
+        return $this->render('COCBundle:Default:menu.html.twig' , array('numberPlayers' => $numberPlayers, 'active' => $active,  'clan' => $clan, 'numberImagesBonus' => $numberImagesBonus,'numberUsersNonAssigned' => $numberUsersNonAssigned,'numberVideos' => $numberVideos, 'numberBestAttacks' => $numberBestAttacks, 'numberBases' => $numberBases));
     }
 }

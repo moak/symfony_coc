@@ -1,6 +1,8 @@
 # src/Uae/UserBundle/Resources/config/services.yml
 services:
-    application_user.registration.form.type:
-        class: Application\Sonata\UserBundle\Form\Type\RegistrationFormType
+    application_user.clan_registration.form.type:
+        class: Application\Sonata\UserBundle\Form\Type\RegistrationClanFormType
+        arguments: [ @doctrine.orm.entity_manager,  @security.context ]
         tags:
-            - { name: form.type, alias: application_user_registration }
+            - { name: form.type, alias: clan_registration }
+

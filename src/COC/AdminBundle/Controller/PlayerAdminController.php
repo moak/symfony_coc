@@ -32,9 +32,10 @@ class PlayerAdminController extends Controller
 
     public function indexAction($id_clan)
     {
-        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
         $em = $this->getDoctrine()->getManager();
-        $form = $this->get('form.factory')->create(new SeasonType($clan), null);
+        $actualSeason = $em->getRepository('COCBundle:Season')->getActualSeason();
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+        $form = $this->get('form.factory')->create(new SeasonType($clan, $actualSeason), null);
         $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
 
         if ($players)

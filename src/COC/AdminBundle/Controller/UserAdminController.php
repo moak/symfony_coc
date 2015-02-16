@@ -13,9 +13,8 @@ class UserAdminController extends Controller
     public function indexAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository('ApplicationSonataUserBundle:User')->findAll();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
-
+        $users = $em->getRepository('ApplicationSonataUserBundle:User')->findByClan($clan);
         return $this->render('AdminBundle:UserAdmin:index.html.twig', array('clan' => $clan,'users' => $users));
     }
 
@@ -79,7 +78,7 @@ class UserAdminController extends Controller
         $player->setUser(null);
 
         $em->flush();
-        return $this->redirect($this->generateUrl('admin_users'));
+        return $this->redirect($this->generateUrl('admin_users', array('id_clan' =>  $clan->getId())));
     }
 
     public function setRoleAction($id, $id_clan)
@@ -110,7 +109,7 @@ class UserAdminController extends Controller
         $user = $em->getRepository('ApplicationSonataUserBundle:User')->find($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
-        $form = $this->get('form.factory')->create(new UserType() );
+        $form = $this->get('form.factory')->create(new UserType($clan) );
         if ($form->handleRequest($request)->isValid())
         {
             $data = $request->request->all();
@@ -126,7 +125,7 @@ class UserAdminController extends Controller
 
             return $this->redirect($this->generateUrl('admin_users', array('id_clan' =>  $clan->getId())));
         }
-        return $this->render('AdminBundle:UserAdmin:edit.html.twig', array(
+        return $this->render('AdminBundle:UserAdmin:edit.html.twig', array('clan' => $clan ,
             'form'      =>  $form->createView(),
             'user'  => $user
         ));

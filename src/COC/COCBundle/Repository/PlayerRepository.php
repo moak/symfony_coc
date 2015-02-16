@@ -287,13 +287,14 @@ class PlayerRepository extends EntityRepository
     }
 
 
-    public function getNotAssociedToUser()
+    public function getNotAssociedToUser($clan)
     {
 
         $qb = $this->createQueryBuilder('p')
             ->select('p')
-            ->where('p.user is null');
-
+            ->where('p.user is null')
+            ->andWhere('p.clan = :clan')
+            ->setParameter('clan', $clan);
         return $qb;
     }
 }

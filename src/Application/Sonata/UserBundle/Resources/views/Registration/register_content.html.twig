@@ -1,17 +1,23 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <div class="page-header">
-    <h1>Inscription</h1>
+    <h1>Créer un clan</h1>
 </div>
 
 <div class="row">
     <div class="col-md-6">
-        <h3>Outil de gestion de clan</h3>
+        <h3>Information avant de s'inscrire</h3>
         <p>La possibilité de modifier votre joueur se fera une fois que le chef de clan aura valider votre compte. </p>
+        <p>1 - Après création du clan, rendez-vous dans l'administration pour créer les joueurs.</p>
+        <p>2 - Donner l'adresse du clan à vos membres .</p>
     </div>
 
+
+
+
+
     <div class="col-md-6">
-        <h3>Inscription gratuite</h3><br>
+        <h3>Création du clan</h3><br>
 
         <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal fos_user_registration_register" role="form">
 
@@ -63,6 +69,16 @@
                     {% endif %}
                 </div>
             </div>
+            <div class="form-group">
+                {{ form_label(form.clanName, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                <div class="col-sm-6">
+                    {{ form_widget(form.clanName, {'attr': {'class': 'form-control'}}) }}
+                    {% if form.clanName.vars.errors[0].message is defined %}
+                        <span class="help-block">{{ form.clanName.vars.errors[0].message }}</span>
+                    {% endif %}
+                </div>
+            </div>
+
 
 
             <button class="btn btn-primary" type="submit">{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}</button>

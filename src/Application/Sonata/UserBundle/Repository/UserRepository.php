@@ -7,19 +7,23 @@ use Doctrine\ORM\EntityRepository;
 
 class UserRepository extends EntityRepository
 {
-    public function getNumberUsers()
+    public function getNumberUsers($clan)
     {
         $qb = $this->createQueryBuilder('u')
-            ->select('u');
+            ->select('u')
+            ->where('u.clan = :clan')
+            ->setParameter('clan', $clan);
 
         return count($qb->getQuery()->getResult());
     }
 
-    public function getNumberUsersNonAssigned()
+    public function getNumberUsersNonAssigned( $clan)
     {
         $qb = $this->createQueryBuilder('u')
             ->select('u')
-            ->where('u.player is NULL');
+            ->where('u.player is NULL')
+            ->andWhere('u.clan = :clan')
+            ->setParameter('clan', $clan);
         return count($qb->getQuery()->getResult());
     }
 

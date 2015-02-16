@@ -10,8 +10,12 @@ class RegistrationClanFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('phone', 'integer');
-
+        $builder->add('phone', 'integer')
+        /*
+            ->add('clan', 'text', [
+                'mapped' => false,
+            ])*/
+       ->add('clanName', 'text');
     }
 
     public function getParent()
@@ -21,6 +25,6 @@ class RegistrationClanFormType extends AbstractType
 
     public function getName()
     {
-        return 'registration';
+        return 'clan_registration';
     }
 }

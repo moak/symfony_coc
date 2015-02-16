@@ -5,10 +5,17 @@ namespace COC\AdminBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
+use COC\COCBundle\Entity\Clan;
 
 class UserType extends AbstractType
 {
+    protected $clan;
+
+    public function __construct (Clan $clan)
+    {
+        $this->clan = $clan;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -16,8 +23,8 @@ class UserType extends AbstractType
                 array ('class' => 'COCBundle:Player',
                     'property' => 'name',
                     'mapped'=>false,
-                    'query_builder' => function(\COC\COCBundle\Repository\PlayerRepository $p) {
-                        return $p->getNotAssociedToUser();
+                    'query_builder' => function(\COC\COCBundle\Repository\PlayerRepository $p) use ($options) {
+                        return $p->getNotAssociedToUser($this->clan);
                     }))
             ->add('save', 'submit', array('label' => 'Sauvegarder'));
     }

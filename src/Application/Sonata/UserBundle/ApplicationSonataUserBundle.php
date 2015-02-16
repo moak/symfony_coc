@@ -28,6 +28,6 @@ class ApplicationSonataUserBundle extends Bundle
      */
     public function getParent()
     {
-        return 'SonataUserBundle';
+        return 'FOSUserBundle';
     }
 }

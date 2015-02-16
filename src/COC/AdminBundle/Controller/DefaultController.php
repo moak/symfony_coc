@@ -13,7 +13,7 @@ class DefaultController extends Controller
         $numberPlayers = $em->getRepository('COCBundle:Player')->getNumberEntities($id_clan);
         $numberBases = $em->getRepository('COCBundle:ImageBase')->getNumberEntities($id_clan);
         $numberVideos = $em->getRepository('COCBundle:Video')->getNumberEntities($id_clan);
-        $numberUsersNonAssigned = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsersNonAssigned();
+        $numberUsersNonAssigned = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsersNonAssigned($id_clan);
         $numberImagesBonus = $em->getRepository('COCBundle:ImageBonus')->getNumberEntities($id_clan);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
@@ -23,7 +23,7 @@ class DefaultController extends Controller
     public function menuAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
-        $numberUsers = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsers();
+        $numberUsers = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsers($id_clan);
 
         $numberImagesBonus = $em->getRepository('COCBundle:ImageBonus')->getNumberEntities($id_clan);
 
@@ -32,7 +32,7 @@ class DefaultController extends Controller
         $numberVideos = $em->getRepository('COCBundle:Video')->getNumberEntities($id_clan);
         $numberWars = $em->getRepository('COCBundle:War')->getNumberEntities($id_clan);
         $numberBestAttacks = $em->getRepository('COCBundle:ImageBestAttack')->getNumberEntities($id_clan);
-        $numberUsersNonAssigned = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsersNonAssigned();
+        $numberUsersNonAssigned = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsersNonAssigned($id_clan);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         return $this->render('AdminBundle:Default:menu.html.twig' , array('clan' => $clan, 'numberImagesBonus'=> $numberImagesBonus, 'numberPlayers' => $numberPlayers,'numberWars' => $numberWars,'numberUsersNonAssigned' => $numberUsersNonAssigned,'numberVideos' => $numberVideos, 'numberBestAttacks' => $numberBestAttacks, 'numberUsers' => $numberUsers,'numberBases' => $numberBases));

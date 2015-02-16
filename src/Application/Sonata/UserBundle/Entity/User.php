@@ -2,7 +2,7 @@
 
 namespace Application\Sonata\UserBundle\Entity;
 
-use Sonata\UserBundle\Entity\BaseUser as BaseUser;
+use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -24,12 +24,29 @@ class User extends BaseUser
     private $player;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="phone", type="integer", nullable=true)
+     */
+    private $phone;
+
+    /**
      * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="users")
      * @ORM\JoinColumn(name="clan_id", referencedColumnName="id")
      */
     private $clan;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="clanName", type="string", nullable=true)
+     */
+    private $clanName;
 
+    public function getClanName()
+    {
+        return $this->clanName;
+    }
 
     /**
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Video", mappedBy="user")
@@ -51,8 +68,6 @@ class User extends BaseUser
      **/
     private $imagebestattacks;
 
-    
-
     /**
      * @var integer $id
      *
@@ -62,17 +77,16 @@ class User extends BaseUser
      */
     protected $id;
 
-
     /**
      * Constructor
      */
     public function __construct()
     {
+        parent::__construct();
         $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
         $this->imagebases = new \Doctrine\Common\Collections\ArrayCollection();
         $this->imagebonuses = new \Doctrine\Common\Collections\ArrayCollection();
         $this->imagebestattacks = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->groups = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -265,4 +279,40 @@ class User extends BaseUser
 
 
 
+
+    /**
+     * Set phone
+     *
+     * @param integer $phone
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return integer 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set clanName
+     *
+     * @param string $clanName
+     * @return User
+     */
+    public function setClanName($clanName)
+    {
+        $this->clanName = $clanName;
+
+        return $this;
+    }
 }

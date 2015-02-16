@@ -57,6 +57,7 @@ body
     padding: 50px 0;
     border-top: 1px solid #e7e7e7;
     border-bottom: 1px solid #e7e7e7;
+
 }
 
 .section-heading
@@ -88,3 +89,71 @@ footer {
 p.copyright {
     margin: 15px 0 0;
 }
+
+
+
+/* ======= Steps ======= */
+.steps {
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.steps .title {
+    font-size: 36px;
+
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 60px;
+}
+.steps .step {
+    padding: 30px 60px;
+    color: #666666;
+}
+.steps .step .title {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.steps .step .title .number {
+    width: 90px;
+    height: 90px;
+    display: block;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    text-align: center;
+    background: #ec6952;
+    border: 5px solid #f19180;
+    color: #fff;
+    margin: 0 auto;
+    padding-top: 25px;
+    font-size: 26px;
+    font-weight: bold;
+    font-family: arial, sans-serif;
+    margin-bottom: 30px;
+}
+.steps .step .title .text {
+    color: #f19180;
+    font-weight: bold;
+    font-size: 25px;
+}
+.steps .btn-cta-primary {
+    margin: 0 auto;
+    margin-top: 60px;
+    font-size: 20px;
+}
+
+.btn-vitrine {
+    padding: 20px 34px;
+    border: 0 none;
+    font-weight: 900;
+    font-size: 1.3em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
