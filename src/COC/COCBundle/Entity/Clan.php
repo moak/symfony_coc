@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Clan
@@ -25,6 +26,25 @@ class Clan
      */
     private $id;
 
+
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+    /**
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
+
+
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=128, unique=true, nullable=true)
+     */
+    
+    private $nameClan;
 
     /**
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
@@ -459,5 +479,76 @@ class Clan
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Clan
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Clan
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Set nameClan
+     *
+     * @param string $nameClan
+     * @return Clan
+     */
+    public function setNameClan($nameClan)
+    {
+        $this->nameClan = $nameClan;
+
+        return $this;
+    }
+
+    /**
+     * Get nameClan
+     *
+     * @return string 
+     */
+    public function getNameClan()
+    {
+        return $this->nameClan;
     }
 }
