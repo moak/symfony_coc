@@ -93,6 +93,11 @@ class PlayerController extends Controller
 
     public function editAction (Request $request, $id_clan)
     {
+        if($this->get('security.context')->isGranted('IS_AUTHENTICATED_ANONYMOUSLY'))
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
         $user = $this->getUser();
         $userId = $user->getId();
 
