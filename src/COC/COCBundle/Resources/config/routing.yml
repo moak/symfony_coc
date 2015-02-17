@@ -1,14 +1,14 @@
 coc:
-    path:     /coc/{id_clan}
+    path:     /{id_clan}
     defaults: { _controller: COCBundle:Default:index }
 
 
 coc_players:
-    path:     /coc/{id_clan}/{type}/players
+    path:     /{id_clan}/{type}/players
     defaults: { _controller: COCBundle:Player:index}
 
 coc_player_edit:
-    path:     /coc/{id_clan}/player/edit
+    path:     /{id_clan}/player/edit
     defaults: { _controller: COCBundle:Player:edit }
 
 coc_players_history:
@@ -18,7 +18,7 @@ coc_players_history:
 
 
 coc_wars:
-    path:     /coc/{id_clan}/wars
+    path:     /{id_clan}/wars
     defaults: { _controller: COCBundle:War:index }
 
 
@@ -31,78 +31,78 @@ coc_users:
 
 
 coc_imagesBestAttack:
-    path:     /coc/{id_clan}/imagesBestAttack
+    path:     /{id_clan}/imagesBestAttack
     defaults: { _controller: COCBundle:ImageBestAttack:index }
 
 coc_imageBestAttack_add:
-    path:     /coc/{id_clan}/imagesBestAttack/add
+    path:     /{id_clan}/imagesBestAttack/add
     defaults: { _controller: COCBundle:ImageBestAttack:add }
 
 coc_imageBestAttack_edit:
-    path:     /coc/{id_clan}/imagesBestAttack/edit/{id}
+    path:     /{id_clan}/imagesBestAttack/edit/{id}
     defaults: { _controller: COCBundle:ImageBestAttack:edit }
 
 coc_imageBestAttack_delete:
-    path:     /coc/{id_clan}/imagesBestAttack/delete/{id}
+    path:     /{id_clan}/imagesBestAttack/delete/{id}
     defaults: { _controller: COCBundle:ImageBestAttack:delete }
 
 
 
 
 coc_images_base:
-    path:     /coc/{id_clan}/imagesBase
+    path:     /{id_clan}/imagesBase
     defaults: { _controller: COCBundle:ImageBase:index }
 
 coc_images_base_category:
-    path:     /coc/{id_clan}/imagesBase/category/{id}
+    path:     /{id_clan}/imagesBase/category/{id}
     defaults: { _controller: COCBundle:ImageBase:category }
 
 coc_images_base_template:
-    path:     /coc/{id_clan}/imagesBase/template/{id}
+    path:     /{id_clan}/imagesBase/template/{id}
     defaults: { _controller: COCBundle:ImageBase:template }
 
 coc_images_base_add:
-    path:     /coc/{id_clan}/imagesBase/add
+    path:     /{id_clan}/imagesBase/add
     defaults: { _controller: COCBundle:ImageBase:add }
 
 coc_image_base_edit:
-    path:     /coc/{id_clan}/imagesBase/edit/{id}
+    path:     /{id_clan}/imagesBase/edit/{id}
     defaults: { _controller: COCBundle:ImageBase:edit }
 
 coc_image_delete:
-    path:     /coc/{id_clan}/imagesBase/delete/{id}
+    path:     /{id_clan}/imagesBase/delete/{id}
     defaults: { _controller: COCBundle:ImageBase:delete }
 
 
 
 
 coc_videos:
-    path:     /coc/{id_clan}/videos
+    path:     /{id_clan}/videos
     defaults: { _controller: COCBundle:Video:index }
 
 coc_video_add:
-    path:     /coc/{id_clan}/video/add
+    path:     /{id_clan}/video/add
     defaults: { _controller: COCBundle:Video:add }
 
 coc_video_edit:
-    path:     /coc/{id_clan}/video/edit/{id}
+    path:     /{id_clan}/video/edit/{id}
     defaults: { _controller: COCBundle:Video:edit }
 
 
 
 
 coc_imagesBonus:
-    path:     /coc/{id_clan}/imagesBonus
+    path:     /{id_clan}/imagesBonus
     defaults: { _controller: COCBundle:ImageBonus:index }
 
 coc_imageBonus_add:
-    path:     /coc/{id_clan}/imagesBonus/add
+    path:     /{id_clan}/imagesBonus/add
     defaults: { _controller: COCBundle:ImageBonus:add }
 
 coc_imageBonus_edit:
-    path:     /coc/{id_clan}/imagesBonus/edit/{id}
+    path:     /{id_clan}/imagesBonus/edit/{id}
     defaults: { _controller: COCBundle:ImageBonus:edit }
 
 coc_imageBonus_delete:
-    path:     /coc/{id_clan}/imagesBonus/delete/{id}
+    path:     /{id_clan}/imagesBonus/delete/{id}
     defaults: { _controller: COCBundle:ImageBonus:delete }
