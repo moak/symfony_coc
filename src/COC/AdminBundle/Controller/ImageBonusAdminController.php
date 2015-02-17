@@ -13,6 +13,11 @@ class ImageBonusAdminController extends Controller
 
     public function indexAction($id_clan)
     {
+        if($this->getUser()->getClan()->getId() != $id_clan)
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $list = $em->getRepository('COCBundle:ImageBonus')->findAll();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
@@ -24,6 +29,11 @@ class ImageBonusAdminController extends Controller
 
     public function editAction ($id, Request $request, $id_clan)
     {
+        if($this->getUser()->getClan()->getId() != $id_clan)
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
         $em = $this->getDoctrine()->getManager();
         //$userInfo = $em->getRepository('COCBundle:ImageBonus')->findOneByUser($id);
         $imageBonus = $em->getRepository('COCBundle:ImageBonus')->find($id);
@@ -48,6 +58,11 @@ class ImageBonusAdminController extends Controller
 
     public function addAction (Request $request, $id_clan)
     {
+        if($this->getUser()->getClan()->getId() != $id_clan)
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
         $imageBonus = new ImageBonus();
         $em = $this->getDoctrine()->getManager();
         $form = $this->get('form.factory')->create(new ImageBonusType(), $imageBonus);
@@ -71,7 +86,7 @@ class ImageBonusAdminController extends Controller
         $imageBonus = $em->getRepository('COCBundle:ImageBonus')->find($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
-        if(!$imageBonus)
+        if(!$imageBonus || $this->getUser()->getClan()->getId() != $id_clan)
         {
             throw $this->createNotFoundException('No bestAttack found');
         }

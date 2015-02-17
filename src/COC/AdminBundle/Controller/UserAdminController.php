@@ -46,7 +46,7 @@ class UserAdminController extends Controller
         $user = $em->getRepository('ApplicationSonataUserBundle:User')->find($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
-        if(!$user)
+        if(!$user || $this->getUser()->getClan()->getId() != $id_clan)
         {
             throw $this->createNotFoundException('No user found');
         }

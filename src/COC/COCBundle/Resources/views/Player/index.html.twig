@@ -71,10 +71,18 @@
                 </tr>
             </thead>
             <tbody>
-            
+
             {% if players|length != 0 %}
                 {% for player in players %}
-                    <tr data-name="{{ player.name }}" class="positionable">
+                    {%  if app.user.player.id is defined %}
+                        {%  if app.user.player.id == player.id %}
+                            <tr data-name="{{ player.name }}" class="positionable active">
+                        {% else %}
+                            <tr data-name="{{ player.name }}" class="positionable">
+                        {% endif %}
+                    {% else %}
+                        <tr data-name="{{ player.name }}" class="positionable">
+                    {% endif %}
                     	<td><span class="glyphicon glyphicon-plus-sign expand" data-name="{{ player.name }}"></span></td>
                         <td class="position"></td>
                         <td>{{ player.name }}</td>
@@ -119,7 +127,7 @@
 										</div>
 										{% endif %}
 										<!-- MORTIER -->
-										{% if player.mortar1 != 0 %} 
+										{% if player.mortar1 != 0 %}
 										<div class="col-md-3 mortar">
 											<span>
 												{{player.mortar1}}
@@ -131,7 +139,7 @@
 										</div>
 										{% endif %}
 										<!-- ANTI AERIEN -->
-										{% if player.air_defence1 != 0 %} 
+										{% if player.air_defence1 != 0 %}
 										<div class="col-md-3 anti-air">
 											<span>
 												{{player.air_defence1}}
@@ -143,10 +151,10 @@
 										</div>
 										{% endif %}
 										<!-- WIZARD -->
-										{% if player.tower_magic1 != 0 %} 
+										{% if player.tower_magic1 != 0 %}
 										<div class="col-md-3 wizard">
 											<span>
-												{{player.tower_magic1}} 
+												{{player.tower_magic1}}
 												{% if player.tower_magic2 != 0 %} - {{player.tower_magic2}} {% endif %}
 												{% if player.tower_magic3 != 0 %} - {{player.tower_magic3}} {% endif %}
 												{% if player.tower_magic4 != 0 %} - {{player.tower_magic4}} {% endif %}
@@ -170,9 +178,9 @@
 										{% if player.arcx1 != 0 %}
 										<div class="col-md-3 arc-x">
 											<span>
-												 {{player.arcx1}} 
-												{% if player.arcx2 != 0 %} - {{player.arcx2}} {% endif %}	
-												{% if player.arcx3 != 0 %} - {{player.arcx3}} {% endif %}	
+												 {{player.arcx1}}
+												{% if player.arcx2 != 0 %} - {{player.arcx2}} {% endif %}
+												{% if player.arcx3 != 0 %} - {{player.arcx3}} {% endif %}
 											</span>
 											<img src="{{ asset('images/Buildings/Arc-X/arc-x.png') }}"/>
 										</div>
@@ -181,8 +189,8 @@
 										{% if player.inferno1 != 0 %}
 										<div class="col-md-3 inferno">
 											<span>
-												 {{player.inferno1}} 
-												{% if player.inferno2 != 0 %} - {{player.inferno2}} {% endif %}	
+												 {{player.inferno1}}
+												{% if player.inferno2 != 0 %} - {{player.inferno2}} {% endif %}
 											</span>
 											<img src="{{ asset('images/Buildings/Inferno/inferno.png') }}"/>
 										</div>
@@ -221,7 +229,7 @@
 										<div>{% if player.potion_freeze != 0 %}{{player.potion_freeze}}{% endif %}</div>
 										<img src="{% if player.potion_freeze != 0 %}{{ asset('images/laboratoire/potion_freeze.jpg') }}{% else %}{{ asset('images/laboratoire/potion_freeze0.jpg') }}{% endif %}"/>
 									</div>
-								</div>	
+								</div>
 								<div class="col-md-12">
 									<div class="portrait">
 										<div>{% if player.barbar != 0 %}{{player.barbar}}{% endif %}</div>
@@ -235,11 +243,11 @@
 										<img src="{% if player.geant != 0 %}{{ asset('images/laboratoire/geant.jpg') }}{% else %}{{ asset('images/laboratoire/geant0.jpg') }}{% endif %}"/>
 									</div>
 									<div class="portrait">
-										<div>{% if player.gobelin != 0 %}{{player.gobelin}}{% endif %}</div>	
+										<div>{% if player.gobelin != 0 %}{{player.gobelin}}{% endif %}</div>
 										<img src="{% if player.gobelin != 0 %}{{ asset('images/laboratoire/gobelin.jpg') }}{% else %}{{ asset('images/laboratoire/gobelin0.jpg') }}{% endif %}"/>
 									</div>
 									<div class="portrait">
-										<div>{% if player.ballon != 0 %}{{player.ballon}}{% endif %}</div>	
+										<div>{% if player.ballon != 0 %}{{player.ballon}}{% endif %}</div>
 										<img src="{% if player.ballon != 0 %}{{ asset('images/laboratoire/ballon.jpg') }}{% else %}{{ asset('images/laboratoire/ballon0.jpg') }}{% endif %}"/>
 									</div>
 									<div class="portrait">

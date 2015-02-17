@@ -13,8 +13,9 @@ class PlayerAdminType extends AbstractType
     {
         $builder
             ->add('name', null)
-            ->add('hall_town' , 'choice', array('choices' => array(0, 1, 2, 3, 4,5, 6)))
-
+            ->add('hall_town' , 'choice', array(
+                'placeholder' => 'Select niveau', 'choices' => array(0, 1, 2, 3, 4,5, 6,7,8,9,10),
+            ))
             // ->add('utilisateurs', 'entity', array ('class' => 'Utilisateurs\UtilisateursBundle\Entity\Utilisateurs'))
             ->add('save', 'submit', array('label' => 'Ajouter'));
     }

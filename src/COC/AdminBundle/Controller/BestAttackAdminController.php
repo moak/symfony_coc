@@ -23,6 +23,11 @@ class BestAttackAdminController extends Controller
 
     public function indexAction($id_clan)
     {
+        if($this->getUser()->getClan()->getId() != $id_clan)
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $list = $em->getRepository('COCBundle:ImageBestAttack')->findAll();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
@@ -32,6 +37,11 @@ class BestAttackAdminController extends Controller
 
     public function editAction ($id, Request $request, $id_clan)
     {
+        if($this->getUser()->getClan()->getId() != $id_clan)
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
         $em = $this->getDoctrine()->getManager();
         //$userInfo = $em->getRepository('COCBundle:ImageBase')->findOneByUser($id);
         $bestAttack = $em->getRepository('COCBundle:ImageBestAttack')->find($id);
@@ -55,6 +65,11 @@ class BestAttackAdminController extends Controller
 
     public function addAction (Request $request, $id_clan)
     {
+        if($this->getUser()->getClan()->getId() != $id_clan)
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
         $bestAttack = new ImageBestAttack();
         $em = $this->getDoctrine()->getManager();
         $form = $this->get('form.factory')->create(new ImageBestAttackType(), $bestAttack);
@@ -76,7 +91,7 @@ class BestAttackAdminController extends Controller
         $em = $this->getDoctrine()->getManager();
         $bestAttack = $em->getRepository('COCBundle:ImageBestAttack')->find($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
-        if(!$bestAttack)
+        if(!$bestAttack || $this->getUser()->getClan()->getId() != $id_clan)
         {
             throw $this->createNotFoundException('No bestAttack found');
         }

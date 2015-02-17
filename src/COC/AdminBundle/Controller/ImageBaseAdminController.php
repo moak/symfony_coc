@@ -12,6 +12,11 @@ class ImageBaseAdminController extends Controller
 
     public function indexAction($id_clan)
     {
+        if($this->getUser()->getClan()->getId() != $id_clan)
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $list = $em->getRepository('COCBundle:ImageBase')->findAll();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
@@ -23,6 +28,11 @@ class ImageBaseAdminController extends Controller
 
     public function editAction ($id, Request $request, $id_clan)
     {
+        if($this->getUser()->getClan()->getId() != $id_clan)
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
         $em = $this->getDoctrine()->getManager();
         //$userInfo = $em->getRepository('COCBundle:ImageBase')->findOneByUser($id);
         $imageBase = $em->getRepository('COCBundle:ImageBase')->find($id);
@@ -70,7 +80,7 @@ class ImageBaseAdminController extends Controller
         $imageBase = $em->getRepository('COCBundle:ImageBase')->find($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
-        if(!$imageBase)
+        if(!$imageBase || $this->getUser()->getClan()->getId() != $id_clan)
         {
             throw $this->createNotFoundException('No bestAttack found');
         }

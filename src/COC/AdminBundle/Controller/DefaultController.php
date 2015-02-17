@@ -8,6 +8,11 @@ class DefaultController extends Controller
 {
     public function indexAction($id_clan)
     {
+        if($this->getUser()->getClan()->getId() != $id_clan)
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $numberPlayers = $em->getRepository('COCBundle:Player')->getNumberEntities($id_clan);
@@ -22,6 +27,11 @@ class DefaultController extends Controller
 
     public function menuAction($id_clan)
     {
+
+        if($this->getUser()->getClan()->getId() != $id_clan)
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
         $em = $this->getDoctrine()->getManager();
         $numberUsers = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsers($id_clan);
 

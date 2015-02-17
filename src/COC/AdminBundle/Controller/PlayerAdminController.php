@@ -94,7 +94,7 @@ class PlayerAdminController extends Controller
         $form = $this->get('form.factory')->create(new PlayerAdminType(), $player);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
-        if ($form->handleRequest($request)->isValid())
+        if ($form->handleRequest($request)->isValid() && $this->getUser()->getClan()->getId() == $id_clan)
         {
             $player->setClan($clan);
             $em->persist($player);
@@ -138,15 +138,15 @@ class PlayerAdminController extends Controller
         $player = $em->getRepository('COCBundle:Player')->find($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
-        if(!$player)
+        if(!$player || $this->getUser()->getClan()->getId() != $id_clan)
         {
-            throw $this->createNotFoundException('No player found');
+            throw $this->createNotFoundException('Page not found');
         }
         $em = $this->getDoctrine()->getManager();
         $em->remove($player);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('admin_players'));
+        return $this->redirect($this->generateUrl('admin_players', array('id_clan' =>  $clan->getId())));
     }
 
 

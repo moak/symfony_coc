@@ -70,7 +70,7 @@ class WarAdminController extends Controller
         $war = $em->getRepository('COCBundle:War')->find($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
-        if(!$war)
+        if(!$war || $this->getUser()->getClan()->getId() != $id_clan)
         {
             throw $this->createNotFoundException('No war found');
         }

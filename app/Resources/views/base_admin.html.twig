@@ -1,8 +1,8 @@
+{% if  app.user.clan.id == id_clan  %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,9 +13,7 @@
         <title>Dashboard</title>
     {% endblock %}
 
-
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
-
     <link rel="stylesheet" href="{{ asset('css/sb-admin-2.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/metisMenu.min.css') }}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
@@ -30,22 +28,15 @@
 </head>
 <body>
 
-
-<div id="wrapper">
-
-    {{ render(controller('AdminBundle:Default:menu', {'id_clan' : id_clan  })) }}
-
-    <div id="page-wrapper">
-
-        {% block body %}{% endblock %}
-        <!-- /.row -->
+    <div id="wrapper">
+        {{ render(controller('AdminBundle:Default:menu', {'id_clan' : id_clan  })) }}
+        <div id="page-wrapper">
+            {% block body %}{% endblock %}
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
     </div>
-    <!-- /#page-wrapper -->
-
-</div>
-<!-- /#wrapper -->
-
-
+    <!-- /#wrapper -->
 
 <script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
@@ -59,7 +50,7 @@
     $(document).on("click", ".alert", function(e) {
         var link = $(this).attr("href"); // "get" the intended link in a var
         e.preventDefault();
-        bootbox.confirm("Are you sure?", function(result) {
+        bootbox.confirm("Confirmation", function(result) {
             if (result) {
                 document.location.href = link;  // if result, "set" the document location
             }
@@ -73,4 +64,4 @@
 
 </body>
 </html>
-
+{% endif %}

@@ -62,25 +62,17 @@
                     <a href="#page-top"></a>
                 </li>
 
+                {% if is_granted('ROLE_ADMIN') and clan.id == app.user.clan.id %}
+                    <li><a target="_blank" href="{{ path('admin', {'id_clan': clan.id }) }}">Administration <span class="badge">{{  numberUsersNonAssigned }}</span></a></li>
+                {% endif %}
+
                 {% if is_granted('ROLE_USER')  %}
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ app.user.username }}
-                            {% if is_granted('ROLE_ADMIN') and clan.id == app.user.clan.id %}
-                                <span class="badge">{{  numberUsersNonAssigned }}</span>
-                            {% endif %}
-                            <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ app.user.username }}<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-
-                            {% if is_granted('ROLE_ADMIN') and clan.id == app.user.clan.id %}
-                                <li><a target="_blank" href="{{ path('admin', {'id_clan': clan.id }) }}">Administration</a></li>
-                            {% else %}
-                                <li><a target="_blank" href="">Mon clan</a></li>
-                            {% endif %}
                             {% if is_granted('ROLE_USER') %}
                                 <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                             {% endif %}
-
-
                         </ul>
                     </li>
 

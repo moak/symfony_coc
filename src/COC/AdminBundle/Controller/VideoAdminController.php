@@ -28,8 +28,8 @@ class VideoAdminController extends Controller
     public function indexAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository('COCBundle:Video')->findAll();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+        $list = $em->getRepository('COCBundle:Video')->findByClan($clan);
 
         foreach($list as $key => $value) {
             $list[$key]->setUrl($this->convertYoutube($list[$key]->getUrl()));
@@ -100,7 +100,7 @@ class VideoAdminController extends Controller
         $video = $em->getRepository('COCBundle:Video')->find($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
-        if(!$video)
+        if(!$video || $this->getUser()->getClan()->getId() != $id_clan)
         {
             throw $this->createNotFoundException('No video found');
         }
