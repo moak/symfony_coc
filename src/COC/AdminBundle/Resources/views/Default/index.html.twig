@@ -19,11 +19,21 @@
     <div class="panel panel-success">
         <!-- /.panel-heading -->
         <div class="panel-body">
-            <strong>Bienvenue!</strong> Si vous faites vos premiers pas sur l'administration, pensez à ajouter les joueurs qui composent votre clan <a href="{{ path('admin_player_add', {'id_clan' : clan.id}) }}">ici</a> .
+            <strong>Bienvenue!</strong> Si vous faites vos premiers pas sur l'administration, pensez à ajouter les joueurs qui composent votre clan <a href="{{ path('admin_players', {'id_clan' : clan.id}) }}">ici</a> .
         </div>
         <!-- /.panel-body -->
     </div>
 
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            Message clan (<a href="{{ path('admin_clan_edit', { 'id_clan': clan.id } ) }}">edit</a>)
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            {{ clan.message }}
+        </div>
+        <!-- /.panel-body -->
+    </div>
 
     <div class="row">
         <div class="col-lg-3 col-md-6">

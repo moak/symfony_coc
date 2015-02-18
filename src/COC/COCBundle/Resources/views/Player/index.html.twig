@@ -62,10 +62,11 @@
                 	<th  class="no-sort"></th>
                     <th class="supercell-font">#</th>
                     <th class="supercell-font">Nom</th>
-                    <th class="supercell-font">Level</th>
-                    <th class="supercell-font">Défence</th>
-                    <th class="supercell-font">Attaque</th>
-                    <th class="supercell-font">Total</th>
+                    <th class="supercell-font">HDV</th>
+                    <th class="supercell-font">Niv</th>
+                    <th class="supercell-font">Def</th>
+                    <th class="supercell-font">Att</th>
+                    <th class="supercell-font">Tot</th>
                     <th class="supercell-font no-sort">Mis à jour</th>
 
                 </tr>
@@ -86,6 +87,7 @@
                     	<td><span class="glyphicon glyphicon-plus-sign expand" data-name="{{ player.name }}"></span></td>
                         <td class="position"></td>
                         <td>{{ player.name }}</td>
+                        <td>{{ player.hallTown }}</td>
                         <td>{{ player.level }}</td>
                         <td>{{ player.totalDefence|round }}</td>
                         <td>{{ player.totalAttack|round}}</td>

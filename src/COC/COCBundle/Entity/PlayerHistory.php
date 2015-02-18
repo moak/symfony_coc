@@ -2532,4 +2532,27 @@ class PlayerHistory
     {
         return $this->season;
     }
+
+    /**
+     * Set player
+     *
+     * @param \COC\COCBundle\Entity\Player $player
+     * @return PlayerHistory
+     */
+    public function setPlayer(\COC\COCBundle\Entity\Player $player = null)
+    {
+        $this->player = $player;
+
+        return $this;
+    }
+
+    /**
+     * Get player
+     *
+     * @return \COC\COCBundle\Entity\Player 
+     */
+    public function getPlayer()
+    {
+        return $this->player;
+    }
 }

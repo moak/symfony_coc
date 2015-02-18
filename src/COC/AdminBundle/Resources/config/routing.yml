@@ -134,9 +134,13 @@ admin_imageBonus_add:
     defaults: { _controller: AdminBundle:ImageBonusAdmin:add }
 
 admin_imageBonus_edit:
-    path:     coc/{id_clan}/admin/imageBonus/edit/{id}
+    path:     coc/{id_clan}/admin/imageBonus/edit
     defaults: { _controller: AdminBundle:ImageBonusAdmin:edit }
 
 admin_imageBonus_delete:
     path:     coc/{id_clan}/admin/imageBonus/delete/{id}
     defaults: { _controller: AdminBundle:ImageBonusAdmin:delete }
+
+admin_clan_edit:
+    path:     coc/{id_clan}/admin/clan/edit
+    defaults: { _controller: AdminBundle:ClanAdmin:edit }

@@ -8,11 +8,12 @@ class DefaultController extends Controller
 {
     public function indexAction($id_clan)
     {
+        $em = $this->getDoctrine()->getManager();
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
+        $numberPlayers = $em->getRepository('COCBundle:Player')->getNumberEntities($clan);
 
-
-        return $this->render('COCBundle:Default:index.html.twig', array('clan' => $clan));
+        return $this->render('COCBundle:Default:index.html.twig', array('numberPlayers' => $numberPlayers, 'clan' => $clan));
     }
 
     public function menuAction($id_clan, $active)

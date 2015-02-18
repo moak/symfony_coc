@@ -93,7 +93,9 @@ class PlayerController extends Controller
 
     public function editAction (Request $request, $id_clan)
     {
-        if($this->get('security.context')->isGranted('IS_AUTHENTICATED_ANONYMOUSLY'))
+        $user = $this->getUser();
+
+        if($user == null)
         {
             throw $this->createNotFoundException('Page not found');
         }
@@ -128,7 +130,7 @@ class PlayerController extends Controller
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
         $players = $em->getRepository('COCBundle:Player')->getAllPlayersModule($clan);
 
-        return $this->render('COCBundle:Player:historyPlayers.html.twig', array(
+        return $this->render('COCBundle:Player:historyPlayers.html.twig', array( 'clan'      =>  $clan,
             'players'      =>  $players,
         ));
     }

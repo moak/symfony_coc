@@ -3,7 +3,7 @@
 namespace COC\COCBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * UserInfo
  *
@@ -13,7 +13,18 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Player
 {
-    
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
+    /**
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
+
+
     /**
      * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="players")
      * @ORM\JoinColumn(nullable=true)
@@ -24,12 +35,6 @@ class Player
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\PlayerHistory", mappedBy="player")
      **/
     private $playerhistories ;
-
-
-    /**
-     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
-     */
-    private $updatedAt;
 
 
     /**
@@ -44,49 +49,49 @@ class Player
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", nullable=true)
+     * @ORM\Column(name="name", type="string", nullable=false)
      */
     private $name;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="hall_town", type="integer", nullable=true)
+     * @ORM\Column(name="hall_town", type="integer", nullable=false)
      */
     private $hallTown  ;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="troop_received", type="integer", nullable=true)
+     * @ORM\Column(name="troop_received", type="integer", options={"default" = 0})
      */
     private $troopReceived;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="troop_sent", type="integer", nullable=true)
+     * @ORM\Column(name="troop_sent", type="integer", options={"default" = 0})
      */
     private $troopSent;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="attack_won", type="integer", nullable=true)
+     * @ORM\Column(name="attack_won", type="integer", options={"default" = 0})
      */
     private $attackWon;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="level", type="integer", nullable=true)
+     * @ORM\Column(name="level", type="integer", options={"default" = 0})
      */
     private $level = 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="trophy", type="integer", nullable=true)
+     * @ORM\Column(name="trophy", type="integer", options={"default" = 0})
      */
     private $trophy;
 
@@ -94,14 +99,14 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="canon1", type="integer", nullable=true)
+     * @ORM\Column(name="canon1", type="integer", options={"default" = 0})
      */
     private $canon1;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="air_defence1", type="integer", nullable=true)
+     * @ORM\Column(name="air_defence1", type="integer", options={"default" = 0})
      */
     private $air_defence1;
 
@@ -109,7 +114,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="air_defence2", type="integer", nullable=true)
+     * @ORM\Column(name="air_defence2", type="integer", options={"default" = 0}))
      */
     private $air_defence2;
 
@@ -117,7 +122,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="air_defence3", type="integer", nullable=true)
+     * @ORM\Column(name="air_defence3", type="integer", options={"default" = 0}))
      */
     private $air_defence3;
 
@@ -125,14 +130,14 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="air_defence4", type="integer", nullable=true)
+     * @ORM\Column(name="air_defence4", type="integer", options={"default" = 0}))
      */
     private $air_defence4;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="canon2", type="integer", nullable=true)
+     * @ORM\Column(name="canon2", type="integer", options={"default" = 0}))
      */
     private $canon2;
 
@@ -140,21 +145,21 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="canon3", type="integer", nullable=true)
+     * @ORM\Column(name="canon3", type="integer", options={"default" = 0}))
      */
     private $canon3;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="canon4", type="integer", nullable=true)
+     * @ORM\Column(name="canon4", type="integer", options={"default" = 0}))
      */
     private $canon4;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="canon5", type="integer", nullable=true)
+     * @ORM\Column(name="canon5", type="integer", options={"default" = 0}))
      */
     private $canon5;
 
@@ -162,7 +167,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="canon6", type="integer", nullable=true)
+     * @ORM\Column(name="canon6", type="integer", options={"default" = 0}))
      */
     private $canon6;
 
@@ -174,7 +179,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer1", type="integer", nullable=true)
+     * @ORM\Column(name="tower_archer1", type="integer", options={"default" = 0}))
      */
     private $tower_archer1;
 
@@ -182,7 +187,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer2", type="integer", nullable=true)
+     * @ORM\Column(name="tower_archer2", type="integer", options={"default" = 0}))
      */
     private $tower_archer2;
 
@@ -190,7 +195,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer3", type="integer", nullable=true)
+     * @ORM\Column(name="tower_archer3", type="integer", options={"default" = 0}))
      */
     private $tower_archer3;
 
@@ -198,7 +203,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer4", type="integer", nullable=true)
+     * @ORM\Column(name="tower_archer4", type="integer", options={"default" = 0}))
      */
     private $tower_archer4;
 
@@ -206,7 +211,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer5", type="integer", nullable=true)
+     * @ORM\Column(name="tower_archer5", type="integer", options={"default" = 0}))
      */
     private $tower_archer5;
 
@@ -214,14 +219,14 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer6", type="integer", nullable=true)
+     * @ORM\Column(name="tower_archer6", type="integer", options={"default" = 0}))
      */
     private $tower_archer6;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer7", type="integer", nullable=true)
+     * @ORM\Column(name="tower_archer7", type="integer", options={"default" = 0}))
      */
     private $tower_archer7;
 
@@ -229,7 +234,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_magic1", type="integer", nullable=true)
+     * @ORM\Column(name="tower_magic1", type="integer", options={"default" = 0}))
      */
     private $tower_magic1;
 
@@ -237,7 +242,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_magic2", type="integer", nullable=true)
+     * @ORM\Column(name="tower_magic2", type="integer", options={"default" = 0}))
      */
     private $tower_magic2;
 
@@ -245,7 +250,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_magic3", type="integer", nullable=true)
+     * @ORM\Column(name="tower_magic3", type="integer", options={"default" = 0}))
      */
     private $tower_magic3;
 
@@ -253,7 +258,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_magic4", type="integer", nullable=true)
+     * @ORM\Column(name="tower_magic4", type="integer", options={"default" = 0}))
      */
     private $tower_magic4;
 
@@ -261,7 +266,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="mortar1", type="integer", nullable=true)
+     * @ORM\Column(name="mortar1", type="integer", options={"default" = 0}))
      */
     private $mortar1;
 
@@ -269,7 +274,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="mortar2", type="integer", nullable=true)
+     * @ORM\Column(name="mortar2", type="integer", options={"default" = 0}))
      */
     private $mortar2;
 
@@ -277,7 +282,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="mortar3", type="integer", nullable=true)
+     * @ORM\Column(name="mortar3", type="integer", options={"default" = 0}))
      */
     private $mortar3;
 
@@ -285,14 +290,14 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="mortar4", type="integer", nullable=true)
+     * @ORM\Column(name="mortar4", type="integer", options={"default" = 0}))
      */
     private $mortar4;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tesla1", type="integer", nullable=true)
+     * @ORM\Column(name="tesla1", type="integer", options={"default" = 0}))
      */
     private $tesla1;
 
@@ -300,7 +305,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tesla2", type="integer", nullable=true)
+     * @ORM\Column(name="tesla2", type="integer", options={"default" = 0}))
      */
     private $tesla2;
 
@@ -308,7 +313,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tesla3", type="integer", nullable=true)
+     * @ORM\Column(name="tesla3", type="integer", options={"default" = 0}))
      */
     private $tesla3;
 
@@ -316,7 +321,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tesla4", type="integer", nullable=true)
+     * @ORM\Column(name="tesla4", type="integer", options={"default" = 0}))
      */
     private $tesla4;
 
@@ -324,7 +329,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="inferno1", type="integer", nullable=true)
+     * @ORM\Column(name="inferno1", type="integer", options={"default" = 0}))
      */
     private $inferno1;
 
@@ -332,7 +337,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="inferno2", type="integer", nullable=true)
+     * @ORM\Column(name="inferno2", type="integer", options={"default" = 0}))
      */
     private $inferno2;
     
@@ -340,7 +345,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="king", type="integer", nullable=true)
+     * @ORM\Column(name="king", type="integer", options={"default" = 0}))
      */
     private $king;
 
@@ -348,7 +353,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="queen", type="integer", nullable=true)
+     * @ORM\Column(name="queen", type="integer", options={"default" = 0}))
      */
     private $queen;
 
@@ -356,7 +361,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="arcx1", type="integer", nullable=true)
+     * @ORM\Column(name="arcx1", type="integer", options={"default" = 0}))
      */
     private $arcx1;
 
@@ -364,7 +369,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="arcx2", type="integer", nullable=true)
+     * @ORM\Column(name="arcx2", type="integer", options={"default" = 0}))
      */
     private $arcx2;
 
@@ -372,7 +377,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="arcx3", type="integer", nullable=true)
+     * @ORM\Column(name="arcx3", type="integer", options={"default" = 0}))
      */
     private $arcx3;
 
@@ -381,7 +386,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="archer", type="integer", nullable=true)
+     * @ORM\Column(name="archer", type="integer", options={"default" = 0}))
      */
     private $archer;
 
@@ -389,7 +394,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="barbar", type="integer", nullable=true)
+     * @ORM\Column(name="barbar", type="integer", options={"default" = 0}))
      */
     private $barbar;
 
@@ -397,21 +402,21 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="gobelin", type="integer", nullable=true)
+     * @ORM\Column(name="gobelin", type="integer", options={"default" = 0}))
      */
     private $gobelin;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="geant", type="integer", nullable=true)
+     * @ORM\Column(name="geant", type="integer", options={"default" = 0}))
      */
     private $geant;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="wall_breaker", type="integer", nullable=true)
+     * @ORM\Column(name="wall_breaker", type="integer", options={"default" = 0}))
      */
     private $wall_breaker;
 
@@ -419,7 +424,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="ballon", type="integer", nullable=true)
+     * @ORM\Column(name="ballon", type="integer", options={"default" = 0}))
      */
     private $ballon;
 
@@ -427,7 +432,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="wizard", type="integer", nullable=true)
+     * @ORM\Column(name="wizard", type="integer", options={"default" = 0}))
      */
     private $wizard;
 
@@ -435,7 +440,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="healer", type="integer", nullable=true)
+     * @ORM\Column(name="healer", type="integer", options={"default" = 0}))
      */
     private $healer;
 
@@ -443,7 +448,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="dragon", type="integer", nullable=true)
+     * @ORM\Column(name="dragon", type="integer", options={"default" = 0}))
      */
     private $dragon;
 
@@ -451,21 +456,21 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="pekka", type="integer", nullable=true)
+     * @ORM\Column(name="pekka", type="integer", options={"default" = 0}))
      */
     private $pekka;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="minion", type="integer", nullable=true)
+     * @ORM\Column(name="minion", type="integer", options={"default" = 0}))
      */
     private $minion;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="rider", type="integer", nullable=true)
+     * @ORM\Column(name="rider", type="integer", options={"default" = 0}))
      */
     private $rider;
 
@@ -473,7 +478,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="valkyrie", type="integer", nullable=true)
+     * @ORM\Column(name="valkyrie", type="integer", options={"default" = 0}))
      */
     private $valkyrie;
 
@@ -481,7 +486,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="golem", type="integer", nullable=true)
+     * @ORM\Column(name="golem", type="integer", options={"default" = 0}))
      */
     private $golem;
 
@@ -489,14 +494,14 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="witch", type="integer", nullable=true)
+     * @ORM\Column(name="witch", type="integer", options={"default" = 0}))
      */
     private $witch;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="lava", type="integer", nullable=true)
+     * @ORM\Column(name="lava", type="integer", options={"default" = 0}))
      */
     private $lava;
 
@@ -505,7 +510,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="potion_heal", type="integer", nullable=true)
+     * @ORM\Column(name="potion_heal", type="integer", options={"default" = 0}))
      */
     private $potion_heal;
 
@@ -513,7 +518,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="potion_boost", type="integer", nullable=true)
+     * @ORM\Column(name="potion_boost", type="integer", options={"default" = 0}))
      */
     private $potion_boost;
 
@@ -522,7 +527,7 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="potion_damage", type="integer", nullable=true)
+     * @ORM\Column(name="potion_damage", type="integer", options={"default" = 0}))
      */
     private $potion_damage;
 
@@ -530,14 +535,14 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="potion_green", type="integer", nullable=true)
+     * @ORM\Column(name="potion_green", type="integer", options={"default" = 0}))
      */
     private $potion_green;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="potion_freeze", type="integer", nullable=true)
+     * @ORM\Column(name="potion_freeze", type="integer", options={"default" = 0}))
      */
     private $potion_freeze;
 
@@ -545,42 +550,42 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="gold1", type="integer", nullable=true)
+     * @ORM\Column(name="gold1", type="integer", options={"default" = 0}))
      */
     private $gold1;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="gold2", type="integer", nullable=true)
+     * @ORM\Column(name="gold2", type="integer", options={"default" = 0}))
      */
     private $gold2;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="gold3", type="integer", nullable=true)
+     * @ORM\Column(name="gold3", type="integer", options={"default" = 0}))
      */
     private $gold3;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="gold4", type="integer", nullable=true)
+     * @ORM\Column(name="gold4", type="integer", options={"default" = 0}))
      */
     private $gold4;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="gold5", type="integer", nullable=true)
+     * @ORM\Column(name="gold5", type="integer", options={"default" = 0}))
      */
     private $gold5;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="gold6", type="integer", nullable=true)
+     * @ORM\Column(name="gold6", type="integer", options={"default" = 0}))
      */
 
     private $gold6;
@@ -588,55 +593,55 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="gold7", type="integer", nullable=true)
+     * @ORM\Column(name="gold7", type="integer", options={"default" = 0}))
      */
     private $gold7;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="elixir1", type="integer", nullable=true)
+     * @ORM\Column(name="elixir1", type="integer", options={"default" = 0}))
      */
     private $elixir1;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="elixir2", type="integer", nullable=true)
+     * @ORM\Column(name="elixir2", type="integer", options={"default" = 0}))
      */
     private $elixir2;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="elixir3", type="integer", nullable=true)
+     * @ORM\Column(name="elixir3", type="integer", options={"default" = 0}))
      */
     private $elixir3;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="elixir4", type="integer", nullable=true)
+     * @ORM\Column(name="elixir4", type="integer", options={"default" = 0}))
      */
     private $elixir4;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="elixir5", type="integer", nullable=true)
+     * @ORM\Column(name="elixir5", type="integer", options={"default" = 0}))
      */
     private $elixir5;
     /**
      * @var integer
      *
-     * @ORM\Column(name="elixir6", type="integer", nullable=true)
+     * @ORM\Column(name="elixir6", type="integer", options={"default" = 0}))
      */
     private $elixir6;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="elixir7", type="integer", nullable=true)
+     * @ORM\Column(name="elixir7", type="integer", options={"default" = 0}))
      */
     private $elixir7;
 
@@ -1928,37 +1933,8 @@ class Player
 
 
 
-    /**
-     * @ORM\PreUpdate
-     * @ORM\PrePersist
-     */
-    public function updateDate()
-    {
-        $this->setUpdatedAt(new \Datetime());
-    }
 
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     * @return Player
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
 
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime 
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
     /**
      * Constructor
      */
@@ -2699,4 +2675,50 @@ class Player
 
 
 
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Player
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Player
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
 }

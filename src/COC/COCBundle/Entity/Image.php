@@ -8,7 +8,7 @@ use Symfony\Component\validator\Constraints as Assert;
  * Media
  *
  * @ORM\Table("image")
- * @ORM\Entity(repositoryClass="CP\CPBundle\Repository\ImageRepository")
+ * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\ImageRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Image
@@ -30,11 +30,26 @@ class Image
     private $updateAt;
 
     /**
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBestAttack", mappedBy="Image", cascade={"persist"})
+     **/
+    private $imagebestattacks;
+
+    /**
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBonus", mappedBy="Image", cascade={"persist"})
+     **/
+    private $imagebonuses;
+
+    /**
      * @ORM\PostLoad()
      */
     public function postLoad()
     {
         $this->updateAt = new \DateTime();
+    }
+
+    public function __toString()
+    {
+        return (string)$this->id;
     }
 
     /**
@@ -189,5 +204,45 @@ class Image
         $this->path = $path;
 
         return $this;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->imagebestattacks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add imagebestattacks
+     *
+     * @param \COC\COCBundle\Entity\ImageBestAttack $imagebestattacks
+     * @return Image
+     */
+    public function addImagebestattack(\COC\COCBundle\Entity\ImageBestAttack $imagebestattacks)
+    {
+        $this->imagebestattacks[] = $imagebestattacks;
+
+        return $this;
+    }
+
+    /**
+     * Remove imagebestattacks
+     *
+     * @param \COC\COCBundle\Entity\ImageBestAttack $imagebestattacks
+     */
+    public function removeImagebestattack(\COC\COCBundle\Entity\ImageBestAttack $imagebestattacks)
+    {
+        $this->imagebestattacks->removeElement($imagebestattacks);
+    }
+
+    /**
+     * Get imagebestattacks
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImagebestattacks()
+    {
+        return $this->imagebestattacks;
     }
 }

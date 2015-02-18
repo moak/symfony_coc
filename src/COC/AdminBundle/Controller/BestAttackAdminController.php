@@ -29,8 +29,9 @@ class BestAttackAdminController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository('COCBundle:ImageBestAttack')->findAll();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+        $list = $em->getRepository('COCBundle:ImageBestAttack')->findByClan($clan);
+
 
         return $this->render('AdminBundle:BestAttackAdmin:index.html.twig', array('clan' => $clan,'images' => $list));
     }
@@ -97,6 +98,7 @@ class BestAttackAdminController extends Controller
         }
         $em = $this->getDoctrine()->getManager();
         $em->remove($bestAttack);
+        $em->merge($bestAttack);
         $em->flush();
 
         return $this->redirect($this->generateUrl('admin_bestAttacks', array('id_clan' =>  $clan->getId())));

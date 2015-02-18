@@ -26,6 +26,12 @@ class Clan
      */
     private $id;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="capacity", type="integer" ))
+     */
+    private $capacity;
 
     /**
      * @Gedmo\Timestampable(on="create")
@@ -118,6 +124,11 @@ class Clan
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $description;
+
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $message;
 
 
     /**
@@ -550,5 +561,51 @@ class Clan
     public function getNameClan()
     {
         return $this->nameClan;
+    }
+
+    /**
+     * Set message
+     *
+     * @param string $message
+     * @return Clan
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+
+        return $this;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string 
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * Set capacity
+     *
+     * @param integer $capacity
+     * @return Clan
+     */
+    public function setCapacity($capacity)
+    {
+        $this->capacity = $capacity;
+
+        return $this;
+    }
+
+    /**
+     * Get capacity
+     *
+     * @return integer 
+     */
+    public function getCapacity()
+    {
+        return $this->capacity;
     }
 }

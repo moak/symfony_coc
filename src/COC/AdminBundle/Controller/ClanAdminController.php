@@ -3,49 +3,46 @@
 namespace COC\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use COC\COCBundle\Entity\Player;
-use COC\COCBundle\Form\Type\PlayerAdminType;
-use COC\COCBundle\Form\Type\PlayerType;
+use COC\COCBundle\Form\Type\ClanType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class ClanAdminController extends Controller
 {
 
-    public function indexAction()
+    public function indexAction($id_clan)
     {
         $user = $this->getUser();
         $userId = $user->getId();
 
         $em = $this->getDoctrine()->getManager();
-        $clan = $em->getRepository('COCBundle:Clan')->find();
+        $clan = $em->getRepository('COCBundle:Clan')->find($id_clan);
 
 
-        return $this->render('AdminBundle:ClanAdmin:index.html.twig');
+        return $this->render('AdminBundle:ClanAdmin:index.html.twig', array('clan' => $clan));
     }
 
-    public function editAction ($id, Request $request)
+    public function editAction (Request $request, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
-        $player = $em->getRepository('COCBundle:Player')->find($id);
-
-        $form = $this->get('form.factory')->create(new PlayerType(), $player );
+        $clan = $em->getRepository('COCBundle:Clan')->find($id_clan);
+        $form = $this->get('form.factory')->create(new ClanType(), $clan );
 
         if ($form->handleRequest($request)->isValid())
         {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($player);
+            $em->persist($clan);
             $em->flush();
-            return $this->redirect($this->generateUrl('admin_players'));
+            return $this->redirect($this->generateUrl('admin', array('id_clan' =>  $clan->getId())));
         }
 
-        return $this->render('AdminBundle:PlayerAdmin:edit.html.twig', array(
+        return $this->render('AdminBundle:ClanAdmin:edit.html.twig', array(
             'form'      =>  $form->createView(),
-            'player'  => $player
+            'clan'  => $clan
         ));
     }
 
-    public function deleteAction($id)
+    public function deleteAction($id, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $player = $em->getRepository('COCBundle:Player')->find($id);

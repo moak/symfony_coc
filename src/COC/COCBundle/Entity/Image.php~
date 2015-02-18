@@ -8,7 +8,7 @@ use Symfony\Component\validator\Constraints as Assert;
  * Media
  *
  * @ORM\Table("image")
- * @ORM\Entity(repositoryClass="CP\CPBundle\Repository\ImageRepository")
+ * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\ImageRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Image
@@ -28,6 +28,11 @@ class Image
      * @ORM\COlumn(name="updated_at",type="datetime", nullable=false)
      */
     private $updateAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBestAttack", mappedBy="Image")
+     **/
+    private $imagebestattacks;
 
     /**
      * @ORM\PostLoad()

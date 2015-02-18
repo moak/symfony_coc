@@ -72,10 +72,11 @@ class ImageBestAttack
 
 
     /**
-     * @ORM\OneToOne(targetEntity="COC\COCBundle\Entity\Image", cascade={"persist","remove"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Image", inversedBy="imagebestattacks", cascade={"persist"})
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      */
     private $image;
+
 
     /**
      * Set image

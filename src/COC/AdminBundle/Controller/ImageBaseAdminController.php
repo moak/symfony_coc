@@ -18,8 +18,9 @@ class ImageBaseAdminController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository('COCBundle:ImageBase')->findAll();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+        $list = $em->getRepository('COCBundle:ImageBase')->findByClan($clan);
+
 
         // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
         // var_dump($season);

@@ -12,8 +12,9 @@ class WarAdminController extends Controller
     public function indexAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
-        $wars = $em->getRepository('COCBundle:War')->findAll();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+        $wars = $em->getRepository('COCBundle:War')->findByClan($clan);
+
 
         return $this->render('AdminBundle:WarAdmin:index.html.twig', array('wars' => $wars, 'clan'=> $clan));
     }
