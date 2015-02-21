@@ -37,9 +37,16 @@ class Clan
     /**
      * @var integer
      *
-     * @ORM\Column(name="validated", type="integer" ))
+     * @ORM\Column(name="status", type="integer" ))
      */
-    private $validated;
+    private $status;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="privacy", type="integer" ))
+     */
+    private $privacy;
 
     /**
      * @Gedmo\Timestampable(on="create")
@@ -155,14 +162,32 @@ class Clan
     }
 
 
-    public function getValidated()
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getPrivacy()
     {
-        return $this->validated;
+        return $this->privacy;
     }
 
-    public function setValidated($validated)
+
+    public function getStatus()
     {
-        $this->validated = $validated;
+        return $this->status;
+    }
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function setPrivacy($privacy)
+    {
+        $this->privacy = $privacy;
 
         return $this;
     }

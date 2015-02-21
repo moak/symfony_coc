@@ -13,8 +13,12 @@ class ClanHiringType extends AbstractType
     {
         $builder
 
-            ->add('validated' , 'choice', array(
-                'choices' => array( '1' => 'Public', '2' => 'Privé')
+            ->add('privacy' , 'choice', array(
+                'choices' => array( '0' => 'Site visible aux visiteurs', '1' => 'Site invisible aux visiteurs')
+            ))
+
+            ->add('status' , 'choice', array(
+                'choices' => array( '0' => 'Clan visible', '1' => 'Clan invisible')
             ))
             // ->add('utilisateurs', 'entity', array ('class' => 'Utilisateurs\UtilisateursBundle\Entity\Utilisateurs'))
             ->add('save', 'submit', array('label' => 'Sauvegarder'));

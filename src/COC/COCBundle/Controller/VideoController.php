@@ -9,10 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class VideoController extends Controller
 {
-
-
-
-
     public function indexAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
@@ -20,14 +16,12 @@ class VideoController extends Controller
 
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan) ;
 
+        if ( $this->getUser() == null && $clan->getPrivacy() == 1)
+            throw $this->createNotFoundException('This page does not exist.');
 
         foreach($list as $key => $value) {
             $list[$key]->setUrl($this->convertYoutube($list[$key]->getUrl()));
         }
-
-
-        // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
-        // var_dump($season);
 
         return $this->render('COCBundle:Video:index.html.twig', array('clan' => $clan,'videos' => $list));
     }
@@ -35,6 +29,9 @@ class VideoController extends Controller
     public function editAction ($id, Request $request, $id_clan)
     {
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan) ;
+
+        if ( $this->getUser() == null && $clan->getPrivacy() == 1)
+            throw $this->createNotFoundException('This page does not exist.');
 
         $em = $this->getDoctrine()->getManager();
         //$userInfo = $em->getRepository('COCBundle:ImageBase')->findOneByUser($id);
@@ -71,6 +68,8 @@ class VideoController extends Controller
 
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan) ;
 
+        if ( $this->getUser() == null && $clan->getPrivacy() == 1)
+            throw $this->createNotFoundException('This page does not exist.');
 
         if ($form->handleRequest($request)->isValid())
         {

@@ -19,6 +19,11 @@ class PlayerController extends Controller
         $em = $this->getDoctrine()->getManager();
         $actualSeason = $em->getRepository('COCBundle:Season')->getActualSeason();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+
+        if ( $this->getUser() == null && $clan->getPrivacy() == 1)
+            throw $this->createNotFoundException('This page does not exist.');
+
+
         $form = $this->get('form.factory')->create(new SeasonType($clan, $actualSeason), null);
        // $calculateInfosService = $this->container->get('coc_cocbundle.calculate_player_info') ;
 
@@ -95,6 +100,9 @@ class PlayerController extends Controller
     {
         $user = $this->getUser();
 
+        if ( $this->getUser() == null && $clan->getPrivacy() == 1)
+            throw $this->createNotFoundException('This page does not exist.');
+
         if($user == null)
         {
             throw $this->createNotFoundException('Page not found');
@@ -109,6 +117,9 @@ class PlayerController extends Controller
 
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
+
+        if ( $this->getUser() == null && $clan->getPrivacy() == 1)
+            throw $this->createNotFoundException('This page does not exist.');
 
         if ($form->handleRequest($request)->isValid())
         {

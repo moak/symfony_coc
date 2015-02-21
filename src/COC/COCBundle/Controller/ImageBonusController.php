@@ -11,13 +11,15 @@ class ImageBonusController extends Controller
 {
     public function indexAction($id_clan)
     {
+
         $em = $this->getDoctrine()->getManager();
         $list = $em->getRepository('COCBundle:ImageBonus')->findBy( array('clan' => $id_clan));
 
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
-        // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
-        // var_dump($season);
+
+        if ( $this->getUser() == null && $clan->getPrivacy() == 1)
+            throw $this->createNotFoundException('This page does not exist.');
 
         return $this->render('COCBundle:ImageBonus:index.html.twig', array('clan' =>  $clan,'images' => $list));
     }

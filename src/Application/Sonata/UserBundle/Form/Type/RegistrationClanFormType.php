@@ -17,7 +17,7 @@ class RegistrationClanFormType extends AbstractType
                     'class' => 'COCBundle:Clan',
                     'query_builder' => function(EntityRepository $er) {
                         return $er->createQueryBuilder('u')
-                            ->where('u.validated = 1');
+                            ->where('u.status = 0');
                     },)
             )
 

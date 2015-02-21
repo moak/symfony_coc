@@ -8,14 +8,20 @@ class DefaultController extends Controller
 {
     public function indexAction($id_clan)
     {
+
+
         $em = $this->getDoctrine()->getManager();
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
 
         $user = $this->getUser();
+
+        if ( $user == null && $clan->getPrivacy() == 1)
+            throw $this->createNotFoundException('This page does not exist.');
+
         $display = false;
 
-        if ( $user != null)
+        if ( $user != null )
         {
             if ($user->getLearned() == 0 && $user->getClanName() != null)
             {
@@ -27,7 +33,8 @@ class DefaultController extends Controller
         }
         else
         {
-            $display = true;
+            if ($id_clan == 1)
+                $display = true;
         }
         $numberPlayers = $em->getRepository('COCBundle:Player')->getNumberEntities($clan);
 

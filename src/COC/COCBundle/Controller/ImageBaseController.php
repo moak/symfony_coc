@@ -11,10 +11,14 @@ class ImageBaseController extends Controller
 {
     public function categoryAction($id, $id_clan)
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
+
+        if ( $this->getUser() == null && $clan->getPrivacy() == 1)
+            throw $this->createNotFoundException('This page does not exist.');
 
         $list = $em->getRepository('COCBundle:ImageBase')->findBy(
             array('hall_town' => $id)
@@ -25,6 +29,9 @@ class ImageBaseController extends Controller
 
     public function templateAction($id, $id_clan)
     {
+        if ( $this->getUser() == null && $clan->getPrivacy() == 1)
+            throw $this->createNotFoundException('This page does not exist.');
+
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
 
@@ -39,8 +46,12 @@ class ImageBaseController extends Controller
 
     public function indexAction($id_clan)
     {
+
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
+
+        if ( $this->getUser() == null && $clan->getPrivacy() == 1)
+            throw $this->createNotFoundException('This page does not exist.');
 
 
         $em = $this->getDoctrine()->getManager();

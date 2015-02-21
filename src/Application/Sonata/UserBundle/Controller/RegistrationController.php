@@ -71,7 +71,8 @@ class RegistrationController extends BaseController
                 $clan->setName($user->getClanName());
                 $clan->setMessage('Bienvenue sur le site du clan');
                 $clan->setCapacity(10);
-                $clan->setValidated(1);
+                $clan->setStatus(0);
+                $clan->setPrivacy(0);
                 $em->persist($clan);
                 $em->flush();
 
@@ -82,6 +83,7 @@ class RegistrationController extends BaseController
                 $user->setRoles(array('ROLE_ADMIN'));
                 $user->setVisited(0);
                 $user->setLearned(0);
+                $user->setPrivacy(0);
                 $em->persist($user);
                 $em->flush($user);
 

@@ -15,6 +15,10 @@ class ImageBestAttackController extends Controller
     {
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
+
+        if ( $this->getUser() == null && $clan->getPrivacy() == 1)
+            throw $this->createNotFoundException('This page does not exist.');
+
         $em = $this->getDoctrine()->getManager();
         $list = $em->getRepository('COCBundle:ImageBestAttack')->getBestAttacks($clan);
 
@@ -24,21 +28,6 @@ class ImageBestAttackController extends Controller
         return $this->render('COCBundle:ImageBestAttack:index.html.twig', array('clan' =>  $clan, 'images' => $list));
     }
 
-    public function showAction($id)
-    {
-
-        $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository('COCBundle:ImageBestAttack')->findOneByUser($id);
-
-        if (!$list)
-        {
-            throw $this->createNotFoundException(
-                'No player found for id ' . $id
-            );
-        }
-
-        return $this->render('COCBundle:ImageBestAttack:show.html.twig', array('info' => $list));
-    }
 
     public function editAction ($id, Request $request)
     {

@@ -15,6 +15,9 @@ class WarController extends Controller
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
 
+        if ( $this->getUser() == null && $clan->getPrivacy() == 1)
+            throw $this->createNotFoundException('This page does not exist.');
+
         return $this->render('COCBundle:War:index.html.twig', array('clan' => $clan, 'wars' => $wars));
     }
 
@@ -27,6 +30,9 @@ class WarController extends Controller
         $warInProgress = $em->getRepository('COCBundle:War')->getWarInProgress($clan);
         $numberWars = $em->getRepository('COCBundle:War')->getNumberEntities($clan);
         $nextWar = $em->getRepository('COCBundle:War')->getNextWar($clan);
+
+        if ( $this->getUser() == null && $clan->getPrivacy() == 1)
+            throw $this->createNotFoundException('This page does not exist.');
 
         $isInPreparation = 0;
 
