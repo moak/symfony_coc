@@ -8,15 +8,14 @@ class DefaultController extends Controller
 {
     public function indexAction($id_clan)
     {
-
-
         $em = $this->getDoctrine()->getManager();
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
 
+
         $user = $this->getUser();
 
-        if ( $user == null && $clan->getPrivacy() == 1)
+        if ( $user == null && $clan->getPrivacy() == 1 || $clan  == null )
             throw $this->createNotFoundException('This page does not exist.');
 
         $display = false;
