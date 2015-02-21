@@ -1,0 +1,47 @@
+menu:
+    go_site: Go on website
+    visibility: Visibility clan
+    password: Clan's password
+    players: Players
+    players_list: Players list
+    player_add: Create player
+    activity: Players activity
+    accounts: Accounts
+    current_season: Current season
+    history_season: History seasons
+    wars: Wars
+    war_add: New war
+    wars_list: Wars list
+    bases_list: Bases list
+    base_add: New base
+    videos: Videos
+    videos_list: Videos list
+    video_add: New video
+    bonus_list: Bonus images
+    bonus_add: New image bonus
+    bases: Bases
+    base_add: New base
+    bases_list: Bases list
+    bestAttacks: Best attacks
+    bestAttacks_list: Best attacks list
+    bonuses: Images bonus
+    bonuses_list: Bonus images list
+    disconnect: Logout
+
+
+welcome:
+notFound: No results found.
+
+player:
+   name: Name
+   level: Level
+   defence: Defence
+   attack: Attack
+   total: Total
+   updated: Updated
+   troopSent: Troops Sent
+   troopReceived: Troops Received
+   attackWon: Attacks won
+   trophy: Trophies
+
+

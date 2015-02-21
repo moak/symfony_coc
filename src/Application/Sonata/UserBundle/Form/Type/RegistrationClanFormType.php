@@ -21,12 +21,14 @@ class RegistrationClanFormType extends AbstractType
                     },)
             )
 
+
         /*
             ->add('clan', 'text', [
                 'mapped' => false,
             ])*/
        ->add('clanName', 'text', array('required'  => false,))
-       ->add('pass', null, array('required'  => false,));
+       ->add('pass', null, array('required'  => false,))
+            ->add('save', 'submit', array('label' => 'C\'est parti !!'));
     }
 
     public function getParent()

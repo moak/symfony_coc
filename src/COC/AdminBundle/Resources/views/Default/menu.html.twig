@@ -19,7 +19,7 @@
                 <i class="fa fa-user fa-fw"></i> {{ app.user.username }} <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out fa-fw"></i> Déconnection</a>
+                <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out fa-fw"></i>  {{ 'menu.disconnect'|trans }}</a>
 
             </ul>
             <!-- /.dropdown-user -->
@@ -38,59 +38,59 @@
                 </li>
 
                 <li>
-                    <a target="_blank" href="{{ path('coc' , { 'id_clan': clan.id }) }}"><i class="fa fa-arrow-circle-right fa-fw"></i> Aller sur le site</a>
+                    <a target="_blank" href="{{ path('coc' , { 'id_clan': clan.id }) }}"><i class="fa fa-arrow-circle-right fa-fw"></i> {{ 'menu.go_site'|trans }}</a>
                 </li>
 
                 <li data-step="2" data-position='right' data-intro="Définissez la visibilité de votre site sur la communauté OhMyClan.">
-                    <a href="{{ path('admin_clan_editHiring' , { 'id_clan': clan.id }) }}"><i class="fa fa-wifi"></i>  Visibilité clan</a>
+                    <a href="{{ path('admin_clan_editHiring' , { 'id_clan': clan.id }) }}"><i class="fa fa-wifi"></i>  {{ 'menu.visibility'|trans }}</a>
                 </li>
 
                 <li data-step="3" data-position='right' data-intro="Définissez le mot de passe servant à rejoindre votre clan.">
-                    <a href="{{ path('admin_clan_editPassword' , { 'id_clan': clan.id }) }}"><i class="fa fa-plug"></i>  Mot de passe clan</a>
+                    <a href="{{ path('admin_clan_editPassword' , { 'id_clan': clan.id }) }}"><i class="fa fa-plug"></i>  {{ 'menu.password'|trans }}</a>
                 </li>
 
 
                 <li data-step="4" data-position='right' data-intro="Créez et managez les joueurs du clan.">
-                    <a href="#"><span class="badge">{{ numberPlayers }}</span> Joueurs <span class="fa arrow"></span></a>
+                    <a href="#"><span class="badge">{{ numberPlayers }}</span> {{ 'menu.players'|trans }} <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ path('admin_players', { 'id_clan': clan.id, 'type' : '0' }) }}">Liste des joueurs</a>
+                            <a href="{{ path('admin_players', { 'id_clan': clan.id, 'type' : '0' }) }}">{{ 'menu.players_list'|trans }}</a>
                         </li>
 
                         <li>
-                            <a href="{{ path('admin_player_add', { 'id_clan': clan.id }) }}">Ajouter un joueur</a>
+                            <a href="{{ path('admin_player_add', { 'id_clan': clan.id }) }}">{{ 'menu.player_add'|trans }}</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
 
                 <li data-step="5" data-position='right' data-intro="Associez les comptes OhMyClan aux joueurs Clash of Clans.">
-                    <a href="{{ path('admin_users', { 'id_clan': clan.id }) }}"><span class="badge">{{ numberUsers }}</span> Comptes ({{ numberUsersNonAssigned }})</a>
+                    <a href="{{ path('admin_users', { 'id_clan': clan.id }) }}"><span class="badge">{{ numberUsers }}</span> {{ 'menu.accounts'|trans }} ({{ numberUsersNonAssigned }})</a>
                 </li>
 
 
                 <li data-step="6" data-position='right' data-intro="Mettez à jour les informations des joueurs avant chaques fin de saison (troupes recues, troupes envoyées, trophés et attaques gagnées).">
-                    <a href="#"><i class="fa fa-wheelchair"></i>  Activité des joueurs <span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-wheelchair"></i>  {{ 'menu.activity'|trans }} <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ path('admin_players_actual_season', { 'id_clan': clan.id }) }}">Saison en cours</a>
+                            <a href="{{ path('admin_players_actual_season', { 'id_clan': clan.id }) }}">{{ 'menu.current_season'|trans }}</a>
                         </li>
 
                         <li>
-                            <a href="">Historique saisons</a>
+                            <a href="">{{ 'menu.history_season'|trans }}</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
 
                 <li data-step="7" data-position='right' data-intro="Managez vos guerres de clan.">
-                    <a href="#"><span class="badge">{{ numberWars }}</span></i> Guerres de clan <span class="fa arrow"></span></a>
+                    <a href="#"><span class="badge">{{ numberWars }}</span></i> {{ 'menu.wars'|trans }} <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="{{ path('admin_wars', { 'id_clan': clan.id }) }}">Liste guerre de clan</a>
+                            <a href="{{ path('admin_wars', { 'id_clan': clan.id }) }}">{{ 'menu.wars_list'|trans }}</a>
                         </li>
                         <li>
-                            <a href="{{ path('admin_war_add', { 'id_clan': clan.id }) }}">Nouvelle guerre de clan</a>
+                            <a href="{{ path('admin_war_add', { 'id_clan': clan.id }) }}">{{ 'menu.war_add'|trans }}</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
@@ -98,13 +98,13 @@
 
 
                     <li>
-                        <a href="#"><span class="badge">{{ numberBases }}</span></i> Plans de base  <span class="fa arrow"></span></a>
+                        <a href="#"><span class="badge">{{ numberBases }}</span></i> {{ 'menu.bases'|trans }}  <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{ path('admin_base_add', { 'id_clan': clan.id }) }}">Ajouter une base</a>
+                                <a href="{{ path('admin_base_add', { 'id_clan': clan.id }) }}">{{ 'menu.base_add'|trans }}</a>
                             </li>
                             <li>
-                                <a href="{{ path('admin_bases', { 'id_clan': clan.id }) }}">Liste des bases</a>
+                                <a href="{{ path('admin_bases', { 'id_clan': clan.id }) }}">{{ 'menu.bases_list'|trans }}</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -112,24 +112,24 @@
 
 
                     <li>
-                        <a href="#"><span class="badge">{{ numberVideos }}</span> Vidéos <span class="fa arrow"></span></a>
+                        <a href="#"><span class="badge">{{ numberVideos }}</span> {{ 'menu.videos'|trans }} <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{ path('admin_video_add', { 'id_clan': clan.id }) }}">Ajouter une vidéos</a>
+                                <a href="{{ path('admin_video_add', { 'id_clan': clan.id }) }}">{{ 'menu.video_add'|trans }}</a>
                             </li>
                             <li>
-                                <a href="{{ path('admin_videos', { 'id_clan': clan.id }) }}">Liste des vidéos</a>
+                                <a href="{{ path('admin_videos', { 'id_clan': clan.id }) }}">{{ 'menu.videos_list'|trans }}</a>
                             </li>
                         </ul>
                     </li>
 
 
                     <li>
-                        <a href="#"><span class="badge">{{ numberBestAttacks }}</span></i> Meilleures attaques <span class="fa arrow"></span></a>
+                        <a href="#"><span class="badge">{{ numberBestAttacks }}</span></i> {{ 'menu.bestAttacks'|trans }}<span class="fa arrow"></span></a>
 
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{ path('admin_bestAttacks', { 'id_clan': clan.id }) }}">Liste des attaques</a>
+                                <a href="{{ path('admin_bestAttacks', { 'id_clan': clan.id }) }}">{{ 'menu.bestAttacks_list'|trans }}</a>
                             </li>
                         </ul>
 
@@ -137,11 +137,11 @@
 
 
                     <li>
-                        <a href="#"><span class="badge">{{ numberImagesBonus }}</span></i> Images bonus <span class="fa arrow"></span></a>
+                        <a href="#"><span class="badge">{{ numberImagesBonus }}</span></i> {{ 'menu.bonuses'|trans }} <span class="fa arrow"></span></a>
 
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{ path('admin_imagesBonus', { 'id_clan': clan.id }) }}">Liste des images bonus</a>
+                                <a href="{{ path('admin_imagesBonus', { 'id_clan': clan.id }) }}"> {{ 'menu.bonuses_list'|trans }}</a>
                             </li>
                         </ul>
 

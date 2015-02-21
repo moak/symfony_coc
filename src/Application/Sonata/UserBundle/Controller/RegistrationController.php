@@ -83,7 +83,6 @@ class RegistrationController extends BaseController
                 $user->setRoles(array('ROLE_ADMIN'));
                 $user->setVisited(0);
                 $user->setLearned(0);
-                $user->setPrivacy(0);
                 $em->persist($user);
                 $em->flush($user);
 

@@ -5,31 +5,32 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Liste des joueurs</h1>
+            <h1 class="page-header">{{ 'title.list_players'|trans }}</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
 
+
     <ol class="breadcrumb">
         <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a></li>
-        <li class="active">Joueurs</li>
+        <li class="active">{{ 'title.players'|trans }}</li>
     </ol>
 
     <!-- Page Content -->
     <div class="container">
-        <a href="{{ path('admin_player_add', { 'id_clan': clan.id })}}"><button class="btn btn-default btn-success">Ajouter un joueur</button></a>
+        <a href="{{ path('admin_player_add', { 'id_clan': clan.id })}}"><button class="btn btn-default btn-success">{{ 'button.add_player'|trans }}</button></a>
         <hr>
         {# form_start(form, {'action': path('coc_homepage'), 'method': 'GET'}) }} #}
 
         <table class="table">
             <thead>
                 <tr>
-                    <th>Nom</th>
-                    <th>Level</th>
-                    <th>Défence</th>
-                    <th>Attaque</th>
-                    <th>Total</th>
-                    <th>Date de mise à jour</th>
+                    <th>{{ 'player.name'|trans }}</th>
+                    <th>{{ 'player.level'|trans }}</th>
+                    <th>{{ 'player.defence'|trans }}</th>
+                    <th>{{ 'player.attack'|trans }}</th>
+                    <th>{{ 'player.total'|trans }}</th>
+                    <th>{{ 'player.updated'|trans }}</th>
                     <th></th>
                 </tr>
             </thead>
