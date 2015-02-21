@@ -5,6 +5,7 @@ namespace COC\AdminBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use COC\COCBundle\Form\Type\ClanType;
 use COC\COCBundle\Form\Type\ClanPasswordType;
+use COC\COCBundle\Form\Type\ClanHiringType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
@@ -62,6 +63,29 @@ class ClanAdminController extends Controller
             'clan'  => $clan
         ));
     }
+
+
+    public function editHiringAction (Request $request, $id_clan)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $clan = $em->getRepository('COCBundle:Clan')->find($id_clan);
+        $form = $this->get('form.factory')->create(new ClanHiringType(), $clan );
+
+        if ($form->handleRequest($request)->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($clan);
+            $em->flush();
+            return $this->redirect($this->generateUrl('admin', array('id_clan' =>  $clan->getId())));
+        }
+
+        return $this->render('AdminBundle:ClanAdmin:editHiring.html.twig', array(
+            'form'      =>  $form->createView(),
+            'clan'  => $clan
+        ));
+    }
+
+
 
     public function deleteAction($id, $id_clan)
     {

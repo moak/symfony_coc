@@ -9,7 +9,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand supercell-font" href="{{ path('vitrine_homepage') }}">Oh My Clan</a>
+            <a class="navbar-brand supercell-font" href="{{ path('vitrine_homepage') }}">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <span class="supercell-font">Oh My Clan</span>
+            </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -19,9 +24,9 @@
                 <li class="hidden">
                     <a href="#page-top"></a>
                 </li>
-                    <li class="page-scroll">
-                        <a href="#register">Créer un clan</a>
-                    </li>
+                <li class="page-scroll">
+                    <a href="{{ path('fos_user_registration_register', {'type' : 'create'}) }}"><i class="fa fa-check-circle"></i> Créer un clan</a>
+                </li>
 
             </ul>
 

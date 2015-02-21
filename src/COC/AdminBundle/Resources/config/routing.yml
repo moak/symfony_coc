@@ -148,3 +148,7 @@ admin_clan_edit:
 admin_clan_editPassword:
     path:     coc/{id_clan}/admin/clan/editPassword
     defaults: { _controller: AdminBundle:ClanAdmin:editPassword }
+
+admin_clan_editHiring:
+    path:     coc/{id_clan}/admin/clan/editHiring
+    defaults: { _controller: AdminBundle:ClanAdmin:editHiring }

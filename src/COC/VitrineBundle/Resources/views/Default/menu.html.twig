@@ -9,7 +9,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand supercell-font" href="{{ path('vitrine_homepage') }}">Oh My Clan</a>
+            <a class="navbar-brand supercell-font" href="{{ path('vitrine_homepage') }}">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+                <span class="supercell-font">Oh My Clan</span>
+            </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,7 +36,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ app.user.username }} <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 {% if is_granted('ROLE_USER') %}
-                                    <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out fa-fw"></i> Déconnection</a>
 
                                 {% endif %}
                             </ul>
@@ -40,10 +45,10 @@
                     {% endif %}
                 {% else %}
                     <li class="page-scroll">
-                        <a href="{{ path('fos_user_registration_register', {'type' : 'create'}) }}">Créer un clan</a>
+                        <a href="{{ path('fos_user_registration_register', {'type' : 'create'}) }}"><i class="fa fa-check-circle"></i> Créer un clan</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="{{ path('fos_user_security_login') }}">Login</a>
+                        <a href="{{ path('fos_user_security_login') }}">Login  <i class="fa fa-user"></i></a>
                     </li>
                 {% endif %}
 

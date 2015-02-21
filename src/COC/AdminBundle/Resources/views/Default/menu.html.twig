@@ -47,22 +47,14 @@
                 </li>
 
                 <li>
-                    <a href="{{ path('admin_clan_editPassword' , { 'id_clan': clan.id }) }}"><i class="fa fa-wifi"></i> Mot de passe clan</a>
+                    <a href="{{ path('admin_clan_editHiring' , { 'id_clan': clan.id }) }}"><i class="fa fa-wifi"></i>  Visibilité clan</a>
                 </li>
 
                 <li>
-                    <a href="#"><span class="badge">{{ numberPlayers }}</span> Joueurs actifs <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="{{ path('admin_players_actual_season', { 'id_clan': clan.id }) }}">Saison en cours</a>
-                        </li>
-
-                        <li>
-                            <a href="">Historique saisons</a>
-                        </li>
-                    </ul>
-                    <!-- /.nav-second-level -->
+                    <a href="{{ path('admin_clan_editPassword' , { 'id_clan': clan.id }) }}"><i class="fa fa-plug"></i>  Mot de passe clan</a>
                 </li>
+
+
 
                 <li>
                     <a href="{{ path('admin_users', { 'id_clan': clan.id }) }}"><span class="badge">{{ numberUsers }}</span> Comptes ({{ numberUsersNonAssigned }})</a>
@@ -84,7 +76,19 @@
                 </li>
 
 
+                <li>
+                    <a href="#"><i class="fa fa-wheelchair"></i>  Activité des joueurs <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ path('admin_players_actual_season', { 'id_clan': clan.id }) }}">Saison en cours</a>
+                        </li>
 
+                        <li>
+                            <a href="">Historique saisons</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
 
                 <li>
                     <a href="#"><span class="badge">{{ numberWars }}</span></i> Guerres de clan <span class="fa arrow"></span></a>
