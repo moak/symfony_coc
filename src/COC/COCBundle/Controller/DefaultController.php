@@ -19,7 +19,6 @@ class DefaultController extends Controller
         {
             if ($user->getVisited() == 0)
             {
-                var_dump($user);
                 $user->setVisited(1);
                 $em->persist($user);
                 $em->flush();
