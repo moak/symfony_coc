@@ -46,6 +46,9 @@
                     <a target="_blank" href="{{ path('coc' , { 'id_clan': clan.id }) }}"><i class="fa fa-arrow-circle-right fa-fw"></i> Aller sur le site</a>
                 </li>
 
+                <li>
+                    <a href="{{ path('admin_clan_editPassword' , { 'id_clan': clan.id }) }}"><i class="fa fa-wifi"></i> Mot de passe clan</a>
+                </li>
 
                 <li>
                     <a href="#"><span class="badge">{{ numberPlayers }}</span> Joueurs actifs <span class="fa arrow"></span></a>

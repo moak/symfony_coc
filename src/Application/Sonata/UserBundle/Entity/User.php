@@ -43,11 +43,40 @@ class User extends BaseUser
      */
     private $clanName;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="visited", type="integer")
+     */
+    private $visited;
+
+
+    protected $pass;
+
+    public function getPass()
+    {
+        return $this->pass;
+    }
+
+    public function getVisited()
+    {
+        return $this->visited;
+    }
+
     public function getClanName()
     {
         return $this->clanName;
     }
 
+    public function setVisited($visited)
+    {
+        $this->visited = $visited;
+    }
+
+    public function setPass($pass)
+    {
+        $this->pass = $pass;
+    }
     /**
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Video", mappedBy="user")
      **/
@@ -302,6 +331,7 @@ class User extends BaseUser
     {
         return $this->phone;
     }
+
 
     /**
      * Set clanName

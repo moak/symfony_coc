@@ -10,12 +10,14 @@ class RegistrationClanFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('phone', 'integer')
+        $builder->add('phone', 'integer',  array('required'  => false,))
+            ->add('clan', 'entity', array ('class' => 'COC\COCBundle\Entity\Clan'))
         /*
             ->add('clan', 'text', [
                 'mapped' => false,
             ])*/
-       ->add('clanName', 'text');
+       ->add('clanName', 'text', array('required'  => false,))
+       ->add('pass', null, array('required'  => false,));
     }
 
     public function getParent()

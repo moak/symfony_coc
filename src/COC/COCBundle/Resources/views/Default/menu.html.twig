@@ -18,7 +18,7 @@
                 {% if active == "home" %} <li class="active"> {% else %} <li>{% endif %}<a href="{{ path('coc', {'id_clan': clan.id }) }}">Home</a></li>
 
                 {% if active == "classement" %} <li class="active dropdown"> {% else %} <li class="dropdown">{% endif %}
-                    <a href="#" class="dropdown-toggle" data-step="2" data-intro="Consultez les classements du clan." data-toggle="dropdown" role="button" aria-expanded="false"> <span class="badge">{{ numberPlayers }}</span> Classements <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="badge">{{ numberPlayers }}</span> Classements <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}"> Classement joueurs</a></li>
                         <li><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '1' }) }}"> Joueurs actifs</a></li>
@@ -51,19 +51,21 @@
 
                 {% if is_granted('ROLE_USER') %}
                     {%  if app.user.player.level is defined and clan.id == app.user.player.clan.id %}
-                        <li><a href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b>Editer mon joueur</b></a></li>
+                        <li><a class="blink-slow" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b>Editer mon joueur</b></a></li>
+                    {% else %}
+                        <li><a class="blink" href=""><b>[Compte en attente d'association]</b></a></li>
                     {% endif %}
                 {% endif %}
 
             </ul>
 
-            <ul class="nav navbar-nav navbar-right" data-step="1" data-intro="Get it, use it.">
+            <ul class="nav navbar-nav navbar-right">
                 <li class="hidden">
                     <a href="#page-top"></a>
                 </li>
 
                 {% if is_granted('ROLE_ADMIN') and clan.id == app.user.clan.id %}
-                    <li><a target="_blank" href="{{ path('admin', {'id_clan': clan.id }) }}">Administration <span class="badge">{{  numberUsersNonAssigned }}</span></a></li>
+                    <li><a data-step="5" data-intro="Managez votre clan depuis l'administration." target="_blank" href="{{ path('admin', {'id_clan': clan.id }) }}">Administration <span class="badge">{{  numberUsersNonAssigned }}</span></a></li>
                 {% endif %}
 
                 {% if is_granted('ROLE_USER')  %}
@@ -78,7 +80,7 @@
 
                 {% else %}
                     <li class="page-scroll">
-                        <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
+                        <a href="{{ path('fos_user_registration_register') }}">Rejoindre clan</a>
                     </li>
                     <li class="page-scroll">
                         <a href="{{ path('fos_user_security_login') }}">Login</a>

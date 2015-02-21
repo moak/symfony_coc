@@ -144,3 +144,7 @@ admin_imageBonus_delete:
 admin_clan_edit:
     path:     coc/{id_clan}/admin/clan/edit
     defaults: { _controller: AdminBundle:ClanAdmin:edit }
+
+admin_clan_editPassword:
+    path:     coc/{id_clan}/admin/clan/editPassword
+    defaults: { _controller: AdminBundle:ClanAdmin:editPassword }

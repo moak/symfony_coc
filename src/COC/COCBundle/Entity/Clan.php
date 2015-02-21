@@ -123,6 +123,11 @@ class Clan
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    private $password;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     private $description;
 
     /**
@@ -478,7 +483,7 @@ class Clan
 
     public function __toString()
     {
-        return $this->name;
+        return (string)$this->name;
     }
 
 
@@ -607,5 +612,28 @@ class Clan
     public function getCapacity()
     {
         return $this->capacity;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     * @return Clan
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string 
+     */
+    public function getPassword()
+    {
+        return $this->password;
     }
 }

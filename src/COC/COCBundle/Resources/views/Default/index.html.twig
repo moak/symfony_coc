@@ -2,14 +2,24 @@
 {% set id_clan = clan.id %}
 {% set active = "home" %}
 
+
 {% block body %}
 
    <!-- <a class="btn btn-large btn-success" href="javascript:void(0);" onclick="javascript:introJs().start();">Show me how</a>-->
 
+    <div class="row ">
+        <div class="col-md-8 col-md-offset-2 ">
+
+        {% if (clan.id == 1) %}
+            <a class="btn btn-large btn-block btn-success" href="javascript:introJs().setOption('showProgress', true).start();">Lancer la démo</a>
+        {% endif %}
+            </div>
+    </div>
+    <br>
      <!-- Page Content -->
-    <div class="container">
+    <div class="container" data-step="1" data-position='top' data-intro="Bienvenue sur votre clan !">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6" data-position='right' data-step="3" data-intro="Communiquez avec les membres du clan et gérez facilement l'agenda des guerres" data-position='right'>
                 {{ render(controller('COCBundle:War:menu', {'id_clan': clan.id })) }}
                 <hr>
                 <div class="panel panel-default">
@@ -21,12 +31,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" data-position='left' data-step="4" data-intro="Voici les joueurs de votre clan, un joueur a été automatiquement crée, pour en ajouter d'autres, rendez-vous sur l'administration du clan." data-position='right'>
                 {{ render(controller('COCBundle:Player:historyPlayers', {'id_clan': clan.id })) }}
             </div>
         </div>
 
-        <div class="row supercell-font">
+        <div class="row supercell-font" data-position='top' data-step="2" data-intro="Voici un example de fonctionalités disponible sur OhMyClan, aidez votre clan partageant facilement les meilleures maps ou encore sauvegarder les meilleures attaques du clan.">
             <div class="col-md-4">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">Bases de guerre de clan</div>
@@ -80,5 +90,19 @@
 
     </div>
     <!-- /.container -->
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        if ('{{ app.user }}' != '' )
+        {
+            var display = '{{ display }}';
+            if (display)
+            {
+                introJs().setOption('showProgress', true).start();
+            }
+        }
+    </script>
 
 {% endblock %}

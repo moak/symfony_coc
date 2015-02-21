@@ -40,7 +40,7 @@
                     {% endif %}
                 {% else %}
                     <li class="page-scroll">
-                        <a href="{{ path('fos_user_registration_register') }}">Créer un clan</a>
+                        <a href="{{ path('fos_user_registration_register', {'type' : 'create'}) }}">Créer un clan</a>
                     </li>
                     <li class="page-scroll">
                         <a href="{{ path('fos_user_security_login') }}">Login</a>

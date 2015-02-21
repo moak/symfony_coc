@@ -11,9 +11,24 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
+
+        $user = $this->getUser();
+        $display = false;
+
+        if ( $user != null)
+        {
+            if ($user->getVisited() == 0)
+            {
+                var_dump($user);
+                $user->setVisited(1);
+                $em->persist($user);
+                $em->flush();
+                $display = true;
+            }
+        }
         $numberPlayers = $em->getRepository('COCBundle:Player')->getNumberEntities($clan);
 
-        return $this->render('COCBundle:Default:index.html.twig', array('numberPlayers' => $numberPlayers, 'clan' => $clan));
+        return $this->render('COCBundle:Default:index.html.twig', array('display' => $display, 'numberPlayers' => $numberPlayers, 'clan' => $clan));
     }
 
     public function menuAction($id_clan, $active)
