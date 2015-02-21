@@ -15,7 +15,12 @@ class DefaultController extends Controller
 
         $user = $this->getUser();
 
-        if ( $user == null && $clan->getPrivacy() == 1 || $clan  == null )
+        if ( $clan  == null)
+        {
+            throw $this->createNotFoundException('This page does not exist.');
+        }
+        
+        if ( $user == null && $clan->getPrivacy() == 1 )
             throw $this->createNotFoundException('This page does not exist.');
 
         $display = false;
