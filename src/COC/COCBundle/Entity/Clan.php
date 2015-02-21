@@ -33,6 +33,14 @@ class Clan
      */
     private $capacity;
 
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="validated", type="integer" ))
+     */
+    private $validated;
+
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
@@ -144,6 +152,19 @@ class Clan
     public function getId()
     {
         return $this->id;
+    }
+
+
+    public function getValidated()
+    {
+        return $this->validated;
+    }
+
+    public function setValidated($validated)
+    {
+        $this->validated = $validated;
+
+        return $this;
     }
 
     /**

@@ -4,6 +4,7 @@ namespace Application\Sonata\UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Doctrine\ORM\EntityRepository;
 
 class RegistrationClanFormType extends AbstractType
 {
@@ -11,7 +12,15 @@ class RegistrationClanFormType extends AbstractType
     {
         parent::buildForm($builder, $options);
         $builder->add('phone', 'integer',  array('required'  => false,))
-            ->add('clan', 'entity', array ('class' => 'COC\COCBundle\Entity\Clan'))
+
+            ->add('clan', 'entity', array(
+                    'class' => 'COCBundle:Clan',
+                    'query_builder' => function(EntityRepository $er) {
+                        return $er->createQueryBuilder('u')
+                            ->where('u.validated = 1');
+                    },)
+            )
+
         /*
             ->add('clan', 'text', [
                 'mapped' => false,

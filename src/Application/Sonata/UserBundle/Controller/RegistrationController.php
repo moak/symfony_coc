@@ -71,6 +71,7 @@ class RegistrationController extends BaseController
                 $clan->setName($user->getClanName());
                 $clan->setMessage('Bienvenue sur le site du clan');
                 $clan->setCapacity(10);
+                $clan->setValidated(1);
                 $em->persist($clan);
                 $em->flush();
 
@@ -134,8 +135,8 @@ class RegistrationController extends BaseController
                 $player1 = new Player();
                 $player1->setClan($clan);
                 $player1->setName($user->getUsername());
-                $player1->setHallTown(7);
-                $player1->setLevel(60);
+                $player1->setHallTown(5);
+                $player1->setLevel(40);
                 $player1->setTroopReceived(245);
                 $player1->setTroopSent(413);
                 $player1->setAttackWon(47);
@@ -228,7 +229,7 @@ class RegistrationController extends BaseController
                 $player1->setPotionGreen(0);
                 $player1->setPotionFreeze(0);
 
-
+                $player1->setUser($user);
 
                /* $player2 = new Player();
                 $player2->setClan($clan);

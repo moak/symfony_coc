@@ -17,13 +17,17 @@ class DefaultController extends Controller
 
         if ( $user != null)
         {
-            if ($user->getVisited() == 0)
+            if ($user->getVisited() == 0 && $user->getClanName() != null)
             {
                 $user->setVisited(1);
                 $em->persist($user);
                 $em->flush();
                 $display = true;
             }
+        }
+        else
+        {
+            $display = true;
         }
         $numberPlayers = $em->getRepository('COCBundle:Player')->getNumberEntities($clan);
 
