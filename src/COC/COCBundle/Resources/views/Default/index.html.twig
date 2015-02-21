@@ -96,8 +96,9 @@
 {% block javascripts %}
     <script>
 
-        if ('{{ display }}')
+        if ('{{ display }}' && screen.width > 479)
         {
+            alert(screen.width);
             introJs().setOption('showProgress', true).start();
         }
 
