@@ -17,9 +17,9 @@ class DefaultController extends Controller
 
         if ( $user != null)
         {
-            if ($user->getVisited() == 0 && $user->getClanName() != null)
+            if ($user->getLearned() == 0 && $user->getClanName() != null)
             {
-                $user->setVisited(1);
+                $user->setLearned(1);
                 $em->persist($user);
                 $em->flush();
                 $display = true;

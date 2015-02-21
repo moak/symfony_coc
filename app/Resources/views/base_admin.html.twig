@@ -17,12 +17,14 @@
     <link rel="stylesheet" href="{{ asset('css/sb-admin-2.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/metisMenu.min.css') }}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
-
+    <link rel="stylesheet" href="{{ asset('css/intro.css') }}" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+
     <![endif]-->
 
 </head>
@@ -32,36 +34,20 @@
         {{ render(controller('AdminBundle:Default:menu', {'id_clan' : id_clan  })) }}
         <div id="page-wrapper">
             {% block body %}{% endblock %}
-            <!-- /.row -->
+
         </div>
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
 
-<script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/jquery.swipebox.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/sb-admin-2.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/metisMenu.min.js') }}" type="text/javascript"></script>
-<!-- bootbox code -->
-<script src="{{ asset('js/bootbox.min.js') }}"></script>
-<script>
-
-    $(document).on("click", ".alert", function(e) {
-        var link = $(this).attr("href"); // "get" the intended link in a var
-        e.preventDefault();
-        bootbox.confirm("Confirmation", function(result) {
-            if (result) {
-                document.location.href = link;  // if result, "set" the document location
-            }
-        });
-    });
-
-</script>
-
-{% block javascripts %}{% endblock %}
-
-
+    <script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script
+    <script src="{{ asset('js/jquery.swipebox.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/sb-admin-2.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/metisMenu.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/intro.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/bootbox.min.js') }}"></script>
+    {% block javascripts %}{% endblock %}
 </body>
 </html>
 {% endif %}

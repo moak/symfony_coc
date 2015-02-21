@@ -5,14 +5,14 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dashboard</h1>
+            <h1 class="page-header">Dashboard  <a href="javascript:introJs().setOption('showProgress', true).start();" class="pull-right btn btn-success"><i class="fa fa-coffee"></i> Démo administration</a></h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
 
-    <ol class="breadcrumb">
-        <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a></li>
+    <ol class="breadcrumb" data-step="1" data-position='top' data-intro="Bienvenue sur l'administration">
+        <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a> </li>
     </ol>
 
 
@@ -136,8 +136,21 @@
             </div>
         </div>
     </div>
-
-
-
+</div>
 
 {% endblock %}
+
+
+{% block javascripts %}
+    <script>
+        if ('{{ display }}' && screen.width > 479)
+        {
+            introJs().setOption('showProgress', true).start();
+        }
+
+
+
+    </script>
+
+{% endblock %}
+

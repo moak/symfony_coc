@@ -50,12 +50,24 @@ class User extends BaseUser
      */
     private $visited;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="learned", type="integer", nullable=true)
+     */
+    private $learned;
+
 
     protected $pass;
 
     public function getPass()
     {
         return $this->pass;
+    }
+
+    public function getLearned()
+    {
+        return $this->learned;
     }
 
     public function getVisited()
@@ -71,6 +83,11 @@ class User extends BaseUser
     public function setVisited($visited)
     {
         $this->visited = $visited;
+    }
+
+    public function setLearned($learned)
+    {
+        $this->learned = $learned;
     }
 
     public function setPass($pass)

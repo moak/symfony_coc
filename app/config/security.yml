@@ -63,7 +63,7 @@ security:
         # Secured part of the site
         # This config requires being logged for the whole site and having the admin role for the admin part.
         # Change these rules to adapt them to your needs
-        - { path: ^/admin, role: [ROLE_ADMIN] }
+        - { path: ^/coc/[0-9]+/admin, role: [ROLE_ADMIN] }
         - { path: ^/coc/[0-9]+/imagesBase/add, role: [ROLE_USER] }
         - { path: ^/coc/[0-9]+/videos/add, role: [ROLE_USER] }
         - { path: ^/coc/[0-9]+/imagesBonus/add, role: [ROLE_USER] }
