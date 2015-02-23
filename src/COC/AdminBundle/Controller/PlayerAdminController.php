@@ -97,6 +97,10 @@ class PlayerAdminController extends Controller
         if ($form->handleRequest($request)->isValid() && $this->getUser()->getClan()->getId() == $id_clan)
         {
             $player->setClan($clan);
+            $player->setTroopSent(0);
+            $player->setTroopReceived(0);
+            $player->setTrophy(0);
+            $player->setAttackWon(0);
             $em->persist($player);
             $em->flush();
             return $this->redirect($this->generateUrl('admin_players', array('id_clan' =>  $clan->getId())));

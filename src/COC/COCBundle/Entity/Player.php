@@ -63,35 +63,35 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="troop_received", type="integer", options={"default" = 0})
+     * @ORM\Column(name="troop_received", type="integer", options={"default" : 0})
      */
-    private $troopReceived;
+    private $troopReceived = 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="troop_sent", type="integer", options={"default" = 0})
+     * @ORM\Column(name="troop_sent", type="integer", options={"default" : 0})
      */
-    private $troopSent;
+    private $troopSent= 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="attack_won", type="integer", options={"default" = 0})
+     * @ORM\Column(name="attack_won", type="integer", options={"default" : 0})
      */
-    private $attackWon;
+    private $attackWon= 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="level", type="integer", options={"default" = 0})
+     * @ORM\Column(name="level", type="integer", options={"default" : 0})
      */
     private $level = 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="trophy", type="integer", options={"default" = 0})
+     * @ORM\Column(name="trophy", type="integer", options={"default" : 0})
      */
     private $trophy;
 
@@ -99,77 +99,77 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="canon1", type="integer", options={"default" = 0})
+     * @ORM\Column(name="canon1", type="integer", options={"default" : 0})
      */
-    private $canon1;
+    private $canon1 = 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="air_defence1", type="integer", options={"default" = 0})
+     * @ORM\Column(name="air_defence1", type="integer", options={"default" : 0})
      */
-    private $air_defence1;
-
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="air_defence2", type="integer", options={"default" = 0}))
-     */
-    private $air_defence2;
+    private $air_defence1 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="air_defence3", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="air_defence2", type="integer", options={"default" : 0}))
      */
-    private $air_defence3;
+    private $air_defence2 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="air_defence4", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="air_defence3", type="integer", options={"default" : 0}))
      */
-    private $air_defence4;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="canon2", type="integer", options={"default" = 0}))
-     */
-    private $canon2;
+    private $air_defence3 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="canon3", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="air_defence4", type="integer", options={"default" : 0}))
      */
-    private $canon3;
+    private $air_defence4 = 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="canon4", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="canon2", type="integer", options={"default" : 0}))
      */
-    private $canon4;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="canon5", type="integer", options={"default" = 0}))
-     */
-    private $canon5;
+    private $canon2 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="canon6", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="canon3", type="integer", options={"default" : 0}))
      */
-    private $canon6;
+    private $canon3 = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="canon4", type="integer", options={"default" : 0}))
+     */
+    private $canon4 = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="canon5", type="integer", options={"default" : 0}))
+     */
+    private $canon5 = 0;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="canon6", type="integer", options={"default" : 0}))
+     */
+    private $canon6 = 0;
 
 
 
@@ -179,471 +179,471 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer1", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="tower_archer1", type="integer", options={"default" : 0}))
      */
-    private $tower_archer1;
+    private $tower_archer1 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer2", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="tower_archer2", type="integer", options={"default" : 0}))
      */
-    private $tower_archer2;
+    private $tower_archer2 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer3", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="tower_archer3", type="integer", options={"default" : 0}))
      */
-    private $tower_archer3;
+    private $tower_archer3 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer4", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="tower_archer4", type="integer", options={"default" : 0}))
      */
-    private $tower_archer4;
+    private $tower_archer4 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer5", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="tower_archer5", type="integer", options={"default" : 0}))
      */
-    private $tower_archer5;
+    private $tower_archer5 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer6", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="tower_archer6", type="integer", options={"default" : 0}))
      */
-    private $tower_archer6;
+    private $tower_archer6 = 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_archer7", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="tower_archer7", type="integer", options={"default" : 0}))
      */
-    private $tower_archer7;
-
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="tower_magic1", type="integer", options={"default" = 0}))
-     */
-    private $tower_magic1;
+    private $tower_archer7 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_magic2", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="tower_magic1", type="integer", options={"default" : 0}))
      */
-    private $tower_magic2;
+    private $tower_magic1 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_magic3", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="tower_magic2", type="integer", options={"default" : 0}))
      */
-    private $tower_magic3;
+    private $tower_magic2 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tower_magic4", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="tower_magic3", type="integer", options={"default" : 0}))
      */
-    private $tower_magic4;
+    private $tower_magic3 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="mortar1", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="tower_magic4", type="integer", options={"default" : 0}))
      */
-    private $mortar1;
+    private $tower_magic4 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="mortar2", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="mortar1", type="integer", options={"default" : 0}))
      */
-    private $mortar2;
+    private $mortar1 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="mortar3", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="mortar2", type="integer", options={"default" : 0}))
      */
-    private $mortar3;
+    private $mortar2 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="mortar4", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="mortar3", type="integer", options={"default" : 0}))
      */
-    private $mortar4;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="tesla1", type="integer", options={"default" = 0}))
-     */
-    private $tesla1;
+    private $mortar3 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tesla2", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="mortar4", type="integer", options={"default" : 0}))
      */
-    private $tesla2;
+    private $mortar4 = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="tesla1", type="integer", options={"default" : 0}))
+     */
+    private $tesla1 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tesla3", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="tesla2", type="integer", options={"default" : 0}))
      */
-    private $tesla3;
+    private $tesla2 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="tesla4", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="tesla3", type="integer", options={"default" : 0}))
      */
-    private $tesla4;
+    private $tesla3 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="inferno1", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="tesla4", type="integer", options={"default" : 0}))
      */
-    private $inferno1;
+    private $tesla4 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="inferno2", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="inferno1", type="integer", options={"default" : 0}))
      */
-    private $inferno2;
+    private $inferno1 = 0;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="inferno2", type="integer", options={"default" : 0}))
+     */
+    private $inferno2 = 0;
     
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="king", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="king", type="integer", options={"default" : 0}))
      */
-    private $king;
+    private $king = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="queen", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="queen", type="integer", options={"default" : 0}))
      */
-    private $queen;
+    private $queen = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="arcx1", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="arcx1", type="integer", options={"default" : 0}))
      */
-    private $arcx1;
+    private $arcx1 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="arcx2", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="arcx2", type="integer", options={"default" : 0}))
      */
-    private $arcx2;
+    private $arcx2 = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="arcx3", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="arcx3", type="integer", options={"default" : 0}))
      */
-    private $arcx3;
-
-
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="archer", type="integer", options={"default" = 0}))
-     */
-    private $archer;
-
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="barbar", type="integer", options={"default" = 0}))
-     */
-    private $barbar;
-
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="gobelin", type="integer", options={"default" = 0}))
-     */
-    private $gobelin;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="geant", type="integer", options={"default" = 0}))
-     */
-    private $geant;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="wall_breaker", type="integer", options={"default" = 0}))
-     */
-    private $wall_breaker;
-
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="ballon", type="integer", options={"default" = 0}))
-     */
-    private $ballon;
-
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="wizard", type="integer", options={"default" = 0}))
-     */
-    private $wizard;
-
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="healer", type="integer", options={"default" = 0}))
-     */
-    private $healer;
-
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="dragon", type="integer", options={"default" = 0}))
-     */
-    private $dragon;
-
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="pekka", type="integer", options={"default" = 0}))
-     */
-    private $pekka;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="minion", type="integer", options={"default" = 0}))
-     */
-    private $minion;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="rider", type="integer", options={"default" = 0}))
-     */
-    private $rider;
-
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="valkyrie", type="integer", options={"default" = 0}))
-     */
-    private $valkyrie;
-
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="golem", type="integer", options={"default" = 0}))
-     */
-    private $golem;
-
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="witch", type="integer", options={"default" = 0}))
-     */
-    private $witch;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="lava", type="integer", options={"default" = 0}))
-     */
-    private $lava;
+    private $arcx3 = 0;
 
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="potion_heal", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="archer", type="integer", options={"default" : 0}))
      */
-    private $potion_heal;
+    private $archer = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="potion_boost", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="barbar", type="integer", options={"default" : 0}))
      */
-    private $potion_boost;
+    private $barbar = 0;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="gobelin", type="integer", options={"default" : 0}))
+     */
+    private $gobelin = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="geant", type="integer", options={"default" : 0}))
+     */
+    private $geant = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="wall_breaker", type="integer", options={"default" : 0}))
+     */
+    private $wall_breaker = 0;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ballon", type="integer", options={"default" : 0}))
+     */
+    private $ballon = 0;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="wizard", type="integer", options={"default" : 0}))
+     */
+    private $wizard = 0;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="healer", type="integer", options={"default" : 0}))
+     */
+    private $healer = 0;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dragon", type="integer", options={"default" : 0}))
+     */
+    private $dragon = 0;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pekka", type="integer", options={"default" : 0}))
+     */
+    private $pekka = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="minion", type="integer", options={"default" : 0}))
+     */
+    private $minion = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rider", type="integer", options={"default" : 0}))
+     */
+    private $rider = 0;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="valkyrie", type="integer", options={"default" : 0}))
+     */
+    private $valkyrie = 0;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="golem", type="integer", options={"default" : 0}))
+     */
+    private $golem = 0;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="witch", type="integer", options={"default" : 0}))
+     */
+    private $witch = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lava", type="integer", options={"default" : 0}))
+     */
+    private $lava = 0;
 
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="potion_damage", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="potion_heal", type="integer", options={"default" : 0}))
      */
-    private $potion_damage;
+    private $potion_heal = 0;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="potion_green", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="potion_boost", type="integer", options={"default" : 0}))
      */
-    private $potion_green;
+    private $potion_boost = 0;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="potion_freeze", type="integer", options={"default" = 0}))
-     */
-    private $potion_freeze;
 
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="gold1", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="potion_damage", type="integer", options={"default" : 0}))
      */
-    private $gold1;
+    private $potion_damage = 0;
+
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="gold2", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="potion_green", type="integer", options={"default" : 0}))
      */
-    private $gold2;
+    private $potion_green = 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="gold3", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="potion_freeze", type="integer", options={"default" : 0}))
      */
-    private $gold3;
+    private $potion_freeze = 0;
+
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="gold4", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="gold1", type="integer", options={"default" : 0}))
      */
-    private $gold4;
+    private $gold1 = 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="gold5", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="gold2", type="integer", options={"default" : 0}))
      */
-    private $gold5;
+    private $gold2 = 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="gold6", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="gold3", type="integer", options={"default" : 0}))
      */
-
-    private $gold6;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="gold7", type="integer", options={"default" = 0}))
-     */
-    private $gold7;
+    private $gold3 = 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="elixir1", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="gold4", type="integer", options={"default" : 0}))
      */
-    private $elixir1;
+    private $gold4 = 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="elixir2", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="gold5", type="integer", options={"default" : 0}))
      */
-    private $elixir2;
+    private $gold5 = 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="elixir3", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="gold6", type="integer", options={"default" : 0}))
      */
-    private $elixir3;
+
+    private $gold6 = 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="elixir4", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="gold7", type="integer", options={"default" : 0}))
      */
-    private $elixir4;
+    private $gold7 = 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="elixir5", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="elixir1", type="integer", options={"default" : 0}))
      */
-    private $elixir5;
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="elixir6", type="integer", options={"default" = 0}))
-     */
-    private $elixir6;
+    private $elixir1 = 0;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="elixir7", type="integer", options={"default" = 0}))
+     * @ORM\Column(name="elixir2", type="integer", options={"default" : 0}))
      */
-    private $elixir7;
+    private $elixir2 = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="elixir3", type="integer", options={"default" : 0}))
+     */
+    private $elixir3 = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="elixir4", type="integer", options={"default" : 0}))
+     */
+    private $elixir4 = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="elixir5", type="integer", options={"default" : 0}))
+     */
+    private $elixir5 = 0;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="elixir6", type="integer", options={"default" : 0}))
+     */
+    private $elixir6 = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="elixir7", type="integer", options={"default" : 0}))
+     */
+    private $elixir7 = 0;
 
 
 

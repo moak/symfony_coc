@@ -2,6 +2,10 @@
 {% set id_clan = clan.id %}
 {% set active = "home" %}
 
+  {% block title %}
+      <title>{{ clan.name }} - {{ 'menu.title_page'|trans }}</title>
+  {% endblock %}
+
 
 {% block body %}
 
@@ -11,59 +15,60 @@
         <div class="col-md-8 col-md-offset-2 ">
 
         {% if (clan.id == 1) %}
-            <a class="btn btn-large btn-block btn-success" href="javascript:introJs().setOption('showProgress', true).start();">Lancer la démo</a>
+            <a class="btn btn-large btn-block btn-success supercell-font" href="javascript:introJs().setOption('showProgress', true).start();">{{ 'coc.launch_demo'|trans }}</a>
         {% endif %}
             </div>
     </div>
     <br>
      <!-- Page Content -->
-    <div class="container" data-step="1" data-position='top' data-intro="Bienvenue sur votre clan !">
+    <div class="container">
         <div class="row">
-            <div class="col-md-6" data-position='right' data-step="3" data-intro="Communiquez avec les membres du clan et gérez facilement l'agenda et l'historique des guerres." data-position='right'>
-                {{ render(controller('COCBundle:War:menu', {'id_clan': clan.id })) }}
-                <hr>
-                <div class="panel panel-default">
+            <div class="col-md-6" data-position='right' data-step="3" data-intro="{{ 'intro.step3'|trans }}" data-position='right'>
+
+                <div class="panel panel-default" data-step="1" data-position='right' data-intro="{{ 'intro.step1'|trans }}">
                     <div class="panel-heading supercell-font">
-                       Message du clan  <p class="pull-right"><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0'}) }}">{{ numberPlayers }} / {{ clan.capacity }}  </a></p>
+                        {{ 'coc.message'|trans }}  <p class="pull-right"><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0'}) }}">{{ numberPlayers }} / {{ clan.capacity }}  </a></p>
                     </div>
                     <div class="panel-body">
                         {{ clan.message }}
                     </div>
                 </div>
+                <hr>
+                {{ render(controller('COCBundle:War:menu', {'id_clan': clan.id })) }}
             </div>
-            <div class="col-md-6" data-position='left' data-step="4" data-intro="Classement par point des membres du clan." data-position='right'>
+            <div class="col-md-6" data-position='left' data-step="4" data-intro="{{ 'intro.step4'|trans }}" data-position='right'>
                 {{ render(controller('COCBundle:Player:historyPlayers', {'id_clan': clan.id })) }}
             </div>
         </div>
 
-        <div class="row supercell-font" data-position='top' data-step="2" data-intro="Exemple de fonctionalités présentent sur OhMyClan.">
+        <div class="row supercell-font" data-position='top' data-step="2" data-intro="{{ 'intro.step2'|trans }}">
             <div class="col-md-4">
                 <div class="panel panel-default text-center">
-                    <div class="panel-heading">Bases de guerre de clan</div>
+                    <div class="panel-heading">{{ 'coc.bases'|trans }} </div>
                     <div class="panel-body">
                         <p><a href="{{ path('coc_images_base', {'id_clan': clan.id }) }}"><img class="img-responsive" src="{{ ('images/2014-12-11 22.07.05.png') | imagine_filter('my_thumb') }}"></a></p>
-                        <p><a href="{{ path('coc_images_base', {'id_clan': clan.id }) }}"><button class="btn btn-block btn-info">Toutes les bases</button></a></p>
+                        <p><a href="{{ path('coc_images_base', {'id_clan': clan.id }) }}"><button class="btn btn-block btn-info">{{ 'coc.visit_bases'|trans }} </button></a></p>
                     </div>
                 </div>
             </div><!-- end features -->
 
             <div class="col-md-4">
                 <div class="panel panel-default text-center">
-                    <div class="panel-heading">Classement des joueurs</div>
+                    <div class="panel-heading">{{ 'coc.ranking'|trans }} </div>
                     <div class="panel-body">
 
                         <p><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}"><img class="img-responsive" src="{{ ('images/2015-01-16 13.32.49.png') | imagine_filter('my_thumb') }}"></a></p>
-                        <p><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}"><button class="btn btn-block btn-danger">Afficher le classement</button></a></p>
+                        <p><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}"><button class="btn btn-block btn-danger">{{ 'coc.visit_ranking'|trans }} </button></a></p>
                     </div>
                 </div>
             </div><!-- end features -->
 
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading text-center">Meilleures attaques</div>
+                    <div class="panel-heading text-center">{{ 'coc.best_attacks'|trans }} </div>
                     <div class="panel-body">
                         <p><a href="{{ path('coc_imagesBestAttack', {'id_clan': clan.id }) }}"><img class="img-responsive" src="{{ ('images/2014-12-28 02.09.46.png') | imagine_filter('my_thumb') }}"></a></p>
-                        <p><a href="{{ path('coc_imagesBestAttack', {'id_clan': clan.id }) }}"><button class="btn btn-block btn-success">Toutes les attaques</button></a></p>
+                        <p><a href="{{ path('coc_imagesBestAttack', {'id_clan': clan.id }) }}"><button class="btn btn-block btn-success">{{ 'coc.visit_best_attacks'|trans }}</button></a></p>
                     </div>
                 </div>
             </div><!-- end features -->

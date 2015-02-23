@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="form-horizontal">
-                <h1 class="page-header">Activité des joueurs  <a class="btn btn-normal pull-right btn-info" href="{{ path('coc_players', {'id_clan': clan.id, 'type': '1' }) }}">Saison actuelle</a></h1>
+                <h1 class="page-header">{{ 'menu.activity'|trans }}  <a class="btn btn-normal pull-right btn-info" href="{{ path('coc_players', {'id_clan': clan.id, 'type': '1' }) }}">{{ 'menu.current_season'|trans }}</a></h1>
             </div>
         </div>
         <!-- /.col-lg-12 -->
@@ -47,11 +47,11 @@
                 <tr>
                 	<th  class="no-sort"></th>
                     <th class="supercell-font">#</th>
-                    <th class="supercell-font">Nom</th>
-                    <th class="supercell-font">Troupes envoyées</th>
-                    <th class="supercell-font">Troupes recues</th>
-                    <th class="supercell-font">Attaques gagnées</th>
-                    <th class="supercell-font">Trophés</th>
+                    <th class="supercell-font">{{ 'player.name'|trans }}</th>
+                    <th class="supercell-font">{{ 'player.troopSent'|trans }}</th>
+                    <th class="supercell-font">{{ 'player.troopReceived'|trans }}</th>
+                    <th class="supercell-font">{{ 'player.attackWon'|trans }}</th>
+                    <th class="supercell-font">{{ 'player.trophy'|trans }}</th>
 
                 </tr>
             </thead>

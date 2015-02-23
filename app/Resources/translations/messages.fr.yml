@@ -1,0 +1,143 @@
+menu:
+    go_site: Go on website
+    visibility: Visibilité du clan
+    password: Mot de passe clan
+    players: Joueurs
+    players_list: Liste des joueurs
+    player_add: Ajouter un joueur
+    activity: Activité des joueurs
+    accounts: Comptes
+    current_season: Saison en cours
+    history_season: Historique saisons
+    wars: Guerres de clan
+    war_add: Nouvelle guerre de clan
+    wars_list: Liste guerre de clan
+    bases_list: Liste des bases
+    base_add: Nouvelle base
+    videos: Videos
+    videos_list: Liste des videos
+    video_add: Nouvelle video
+    bonus_list: Liste des images bonus
+    bonus_add: Nouvelle image bonus
+    bases: Plans de base
+    base_add: Ajouter une base
+    bases_list: Liste des bases
+    bestAttacks: Meilleures attaques
+    bestAttacks_list: Liste des attaques
+    bonuses: Images bonus
+    bonuses_list: Liste des images bonus
+    disconnect: Déconnection
+    password: Mot de passe clan
+    account_edit: Editer compte
+    accounts_list: Liste des comptes
+    accounts: Comptes
+    home: Aaccueil
+    rankings: Classements
+    player_rankings: Classement des joueurs
+    player_activity: Classement activité
+    bases: Bases
+    ht5: HDV 5
+    ht6: HDV 6
+    ht7: HDV 7
+    ht8: HDV 8
+    ht9: HDV 9
+    ht10: HDV 10
+    ht: Hotel de ville
+    best_attacks: Meilleures attaques
+    best_players: Meilleurs joueurs
+    media: Médias
+    video: Vidéos
+    bonus: Bonus images
+    edit_player: Editer mon joueur
+    new_base: Nouvelle base
+    general_ranking: Classement général
+    title_page: Clan manager pour Clash of Clans
+button:
+    add_player: Nouveau joueur
+
+action:
+    edit: Editer
+    delete: Supprimer
+
+notFound: Aucun résultat trouvé.
+
+player:
+   name: Nom
+   level: Niveau
+   defence: Défence
+   hall_town: HDV
+   attack: Attaque
+   total: Total
+   updated: Mis à jour
+   troopSent: Troupes envoyées
+   troopReceived: Troupes recues
+   attackWon: Attaques gagnées
+   trophy: Trophés
+
+account:
+    name: Compte
+    player_assigned: Joueur assigné
+    player: Joueur
+    association: Associé
+    dissociate: Dissocier
+
+war:
+   result: Résultat
+   date: Date
+   wars: Guerres de clan
+   waiting: En attente de résultat
+   not_found: Aucune guerre trouvée.
+   history: Historique GDC
+   live: War is live !!
+   preparation_day: Jour de préparation (Démarre à
+   war_day: Jour de guerre!! (Se termine à
+   next_war: Prochaine guerre
+   no_next_war: Prochaine guerre: aucune
+
+video:
+    title: Titre
+    youtube_link: Lien youtube
+    published: Publiée
+
+coc:
+    launch_demo: Launch demo
+    message: Clan message
+
+    ranking: Players ranking
+    visit_ranking: Display all players
+
+    best_attacks: Best attacks
+    visit_best_attacks: All the attacks
+
+    bases: Bases
+    visit_bases: All the bases
+
+vitrine:
+    title: Easy way to manage and improve your clan
+    my_clan : My clan
+    create_clan2 : Create your website in one form !
+
+    create_clan: Create clan
+    join_clan: Join a clan
+    demo: Try demo
+    step1_title: Create your clan
+    step1_description: Fill out the form with your information as well as the name of your clan. On the next page, your will automatically see your new clan will all its features.
+    step2_title: Create your players
+    step2_description: Create the players of your clan in the administration panel. The members will have the possibility to join your clan and edit his/her player.
+    step3_title: Be better !
+    step3_description: Enjoy the competition between the members of your clan to know who is really the best, and who does not even deserve to stay !
+
+intro:
+    step1: Bienvenue à bord, ceci est votre nouveau site ! Nous espérons que vous apprécierez l'expérience OhMyClan.
+    step2: Voici un exemple de fonctionnalités disponibles sur OhMyClan.
+    step3: Communiquez avec les membres du clan et gérez facilement l'agenda et l'historique des guerres.
+    step4: The système de classement vous permet de savoir qui est vraiment le meilleur de votre clan.
+
+    feature3_title: Partagez les meilleures bases avec les membres du clan
+    feature3_description: Uploadez facilement vos bases et partagez les aux membres les moins expérimentés.
+
+    feature1_title: Savez qui joue le plus
+    feature1_description: Obtenez des informations chaques saisons sur quel membre attaque le plus, encore qui a donne ou recu le plus de troupes.
+
+    feature2_title: Système de classement
+    feature2_description: Classez les membres du clan par trophés comme sur Clash of Clans, mais aussi par niveaux de défence ou laboratoire.

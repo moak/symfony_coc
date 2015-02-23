@@ -7,11 +7,11 @@
     <!-- Page Content -->
     <div class="container">
 
-        <h2>Hôtel de ville {{ hall_town }}</h2>
+        <h2>{{ 'menu.ht'|trans }} {{ hall_town }}</h2>
 
         <hr>
 
-        <p><a class="btn btn-normal btn-success" href="{{ path('coc_images_base_add', {'id_clan': clan.id }) }}">Ajouter une base</a></p>
+        <p><a class="btn btn-normal btn-success" href="{{ path('coc_images_base_add', {'id_clan': clan.id }) }}">{{ 'menu.base_add'|trans }}</a></p>
 
         <br>
         <div class="row">

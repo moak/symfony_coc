@@ -96,19 +96,9 @@
                     <!-- /.nav-second-level -->
                 </li>
 
-
-                    <li>
-                        <a href="#"><span class="badge">{{ numberBases }}</span></i> {{ 'menu.bases'|trans }}  <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="{{ path('admin_base_add', { 'id_clan': clan.id }) }}">{{ 'menu.base_add'|trans }}</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('admin_bases', { 'id_clan': clan.id }) }}">{{ 'menu.bases_list'|trans }}</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
+                <li>
+                    <a href="#"><span class="badge">{{ numberBases }}</span></i> {{ 'menu.bases'|trans }} </a>
+                </li>
 
 
                     <li>
@@ -124,28 +114,15 @@
                     </li>
 
 
-                    <li>
-                        <a href="#"><span class="badge">{{ numberBestAttacks }}</span></i> {{ 'menu.bestAttacks'|trans }}<span class="fa arrow"></span></a>
+                <li>
+                    <a href="#"><span class="badge">{{ numberBestAttacks }}</span></i> {{ 'menu.bestAttacks'|trans }}</a>
+                </li>
 
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="{{ path('admin_bestAttacks', { 'id_clan': clan.id }) }}">{{ 'menu.bestAttacks_list'|trans }}</a>
-                            </li>
-                        </ul>
-
-                    </li>
+                <li>
+                    <a href="#"><span class="badge">{{ numberImagesBonus }}</span></i> {{ 'menu.bonuses'|trans }} </a>
+                </li>
 
 
-                    <li>
-                        <a href="#"><span class="badge">{{ numberImagesBonus }}</span></i> {{ 'menu.bonuses'|trans }} <span class="fa arrow"></span></a>
-
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="{{ path('admin_imagesBonus', { 'id_clan': clan.id }) }}"> {{ 'menu.bonuses_list'|trans }}</a>
-                            </li>
-                        </ul>
-
-                    </li>
 
 
 

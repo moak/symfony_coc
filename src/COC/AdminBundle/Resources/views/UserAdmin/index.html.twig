@@ -14,7 +14,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Liste des comptes</h1>
+            <h1 class="page-header">{{ 'menu.accounts_list'|trans }}</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -22,7 +22,7 @@
 
     <ol class="breadcrumb">
         <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a></li>
-        <li class="active">Comptes</li>
+        <li class="active">{{ 'menu.accounts'|trans }}</li>
     </ol>
 
     <!-- Page Content -->
@@ -32,10 +32,10 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Nom de compte</th>
-                    <th>Joueur assigné</th>
-                    <th>Nom du joueur</th>
-                    <th>Association</th>
+                    <th>{{ 'account.name'|trans }}</th>
+                    <th>{{ 'account.player_assigned'|trans }}</th>
+                    <th>{{ 'account.player'|trans }}</th>
+                    <th>{{ 'account.association'|trans }}</th>
                     <th></th>
                 </tr>
             </thead>
@@ -55,15 +55,15 @@
                         {% endif %}
                         <td>
                             {% if user.player.id is defined %}
-                                <a href="{{ path('admin_user_dissociate', { 'id': user.player.id ,'id_clan': clan.id }) }}"><button class="btn btn-default btn-warning">Dissocier (cliquez 2 fois)</button></a>
+                                <a href="{{ path('admin_user_dissociate', { 'id': user.player.id ,'id_clan': clan.id }) }}"><button class="btn btn-default btn-warning">{{ 'account.dissociate'|trans }}</button></a>
                             {% else %}
-                                <a href="{{ path('admin_user_edit', { 'id': user.id ,'id_clan': clan.id }) }}"><button class="btn btn-default btn-success">Assigner joueur</button></a>
+                                <a href="{{ path('admin_user_edit', { 'id': user.id ,'id_clan': clan.id }) }}"><button class="btn btn-default btn-success">{{ 'action.delete'|trans }}</button></a>
                             {% endif %}
                         </td>
 
                         <td>
                             {% if is_granted('ROLE_SUPER_ADMIN')%}
-                                <a href="{{ path('admin_user_delete', { 'id': user.id ,'id_clan': clan.id }) }}" class="btn btn-default btn-danger alert">Supprimer</a>
+                                <a href="{{ path('admin_user_delete', { 'id': user.id ,'id_clan': clan.id }) }}" class="btn btn-default btn-danger alert">{{ 'action.delete'|trans }}</a>
                             {% endif %}
                         </td>
                     </tr>

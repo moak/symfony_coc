@@ -44,7 +44,7 @@
                 <td>{{ player.attackWon }}</td>
                 <td>{{ player.trophy }}</td>
                 <td>
-                    <a href="{{ path('admin_player_edit_actual_season', {  'id': player.id , 'id_clan': clan.id }) }}" class="btn btn-default btn-info">Editer</a>
+                    <a href="{{ path('admin_player_edit_actual_season', {  'id': player.id , 'id_clan': clan.id }) }}" class="btn btn-default btn-info">{{ 'action.edit'|trans }}</a>
                 </td>
             </tr>
             <tr class="hidden expendables hidden" id="{{ player.name }}" data-total-points="">

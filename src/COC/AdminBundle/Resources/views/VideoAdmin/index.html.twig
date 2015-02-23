@@ -5,7 +5,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Ajouter une vidéo</h1>
+            <h1 class="page-header">{{ 'menu.videos'|trans }}</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -19,14 +19,14 @@
 
     <!-- Page Content -->
     <div class="container">
-        <a class="btn btn-normal btn-success" href="{{ path('admin_video_add', { 'id_clan': clan.id }) }}">Ajouter une vidéo</a>
+        <a class="btn btn-normal btn-success" href="{{ path('admin_video_add', { 'id_clan': clan.id }) }}">{{ 'menu.video_add'|trans }}</a>
         <hr>
         <table class="table">
             <thead>
             <tr>
-                <th>Titre</th>
-                <th>Lien youtube</th>
-                <th>Publiée</th>
+                <th>{{ 'video.title'|trans }}</th>
+                <th>{{ 'video.youtube_link'|trans }}</th>
+                <th>{{ 'video.published'|trans }}</th>
                 <th></th>
             </tr>
             </thead>
@@ -39,17 +39,16 @@
                         <td>{{ video.url| raw }}</td>
                         <td>{{ video.published|boolean }}</td>
                         <td>
-                            <a href="{{ path('admin_video_edit', { 'id': video.id , 'id_clan': clan.id }) }}" class="btn btn-default btn-info">Editer</a>
-                            <a href="{{ path('admin_video_delete', { 'id': video.id , 'id_clan': clan.id}) }}" class="btn btn-default btn-danger alert">Supprimer</a>
+                            <a href="{{ path('admin_video_edit', { 'id': video.id , 'id_clan': clan.id }) }}" class="btn btn-default btn-info">{{ 'action.edit'|trans }}</a>
+                            <a href="{{ path('admin_video_delete', { 'id': video.id , 'id_clan': clan.id}) }}" class="btn btn-default btn-danger alert">{{ 'action.delete'|trans }}</a>
                         </td>
                     </tr>
                 {% endfor %}
             {% else %}
                 <tr>
+                    <td>{{ 'notFound'|trans }}</td>
                     <td>-</td>
-                    <td>0 vidéo trouvée</td>
                     <td>-</td>
-
                     <td></td>
                 </tr>
             {% endif %}

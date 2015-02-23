@@ -2,15 +2,15 @@
 {% set id_clan = clan.id %}
 {% set active = "media" %}
 
- {% block title %}
-     <title>Ajouter un joueur</title>
- {% endblock %}
+  {% block title %}
+      <title>{{ 'menu.bonus_add'|trans }}</title>
+  {% endblock %}
 
 {% block body %}
 
 
     <div class="container">
-        <h2>Ajouter une image</h2>
+        <h2>{{ 'menu.bonus_add'|trans }}</h2>
 
         <div class="well">
             {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}

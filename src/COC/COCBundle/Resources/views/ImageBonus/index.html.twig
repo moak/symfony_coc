@@ -2,14 +2,18 @@
 {% set id_clan = clan.id %}
 {% set active = "media" %}
 
+ {% block title %}
+     <title>{{ 'menu.bonus'|trans }}</title>
+ {% endblock %}
+
 {% block body %}
 
     <!-- Page Content -->
     <div class="container">
 
-        <h2>Bonus</h2>
+        <h2>{{ 'menu.bonus'|trans }}</h2>
         <hr>
-            <a class="btn btn-normal btn-success" href="{{ path('coc_imageBonus_add', {'id_clan': clan.id }) }}">Ajouter une image</a>
+            <a class="btn btn-normal btn-success" href="{{ path('coc_imageBonus_add', {'id_clan': clan.id }) }}">{{ 'menu.bonus_add'|trans }}</a>
 
         <div class="row">
             <br>

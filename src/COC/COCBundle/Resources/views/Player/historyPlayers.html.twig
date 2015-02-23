@@ -1,6 +1,6 @@
     <div class="panel panel-default">
         <div class="panel-heading">
-            <p class="supercell-font">Meilleurs joueurs </p>
+            <p class="supercell-font"> {{ 'menu.best_players'|trans }} </p>
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
@@ -10,10 +10,10 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th class="supercell-font">Nom</th>
-                                <th class="supercell-font">Niv</th>
-                                <th class="supercell-font">HDV</th>
-                                <th class="supercell-font">Total</th>
+                                <th class="supercell-font">{{ 'player.name'|trans }}</th>
+                                <th class="supercell-font">{{ 'player.level'|trans }}</th>
+                                <th class="supercell-font">{{ 'player.hall_town'|trans }}</th>
+                                <th class="supercell-font">{{ 'player.name'|trans }}</th>
                                 <th class="supercell-font no-sort"></th>
                             </tr>
                         </thead>
@@ -30,7 +30,7 @@
                         {% endfor %}
                         </tbody>
                     </table>
-                    <a class="btn btn-block pull-right btn-info supercell-font" href="{{ path('coc_players', {'id_clan' : clan.id, 'type' : '0' }) }}">Classement complet!</a>
+                    <a class="btn btn-block pull-right btn-info supercell-font" href="{{ path('coc_players', {'id_clan' : clan.id, 'type' : '0' }) }}">{{ 'coc.visit_ranking'|trans }}</a>
 
                 {% else %}
                     <a href="#" class="list-group-item">
