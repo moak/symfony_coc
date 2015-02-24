@@ -3,14 +3,14 @@
 {% set active = "classement" %}
 
  {% block title %}
-     <title>Ajouter un joueur</title>
+     <title>{{ 'menu.bestAttack_add'|trans }}</title>
  {% endblock %}
 
 {% block body %}
 
 
     <div class="container">
-        <h2>Ajouter une image</h2>
+        <h2>{{ 'menu.bestAttack_add'|trans }}</h2>
 
         <div class="well">
             {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
@@ -19,7 +19,7 @@
             {{ form_errors(form) }}
 
             <div class="form-group">
-                {{ form_label(form.image, 'Image', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.image, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                 {{ form_errors(form.image) }}
 
                 <div class="col-sm-4">
@@ -29,7 +29,7 @@
 
             <div class="form-group">
                 {# Génération du label. #}
-                {{ form_label(form.gold, 'Or', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.gold, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
 
                 {# Affichage des erreurs pour ce champ précis. #}
                 {{ form_errors(form.gold) }}
@@ -42,7 +42,7 @@
 
             <div class="form-group">
                 {# Génération du label. #}
-                {{ form_label(form.elixir, 'Elixir', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.elixir, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
 
                 {# Affichage des erreurs pour ce champ précis. #}
                 {{ form_errors(form.elixir) }}

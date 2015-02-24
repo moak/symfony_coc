@@ -13,7 +13,7 @@
 
     <ol class="breadcrumb">
         <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a></li>
-        <li class="active">Meilleures attaques</li>
+        <li class="active">{{ 'menu.bonus'|trans }}</li>
     </ol>
 
     <div class="container">
@@ -33,13 +33,13 @@
                                 </a>
                             </div>
                             <div class="panel-footer">
-                                <a class="btn btn-danger " href="{{ path('admin_imageBonus_delete' , {'id': image.id , 'id_clan': clan.id }) }}">Supprimer</a>
+                                <a class="btn btn-danger " href="{{ path('admin_imageBonus_delete' , {'id': image.id , 'id_clan': clan.id }) }}">{{ 'action.delete'|trans }}</a>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
             {% else %}
-                Aucune image trouvée.
+                {{ 'notFound'|trans }}
             {% endif %}
         </div>
 

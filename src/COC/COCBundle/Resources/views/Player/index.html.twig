@@ -50,7 +50,7 @@
                 	<th  class="no-sort"></th>
                     <th class="supercell-font">#</th>
                     <th class="supercell-font">{{ 'player.name'|trans }}</th>
-                    <th class="supercell-font">{{ 'player.hall_town'|trans }}</th>
+                    <th class="supercell-font">{{ 'player.ht'|trans }}</th>
                     <th class="supercell-font">{{ 'player.level'|trans }}</th>
                     <th class="supercell-font">Def</th>
                     <th class="supercell-font">Att</th>
@@ -86,7 +86,7 @@
                     <tr class="hidden expendables hidden" id="{{ player.name }}" data-total-points="{{ player.total|round }}">
                     	<td colspan="6">
                     		<div class="row">
-                    				<span class="supercell-font white-on-black exp-title clearfix">Défense</span>
+                    				<span class="supercell-font white-on-black exp-title clearfix">{{ 'player.defence'|trans }}</span>
 										<!-- CAONNONS -->
 										{% if player.canon1 != 0 %}
 										<div class="col-md-3 cannon">
@@ -187,7 +187,7 @@
 										{% endif %}
                     			</div>
 							<div class="row"><br />
-								<span class="supercell-font white-on-black clearfix">Laboratoire</span>
+								<span class="supercell-font white-on-black clearfix">{{ 'player.labotory'|trans }}</span>
 								<div class="col-md-3">
 									<div class="portrait">
 										<div>{% if player.king != 0 %}{{player.king}}{% endif %}</div>

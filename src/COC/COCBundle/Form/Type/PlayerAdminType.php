@@ -12,12 +12,12 @@ class PlayerAdminType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null)
+            ->add('name', null, array('label' => 'label.name_coc'))
             ->add('hall_town' , 'choice', array(
-                'placeholder' => 'Select niveau', 'choices' => array(0, 1, 2, 3, 4,5, 6,7,8,9,10),
+                'placeholder' => 'label.choose_ht', 'choices' => array(0, 1, 2, 3, 4,5, 6,7,8,9,10),
             ))
             // ->add('utilisateurs', 'entity', array ('class' => 'Utilisateurs\UtilisateursBundle\Entity\Utilisateurs'))
-            ->add('save', 'submit', array('label' => 'Ajouter'));
+            ->add('save', 'submit', array('label' => 'label.create'));
     }
 
 

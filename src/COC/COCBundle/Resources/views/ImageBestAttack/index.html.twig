@@ -10,9 +10,9 @@
     <!-- Page Content -->
     <div class="container">
 
-        <h2>Meilleures attaques du clan</h2>
+        <h2>{{ 'menu.bestAttacks'|trans }}</h2>
         <hr>
-            <a class="btn btn-normal btn-success" href="{{ path('coc_imageBestAttack_add' , {'id_clan': clan.id }) }}">Ajouter une attaque</a>
+            <a class="btn btn-normal btn-success" href="{{ path('coc_imageBestAttack_add' , {'id_clan': clan.id }) }}">{{ 'menu.bestAttack_add'|trans }}</a>
 
         <div class="row">
             <br>

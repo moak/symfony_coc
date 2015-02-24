@@ -2,14 +2,14 @@
 {% set id_clan = clan.id %}
 
  {% block title %}
-     <title>Ajouter un joueur</title>
+     <title>{{ 'menu.bestAttack_add'|trans }}</title>
  {% endblock %}
 
 {% block body %}
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Ajouter une attaque</h1>
+            <h1 class="page-header">{{ 'menu.bestAttack_add'|trans }}</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -17,8 +17,8 @@
 
     <ol class="breadcrumb">
         <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a></li>
-        <li><a href="{{ path('admin_bestAttacks', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Meilleures attaques</a></li>
-        <li class="active">Ajouter une attaque</li>
+        <li><a href="{{ path('admin_bestAttacks', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> {{ 'menu.bestAttacks'|trans }}</a></li>
+        <li class="active">{{ 'menu.bestAttack_add'|trans }}</li>
     </ol>
 
     <div class="container">

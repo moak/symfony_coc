@@ -12,7 +12,7 @@
                                 <th></th>
                                 <th class="supercell-font">{{ 'player.name'|trans }}</th>
                                 <th class="supercell-font">{{ 'player.level'|trans }}</th>
-                                <th class="supercell-font">{{ 'player.hall_town'|trans }}</th>
+                                <th class="supercell-font">{{ 'player.ht'|trans }}</th>
                                 <th class="supercell-font">{{ 'player.name'|trans }}</th>
                                 <th class="supercell-font no-sort"></th>
                             </tr>
@@ -35,7 +35,7 @@
                 {% else %}
                     <a href="#" class="list-group-item">
                         <i class="fa fa-twitter fa-fw"></i>
-                        <p>Ce clan n'a encore aucun membre.</p>
+                        <p>{{ 'notFound'|trans }}</p>
                     </a>
                 {% endif %}
             </div>

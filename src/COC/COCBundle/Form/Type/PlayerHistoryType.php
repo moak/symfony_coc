@@ -12,11 +12,11 @@ class PlayerHistoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('trophy',  'integer')
-            ->add('troopSent',  'integer')
-            ->add('troopReceived',  'integer')
-            ->add('attackWon',  'integer')
-            ->add('save', 'submit', array('label' => 'Sauvegarder'));
+            ->add('trophy',  'integer', array('label' => 'player.trophy'))
+            ->add('troopSent',  'integer', array('label' => 'player.troopSent'))
+            ->add('troopReceived',  'integer', array('label' => 'player.troopReceived'))
+            ->add('attackWon',  'integer', array('label' => 'player.attackWon'))
+            ->add('save', 'submit', array('label' => 'label.Save'));
     }
 
 

@@ -12,10 +12,10 @@ class VideoAdminType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('url')
+            ->add('title', null, array('label' => 'label.title'))
+            ->add('url', null, array('label' => 'label.link'))
             ->add('published')
-            ->add('save', 'submit', array('label' => 'Sauvegarder'));
+            ->add('save', 'submit', array('label' => 'label.save'));
     }
 
 

@@ -25,7 +25,7 @@
             {{ form_errors(form) }}
 
             <div class="form-group">
-                {{ form_label(form.status, 'Inscription au clan', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.status, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                 {{ form_errors(form.status) }}
 
                 <div class="col-sm-4">
@@ -34,7 +34,7 @@
             </div>
 
             <div class="form-group">
-                {{ form_label(form.privacy, 'Visibilité du site', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.privacy, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                 {{ form_errors(form.privacy) }}
 
                 <div class="col-sm-4">

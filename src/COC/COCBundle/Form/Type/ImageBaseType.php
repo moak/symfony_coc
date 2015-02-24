@@ -12,8 +12,8 @@ class ImageBaseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('hall_town',  'choice', array('choices' => array(
-                '' => 'Choisir hotel de ville',
+            ->add('hall_town',  'choice', array('label' => 'player.hall_town', 'choices' => array(
+                '' => 'label.choose_ht',
                 '5' => '5',
                 '6' => '6',
                 '7' => '7',
@@ -21,7 +21,7 @@ class ImageBaseType extends AbstractType
                 '9' => '9',
             ), ))
             ->add('image', new ImageType())
-            ->add('save', 'submit', array('label' => 'Sauvegarder'));
+            ->add('save', 'submit', array('label' => 'label.save'));
     }
 
 

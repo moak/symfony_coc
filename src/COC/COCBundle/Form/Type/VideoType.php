@@ -12,9 +12,9 @@ class VideoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('url')
-            ->add('save', 'submit', array('label' => 'Sauvegarder'));
+            ->add('title', null, array('label' => 'label.name'))
+            ->add('url', null, array('label' => 'label.link'))
+            ->add('save', 'submit', array('label' => 'label.create'));
     }
 
 

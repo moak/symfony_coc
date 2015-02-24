@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Edition compte</h1>
+            <h1 class="page-header">{{ 'menu.account_edit'|trans }}</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -14,8 +14,8 @@
 
     <ol class="breadcrumb">
         <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a></li>
-        <li><a href="{{ path('admin_users', { 'id_clan': clan.id }) }}">Comptes</a></li>
-        <li class="active">Editer un compte</li>
+        <li><a href="{{ path('admin_users', { 'id_clan': clan.id }) }}">{{ 'menu.accounts'|trans }}</a></li>
+        <li class="active">{{ 'menu.account_edit'|trans }}</li>
     </ol>
 
     <div class="container">
@@ -26,7 +26,7 @@
             {{ form_errors(form) }}
 
             <div class="form-group">
-                {{ form_label(form.player, 'Joueur assigné', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.player, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                 {{ form_errors(form.player) }}
 
                 <div class="col-sm-4">

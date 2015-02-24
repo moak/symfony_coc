@@ -37,7 +37,7 @@ class SeasonType extends AbstractType
                     ->setParameter('actualSeason', $this->actualSeason->getStart())
                     ;
             }, ))
-            ->add('save', 'submit', array('label' => 'Rechercher'));
+            ->add('save', 'submit', array('label' => 'label.search'));
     }
 
 

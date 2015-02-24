@@ -13,9 +13,9 @@ class ClanPasswordType extends AbstractType
     {
         $builder
 
-            ->add('password' , null )
+            ->add('password' , null , array('label' => 'label.password'))
             // ->add('utilisateurs', 'entity', array ('class' => 'Utilisateurs\UtilisateursBundle\Entity\Utilisateurs'))
-            ->add('save', 'submit', array('label' => 'Sauvegarder'));
+            ->add('save', 'submit', array('label' => 'label.update'));
     }
 
 

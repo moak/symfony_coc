@@ -12,9 +12,9 @@ class ImageBonusType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null)
+            ->add('title', null, array('label' => 'label.title'))
             ->add('image', new ImageType())
-            ->add('save', 'submit', array('label' => 'Sauvegarder'));
+            ->add('save', 'submit', array('label' => 'label.create'));
     }
 
 

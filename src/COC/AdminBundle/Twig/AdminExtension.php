@@ -63,10 +63,10 @@ class AdminExtension extends \Twig_Extension
         //Minutes
         else if($minutes <=60){
             if($minutes==1){
-                return "one minute ago";
+                return "one min ago";
             }
             else{
-                return "$minutes minutes ago";
+                return "$minutes min ago";
             }
         }
         //Hours
@@ -80,7 +80,7 @@ class AdminExtension extends \Twig_Extension
         //Days
         else if($days <= 7){
             if($days==1){
-                return "yesterday";
+                return "yest";
             }else{
                 return "$days days ago";
             }

@@ -2,7 +2,7 @@
 {% set id_clan = clan.id %}
 
  {% block title %}
-     <title>{{ 'menu.disconnect'|trans }}</title>
+     <title>{{ 'menu.bestAttack_add'|trans }}</title>
  {% endblock %}
 
 {% block body %}
@@ -17,8 +17,8 @@
 
     <ol class="breadcrumb">
         <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a></li>
-        <li><a href="{{ path('admin_bestAttacks', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Meilleures attaques</a></li>
-        <li class="active">Ajouter une attaque</li>
+        <li><a href="{{ path('admin_bestAttacks', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> {{ 'menu.bestAttacks'|trans }}</a></li>
+        <li class="active">{{ 'menu.bestAttack_add'|trans }}</li>
     </ol>
 
     <div class="container">
@@ -45,7 +45,7 @@
 
             <div class="form-group">
                 {# Génération du label. #}
-                {{ form_label(form.gold, 'Or', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.gold, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
 
                 {# Affichage des erreurs pour ce champ précis. #}
                 {{ form_errors(form.gold) }}
@@ -58,7 +58,7 @@
 
             <div class="form-group">
                 {# Génération du label. #}
-                {{ form_label(form.elixir, 'Elixir', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.elixir, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
 
                 {# Affichage des erreurs pour ce champ précis. #}
                 {{ form_errors(form.elixir) }}

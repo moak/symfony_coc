@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Ajouter une base</h1>
+            <h1 class="page-header">{{ 'menu.base_add'|trans }}</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -17,8 +17,8 @@
 
     <ol class="breadcrumb">
         <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a></li>
-        <li><a href="{{ path('admin_bestAttacks', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Bases</a></li>
-        <li class="active">Ajouter une base</li>
+        <li><a href="{{ path('admin_bestAttacks', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> {{ 'menu.bases'|trans }}</a></li>
+        <li class="active">{{ 'menu.base_add'|trans }}</li>
     </ol>
 
     <div class="container">
@@ -36,7 +36,7 @@
             </div>
 
             <div class="form-group">
-                {{ form_label(form.gold, 'Or', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.gold, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                 {{ form_errors(form.gold) }}
                 <div class="col-sm-4">
                     {{ form_widget(form.gold, {'attr': {'class': 'form-control'}}) }}
@@ -44,7 +44,7 @@
             </div>
 
             <div class="form-group">
-                {{ form_label(form.elixir, 'Elixir', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.elixir, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                 {{ form_errors(form.elixir) }}
 
                 <div class="col-sm-4">

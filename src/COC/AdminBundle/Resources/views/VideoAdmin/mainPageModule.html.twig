@@ -6,7 +6,7 @@
                     <div class="panel-heading">{{ video.title }}</div>
                     <div class="panel-body">
                         {{ video.url | raw}}
-                        <p><a href="{{ path('coc_videos', { 'id_clan': clan.id }) }}"><button class="btn btn-block btn-danger">Toutes les vidéos</button></a></p>
+                        <p><a href="{{ path('coc_videos', { 'id_clan': clan.id }) }}"><button class="btn btn-block btn-danger">{{ 'menu.videos_all'|trans }}</button></a></p>
                     </div>
                 </div>
             </div>

@@ -51,8 +51,8 @@
                         </td>
 
                         <td>
-                            <a href="{{ path('admin_war_edit', { 'id': war.id, 'id_clan' : clan.id }) }}" class="btn btn-default btn-info">Editer</a>
-                            <a href="{{ path('admin_war_delete', { 'id': war.id, 'id_clan' : clan.id }) }}" class="btn btn-default btn-danger">Supprimer</a>
+                            <a href="{{ path('admin_war_edit', { 'id': war.id, 'id_clan' : clan.id }) }}" class="btn btn-default btn-info">{{ 'action.edit'|trans }}</a>
+                            <a href="{{ path('admin_war_delete', { 'id': war.id, 'id_clan' : clan.id }) }}" class="btn btn-default btn-danger">{{ 'action.delete'|trans }}</a>
                         </td>
 
                     </tr>

@@ -4,25 +4,37 @@ menu:
     password: Mot de passe clan
     players: Joueurs
     players_list: Liste des joueurs
-    player_add: Ajouter un joueur
+    players_all: Tous les joueurs
+    player_add: Nouveau joueur
+    player_edit: EEditer joueur
     activity: Activité des joueurs
     accounts: Comptes
     current_season: Saison en cours
-    history_season: Historique saisons
-    wars: Guerres de clan
+    history_season: Historiques saisons
+    history_edit: Editer historique joueur
+    history: Historique
+    wars: Clan Wars
     war_add: Nouvelle guerre de clan
-    wars_list: Liste guerre de clan
+    war_edit: Editer guerre de clan
+    wars_list: Liste des guerres de clan
     bases_list: Liste des bases
     base_add: Nouvelle base
+    base_edit: Editer une base
     videos: Videos
-    videos_list: Liste des videos
-    video_add: Nouvelle video
-    bonus_list: Liste des images bonus
+    videos_list: Liste des vidéos
+    video_list: Liste des vidéos
+    video_all: Toutes les vidéos
+    video_add: Nouvelle vidéo
+    video_number: Nombre de vidéos
+    bonus: Images bonus
+    bonus_list: Images bonus
     bonus_add: Nouvelle image bonus
     bases: Plans de base
     base_add: Ajouter une base
     bases_list: Liste des bases
-    bestAttacks: Meilleures attaques
+    bestAttacks: Liste des meilleures attaques
+    bestAttack_edit: Editer attaque
+    bestAttack_add: New attaque
     bestAttacks_list: Liste des attaques
     bonuses: Images bonus
     bonuses_list: Liste des images bonus
@@ -31,7 +43,7 @@ menu:
     account_edit: Editer compte
     accounts_list: Liste des comptes
     accounts: Comptes
-    home: Aaccueil
+    home: Accueil
     rankings: Classements
     player_rankings: Classement des joueurs
     player_activity: Classement activité
@@ -52,6 +64,16 @@ menu:
     new_base: Nouvelle base
     general_ranking: Classement général
     title_page: Clan manager pour Clash of Clans
+    my_player_edit: Edit my player
+    no_war: Le clan n'a pas encore de guerre.
+    edit_clan: Editer clan
+    assign_player: Assigner joueur
+    account_non_assigned: Compte non assigné
+    welcome: Bienvenue
+    welcome_msg: Si ce sont vos premiers pas sur l'administration, pensez à créer vos joueurs
+    here: ici
+    admin_clan: Administration clan
+
 button:
     add_player: Nouveau joueur
 
@@ -65,14 +87,76 @@ player:
    name: Nom
    level: Niveau
    defence: Défence
-   hall_town: HDV
    attack: Attaque
+   ht: HDV
    total: Total
    updated: Mis à jour
    troopSent: Troupes envoyées
-   troopReceived: Troupes recues
-   attackWon: Attaques gagnées
+   troopReceived: Troupes reçues
+   attackWon: Attaque gagnées
    trophy: Trophés
+   labotory: Laboratoire
+   general: Général
+   hall_town: Hôtel de ville
+   mortar1: Mortier 1
+   mortar2: Mortier 2
+   mortar3: Mortier 3
+   mortar4: Mortier 4
+   tower_magic1: Tour de magie 1
+   tower_magic2: Tour de magie 2
+   tower_magic3: Tour de magie 3
+   tower_magic4: Tour de magie 4
+   canon1: Canon 1
+   canon2: Canon 2
+   canon3: Canon 3
+   canon4: Canon 4
+   canon5: Canon 5
+   canon6: Canon 6
+   air_defence1: Anti-aérien 1
+   air_defence2: Anti-aérien 2
+   air_defence3: Anti-aérien 3
+   air_defence4: Anti-aérien 4
+   tower_archer1: Tour d'archer 1
+   tower_archer2: Tour d'archer 2
+   tower_archer3: Tour d'archer 3
+   tower_archer4: Tour d'archer 4
+   tower_archer5: Tour d'archer 5
+   tower_archer6: Tour d'archer 6
+   tower_archer7: Tour d'archer 7
+   tesla1: Tesla 1
+   tesla2: Tesla 2
+   tesla3: Tesla 3
+   tesla4: Tesla 4
+   x_bow1: Arc-X 1
+   x_bow2: Arc-X 2
+   x_bow3: Arc-X 3
+   inferno_tower1: Tour de l'enfer 1
+   inferno_tower2: Tour de l'enfer 2
+   king: Roi
+   queen: Reine
+   barbar: Barbars
+   archer: Archers
+   gobelin: Gobelins
+   geant: Géants
+   wall_breaker: Casses-briques
+   balloon: Montgolfières
+   wizard: Magiciens
+   healer: Guérisseuses
+   dragon: Dragons
+   pekka: P.E.K.K.A
+   minion: Minions
+   rider: Chevaucheurs
+   valkyrie: Valkyries
+   golem: Golems
+   witch: Sorcières
+   lava: Lave
+   potion_dmg: Potion éclair
+   potion_heal: Potion soin
+   potion_boost: Potion rage
+   potion_green: Potion saut
+   potion_freeze: Potion gêle
+   gold: Or
+   elixir: Elixir
 
 account:
     name: Compte
@@ -80,6 +164,7 @@ account:
     player: Joueur
     association: Associé
     dissociate: Dissocier
+    waiting: En attente de validation
 
 war:
    result: Résultat
@@ -102,42 +187,65 @@ video:
 coc:
     launch_demo: Launch demo
     message: Clan message
-
     ranking: Players ranking
     visit_ranking: Display all players
-
     best_attacks: Best attacks
     visit_best_attacks: All the attacks
-
     bases: Bases
     visit_bases: All the bases
 
 vitrine:
-    title: Easy way to manage and improve your clan
-    my_clan : My clan
-    create_clan2 : Create your website in one form !
-
-    create_clan: Create clan
-    join_clan: Join a clan
-    demo: Try demo
-    step1_title: Create your clan
-    step1_description: Fill out the form with your information as well as the name of your clan. On the next page, your will automatically see your new clan will all its features.
-    step2_title: Create your players
-    step2_description: Create the players of your clan in the administration panel. The members will have the possibility to join your clan and edit his/her player.
-    step3_title: Be better !
-    step3_description: Enjoy the competition between the members of your clan to know who is really the best, and who does not even deserve to stay !
+    title: Gestionnaire de clan pour Clash of Clans
+    my_clan : Mon clan
+    create_clan2 : Managez facilement votre clan
+    create_clan: Créer un clan
+    join_clan: Rejoindre un clan
+    demo: Essayer démo
+    step1_title: Créer un clan
+    step1_description: Remplissez le formulaire avec votre nom ainsi que le nom de votre clan. Votre clan sera automatiquement crée et pret à être utiliser.
+    step2_title: Créer les joueurs
+    step2_description: Créez les joueurs dans le panel d'administration. Une fois inscris, les membres ont la possibilité de reoindre votre clan, ce qui leur permettront d'éditer leur profils.
+    step3_title: Devenez meilleur !
+    step3_description: Connaissez désormais qui mérite de combattre à vos coté lors des guerres de clans en analysant l'activité des joueurs ainsi que leur niveau dans le classement général.
 
 intro:
     step1: Bienvenue à bord, ceci est votre nouveau site ! Nous espérons que vous apprécierez l'expérience OhMyClan.
     step2: Voici un exemple de fonctionnalités disponibles sur OhMyClan.
     step3: Communiquez avec les membres du clan et gérez facilement l'agenda et l'historique des guerres.
     step4: The système de classement vous permet de savoir qui est vraiment le meilleur de votre clan.
-
-    feature3_title: Partagez les meilleures bases avec les membres du clan
+    feature3_title: Partagez les meilleures de votre clan
     feature3_description: Uploadez facilement vos bases et partagez les aux membres les moins expérimentés.
-
-    feature1_title: Savez qui joue le plus
+    feature1_title: Découvrez les membres les plus actifs.
     feature1_description: Obtenez des informations chaques saisons sur quel membre attaque le plus, encore qui a donne ou recu le plus de troupes.
-
     feature2_title: Système de classement
     feature2_description: Classez les membres du clan par trophés comme sur Clash of Clans, mais aussi par niveaux de défence ou laboratoire.
+
+label:
+    name: Titre
+    link: Lien youtube
+    create: Ajouter
+    update: Modifier
+    save: Sauvegarder
+    site_visible: Site visible pour les visiteurs
+    site_invisible: Site invisible pour les visiteurs
+    clan_visible: Il est possible de rejoindre mon clan
+    clan_invisible: Impossible de rejoindre mon clan
+    clan_registration: Rejoindre mon clan
+    site_visibility: Visibilité du site
+    password: Mot de passe du clan
+    capacity: Capacité max
+    choose_ht: Choisir hôtel de ville
+    search: Rechercher
+    victory: Victoire
+    defeat: Defaite
+    opponent: Adversaire
+    name_coc: Joueur Clash of Clans
+
+admin:
+    msg1: Bienvenue sur l'administration de votre clan !
+    msg2: Editez la visiblité de votre clan sur OhMyClan.
+    msg3: Editez le mot de passe servant à rejoindre votre clan.
+    msg4: Créer et managez les joueur du clan.
+    msg5: Associez les comptes OhMyClan aux joueurs Clash of Clans
+    msg6: Mettez à jour les informations des joueurs (troupes reçues, envoyées, trophés et nombres d'attaques réussies) avant la fin de chaque saisons (une saison dure 2 semaines et commence les lundis).
+    msg7: Managez et mettez à jour vos guerres de clans.

@@ -1,14 +1,28 @@
+homepage:
+    pattern:   /{_locale}
+    defaults:  { _controller: VitrineBundle:Default:index, _locale: en }
+    requirements:
+        _locale:  en|fr
+
 vitrine:
     resource: "@VitrineBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}
+    requirements:
+                _locale: en|fr
 
 admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}/
+    requirements:
+                _locale: en|fr
 
 coc:
     resource: "@COCBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}/
+    requirements:
+                _locale: en|fr
+
+
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

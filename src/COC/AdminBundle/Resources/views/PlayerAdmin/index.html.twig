@@ -47,8 +47,8 @@
 
                         <td>{{ player.updatedAt|date('U')|timeago }}</td>
                         <td>
-                            <a href="{{ path('admin_player_edit', { 'id': player.id , 'id_clan': clan.id }) }}" class="btn btn-default btn-info">Editer</a>
-                            <a href="{{ path('admin_player_delete', { 'id': player.id , 'id_clan': clan.id}) }}" class="btn btn-circle btn-danger alert">Suppprimer</a>
+                            <a href="{{ path('admin_player_edit', { 'id': player.id , 'id_clan': clan.id }) }}" class="btn btn-default btn-info">{{ 'action.edit'|trans }}</a>
+                            <a href="{{ path('admin_player_delete', { 'id': player.id , 'id_clan': clan.id}) }}" class="btn btn-circle btn-danger alert">{{ 'action.delete'|trans }}</a>
                         </td>
 
                     </tr>

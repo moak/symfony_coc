@@ -4,29 +4,42 @@ menu:
     password: Clan's password
     players: Players
     players_list: Players list
+    players_all: All the players
     player_add: Create player
+    player_edit: Edit player
     activity: Players activity
     accounts: Accounts
     current_season: Current season
     history_season: History seasons
-    wars: Wars
+    history_edit: Edit history player
+    history: History
+    wars: Clan Wars
     war_add: New war
+    war_edit: Edit war
     wars_list: Wars list
     bases_list: Bases list
     base_add: New base
+    base_edit: Edit a base
     videos: Videos
     videos_list: Videos list
+    video_list: Videos list
+    video_all: All the videos
     video_add: New video
+    video_number: Number of videos
+    bonus: Bonus images
     bonus_list: Bonus images
     bonus_add: New image bonus
     bases: Bases
-    base_add: New base
+    base_number: Number of bases
+    base_add:  Add a new base
     bases_list: Bases list
     bestAttacks: Best attacks
-    bestAttacks_list: Best attacks list
+    bestAttack_edit: Edit best attack
+    bestAttack_add: New best attack
     bonuses: Images bonus
     bonuses_list: Bonus images list
     disconnect: Logout
+    password: Password
     account_edit: Edit account
     accounts_list: List accounts
     accounts: Accounts
@@ -51,6 +64,16 @@ menu:
     new_base: New base
     general_ranking: General ranking
     title_page: Clan manager for Clash of Clans
+    my_player_edit: Edit my player
+    no_war: The clan has no war.
+    edit_clan: Edit clan
+    assign_player: Assign player
+    account_non_assigned: Account non assigned
+    welcome: Welcome
+    welcome_msg: If this is the first time on the administration, let's go add your players
+    here: here
+    admin_clan: Administration clan
+
 button:
     add_player: New player
 
@@ -65,13 +88,75 @@ player:
    level: Level
    defence: Defence
    attack: Attack
-   hall_town: HT
+   ht: HT
    total: Total
    updated: Updated
    troopSent: Troops Sent
    troopReceived: Troops Received
    attackWon: Attacks won
    trophy: Trophies
+   labotory: Labotory
+   general: General
+   hall_town: Hall town
+   mortar1: Mortar 1
+   mortar2: Mortar 2
+   mortar3: Mortar 3
+   mortar4: Mortar 4
+   tower_magic1: Wizard tower 1
+   tower_magic2: Wizard tower 2
+   tower_magic3: Wizard tower 3
+   tower_magic4: Wizard tower 4
+   canon1: Canon 1
+   canon2: Canon 2
+   canon3: Canon 3
+   canon4: Canon 4
+   canon5: Canon 5
+   canon6: Canon 6
+   air_defence1: Air defence 1
+   air_defence2: Air defence 2
+   air_defence3: Air defence 3
+   air_defence4: Air defence 4
+   tower_archer1: Archer tower 1
+   tower_archer2: Archer tower 2
+   tower_archer3: Archer tower 3
+   tower_archer4: Archer tower 4
+   tower_archer5: Archer tower 5
+   tower_archer6: Archer tower 6
+   tower_archer7: Archer tower 7
+   tesla1: Tesla 1
+   tesla2: Tesla 2
+   tesla3: Tesla 3
+   tesla4: Tesla 4
+   x_bow1: X-Bow 1
+   x_bow2: X-Bow 2
+   x_bow3: X-Bow 3
+   inferno_tower1: Inferno tower 1
+   inferno_tower2: Inferno tower 2
+   king: King
+   queen: Queen
+   barbar: Barbarian
+   archer: Archer
+   gobelin: Goblin
+   geant: Giant
+   wall_breaker: Wall Breaker
+   balloon: Balloon
+   wizard: Wizard
+   healer: Healer
+   dragon: Dragon
+   pekka: P.E.K.K.A
+   minion: Minion
+   rider: Hog Rider
+   valkyrie: Valkyrie
+   golem: Golem
+   witch: Witch
+   lava: Lava Hound
+   potion_dmg: Lightning Spell
+   potion_heal: Healing Spell
+   potion_boost: Rage Spell
+   potion_green: Jump Spell
+   potion_freeze: Freeze Spell
+   gold: Gold
+   elixir: Elexir
 
 account:
     name: Account
@@ -80,16 +165,16 @@ account:
     association: Associated
     dissociate: Dossociate
     waiting: Waiting for validation
+    
 war:
    result: Result
    date: Date
    wars: Clan wars
    waiting: Waiting for results
    not_found: 0 war found.
-   history: War history
+   history: History
    live: War is live !!
    preparation_day: Preparation day (starts at
-
    war_day: War day ! (Stops at
    next_war: Next war
    no_next_war: Next war: N/A
@@ -102,27 +187,23 @@ video:
 coc:
     launch_demo: Launch demo
     message: Clan message
-
     ranking: Players ranking
     visit_ranking: Display all players
-
     best_attacks: Best attacks
     visit_best_attacks: All the attacks
-
     bases: Bases
     visit_bases: All the bases
 
 vitrine:
-    title: Easy way to manage and improve your clan
+    title: Clan manager for Clash of Clans
     my_clan : My clan
-    create_clan2 : Create your website in one form !
-
+    create_clan2 : Easy way to manage and improve your clan
     create_clan: Create clan
     join_clan: Join a clan
     demo: Try demo
-    step1_title: Create your clan
-    step1_description: Fill out the form with your information as well as the name of your clan. On the next page, your will automatically see your new clan will all its features.
-    step2_title: Create your players
+    step1_title: Create the clan
+    step1_description: Fill out the form with your name and the name of your clan. Your website will automatically created and ready to use.
+    step2_title: Create the players
     step2_description: Create the players of your clan in the administration panel. The members will have the possibility to join your clan and edit his/her player.
     step3_title: Be better !
     step3_description: Enjoy the competition between the members of your clan to know who is really the best, and who does not even deserve to stay !
@@ -132,12 +213,39 @@ intro:
     step2: Here are a few features available on your website.
     step3: Communicate with the members of your clan and easily mananage the agenda of the clan wars.
     step4: The ranking system of OhMyClan allows you to know who is really the best of your clan.
-
     feature3_title: Share the best bases for your clan
     feature3_description: Easily manage and upload new bases in order to help your friends to have better bases.
-
     feature1_title: Know who plays the most
     feature1_description: Get information every seasons on who attacked the most, who gave or received the most troops.
-
     feature2_title: Ranking system
     feature2_description: Sort the members of your clan by trophies like in Clash of Clans, but also by levels, level of labotory or level of defences.
+
+label:
+    name: Title
+    link: Youtube address
+    create: Create
+    update: Update
+    save: Save
+    site_visible: Site visible for visitors
+    site_invisible: Site invisible for visitors
+    clan_visible: Clan visible when joining clans
+    clan_invisible: Clan invisible when joining clans
+    clan_registration: Clan registration
+    site_visibility: Website visibility
+    password: Clan's Password
+    capacity: Capacity max
+    choose_ht: Choose hall town
+    search: Search
+    victory: Victory
+    defeat: Defeat
+    opponent: Opponent
+    name_coc: Player Clash of Clans
+
+admin:
+    msg1: Welcome on the administration
+    msg2: Define the visibility of your clan on Oh My Clan.
+    msg3: Define the password that will be used to join your clan.
+    msg4: Create and update the players of your clan.
+    msg5: Associate the OhMyClan accounts to Clash of Clan players.
+    msg6: Update the information of the players (troops received, sent, trophies and attacks won) before the end of each seasons (a season lasts two weeks and starts the Mondays).
+    msg7: Manage you clan wars.

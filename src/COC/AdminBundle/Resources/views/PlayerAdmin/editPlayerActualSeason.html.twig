@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Edition historique</h1>
+            <h1 class="page-header">{{ 'menu.history_edit'|trans }}</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -14,8 +14,8 @@
 
     <ol class="breadcrumb">
         <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a></li>
-        <li><a href="{{ path('admin_users', { 'id_clan': clan.id }) }}">Historique</a></li>
-        <li class="active">Editer player</li>
+        <li><a href="{{ path('admin_users', { 'id_clan': clan.id }) }}">{{ 'menu.history'|trans }}</a></li>
+        <li class="active">{{ 'menu.history_edit'|trans }}</li>
     </ol>
 
     <div class="container">
@@ -26,7 +26,7 @@
             {{ form_errors(form) }}
 
             <div class="form-group">
-                {{ form_label(form.troopSent, 'Troupe envoyées', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.troopSent, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                 {{ form_errors(form.troopSent) }}
 
                 <div class="col-sm-4">
@@ -35,7 +35,7 @@
             </div>
 
             <div class="form-group">
-                {{ form_label(form.troopReceived, 'Troupes recues', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.troopReceived, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                 {{ form_errors(form.troopReceived) }}
 
                 <div class="col-sm-4">
@@ -45,7 +45,7 @@
 
 
             <div class="form-group">
-                {{ form_label(form.trophy, 'Trophés', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.trophy, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                 {{ form_errors(form.trophy) }}
 
                 <div class="col-sm-4">
@@ -54,7 +54,7 @@
             </div>
 
             <div class="form-group">
-                {{ form_label(form.attackWon, 'Attaques gagnées', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.attackWon, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                 {{ form_errors(form.attackWon) }}
 
                 <div class="col-sm-4">

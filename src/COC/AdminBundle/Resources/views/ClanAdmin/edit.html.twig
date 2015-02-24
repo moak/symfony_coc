@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Edition clan</h1>
+            <h1 class="page-header">{{ 'menu.edit_clan'|trans }}</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -14,7 +14,7 @@
 
     <ol class="breadcrumb">
         <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a></li>
-        <li class="active">Editer clan</li>
+        <li class="active">{{ 'menu.edit_clan'|trans }}</li>
     </ol>
 
     <div class="container">
@@ -34,7 +34,7 @@
             </div>
 
             <div class="form-group">
-                {{ form_label(form.capacity, 'Capacité max', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.capacity, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                 {{ form_errors(form.capacity) }}
 
                 <div class="col-sm-4">

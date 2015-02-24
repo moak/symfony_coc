@@ -12,10 +12,10 @@ class ImageBestAttackType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('gold', 'integer')
-            ->add('elixir', 'integer')
+            ->add('gold', 'integer', array('label' => 'player.gold'))
+            ->add('elixir', 'integer', array('label' => 'player.elixir'))
             ->add('image', new ImageType())
-            ->add('save', 'submit', array('label' => 'Sauvegarder'));
+            ->add('save', 'submit', array('label' => 'label.create'));
     }
 
 
