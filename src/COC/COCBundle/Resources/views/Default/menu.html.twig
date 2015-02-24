@@ -41,6 +41,9 @@
                     </ul>
                 </li>
 
+
+
+
                 {% if active == "media" %} <li class="active dropdown"> {% else %} <li class="dropdown">{% endif %}
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="badge">{{ numberVideos + numberImagesBonus }}</span> {{ 'menu.media'|trans }} <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
@@ -64,6 +67,16 @@
                     <a href="#page-top"></a>
                 </li>
 
+                <li>
+                    <a href="{{ path('homepage', {"_locale": "fr"}) }}">Francais</a>
+                </li>
+
+                <li>
+                    <a href="{{ path('homepage', {"_locale": "en"}) }}">English</a>
+                </li>
+
+
+                
                 {% if is_granted('ROLE_ADMIN') and clan.id == app.user.clan.id %}
                     <li><a data-step="5" data-intro="Managez votre clan depuis l'administration." target="_blank" href="{{ path('admin', {'id_clan': clan.id }) }}">Administration <span class="badge">{{  numberUsersNonAssigned }}</span></a></li>
                 {% endif %}

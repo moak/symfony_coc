@@ -165,7 +165,7 @@ account:
     association: Associated
     dissociate: Dossociate
     waiting: Waiting for validation
-    
+
 war:
    result: Result
    date: Date
@@ -197,7 +197,7 @@ coc:
 vitrine:
     title: Clan manager for Clash of Clans
     my_clan : My clan
-    create_clan2 : Easy way to manage and improve your clan
+    create_clan2 : Easy way to manage your clan
     create_clan: Create clan
     join_clan: Join a clan
     demo: Try demo
@@ -240,6 +240,10 @@ label:
     defeat: Defeat
     opponent: Opponent
     name_coc: Player Clash of Clans
+    clanName: Clan name
+    phone: Phone
+    clan : Join the clan
+    register: Let's go !!
 
 admin:
     msg1: Welcome on the administration

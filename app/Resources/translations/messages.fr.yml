@@ -204,9 +204,9 @@ vitrine:
     step1_title: Créer un clan
     step1_description: Remplissez le formulaire avec votre nom ainsi que le nom de votre clan. Votre clan sera automatiquement crée et pret à être utiliser.
     step2_title: Créer les joueurs
-    step2_description: Créez les joueurs dans le panel d'administration. Une fois inscris, les membres ont la possibilité de reoindre votre clan, ce qui leur permettront d'éditer leur profils.
+    step2_description: Créez les joueurs dans le panel d'administration. Une fois inscris, les membres ont la possibilité de rejoindre votre clan, ce qui leur permettront d'éditer leur profils.
     step3_title: Devenez meilleur !
-    step3_description: Connaissez désormais qui mérite de combattre à vos coté lors des guerres de clans en analysant l'activité des joueurs ainsi que leur niveau dans le classement général.
+    step3_description: Connaissez désormais qui mérite de combattre à vos cotés lors des guerres de clans en analysant l'activité des joueurs ainsi que leur niveau dans le classement général.
 
 intro:
     step1: Bienvenue à bord, ceci est votre nouveau site ! Nous espérons que vous apprécierez l'expérience OhMyClan.
@@ -240,6 +240,10 @@ label:
     defeat: Defaite
     opponent: Adversaire
     name_coc: Joueur Clash of Clans
+    clanName: Nom du clan
+    phone: Téléphone
+    clan : Clan à rejoindre
+    register: C'est parti !!
 
 admin:
     msg1: Bienvenue sur l'administration de votre clan !

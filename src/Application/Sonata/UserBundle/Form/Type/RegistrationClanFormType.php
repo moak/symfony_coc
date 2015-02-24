@@ -11,9 +11,9 @@ class RegistrationClanFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('phone', 'integer',  array('required'  => false,))
+        $builder->add('phone', 'integer',  array('label' => 'label.phone', 'required'  => false,))
 
-            ->add('clan', 'entity', array(
+            ->add('clan', 'entity', array('label' => 'label.clan',
                     'class' => 'COCBundle:Clan',
                     'query_builder' => function(EntityRepository $er) {
                         return $er->createQueryBuilder('u')
@@ -26,9 +26,9 @@ class RegistrationClanFormType extends AbstractType
             ->add('clan', 'text', [
                 'mapped' => false,
             ])*/
-       ->add('clanName', 'text', array('required'  => false,))
-       ->add('pass', null, array('required'  => false,))
-            ->add('save', 'submit', array('label' => 'C\'est parti !!'));
+       ->add('clanName', 'text', array('label' => 'label.clanName', 'required'  => false,))
+       ->add('pass', null, array('label' => 'label.password', 'required'  => false,))
+            ->add('save', 'submit', array('label' => 'label.register'));
     }
 
     public function getParent()
