@@ -22,9 +22,6 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}"> {{ 'menu.player_rankings'|trans }}</a></li>
                         <li><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '1' }) }}"> {{ 'menu.player_activity'|trans }}</a></li>
-
-                        <li><a href="{{ path('coc_imagesBestAttack', {'id_clan': clan.id }) }}">{{ 'menu.best_attacks'|trans }}  <span class="badge">{{ numberBestAttacks }}</span>  </a></li>
-
                     </ul>
                 </li>
 
@@ -45,10 +42,12 @@
 
 
                 {% if active == "media" %} <li class="active dropdown"> {% else %} <li class="dropdown">{% endif %}
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="badge">{{ numberVideos + numberImagesBonus }}</span> {{ 'menu.media'|trans }} <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="badge">{{ numberVideos + numberImagesBonus + numberBestAttacks}}</span> {{ 'menu.media'|trans }} <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ path('coc_videos', {'id_clan': clan.id }) }}"><span class="badge">{{ numberVideos }}</span>  {{ 'menu.video'|trans }} </a></li>
                         <li><a href="{{ path('coc_imagesBonus', {'id_clan': clan.id }) }}"><span class="badge">{{ numberImagesBonus }}</span>  {{ 'menu.bonus'|trans }} </a></li>
+                        <li><a href="{{ path('coc_imagesBestAttack', {'id_clan': clan.id }) }}"><span class="badge">{{ numberBestAttacks }}</span> {{ 'menu.best_attacks'|trans }}    </a></li>
+
                     </ul>
                 </li>
 
@@ -60,6 +59,8 @@
                     {% endif %}
                 {% endif %}
 
+
+
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -68,11 +69,11 @@
                 </li>
 
                 <li>
-                    <a href="{{ path('homepage', {"_locale": "fr"}) }}">Francais</a>
+                    <a href="{{ path('coc', {'id_clan' : clan.id, "_locale": "fr"}) }}"><b>FR</b></a>
                 </li>
 
                 <li>
-                    <a href="{{ path('homepage', {"_locale": "en"}) }}">English</a>
+                    <a href="{{ path('coc', {'id_clan' : clan.id, "_locale": "en"}) }}"><b>ENG</b></a>
                 </li>
 
 
