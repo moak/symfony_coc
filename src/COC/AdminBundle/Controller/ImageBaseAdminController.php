@@ -19,11 +19,11 @@ class ImageBaseAdminController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
-        $list = $em->getRepository('COCBundle:ImageBase')->findByClan($clan);
+        $list = $em->getRepository('COCBundle:ImageBase')->findByClan($clan,array('hall_town' => 'ASC') );
 
 
         // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
-        // var_dump($season);
+
         return $this->render('AdminBundle:ImageBaseAdmin:index.html.twig', array('clan' => $clan,'images' => $list));
     }
 

@@ -34,7 +34,7 @@ menu:
     bases_list: Liste des bases
     bestAttacks: Liste des meilleures attaques
     bestAttack_edit: Editer attaque
-    bestAttack_add: New attaque
+    bestAttack_add: Nouvelle attaque
     bestAttacks_list: Liste des attaques
     bonuses: Images bonus
     bonuses_list: Liste des images bonus
@@ -84,12 +84,13 @@ action:
     set_user : Donner droit utilisateur
 
 notFound: Aucun résultat trouvé.
+notPlayerFound: Aucun joueur trouvé.
 
 player:
    name: Nom
-   level: Niveau
-   defence: Défence
-   attack: Attaque
+   level: Niv
+   defence: Déf
+   attack: Att
    ht: HDV
    total: Total
    updated: Mis à jour
@@ -166,7 +167,7 @@ account:
     player: Joueur
     association: Associé
     dissociate: Dissocier
-    waiting: En attente de validation
+    waiting: En attente d'association
 
 war:
    result: Résultat
@@ -174,7 +175,7 @@ war:
    wars: Guerres de clan
    waiting: En attente de résultat
    not_found: Aucune guerre trouvée.
-   history: Historique GDC
+   history: Historique
    live: War is live !!
    preparation_day: Jour de préparation (Démarre à
    war_day: Jour de guerre!! (Se termine à
@@ -187,14 +188,14 @@ video:
     published: Publiée
 
 coc:
-    launch_demo: Launch demo
-    message: Clan message
-    ranking: Players ranking
-    visit_ranking: Display all players
-    best_attacks: Best attacks
-    visit_best_attacks: All the attacks
+    launch_demo: Lancer démo
+    message: Message de clan
+    ranking: Classement des joueurs
+    visit_ranking: Afficher tous les joueurs
+    best_attacks: Meilleures attaques
+    visit_best_attacks: Toutes les attaques
     bases: Bases
-    visit_bases: All the bases
+    visit_bases: Toutes les bases
 
 vitrine:
     title: Gestionnaire de clan pour Clash of Clans
@@ -212,10 +213,11 @@ vitrine:
 
 intro:
     step1: Bienvenue à bord, ceci est votre nouveau site ! Nous espérons que vous apprécierez l'expérience OhMyClan.
-    step2: Voici un exemple de fonctionnalités disponibles sur OhMyClan.
+    step2: Voici un exemple de fonctionnalités disponibles sur OhMyClan. Nous avons ajouté quelques bases et attaques pour vous montrer comment consulter vos images.
     step3: Communiquez avec les membres du clan et gérez facilement l'agenda et l'historique des guerres.
-    step4: The système de classement vous permet de savoir qui est vraiment le meilleur de votre clan.
-    feature3_title: Partagez les meilleures de votre clan
+    step4: The système de classement de OhMyClan vous permet visualiser les meilleurs membres de votre clan.
+    step5: Managez votre clan depuis l'administration. (Ex: Ajouter des joueurs, associer les nouveaux comptes à vos joueur, mettre à jour les informations des joueurs, etc..)
+    feature3_title: Partagez les meilleures bases de votre clan
     feature3_description: Uploadez facilement vos bases et partagez les aux membres les moins expérimentés.
     feature1_title: Découvrez les membres les plus actifs.
     feature1_description: Obtenez des informations chaques saisons sur quel membre attaque le plus, encore qui a donne ou recu le plus de troupes.
@@ -247,6 +249,12 @@ label:
     clan : Clan à rejoindre
     register: C'est parti !!
     waiting: En attente de résultat
+    choose_type: Choisir type de base
+    type: Type de base
+    war: Base de guerre
+    farm: Base de dévelopement
+    posted_by: Posted by
+    previous_seasons: Saisons précédentes
 
 admin:
     msg1: Bienvenue sur l'administration de votre clan !
@@ -256,3 +264,7 @@ admin:
     msg5: Associez les comptes OhMyClan aux joueurs Clash of Clans
     msg6: Mettez à jour les informations des joueurs (troupes reçues, envoyées, trophés et nombres d'attaques réussies) avant la fin de chaque saisons (une saison dure 2 semaines et commence les lundis).
     msg7: Managez et mettez à jour vos guerres de clans.
+
+notif:
+    user_waiting: Nouveaux comptes en attente d'association
+    user_non_waiting: Aucun compte en attente d'association.

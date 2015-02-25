@@ -28,7 +28,7 @@ class SeasonType extends AbstractType
     {
         $now = new \DateTime();
         $builder
-            ->add('season', 'entity', array ('class' => 'COC\COCBundle\Entity\Season', 'property' => 'name', 'data' => 1, 'query_builder' => function(EntityRepository $er) use ($options) {
+            ->add('season', 'entity', array ('label' => 'label.previous_seasons','class' => 'COC\COCBundle\Entity\Season', 'property' => 'name', 'data' => 1, 'query_builder' => function(EntityRepository $er) use ($options) {
                 return $er->createQueryBuilder('p')
                     ->where('p.start >= :createdAt')
                     ->andWhere('p.end <= :actualSeason')

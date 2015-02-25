@@ -12,12 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class ImageBaseRepository extends EntityRepository
 {
-    public function getNumberEntities($clan)
+    public function getNumberEntities($clan, $ht)
     {
         $qb = $this->createQueryBuilder('u')
-            ->where('u.clan = :clan')
             ->select('u')
-            ->setParameter('clan', $clan);
+            ->where('u.clan = :clan')
+            ->andWhere('u.hall_town = :ht')
+            ->setParameter('clan', $clan)
+            ->setParameter('ht', $ht);
 
         return count($qb->getQuery()->getResult());
     }

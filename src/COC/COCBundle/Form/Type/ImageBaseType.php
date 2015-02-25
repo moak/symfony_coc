@@ -20,6 +20,13 @@ class ImageBaseType extends AbstractType
                 '8' => '8',
                 '9' => '9',
             ), ))
+
+            ->add('type',  'choice', array('label' => 'label.type', 'choices' => array(
+                '' => 'label.choose_type',
+                '1' => 'label.war',
+                '2' => 'label.farm',
+
+            ), ))
             ->add('image', new ImageType())
             ->add('save', 'submit', array('label' => 'label.save'));
     }

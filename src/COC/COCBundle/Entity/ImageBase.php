@@ -37,17 +37,24 @@ class ImageBase
      */
     private $clan;
 
+
     /**
-     * @ORM\OneToOne(targetEntity="COC\COCBundle\Entity\Image", cascade={"persist","remove"})
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Image", inversedBy="imagebases", cascade={"persist"})
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      */
     private $image;
-    
+
+
     /**
      * @ORM\Column(type="integer")
      */
     private $hall_town;
 
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $type;
 
 
 
@@ -105,6 +112,30 @@ class ImageBase
     public function getHallTown()
     {
         return $this->hall_town;
+    }
+
+
+    /**
+     * Set hall_town
+     *
+     * @param integer $type
+     * @return ImageBase
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return integer
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**

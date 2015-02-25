@@ -21,7 +21,7 @@
                                     <a href="{{ path('coc' , { 'id_clan': 1 }) }}" class="btn btn-default  btn-lg"><i class="fa fa-coffee"></i> {{ 'vitrine.demo'|trans }}</a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('fos_user_registration_register') }}" class="btn btn-default btn-lg"><i class="fa fa-check-circle"></i> {{ 'vitrine.join_clan'|trans }}</a>
+                                    <a href="{{ path('fos_user_registration_register') }}" class="btn btn-default btn-lg"><i class="fa fa-check-circle"></i> {{ 'vitrine.create_clan'|trans }}</a>
                                 </li>
                             {% else %}
                                 <li><a href="{{ path('coc', {'id_clan' : app.user.clan.id }) }}" class="btn btn-default btn-lg">{{ 'vitrine.my_clan'|trans }}</a></li>
@@ -63,7 +63,7 @@
             </div><!--//row-->
 
             {% if not is_granted('ROLE_USER') and not is_granted('ROLE_ADMIN') %}
-                <div class="text-center"><a class="btn btn-vitrine supercell-font btn-success" href="{{ path('fos_user_registration_register') }}">{{ 'vitrine.create_clan'|trans }}</a></div>
+                <div class="text-center"><a class="btn btn-vitrine supercell-font btn-success" href="{{ path('fos_user_registration_register') }}">{{ 'vitrine.join_clan'|trans }}</a></div>
             {% endif %}
 
 

@@ -30,12 +30,17 @@ class Image
     private $updateAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBestAttack", mappedBy="Image", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBestAttack", mappedBy="image", cascade={"persist"})
      **/
     private $imagebestattacks;
 
     /**
-     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBonus", mappedBy="Image", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBase", mappedBy="image", cascade={"persist"})
+     **/
+    private $imagebases;
+
+    /**
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBonus", mappedBy="image", cascade={"persist"})
      **/
     private $imagebonuses;
 
@@ -244,5 +249,71 @@ class Image
     public function getImagebestattacks()
     {
         return $this->imagebestattacks;
+    }
+
+    /**
+     * Add imagebases
+     *
+     * @param \COC\COCBundle\Entity\ImageBase $imagebases
+     * @return Image
+     */
+    public function addImagebase(\COC\COCBundle\Entity\ImageBase $imagebases)
+    {
+        $this->imagebases[] = $imagebases;
+
+        return $this;
+    }
+
+    /**
+     * Remove imagebases
+     *
+     * @param \COC\COCBundle\Entity\ImageBase $imagebases
+     */
+    public function removeImagebase(\COC\COCBundle\Entity\ImageBase $imagebases)
+    {
+        $this->imagebases->removeElement($imagebases);
+    }
+
+    /**
+     * Get imagebases
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImagebases()
+    {
+        return $this->imagebases;
+    }
+
+    /**
+     * Add imagebonuses
+     *
+     * @param \COC\COCBundle\Entity\ImageBonus $imagebonuses
+     * @return Image
+     */
+    public function addImagebonus(\COC\COCBundle\Entity\ImageBonus $imagebonuses)
+    {
+        $this->imagebonuses[] = $imagebonuses;
+
+        return $this;
+    }
+
+    /**
+     * Remove imagebonuses
+     *
+     * @param \COC\COCBundle\Entity\ImageBonus $imagebonuses
+     */
+    public function removeImagebonus(\COC\COCBundle\Entity\ImageBonus $imagebonuses)
+    {
+        $this->imagebonuses->removeElement($imagebonuses);
+    }
+
+    /**
+     * Get imagebonuses
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getImagebonuses()
+    {
+        return $this->imagebonuses;
     }
 }

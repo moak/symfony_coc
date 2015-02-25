@@ -53,11 +53,10 @@ class ImageBonus
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Image", inversedBy="imagebestattacks", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Image", inversedBy="imagebonuses", cascade={"persist"})
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
      */
     private $image;
-
 
 
     /**

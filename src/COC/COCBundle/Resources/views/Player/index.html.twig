@@ -23,9 +23,8 @@
             {{ form_errors(form) }}
 
             <div class="form-group">
-                {{ form_label(form.season, 'Rechercher par saison', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_label(form.season, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                 {{ form_errors(form.season) }}
-
 
                 <div class="col-sm-4">
                     {{ form_widget(form.season, { 'attr': {'class': 'form-control select_group'}, 'empty_value': '-- Add to Group --' }) }}

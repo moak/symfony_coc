@@ -16,6 +16,7 @@
         <li class="active">{{ 'menu.bases'|trans }}</li>
     </ol>
 
+
     <div class="container">
         <hr>
         <div class="row">
@@ -23,17 +24,22 @@
             {% if images|length != 0 %}
                 {% for image in images %}
                     <div class="col-sm-6 col-md-4">
-                        <div class="panel panel-default">
+                        <div class="panel panel-default text-center">
                             <div class="panel-heading">
-                                <h3 class="panel-title text-center">{{ loop.index }} </h3>
+                                <h3 class="panel-title ">
+                                    {% if image.type == 1 %}
+                                        {{ 'label.war'|trans }}
+                                    {% else %}
+                                        {{ 'label.farm'|trans }}
+                                    {% endif %}
+                                    ({{ 'player.ht'|trans }} {{ image.hallTown }})
+                                </h3>
                             </div>
                             <div class="panel-body">
-                                <a rel="gallery-1"  href="{{ asset('uploads/' ~ image.image.path) }}" class="swipebox" title="">
-                                    <img  class="img-responsive" src="{{ asset('uploads/' ~ image.image.path) }}" />
-                                </a>
+                                <img  class="img-responsive" src="{{ asset('uploads/' ~ image.image.path) }}" />
                             </div>
-                            <div class="panel-footer">
-                                <a class="btn btn-danger " href="{{ path('admin_base_delete' , {'id': image.id , 'id_clan': clan.id }) }}">{{ 'action.delete'|trans }}</a>
+                            <div class="panel-footer supercell-font">
+                                {{ 'label.posted_by'|trans }} {{ image.user.username }}
                             </div>
                         </div>
                     </div>

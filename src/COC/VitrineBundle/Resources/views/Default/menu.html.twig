@@ -25,6 +25,15 @@
                     <a href="#page-top"></a>
                 </li>
 
+                <li>
+                    <a href="{{ path('homepage', { "_locale": "fr"}) }}"><img width="20px" height="20px" class="img-responsive" src="{{ ('images/fr.png') | imagine_filter('my_thumb') }}"></a>
+                </li>
+
+                <li>
+                    <a href="{{ path('homepage', { "_locale": "en"}) }}"><img width="20px" height="20px" class="img-responsive" src="{{ ('images/en.png') | imagine_filter('my_thumb') }}"></a>
+                </li>
+
+
                 {% if is_granted('ROLE_USER') %}
                     {% if is_granted('ROLE_ADMIN') and app.user.clan is defined %}
                         <li><a target="_blank" href="{{ path('admin', {'id_clan': app.user.clan.id }) }}">Admin clan</a></li>
