@@ -20,9 +20,9 @@ admin_user_dissociate:
     path:     coc/{id_clan}/admin/user/dissociate/{id}
     defaults: { _controller: AdminBundle:UserAdmin:dissociate }
 
-admin_user_setRole:
-    path:     coc/{id_clan}/admin/user/role/{id}
-    defaults: { _controller: AdminBundle:UserAdmin:setRole }
+admin_user_setAccess:
+    path:     coc/{id_clan}/admin/user/role/{id}/{access}
+    defaults: { _controller: AdminBundle:UserAdmin:setAccess }
 
 
 

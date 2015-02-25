@@ -33,9 +33,10 @@
             <thead>
                 <tr>
                     <th>{{ 'account.name'|trans }}</th>
+                    <th>Access</th>
+                    <th></th>
                     <th>{{ 'account.player_assigned'|trans }}</th>
                     <th>{{ 'account.player'|trans }}</th>
-                    <th>{{ 'account.association'|trans }}</th>
                     <th></th>
                 </tr>
             </thead>
@@ -45,6 +46,34 @@
                 {% for user in users %}
                     <tr>
                         <td>{{ user.username }}</td>
+                        <td>
+                            {% set droit = "User" %}
+                            {% for role in user.roles %}
+                                {% if role == "ROLE_ADMIN" %}
+                                    {% set droit = "Admin" %}
+                                {% endif %}
+                            {% endfor %}
+                            {{ droit }}
+                        </td>
+
+                        {% set isAdmin = false %}
+                        {% for role in user.roles %}
+                            {% if role == "ROLE_ADMIN" %}
+                                {% set isAdmin = true %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if isAdmin %}
+                            {% if user.id != app.security.getToken().getUser().getId()  %}
+                                <td><a href="{{ path('admin_user_setAccess', { 'id': user.id ,'id_clan': clan.id, 'access' : 'ROLE_USER' }) }}" class="btn btn-default btn-info">{{ 'action.set_user'|trans }}</a></td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                        {% else %}
+                            <td><a href="{{ path('admin_user_setAccess', { 'id': user.id ,'id_clan': clan.id, 'access' : 'ROLE_ADMIN' }) }}" class="btn btn-default btn-warning">{{ 'action.set_admin'|trans }}</a></td>
+                        {% endif %}
+
+
 
                         {% if user.player.id is defined %}
                             <td>Oui</td>
@@ -53,19 +82,19 @@
                             <td>Aucun</td>
                             <td>-</td>
                         {% endif %}
+
+
                         <td>
                             {% if user.player.id is defined %}
-                                <a href="{{ path('admin_user_dissociate', { 'id': user.player.id ,'id_clan': clan.id }) }}"><button class="btn btn-default btn-warning">{{ 'account.dissociate'|trans }}</button></a>
+                                <td><a href="{{ path('admin_user_dissociate', { 'id': user.player.id ,'id_clan': clan.id }) }}"><button class="btn btn-default btn-warning">{{ 'account.dissociate'|trans }}</button></a></td>
                             {% else %}
-                                <a href="{{ path('admin_user_edit', { 'id': user.id ,'id_clan': clan.id }) }}"><button class="btn btn-default btn-success">{{ 'action.delete'|trans }}</button></a>
+                                <td> <a href="{{ path('admin_user_edit', { 'id': user.id ,'id_clan': clan.id }) }}"><button class="btn btn-default btn-success">{{ 'action.associate'|trans }}</button></a></td>
+                            {% endif %}
+                            {% if is_granted('ROLE_ADMIN') and user.player.id is not defined %}
+                                <td><a href="{{ path('admin_user_delete', { 'id': user.id ,'id_clan': clan.id }) }}" class="btn btn-default btn-danger">{{ 'action.delete'|trans }}</a></td>
                             {% endif %}
                         </td>
 
-                        <td>
-                            {% if is_granted('ROLE_SUPER_ADMIN')%}
-                                <a href="{{ path('admin_user_delete', { 'id': user.id ,'id_clan': clan.id }) }}" class="btn btn-default btn-danger alert">{{ 'action.delete'|trans }}</a>
-                            {% endif %}
-                        </td>
                     </tr>
                 {% endfor %}
             {% else %}

@@ -138,21 +138,21 @@ class RegistrationController extends BaseController
                 $player1->setClan($clan);
                 $player1->setName($user->getUsername());
                 $player1->setHallTown(5);
-                $player1->setLevel(40);
-                $player1->setTroopReceived(245);
-                $player1->setTroopSent(413);
-                $player1->setAttackWon(47);
-                $player1->setTrophy(1124);
+                $player1->setLevel(1);
+                $player1->setTroopReceived(0);
+                $player1->setTroopSent(0);
+                $player1->setAttackWon(0);
+                $player1->setTrophy(0);
 
-                $player1->setCanon1(2);
-                $player1->setCanon2(3);
+                $player1->setCanon1(1);
+                $player1->setCanon2(0);
                 $player1->setCanon3(0);
                 $player1->setCanon4(0);
                 $player1->setCanon5(0);
                 $player1->setCanon6(0);
 
-                $player1->setTowerArcher1(3);
-                $player1->setTowerArcher2(2);
+                $player1->setTowerArcher1(1);
+                $player1->setTowerArcher2(0);
                 $player1->setTowerArcher3(0);
                 $player1->setTowerArcher4(0);
                 $player1->setTowerArcher5(0);
@@ -187,13 +187,13 @@ class RegistrationController extends BaseController
                 $player1->setArcx3(0);
 
 
-                $player1->setBarbar(2);
-                $player1->setArcher(2);
-                $player1->setGobelin(3);
-                $player1->setGeant(2);
-                $player1->setWallBreaker(2);
+                $player1->setBarbar(1);
+                $player1->setArcher(0);
+                $player1->setGobelin(0);
+                $player1->setGeant(0);
+                $player1->setWallBreaker(0);
                 $player1->setBallon(0);
-                $player1->setHealer(1);
+                $player1->setHealer(0);
                 $player1->setWizard(0);
                 $player1->setDragon(0);
                 $player1->setPekka(0);
@@ -225,7 +225,7 @@ class RegistrationController extends BaseController
                 $player1->setElixir7(0);
 
 
-                $player1->setPotionDamage(1);
+                $player1->setPotionDamage(0);
                 $player1->setPotionHeal(0);
                 $player1->setPotionBoost(0);
                 $player1->setPotionGreen(0);

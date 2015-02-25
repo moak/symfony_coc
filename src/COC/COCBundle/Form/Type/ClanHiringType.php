@@ -18,7 +18,7 @@ class ClanHiringType extends AbstractType
             ))
 
             ->add('status' , 'choice', array('label' => 'label.site_visibility',
-                'choices' => array( '0' => 'label.clan_visible', '1' => 'label.clan_visible')
+                'choices' => array( '0' => 'label.clan_visible', '1' => 'label.clan_invisible')
             ))
             // ->add('utilisateurs', 'entity', array ('class' => 'Utilisateurs\UtilisateursBundle\Entity\Utilisateurs'))
             ->add('save', 'submit', array('label' => 'label.save'));

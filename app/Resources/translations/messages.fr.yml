@@ -80,6 +80,8 @@ button:
 action:
     edit: Editer
     delete: Supprimer
+    set_admin : Donner droit leader
+    set_user : Donner droit utilisateur
 
 notFound: Aucun résultat trouvé.
 
@@ -244,6 +246,7 @@ label:
     phone: Téléphone
     clan : Clan à rejoindre
     register: C'est parti !!
+    waiting: En attente de résultat
 
 admin:
     msg1: Bienvenue sur l'administration de votre clan !

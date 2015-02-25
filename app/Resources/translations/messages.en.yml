@@ -74,6 +74,7 @@ menu:
     here: here
     admin_clan: Administration clan
 
+
 button:
     add_player: New player
 
@@ -82,6 +83,9 @@ notFound: No results found.
 action:
     edit: Edit
     delete: Delete
+    associate: Associate
+    set_admin : Give leader priviledges
+    set_user : Give user priviledges
 
 player:
    name: Name
@@ -163,7 +167,7 @@ account:
     player_assigned: Player assigned
     player: Player
     association: Associated
-    dissociate: Dossociate
+    dissociate: Dissociate
     waiting: Waiting for validation
 
 war:
@@ -244,6 +248,7 @@ label:
     phone: Phone
     clan : Join the clan
     register: Let's go !!
+    waiting: Waiting for result
 
 admin:
     msg1: Welcome on the administration

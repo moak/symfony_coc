@@ -54,7 +54,8 @@
                 {% if is_granted('ROLE_USER') %}
                     {%  if app.user.player.level is defined and clan.id == app.user.player.clan.id %}
                         <li><a class="blink-slow" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_player'|trans }}</b></a></li>
-                    {% else %}
+                    {% endif %}
+                    {% if  app.user.clan.id == clan.id %}
                         <li><a class="blink" href=""><b>[{{ 'account.waiting'|trans }}]</b></a></li>
                     {% endif %}
                 {% endif %}

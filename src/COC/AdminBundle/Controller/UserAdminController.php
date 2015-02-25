@@ -43,18 +43,24 @@ class UserAdminController extends Controller
     public function deleteAction($id, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository('ApplicationSonataUserBundle:User')->find($id);
+        $user = $em->getRepository('ApplicationSonataUserBundle:User')->find(array('id' => $id, 'clan' => $id_clan));
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
-        if(!$user || $this->getUser()->getClan()->getId() != $id_clan)
+        if($user != null && $this->getUser()->getClan()->getId() == $id_clan)
         {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($user);
+            $em->flush();
+
+           echo($user->getClan());
+            die();
+            return $this->redirect($this->generateUrl('admin_users', array('id_clan' =>  $clan->getId())));
+
+        }
+        else{
             throw $this->createNotFoundException('No user found');
         }
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($user);
-        $em->flush();
 
-        return $this->redirect($this->generateUrl('admin_users', array('id_clan' =>  $clan->getId())));
 
     }
 
@@ -69,19 +75,24 @@ class UserAdminController extends Controller
         {
             throw $this->createNotFoundException('No user found');
         }
-        $em = $this->getDoctrine()->getManager();
-        $user->setPlayer(null);
-
-        $em->flush();
-
         $player = $em->getRepository('COCBundle:Player')->find($id);
         $player->setUser(null);
+
+        $em = $this->getDoctrine()->getManager();
+        $user->setPlayer(null);
+        $user->setPlayer(null);
+        $em->flush();
+
+        $user->setPlayer(null);
+        $em->flush();
+
+
 
         $em->flush();
         return $this->redirect($this->generateUrl('admin_users', array('id_clan' =>  $clan->getId())));
     }
 
-    public function setRoleAction($id, $id_clan)
+    public function setAccessAction($id, $id_clan, $access)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('ApplicationSonataUserBundle:User')->find($id);
@@ -91,7 +102,16 @@ class UserAdminController extends Controller
         {
             throw $this->createNotFoundException('No user found');
         }
-        $user->addRole("ROLE_ADMIN");
+        if( $access == "ROLE_USER")
+        {
+            $user->addRole($access);
+            $user->removeRole("ROLE_ADMIN");
+        }
+        else
+        {
+            $user->addRole($access);
+        }
+
         $em->flush();
 
         $token = $this->get( 'security.context' )->getToken();
@@ -99,7 +119,7 @@ class UserAdminController extends Controller
         // flush document manager or sth like that
         $token->setAuthenticated( false );
 
-        return $this->redirect($this->generateUrl('admin_users'));
+        return $this->redirect($this->generateUrl('admin_users',  array('id_clan' =>  $clan->getId())));
     }
 
 
