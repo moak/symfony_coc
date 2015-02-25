@@ -82,21 +82,11 @@
             {{ render(controller('AdminBundle:VideoAdmin:mainPageModule', {'id_clan': clan.id })) }}
 
         </div>
-
-
-
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-
-                </div>
-            </div>
-        </footer>
-
     </div>
-    <!-- /.container -->
+
+    <footer>
+        {{ render(controller('COCBundle:Default:displaySeason')) }}
+    </footer>
 
 {% endblock %}
 

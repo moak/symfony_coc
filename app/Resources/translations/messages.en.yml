@@ -73,6 +73,7 @@ menu:
     welcome_msg: If this is the first time on the administration, let's go add your players
     here: here
     admin_clan: Administration clan
+    my_clan: My clan
 
 
 button:
@@ -257,6 +258,14 @@ label:
     farm: Farm base
     posted_by: Posted by
     previous_seasons: Previous seasons
+    season: Current season
+    ends_in: ends in
+    day: d
+    hour: h
+    min: min
+
+
+
 
 admin:
     msg1: Welcome on the administration

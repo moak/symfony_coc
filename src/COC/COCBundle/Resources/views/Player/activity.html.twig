@@ -51,7 +51,7 @@
                     <th class="supercell-font">{{ 'player.troopSent'|trans }}</th>
                     <th class="supercell-font">{{ 'player.troopReceived'|trans }}</th>
                     <th class="supercell-font">{{ 'player.attackWon'|trans }}</th>
-                    <th class="supercell-font">{{ 'player.trophy'|trans }}</th>
+                    <th class="supercell-font">{{ 'player.trophy'|trans }} <i class="fa fa-trophy"></i></th>
 
                 </tr>
             </thead>
@@ -291,6 +291,10 @@
     </div>
     </div>
     <!-- /.container -->
+
+    <footer>
+        {{ render(controller('COCBundle:Default:displaySeason')) }}
+    </footer>
 
 {% endblock %}
 

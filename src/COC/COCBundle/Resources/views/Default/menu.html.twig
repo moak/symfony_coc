@@ -20,22 +20,22 @@
                 {% if active == "classement" %} <li class="active dropdown"> {% else %} <li class="dropdown">{% endif %}
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="badge">{{ numberPlayers }}</span> {{ 'menu.rankings'|trans }} <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}"> {{ 'menu.player_rankings'|trans }}</a></li>
-                        <li><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '1' }) }}"> {{ 'menu.player_activity'|trans }}</a></li>
+                        <li><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}"><i class="fa fa-sort-amount-asc"></i> {{ 'menu.player_rankings'|trans }}</a></li>
+                        <li><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '1' }) }}"><i class="fa fa-gamepad"></i> {{ 'menu.player_activity'|trans }}</a></li>
                     </ul>
                 </li>
 
                 {% if active == "base" %} <li class="active dropdown"> {% else %} <li class="dropdown">{% endif %}
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="badge"> {{ numberBases5 + numberBases6 + numberBases7 + numberBases8 + numberBases9 + numberBases10 }}</span> {{ 'menu.bases'|trans }} <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ path('coc_images_base_add', {'id_clan': clan.id }) }}">{{ 'menu.new_base'|trans }}</a></li>
+                        <li><a href="{{ path('coc_images_base_add', {'id_clan': clan.id }) }}"><i class="fa fa-plus-circle"></i> {{ 'menu.new_base'|trans }}</a></li>
                         <li class="divider"></li>
-                        <li><a href="{{ path('coc_images_base_category', {'id': 5, 'id_clan': clan.id} ) }}">{{ 'menu.ht5'|trans }} {% if numberBases5 > 0 %} <span class="badge pull-right"> {{ numberBases5 }}</span> {% endif %} </a></li>
-                        <li><a href="{{ path('coc_images_base_category', {'id': 6, 'id_clan': clan.id} ) }}">{{ 'menu.ht6'|trans }} {% if numberBases6 > 0 %}<span class="badge pull-right"> {{ numberBases6 }}</span> {% endif %}</a></li>
-                        <li><a href="{{ path('coc_images_base_category', {'id': 7, 'id_clan': clan.id} ) }}">{{ 'menu.ht7'|trans }} {% if numberBases7 > 0 %}<span class="badge pull-right"> {{ numberBases7 }}</span>{% endif %}</a></li>
-                        <li><a href="{{ path('coc_images_base_category', {'id': 8, 'id_clan': clan.id} ) }}">{{ 'menu.ht8'|trans }} {% if numberBases8 > 0 %}<span class="badge pull-right"> {{ numberBases8 }}</span>{% endif %}</a></li>
-                        <li><a href="{{ path('coc_images_base_category', {'id': 9, 'id_clan': clan.id} ) }}">{{ 'menu.ht9'|trans }} {% if numberBases9 > 0 %}<span class="badge pull-right"> {{ numberBases9 }}</span>{% endif %} </a></li>
-                        <li><a href="{{ path('coc_images_base_category', {'id': 10, 'id_clan': clan.id} ) }}">{{ 'menu.ht10'|trans }}{% if numberBases10 > 0 %} <span class="badge pull-right"> {{ numberBases10 }}</span>{% endif %}</a></li>
+                        <li><a href="{{ path('coc_images_base_category', {'id': 5, 'id_clan': clan.id} ) }}"><i class="fa fa-chevron-right"></i> {{ 'menu.ht5'|trans }} {% if numberBases5 > 0 %} <span class="badge pull-right"> {{ numberBases5 }}</span> {% endif %} </a></li>
+                        <li><a href="{{ path('coc_images_base_category', {'id': 6, 'id_clan': clan.id} ) }}"><i class="fa fa-chevron-right"></i> {{ 'menu.ht6'|trans }} {% if numberBases6 > 0 %}<span class="badge pull-right"> {{ numberBases6 }}</span> {% endif %}</a></li>
+                        <li><a href="{{ path('coc_images_base_category', {'id': 7, 'id_clan': clan.id} ) }}"><i class="fa fa-chevron-right"></i> {{ 'menu.ht7'|trans }} {% if numberBases7 > 0 %}<span class="badge pull-right"> {{ numberBases7 }}</span>{% endif %}</a></li>
+                        <li><a href="{{ path('coc_images_base_category', {'id': 8, 'id_clan': clan.id} ) }}"><i class="fa fa-chevron-right"></i> {{ 'menu.ht8'|trans }} {% if numberBases8 > 0 %}<span class="badge pull-right"> {{ numberBases8 }}</span>{% endif %}</a></li>
+                        <li><a href="{{ path('coc_images_base_category', {'id': 9, 'id_clan': clan.id} ) }}"><i class="fa fa-chevron-right"></i> {{ 'menu.ht9'|trans }} {% if numberBases9 > 0 %}<span class="badge pull-right"> {{ numberBases9 }}</span>{% endif %} </a></li>
+                        <li><a href="{{ path('coc_images_base_category', {'id': 10, 'id_clan': clan.id} ) }}"><i class="fa fa-chevron-right"></i> {{ 'menu.ht10'|trans }}{% if numberBases10 > 0 %} <span class="badge pull-right"> {{ numberBases10 }}</span>{% endif %}</a></li>
                     </ul>
                 </li>
 
@@ -45,9 +45,9 @@
                 {% if active == "media" %} <li class="active dropdown"> {% else %} <li class="dropdown">{% endif %}
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="badge">{{ numberVideos + numberImagesBonus + numberBestAttacks}}</span> {{ 'menu.media'|trans }} <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ path('coc_videos', {'id_clan': clan.id }) }}"><span class="badge">{{ numberVideos }}</span>  {{ 'menu.video'|trans }} </a></li>
-                        <li><a href="{{ path('coc_imagesBonus', {'id_clan': clan.id }) }}"><span class="badge">{{ numberImagesBonus }}</span>  {{ 'menu.bonus'|trans }} </a></li>
-                        <li><a href="{{ path('coc_imagesBestAttack', {'id_clan': clan.id }) }}"><span class="badge">{{ numberBestAttacks }}</span> {{ 'menu.best_attacks'|trans }}    </a></li>
+                        <li><a href="{{ path('coc_videos', {'id_clan': clan.id }) }}"><span class="badge">{{ numberVideos }} <i class="fa fa-video-camera"></i></span>  {{ 'menu.video'|trans }} </a></li>
+                        <li><a href="{{ path('coc_imagesBonus', {'id_clan': clan.id }) }}"><span class="badge">{{ numberImagesBonus }} <i class="fa fa-heart"></i></span>  {{ 'menu.bonus'|trans }} </a></li>
+                        <li><a href="{{ path('coc_imagesBestAttack', {'id_clan': clan.id }) }}"><span class="badge">{{ numberBestAttacks }} <i class="fa fa-star-half-o"></i></span> {{ 'menu.best_attacks'|trans }}     </a></li>
 
                     </ul>
                 </li>

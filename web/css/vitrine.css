@@ -10,6 +10,15 @@ body
     src: url("../fonts/supercell.ttf") /* TTF file for CSS3 browsers */
 }
 
+footer
+{
+    padding: 8px;
+    background: #E7E7E7;
+    font-size: 18px;
+    font-family: 'Trebuchet MS', Arial, Verdana;
+    margin-bottom: 5px;
+}
+
 
 .modal-dialog {
     width: 400px;

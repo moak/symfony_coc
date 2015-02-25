@@ -66,5 +66,9 @@
         {# form_start(form, {'action': path('coc_homepage'), 'method': 'GET'}) }} #}
         {{ form(form)}}
     </div>
+
+    <footer>
+        {{ render(controller('COCBundle:Default:displaySeason')) }}
+    </footer>
 {% endblock %}
 

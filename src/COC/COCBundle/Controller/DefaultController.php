@@ -45,6 +45,31 @@ class DefaultController extends Controller
         return $this->render('COCBundle:Default:index.html.twig', array('display' => $display, 'numberPlayers' => $numberPlayers, 'clan' => $clan));
     }
 
+    public function displaySeasonAction()
+    {
+        $now = time();
+
+
+
+
+        $em = $this->getDoctrine()->getManager();
+        $now = new \DateTime('now');
+        $season = $em->getRepository('COCBundle:Season')->getActualSeason();
+        $end = $season->getEnd()->getTimestamp();
+        $date = new \DateTime('now');
+        $now = $date->getTimestamp();
+        $endsIn = $end - $now;
+
+        $days = $endsIn / 86400;
+        $endsIn -= ((int) $days * 86400);
+        $hours = $endsIn / 3600;
+        $endsIn -= ((int) $hours * 3600);
+        $min = $endsIn / 60;
+
+        return $this->render('COCBundle:Season:index.html.twig', array('season' => $season, 'days' => $days, 'hours' => $hours, 'min' => $min ));
+    }
+
+
     public function menuAction($id_clan, $active)
     {
         $em = $this->getDoctrine()->getManager();
