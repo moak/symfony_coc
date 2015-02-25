@@ -97,6 +97,9 @@
                             {% if is_granted('ROLE_USER') %}
                             <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out fa-fw"></i>  {{ 'menu.disconnect'|trans }}</a>
                             {% endif %}
+                            {% if is_granted('ROLE_USER') and clan.id != app.user.clan.id %}
+                                <li><a href="{{ path('coc', {'id_clan' : app.user.clan.id }) }}"><i class="fa fa-heart"></i> {{ 'vitrine.my_clan'|trans }}</a></li>
+                            {% endif %}
                         </ul>
                     </li>
 

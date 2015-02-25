@@ -73,6 +73,7 @@ menu:
     welcome_msg: Si ce sont vos premiers pas sur l'administration, pensez à créer vos joueurs
     here: ici
     admin_clan: Administration clan
+    my_clan: Mon clan
 
 button:
     add_player: Nouveau joueur
