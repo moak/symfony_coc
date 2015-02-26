@@ -12,7 +12,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $clans = $em->getRepository('COCBundle:Clan')->findAll();
+        $clans = $em->getRepository('COCBundle:Clan')->findBy(array('status' => array(0, 1)));
         foreach ($clans as $clan)
         {
             $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
