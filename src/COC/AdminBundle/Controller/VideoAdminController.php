@@ -47,10 +47,14 @@ class VideoAdminController extends Controller
     public function editAction ($id, Request $request, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
-        //$userInfo = $em->getRepository('COCBundle:ImageBase')->findOneByUser($id);
         $video = $em->getRepository('COCBundle:Video')->find($id);
-        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
+        if ( $video  == null || $this->getUser()->getClan()->getId() != $video->getUser()->getClan()->getId() )
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
         $form = $this->get('form.factory')->create(new VideoAdminType(), $video);
 
         if ($form->handleRequest($request)->isValid())
@@ -98,6 +102,12 @@ class VideoAdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $video = $em->getRepository('COCBundle:Video')->find($id);
+
+        if ( $video  == null || $this->getUser()->getClan()->getId() != $video->getUser->getClan()->getId() )
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         if(!$video || $this->getUser()->getClan()->getId() != $id_clan)

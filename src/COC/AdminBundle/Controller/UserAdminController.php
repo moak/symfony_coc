@@ -44,6 +44,12 @@ class UserAdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('ApplicationSonataUserBundle:User')->find(array('id' => $id, 'clan' => $id_clan));
+
+        if ( $user == null || $this->getUser()->getClan()->getId() != $user->getClan()->getId() )
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         if($user != null && $this->getUser()->getClan()->getId() == $id_clan)
@@ -67,6 +73,7 @@ class UserAdminController extends Controller
 
     public function dissociateAction($id, $id_clan)
     {
+
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('ApplicationSonataUserBundle:User')->findOneByPlayer($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
@@ -126,7 +133,13 @@ class UserAdminController extends Controller
     public function editAction ($id, Request $request, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository('ApplicationSonataUserBundle:User')->find($id);
+        $user = $em->getRepository('ApplicationSonataUserBundle:User')->find(array('id' => $id, 'clan' => $id_clan));
+
+        if ( $user == null || $this->getUser()->getClan()->getId() != $user->getClan()->getId() )
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         $form = $this->get('form.factory')->create(new UserType($clan) );

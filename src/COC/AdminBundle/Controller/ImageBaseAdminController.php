@@ -83,7 +83,7 @@ class ImageBaseAdminController extends Controller
 
         if(!$imageBase || $this->getUser()->getClan()->getId() != $id_clan)
         {
-            throw $this->createNotFoundException('No bestAttack found');
+            throw $this->createNotFoundException('Page not found');
         }
         $em = $this->getDoctrine()->getManager();
         $em->remove($imageBase);
