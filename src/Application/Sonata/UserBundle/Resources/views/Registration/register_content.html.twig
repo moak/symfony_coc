@@ -5,12 +5,12 @@
 </div>
 
 <div class="container">
-    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="panel panel-info" >
             <div class="panel-heading">
                 <div class="panel-title">
-                    <a href="#" class="btn btn-standard" onClick="$('#join-clan').hide(); $('#create-clan').show();"><b>{{ 'fos.create_clan'|trans }}</b></a>
-                    <a href="#" class="btn btn-standard pull-right" onClick="$('#join-clan').show(); $('#create-clan').hide();"><b>{{ 'fos.join_clan'|trans }}</b></a>
+                    <a href="#" class="btn btn-normal" onClick="$('#join-clan').hide(); $('#create-clan').show();"><i class="fa fa-plus"></i> {{ 'fos.create_clan'|trans }}</a>
+                    <a href="#" class="btn btn-normal pull-right" onClick="$('#join-clan').show(); $('#create-clan').hide();"><i class="fa fa-arrow-right"></i> {{ 'fos.join_clan'|trans }}</a>
                 </div>
 
                 <!--<div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="{#path('fos_user_security_login') #}">login</a></div>-->
@@ -75,15 +75,15 @@
                                 {% endif %}
                             </div>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            {{ form_label(form.pass, null, {'label_attr': {'class': 'col-sm-5 control-label'}}) }}
-                            <div class="col-sm-6">
-                                {{ form_widget(form.pass, {'attr': {'class': 'form-control'}}) }}
-                                {% if form.pass.vars.errors[0].message is defined %}
-                                    <span class="help-block">{{ form.pass.vars.errors[0].message }}</span>
-                                {% endif %}
-                            </div>
+                    <div class="form-group">
+                        {{ form_label(form.pass, null, {'label_attr': {'class': 'col-sm-5 control-label'}}) }}
+                        <div class="col-sm-6">
+                            {{ form_widget(form.pass, {'attr': {'class': 'form-control'}}) }}
+                            {% if form.pass.vars.errors[0].message is defined %}
+                                <span class="help-block">{{ form.pass.vars.errors[0].message }}</span>
+                            {% endif %}
                         </div>
                     </div>
 

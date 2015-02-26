@@ -239,7 +239,7 @@ label:
     clan_invisible: Clan invisible when joining clans
     clan_registration: Clan registration
     site_visibility: Website visibility
-    password: Clan's Password
+    password: New clan password
     capacity: Capacity max
     choose_ht: Choose hall town
     search: Search
@@ -247,7 +247,7 @@ label:
     defeat: Defeat
     opponent: Opponent
     name_coc: Player Clash of Clans
-    clanName: Clan name
+    clanName: New clan name
     phone: Phone
     clan : Join the clan
     register: Let's go !!
@@ -263,6 +263,7 @@ label:
     day: d
     hour: h
     min: min
+    clanPassword: Clan password
 
 
 

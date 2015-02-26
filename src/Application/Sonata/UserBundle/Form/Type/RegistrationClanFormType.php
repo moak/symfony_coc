@@ -27,7 +27,7 @@ class RegistrationClanFormType extends AbstractType
                 'mapped' => false,
             ])*/
        ->add('clanName', 'text', array('label' => 'label.clanName', 'required'  => false,))
-       ->add('pass', null, array('label' => 'label.password', 'required'  => false,))
+       ->add('pass', null, array('label' => 'label.clanPassword', 'required'  => false,))
             ->add('save', 'submit', array('label' => 'label.register'));
     }
 

@@ -1,0 +1,46 @@
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p class="supercell-font"> {{ 'menu.best_players'|trans }} </p>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="list-group">
+                {% if players|length != 0 %}
+                    <table class="table classement-list datatable">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th class="supercell-font">{{ 'player.name'|trans }}</th>
+                                <th class="supercell-font">{{ 'player.troopReceived'|trans }}</th>
+                                <th class="supercell-font">{{ 'player.troopSent'|trans }}</th>
+                                <th class="supercell-font">{{ 'player.name'|trans }}</th>
+                                <th class="supercell-font no-sort"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for player in players %}
+                            <tr data-name="{{ player.name }}" class="positionable">
+                                <td>{{ loop.index }}</td>
+                                <td>{{ player.name }}</td>
+                                <td>{{ player.level }}</td>
+                                <td>{{ player.hallTown }}</td>
+                                <td>{{ player.total|round }}</td>
+                                <td>{{ player.updatedAt|date('U')|timeago }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <a class="btn btn-block pull-right btn-info supercell-font" href="{{ path('coc_players', {'id_clan' : clan.id, 'type' : '0' }) }}">{{ 'coc.visit_ranking'|trans }}</a>
+
+                {% else %}
+                    <a href="#" class="list-group-item">
+
+                        <p> <i class="fa fa-twitter fa-fw"></i> {{ 'notPlayerFound'|trans }}</p>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+
