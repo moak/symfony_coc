@@ -9,13 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-
-
-    function cmp($a, $b)
-    {
-        return strcmp( $b->getTotal(), $a->getTotal());
-    }
-
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -33,11 +26,12 @@ class DefaultController extends Controller
             $clan->setTotal($total);
             $clan->setNbMember($number);
         }
-        usort($clans, array($this, "cmp"));
+
+        usort($clans, function ($a, $b) {
+            return strnatcmp($b->getTotal(), $a->getTotal());
+        });
 
         return $this->render('VitrineBundle:Default:index.html.twig', array('clans' => $clans));
     }
-
-
 
 }
