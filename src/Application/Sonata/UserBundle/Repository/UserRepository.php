@@ -56,6 +56,15 @@ class UserRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function getNumberEntities($clan)
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->where('u.clan = :clan')
+            ->select('u')
+         ->setParameter('clan', $clan);
+
+        return count($qb->getQuery()->getResult());
+    }
 
 
 }

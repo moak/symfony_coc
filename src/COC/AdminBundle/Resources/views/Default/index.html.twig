@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge">{{ numberPlayers }}</div>
-                            <div><a class="btn btn-success" href="{{ path('admin_players', { 'id_clan': clan.id })}}">{{ 'menu.players_all'|trans }}</a></div>
+                            <div><a class="btn btn-default" href="{{ path('admin_players', { 'id_clan': clan.id })}}">{{ 'menu.players_all'|trans }}</a></div>
                         </div>
                     </div>
                 </div>
@@ -59,28 +59,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="panel panel-green">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-video-camera fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">{{ numberVideos }}</div>
-                            <div>{{ 'menu.video_number'|trans }}</div>
-                        </div>
-                    </div>
-                </div>
-                <a href="{{ path('admin_videos', { 'id_clan': clan.id }) }}">
-                    <div class="panel-footer">
-                        <span class="pull-left">{{ 'menu.video_list'|trans }}</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
-                    </div>
-                </a>
-            </div>
-        </div>
+      
 
         <div class="col-lg-3 col-md-6">
             {% if numberUsersNonAssigned > 0 %}

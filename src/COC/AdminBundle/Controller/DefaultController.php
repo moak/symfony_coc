@@ -70,9 +70,10 @@ class DefaultController extends Controller
         $numberVideos = $em->getRepository('COCBundle:Video')->getNumberEntities($id_clan);
         $numberUsersNonAssigned = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsersNonAssigned($id_clan);
         $numberImagesBonus = $em->getRepository('COCBundle:ImageBonus')->getNumberEntities($id_clan);
+        $numberUsers = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberEntities($id_clan);
 
 
-        return $this->render('AdminBundle:Default:index.html.twig' , array('numberBases5' => $numberBases5, 'numberBases6' => $numberBases6, 'numberBases7' => $numberBases7, 'numberBases8' => $numberBases8, 'numberBases9' => $numberBases9, 'numberBases10' => $numberBases10, 'display' => $display,'clan' => $clan, 'numberImagesBonus'=> $numberImagesBonus,'numberPlayers'=> $numberPlayers,'numberUsersNonAssigned' => $numberUsersNonAssigned, 'numberVideos' => $numberVideos));
+        return $this->render('AdminBundle:Default:index.html.twig' , array('numberUsers'=> $numberUsers, 'numberBases5' => $numberBases5, 'numberBases6' => $numberBases6, 'numberBases7' => $numberBases7, 'numberBases8' => $numberBases8, 'numberBases9' => $numberBases9, 'numberBases10' => $numberBases10, 'display' => $display,'clan' => $clan, 'numberImagesBonus'=> $numberImagesBonus,'numberPlayers'=> $numberPlayers,'numberUsersNonAssigned' => $numberUsersNonAssigned, 'numberVideos' => $numberVideos));
     }
 
     public function menuAction($id_clan)
