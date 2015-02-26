@@ -65,12 +65,12 @@ class PlayerAdminController extends Controller
 
     public function editPlayerActualSeasonAction ($id, Request $request, $id_clan)
     {
-        if ( $this->get('security.context')->isGranted('ROLE_USER')) {
-            if($this->getUser()->getClan()->getId() != $id_clan)
-            {
-                throw $this->createNotFoundException('Page not found');
-            }
+
+        if($this->getUser()->getClan()->getId() != $id_clan)
+        {
+            throw $this->createNotFoundException('Page not found');
         }
+
         $em = $this->getDoctrine()->getManager();
         $player = $em->getRepository('COCBundle:Player')->find($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);

@@ -74,6 +74,11 @@ class UserAdminController extends Controller
     public function dissociateAction($id, $id_clan)
     {
 
+        if($this->getUser()->getClan()->getId() != $id_clan)
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('ApplicationSonataUserBundle:User')->findOneByPlayer($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
@@ -101,6 +106,11 @@ class UserAdminController extends Controller
 
     public function setAccessAction($id, $id_clan, $access)
     {
+        if($this->getUser()->getClan()->getId() != $id_clan)
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('ApplicationSonataUserBundle:User')->find($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
