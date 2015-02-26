@@ -30,6 +30,7 @@ class WarAdminController extends Controller
         {
             $start = clone $war->getStart();
             $war->setEnd($start->modify('+2 day'));
+            $war->setClan($clan);
             $em->persist($war);
             $em->flush();
             return $this->redirect($this->generateUrl('admin_wars', array('id_clan' =>  $clan->getId())));

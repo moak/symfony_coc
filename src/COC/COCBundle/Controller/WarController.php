@@ -28,7 +28,7 @@ class WarController extends Controller
         $clan = $service->getClan($id_clan);
         $em = $this->getDoctrine()->getManager();
         $warInProgress = $em->getRepository('COCBundle:War')->getWarInProgress($clan);
-        $numberWars = $em->getRepository('COCBundle:War')->getNumberEntities($clan);
+        $numberWars = $em->getRepository('COCBundle:War')->getHistoryWar($clan);
         $nextWar = $em->getRepository('COCBundle:War')->getNextWar($clan);
 
         if ( $this->getUser() == null && $clan->getPrivacy() == 1)

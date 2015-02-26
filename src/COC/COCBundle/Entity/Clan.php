@@ -151,6 +151,38 @@ class Clan
     private $message;
 
 
+    private $total;
+
+
+    public function getTotal()
+    {
+        return $this->total;
+    }
+
+    public function setTotal($total)
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+
+    private $nbMember;
+
+
+    public function getNbMember()
+    {
+        return $this->nbMember;
+    }
+
+    public function setNbMember($nbMember)
+    {
+        $this->nbMember = $nbMember;
+
+        return $this;
+    }
+
+
     /**
      * Get id
      *

@@ -74,6 +74,7 @@ menu:
     here: here
     admin_clan: Administration clan
     my_clan: My clan
+    edit_activity: Edit activity current season
 
 
 button:
@@ -219,7 +220,8 @@ intro:
     step2: Here are a few features available on your website. We already added a few bases and best attacks to show you how it works.
     step3: Communicate with the members of your clan and easily mananage the agenda of the clan wars.
     step4: The ranking system of OhMyClan allows you to know who is really the best of your clan.
-    step5: Manage your clan from the administration. (E.g: Add players, associate new accounts to players, update players information, etc..)
+    step5: Update your player information or your clan information before the end of the season (each season lasts two weeks and start on Mondays).
+    step6: Manage your clan from the administration. (E.g: Add players, associate new accounts to players, create clan wars, etc..)
     feature3_title: Share the best bases for your clan
     feature3_description: Easily manage and upload new bases in order to help your friends to have better bases.
     feature1_title: Know who plays the most
@@ -264,6 +266,7 @@ label:
     hour: h
     min: min
     clanPassword: Clan password
+    edit_activity: Edit my activity
 
 
 

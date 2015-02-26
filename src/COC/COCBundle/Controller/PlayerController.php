@@ -9,13 +9,13 @@ use COC\COCBundle\Entity\PlayerHistory;
 use COC\COCBundle\Form\Type\SeasonType;
 use Symfony\Component\HttpFoundation\Request;
 use COC\COCBundle\Form\Type\PlayerType;
+use COC\COCBundle\Form\Type\ActivityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PlayerController extends Controller
 {
     public function indexAction(Request $request, $id_clan, $type)
     {
-
         $em = $this->getDoctrine()->getManager();
         $actualSeason = $em->getRepository('COCBundle:Season')->getActualSeason();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
@@ -81,6 +81,36 @@ class PlayerController extends Controller
     }
 
 
+    public function editActivityAction (Request $request, $id_clan)
+    {
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan) ;
+        $user = $this->getUser();
+
+        if ( $this->getUser() == null && $clan->getPrivacy() == 1)
+            throw $this->createNotFoundException('This page does not exist.');
+
+        $em = $this->getDoctrine()->getManager();
+        $player = $em->getRepository('COCBundle:Player')->findOneBy(array('user' => $user , 'clan' => $clan ));
+
+        $form = $this->get('form.factory')->create(new ActivityType(), $player);
+
+        if ($form->handleRequest($request)->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($player);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('coc_players', array('id_clan' => $clan->getId(), 'type' => 1)));
+        }
+
+        return $this->render('COCBundle:Player:editActivity.html.twig', array( 'clan' => $clan,
+            'form'      =>  $form->createView(),
+            'player'  => $player
+        ));
+    }
+
+
+
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -99,6 +129,7 @@ class PlayerController extends Controller
     public function editAction (Request $request, $id_clan)
     {
         $user = $this->getUser();
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         if ( $this->getUser() == null && $clan->getPrivacy() == 1)
             throw $this->createNotFoundException('This page does not exist.');
@@ -115,8 +146,8 @@ class PlayerController extends Controller
         $player = $em->getRepository('COCBundle:Player')->findOneByUser($userId);
         $form = $this->get('form.factory')->create(new PlayerType(), $player );
 
-        $service = $this->container->get('coc_cocbundle.clan_info') ;
-        $clan = $service->getClan($id_clan);
+
+
 
         if ( $this->getUser() == null && $clan->getPrivacy() == 1)
             throw $this->createNotFoundException('This page does not exist.');
@@ -136,6 +167,17 @@ class PlayerController extends Controller
     }
 
     public function historyPlayersAction ($id_clan)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+        $players = $em->getRepository('COCBundle:Player')->getAllPlayersModule($clan);
+
+        return $this->render('COCBundle:Player:historyPlayers.html.twig', array( 'clan'      =>  $clan,
+            'players'      =>  $players,
+        ));
+    }
+
+    public function editHistoryPlayersAction ($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);

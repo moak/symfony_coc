@@ -74,6 +74,7 @@ menu:
     here: ici
     admin_clan: Administration clan
     my_clan: Mon clan
+    edit_activity: Editer l'activité de la saison en cours
 
 button:
     add_player: Nouveau joueur
@@ -217,7 +218,8 @@ intro:
     step2: Voici un exemple de fonctionnalités disponibles sur OhMyClan. Nous avons ajouté quelques bases et attaques pour vous montrer comment consulter vos images.
     step3: Communiquez avec les membres du clan et gérez facilement l'agenda et l'historique des guerres.
     step4: The système de classement de OhMyClan vous permet visualiser les meilleurs membres de votre clan.
-    step5: Managez votre clan depuis l'administration. (Ex: Ajouter des joueurs, associer les nouveaux comptes à vos joueur, mettre à jour les informations des joueurs, etc..)
+    step5: Mettez à jour vos informations ou celle de votre clan avant la fin de chaques saisons (une saison dure deux semaines et commence les lundis).
+    step6: Managez votre clan depuis l'administration. (Ex: Ajouter des joueurs, associer les nouveaux comptes à vos joueur, créer de nouvelles guerres, etc..)
     feature3_title: Partagez les meilleures bases de votre clan
     feature3_description: Uploadez facilement vos bases et partagez les aux membres les moins expérimentés.
     feature1_title: Découvrez les membres les plus actifs.
@@ -261,6 +263,7 @@ label:
     day: j
     hour: h
     min: min
+    edit_activity: Editer mon activité
 
 admin:
     msg1: Bienvenue sur l'administration de votre clan !

@@ -12,4 +12,26 @@ use Doctrine\ORM\EntityRepository;
  */
 class ClanRepository extends EntityRepository
 {
+    public function getNumberEntities()
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->where('u.clan = :clan')
+            ->select('u');
+           // ->setParameter('clan', $clan);
+
+        return count($qb->getQuery()->getResult());
+    }
+
+    public function getClans()
+    {
+        $query = $this->createQueryBuilder('e')
+            ->leftJoin('e.player', 'r')
+            ->where('r.status = :private')
+            ->orWhere('r.status = :public')
+            ->setParameter('private', 1)
+            ->setParameter('public', 0)
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

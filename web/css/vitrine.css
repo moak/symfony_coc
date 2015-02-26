@@ -44,6 +44,7 @@ footer
 .intro-header {
     font-family:'Supercell-Magic', sans-serif;
     text-align: center;
+    margin-top: 20px;
     color: #f8f8f8;
     background: url(../images/intro-bg.jpg);
     background-size: cover;

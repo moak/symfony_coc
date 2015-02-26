@@ -11,6 +11,10 @@ coc_player_edit:
     path:     /{id_clan}/player/edit
     defaults: { _controller: COCBundle:Player:edit }
 
+coc_player_edit_activity:
+    path:     /{id_clan}/player/editActivity
+    defaults: { _controller: COCBundle:Player:editActivity }
+
 coc_players_history:
     path:     /players/history
     defaults: { _controller: COCBundle:Player:historyPlayers }

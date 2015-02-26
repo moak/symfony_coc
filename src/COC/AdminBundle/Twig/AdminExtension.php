@@ -29,16 +29,16 @@ class AdminExtension extends \Twig_Extension
         switch ($number)
         {
             case "0":
-                $result = "En attente de résultat";
+                $result = "-";
                 break;
             case "1":
-                $result = "Defaite";
+                $result = "Defeat";
                 break;
             case "2":
-                $result = "Victoire";
+                $result = "Victory";
                 break;
             default:
-                $result = "En attente de résultat";
+                $result = "--";
         }
         return $result;
     }

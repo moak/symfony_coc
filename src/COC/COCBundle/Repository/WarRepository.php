@@ -57,6 +57,18 @@ class WarRepository extends EntityRepository
         return count($qb->getQuery()->getResult());
     }
 
+    public function getHistoryWar($clan)
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.clan = :clan')
+            ->andWhere('u.result != :result')
+            ->setParameter('clan', $clan)
+            ->setParameter('result', 0);
+
+        return count($qb->getQuery()->getResult());
+    }
+
 
 
 

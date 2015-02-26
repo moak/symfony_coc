@@ -49,9 +49,6 @@ class DefaultController extends Controller
     {
         $now = time();
 
-
-
-
         $em = $this->getDoctrine()->getManager();
         $now = new \DateTime('now');
         $season = $em->getRepository('COCBundle:Season')->getActualSeason();

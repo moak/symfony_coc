@@ -1,0 +1,73 @@
+{% extends "::base.html.twig" %}
+{% set id_clan = clan.id %}
+{% set active = "classement" %}
+
+{% block body %}
+
+    <div class="container">
+        <h2>{{ 'menu.edit_activity'|trans }}</h2>
+
+        <div class="well">
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+            {{ form_errors(form) }}
+
+            <div class="form-group">
+                {{ form_label(form.troopSent, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(form.troopSent) }}
+
+                <div class="col-sm-4">
+                    {{ form_widget(form.troopSent, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.troopReceived, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(form.troopReceived) }}
+
+                <div class="col-sm-4">
+                    {{ form_widget(form.troopReceived, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.attackWon, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(form.attackWon) }}
+
+                <div class="col-sm-4">
+                    {{ form_widget(form.attackWon, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.trophy, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                {{ form_errors(form.trophy) }}
+
+                <div class="col-sm-4">
+                    {{ form_widget(form.trophy, {'attr': {'class': 'form-control'}}) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-sm-3"></div>
+                <div class="col-sm-4">
+                    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                </div>
+            </div>
+
+            {{ form_rest(form) }}
+
+            {# Fermeture de la balise <form> du formulaire HTML #}
+            {{ form_end(form) }}
+        </div>
+
+        {# form_start(form, {'action': path('coc_homepage'), 'method': 'GET'}) }} #}
+        {{ form(form)}}
+    </div>
+
+
+
+    {# form_start(form, {'action': path('coc_homepage'), 'method': 'GET'}) }} #}
+    {{ form(form)}}
+
+{% endblock %}
