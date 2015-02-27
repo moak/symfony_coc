@@ -199,7 +199,7 @@ coc:
     visit_best_attacks: Toutes les attaques
     bases: Bases
     visit_bases: Toutes les bases
-    features: Fonctionalités
+    features: Fonctionnalités
 
 vitrine:
     title: Gestionnaire de clan pour Clash of Clans
