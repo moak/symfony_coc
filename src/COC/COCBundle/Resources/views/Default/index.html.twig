@@ -44,12 +44,17 @@
         </div>
 
         <!-- Visible only on small devices -->
-        <div class="visible-xs visible-sm hidden-md hidden-lg">
-            <a href="classement.php" class="btn btn-large btn-block btn-default"><span class="glyphicon glyphicon-align-left"></span> Classement joueurs</a>
-            <a href="classement.php" class="btn btn-large btn-block btn-default"><span class="glyphicon glyphicon-align-left"></span> Classement joueurs</a>
-
-            <a href="classement.php" class="btn btn-large btn-block btn-default"><span class="glyphicon glyphicon-align-left"></span> Classement joueurs</a>
-
+        <div class="visible-xs visible-sm hidden-md hidden-lg supercell-font text-center">
+            <div class="panel panel-default" data-step="1" data-position='right' data-intro="{{ 'intro.step1'|trans }}">
+                <div class="panel-heading supercell-font">
+                    {{ 'coc.features'|trans }}
+                </div>
+                <div class="panel-body">
+                    <a class="btn btn-large btn-block btn-success" href="{{ path('coc_images_base', {'id_clan': clan.id }) }}">{{ 'coc.visit_bases'|trans }}</a>
+                    <br> <a class="btn btn-large btn-block btn-warning" href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}">{{ 'coc.visit_ranking'|trans }}</a>
+                    <br><a class="btn btn-large btn-block btn-info" href="{{ path('coc_imagesBestAttack', {'id_clan': clan.id }) }}">{{ 'coc.visit_best_attacks'|trans }}</a>
+                </div>
+            </div>
         </div><!-- end well-small -->
 
 

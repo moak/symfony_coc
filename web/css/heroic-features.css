@@ -151,3 +151,19 @@ footer
 }
 
 
+
+/* Landscape phones and smaller */
+@media (max-width: 480px)
+{
+    .btn-primary
+    {
+        display:block;
+       width: 100%;
+
+    }
+    .btn-normal
+    {
+        font-size: 11px ;
+        
+    }
+}

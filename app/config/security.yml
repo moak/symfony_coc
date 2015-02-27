@@ -8,7 +8,7 @@ security:
 
     providers:
         fos_userbundle:
-            id: fos_user.user_provider.username
+            id: fos_user.user_manager
   
     firewalls:
   
@@ -34,8 +34,11 @@ security:
                 login_path:     /login
                 use_forward:    false
                 check_path:     /login_check
+                success_handler: login_success_handler
                 failure_path:   null
+
             logout:       true
+
             anonymous:    true
             context: primary_auth
             remember_me:

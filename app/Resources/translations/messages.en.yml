@@ -201,6 +201,7 @@ coc:
     visit_best_attacks: All the attacks
     bases: Bases
     visit_bases: All the bases
+    features: Features
 
 vitrine:
     title: Clan manager for Clash of Clans
@@ -225,7 +226,7 @@ intro:
     step6: Manage your clan from the administration. (E.g: Add players, associate new accounts to players, create clan wars, etc..)
     feature3_title: Share the best bases for your clan
     feature3_description: Easily manage and upload new bases in order to help your friends to have better bases.
-    feature1_title: Know who plays the most
+    feature1_title: Know who plays the most and who deserve to fight
     feature1_description: Get information every seasons on who attacked the most, who gave or received the most troops.
     feature2_title: Ranking system
     feature2_description: Sort the members of your clan by trophies like in Clash of Clans, but also by levels, level of labotory or level of defences.

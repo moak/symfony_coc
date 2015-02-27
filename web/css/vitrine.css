@@ -191,8 +191,9 @@ p.copyright {
 /* Landscape phones and smaller */
 @media (max-width: 480px)
 {
+
     h1 {
-        font-size: 30px;
+        font-size: 20px;
     }
 
     h2 {

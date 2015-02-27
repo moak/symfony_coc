@@ -199,6 +199,7 @@ coc:
     visit_best_attacks: Toutes les attaques
     bases: Bases
     visit_bases: Toutes les bases
+    features: Fonctionalités
 
 vitrine:
     title: Gestionnaire de clan pour Clash of Clans
@@ -223,7 +224,7 @@ intro:
     step6: Managez votre clan depuis l'administration. (Ex: Ajouter des joueurs, associer les nouveaux comptes à vos joueur, créer de nouvelles guerres, etc..)
     feature3_title: Partagez les meilleures bases de votre clan
     feature3_description: Uploadez facilement vos bases et partagez les aux membres les moins expérimentés.
-    feature1_title: Découvrez les membres les plus actifs.
+    feature1_title: Découvrez les membres les plus actifs et ceux qui méritent de participer aux guerres.
     feature1_description: Obtenez des informations chaques saisons sur quel membre attaque le plus, encore qui a donne ou recu le plus de troupes.
     feature2_title: Système de classement
     feature2_description: Classez les membres du clan par trophés comme sur Clash of Clans, mais aussi par niveaux de défence ou laboratoire.
