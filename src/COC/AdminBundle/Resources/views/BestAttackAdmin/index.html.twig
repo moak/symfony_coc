@@ -34,8 +34,8 @@
                                 </a>
                             </div>
                             <div class="panel-footer">
-                                    <a class="btn btn-danger alert pull-right" href="{{ path('admin_bestAttack_delete' , {'id': image.id , 'id_clan': clan.id}) }}">Supprimer</a>
-                                    <a class="btn btn-info " href="{{ path('admin_bestAttack_edit' , {'id': image.id , 'id_clan': clan.id }) }}">Editer</a>
+                                    <a class="btn btn-danger pull-right" href="{{ path('admin_bestAttack_delete' , {'id': image.id , 'id_clan': clan.id}) }}">{{ 'action.delete'|trans }}</a>
+                                    <a class="btn btn-info " href="{{ path('admin_bestAttack_edit' , {'id': image.id , 'id_clan': clan.id }) }}">{{ 'action.edit'|trans }}</a>
                             </div>
                         </div>
                     </div>

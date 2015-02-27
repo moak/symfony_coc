@@ -29,16 +29,15 @@ class ImageBonusAdminController extends Controller
 
     public function editAction ($id, Request $request, $id_clan)
     {
-        if($this->getUser()->getClan()->getId() != $id_clan)
+        $em = $this->getDoctrine()->getManager();
+        $imageBonus = $em->getRepository('COCBundle:ImageBonus')->find($id);
+
+        if($this->getUser()->getClan()->getId() != $id_clan || $imageBonus == null || $this->getUser()->getClan()->getId() != $imageBonus->getClan()->getId() )
         {
             throw $this->createNotFoundException('Page not found');
         }
 
-        $em = $this->getDoctrine()->getManager();
-        //$userInfo = $em->getRepository('COCBundle:ImageBonus')->findOneByUser($id);
-        $imageBonus = $em->getRepository('COCBundle:ImageBonus')->find($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
-
         $form = $this->get('form.factory')->create(new ImageBonusType(), $imageBonus);
 
         if ($form->handleRequest($request)->isValid())
@@ -83,7 +82,14 @@ class ImageBonusAdminController extends Controller
     public function deleteAction($id, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
+        //$userInfo = $em->getRepository('COCBundle:ImageBase')->findOneByUser($id);
         $imageBonus = $em->getRepository('COCBundle:ImageBonus')->find($id);
+
+        if($this->getUser()->getClan()->getId() != $id_clan || $imageBonus == null || $this->getUser()->getClan()->getId() != $imageBonus->getClan()->getId() )
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         if(!$imageBonus || $this->getUser()->getClan()->getId() != $id_clan)

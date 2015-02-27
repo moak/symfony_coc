@@ -38,14 +38,17 @@ class BestAttackAdminController extends Controller
 
     public function editAction ($id, Request $request, $id_clan)
     {
-        if($this->getUser()->getClan()->getId() != $id_clan)
+        $em = $this->getDoctrine()->getManager();
+        //$userInfo = $em->getRepository('COCBundle:ImageBase')->findOneByUser($id);
+        $bestAttack = $em->getRepository('COCBundle:ImageBestAttack')->find($id);
+
+
+        if($this->getUser()->getClan()->getId() != $id_clan || $bestAttack == null || $this->getUser()->getClan()->getId() != $bestAttack->getClan()->getId() )
         {
             throw $this->createNotFoundException('Page not found');
         }
 
-        $em = $this->getDoctrine()->getManager();
-        //$userInfo = $em->getRepository('COCBundle:ImageBase')->findOneByUser($id);
-        $bestAttack = $em->getRepository('COCBundle:ImageBestAttack')->find($id);
+
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
         $form = $this->get('form.factory')->create(new ImageBestAttackAdminType(), $bestAttack);
 
@@ -89,6 +92,17 @@ class BestAttackAdminController extends Controller
 
     public function deleteAction($id, $id_clan)
     {
+        $em = $this->getDoctrine()->getManager();
+        //$userInfo = $em->getRepository('COCBundle:ImageBase')->findOneByUser($id);
+        $bestAttack = $em->getRepository('COCBundle:ImageBestAttack')->find($id);
+
+
+        if($this->getUser()->getClan()->getId() != $id_clan || $bestAttack == null || $this->getUser()->getClan()->getId() != $bestAttack->getClan()->getId() )
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
+
         $em = $this->getDoctrine()->getManager();
         $bestAttack = $em->getRepository('COCBundle:ImageBestAttack')->find($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);

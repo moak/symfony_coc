@@ -40,7 +40,7 @@
                         <td>{{ video.published|boolean }}</td>
                         <td>
                             <a href="{{ path('admin_video_edit', { 'id': video.id , 'id_clan': clan.id }) }}" class="btn btn-default btn-info">{{ 'action.edit'|trans }}</a>
-                            <a href="{{ path('admin_video_delete', { 'id': video.id , 'id_clan': clan.id}) }}" class="btn btn-default btn-danger alert">{{ 'action.delete'|trans }}</a>
+                            <a href="{{ path('admin_video_delete', { 'id': video.id , 'id_clan': clan.id}) }}" class="btn btn-default btn-danger">{{ 'action.delete'|trans }}</a>
                         </td>
                     </tr>
                 {% endfor %}

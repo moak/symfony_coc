@@ -39,7 +39,10 @@
                                 <img  class="img-responsive" src="{{ asset('uploads/' ~ image.image.path) }}" />
                             </div>
                             <div class="panel-footer supercell-font">
-                                {{ 'label.posted_by'|trans }} {{ image.user.username }}
+                                <p>
+                                    {{ 'label.posted_by'|trans }} {{ image.user.username }}
+                                    <a class="btn btn-danger pull-right" href="{{ path('admin_base_delete' , {'id': image.id , 'id_clan': clan.id}) }}">{{ 'action.delete'|trans }}</a>
+                                </p>
                             </div>
                         </div>
                     </div>
