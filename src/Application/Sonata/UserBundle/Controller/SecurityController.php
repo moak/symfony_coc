@@ -22,10 +22,33 @@ class SecurityController extends Controller
 
     public function loginAction(Request $request)
     {
+        // user can't login if already loggued
         if ($this->container->get('security.context')->isGranted('ROLE_USER'))
         {
             $user = $this->get('security.context')->getToken()->getUser();
             $url = $this->container->get('router')->generate('coc', array('id_clan' => $user->getClan()->getId()));
+
+            var_dump($url);
+            die;
+            return new RedirectResponse($url);
+        }
+
+
+
+        // try to redirect to the last page, or fallback to the homepage
+        /*if ($this->container->get('session')->has($key)) {
+            $url = $this->container->get('session')->get($key);
+            $this->container->get('session')->remove($key);
+        }
+        */
+
+        $key = '_security.main.target_path';
+        if ($this->container->get('session')->has($key))
+        {
+            $user = $this->get('security.context')->getToken()->getUser();
+            $url = $this->container->get('router')->generate('coc', array('id_clan' => $user->getClan()->getId()));
+
+
             return new RedirectResponse($url);
         }
 
@@ -66,6 +89,11 @@ class SecurityController extends Controller
      */
     protected function renderLogin(array $data)
     {
+        if($this->getUser()){
+            $user = $this->get('security.context')->getToken()->getUser();
+            return $this->redirect($this->generateUrl('coc', array('id_clan' => $user->getClan()->getId())));
+        }
+
         return $this->render('FOSUserBundle:Security:login.html.twig', $data);
     }
 

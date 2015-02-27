@@ -1,8 +1,22 @@
 # src/Uae/UserBundle/Resources/config/services.yml
+
+parameters:
+    acme_user_security.component.authentication.handler.login_failure_handler.class: Application\Sonata\UserBundle\Component\Authentication\Handler\LoginFailureHandler
+    acme_user_security.component.authentication.handler.logout_success_handler.class: Application\Sonata\UserBundle\Component\Authentication\Handler\LogoutSuccessHandler
+
+
 services:
+
     application_user.clan_registration.form.type:
         class: Application\Sonata\UserBundle\Form\Type\RegistrationClanFormType
         arguments: [ @doctrine.orm.entity_manager,  @security.context ]
         tags:
             - { name: form.type, alias: clan_registration }
+
+
+    login_success_handler:
+        class:  Application\Sonata\UserBundle\Component\Authentication\Handler\LoginSuccessHandler
+        arguments:  [@router, @security.context]
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }
 
