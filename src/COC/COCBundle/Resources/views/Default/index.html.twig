@@ -25,7 +25,7 @@
     <!-- RANKING Visible only on small devices -->
     <div class="visible-xs visible-sm hidden-md hidden-lg supercell-font text-center">
         <div class="panel panel-default">
-            <div class="panel-heading supercell-font">
+            <div class="panel-heading oswald-font">
                 {{ 'label.last_update'|trans }} {{ last_update_player['updatedAt']|date("U")|timeago }}
             </div>
             <div class="panel-body">
@@ -38,7 +38,7 @@
     <!-- ACTIVITY Visible only on small devices -->
     <div class="visible-xs visible-sm hidden-md hidden-lg supercell-font text-center">
         <div class="panel panel-default">
-            <div class="panel-heading supercell-font">
+            <div class="panel-heading oswald-font">
                 {{ 'label.last_update'|trans }} {{ last_update_playerHistory['updatedAt']|date("U")|timeago }}
             </div>
             <div class="panel-body">
@@ -54,7 +54,7 @@
     <!-- ALL ATTACKS  Visible only on small devices -->
     <div class="visible-xs visible-sm hidden-md hidden-lg supercell-font text-center">
         <div class="panel panel-default">
-            <div class="panel-heading supercell-font">
+            <div class="panel-heading oswald-font">
                 {{ 'label.last_update'|trans }} {% if (last_update_bestAttack['updatedAt'] != null) %} {{ last_update_bestAttack['updatedAt']|date("U")|timeago }} {% else %} <i class="fa fa-ban"></i> {% endif %}
             </div>
             <div class="panel-body">
@@ -66,7 +66,7 @@
     <!-- ALL BASES  Visible only on small devices -->
     <div class="visible-xs visible-sm hidden-md hidden-lg supercell-font text-center">
         <div class="panel panel-default">
-            <div class="panel-heading supercell-font">
+            <div class="panel-heading oswald-font">
                 {{ 'label.last_update'|trans }} {% if (last_update_base['updatedAt'] != null) %} {{ last_update_base['updatedAt']|date("U")|timeago }} {% else %} <i class="fa fa-ban"></i> {% endif %}
             </div>
             <div class="panel-body">

@@ -150,7 +150,11 @@ footer
 
 }
 
-
+.oswald-font
+{
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+}
 
 /* Landscape phones and smaller */
 @media (max-width: 480px)
