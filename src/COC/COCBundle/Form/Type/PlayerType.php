@@ -55,11 +55,11 @@ class PlayerType extends AbstractType
             ->add('tesla4' , 'choice', array('label' => 'player.tesla4','choices' => array(0, 1, 2, 3, 4, 5)))
 
             ->add('inferno1' , 'choice', array('label' => 'player.inferno_tower1','choices' => array(0, 1, 2, 3)))
-            ->add('inferno2' , 'choice', array('label' => 'player.inferno_tower1','choices' => array(0, 1, 2, 3)))
+            ->add('inferno2' , 'choice', array('label' => 'player.inferno_tower2','choices' => array(0, 1, 2, 3)))
 
-            ->add('arcx1' , 'choice', array('label' => 'player.inferno_tower1','choices' => array(0, 1, 2, 3, 4)))
-            ->add('arcx2' , 'choice', array('label' => 'player.inferno_tower2','choices' => array(0, 1, 2, 3, 4)))
-            ->add('arcx3' , 'choice', array('label' => 'player.inferno_tower3','choices' => array(0, 1, 2, 3, 4)))
+            ->add('arcx1' , 'choice', array('label' => 'player.x_bow1','choices' => array(0, 1, 2, 3, 4)))
+            ->add('arcx2' , 'choice', array('label' => 'player.x_bow2','choices' => array(0, 1, 2, 3, 4)))
+            ->add('arcx3' , 'choice', array('label' => 'player.x_bow3','choices' => array(0, 1, 2, 3, 4)))
 
             ->add('barbar' , 'choice', array('label' => 'player.barbar','choices' => array(0, 1, 2, 3, 4,5, 6,7)))
             ->add('archer' , 'choice', array('label' => 'player.archer','choices' => array(0, 1, 2, 3, 4,5, 6,7)))
