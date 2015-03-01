@@ -25,6 +25,15 @@ class ImageBestAttackRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function getLastUpdate($clan)
+    {
+        $query = $this->_em->createQuery('SELECT m.updatedAt FROM COCBundle:ImageBestAttack m  WHERE m.clan = :clan  ORDER BY m.updatedAt DESC')
+            ->setMaxResults(1)
+            ->setParameter('clan', $clan);
+
+        return $query->getOneOrNullResult();
+    }
+
     public function getNumberEntities($clan)
     {
         $qb = $this->createQueryBuilder('u')

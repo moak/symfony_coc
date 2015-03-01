@@ -269,7 +269,7 @@ label:
     min: min
     clanPassword: Clan password
     edit_activity: Edit my activity
-
+    last_update: Last update:
 
 
 
@@ -285,3 +285,9 @@ admin:
 notif:
     user_waiting: New accounts need to be associated.
     user_non_waiting: There is no new account waiting for association.
+
+phone:
+    players: Player ranking
+    bestAttacks: Best attacks
+    bases: Best bases
+    activity: Activity ranking

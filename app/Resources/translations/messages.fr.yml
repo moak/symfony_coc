@@ -200,6 +200,7 @@ coc:
     bases: Bases
     visit_bases: Toutes les bases
     features: Fonctionnalités
+    visit_activity: Activity ranking
 
 vitrine:
     title: Gestionnaire de clan pour Clash of Clans
@@ -266,6 +267,7 @@ label:
     hour: h
     min: min
     edit_activity: Editer mon activité
+    last_update: Modifié il y'a
 
 admin:
     msg1: Bienvenue sur l'administration de votre clan !
@@ -279,3 +281,9 @@ admin:
 notif:
     user_waiting: Nouveaux comptes en attente d'association
     user_non_waiting: Aucun compte en attente d'association.
+
+phone:
+    players: Classement joueurs
+    bestAttacks: Meilleures attaques
+    bases: Toutes les bases
+    activity: Activité des joueurs

@@ -58,23 +58,23 @@ class AdminExtension extends \Twig_Extension
         $years      = round($time_elapsed / 31207680 );
         // Seconds
         if($seconds <= 60){
-            return "just now";
+            return  "1 min";
         }
         //Minutes
         else if($minutes <=60){
             if($minutes==1){
-                return "one min ago";
+                return "1 min";
             }
             else{
-                return "$minutes min ago";
+                return "$minutes min";
             }
         }
         //Hours
         else if($hours <=24){
             if($hours==1){
-                return "an hour ago";
+                return "1 hour";
             }else{
-                return "$hours hrs ago";
+                return "$hours hrs";
             }
         }
         //Days
@@ -82,31 +82,31 @@ class AdminExtension extends \Twig_Extension
             if($days==1){
                 return "yest";
             }else{
-                return "$days days ago";
+                return "$days days";
             }
         }
         //Weeks
         else if($weeks <= 4.3){
             if($weeks==1){
-                return "a week ago";
+                return "a week";
             }else{
-                return "$weeks weeks ago";
+                return "$weeks weeks";
             }
         }
         //Months
         else if($months <=12){
             if($months==1){
-                return "a month ago";
+                return "a month";
             }else{
-                return "$months months ago";
+                return "$months months";
             }
         }
         //Years
         else{
             if($years==1){
-                return "one year ago";
+                return "one year";
             }else{
-                return "$years years ago";
+                return "$years years";
             }
         }
 

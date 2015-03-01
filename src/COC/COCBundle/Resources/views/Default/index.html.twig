@@ -11,6 +11,69 @@
 
    <!-- <a class="btn btn-large btn-success" href="javascript:void(0);" onclick="javascript:introJs().start();">Show me how</a>-->
 
+    {% if is_granted('ROLE_USER') %}
+        <div class="row visible-xs visible-sm hidden-md hidden-lg ">
+            <div class="col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+                {%  if app.user.player.level is defined and clan.id == app.user.player.clan.id %}
+                    <a class="btn btn-large btn-block btn-primary supercell-font" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_player'|trans }}</b></a>
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+
+    <br>
+    <!-- RANKING Visible only on small devices -->
+    <div class="visible-xs visible-sm hidden-md hidden-lg supercell-font text-center">
+        <div class="panel panel-default">
+            <div class="panel-heading supercell-font">
+                {{ 'label.last_update'|trans }} {{ last_update_player['updatedAt']|date("U")|timeago }}
+            </div>
+            <div class="panel-body">
+                <a class="btn btn-large btn-block btn-danger" href="{{ path('coc_players', {'id_clan': clan.id, 'type' : 1 }) }}"><i class="fa fa-sort-numeric-asc"></i> {{ 'phone.players'|trans }} <i class="fa fa-sort-numeric-asc"></i></a>
+            </div>
+        </div>
+    </div><!-- end well-small -->
+
+
+    <!-- ACTIVITY Visible only on small devices -->
+    <div class="visible-xs visible-sm hidden-md hidden-lg supercell-font text-center">
+        <div class="panel panel-default">
+            <div class="panel-heading supercell-font">
+                {{ 'label.last_update'|trans }} {{ last_update_playerHistory['updatedAt']|date("U")|timeago }}
+            </div>
+            <div class="panel-body">
+                <a class="btn btn-large btn-block btn-success" href="{{ path('coc_players', {'id_clan': clan.id, 'type' : 0 }) }}"><i class="fa fa-rocket"></i> {{ 'phone.activity'|trans }} <i class="fa fa-rocket"></i></a>
+            </div>
+        </div>
+    </div><!-- end well-small -->
+
+
+
+
+
+    <!-- ALL ATTACKS  Visible only on small devices -->
+    <div class="visible-xs visible-sm hidden-md hidden-lg supercell-font text-center">
+        <div class="panel panel-default">
+            <div class="panel-heading supercell-font">
+                {{ 'label.last_update'|trans }} {% if (last_update_bestAttack['updatedAt'] != null) %} {{ last_update_bestAttack['updatedAt']|date("U")|timeago }} {% else %} <i class="fa fa-ban"></i> {% endif %}
+            </div>
+            <div class="panel-body">
+                <a class="btn btn-large btn-block btn-warning" href="{{ path('coc_imagesBestAttack', {'id_clan': clan.id }) }}"><i class="fa fa-crosshairs"></i> {{ 'phone.bestAttacks'|trans }} <i class="fa fa-crosshairs"></i></a>
+            </div>
+        </div>
+    </div><!-- end well-small -->
+
+    <!-- ALL BASES  Visible only on small devices -->
+    <div class="visible-xs visible-sm hidden-md hidden-lg supercell-font text-center">
+        <div class="panel panel-default">
+            <div class="panel-heading supercell-font">
+                {{ 'label.last_update'|trans }} {% if (last_update_base['updatedAt'] != null) %} {{ last_update_base['updatedAt']|date("U")|timeago }} {% else %} <i class="fa fa-ban"></i> {% endif %}
+            </div>
+            <div class="panel-body">
+                <a class="btn btn-large btn-block btn-info" href="{{ path('coc_images_base', {'id_clan': clan.id }) }}"><i class="fa fa-picture-o"></i> {{ 'phone.bases'|trans }} <i class="fa fa-picture-o"></i></a>
+            </div>
+        </div>
+    </div><!-- end well-small -->
 
 
     <div class="row ">
@@ -38,23 +101,14 @@
                 <hr>
                 {{ render(controller('COCBundle:War:menu', {'id_clan': clan.id })) }}
             </div>
-            <div class="col-md-6" data-position='left' data-step="4" data-intro="{{ 'intro.step4'|trans }}" data-position='right'>
+            <div class="col-md-6  hidden-sm hidden-xs"  data-position='left' data-step="4" data-intro="{{ 'intro.step4'|trans }}" data-position='right'>
                 {{ render(controller('COCBundle:Player:historyPlayers', {'id_clan': clan.id })) }}
             </div>
         </div>
 
-        <!-- Visible only on small devices -->
-        <div class="visible-xs visible-sm hidden-md hidden-lg supercell-font text-center">
-            <div class="panel panel-default" data-step="1" data-position='right' data-intro="{{ 'intro.step1'|trans }}">
-                <div class="panel-heading supercell-font">
-                    {{ 'coc.features'|trans }}
-                </div>
-                <div class="panel-body">
-                    <a class="btn btn-large btn-block btn-success" href="{{ path('coc_images_base', {'id_clan': clan.id }) }}">{{ 'coc.visit_bases'|trans }}</a>
-                    <br><a class="btn btn-large btn-block btn-info" href="{{ path('coc_imagesBestAttack', {'id_clan': clan.id }) }}">{{ 'coc.visit_best_attacks'|trans }}</a>
-                </div>
-            </div>
-        </div><!-- end well-small -->
+
+
+
 
 
         <div class="row supercell-font  hidden-sm hidden-xs" data-position='top' data-step="2" data-intro="{{ 'intro.step2'|trans }}">

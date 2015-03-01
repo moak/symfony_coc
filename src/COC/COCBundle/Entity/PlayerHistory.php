@@ -3,6 +3,7 @@
 namespace COC\COCBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * UserInfo
@@ -650,15 +651,6 @@ class PlayerHistory
 
 
 
-
-    /**
-     * @ORM\PreUpdate
-     * @ORM\PrePersist
-     */
-    public function updateDate()
-    {
-        $this->setUpdatedAt(new \Datetime());
-    }
 
     /**
      * Set updatedAt
