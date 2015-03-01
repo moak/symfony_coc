@@ -175,7 +175,7 @@ account:
 war:
    result: Résultat
    date: Date
-   wars: Guerres de clan
+   wars: Guerres
    waiting: En attente de résultat
    not_found: Aucune guerre trouvée.
    history: Historique

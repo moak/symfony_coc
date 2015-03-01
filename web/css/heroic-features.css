@@ -61,14 +61,11 @@ body
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     background: url('../images/bg.jpg') fixed;
     font-size: 15px;
-    font-family: 'Trebuchet MS', Arial, Verdana;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.5px;
 }
 
-.navbar-nav
-{
-    font-family: 'Alegreya Sans SC', sans-serif;
 
-}
 .btn-normal{
     font-family:'Supercell-Magic', sans-serif;
     font-weight: 400;
@@ -145,7 +142,7 @@ footer
     background: #fff;
     background: rgba(245,245,245,0.9);
     font-size: 18px;
-    font-family: 'Trebuchet MS', Arial, Verdana;
+    font-family: 'Oswald', sans-serif;
     border-top: 1px solid #F5F5F5;
 
 }
@@ -155,6 +152,15 @@ footer
     font-family: 'Oswald', sans-serif;
     font-size: 16px;
 }
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+    .btn{
+
+    }
+}
+
+
 
 /* Landscape phones and smaller */
 @media (max-width: 480px)

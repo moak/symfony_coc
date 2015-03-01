@@ -66,7 +66,7 @@ class AdminExtension extends \Twig_Extension
                 return "1 min";
             }
             else{
-                return "$minutes min";
+                return "$minutes m";
             }
         }
         //Hours
