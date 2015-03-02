@@ -2,7 +2,7 @@
 
 namespace Application\Sonata\UserBundle\Entity;
 
-use FOS\UserBundle\Entity\User as BaseUser;
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -35,6 +35,13 @@ class User extends BaseUser
      * @ORM\JoinColumn(name="clan_id", referencedColumnName="id")
      */
     private $clan;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="locale", type="string", nullable=true)
+     */
+    private $locale;
 
     /**
      * @var string
@@ -73,6 +80,16 @@ class User extends BaseUser
     public function getVisited()
     {
         return $this->visited;
+    }
+
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
     }
 
     public function getClanName()

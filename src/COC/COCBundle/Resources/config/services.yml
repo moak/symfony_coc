@@ -69,5 +69,11 @@ services:
         arguments: [@doctrine.orm.entity_manager]
 
     coc_cocbundle.clan_info:
-            class: COC\COCBundle\Services\ClanService
-            arguments: [@doctrine.orm.entity_manager]
+        class: COC\COCBundle\Services\ClanService
+        arguments: [@doctrine.orm.entity_manager]
+
+    coc_cocbundle.languagelistener:
+        class: COC\COCBundle\Services\LanguageListener
+        arguments: ["@user_default.userparams"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: setLocale }

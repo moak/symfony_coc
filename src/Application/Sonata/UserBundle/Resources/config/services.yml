@@ -3,7 +3,7 @@
 parameters:
     acme_user_security.component.authentication.handler.login_failure_handler.class: Application\Sonata\UserBundle\Component\Authentication\Handler\LoginFailureHandler
     acme_user_security.component.authentication.handler.logout_success_handler.class: Application\Sonata\UserBundle\Component\Authentication\Handler\LogoutSuccessHandler
-
+    user_default.userparams.class: Application\Sonata\UserBundle\Services\UserParams
 
 services:
 
@@ -19,4 +19,9 @@ services:
         arguments:  [@router, @security.context]
         tags:
             - { name: 'monolog.logger', channel: 'security' }
+
+
+    user_default.userparams:
+            class: %user_default.userparams.class%
+            arguments:  [@request_stack, @security.context, @doctrine.orm.entity_manager]
 

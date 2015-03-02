@@ -78,6 +78,23 @@
                 </li>
 
 
+
+                {% for locale in ['en', 'fr','zh'] %}
+                <li>
+                    <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale' : locale})) }}">
+                        {% if locale == 'en' %}
+                            <img title="English" src="{{ asset('bundles/fkmywebsite/images/UnitedStates.png') }}" alt="English" height="30" width="30"/>
+                        {% elseif locale == 'fr' %}
+                            <img title="Français" src="{{ asset('bundles/fkmywebsite/images/France.png') }}" alt="Français" height="30" width="30"/>
+                        {% endif %}
+                        </a>
+                </li>
+                {% endfor %}
+
+
+
+
+
                 
                 {% if is_granted('ROLE_ADMIN') and clan.id == app.user.clan.id %}
                     <li><a data-position='bottom' data-step="5" data-intro="{{ 'intro.step5'|trans }}" target="_blank" href="{{ path('admin', {'id_clan': clan.id }) }}">Admin
