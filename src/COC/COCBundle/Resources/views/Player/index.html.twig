@@ -59,7 +59,7 @@
                     <th class="supercell-font">Def</th>
                     <th class="supercell-font">Att</th>
                     <th class="supercell-font">Tot</th>
-                    <th class="supercell-font no-sort">{{ 'player.updated'|trans }}</th>
+                    <th class="supercell-font">{{ 'player.updated'|trans }}</th>
 
                 </tr>
             </thead>
@@ -84,7 +84,7 @@
                         <td>{{ player.totalDefence|round }}</td>
                         <td>{{ player.totalAttack|round}}</td>
                         <td>{{ player.total|round }}</td>
-                        <td>{{ player.updatedAt|date('U')|timeago }}</td>
+                        <td>{{ player.playerUpdatedAt|date('U')|timeago }}</td>
 
                     </tr>
                     <tr class="hidden expendables hidden" id="{{ player.name }}" data-total-points="{{ player.total|round }}">

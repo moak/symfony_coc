@@ -2,6 +2,7 @@
 
 namespace COC\COCBundle\Services;
 
+
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use COC\COCBundle;
@@ -18,11 +19,13 @@ class LanguageListener
     }
     public function setLocale(GetResponseEvent $event)
     {
+
         if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()) {
             return;
         }
         $request = $event->getRequest();
         $this->checkLocale($request);
+        echo "hhahahhhaa";
     }
 
     private function checkLocale($request)
@@ -30,7 +33,7 @@ class LanguageListener
 
         $path = explode('/', $request->getUri());
 
-        $position = 3;
+        $position = 6;
        // $env = COCCOCBundle::getContainer()->get('kernel')->getEnvironment();
 
         if (strstr($path[2], "localhost"))
@@ -51,16 +54,22 @@ class LanguageListener
         if (!in_array($path[$position], $supportedLanguage)) {
             $locale = $this->userParams->getLocale(false);
 
-
+echo "1";
             if ($locale == null) {
                 // navigateur
                 $locale = $request->getPreferredLanguage($supportedLanguage);
+
+
                 $this->userParams->setLocale( $locale);
             }
+            echo "==============> " .  $locale;
             // look url
         } else {
+
+            echo "2";
             $locale = $path[$position];
         }
+
 
        /* $route = $request->attributes->get('_route');
        $this->lastRoute = $route;

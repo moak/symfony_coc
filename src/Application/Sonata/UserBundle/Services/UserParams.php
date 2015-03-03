@@ -24,30 +24,30 @@ class UserParams
 
 
 
-    public function getLocale( $user = null) {
+    public function getLocale( $user = null)
+    {
         $locale = null;
+        $request = $this->requestStack->getCurrentRequest() ;
+        $cookie = $request->cookies;
 
+        if ($cookie->has('locale')) {
+            $locale = $cookie->get('locale');
+        }
 
-            $request = $this->requestStack->getCurrentRequest() ;
-            $cookie = $request->cookies;
-
-            if ($cookie->has('locale')) {
-                $locale = $cookie->get('locale');
+        if ($locale == null && $this->security->getToken() !== null) {
+            if (empty($user)) {
+                $user = $this->security->getToken()->getUser();
             }
 
-            if ($locale == null && $this->security->getToken() !== null) {
-                if (empty($user)) {
-                    $user = $this->security->getToken()->getUser();
-                }
-
-                if ($user instanceof User) {
-                    $locale = $user->getLocale();
-                }
+            if ($user instanceof User) {
+                $locale = $user->getLocale();
             }
+        }
         return $locale;
     }
 
     public function setLocale( $value) {
+        echo "lol";
         if ($this->security->getToken() !== null) {
             $user = $this->security->getToken()->getUser();
             if ($user instanceof User) {

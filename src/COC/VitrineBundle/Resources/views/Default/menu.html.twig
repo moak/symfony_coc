@@ -28,13 +28,21 @@
                     <a href="#page-top"></a>
                 </li>
 
-                <li>
-                    <a href="{{ path('homepage', { "_locale": "fr"}) }}"><img width="20px" height="20px" class="img-responsive" src="{{ ('images/fr.png') | imagine_filter('my_thumb') }}"></a>
+                <li class="lang">
+                    <ul class="nav navbar-nav">
+                        <div class="btn-group dropdown" id="lang-menu">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                {{ app.request.locale }}<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <a href="{{ path('homepage', { "_locale": "fr"}) }}"><img width="20px" height="20px" class="img-responsive" src="{{ ('images/fr.png') | imagine_filter('my_thumb') }}">Francais</a>
+                                <a href="{{ path('homepage', { "_locale": "en"}) }}"><img width="20px" height="20px" class="img-responsive" src="{{ ('images/en.png') | imagine_filter('my_thumb') }}">Anglais</a>
+                            </ul>
+                        </div>
+                    </ul>
+                    <i class="icon en"></i>
                 </li>
 
-                <li>
-                    <a href="{{ path('homepage', { "_locale": "en"}) }}"><img width="20px" height="20px" class="img-responsive" src="{{ ('images/en.png') | imagine_filter('my_thumb') }}"></a>
-                </li>
 
 
                 {% if is_granted('ROLE_USER') %}

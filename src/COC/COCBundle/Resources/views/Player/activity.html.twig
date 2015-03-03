@@ -63,6 +63,7 @@
                     <th class="supercell-font">{{ 'player.troopReceived'|trans }}</th>
                     <th class="supercell-font">{{ 'player.attackWon'|trans }}</th>
                     <th class="supercell-font">{{ 'player.trophy'|trans }} <i class="fa fa-trophy"></i></th>
+                    <th class="supercell-font">{{ 'player.updated'|trans }}</th>
 
                 </tr>
             </thead>
@@ -78,6 +79,7 @@
                         <td>{{ player.troopReceived }}</td>
                         <td>{{ player.attackWon }}</td>
                         <td>{{ player.trophy }}</td>
+                        <td>{{ player.activityUpdatedAt|date('U')|timeago }}</td>
 
                     </tr>
 

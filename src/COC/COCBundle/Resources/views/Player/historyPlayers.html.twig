@@ -25,7 +25,7 @@
                                 <td>{{ player.level }}</td>
                                 <td>{{ player.hallTown }}</td>
                                 <td>{{ player.total|round }}</td>
-                                <td>{{ player.updatedAt|date('U')|timeago }}</td>
+                                <td>{{ player.activityUpdatedAt|date('U')|timeago }}</td>
                             </tr>
                         {% endfor %}
                         </tbody>

@@ -12,10 +12,10 @@ class DefaultController extends Controller
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
 
-        $last_update_player = $em->getRepository('COCBundle:Player')->getLastUpdate($clan);
+        $last_update_player = $em->getRepository('COCBundle:Player')->getLastUpdatePlayer($clan);
         $last_update_base = $em->getRepository('COCBundle:ImageBase')->getLastUpdate($clan);
         $last_update_bestAttack = $em->getRepository('COCBundle:ImageBestAttack')->getLastUpdate($clan);
-        $last_update_playerHistory = $em->getRepository('COCBundle:PlayerHistory')->getLastUpdate($clan);
+        $last_update_playerHistory = $em->getRepository('COCBundle:Player')->getLastUpdateActivity($clan);
 
         if ( $last_update_playerHistory == null)
             $last_update_playerHistory['updatedAt'] = null;
