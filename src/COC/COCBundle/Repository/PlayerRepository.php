@@ -37,18 +37,11 @@ class PlayerRepository extends EntityRepository
     }
 
 
-    public function getLastUpdatePlayer($clan)
-    {
-        $query = $this->_em->createQuery('SELECT m.playerUpdatedAt FROM COCBundle:Player m WHERE m.clan = :clan ORDER BY m.playerUpdatedAt DESC')
-            ->setMaxResults(1)
-            ->setParameter('clan', $clan);
-        return $query->getOneOrNullResult();
 
-    }
 
-    public function getLastUpdateActivity($clan)
+    public function getLastUpdate($clan)
     {
-        $query = $this->_em->createQuery('SELECT m.activityUpdatedAt FROM COCBundle:Player m WHERE m.clan = :clan ORDER BY m.activityUpdatedAt DESC')
+        $query = $this->_em->createQuery('SELECT m.updatedAt FROM COCBundle:Player m WHERE m.clan = :clan ORDER BY m.updatedAt DESC')
             ->setMaxResults(1)
             ->setParameter('clan', $clan);
         return $query->getOneOrNullResult();

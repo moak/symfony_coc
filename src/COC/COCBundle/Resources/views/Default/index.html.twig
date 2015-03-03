@@ -28,7 +28,7 @@
     <div class="visible-xs visible-sm hidden-md hidden-lg supercell-font text-center">
         <div class="panel panel-default">
             <div class="panel-heading oswald-font">
-                {{ 'label.last_update'|trans }} {{ last_update_player['playerUpdatedAt']|date("U")|timeago }}
+                {{ 'label.last_update'|trans }} {{ last_update_player['updatedAt']|date("U")|timeago }}
             </div>
             <div class="panel-body">
 
@@ -121,12 +121,12 @@
             <div class="col-md-4">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
-                        {{ 'label.last_update'|trans }} {{ last_update_player['playerUpdatedAt']|date("U")|timeago }}
+                        {{ 'label.last_update'|trans }} {{ last_update_player['updatedAt']|date("U")|timeago }}
                     </div>
                     <div class="panel-body">
 
-                        <p><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}"><img class="img-responsive" src="{{ ('images/2015-01-16 13.32.49.png') | imagine_filter('my_thumb') }}"></a></p>
-                        <p><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}"><button class="btn btn-block btn-danger">{{ 'coc.visit_ranking'|trans }} </button></a></p>
+                        <p><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '1' }) }}"><img class="img-responsive" src="{{ ('images/2015-01-16 13.32.49.png') | imagine_filter('my_thumb') }}"></a></p>
+                        <p><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '1' }) }}"><button class="btn btn-block btn-danger">{{ 'phone.activity'|trans }} </button></a></p>
                     </div>
                 </div>
             </div><!-- end features -->
