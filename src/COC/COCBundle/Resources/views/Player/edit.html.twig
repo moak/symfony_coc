@@ -14,7 +14,7 @@
                     <h4 class="panel-title">{{ 'player.general'|trans }}</h4>
                 </div>
                 <div>
-                    <div class="panel-body">
+                    <div class="panel-body defences">
                         {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
                         {{ form_errors(form) }}
 
@@ -42,12 +42,12 @@
                 <div class="panel-heading" role="tab" id="headingFour">
                     <h4 class="panel-title">
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                            Activity
+                            {{ 'player.activity'|trans }}
                         </a>
                     </h4>
                 </div>
                 <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                    <div class="panel-body">
+                    <div class="panel-body defences">
                         <!-- ATTACK -->
                         <div class="row">
                             <div class="col-sm-6">
@@ -393,7 +393,7 @@
 
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                    <div class="panel-body">
+                    <div class="panel-body defences">
                         <div class="row" data-town-hall-level-min="1">
                             <!-- ATTACK -->
                                 <div class="col-sm-2" data-town-hall-level-min="1">

@@ -165,10 +165,12 @@ footer
 /* Landscape phones and smaller */
 @media (max-width: 480px)
 {
-    /*thead
+
+    label
     {
-        font-family: 'Oswald', sans-serif;
-    }*/
+        text-align: center;
+    }
+
 
     h2
     {

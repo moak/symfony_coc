@@ -165,6 +165,7 @@ player:
    potion_freeze: Freeze Spell
    gold: Gold
    elixir: Elexir
+   activity: Activity
 
 account:
     name: Account

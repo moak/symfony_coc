@@ -92,8 +92,8 @@ notPlayerFound: Aucun joueur trouvé.
 player:
    name: Nom
    level: Niv
-   defence: Déf
-   attack: Att
+   defence: Défence
+   attack: Attaque
    ht: HDV
    total: Total
    updated: Mis à jour
@@ -163,6 +163,7 @@ player:
    potion_freeze: Potion gêle
    gold: Or
    elixir: Elixir
+   activity: Activité
 
 account:
     name: Compte
