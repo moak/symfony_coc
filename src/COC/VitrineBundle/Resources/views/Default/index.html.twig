@@ -1,7 +1,7 @@
 {% extends "::base_vitrine.html.twig" %}
 
 {% block body %}
-
+    {{ app.request.locale }}
     <!-- Header -->
     <a name="about"></a>
     <div class="intro-header">
@@ -217,5 +217,34 @@
 {% endblock %}
 
 {% block javascripts %}
+
+    <script>
+
+
+
+        function changeLanguage(path,langue,supported)
+        {
+
+            var DATA="locale="+langue;
+            alert(DATA);
+            $.ajax({type:"POST",url:Routing.generate("homepage",{_locale:_locale}),data:DATA,success:function(msg)
+            {
+                for(var key in supported)
+                {
+                    if(path.indexOf(supported[key])>-1)
+                    {
+                        var newPath=path.replace(supported[key],langue);location.href=newPath;
+                        return
+                    }
+                }
+                location.href=path+langue;return false
+            },
+                error:function(msg){console.log(msg);
+                return true
+            }
+            })
+        }
+
+    </script>
 
 {% endblock %}

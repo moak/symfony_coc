@@ -22,6 +22,8 @@ class UserParams
         $this->em = $entityManager;
     }
 
+
+
     public function getLocale( $user = null) {
         $locale = null;
 

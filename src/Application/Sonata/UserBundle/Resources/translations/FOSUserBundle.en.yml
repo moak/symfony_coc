@@ -3,3 +3,5 @@ fos:
     join_clan: Join a clan
     register: Registration
     stay_connected: Remember me
+    join: Join a clan
+    create: Create a clan

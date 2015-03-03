@@ -1,3 +1,1 @@
-vitrine_homepage:
-    path:     /
-    defaults: { _controller: VitrineBundle:Default:index }
+

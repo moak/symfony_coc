@@ -1,8 +1,14 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+
 <div class="page-header">
-  <h1>{{ 'fos.register'|trans }}</h1>
+    {% if type == "join" %}
+        <h1>{{ 'fos.join'|trans }}</h1>
+    {% else %}
+        <h1>{{ 'fos.register'|trans }}</h1>
+    {% endif %}
 </div>
+
 <div class="row">
 <div class="container">
     <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">

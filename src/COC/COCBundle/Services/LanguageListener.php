@@ -51,6 +51,7 @@ class LanguageListener
         if (!in_array($path[$position], $supportedLanguage)) {
             $locale = $this->userParams->getLocale(false);
 
+
             if ($locale == null) {
                 // navigateur
                 $locale = $request->getPreferredLanguage($supportedLanguage);
