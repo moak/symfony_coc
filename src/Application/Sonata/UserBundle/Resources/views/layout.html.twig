@@ -42,3 +42,36 @@
 
 
 {% endblock %}
+
+{% block javascripts %}
+
+    <script>
+
+
+    function displayButton(typeButton)
+    {
+        if (typeButton == "create")
+        {
+            $('#join-clan').hide();
+            $('#create-clan').show();
+            $(".page-header").html("<h2>Create the clan</h2>");
+
+        }
+        if (typeButton == "join")
+        {
+            $('#join-clan').show();
+            $('#create-clan').hide();
+
+            $(".page-header").html("<h2>Join a clan</h2>");
+            document.getElementById('fos_user_registration_form_clanName').value= null;
+            document.getElementById('fos_user_registration_form_pass').value= null;
+
+
+
+        }
+
+    }
+
+    </script>
+{% endblock %}
+

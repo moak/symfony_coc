@@ -1,7 +1,7 @@
 fos:
     create_clan: Create a clan
     join_clan: Join a clan
-    register: Registration
+    register: Create a clan
     stay_connected: Remember me
     join: Join a clan
     create: Create a clan

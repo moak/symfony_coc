@@ -170,7 +170,7 @@ account:
     player: Joueur
     association: Associé
     dissociate: Dissocier
-    waiting: En attente d'association
+    waiting: Compte en attente d'association
 
 war:
    result: Résultat

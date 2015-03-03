@@ -172,7 +172,7 @@ account:
     player: Player
     association: Associated
     dissociate: Dissociate
-    waiting: Waiting for association
+    waiting: Account waiting for association
 
 war:
    result: Result

@@ -25,12 +25,11 @@ class LanguageListener
         }
         $request = $event->getRequest();
         $this->checkLocale($request);
-        echo "hhahahhhaa";
+
     }
 
     private function checkLocale($request)
     {
-
         $path = explode('/', $request->getUri());
 
         $position = 3;
@@ -54,20 +53,19 @@ class LanguageListener
         if (!in_array($path[$position], $supportedLanguage)) {
             $locale = $this->userParams->getLocale(false);
 
-echo "1";
+echo "Pas dans url, locale => " . $locale;
             if ($locale == null) {
                 // navigateur
                 $locale = $request->getPreferredLanguage($supportedLanguage);
 
-
                 $this->userParams->setLocale( $locale);
             }
-            echo "==============> " .  $locale;
+
             // look url
         } else {
 
-            echo "2";
             $locale = $path[$position];
+            echo "Dans url, locale => " . $locale;
         }
 
 
