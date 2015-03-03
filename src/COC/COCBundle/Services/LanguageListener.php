@@ -33,7 +33,7 @@ class LanguageListener
 
         $path = explode('/', $request->getUri());
 
-        $position = 6;
+        $position = 3;
        // $env = COCCOCBundle::getContainer()->get('kernel')->getEnvironment();
 
         if (strstr($path[2], "localhost"))
