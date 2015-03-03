@@ -85,7 +85,7 @@
 
 
                         <td>
-                            {% if user.player.id is defined %}
+                            {% if user.player.id is defined and user.player.user.id is defined  %}
                                 <td><a href="{{ path('admin_user_dissociate', { 'id': user.player.id ,'id_clan': clan.id }) }}"><button class="btn btn-default btn-warning">{{ 'account.dissociate'|trans }}</button></a></td>
                             {% else %}
                                 <td> <a href="{{ path('admin_user_edit', { 'id': user.id ,'id_clan': clan.id }) }}"><button class="btn btn-default btn-success">{{ 'action.associate'|trans }}</button></a></td>

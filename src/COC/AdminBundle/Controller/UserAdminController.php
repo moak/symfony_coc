@@ -89,6 +89,7 @@ class UserAdminController extends Controller
         }
         $player = $em->getRepository('COCBundle:Player')->find($id);
         $player->setUser(null);
+        $user->setPlayer(null);
 
         $em = $this->getDoctrine()->getManager();
         $user->setPlayer(null);
