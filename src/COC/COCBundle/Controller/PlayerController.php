@@ -97,7 +97,7 @@ class PlayerController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
-            $player->setActivityUpdatedAt(new \DateTime());
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($player);
             $em->flush();
@@ -156,7 +156,6 @@ class PlayerController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
-            $player->setPlayerUpdatedAt(new \DateTime());
             $em = $this->getDoctrine()->getManager();
             $em->persist($player);
             $em->flush();

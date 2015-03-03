@@ -5,688 +5,606 @@
 {% block body %}
     <link rel="stylesheet" href="{{ asset('css/player_edit.css') }}" />
     <div class="container">
+        <h2>{{ 'menu.my_player_edit'|trans }}</h2>
+        <hr>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <!-- PANEL GENERAL -->
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">{{ 'player.general'|trans }}</h4>
+                </div>
+                <div>
+                    <div class="panel-body">
+                        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                        {{ form_errors(form) }}
 
-    <h2>{{ 'menu.my_player_edit'|trans }}</h2>
-    <hr>
-    
-    
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    	<!-- PANEL 1 -->
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h4 class="panel-title">{{ 'player.general'|trans }}</h4>
-			</div>
-			<div>
-				<div class="panel-body">
-					{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-					{{ form_errors(form) }}
+                        <div class="form-group">
+                            {{ form_label(form.hall_town, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                            {{ form_errors(form.hall_town) }}
+                            <div class="col-sm-4">
+                                {{ form_widget(form.hall_town, {'attr': {'class': 'form-control hall-town-level'}}) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.level, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                            {{ form_errors(form.level) }}
+                            <div class="col-sm-4">
+                                {{ form_widget(form.level, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
 
-					<div class="form-group">
-						{{ form_label(form.hall_town, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-						{{ form_errors(form.hall_town) }}
-						<div class="col-sm-4">
-							{{ form_widget(form.hall_town, {'attr': {'class': 'form-control hall-town-level'}}) }}
-						</div>
-					</div>
-					<div class="form-group">
-						{{ form_label(form.level, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-						{{ form_errors(form.level) }}
-						<div class="col-sm-4">
-							{{ form_widget(form.level, {'attr': {'class': 'form-control'}}) }}
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-        <!-- PANEL 2 -->
-        <div class="panel panel-success">
-            <div class="panel-heading" role="tab" id="headingTwo">
-                <h4 class="panel-title">
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        {{ 'player.defence'|trans }}
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingTwo">
-                <div class="panel-body defences">
-                    <!-- CANNON -->
-                    <div class="row" data-town-hall-level-min="1">
-                        <div class="col-sm-2" data-town-hall-level-min="1">
-                            <div class="form-group">
-                                {{ form_label(form.canon1, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.canon1) }}
-                                {{ form_widget(form.canon1, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="1">
-                            <div class="form-group">
-                                {{ form_label(form.canon2, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.canon2) }}
-                                {{ form_widget(form.canon2, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="5">
-                            <div class="form-group">
-                                {{ form_label(form.canon3, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.canon3) }}
-                                {{ form_widget(form.canon3, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="7">
-                            <div class="form-group">
-                                {{ form_label(form.canon4, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.canon4) }}
-                                {{ form_widget(form.canon4, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="7">
-                            <div class="form-group">
-                                {{ form_label(form.canon5, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.canon5) }}
-                                {{ form_widget(form.canon5, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="10">
-                            <div class="form-group">
-                                {{ form_label(form.canon6, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.canon6) }}
-                                {{ form_widget(form.canon6, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
                     </div>
-                    <hr  data-town-hall-level-min="2"/>
-                    <!-- CANNON FIN -->
-                    <!-- ARCHER TOUR -->
-                    <div class="row" data-town-hall-level-min="2">
-                        <div class="col-sm-2" data-town-hall-level-min="2">
-                            <div class="form-group">
-                                {{ form_label(form.tower_archer1, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.tower_archer1) }}
-                                {{ form_widget(form.tower_archer1, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="4">
-                            <div class="form-group">
-                                {{ form_label(form.tower_archer2, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.tower_archer2) }}
-                                {{ form_widget(form.tower_archer2, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="5">
-                            <div class="form-group">
-                                {{ form_label(form.tower_archer3, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.tower_archer3) }}
-                                {{ form_widget(form.tower_archer3, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="7">
-                            <div class="form-group">
-                                {{ form_label(form.tower_archer4, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.tower_archer4) }}
-                                {{ form_widget(form.tower_archer4, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="8">
-                            <div class="form-group">
-                                {{ form_label(form.tower_archer5, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.tower_archer5) }}
-                                {{ form_widget(form.tower_archer5, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="9">
-                            <div class="form-group">
-                                {{ form_label(form.tower_archer6, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.tower_archer6) }}
-                                {{ form_widget(form.tower_archer6, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="10">
-                            <div class="form-group">
-                                {{ form_label(form.tower_archer7, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.tower_archer7) }}
-                                {{ form_widget(form.tower_archer7, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ARCHER TOUR FIN -->
-                    <hr data-town-hall-level-min="7"/>
-                    <!-- TESLA TOUR -->
-                    <div class="row" data-town-hall-level-min="7">
-                        <div class="col-sm-2" data-town-hall-level-min="7">
-                            <div class="form-group">
-                                {{ form_label(form.tesla1, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.tesla1) }}
-                                {{ form_widget(form.tesla1, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="7">
-                            <div class="form-group">
-                                {{ form_label(form.tesla2, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.tesla2) }}
-                                {{ form_widget(form.tesla2, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="8">
-                            <div class="form-group">
-                                {{ form_label(form.tesla3, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.tesla3) }}
-                                {{ form_widget(form.tesla3, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="9">
-                            <div class="form-group">
-                                {{ form_label(form.tesla4, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.tesla4) }}
-                                {{ form_widget(form.tesla4, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                    </div>
-                    <!-- AERIEN TOUR -->
-                    <hr data-town-hall-level-min="4"/>
-                    <!-- TESLA TOUR -->
-                    <div class="row" data-town-hall-level-min="4">
-                        <div class="col-sm-2" data-town-hall-level-min="4">
-                            <div class="form-group">
-                                {{ form_label(form.air_defence1, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.air_defence1) }}
-                                {{ form_widget(form.air_defence1, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="7">
-                            <div class="form-group">
-                                {{ form_label(form.air_defence2, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.air_defence2) }}
-                                {{ form_widget(form.air_defence2, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="8">
-                            <div class="form-group">
-                                {{ form_label(form.air_defence3, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.air_defence3) }}
-                                {{ form_widget(form.air_defence3, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="9">
-                            <div class="form-group">
-                                {{ form_label(form.air_defence4, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.air_defence4) }}
-                                {{ form_widget(form.air_defence4, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                    </div>
-                    <!-- TESLA TOUR FIN -->
-                    <hr data-town-hall-level-min="3"/>
-                    <!-- MORTIER TOUR -->
-                    <div class="row" data-town-hall-level-min="3">
-                        <div class="col-sm-2" data-town-hall-level-min="3">
-                            <div class="form-group">
-                                {{ form_label(form.mortar1, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.mortar1) }}
-                                {{ form_widget(form.mortar1, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="6">
-                            <div class="form-group">
-                                {{ form_label(form.mortar2, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.mortar2) }}
-                                {{ form_widget(form.mortar2, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="7">
-                            <div class="form-group">
-                                {{ form_label(form.mortar3, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.mortar3) }}
-                                {{ form_widget(form.mortar3, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="8">
-                            <div class="form-group">
-                                {{ form_label(form.mortar4, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.mortar4) }}
-                                {{ form_widget(form.mortar4, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                    </div>
-                    <!-- MORTIER TOUR FIN -->
-                    <hr data-town-hall-level-min="5"/>
-                    <!-- MAGIC TOUR -->
-                    <div class="row" data-town-hall-level-min="5">
-                        <div class="col-sm-2" data-town-hall-level-min="5">
-                            <div class="form-group">
-                                {{ form_label(form.tower_magic1, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.tower_magic1) }}
-                                {{ form_widget(form.tower_magic1, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="6">
-                            <div class="form-group">
-                                {{ form_label(form.tower_magic2, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.tower_magic2) }}
-                                {{ form_widget(form.tower_magic2, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="8">
-                            <div class="form-group">
-                                {{ form_label(form.tower_magic3, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.tower_magic3) }}
-                                {{ form_widget(form.tower_magic3, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="9">
-                            <div class="form-group">
-                                {{ form_label(form.tower_magic4, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.tower_magic4) }}
-                                {{ form_widget(form.tower_magic4, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                    </div>
-                    <!-- MAGIC TOUR FIN -->
-                    <hr data-town-hall-level-min="9"/>
-                    <!-- ARC X  -->
-                    <div class="row" data-town-hall-level-min="9">
-                        <div class="col-sm-2" data-town-hall-level-min="9">
-                            <div class="form-group">
-                                {{ form_label(form.arcx1, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.arcx1) }}
-                                {{ form_widget(form.arcx1, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="9">
-                            <div class="form-group">
-                                {{ form_label(form.arcx2, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.arcx2) }}
-                                {{ form_widget(form.arcx2, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="10">
-                            <div class="form-group">
-                                {{ form_label(form.arcx3, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.arcx3) }}
-                                {{ form_widget(form.arcx3, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ARC X FIN -->
-                    <hr data-town-hall-level-min="9"/>
-                    <!-- INFERNO TOWER  -->
-                    <div class="row" data-town-hall-level-min="10">
-                        <div class="col-sm-2" data-town-hall-level-min="10">
-                            <div class="form-group">
-                                {{ form_label(form.inferno1, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.inferno1) }}
-                                {{ form_widget(form.inferno1, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="10">
-                            <div class="form-group">
-                                {{ form_label(form.inferno2, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.inferno2) }}
-                                {{ form_widget(form.inferno2, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                
-                    </div>
-                    <!-- INFERNO TOWER FIN -->
                 </div>
             </div>
-        </div>
-        <!-- PANEL 3 -->
-        <div class="panel panel-warning">
-            <div class="panel-heading" role="tab" id="headingThree">
-                <h4 class="panel-title">
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        {{ 'player.labotory'|trans }}
-                    </a>
-                </h4>
+
+            <!-- PANEL Activity -->
+            <div class="panel panel-danger">
+                <div class="panel-heading" role="tab" id="headingFour">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Activity
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                    <div class="panel-body">
+                        <!-- ATTACK -->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ form_label(form.attackWon, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.attackWon) }}
+                                    {{ form_widget(form.attackWon, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6" >
+                                <div class="form-group">
+                                    {{ form_label(form.trophy, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.trophy) }}
+                                    {{ form_widget(form.trophy, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6" >
+                                <div class="form-group">
+                                    {{ form_label(form.troopReceived, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.troopReceived) }}
+                                    {{ form_widget(form.troopReceived, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    {{ form_label(form.troopSent, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.troopSent) }}
+                                    {{ form_widget(form.troopSent, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <!-- ROW END -->
+                        </div>
+                    </div>
+                </div>
 
             </div>
-            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                <div class="panel-body">
-                    <div class="row" data-town-hall-level-min="1">
-                        <!-- ATTACK -->
+
+            <!-- PANEL Defence -->
+            <div class="panel panel-success">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            {{ 'player.defence'|trans }}
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body defences">
+                        <!-- CANNON -->
+                        <div class="row" data-town-hall-level-min="1">
                             <div class="col-sm-2" data-town-hall-level-min="1">
                                 <div class="form-group">
-                                    {{ form_label(form.barbar, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.barbar) }}
-                                    {{ form_widget(form.barbar, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_label(form.canon1, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.canon1) }}
+                                    {{ form_widget(form.canon1, {'attr': {'class': 'form-control'}}) }}
                                 </div>
                             </div>
-                    
                             <div class="col-sm-2" data-town-hall-level-min="1">
                                 <div class="form-group">
-                                    {{ form_label(form.archer, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.archer) }}
-                                    {{ form_widget(form.archer, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_label(form.canon2, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.canon2) }}
+                                    {{ form_widget(form.canon2, {'attr': {'class': 'form-control'}}) }}
                                 </div>
                             </div>
-                    
-                            <div class="col-sm-2" data-town-hall-level-min="1">
-                                <div class="form-group">
-                                    {{ form_label(form.gobelin, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.gobelin) }}
-                                    {{ form_widget(form.gobelin, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-                    
-                    
-                            <div class="col-sm-2" data-town-hall-level-min="2">
-                                <div class="form-group">
-                                    {{ form_label(form.geant, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.geant) }}
-                                    {{ form_widget(form.geant, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-                    
-                            <div class="col-sm-2" data-town-hall-level-min="2">
-                                <div class="form-group">
-                                    {{ form_label(form.wall_breaker, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.wall_breaker) }}
-                                    {{ form_widget(form.wall_breaker, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-                    
-                            <div class="col-sm-2" data-town-hall-level-min="2">
-                                <div class="form-group">
-                                    {{ form_label(form.ballon, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.ballon) }}
-                                    {{ form_widget(form.ballon, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-                    
-                            <div class="col-sm-2" data-town-hall-level-min="3">
-                                <div class="form-group">
-                                    {{ form_label(form.wizard, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.wizard) }}
-                                    {{ form_widget(form.wizard, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-                    
-                    
                             <div class="col-sm-2" data-town-hall-level-min="5">
                                 <div class="form-group">
-                                    {{ form_label(form.healer, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.healer) }}
-                                    {{ form_widget(form.healer, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_label(form.canon3, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.canon3) }}
+                                    {{ form_widget(form.canon3, {'attr': {'class': 'form-control'}}) }}
                                 </div>
                             </div>
-                    
-                    
                             <div class="col-sm-2" data-town-hall-level-min="7">
                                 <div class="form-group">
-                                    {{ form_label(form.dragon, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.dragon) }}
-                                    {{ form_widget(form.dragon, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_label(form.canon4, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.canon4) }}
+                                    {{ form_widget(form.canon4, {'attr': {'class': 'form-control'}}) }}
                                 </div>
                             </div>
-                    
-                            <div class="col-sm-2" data-town-hall-level-min="8">
-                                <div class="form-group">
-                                    {{ form_label(form.pekka, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.pekka) }}
-                                    {{ form_widget(form.pekka, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-                    
                             <div class="col-sm-2" data-town-hall-level-min="7">
                                 <div class="form-group">
-                                    {{ form_label(form.king, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.king) }}
-                                    {{ form_widget(form.king, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_label(form.canon5, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.canon5) }}
+                                    {{ form_widget(form.canon5, {'attr': {'class': 'form-control'}}) }}
                                 </div>
                             </div>
-                    
-                            <div class="col-sm-2" data-town-hall-level-min="9">
-                                <div class="form-group">
-                                    {{ form_label(form.queen, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.queen) }}
-                                    {{ form_widget(form.queen, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-                    
-                    
-                            <!-- ATTACK -->
-                            <div class="col-sm-2" data-town-hall-level-min="7">
-                                <div class="form-group">
-                                    {{ form_label(form.minion, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.minion) }}
-                                    {{ form_widget(form.minion, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-                    
-                            <div class="col-sm-2" data-town-hall-level-min="7">
-                                <div class="form-group">
-                                    {{ form_label(form.rider, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.rider) }}
-                                    {{ form_widget(form.rider, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-                    
-                    
-                            <div class="col-sm-2" data-town-hall-level-min="8">
-                                <div class="form-group">
-                                    {{ form_label(form.valkyrie, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.valkyrie) }}
-                                    {{ form_widget(form.valkyrie, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-                    
-                    
-                            <div class="col-sm-2" data-town-hall-level-min="8">
-                                <div class="form-group">
-                                    {{ form_label(form.golem, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.golem) }}
-                                    {{ form_widget(form.golem, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-                    
-                            <div class="col-sm-2" data-town-hall-level-min="9">
-                                <div class="form-group">
-                                    {{ form_label(form.witch, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.witch) }}
-                                    {{ form_widget(form.witch, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-                    
                             <div class="col-sm-2" data-town-hall-level-min="10">
                                 <div class="form-group">
-                                    {{ form_label(form.lava, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.lava) }}
-                                    {{ form_widget(form.lava, {'attr': {'class': 'form-control'}}) }}
+                                    {{ form_label(form.canon6, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.canon6) }}
+                                    {{ form_widget(form.canon6, {'attr': {'class': 'form-control'}}) }}
                                 </div>
                             </div>
-                    <!-- ROW END -->
-                    </div>
-                    <hr data-town-hall-level-min="1"/>
-                    <div class="row" data-town-hall-level-min="1">
-                        <div class="col-sm-2" data-town-hall-level-min="1">
-                            <div class="form-group">
-                                {{ form_label(form.potion_damage, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.potion_damage) }}
-                                {{ form_widget(form.potion_damage, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <hr  data-town-hall-level-min="2"/>
+                        <!-- CANNON FIN -->
+                        <!-- ARCHER TOUR -->
+                        <div class="row" data-town-hall-level-min="2">
+                            <div class="col-sm-2" data-town-hall-level-min="2">
+                                <div class="form-group">
+                                    {{ form_label(form.tower_archer1, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.tower_archer1) }}
+                                    {{ form_widget(form.tower_archer1, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="4">
+                                <div class="form-group">
+                                    {{ form_label(form.tower_archer2, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.tower_archer2) }}
+                                    {{ form_widget(form.tower_archer2, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="5">
+                                <div class="form-group">
+                                    {{ form_label(form.tower_archer3, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.tower_archer3) }}
+                                    {{ form_widget(form.tower_archer3, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="7">
+                                <div class="form-group">
+                                    {{ form_label(form.tower_archer4, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.tower_archer4) }}
+                                    {{ form_widget(form.tower_archer4, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="8">
+                                <div class="form-group">
+                                    {{ form_label(form.tower_archer5, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.tower_archer5) }}
+                                    {{ form_widget(form.tower_archer5, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="9">
+                                <div class="form-group">
+                                    {{ form_label(form.tower_archer6, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.tower_archer6) }}
+                                    {{ form_widget(form.tower_archer6, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="10">
+                                <div class="form-group">
+                                    {{ form_label(form.tower_archer7, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.tower_archer7) }}
+                                    {{ form_widget(form.tower_archer7, {'attr': {'class': 'form-control'}}) }}
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-2" data-town-hall-level-min="6">
-                            <div class="form-group">
-                                {{ form_label(form.potion_heal, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.potion_heal) }}
-                                {{ form_widget(form.potion_heal, {'attr': {'class': 'form-control'}}) }}
+                        <!-- ARCHER TOUR FIN -->
+                        <hr data-town-hall-level-min="7"/>
+                        <!-- TESLA TOUR -->
+                        <div class="row" data-town-hall-level-min="7">
+                            <div class="col-sm-2" data-town-hall-level-min="7">
+                                <div class="form-group">
+                                    {{ form_label(form.tesla1, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.tesla1) }}
+                                    {{ form_widget(form.tesla1, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="7">
+                                <div class="form-group">
+                                    {{ form_label(form.tesla2, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.tesla2) }}
+                                    {{ form_widget(form.tesla2, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="8">
+                                <div class="form-group">
+                                    {{ form_label(form.tesla3, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.tesla3) }}
+                                    {{ form_widget(form.tesla3, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="9">
+                                <div class="form-group">
+                                    {{ form_label(form.tesla4, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.tesla4) }}
+                                    {{ form_widget(form.tesla4, {'attr': {'class': 'form-control'}}) }}
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-2" data-town-hall-level-min="7">
-                            <div class="form-group">
-                                {{ form_label(form.potion_boost, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.potion_boost) }}
-                                {{ form_widget(form.potion_boost, {'attr': {'class': 'form-control'}}) }}
+                        <!-- AERIEN TOUR -->
+                        <hr data-town-hall-level-min="4"/>
+                        <!-- TESLA TOUR -->
+                        <div class="row" data-town-hall-level-min="4">
+                            <div class="col-sm-2" data-town-hall-level-min="4">
+                                <div class="form-group">
+                                    {{ form_label(form.air_defence1, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.air_defence1) }}
+                                    {{ form_widget(form.air_defence1, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="7">
+                                <div class="form-group">
+                                    {{ form_label(form.air_defence2, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.air_defence2) }}
+                                    {{ form_widget(form.air_defence2, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="8">
+                                <div class="form-group">
+                                    {{ form_label(form.air_defence3, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.air_defence3) }}
+                                    {{ form_widget(form.air_defence3, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="9">
+                                <div class="form-group">
+                                    {{ form_label(form.air_defence4, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.air_defence4) }}
+                                    {{ form_widget(form.air_defence4, {'attr': {'class': 'form-control'}}) }}
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-2" data-town-hall-level-min="9">
-                            <div class="form-group">
-                                {{ form_label(form.potion_green, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.potion_green) }}
-                                {{ form_widget(form.potion_green, {'attr': {'class': 'form-control'}}) }}
+                        <!-- TESLA TOUR FIN -->
+                        <hr data-town-hall-level-min="3"/>
+                        <!-- MORTIER TOUR -->
+                        <div class="row" data-town-hall-level-min="3">
+                            <div class="col-sm-2" data-town-hall-level-min="3">
+                                <div class="form-group">
+                                    {{ form_label(form.mortar1, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.mortar1) }}
+                                    {{ form_widget(form.mortar1, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="6">
+                                <div class="form-group">
+                                    {{ form_label(form.mortar2, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.mortar2) }}
+                                    {{ form_widget(form.mortar2, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="7">
+                                <div class="form-group">
+                                    {{ form_label(form.mortar3, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.mortar3) }}
+                                    {{ form_widget(form.mortar3, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="8">
+                                <div class="form-group">
+                                    {{ form_label(form.mortar4, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.mortar4) }}
+                                    {{ form_widget(form.mortar4, {'attr': {'class': 'form-control'}}) }}
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-2" data-town-hall-level-min="10">
-                            <div class="form-group">
-                                {{ form_label(form.potion_freeze, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.potion_freeze) }}
-                                {{ form_widget(form.potion_freeze, {'attr': {'class': 'form-control'}}) }}
+                        <!-- MORTIER TOUR FIN -->
+                        <hr data-town-hall-level-min="5"/>
+                        <!-- MAGIC TOUR -->
+                        <div class="row" data-town-hall-level-min="5">
+                            <div class="col-sm-2" data-town-hall-level-min="5">
+                                <div class="form-group">
+                                    {{ form_label(form.tower_magic1, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.tower_magic1) }}
+                                    {{ form_widget(form.tower_magic1, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="6">
+                                <div class="form-group">
+                                    {{ form_label(form.tower_magic2, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.tower_magic2) }}
+                                    {{ form_widget(form.tower_magic2, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="8">
+                                <div class="form-group">
+                                    {{ form_label(form.tower_magic3, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.tower_magic3) }}
+                                    {{ form_widget(form.tower_magic3, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="9">
+                                <div class="form-group">
+                                    {{ form_label(form.tower_magic4, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.tower_magic4) }}
+                                    {{ form_widget(form.tower_magic4, {'attr': {'class': 'form-control'}}) }}
+                                </div>
                             </div>
                         </div>
+                        <!-- MAGIC TOUR FIN -->
+                        <hr data-town-hall-level-min="9"/>
+                        <!-- ARC X  -->
+                        <div class="row" data-town-hall-level-min="9">
+                            <div class="col-sm-2" data-town-hall-level-min="9">
+                                <div class="form-group">
+                                    {{ form_label(form.arcx1, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.arcx1) }}
+                                    {{ form_widget(form.arcx1, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="9">
+                                <div class="form-group">
+                                    {{ form_label(form.arcx2, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.arcx2) }}
+                                    {{ form_widget(form.arcx2, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="10">
+                                <div class="form-group">
+                                    {{ form_label(form.arcx3, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.arcx3) }}
+                                    {{ form_widget(form.arcx3, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ARC X FIN -->
+                        <hr data-town-hall-level-min="9"/>
+                        <!-- INFERNO TOWER  -->
+                        <div class="row" data-town-hall-level-min="10">
+                            <div class="col-sm-2" data-town-hall-level-min="10">
+                                <div class="form-group">
+                                    {{ form_label(form.inferno1, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.inferno1) }}
+                                    {{ form_widget(form.inferno1, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+                            <div class="col-sm-2" data-town-hall-level-min="10">
+                                <div class="form-group">
+                                    {{ form_label(form.inferno2, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.inferno2) }}
+                                    {{ form_widget(form.inferno2, {'attr': {'class': 'form-control'}}) }}
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- INFERNO TOWER FIN -->
                     </div>
                 </div>
-            <!-- ATTACK END -->
             </div>
-        </div>
-        <!-- PANEL 3 -->
-        <div class="panel panel-info">
-            <div class="panel-heading" role="tab" id="headingFour">
-                <h4 class="panel-title">
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        Ressources
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                <div class="panel-body">
-                    <!-- ATTACK -->
-                    <div class="row" data-town-hall-level-min="1">
-                        <div class="col-sm-2" data-town-hall-level-min="1">
-                            <div class="form-group">
-                                {{ form_label(form.gold1, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.gold1) }}
-                                {{ form_widget(form.gold1, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-            
-                        <div class="col-sm-2" data-town-hall-level-min="2">
-                            <div class="form-group">
-                                {{ form_label(form.gold2, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.gold2) }}
-                                {{ form_widget(form.gold2, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-            
-                        <div class="col-sm-2" data-town-hall-level-min="3">
-                            <div class="form-group">
-                                {{ form_label(form.gold3, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.gold3) }}
-                                {{ form_widget(form.gold3, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-            
-            
-                        <div class="col-sm-2" data-town-hall-level-min="4">
-                            <div class="form-group">
-                                {{ form_label(form.gold4, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.gold4) }}
-                                {{ form_widget(form.gold4, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-            
-                        <div class="col-sm-2" data-town-hall-level-min="5">
-                            <div class="form-group">
-                                {{ form_label(form.gold5, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.gold5) }}
-                                {{ form_widget(form.gold5, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-            
-                        <div class="col-sm-2" data-town-hall-level-min="6">
-                            <div class="form-group">
-                                {{ form_label(form.gold6, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.gold6) }}
-                                {{ form_widget(form.gold6, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        <div class="col-sm-2" data-town-hall-level-min="10">
-                            <div class="form-group">
-                                {{ form_label(form.gold7, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.gold7) }}
-                                {{ form_widget(form.gold7, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
+            <!-- PANEL Attack -->
+            <div class="panel panel-warning">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            {{ 'player.labotory'|trans }}
+                        </a>
+                    </h4>
+
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        <div class="row" data-town-hall-level-min="1">
+                            <!-- ATTACK -->
+                                <div class="col-sm-2" data-town-hall-level-min="1">
+                                    <div class="form-group">
+                                        {{ form_label(form.barbar, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.barbar) }}
+                                        {{ form_widget(form.barbar, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="1">
+                                    <div class="form-group">
+                                        {{ form_label(form.archer, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.archer) }}
+                                        {{ form_widget(form.archer, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="1">
+                                    <div class="form-group">
+                                        {{ form_label(form.gobelin, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.gobelin) }}
+                                        {{ form_widget(form.gobelin, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-2" data-town-hall-level-min="2">
+                                    <div class="form-group">
+                                        {{ form_label(form.geant, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.geant) }}
+                                        {{ form_widget(form.geant, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="2">
+                                    <div class="form-group">
+                                        {{ form_label(form.wall_breaker, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.wall_breaker) }}
+                                        {{ form_widget(form.wall_breaker, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="2">
+                                    <div class="form-group">
+                                        {{ form_label(form.ballon, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.ballon) }}
+                                        {{ form_widget(form.ballon, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="3">
+                                    <div class="form-group">
+                                        {{ form_label(form.wizard, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.wizard) }}
+                                        {{ form_widget(form.wizard, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-2" data-town-hall-level-min="5">
+                                    <div class="form-group">
+                                        {{ form_label(form.healer, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.healer) }}
+                                        {{ form_widget(form.healer, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-2" data-town-hall-level-min="7">
+                                    <div class="form-group">
+                                        {{ form_label(form.dragon, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.dragon) }}
+                                        {{ form_widget(form.dragon, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="8">
+                                    <div class="form-group">
+                                        {{ form_label(form.pekka, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.pekka) }}
+                                        {{ form_widget(form.pekka, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="7">
+                                    <div class="form-group">
+                                        {{ form_label(form.king, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.king) }}
+                                        {{ form_widget(form.king, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="9">
+                                    <div class="form-group">
+                                        {{ form_label(form.queen, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.queen) }}
+                                        {{ form_widget(form.queen, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+
+                                <!-- ATTACK -->
+                                <div class="col-sm-2" data-town-hall-level-min="7">
+                                    <div class="form-group">
+                                        {{ form_label(form.minion, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.minion) }}
+                                        {{ form_widget(form.minion, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="7">
+                                    <div class="form-group">
+                                        {{ form_label(form.rider, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.rider) }}
+                                        {{ form_widget(form.rider, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-2" data-town-hall-level-min="8">
+                                    <div class="form-group">
+                                        {{ form_label(form.valkyrie, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.valkyrie) }}
+                                        {{ form_widget(form.valkyrie, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-2" data-town-hall-level-min="8">
+                                    <div class="form-group">
+                                        {{ form_label(form.golem, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.golem) }}
+                                        {{ form_widget(form.golem, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="9">
+                                    <div class="form-group">
+                                        {{ form_label(form.witch, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.witch) }}
+                                        {{ form_widget(form.witch, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2" data-town-hall-level-min="10">
+                                    <div class="form-group">
+                                        {{ form_label(form.lava, null, {'label_attr': {'class': 'control-label'}}) }}
+                                        {{ form_errors(form.lava) }}
+                                        {{ form_widget(form.lava, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
                         <!-- ROW END -->
-                    </div>
-                    <!-- GOLD FIN-->
-                    <hr data-town-hall-level-min="1"/>
-                    <!-- ELIXIR -->
-                    <div class="row" data-town-hall-level-min="1">
-                        <div class="col-sm-2" data-town-hall-level-min="1">
-                            <div class="form-group">
-                                {{ form_label(form.elixir1, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.elixir1) }}
-                                {{ form_widget(form.elixir1, {'attr': {'class': 'form-control'}}) }}
-                            </div>
                         </div>
-        
-                        <div class="col-sm-2" data-town-hall-level-min="2">
-                            <div class="form-group">
-                                {{ form_label(form.elixir2, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.elixir2) }}
-                                {{ form_widget(form.elixir2, {'attr': {'class': 'form-control'}}) }}
+                        <hr data-town-hall-level-min="1"/>
+                        <div class="row" data-town-hall-level-min="1">
+                            <div class="col-sm-2" data-town-hall-level-min="1">
+                                <div class="form-group">
+                                    {{ form_label(form.potion_damage, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.potion_damage) }}
+                                    {{ form_widget(form.potion_damage, {'attr': {'class': 'form-control'}}) }}
+                                </div>
                             </div>
-                        </div>
-        
-                        <div class="col-sm-2" data-town-hall-level-min="3">
-                            <div class="form-group">
-                                {{ form_label(form.elixir3, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.elixir3) }}
-                                {{ form_widget(form.elixir3, {'attr': {'class': 'form-control'}}) }}
+                            <div class="col-sm-2" data-town-hall-level-min="6">
+                                <div class="form-group">
+                                    {{ form_label(form.potion_heal, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.potion_heal) }}
+                                    {{ form_widget(form.potion_heal, {'attr': {'class': 'form-control'}}) }}
+                                </div>
                             </div>
-                        </div>
-        
-                        <div class="col-sm-2" data-town-hall-level-min="4">
-                            <div class="form-group">
-                                {{ form_label(form.elixir4, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.elixir4) }}
-                                {{ form_widget(form.elixir4, {'attr': {'class': 'form-control'}}) }}
+                            <div class="col-sm-2" data-town-hall-level-min="7">
+                                <div class="form-group">
+                                    {{ form_label(form.potion_boost, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.potion_boost) }}
+                                    {{ form_widget(form.potion_boost, {'attr': {'class': 'form-control'}}) }}
+                                </div>
                             </div>
-                        </div>
-        
-                        <div class="col-sm-2" data-town-hall-level-min="5">
-                            <div class="form-group">
-                                {{ form_label(form.elixir5, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.elixir5) }}
-                                {{ form_widget(form.elixir5, {'attr': {'class': 'form-control'}}) }}
+                            <div class="col-sm-2" data-town-hall-level-min="9">
+                                <div class="form-group">
+                                    {{ form_label(form.potion_green, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.potion_green) }}
+                                    {{ form_widget(form.potion_green, {'attr': {'class': 'form-control'}}) }}
+                                </div>
                             </div>
-                        </div>
-        
-                        <div class="col-sm-2" data-town-hall-level-min="6">
-                            <div class="form-group">
-                                {{ form_label(form.elixir6, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.elixir6) }}
-                                {{ form_widget(form.elixir6, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        
-                        <div class="col-sm-2" data-town-hall-level-min="10">
-                            <div class="form-group">
-                                {{ form_label(form.elixir7, null, {'label_attr': {'class': 'control-label'}}) }}
-                                {{ form_errors(form.elixir7) }}
-                                {{ form_widget(form.elixir7, {'attr': {'class': 'form-control'}}) }}
+                            <div class="col-sm-2" data-town-hall-level-min="10">
+                                <div class="form-group">
+                                    {{ form_label(form.potion_freeze, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_errors(form.potion_freeze) }}
+                                    {{ form_widget(form.potion_freeze, {'attr': {'class': 'form-control'}}) }}
+                                </div>
                             </div>
                         </div>
                     </div>
-                <!-- ELIXIR FIN -->
+                <!-- ATTACK END -->
                 </div>
             </div>
+
+
+            <br>
+
+            <div class="form-group">
+                <div class="col-md-4 col-md-offset-4 supercell-font">
+                    {{ form_widget(form.save, {'attr': {'class': 'btn btn-block btn-success'}}) }}
+                </div>
+            </div>
+
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+
         </div>
-    
     </div>
-
-    <div class="form-group">
-        <div class="col-md-4 col-md-offset-4 supercell-font">
-            {{ form_widget(form.save, {'attr': {'class': 'btn btn-block btn-success'}}) }}
-        </div>
-    </div>
-
-    {{ form_rest(form) }}
-    {{ form_end(form) }}
-
-
-    </div><!-- end panel warning -->
 {% endblock %}
 
 {% block javascripts %}

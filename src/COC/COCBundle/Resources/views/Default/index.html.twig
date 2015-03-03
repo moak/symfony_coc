@@ -31,23 +31,15 @@
                 {{ 'label.last_update'|trans }} {{ last_update_player['playerUpdatedAt']|date("U")|timeago }}
             </div>
             <div class="panel-body">
+
                 <a class="btn btn-large btn-block btn-danger" href="{{ path('coc_players', {'id_clan': clan.id, 'type' : 0 }) }}"><i class="fa fa-sort-numeric-asc"></i> {{ 'phone.players'|trans }} <i class="fa fa-sort-numeric-asc"></i></a>
-            </div>
-        </div>
-    </div><!-- end well-small -->
-
-
-    <!-- ACTIVITY Visible only on small devices -->
-    <div class="visible-xs visible-sm hidden-md hidden-lg supercell-font text-center">
-        <div class="panel panel-default">
-            <div class="panel-heading oswald-font">
-                {{ 'label.last_update'|trans }} {{ last_update_playerHistory['activityUpdatedAt']|date("U")|timeago }}
-            </div>
-            <div class="panel-body">
+                <br>
                 <a class="btn btn-large btn-block btn-success" href="{{ path('coc_players', {'id_clan': clan.id, 'type' : 1 }) }}"><i class="fa fa-rocket"></i> {{ 'phone.activity'|trans }} <i class="fa fa-rocket"></i></a>
+
             </div>
         </div>
     </div><!-- end well-small -->
+
 
 
 

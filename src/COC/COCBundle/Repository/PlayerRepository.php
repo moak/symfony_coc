@@ -60,7 +60,7 @@ class PlayerRepository extends EntityRepository
         $qb = $this->createQueryBuilder('p')
             ->select('p.id, p.level, p.name, p.troopSent, p.troopReceived, p.attackWon, p.trophy, p.hallTown,
 
-            p.playerUpdatedAt,p.activityUpdatedAt,
+            p.updatedAt,
 
             (p.mortar1 + 1) * p.mortar1 / 2 + (p.mortar2 + 1) * p.mortar2 / 2 + (p.mortar3 + 1) * p.mortar3 / 2 + (p.mortar4+ 1) * p.mortar4 / 2 +
             (p.inferno1 + 1) * p.inferno1 / 2 + (p.inferno2 + 1) * p.inferno1 / 2 +
@@ -164,7 +164,7 @@ class PlayerRepository extends EntityRepository
             p.archer, p.barbar, p.geant, p.wizard, p.dragon, p.wall_breaker, p.pekka, p.ballon, p.healer, p.gobelin, p.minion, p.rider, p.valkyrie, p.golem, p.rider, p.golem, p.lava,
             p.witch, p.queen, p.king, p.potion_heal, p.potion_boost,  p.potion_green, p.potion_freeze, p.potion_damage,
 
-            p.playerUpdatedAt,p.activityUpdatedAt,
+             p.updatedAt,
 
             (p.mortar1 + 1) * p.mortar1 / 2 + (p.mortar2 + 1) * p.mortar2 / 2 + (p.mortar3 + 1) * p.mortar3 / 2 + (p.mortar4+ 1) * p.mortar4 / 2 +
             ((p.inferno1 + 1) * p.inferno1 / 2) * 3 + ((p.inferno2 + 1) * p.inferno1 / 2 ) * 3 +
@@ -295,7 +295,7 @@ class PlayerRepository extends EntityRepository
         {
             $qb = $this->createQueryBuilder('u')
                 ->select('u')
-                ->orderBy('u.playerUpdatedAt', 'DESC')
+                ->orderBy('u.updatedAt', 'DESC')
                 ->setMaxResults( $number );
         }
 

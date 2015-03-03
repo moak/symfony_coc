@@ -20,14 +20,10 @@ class Player
     private $created;
 
     /**
+     * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime")
      */
-    private $playerUpdatedAt;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $activityUpdatedAt;
+    private $updatedAt;
 
 
     /**
@@ -2704,51 +2700,31 @@ class Player
         return $this->created;
     }
 
+
     /**
-     * Set playerUpdatedAt
+     * Set updatedAt
      *
-     * @param \DateTime $playerUpdatedAt
+     * @param \DateTime $updatedAt
      * @return Player
      */
-    public function setPlayerUpdatedAt($playerUpdatedAt)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->playerUpdatedAt = $playerUpdatedAt;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
     /**
-     * Get playerUpdatedAt
-     *
-     * @return \DateTime 
-     */
-    public function getPlayerUpdatedAt()
-    {
-        return $this->playerUpdatedAt;
-    }
-
-
-    /**
-     * Set activityUpdatedAt
-     *
-     * @param \DateTime $activityUpdatedAt
-     * @return Player
-     */
-    public function setActivityUpdatedAt($activityUpdatedAt)
-    {
-        $this->activityUpdatedAt = $activityUpdatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get activityUpdatedAt
+     * Get updatedAt
      *
      * @return \DateTime
      */
-    public function getActivityUpdatedAt()
+    public function getUpdatedAt()
     {
-        return $this->activityUpdatedAt;
+        return $this->updatedAt;
     }
+
+
+
 
 }

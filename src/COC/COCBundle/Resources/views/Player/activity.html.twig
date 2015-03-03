@@ -13,12 +13,7 @@
             <div class="form-horizontal">
                 <h1 class="page-header">{{ 'menu.activity'|trans }}
 
-                    {%  if app.user.player.level is defined and clan.id == app.user.player.clan.id %}
-                        <a class="btn btn-info" href="{{ path('coc_player_edit_activity', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'label.edit_activity'|trans }}</b></a>
-                    {% endif %}
-
-
-                    <a class="btn btn-normal pull-right btn-success" href="{{ path('coc_players', {'id_clan': clan.id, 'type': '1' }) }}">{{ 'menu.current_season'|trans }}</a>
+                    <a class="btn btn-normal pull-right btn-primary btn-lg" href="{{ path('coc_players', {'id_clan': clan.id, 'type': '1' }) }}">{{ 'menu.current_season'|trans }}</a>
 
 
                 </h1>
@@ -79,7 +74,7 @@
                         <td>{{ player.troopReceived }}</td>
                         <td>{{ player.attackWon }}</td>
                         <td>{{ player.trophy }}</td>
-                        <td>{{ player.activityUpdatedAt|date('U')|timeago }}</td>
+                        <td>{{ player.updatedAt|date('U')|timeago }}</td>
 
                     </tr>
 

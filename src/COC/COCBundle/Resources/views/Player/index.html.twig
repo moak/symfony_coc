@@ -12,7 +12,7 @@
         <div class="col-lg-12">
             <h1 class="page-header">{{ 'menu.general_ranking'|trans }}
                 {%  if app.user.player.level is defined and clan.id == app.user.player.clan.id %}
-                    <a class="pull-right btn btn-primary btn-lg" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_player'|trans }}</b></a>
+                    <a class="btn btn-normal pull-right btn-primary btn-lg" href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}">{{ 'menu.current_season'|trans }}</a>
                 {% endif %}
             </h1>
 
@@ -84,7 +84,7 @@
                         <td>{{ player.totalDefence|round }}</td>
                         <td>{{ player.totalAttack|round}}</td>
                         <td>{{ player.total|round }}</td>
-                        <td>{{ player.playerUpdatedAt|date('U')|timeago }}</td>
+                        <td>{{ player.updatedAt|date('U')|timeago }}</td>
 
                     </tr>
                     <tr class="hidden expendables hidden" id="{{ player.name }}" data-total-points="{{ player.total|round }}">

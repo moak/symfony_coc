@@ -99,10 +99,10 @@ player:
    ht: HT
    total: Total
    updated: Updated
-   troopSent: Sent
-   troopReceived: Received
-   attackWon: Won
-   trophy: Troph
+   troopSent: Troops Sent
+   troopReceived: Troops Received
+   attackWon: Attacks Won
+   trophy: Trophies
    labotory: Labotory
    general: General
    hall_town: Hall town
