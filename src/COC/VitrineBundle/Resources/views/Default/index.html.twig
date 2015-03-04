@@ -207,28 +207,21 @@
 
 {% block javascripts %}
 
-    'bundles/mybundle/js/fos_js_routes.js'
-
     <script>
-
-        function changeLanguage(path, langue) {
+        function changeLanguage(path, langue, supported) {
             var DATA = "locale=" + langue;
-            var supported = ["en", "fr"];
-            alert(DATA);
             $.ajax({
                 type: "POST",
-                url: Routing.generate('homepage', {'_locale': langue }),
+                url: Routing.generate('homepage', {'_locale': langue}),
                 data: DATA,
                 success: function (msg) {
                     for (var key in supported) {
-
                         if (path.indexOf(supported[key]) > -1) {
                             var newPath = path.replace(supported[key], langue);
                             location.href = newPath;
                             return;
                         }
                     }
-
                     location.href = path + langue;
                     return false;
                 },
@@ -238,10 +231,7 @@
                 }
             });
         }
-
-
-
-
+        
     </script>
 
 {% endblock %}

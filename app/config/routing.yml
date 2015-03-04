@@ -6,6 +6,12 @@ homepage:
     options:
          expose: true
 
+setParam:
+    pattern:   /set_params/
+    defaults:  { _controller: UserDefaultBundle:Default:setParams, _locale: en}
+    options:
+        expose: true
+
 vitrine:
     resource: "@VitrineBundle/Resources/config/routing.yml"
     prefix:   /{_locale}

@@ -16,8 +16,6 @@ class DefaultController extends Controller
         $last_update_base = $em->getRepository('COCBundle:ImageBase')->getLastUpdate($clan);
         $last_update_bestAttack = $em->getRepository('COCBundle:ImageBestAttack')->getLastUpdate($clan);
 
-
-
         if ( $last_update_base == null)
             $last_update_base['updatedAt'] = null;
 
@@ -38,9 +36,9 @@ class DefaultController extends Controller
 
         if ( $user != null )
         {
-            if ($user->getLearned() == 0 && $user->getClanName() != null)
+            if ($user->getVisited() == 0 && $user->getClan()->getId() == $clan->getId())
             {
-                $user->setLearned(1);
+                $user->setVisited(1);
                 $em->persist($user);
                 $em->flush();
                 $display = true;

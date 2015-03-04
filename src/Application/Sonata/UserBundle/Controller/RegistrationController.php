@@ -58,14 +58,12 @@ class RegistrationController extends BaseController
             $user = $form->getData();
 
             // CREATE CLAN
-            if ( $form->get('clan')->getData() == null && $form->get('password')->getData() == null)
+            if ( $form->get('pass')->getData() != null && $form->get('clanName')->getData() != null )
             {
                 echo "==================> " .$request->request->get('clan') ;
                 echo "<br/> ====================> " . $request->request->get('password') ;
 
                 echo "<br> ==> " . $form->get('password')->getData();
-
-                die();
 
                 $em = $this->getDoctrine()->getManager();
                 $clan = new Clan();
@@ -222,8 +220,6 @@ class RegistrationController extends BaseController
                 $em->flush();
 
                 $player1 = new Player();
-                $player1->setPlayerUpdatedAt(new \DateTime());
-                $player1->setActivityUpdatedAt(new \DateTime());
                 $player1->setClan($clan);
                 $player1->setName($user->getUsername());
                 $player1->setHallTown(5);

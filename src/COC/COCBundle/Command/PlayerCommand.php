@@ -28,26 +28,29 @@ class PlayerCommand extends ContainerAwareCommand
         $output->writeln('<info>Newsletter process ended succesfully</info>');*/
 
         // Inside execute function
-       // $output->getFormatter()->setStyle('fcbarcelona', new OutputFormatterStyle('red', 'blue', array('blink', 'bold', 'underscore')));
-       // $output->writeln('<fcbarcelona>Messi for the win</fcbarcelona>');
+        // $output->getFormatter()->setStyle('fcbarcelona', new OutputFormatterStyle('red', 'blue', array('blink', 'bold', 'underscore')));
+        // $output->writeln('<fcbarcelona>Messi for the win</fcbarcelona>');
 
         $em = $this->getContainer()->get('doctrine')->getManager();
         $actualSeason = $em->getRepository('COCBundle:Season')->getActualSeason();
         $players = $em->getRepository('COCBundle:Player')->findAll();
-        $season = $em->getRepository('COCBundle:Season')->find(5);
 
-        print($season->getId());
+
+        $actualSeason = $em->getRepository('COCBundle:Season')->find(4);
+
+
         foreach ($players as $player)
         {
 
-
             $playerHistory = new PlayerHistory();
             $playerHistory->setClan($player->getClan());
-            $playerHistory->setSeason($season);
+            $playerHistory->setSeason($actualSeason);
             $playerHistory->setName($player->getName());
             $playerHistory->setLevel($player->getLevel());
             $playerHistory->setHallTown($player->getHallTown());
+            $playerHistory->setUpdatedAt(new \Datetime());
 
+            $playerHistory->setPlayer($player);
             $playerHistory->setAttackWon($player->getAttackWon());
             $playerHistory->setTroopSent($player->getTroopSent());
             $playerHistory->setTroopReceived($player->getTroopReceived());
@@ -138,9 +141,16 @@ class PlayerCommand extends ContainerAwareCommand
             $playerHistory->setPotionGreen($player->getPotionGreen());
 
 
+            $player->setTroopSent(0);
+            $player->setTroopReceived(0);
+            $player->setTrophy(0);
+            $player->setAttackWon(0);
+
+            $em->persist($player);
+            $em->flush();
 
 
-           // $output->writeln($playerHistory);
+            // $output->writeln($playerHistory);
             $em->persist($playerHistory);
             $em->flush();
 
@@ -149,3 +159,5 @@ class PlayerCommand extends ContainerAwareCommand
 
     }
 }
+
+

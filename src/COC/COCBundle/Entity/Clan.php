@@ -67,32 +67,6 @@ class Clan
     
     private $nameClan;
 
-    /**
-     * @ORM\Column(name="created_at", type="datetime", nullable=true)
-     */
-    private $createdAt;
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function updateDate()
-    {
-        $this->setCreatedAt(new \Datetime());
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     * @return Player
-     */
-    public function setCreatedAt($updatedAt)
-    {
-        $this->createdAt = $updatedAt;
-
-        return $this;
-    }
-
 
     /**
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Player", mappedBy="clan")
@@ -564,16 +538,6 @@ class Clan
         return (string)$this->name;
     }
 
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime 
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
 
 
 

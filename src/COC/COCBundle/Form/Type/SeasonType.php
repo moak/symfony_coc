@@ -26,14 +26,15 @@ class SeasonType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        echo  $this->clan->getCreated()->getTimestamp();
         $now = new \DateTime();
         $builder
             ->add('season', 'entity', array ('label' => 'label.previous_seasons','class' => 'COC\COCBundle\Entity\Season', 'property' => 'name', 'data' => 1, 'query_builder' => function(EntityRepository $er) use ($options) {
-                return $er->createQueryBuilder('p')
-                    ->where('p.start >= :createdAt')
-                    ->andWhere('p.end <= :actualSeason')
-                    ->orderBy('p.start', 'ASC')
-                    ->setParameter('createdAt', $this->clan->getCreatedAt())
+                return $er->createQueryBuilder('saison')
+                    ->where('saison.end >= :created')
+                    ->andWhere('saison.end <= :actualSeason')
+                    ->orderBy('saison.start', 'ASC')
+                    ->setParameter('created', $this->clan->getCreated())
                     ->setParameter('actualSeason', $this->actualSeason->getStart())
                     ;
             }, ))
