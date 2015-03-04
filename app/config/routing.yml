@@ -2,23 +2,25 @@ homepage:
     pattern:   /{_locale}
     defaults:  { _controller: VitrineBundle:Default:index, _locale: en }
     requirements:
-            _locale:  en|fr
+        _locale:  en|fr
+    options:
+         expose: true
 
 vitrine:
     resource: "@VitrineBundle/Resources/config/routing.yml"
     prefix:   /{_locale}
     requirements:
-                _locale: en|fr
+        _locale: en|fr
 
 admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
-    prefix:   /{_locale}/
+    prefix:   /{_locale}
     requirements:
-                _locale: en|fr
+        _locale: en|fr
 
 coc:
     resource: "@COCBundle/Resources/config/routing.yml"
-    prefix:   /{_locale}/
+    prefix:   /{_locale}
     requirements:
                 _locale: en|fr
 
@@ -50,7 +52,6 @@ BCCCronManagerBundle:
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
 
-# error-prevention
-homepage:
- pattern: /
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 

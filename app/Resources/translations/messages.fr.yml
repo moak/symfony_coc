@@ -91,7 +91,7 @@ notPlayerFound: Aucun joueur trouvé.
 
 player:
    name: Nom
-   level: Niv
+   level: Niveau
    defence: Défence
    attack: Attaque
    ht: HDV

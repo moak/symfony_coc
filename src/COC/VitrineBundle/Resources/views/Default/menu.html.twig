@@ -69,7 +69,20 @@
                     </li>
                 {% endif %}
 
-
+                <li class="lang">
+                    <ul class="nav navbar-nav">
+                        <div class="btn-group dropdown" id="lang-menu">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                English <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a onclick="changeLanguage('/', 'en');">English</a></li>
+                                <li><a onclick="changeLanguage('/', 'fr');">Français</a></li>
+                            </ul>
+                        </div>
+                    </ul>
+                    <i class="icon en"></i>
+                </li>
 
 
 

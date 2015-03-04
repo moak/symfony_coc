@@ -28,6 +28,11 @@ class AppKernel extends Kernel
 
             new Liip\ImagineBundle\LiipImagineBundle(),
 
+
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+
+
+
             new PunkAve\FileUploaderBundle\PunkAveFileUploaderBundle(),
 
             new BCC\CronManagerBundle\BCCCronManagerBundle(),
