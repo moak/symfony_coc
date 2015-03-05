@@ -34,6 +34,39 @@
         <title>Administration</title>
     {% endblock %}
 
+    <script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script
+    <script src="{{ asset('js/jquery.swipebox.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/sb-admin-2.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/metisMenu.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/intro.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/bootbox.min.js') }}"></script>
+
+    <script>
+        function changeLanguage(path, langue, supported) {
+            var DATA = "locale=" + langue;
+            $.ajax({
+                type: "POST",
+                url: Routing.generate('homepage', {'_locale': langue}),
+                data: DATA,
+                success: function (msg) {
+                    for (var key in supported) {
+                        if (path.indexOf(supported[key]) > -1) {
+                            var newPath = path.replace(supported[key], langue);
+                            location.href = newPath;
+                            return;
+                        }
+                    }
+                    location.href = path + langue;
+                    return false;
+                },
+                error: function (msg) {
+                    console.log(msg);
+                    return true;
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 
@@ -47,40 +80,9 @@
     </div>
     <!-- /#wrapper -->
 
-    <script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script
-    <script src="{{ asset('js/jquery.swipebox.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/sb-admin-2.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/metisMenu.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/intro.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/bootbox.min.js') }}"></script>
 
     {% block javascripts %}
-        <script>
-            function changeLanguage(path, langue, supported) {
-                var DATA = "locale=" + langue;
-                $.ajax({
-                    type: "POST",
-                    url: Routing.generate('homepage', {'_locale': langue}),
-                    data: DATA,
-                    success: function (msg) {
-                        for (var key in supported) {
-                            if (path.indexOf(supported[key]) > -1) {
-                                var newPath = path.replace(supported[key], langue);
-                                location.href = newPath;
-                                return;
-                            }
-                        }
-                        location.href = path + langue;
-                        return false;
-                    },
-                    error: function (msg) {
-                        console.log(msg);
-                        return true;
-                    }
-                });
-            }
-        </script>
+
     {% endblock %}
 </body>
 </html>
