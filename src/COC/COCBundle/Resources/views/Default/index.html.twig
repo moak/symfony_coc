@@ -176,7 +176,8 @@
                     for (var key in supported) {
                         if (path.indexOf(supported[key]) > -1) {
                             var newPath = path.replace(supported[key], langue);
-                            location.href = newPath;
+
+                            location.href =  newPath;
                             return;
                         }
                     }

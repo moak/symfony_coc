@@ -28,7 +28,9 @@ coc:
     resource: "@COCBundle/Resources/config/routing.yml"
     prefix:   /{_locale}
     requirements:
-                _locale: en|fr
+        _locale: en|fr
+    options:
+        expose: true
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
