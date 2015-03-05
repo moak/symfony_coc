@@ -61,7 +61,16 @@
             
             {% if players|length != 0 %}
                 {% for player in players %}
-                    <tr>
+                    {%  if app.user.player.id is defined %}
+                        {%  if app.user.player.id == player.id %}
+                        <tr data-name="{{ player.name }}" class="active">
+                        {% else %}
+                            <tr data-name="{{ player.name }}" >
+                        {% endif %}
+                    {% else %}
+                        <tr data-name="{{ player.name }}" >
+                    {% endif %}
+
                         <td class="text-center"> {{ loop.index }}</td>
                         <td class="text-center">{{ player.name }}</td>
                         <td class="text-center">{{ player.attackWon }}</td>
