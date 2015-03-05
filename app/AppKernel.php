@@ -21,18 +21,10 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
-
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-
             new Liip\ImagineBundle\LiipImagineBundle(),
-
-
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
-
-
-
             new PunkAve\FileUploaderBundle\PunkAveFileUploaderBundle(),
 
             new BCC\CronManagerBundle\BCCCronManagerBundle(),
@@ -40,6 +32,7 @@ class AppKernel extends Kernel
             new COC\COCBundle\COCBundle(),
             new COC\AdminBundle\AdminBundle(),
             new COC\VitrineBundle\VitrineBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
