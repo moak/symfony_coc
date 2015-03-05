@@ -28,6 +28,7 @@ class PlayerController extends Controller
 
         $form = $this->createForm(new SeasonType($clan, $actualSeason,  $em));
 
+
      //   $form = $this->get('form.factory')->create(new SeasonType($clan, $actualSeason, $this->getDoctrine()->getEntityManager());
        // $calculateInfosService = $this->container->get('coc_cocbundle.calculate_player_info') ;
 
@@ -46,12 +47,29 @@ class PlayerController extends Controller
 
             if($season == $seasonActuel)
             {
-                $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
+                if ( $type == 0 )
+                {
+                    $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
+                }
+
+                if ( $type == 1 )
+                {
+                    $players = $em->getRepository('COCBundle:Player')->getActivityAllPlayers($clan);
+                }
             }
             else
             {
-                $players = $em->getRepository('COCBundle:PlayerHistory')->findBySeason($season, $clan);
+                if ( $type == 0 )
+                {
+                    $players = $em->getRepository('COCBundle:PlayerHistory')->findBySeason($season, $clan);
+                }
+
+                if ( $type == 1 )
+                {
+                    $players = $em->getRepository('COCBundle:PlayerHistory')->findActivityBySeason($season, $clan);
+                }
             }
+
 
             if(!empty($players))
             {
@@ -68,7 +86,13 @@ class PlayerController extends Controller
                     return $this->render('COCBundle:Player:activity.html.twig', array('clan' => $clan, 'players' => null , 'form' => $form->createView() ));            }
         }
 
-        $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
+
+        if ( $type == 0 )
+            $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
+        if ( $type == 1 )
+            $players = $em->getRepository('COCBundle:Player')->getAllActivityPlayers($clan);
+
+
         if ($players)
         {
             if ( $type == 0)

@@ -166,6 +166,10 @@ player:
    gold: Gold
    elixir: Elexir
    activity: Activity
+   sent: Sent
+   received: Received
+   attack: Attacks
+   trop: Troph
 
 account:
     name: Account

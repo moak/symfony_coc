@@ -3,6 +3,14 @@ var myArrayTwo = []; // pseudo => id
 
 $( document ).ready(function(){
 
+    $('.activity').dataTable({
+        "order": [],
+        bFilter: false,
+        bPaginate: false,
+        bLengthChange: false,
+        bInfo: false
+    });
+
     // récupération des row à stocker
     $( ".expendables" ).each(function( index ) {
         myArray[index] = {

@@ -164,6 +164,10 @@ player:
    gold: Or
    elixir: Elixir
    activity: Activité
+   sent: Env
+   received: Rec
+   attack: Att
+   trop: Troph
 
 account:
     name: Compte
