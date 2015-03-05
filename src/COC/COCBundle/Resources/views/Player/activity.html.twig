@@ -62,7 +62,7 @@
             {% if players|length != 0 %}
                 {% for player in players %}
                     {%  if app.user.player.id is defined %}
-                        {%  if app.user.player.id == player.id %}
+                        {%  if app.user.player.name == player.name %}
                         <tr data-name="{{ player.name }}" class="active">
                         {% else %}
                             <tr data-name="{{ player.name }}" >

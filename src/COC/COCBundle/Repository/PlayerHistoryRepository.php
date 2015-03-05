@@ -129,7 +129,7 @@ class PlayerHistoryRepository extends EntityRepository
     public function findActivityBySeason($season, $clan)
     {
         $qb = $this->createQueryBuilder('p')
-            ->select('p.id, p.level, p.name, p.troopSent, p.troopReceived, p.attackWon, p.trophy, p.hallTown, p.updatedAt')
+            ->select('p.id, p.level, p.name, p.troopSent, p.troopReceived, p.attackWon, p.trophy, p.hallTown, p.updatedAt, p.name')
             ->where('p.season = :season')
             ->andWhere('p.clan = :clan')
             ->orderBy('p.attackWon', 'DESC')
