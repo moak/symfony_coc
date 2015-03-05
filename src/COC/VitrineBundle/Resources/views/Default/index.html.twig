@@ -20,11 +20,10 @@
                                 <li>
                                     <a href="{{ path('coc' , { 'id_clan': 1 }) }}" class="btn btn-default  btn-lg"><i class="fa fa-coffee"></i> {{ 'vitrine.demo'|trans }}</a>
                                 </li>
-                                <li>
-                                    <a href="{{ path('fos_user_registration_register', {'type' : 'create'}) }}" class="btn btn-default btn-lg"><i class="fa fa-check-circle"></i> {{ 'vitrine.create_clan'|trans }}</a>
-                                </li>
                             {% else %}
+
                                 <li><a href="{{ path('coc', {'id_clan' : app.user.clan.id }) }}" class="btn btn-default btn-lg">{{ 'vitrine.my_clan'|trans }}</a></li>
+
                             {% endif %}
                         </ul>
                     </div>
@@ -47,7 +46,15 @@
                     <h1 class="title-vitrine text-center supercell-font">{{ 'vitrine.create_clan2'|trans }}</h1>
                 </div>
             </div>
-
+            <br>
+            {% if not is_granted('ROLE_USER') and not is_granted('ROLE_ADMIN') %}
+                <div class="text-center">
+                    <a class="btn btn-vitrine supercell-font btn-success" href="{{ path('fos_user_registration_register', {'type' : 'create'}) }}"><i class="fa fa-plus-circle"></i> {{ 'vitrine.create_clan'|trans }}</a>
+                    <span class="supercell-font">{{ 'label.or'|trans }}</span>
+                    <a class="btn btn-vitrine supercell-font btn-success" href="{{ path('fos_user_registration_register', {'type' : 'join'}) }}"> <i class="fa fa-key"></i> {{ 'vitrine.join_clan'|trans }}</a>
+                </div>
+            {% endif %}
+<br>
 
             <div class="row">
                 <div class="step text-center col-md-4 col-sm-4 col-xs-12">
@@ -65,9 +72,6 @@
                 </div><!--//step-->
             </div><!--//row-->
 
-            {% if not is_granted('ROLE_USER') and not is_granted('ROLE_ADMIN') %}
-                <div class="text-center"><a class="btn btn-vitrine supercell-font btn-success" href="{{ path('fos_user_registration_register', {'type' : 'join'}) }}">{{ 'vitrine.join_clan'|trans }}</a></div>
-            {% endif %}
 
 
         </div><!--//container-->

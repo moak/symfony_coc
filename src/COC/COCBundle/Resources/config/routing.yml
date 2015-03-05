@@ -1,5 +1,5 @@
 coc:
-    path:     /coc/{id_clan}
+    path:     /{id_clan}
     defaults: { _controller: COCBundle:Default:index }
 
 

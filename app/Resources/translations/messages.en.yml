@@ -233,6 +233,7 @@ intro:
     feature2_description: Sort the members of your clan by trophies like in Clash of Clans, but also by levels, level of labotory or level of defences.
 
 label:
+    or: OR
     name: Title
     link: Youtube address
     create: Create

@@ -158,7 +158,9 @@ p.copyright {
 }
 
 .btn-vitrine {
-    padding: 20px 34px;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 20px ;
     border: 0 none;
     font-weight: 900;
     font-size: 1.3em;
@@ -192,8 +194,13 @@ p.copyright {
 @media (max-width: 480px)
 {
 
+    .btn-vitrine
+    {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
     h1 {
-        font-size: 20px;
+        font-size: 25px;
     }
 
     h2 {
@@ -204,6 +211,5 @@ p.copyright {
         font-size: 11px ;
     }
 }
-
 
 

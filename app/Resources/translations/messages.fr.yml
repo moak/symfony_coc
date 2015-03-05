@@ -232,6 +232,7 @@ intro:
     feature2_description: Classez les membres du clan par trophés comme sur Clash of Clans, mais aussi par niveaux de défence ou laboratoire.
 
 label:
+    or: OU
     name: Titre
     link: Lien youtube
     create: Ajouter
