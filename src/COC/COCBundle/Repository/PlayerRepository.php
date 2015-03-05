@@ -229,15 +229,10 @@ class PlayerRepository extends EntityRepository
             ((p.potion_green + 1) * p.potion_green / 2) +
             ((p.potion_freeze + 1) * p.potion_freeze / 2) ) * 4
             as total
-
-
-
             '
-
             )
 
             ->where('p.clan = :clan')
-
             ->setParameter('clan', $id_clan);
 
         return $qb->getQuery()->getResult();

@@ -105,7 +105,7 @@ p.copyright {
 /* ======= Steps ======= */
 .steps {
     padding-top: 40px;
-    padding-bottom: 60px;
+
 
 }
 
@@ -114,7 +114,7 @@ p.copyright {
     font-family:'Supercell-Magic', sans-serif;
     font-weight: 300;
     margin-top: 0;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
 }
 .steps .step {
     padding: 30px 60px;
@@ -123,7 +123,7 @@ p.copyright {
 .steps .step .title {
     text-align: center;
     font-size: 16px;
-    margin-bottom: 15px;
+
 }
 .steps .step .title .number {
     width: 90px;
@@ -146,7 +146,7 @@ p.copyright {
     font-size: 26px;
     font-weight: bold;
     font-family:'Supercell-Magic', sans-serif;
-    margin-bottom: 30px;
+
 }
 .steps .step .title .text {
     color: #f19180;
@@ -196,6 +196,14 @@ p.copyright {
 @media (max-width: 480px)
 {
 
+    .steps .title {
+        font-size: 36px;
+        font-family:'Supercell-Magic', sans-serif;
+        font-weight: 300;
+        margin-top: 0;
+
+    }
+
     .btn-vitrine
     {
         margin-top: 10px;
@@ -206,7 +214,7 @@ p.copyright {
     }
 
     h2 {
-        font-size: 23px;
+        font-size: 30px;
     }
    .btn-lg
    {
