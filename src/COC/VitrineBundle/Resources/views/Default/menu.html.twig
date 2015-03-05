@@ -26,23 +26,6 @@
                     <a href="#page-top"></a>
                 </li>
 
-                <li class="lang">
-                    <ul class="nav navbar-nav">
-                        <div class="btn-group dropdown" id="lang-menu">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                {{ app.request.locale }}<span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <a href="{{ path('homepage', { "_locale": "fr"}) }}"><img width="20px" height="20px" class="img-responsive" src="{{ ('images/fr.png') | imagine_filter('my_thumb') }}">Francais</a>
-                                <a href="{{ path('homepage', { "_locale": "en"}) }}"><img width="20px" height="20px" class="img-responsive" src="{{ ('images/en.png') | imagine_filter('my_thumb') }}">Anglais</a>
-                            </ul>
-                        </div>
-                    </ul>
-                    <i class="icon en"></i>
-                </li>
-
-
-
                 {% if is_granted('ROLE_USER') %}
                     {% if is_granted('ROLE_ADMIN') and app.user.clan is defined %}
                         <li><a target="_blank" href="{{ path('admin', {'id_clan': app.user.clan.id }) }}">Admin clan</a></li>
@@ -155,31 +138,6 @@
                 </li>
 
 
-                <li class="lang">
-                    <ul class="nav navbar-nav">
-                        <div class="btn-group dropdown" id="lang-menu">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                {% if (app.request.locale == "fr") %}
-                                    <img width="20px" height="20px" class="img-responsive" src="{{ ('images/fr.png') | imagine_filter('my_thumb') }}"> Francais
-                                {% else %}
-                                    <img width="20px" height="20px" class="img-responsive" src="{{ ('images/en.png') | imagine_filter('my_thumb') }}"> Anglais
-                                {% endif %}
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                {% if (app.request.locale == "fr") %}
-                                    <li><a onclick="changeLanguage('/', 'fr');"><img width="20px" height="20px" class="img-responsive" src="{{ ('images/fr.png') | imagine_filter('my_thumb') }}"> Francais</a></li>
-                                    <li><a onclick="changeLanguage('/', 'en');"><img width="20px" height="20px" class="img-responsive" src="{{ ('images/en.png') | imagine_filter('my_thumb') }}"> Anglais</a></li>
-                                {% else %}
-                                    <li><a onclick="changeLanguage('/', 'en');"><img width="20px" height="20px" class="img-responsive" src="{{ ('images/en.png') | imagine_filter('my_thumb') }}"> Anglais</a></li>
-
-                                    <li><a onclick="changeLanguage('/', 'fr');"><img width="20px" height="20px" class="img-responsive" src="{{ ('images/fr.png') | imagine_filter('my_thumb') }}"> Francais</a></li>
-                                {% endif %}
-
-                            </ul>
-                        </div>
-                    </ul>
-                    <i class="icon en"></i>
-                </li>
 
 
 
