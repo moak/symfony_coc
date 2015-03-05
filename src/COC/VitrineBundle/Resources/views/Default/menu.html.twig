@@ -73,11 +73,24 @@
                     <ul class="nav navbar-nav">
                         <div class="btn-group dropdown" id="lang-menu">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                English <span class="caret"></span>
+                                {% if (app.request.locale == "fr") %}
+                                   Francais
+                                {% else %}
+                                   Anglais
+                                {% endif %}
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a onclick="changeLanguage('/', 'en');">English</a></li>
-                                <li><a onclick="changeLanguage('/', 'fr');">Français</a></li>
+                                {% if (app.request.locale == "fr") %}
+                                    frrrr
+                                    <li><a onclick="changeLanguage('/', 'fr');">Francais</a></li>
+                                    <li><a onclick="changeLanguage('/', 'en');">Anglais</a></li>
+                                {% else %}
+                                    ennnggg
+                                    <li><a onclick="changeLanguage('/', 'en');">Anglais</a></li>
+
+                                    <li><a onclick="changeLanguage('/', 'fr');">Francais</a></li>
+                                {% endif %}
+
                             </ul>
                         </div>
                     </ul>
