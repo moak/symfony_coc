@@ -92,7 +92,6 @@
                         <li>
                             <a href="{{ path('admin_players', { 'id_clan': clan.id, 'type' : '0' }) }}">{{ 'menu.players_list'|trans }}</a>
                         </li>
-
                         <li>
                             <a href="{{ path('admin_player_add', { 'id_clan': clan.id }) }}"></i><i class="fa fa-user-plus"></i> {{ 'menu.player_add'|trans }}</a>
                         </li>
@@ -111,7 +110,6 @@
                         <li>
                             <a href="{{ path('admin_players_actual_season', { 'id_clan': clan.id }) }}">{{ 'menu.current_season'|trans }}</a>
                         </li>
-
                         <li>
                             <a href="">{{ 'menu.history_season'|trans }}</a>
                         </li>
@@ -136,19 +134,17 @@
                     <a href="{{ path('admin_bases', { 'id_clan': clan.id }) }}"><span class="badge">{{ numberBases5 + numberBases6 + numberBases7 + numberBases8 + numberBases9 + numberBases10 }}</span></i> {{ 'menu.bases'|trans }} </a>
                 </li>
 
-
-                    <li>
-                        <a href="#"><span class="badge">{{ numberVideos }}</span> {{ 'menu.videos'|trans }} <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="{{ path('admin_video_add', { 'id_clan': clan.id }) }}">{{ 'menu.video_add'|trans }}</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('admin_videos', { 'id_clan': clan.id }) }}">{{ 'menu.videos_list'|trans }}</a>
-                            </li>
-                        </ul>
-                    </li>
-
+                <li>
+                    <a href="#"><span class="badge">{{ numberVideos }}</span> {{ 'menu.videos'|trans }} <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="{{ path('admin_video_add', { 'id_clan': clan.id }) }}">{{ 'menu.video_add'|trans }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_videos', { 'id_clan': clan.id }) }}">{{ 'menu.videos_list'|trans }}</a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li>
                     <a href="{{ path('admin_bestAttacks', { 'id_clan': clan.id }) }}"><span class="badge">{{ numberBestAttacks }}</span></i> {{ 'menu.bestAttacks'|trans }}</a>
@@ -158,10 +154,6 @@
                     <a href="{{ path('admin_imagesBonus', { 'id_clan': clan.id }) }}"><span class="badge"> {{ numberImagesBonus }}  <i class="fa fa-picture-o"> </i></span></i> {{ 'menu.bonuses'|trans }} </a>
                 </li>
 
-
-
-
-
             </ul>
         </div>
         <!-- /.sidebar-collapse -->
@@ -169,32 +161,3 @@
     <!-- /.navbar-static-side -->
 </nav>
 
-{% block javascripts %}
-    <script>
-
-
-        function changeLanguage(path, langue, supported) {
-            var DATA = "locale=" + langue;
-            $.ajax({
-                type: "POST",
-                url: Routing.generate('homepage', {'_locale': langue}),
-                data: DATA,
-                success: function (msg) {
-                    for (var key in supported) {
-                        if (path.indexOf(supported[key]) > -1) {
-                            var newPath = path.replace(supported[key], langue);
-                            location.href = newPath;
-                            return;
-                        }
-                    }
-                    location.href = path + langue;
-                    return false;
-                },
-                error: function (msg) {
-                    console.log(msg);
-                    return true;
-                }
-            });
-        }
-    </script>
-{% endblock %}
