@@ -41,6 +41,7 @@ footer
 }
 
 
+
 .intro-header {
     font-family:'Supercell-Magic', sans-serif;
     text-align: center;
@@ -105,6 +106,7 @@ p.copyright {
 .steps {
     padding-top: 40px;
     padding-bottom: 60px;
+
 }
 
 .steps .title {

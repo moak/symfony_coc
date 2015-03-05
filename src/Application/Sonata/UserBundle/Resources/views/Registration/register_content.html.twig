@@ -6,7 +6,7 @@
     {% if type == "join" %}
         {{ 'fos.join'|trans }}
     {% else %}
-        {{ 'fos.register'|trans }}
+        {{ 'fos.create_clan'|trans }}
     {% endif %}
     </h2>
 </div>
@@ -14,11 +14,16 @@
 <div class="row">
 <div class="container">
     <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-        <div class="panel panel-info" >
+        <div class="panel panel-primary" >
             <div class="panel-heading">
-                <div class="panel-title">
+                <div class="panel-title hidden-sm hidden-xs">
                     <a href="#" class="btn btn-normal" onClick="displayButton('create')"><i class="fa fa-plus"></i> {{ 'fos.create_clan'|trans }}</a>
                     <a href="#" class="btn btn-normal pull-right" onClick="displayButton('join')"><i class="fa fa-arrow-right"></i> {{ 'fos.join_clan'|trans }}</a>
+                </div>
+                <div class="panel-title hidden-md hidden-lg">
+                    <a href="#" class="btn btn-normal btn-block" onClick="displayButton('create')"><i class="fa fa-plus"></i> {{ 'fos.create_clan'|trans }}</a>
+
+                    <a href="#" class="btn btn-normal btn-block" onClick="displayButton('join')"><i class="fa fa-arrow-right"></i> {{ 'fos.join_clan'|trans }}</a>
                 </div>
 
                 <!--<div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="{#path('fos_user_security_login') #}">login</a></div>-->

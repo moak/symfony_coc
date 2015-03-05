@@ -144,10 +144,46 @@
 
     <div class="banner" id="register">
 
-        <div class="container">
+        <div class="container hidden-lg hidden-md">
 
             <h2 class="text-center">Best clans</h2>
-<br>
+            <br>
+            <div class="row text-center">
+                <table class="table ">
+                    <thead>
+                    <tr>
+                        <th class="supercell-font white-on-black text-center"><i class="fa fa-star-o fa-lg hidden-sm hidden-xs"></i><i class="fa fa-star-half-o fa-lg hidden-sm hidden-xs"></i><i class="fa fa-star fa-lg"></i></th>
+                        <th class="supercell-font white-on-black text-center"></i> Clan</th>
+                        <th class="supercell-font white-on-black text-center"><i class="fa fa-heart fa-lg"></i></i> </th>
+                        <th class="supercell-font white-on-black text-center"><i class="fa fa-calculator fa-lg"></i> </th>
+                        <th class="supercell-font white-on-black text-center"> Update</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if clans|length != 0 %}
+                        {% for clan in clans %}
+                            <tr>
+                                <td class="supercell-font white-on-black text-center">{{ loop.index }}  </td>
+                                <td class="supercell-font white-on-black text-center">{{ clan.name }}</td>
+                                <td class="supercell-font white-on-black text-center">{{ clan.nbMember }}</td>
+                                <td class="supercell-font white-on-black text-center">{{ clan.total }}</td>
+                                <td class="supercell-font white-on-black text-center">{{ clan.updated|date('U')|timeago }}</td>
+
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+
+        <div class="container hidden-sm hidden-xs">
+
+            <h2 class="text-center">Best clans</h2>
+            <br>
             <div class="row text-center">
                 <table class="table ">
                     <thead>
@@ -156,6 +192,7 @@
                         <th class="supercell-font white-on-black text-center"><i class="fa fa-user fa-lg"></i> Clan</th>
                         <th class="supercell-font white-on-black text-center"><i class="fa fa-heart fa-lg"></i></i> Members</th>
                         <th class="supercell-font white-on-black text-center"><i class="fa fa-calculator fa-lg"></i> Total</th>
+                        <th class="supercell-font white-on-black text-center"><i class="fa fa-calculator fa-lg"></i> Last update</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -166,6 +203,8 @@
                                 <td class="supercell-font white-on-black text-center">{{ clan.name }}</td>
                                 <td class="supercell-font white-on-black text-center">{{ clan.nbMember }}</td>
                                 <td class="supercell-font white-on-black text-center">{{ clan.total }}</td>
+                                <td class="supercell-font white-on-black text-center">{{ clan.updated|date('U')|timeago }}</td>
+
                             </tr>
                         {% endfor %}
                     {% endif %}

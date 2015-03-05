@@ -63,6 +63,10 @@ class ImageBestAttackController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
+            $clan->setUpdated(new \Datetime());
+            $em->persist($clan);
+            $em->flush();
+
             $user = $this->get('security.context')->getToken()->getUser();
             $image->setUser($user);
             $image->setClan($user->getClan());

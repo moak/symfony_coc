@@ -2,6 +2,7 @@
 
 namespace COC\COCBundle\Controller;
 
+use COC\COCBundle\Entity\Clan;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserInterface;
 use COC\COCBundle\Entity\Player;
@@ -100,6 +101,10 @@ class PlayerController extends Controller
         if ($form->handleRequest($request)->isValid())
         {
 
+            $clan->setUpdated(new \Datetime());
+            $em->persist($clan);
+            $em->flush();
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($player);
             $em->flush();
@@ -158,6 +163,10 @@ class PlayerController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
+            $clan->setUpdated(new \Datetime());
+            $em->persist($clan);
+            $em->flush();
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($player);
             $em->flush();
