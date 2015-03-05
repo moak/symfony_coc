@@ -12,20 +12,22 @@ use COC\COCBundle\Form\Type\PlayerType;
 use COC\COCBundle\Form\Type\ActivityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Doctrine\ORM\EntityManager;
 
 class PlayerController extends Controller
 {
     public function indexAction(Request $request, $id_clan, $type)
     {
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->get('doctrine.orm.entity_manager');
         $actualSeason = $em->getRepository('COCBundle:Season')->getActualSeason();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         if ( $this->getUser() == null && $clan->getPrivacy() == 1)
             throw $this->createNotFoundException('This page does not exist.');
 
+        $form = $this->createForm(new SeasonType($clan, $actualSeason,  $em));
 
-        $form = $this->get('form.factory')->create(new SeasonType($clan, $actualSeason), null);
+     //   $form = $this->get('form.factory')->create(new SeasonType($clan, $actualSeason, $this->getDoctrine()->getEntityManager());
        // $calculateInfosService = $this->container->get('coc_cocbundle.calculate_player_info') ;
 
         if ($request->isMethod('POST'))

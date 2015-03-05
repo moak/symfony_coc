@@ -288,3 +288,7 @@ phone:
     bestAttacks: Meilleures attaques
     bases: Toutes les bases
     activity: Activité des joueurs
+
+language:
+    french: Français
+    english: Anglais

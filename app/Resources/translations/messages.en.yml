@@ -292,3 +292,7 @@ phone:
     bestAttacks: Best attacks
     bases: Best bases
     activity: Activity ranking
+
+language:
+    french: French
+    english: English

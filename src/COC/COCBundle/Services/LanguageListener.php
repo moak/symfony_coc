@@ -53,7 +53,8 @@ class LanguageListener
         if (!in_array($path[$position], $supportedLanguage)) {
             $locale = $this->userParams->getLocale(false);
 
-echo "Pas dans url, locale => " . $locale;
+        //echo "Pas dans url, locale => " . $locale;
+
             if ($locale == null) {
                 // navigateur
                 $locale = $request->getPreferredLanguage($supportedLanguage);
@@ -65,7 +66,7 @@ echo "Pas dans url, locale => " . $locale;
         } else {
 
             $locale = $path[$position];
-            echo "Dans url, locale => " . $locale;
+            //echo "Dans url, locale => " . $locale;
         }
 
 
