@@ -23,6 +23,8 @@ admin:
     prefix:   /{_locale}
     requirements:
         _locale: en|fr
+    options:
+            expose: true
 
 coc:
     resource: "@COCBundle/Resources/config/routing.yml"
