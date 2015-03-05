@@ -3,15 +3,15 @@ var myArrayTwo = []; // pseudo => id
 
 $( document ).ready(function(){
 
-	// récupération des row à stocker
-	$( ".expendables" ).each(function( index ) {
-		myArray[index] = {
+    // récupération des row à stocker
+    $( ".expendables" ).each(function( index ) {
+        myArray[index] = {
             name : $(this).attr('id'),
             html : $(this).find('td').html(),
             score : $(this).data('total-points'),
             position : ""
         }
-	});
+    });
 
     $(".expendables").remove();
 
@@ -28,36 +28,69 @@ $( document ).ready(function(){
         $(this).find(".position").html(myArray[myArrayTwo[$(this).data('name')]]["position"]);
     });
 
-	// génération du DataTable
-	var table = $('.datatable').DataTable(
-		{
-			columnDefs: [{ targets: 'no-sort', orderable: false }],
-			order: [[ 1, "asc" ]],
-			bFilter: false,
-			bPaginate: false,
-    		bLengthChange: false,
-    		bInfo: false
-		}
-	);
-	
-	// activation / desactivation des tr en plus
-	$( "body" ).on( "click", ".expand", function() {	
-		var tr = $(this).closest('tr');
-		var row = table.row( tr );
- 
-		if ( row.child.isShown() ) {
-			$(this).removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
-			// This row is already open - close it
-			row.child.hide();
-			tr.removeClass('shown');
-		}
-		else {
-			// Open this row
-			$(this).removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign');
-			row.child( myArray[myArrayTwo[$(this).data('name')]]["html"] ).show();
-			tr.addClass('shown');
-		}
-	});
+    // génération du DataTable
+    var table = $('.datatable').DataTable(
+        {
+            columnDefs: [{ targets: 'no-sort', orderable: false }],
+            order: [[ 1, "asc" ]],
+            bFilter: false,
+            bPaginate: false,
+            bLengthChange: false,
+            bInfo: false
+        }
+    );
+
+    // génération du DataTable
+    var table_mini = $('.datatable-mini').DataTable(
+        {
+            columnDefs: [{ targets: 'no-sort', orderable: false }],
+            order: [[ 0, "asc" ]],
+            bFilter: false,
+            bPaginate: false,
+            bLengthChange: false,
+            bInfo: false
+        }
+    );
+
+    // activation / desactivation des tr en plus
+    $( "body" ).on( "click", ".expand", function() {
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+
+        if ( row.child.isShown() ) {
+            $(this).removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+            tr.next('tr').removeClass('tr-full');
+        }
+        else {
+            // Open this row
+            $(this).removeClass('glyphicon-plus-sign').addClass('glyphicon-minus-sign');
+            row.child( myArray[myArrayTwo[$(this).data('name')]]["html"] ).show();
+            tr.addClass('shown');
+            tr.next('tr').addClass('tr-full');
+        }
+    });
+
+    // activation / desactivation des tr en plus (MINI VERSION)
+    $( "body" ).on( "click", ".expand-mini", function() {
+        var tr = $(this).closest('tr');
+        var row = table_mini.row( tr );
+
+        if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+            tr.next('tr').removeClass('tr-mini');
+        }
+        else {
+            // Open this row
+            row.child( myArray[myArrayTwo[$(this).data('name')]]["html"] ).show();
+            tr.addClass('shown');
+            tr.next('tr').addClass('tr-mini');
+        }
+    });
 
 });
 
