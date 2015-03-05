@@ -238,6 +238,19 @@ class PlayerRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+
+    public function getAllActivityPlayers($id_clan)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->select('p.id, p.level, p.name, p.troopSent, p.troopReceived, p.attackWon, p.trophy, p.updatedAt')
+            ->where('p.clan = :clan')
+            ->orderBy('p.attackWon', 'DESC')
+            ->setParameter('clan', $id_clan);
+
+        return $qb->getQuery()->getResult();
+    }
+
+
     public function getTotalAttack()
     {
         $qb = $this->createQueryBuilder('p');
