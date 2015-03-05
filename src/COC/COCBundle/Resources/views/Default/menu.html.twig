@@ -89,17 +89,18 @@
                     </a>
 
                     <ul class="dropdown-menu" role="menu">
-                        <li><a onclick="changeLanguage('/', 'fr');">
-                                <div>
-                                    <img style="width:20px;height:20px;vertical-align:middle" src="{{ asset('images/fr.png') }}" >
-                                    <span style=""> {{ 'language.french'|trans }}</span>
-                                </div>
-                            </a>
-                        </li>
+
                         <li><a onclick="changeLanguage('/', 'en');">
                                 <div>
                                     <img style="width:20px;height:20px;vertical-align:middle" src="{{ asset('images/en.png') }}" >
                                     <span style=""> {{ 'language.english'|trans }}</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li><a onclick="changeLanguage('/', 'fr');">
+                                <div>
+                                    <img style="width:20px;height:20px;vertical-align:middle" src="{{ asset('images/fr.png') }}" >
+                                    <span style=""> {{ 'language.french'|trans }}</span>
                                 </div>
                             </a>
                         </li>
