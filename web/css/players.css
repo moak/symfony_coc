@@ -1,56 +1,138 @@
-.classement-list p{
-	width: 20%;
-	display: inline-block;
+/*
+FULL TABLE
+}*/
+
+.datatable .cannon span,
+.datatable .mortar span,
+.datatable .arc-x span,
+.datatable .inferno span,
+.datatable .wizard span,
+.datatable .archer-tower span,
+.datatable .tesla span,
+.datatable .anti-air span{
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 40px;
 }
 
-.classement-list .cannon span, 
-.classement-list .mortar span, 
-.classement-list .arc-x span, 
-.classement-list .inferno span, 
-.classement-list .wizard span,
-.classement-list .archer-tower span,
-.classement-list .tesla span,
-.classement-list .anti-air span{
-	position: absolute;
-	margin-top: 5px;
-	margin-left: 40px;
+.datatable .archer-tower img,
+.datatable .anti-air img{
+    width: 25px;
 }
 
-.classement-list .archer-tower img,
-.classement-list .anti-air img{
-	width: 25px;
+.datatable .tesla img,
+.datatable .wizard img,
+.datatable .inferno img{
+    width: 36px;
 }
 
-.classement-list .tesla img,
-.classement-list .wizard img,
-.classement-list .inferno img{
-	width: 36px;
+.datatable .cannon img,
+.datatable .mortar img,
+.datatable .arc-x img{
+    width: 35px;
 }
 
-.classement-list .cannon img,
-.classement-list .mortar img,
-.classement-list .arc-x img{
-	width: 35px;
+.datatable .exp-title{
+    /*font-size: 11px;*/
 }
 
-.exp-title{
-	/*font-size: 11px;*/
+.datatable .portrait{
+    display: inline-block;
+}
+.datatable .portrait div{
+    position: relative;
+    color : white;
+    top: 44px;
+    left: 7px;
 }
 
-.portrait{
-	display: inline-block;
-}
-.portrait div{
-	position: relative;
-	color : white;
-	top: 44px;
-	left: 7px;
+.datatable .expendables{
+    /*background-color: rgba(80, 232, 77, 0.2)*/
 }
 
-.expendables{
-	/*background-color: rgba(80, 232, 77, 0.2)*/
+.datatable .expendables h5{
+    margin-left : 17px;
 }
 
-.expendables h5{
-	margin-left : 17px;
+
+.datatable .expand-title {
+    position: relative;
+    left: 18px;
+}
+
+
+/*
+MINI TABLE
+}*/
+
+.datatable-mini .tr-mini,
+.datatable .tr-full{
+    background-color: rgba(230, 230, 230, 0.5) !important;
+}
+
+.datatable-mini .cannon span,
+.datatable-mini .mortar span,
+.datatable-mini .arc-x span,
+.datatable-mini .inferno span,
+.datatable-mini .wizard span,
+.datatable-mini .archer-tower span,
+.datatable-mini .tesla span,
+.datatable-mini .anti-air span{
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 38px;
+}
+
+.datatable-mini .archer-tower img,
+.datatable-mini .anti-air img{
+    width: 25px;
+}
+
+.datatable-mini .tesla img,
+.datatable-mini .wizard img,
+.datatable-mini .inferno img{
+    width: 36px;
+}
+
+.datatable-mini .cannon img,
+.datatable-mini .mortar img,
+.datatable-mini .arc-x img{
+    width: 35px;
+}
+
+.datatable-mini .exp-title{
+    /*font-size: 11px;*/
+}
+
+.datatable-mini .portrait{
+    display: inline-block;
+    margin-bottom : 5px;
+    font-size : 0.7em;
+}
+.datatable-mini .portrait div{
+    position: relative;
+    color : white;
+    top: 40px;
+    left: 7px;
+}
+.datatable-mini .portrait img{
+    width : 40px;
+}
+
+.datatable-mini .expendables{
+    /*background-color: rgba(80, 232, 77, 0.2)*/
+}
+
+.datatable-mini .expendables h5{
+    margin-left : 17px;
+}
+
+
+.datatable-mini .expand-title {
+    position: relative;
+    left: 18px;
+}
+
+.datatable-mini th{
+    text-align: center;
 }
