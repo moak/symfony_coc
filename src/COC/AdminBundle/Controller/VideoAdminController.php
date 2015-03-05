@@ -103,7 +103,7 @@ class VideoAdminController extends Controller
         $em = $this->getDoctrine()->getManager();
         $video = $em->getRepository('COCBundle:Video')->find($id);
 
-        if ( $video  == null || $this->getUser()->getClan()->getId() != $video->getUser->getClan()->getId() )
+        if ( $video  == null || $this->getUser()->getClan()->getId() != $video->getUser()->getClan()->getId() )
         {
             throw $this->createNotFoundException('Page not found');
         }

@@ -19,7 +19,7 @@ class User extends BaseUser
 {
     /**
      * @ORM\OneToOne(targetEntity="COC\COCBundle\Entity\Player", mappedBy="user", cascade={"persist"})
-     * @ORM\JoinColumn(name="player_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      **/
     private $player;
 

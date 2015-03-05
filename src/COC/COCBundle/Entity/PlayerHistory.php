@@ -22,7 +22,7 @@ class PlayerHistory
 
     /**
      * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Player", inversedBy="playerhistories")
-     * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id", onDelete="SET NULL")
      */
     protected $player;
 

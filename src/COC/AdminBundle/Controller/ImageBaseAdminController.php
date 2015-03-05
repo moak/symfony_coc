@@ -78,15 +78,13 @@ class ImageBaseAdminController extends Controller
     public function deleteAction($id, $id_clan)
     {
         $em = $this->getDoctrine()->getManager();
-        $war = $em->getRepository('COCBundle:War')->find($id);
+        $imageBase = $em->getRepository('COCBundle:ImageBase')->find($id);
 
-        if ( $war  == null || $this->getUser()->getClan()->getId() != $war->getClan()->getId() )
+        if ( $imageBase  == null || $this->getUser()->getClan()->getId() != $imageBase->getUser()->getClan()->getId() )
         {
             throw $this->createNotFoundException('Page not found');
         }
 
-        $em = $this->getDoctrine()->getManager();
-        $imageBase = $em->getRepository('COCBundle:ImageBase')->find($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         if(!$imageBase || $this->getUser()->getClan()->getId() != $id_clan)

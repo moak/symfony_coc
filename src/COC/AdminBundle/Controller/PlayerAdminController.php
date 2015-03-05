@@ -38,6 +38,7 @@ class PlayerAdminController extends Controller
         $form = $this->get('form.factory')->create(new SeasonType($clan, $actualSeason), null);
         $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
 
+        var_dump($players);
         if ($players)
         {
             return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('clan' => $clan , 'players' => $players , 'form' => $form->createView() ));
