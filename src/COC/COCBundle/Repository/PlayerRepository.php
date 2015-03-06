@@ -133,7 +133,7 @@ class PlayerRepository extends EntityRepository
             )
 
             ->where('p.clan = :clan')
-            ->orderBy('updatedAt', 'DESC')
+            ->orderBy('p.updatedAt', 'DESC')
             ->setParameter('clan', $clan)
             ->setMaxResults( 5 );
 
