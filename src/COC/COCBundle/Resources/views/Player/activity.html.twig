@@ -48,13 +48,13 @@
         <table class="table table-responsive table-striped activity ">
             <thead>
                 <tr>
-                    <th class="supercell-font text-center">#</th>
-                    <th class="supercell-font text-center">{{ 'player.name'|trans }}</th>
-                    <th class="supercell-font text-center">{{ 'player.attack'|trans }}</th>
-                    <th class="supercell-font text-center"> <i class="fa fa-trophy"></i> {{ 'player.trop'|trans }}</th>
-                    <th class="supercell-font text-center">{{ 'player.received'|trans }}</th>
-                    <th class="supercell-font text-center">{{ 'player.sent'|trans }} </th>
-                    <th class="supercell-font text-center">{{ 'player.updated'|trans }}</th>
+                    <th class="supercell-font">#</th>
+                    <th class="supercell-font">{{ 'player.name'|trans }}</th>
+                    <th class="supercell-font">{{ 'player.attack'|trans }}</th>
+                    <th class="supercell-font"> <i class="fa fa-trophy"></i> {{ 'player.trop'|trans }}</th>
+                    <th class="supercell-font">{{ 'player.received'|trans }}</th>
+                    <th class="supercell-font">{{ 'player.sent'|trans }} </th>
+                    <th class="supercell-font">{{ 'player.updated'|trans }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -71,14 +71,14 @@
                         <tr data-name="{{ player.name }}" >
                     {% endif %}
 
-                        <td class="text-center"> {{ loop.index }}</td>
-                        <td class="text-center">{{ player.name }}</td>
-                        <td class="text-center">{{ player.attackWon }}</td>
-                        <td class="text-center">{{ player.trophy }}</td>
-                        <td class="text-center">{{ player.troopReceived }}</td>
-                        <td class="text-center">{{ player.troopSent }}</td>
+                        <td class=""> {{ loop.index }}</td>
+                        <td class="">{{ player.name }}</td>
+                        <td class="">{{ player.attackWon }}</td>
+                        <td class="">{{ player.trophy }}</td>
+                        <td class="">{{ player.troopReceived }}</td>
+                        <td class="">{{ player.troopSent }}</td>
 
-                        <td class="text-center">{{ player.updatedAt|date('U')|timeago }}</td>
+                        <td class="">{{ player.updatedAt|date('U')|timeago }}</td>
                     </tr>
                 {% endfor %}
             {% else %}
