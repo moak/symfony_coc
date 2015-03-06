@@ -277,6 +277,7 @@ label:
     min: min
     edit_activity: Editer mon activité
     last_update: Modifié il y'a
+    last_updates: Dernières mises à jour
 
 admin:
     msg1: Bienvenue sur l'administration de votre clan !

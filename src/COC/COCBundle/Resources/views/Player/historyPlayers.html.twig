@@ -1,6 +1,6 @@
     <div class="panel panel-default">
         <div class="panel-heading">
-            <p class="supercell-font"> {{ 'menu.best_players'|trans }} </p>
+            <p class="supercell-font"> <i class="fa fa-refresh"></i>  {{ 'label.last_updates'|trans }} </p>
         </div>
         <!-- /.panel-heading -->
         <div class="panel-body">
@@ -9,7 +9,7 @@
                     <table class="table classement-list datatable">
                         <thead>
                             <tr>
-                                <th></th>
+
                                 <th class="supercell-font">{{ 'player.name'|trans }}</th>
                                 <th class="supercell-font">{{ 'player.level'|trans }}</th>
                                 <th class="supercell-font">{{ 'player.ht'|trans }}</th>
@@ -19,8 +19,7 @@
                         </thead>
                         <tbody>
                         {% for player in players %}
-                            <tr data-name="{{ player.name }}" class="positionable">
-                                <td>{{ loop.index }}</td>
+                            <tr>
                                 <td>{{ player.name }}</td>
                                 <td>{{ player.level }}</td>
                                 <td>{{ player.hallTown }}</td>
