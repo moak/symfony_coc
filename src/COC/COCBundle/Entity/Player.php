@@ -8,8 +8,10 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * UserInfo
  *
  * @ORM\Table(name="player")
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\PlayerRepository")
  * @ORM\HasLifecycleCallbacks()
+
  */
 class Player
 {
@@ -20,8 +22,14 @@ class Player
     private $created;
 
     /**
-     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
+     */
+    private $deletedAt;
+
+
+    /**
      * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
 
@@ -2727,4 +2735,27 @@ class Player
 
 
 
+
+    /**
+     * Set deletedAt
+     *
+     * @param \DateTime $deletedAt
+     * @return Player
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime 
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
 }

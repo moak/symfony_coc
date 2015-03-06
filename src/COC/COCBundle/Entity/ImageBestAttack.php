@@ -13,6 +13,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * ImageBestAttack
  *
  * @ORM\Table(name="imagebestattack")
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\ImageBestAttackRepository")
  */
 class ImageBestAttack
@@ -30,6 +31,10 @@ class ImageBestAttack
      */
     protected $user;
 
+    /**
+     * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
+     */
+    private $deletedAt;
 
     /**
      * @Gedmo\Timestampable(on="create")
@@ -94,14 +99,14 @@ class ImageBestAttack
     /**
      * @var integer
      *
-     * @ORM\Column(name="gold", type="integer")
+     * @ORM\Column(name="gold", type="integer", nullable=true)
      */
     private $gold;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="elixir", type="integer")
+     * @ORM\Column(name="elixir", type="integer", nullable=true)
      */
     private $elixir;
 
@@ -305,5 +310,28 @@ class ImageBestAttack
     public function getClan()
     {
         return $this->clan;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param \DateTime $deletedAt
+     * @return ImageBestAttack
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime 
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
     }
 }

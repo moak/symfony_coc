@@ -13,6 +13,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * ImageBase
  *
  * @ORM\Table(name="imagebase")
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\ImageBaseRepository")
  */
 class ImageBase
@@ -65,6 +66,11 @@ class ImageBase
      */
     private $created;
 
+
+    /**
+     * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
+     */
+    private $deletedAt;
 
     /**
      * @Gedmo\Timestampable(on="update")
@@ -244,5 +250,28 @@ class ImageBase
     public function getClan()
     {
         return $this->clan;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param \DateTime $deletedAt
+     * @return ImageBase
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime 
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
     }
 }

@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Clan
  *
  * @ORM\Table(name="clan")
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\ClanRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -25,6 +26,11 @@ class Clan
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
+     */
+    private $deletedAt;
 
     /**
      * @var integer
@@ -47,6 +53,21 @@ class Clan
      * @ORM\Column(name="privacy", type="integer" ))
      */
     private $privacy;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="level", type="integer" ))
+     */
+    private $level;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Image", inversedBy="clans", cascade={"persist"})
+     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     */
+    private $image;
+
+
 
     /**
      * @Gedmo\Timestampable(on="create")
@@ -677,5 +698,74 @@ class Clan
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param \DateTime $deletedAt
+     * @return Clan
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime 
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * Set level
+     *
+     * @param integer $level
+     * @return Clan
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * Get level
+     *
+     * @return integer 
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \COC\COCBundle\Entity\Image $image
+     * @return Clan
+     */
+    public function setImage(\COC\COCBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \COC\COCBundle\Entity\Image 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

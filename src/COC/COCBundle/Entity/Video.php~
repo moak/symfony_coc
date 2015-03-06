@@ -3,11 +3,13 @@
 namespace COC\COCBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Video
  *
  * @ORM\Table(name="video")
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\VideoRepository")
  * @ORM\HasLifecycleCallbacks()
  */
@@ -27,7 +29,11 @@ class Video
      */
     private $user;
 
+
+
+
     /**
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
     private $createdAt;
@@ -236,6 +242,11 @@ class Video
 
         return $this;
     }
+
+    /**
+     * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
+     */
+    private $deletedAt;
 
     /**
      * Get clan

@@ -45,6 +45,12 @@ class Image
     private $imagebonuses;
 
     /**
+     * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Clan", mappedBy="image", cascade={"persist"})
+     **/
+    private $clans;
+
+
+    /**
      * @ORM\PostLoad()
      */
     public function postLoad()
@@ -315,5 +321,38 @@ class Image
     public function getImagebonuses()
     {
         return $this->imagebonuses;
+    }
+
+    /**
+     * Add clans
+     *
+     * @param \COC\COCBundle\Entity\Clan $clans
+     * @return Image
+     */
+    public function addClan(\COC\COCBundle\Entity\Clan $clans)
+    {
+        $this->clans[] = $clans;
+
+        return $this;
+    }
+
+    /**
+     * Remove clans
+     *
+     * @param \COC\COCBundle\Entity\Clan $clans
+     */
+    public function removeClan(\COC\COCBundle\Entity\Clan $clans)
+    {
+        $this->clans->removeElement($clans);
+    }
+
+    /**
+     * Get clans
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getClans()
+    {
+        return $this->clans;
     }
 }

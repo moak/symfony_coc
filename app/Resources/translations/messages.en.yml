@@ -1,3 +1,9 @@
+form:
+    gold: Gold
+    elixir: Elexir
+    image: Image *
+    title: Title *
+
 menu:
     go_site: Go on website
     visibility: Clan's visibility
