@@ -55,12 +55,12 @@ class PlayerRepository extends EntityRepository
 
             p.updatedAt,
 
-            (p.mortar1 + 1) * p.mortar1 / 2 + (p.mortar2 + 1) * p.mortar2 / 2 + (p.mortar3 + 1) * p.mortar3 / 2 + (p.mortar4+ 1) * p.mortar4 / 2 +
-            (p.inferno1 + 1) * p.inferno1 / 2 + (p.inferno2 + 1) * p.inferno1 / 2 +
-            (p.tesla1 + 1) * p.tesla1 / 2 + (p.tesla2 + 1) * p.tesla2 / 2 + (p.tesla3 + 1) * p.tesla3 / 2 + (p.tesla4 + 1) * p.tesla4 / 2 +
-            (p.arcx1 + 1) * p.arcx1 / 2 + (p.arcx2 + 1) * p.arcx2 / 2 + (p.arcx3 + 1) * p.arcx3 / 2 +
+           (p.mortar1 + 1) * p.mortar1 / 2 + (p.mortar2 + 1) * p.mortar2 / 2 + (p.mortar3 + 1) * p.mortar3 / 2 + (p.mortar4+ 1) * p.mortar4 / 2 +
+            ((p.inferno1 + 1) * p.inferno1 / 2) * 3 + ((p.inferno2 + 1) * p.inferno1 / 2 ) * 3 +
+            ((p.tesla1 + 1) * p.tesla1 / 2) * 2 + ((p.tesla2 + 1) * p.tesla2 / 2) * 2 + ((p.tesla3 + 1) * p.tesla3 / 2) * 2 + ((p.tesla4 + 1) * p.tesla4 / 2) * 2 +
+            ((p.arcx1 + 1) * p.arcx1 / 2) * 3 + ((p.arcx2 + 1) * p.arcx2 / 2) * 3 + ((p.arcx3 + 1) * p.arcx3 / 2) * 3 +
             (p.air_defence1 + 1) * p.air_defence1 / 2 + (p.air_defence2 + 1) * p.air_defence2 / 2 + (p.air_defence3 + 1) * p.air_defence3 / 2 + (p.air_defence4+ 1) * p.air_defence4 / 2 +
-            (p.tower_magic1 + 1) * p.tower_magic1 / 2 + (p.tower_magic2 + 1) * p.tower_magic2 / 2 + (p.tower_magic3 + 1) * p.tower_magic3 / 2 + (p.tower_magic4+ 1) * p.tower_magic4 / 2 +
+            ((p.tower_magic1 + 1) * p.tower_magic1 / 2) * 2.5 + ((p.tower_magic2 + 1) * p.tower_magic2 / 2) * 2.5 + ((p.tower_magic3 + 1) * p.tower_magic3 / 2) * 2.5 + ((p.tower_magic4+ 1) * p.tower_magic4 / 2) * 2.5 +
             (p.canon1 + 1) * p.canon1 / 2 + (p.canon2 + 1) * p.canon2 / 2 + (p.canon3 + 1) * p.canon3 / 2 + (p.canon4+ 1) * p.canon4 / 2 + (p.canon5+ 1) * p.canon5 / 2 + (p.canon6+ 1) * p.canon6 / 2 +
             (p.tower_archer1 + 1) * p.tower_archer1 / 2 + (p.tower_archer2 + 1) * p.tower_archer2 / 2 + (p.tower_archer3 + 1) * p.tower_archer3 / 2 + (p.tower_archer4+ 1) * p.tower_archer4 / 2 + (p.tower_archer5+ 1) * p.tower_archer5 / 2 + (p.tower_archer6+ 1) * p.tower_archer6 / 2 + (p.tower_archer7+ 1) * p.tower_archer7 / 2
 
@@ -159,12 +159,12 @@ class PlayerRepository extends EntityRepository
 
              p.updatedAt,
 
-            (p.mortar1 + 1) * p.mortar1 / 2 + (p.mortar2 + 1) * p.mortar2 / 2 + (p.mortar3 + 1) * p.mortar3 / 2 + (p.mortar4+ 1) * p.mortar4 / 2 +
+           (p.mortar1 + 1) * p.mortar1 / 2 + (p.mortar2 + 1) * p.mortar2 / 2 + (p.mortar3 + 1) * p.mortar3 / 2 + (p.mortar4+ 1) * p.mortar4 / 2 +
             ((p.inferno1 + 1) * p.inferno1 / 2) * 3 + ((p.inferno2 + 1) * p.inferno1 / 2 ) * 3 +
-            ((p.tesla1 + 1) * p.tesla1 / 2) * 2.5 + ((p.tesla2 + 1) * p.tesla2 / 2) * 2.5 + ((p.tesla3 + 1) * p.tesla3 / 2) * 2.5 + ((p.tesla4 + 1) * p.tesla4 / 2) * 2.5 +
+            ((p.tesla1 + 1) * p.tesla1 / 2) * 2 + ((p.tesla2 + 1) * p.tesla2 / 2) * 2 + ((p.tesla3 + 1) * p.tesla3 / 2) * 2 + ((p.tesla4 + 1) * p.tesla4 / 2) * 2 +
             ((p.arcx1 + 1) * p.arcx1 / 2) * 3 + ((p.arcx2 + 1) * p.arcx2 / 2) * 3 + ((p.arcx3 + 1) * p.arcx3 / 2) * 3 +
             (p.air_defence1 + 1) * p.air_defence1 / 2 + (p.air_defence2 + 1) * p.air_defence2 / 2 + (p.air_defence3 + 1) * p.air_defence3 / 2 + (p.air_defence4+ 1) * p.air_defence4 / 2 +
-            ((p.tower_magic1 + 1) * p.tower_magic1 / 2) * 1.5 + ((p.tower_magic2 + 1) * p.tower_magic2 / 2) * 1.5 + ((p.tower_magic3 + 1) * p.tower_magic3 / 2) * 1.5 + ((p.tower_magic4+ 1) * p.tower_magic4 / 2) * 1.5 +
+            ((p.tower_magic1 + 1) * p.tower_magic1 / 2) * 2.5 + ((p.tower_magic2 + 1) * p.tower_magic2 / 2) * 2.5 + ((p.tower_magic3 + 1) * p.tower_magic3 / 2) * 2.5 + ((p.tower_magic4+ 1) * p.tower_magic4 / 2) * 2.5 +
             (p.canon1 + 1) * p.canon1 / 2 + (p.canon2 + 1) * p.canon2 / 2 + (p.canon3 + 1) * p.canon3 / 2 + (p.canon4+ 1) * p.canon4 / 2 + (p.canon5+ 1) * p.canon5 / 2 + (p.canon6+ 1) * p.canon6 / 2 +
             (p.tower_archer1 + 1) * p.tower_archer1 / 2 + (p.tower_archer2 + 1) * p.tower_archer2 / 2 + (p.tower_archer3 + 1) * p.tower_archer3 / 2 + (p.tower_archer4+ 1) * p.tower_archer4 / 2 + (p.tower_archer5+ 1) * p.tower_archer5 / 2 + (p.tower_archer6+ 1) * p.tower_archer6 / 2 + (p.tower_archer7+ 1) * p.tower_archer7 / 2
 
@@ -196,12 +196,12 @@ class PlayerRepository extends EntityRepository
 
             as totalAttack,
 
-            (p.mortar1 + 1) * p.mortar1 / 2 + (p.mortar2 + 1) * p.mortar2 / 2 + (p.mortar3 + 1) * p.mortar3 / 2 + (p.mortar4+ 1) * p.mortar4 / 2 +
+           (p.mortar1 + 1) * p.mortar1 / 2 + (p.mortar2 + 1) * p.mortar2 / 2 + (p.mortar3 + 1) * p.mortar3 / 2 + (p.mortar4+ 1) * p.mortar4 / 2 +
             ((p.inferno1 + 1) * p.inferno1 / 2) * 3 + ((p.inferno2 + 1) * p.inferno1 / 2 ) * 3 +
-            ((p.tesla1 + 1) * p.tesla1 / 2) * 2.5 + ((p.tesla2 + 1) * p.tesla2 / 2) * 2.5 + ((p.tesla3 + 1) * p.tesla3 / 2) * 2.5 + ((p.tesla4 + 1) * p.tesla4 / 2) * 2.5 +
+            ((p.tesla1 + 1) * p.tesla1 / 2) * 2 + ((p.tesla2 + 1) * p.tesla2 / 2) * 2 + ((p.tesla3 + 1) * p.tesla3 / 2) * 2 + ((p.tesla4 + 1) * p.tesla4 / 2) * 2 +
             ((p.arcx1 + 1) * p.arcx1 / 2) * 3 + ((p.arcx2 + 1) * p.arcx2 / 2) * 3 + ((p.arcx3 + 1) * p.arcx3 / 2) * 3 +
             (p.air_defence1 + 1) * p.air_defence1 / 2 + (p.air_defence2 + 1) * p.air_defence2 / 2 + (p.air_defence3 + 1) * p.air_defence3 / 2 + (p.air_defence4+ 1) * p.air_defence4 / 2 +
-            ((p.tower_magic1 + 1) * p.tower_magic1 / 2) * 1.5 + ((p.tower_magic2 + 1) * p.tower_magic2 / 2) * 1.5 + ((p.tower_magic3 + 1) * p.tower_magic3 / 2) * 1.5 + ((p.tower_magic4+ 1) * p.tower_magic4 / 2) * 1.5 +
+            ((p.tower_magic1 + 1) * p.tower_magic1 / 2) * 2.5 + ((p.tower_magic2 + 1) * p.tower_magic2 / 2) * 2.5 + ((p.tower_magic3 + 1) * p.tower_magic3 / 2) * 2.5 + ((p.tower_magic4+ 1) * p.tower_magic4 / 2) * 2.5 +
             (p.canon1 + 1) * p.canon1 / 2 + (p.canon2 + 1) * p.canon2 / 2 + (p.canon3 + 1) * p.canon3 / 2 + (p.canon4+ 1) * p.canon4 / 2 + (p.canon5+ 1) * p.canon5 / 2 + (p.canon6+ 1) * p.canon6 / 2 +
             (p.tower_archer1 + 1) * p.tower_archer1 / 2 + (p.tower_archer2 + 1) * p.tower_archer2 / 2 + (p.tower_archer3 + 1) * p.tower_archer3 / 2 + (p.tower_archer4+ 1) * p.tower_archer4 / 2 + (p.tower_archer5+ 1) * p.tower_archer5 / 2 + (p.tower_archer6+ 1) * p.tower_archer6 / 2 + (p.tower_archer7+ 1) * p.tower_archer7 / 2 +
 
