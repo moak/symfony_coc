@@ -3,3 +3,7 @@ fos:
     join_clan: Rejoindre un clan
     register: Créer un clan
     stay_connected: Se rappeler de moi
+    change_password: Recupérez le ici
+    forgot_password: Mot de passe oublié
+    you_forgot_password: Vous avez perdu votre mot de passe
+    description: Complétez le formulaire, un email vous sera envoyé. Il contiendra la procèdure à suivre pour récupérer votre mot de passe.

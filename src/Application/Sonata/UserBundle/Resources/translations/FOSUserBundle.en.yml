@@ -5,3 +5,7 @@ fos:
     stay_connected: Remember me
     join: Join a clan
     create: Create a clan
+    change_password: Get it back here
+    forgot_password: Forgot your password
+    you_forgot_password: Don't remember your password
+    description: Fill out the form, an email we will send you an email with a link to reset your password

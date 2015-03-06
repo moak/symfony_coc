@@ -59,16 +59,20 @@ footer
 
 
 .content-section-a {
-    padding: 50px 0;
+
+    padding: 20px 0;
     background-color: #f8f8f8;
 }
 
 .content-section-b {
-    padding: 50px 0;
+    padding: 30px 0;
     border-top: 1px solid #e7e7e7;
     border-bottom: 1px solid #e7e7e7;
 
+
 }
+
+
 
 .section-heading
 {
@@ -123,6 +127,8 @@ p.copyright {
 .steps .step .title {
     text-align: center;
     font-size: 16px;
+
+
 
 }
 .steps .step .title .number {
@@ -219,6 +225,7 @@ p.copyright {
    .btn-lg
    {
         font-size: 11px ;
+
     }
 }
 

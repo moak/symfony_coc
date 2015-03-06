@@ -178,6 +178,8 @@ account:
     association: Associated
     dissociate: Dissociate
     waiting: Account waiting for association
+    change_password: Get it back here
+    forgot_password: Forgot your password ?
 
 war:
    result: Result
@@ -214,13 +216,14 @@ vitrine:
     create_clan2 : Easy way to manage your clan
     create_clan: Create clan
     join_clan: Join a clan
-    demo: Try demo
+    demo: Try the demo !
     step1_title: Create the clan
     step1_description: Create your Clash of Clans website in one click and access to loads of different features to improve your clan and get more fun with your friends.
     step2_title: Create the players
     step2_description: Create the players in the administration panel. The members have the possibility to join your clan and edit his/her player by cliking on "Join a clan" below.
     step3_title: Be better, more fun !
     step3_description: Reinforce the competitivity of your clan and get more information about your members statistics. 
+    how: Uhm .. How does it work ?
 
 intro:
     step1: Welcome onboard, this is your new website ! We hope you will enjoy the experience of OhMyClan.
@@ -231,7 +234,7 @@ intro:
     step6: Manage your clan from the administration. (E.g: Add players, associate new accounts to players, create clan wars, etc..)
     feature3_title: Share the best bases for your clan..
     feature3_description: Easily manage and upload new bases to help your friends and your clan to have better defences.
-    feature1_title: Know who deserves to fight !
+    feature1_title: Know who is active and who should fight!
     feature1_description: You don't know who should participate to the clan wars? Get information every seasons on who attacked the most, who gave or received the most troops.
     feature2_title: Ranking system
     feature2_description: Sort the members of your clan by trophies like in Clash of Clans, but also by levels, level of labotory or level of defences.
@@ -301,3 +304,10 @@ phone:
 language:
     french: French
     english: English
+
+email:
+    title_create: Welcome on OhMyClan chef !
+    content_create: Welcome on OhMyClan chef, we hope you will enjoy your new website ! Start by creating your membres in the administration panel and give the password to your members. Don't forget to update your information before the end of each seasons !
+
+    title_create: Welcome on OhMyClan !
+    content_create: Welcome on OhMyClan, we hope you will enjoy the website of your clan !

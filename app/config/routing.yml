@@ -48,11 +48,11 @@ fos_user_register:
   
 fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
-    prefix: /resetting
+    prefix: /{_locale}/resetting
   
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-    prefix: /change-password
+    prefix: /{_locale}/change-password
 
 #BCCCronManager routing
 BCCCronManagerBundle:

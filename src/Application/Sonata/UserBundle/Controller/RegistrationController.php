@@ -60,11 +60,6 @@ class RegistrationController extends BaseController
             // CREATE CLAN
             if ( $form->get('pass')->getData() != null && $form->get('clanName')->getData() != null )
             {
-                echo "==================> " .$request->request->get('clan') ;
-                echo "<br/> ====================> " . $request->request->get('password') ;
-
-                echo "<br> ==> " . $form->get('password')->getData();
-
                 $em = $this->getDoctrine()->getManager();
                 $clan = new Clan();
                 $clan->setName($user->getClanName());
@@ -325,12 +320,12 @@ class RegistrationController extends BaseController
                 $em->flush($user);
 
 
-                echo "======> " . $request->request->get('clan') ;
-                echo "<br/> =========> " . $request->request->get('password') ;
+              //  echo "======> " . $request->request->get('clan') ;
+               // echo "<br/> =========> " . $request->request->get('password') ;
             }
             else // JOINING CLAN
             {
-                echo " JOINING CLAN ======> ".$form->get('clan')->getData() . " => " .$form->get('password')->getData() ;
+              //  echo " JOINING CLAN ======> ".$form->get('clan')->getData() . " => " .$form->get('password')->getData() ;
 
                 $user = $form->getData();
                 $clan = $form->get('clan')->getData();

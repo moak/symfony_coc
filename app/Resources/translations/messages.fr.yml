@@ -176,6 +176,8 @@ account:
     association: Associé
     dissociate: Dissocier
     waiting: Compte en attente d'association
+    change_password: Recupérez le ici
+    forgot_password: Mot de passe oublié?
 
 war:
    result: Résultat
@@ -196,7 +198,7 @@ video:
     published: Publiée
 
 coc:
-    launch_demo: Lancer démo
+    launch_demo: Essayer la démo !
     message: Message de clan
     ranking: Classement des joueurs
     visit_ranking: Afficher tous les joueurs
@@ -212,7 +214,7 @@ vitrine:
     my_clan : Mon clan
     create_clan2 : Managez facilement votre clan
     create_clan: Créer un clan
-    join_clan: Rejoindre un clan
+    join_clan: Rejoindre clan
     demo: Essayer démo
     step1_title: Créer un clan
     step1_description: Remplissez le formulaire avec votre nom ainsi que le nom de votre clan. Votre clan sera automatiquement crée et pret à être utiliser.
@@ -220,6 +222,7 @@ vitrine:
     step2_description: Créez les joueurs dans le panel d'administration. Une fois inscris, les membres ont la possibilité de rejoindre votre clan, ce qui leur permettront d'éditer leur profils.
     step3_title: Devenez meilleur !
     step3_description: Connaissez désormais qui mérite de combattre à vos cotés lors des guerres de clans en analysant l'activité des joueurs ainsi que leur niveau dans le classement général.
+    how: Uhm .. Comment ça marche ?
 
 intro:
     step1: Bienvenue à bord, ceci est votre nouveau site ! Nous espérons que vous apprécierez l'expérience OhMyClan.
@@ -230,9 +233,9 @@ intro:
     step6: Managez votre clan depuis l'administration. (Ex: Ajouter des joueurs, associer les nouveaux comptes à vos joueur, créer de nouvelles guerres, etc..)
     feature3_title: Partagez les meilleures bases de votre clan
     feature3_description: Uploadez facilement vos bases et partagez les aux membres les moins expérimentés.
-    feature1_title: Découvrez les membres les plus actifs et ceux qui méritent de participer aux guerres.
+    feature1_title: Surveillez l'évolution des joueurs
     feature1_description: Vous ne savez pas qui mérite de participez aux guerres de clan? Obtenez des informations chaques saisons sur quel membre attaque le plus, ou encore qui a donne ou recu le plus de troupes.
-    feature2_title: Système de classement
+    feature2_title: Système de classement complet
     feature2_description: Classez les membres du clan par trophés comme sur Clash of Clans, mais aussi par niveaux de défence ou laboratoire.
 
 label:
