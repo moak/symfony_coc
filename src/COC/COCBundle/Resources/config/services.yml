@@ -1,4 +1,13 @@
+parameters:
+    lunetics_locale.coc_guesser.class: COC\COCBundle\LocaleGuesser\CocLocaleGuesser
+
 services:
+    lunetics_locale.coc_guesser:
+        class: %lunetics_locale.coc_guesser.class%
+        tags:
+            - { name: lunetics_locale.guesser, alias: coc }
+        arguments: ['@lunetics_locale.validator.meta']
+
     gedmo.listener.blameable:
             class: Gedmo\Blameable\BlameableListener
             tags:
@@ -72,8 +81,8 @@ services:
         class: COC\COCBundle\Services\ClanService
         arguments: [@doctrine.orm.entity_manager]
 
-    coc_cocbundle.languagelistener:
-        class: COC\COCBundle\Services\LanguageListener
-        arguments: ["@user_default.userparams"]
-        tags:
-            - { name: kernel.event_listener, event: kernel.request, method: setLocale }
+    #coc_cocbundle.languagelistener:
+        #class: COC\COCBundle\Services\LanguageListener
+        #arguments: ["@user_default.userparams"]
+        #tags:
+        #    - { name: kernel.event_listener, event: kernel.request, method: setLocale }

@@ -76,7 +76,7 @@ class DefaultController extends Controller
     }
 
 
-    public function menuAction($id_clan, $active)
+    public function menuAction($id_clan, $active, $language_switcher)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -98,6 +98,6 @@ class DefaultController extends Controller
         $numberUsersNonAssigned = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsersNonAssigned($clan);
         $numberImagesBonus = $em->getRepository('COCBundle:ImageBonus')->getNumberEntities($clan);
 
-        return $this->render('COCBundle:Default:menu.html.twig' , array('numberPlayers' => $numberPlayers, 'active' => $active,  'clan' => $clan, 'numberImagesBonus' => $numberImagesBonus,'numberUsersNonAssigned' => $numberUsersNonAssigned,'numberVideos' => $numberVideos, 'numberBestAttacks' => $numberBestAttacks, 'numberBases5' => $numberBases5, 'numberBases6' => $numberBases6, 'numberBases7' => $numberBases7, 'numberBases8' => $numberBases8, 'numberBases9' => $numberBases9, 'numberBases10' => $numberBases10));
+        return $this->render('COCBundle:Default:menu.html.twig' , array('language_switcher' => $language_switcher, 'numberPlayers' => $numberPlayers, 'active' => $active,  'clan' => $clan, 'numberImagesBonus' => $numberImagesBonus,'numberUsersNonAssigned' => $numberUsersNonAssigned,'numberVideos' => $numberVideos, 'numberBestAttacks' => $numberBestAttacks, 'numberBases5' => $numberBases5, 'numberBases6' => $numberBases6, 'numberBases7' => $numberBases7, 'numberBases8' => $numberBases8, 'numberBases9' => $numberBases9, 'numberBases10' => $numberBases10));
     }
 }

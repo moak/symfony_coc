@@ -11,64 +11,51 @@
     </div>
     <!-- /.navbar-header -->
 
-    <ul class="nav navbar-top-links navbar-right">
 
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="hidden">
+                <a href="#page-top"></a>
+            </li>
 
-                {% if ( app.request.locale == "fr") %}
-                    <div>
-                        <img style="width:20px;height:20px;vertical-align:middle" src="{{ asset('images/fr.png') }}" >
-                        <span class="caret"></span>
-                    </div>
-                {% else %}
-                    <div>
-                        <img style="width:20px;height:20px;vertical-align:middle" src="{{ asset('images/en.png') }}" >
-                        <span class="caret"></span>
-                    </div>
-                {% endif %}
-            </a>
+            {{ language_switcher|raw  }}
 
-            <ul class="dropdown-menu" role="menu">
-
-                <li><a onclick="changeLanguage('/', 'en');">
-                        <div>
-                            <img style="width:20px;height:20px;vertical-align:middle" src="{{ asset('images/en.png') }}" >
-                            <span style=""> {{ 'language.english'|trans }}</span>
-                        </div>
-                    </a>
+            {% if is_granted('ROLE_ADMIN') and clan.id == app.user.clan.id %}
+                <li><a href="{{ path('admin_users', {'id_clan': clan.id }) }}">{{ 'menu.account_non_assigned' | trans }}
+                        {%  if (numberUsersNonAssigned > 0) %}
+                        <span data-toggle="tooltip" title="{{ 'notif.user_waiting'|trans }}" id='tooltip' class="badge badge-danger"> {{  numberUsersNonAssigned }}</span></a>
+                    {% else %}
+                        <span data-toggle="tooltip" title="{{ 'notif.user_non_waiting'|trans }}" id='tooltip' class="badge badge-success"> {{  numberUsersNonAssigned }}</span></a>
+                    {% endif %}
                 </li>
-                <li><a onclick="changeLanguage('/', 'fr');">
-                        <div>
-                            <img style="width:20px;height:20px;vertical-align:middle" src="{{ asset('images/fr.png') }}" >
-                            <span style=""> {{ 'language.french'|trans }}</span>
-                        </div>
-                    </a>
+            {% endif %}
+
+            {% if is_granted('ROLE_USER')  %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-user fa-fw"></i> {{ app.user.username }} <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        {% if is_granted('ROLE_USER') %}
+                        <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out fa-fw"></i>  {{ 'menu.disconnect'|trans }}</a>
+                            {% endif %}
+                            {% if is_granted('ROLE_USER') and clan.id != app.user.clan.id %}
+                        <li><a href="{{ path('coc', {'id_clan' : app.user.clan.id }) }}"><i class="fa fa-heart"></i> {{ 'vitrine.my_clan'|trans }}</a></li>
+                        {% endif %}
+                    </ul>
                 </li>
-            </ul>
-        </li>
+
+            {% endif %}
+        </ul>
+    </div>
+    <!-- /.navbar-collapse -->
 
 
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-user fa-fw"></i> {{ app.user.username }} <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu dropdown-user">
-                <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out fa-fw"></i>  {{ 'menu.disconnect'|trans }}</a>
-
-            </ul>
-            <!-- /.dropdown-user -->
-        </li>
-        <!-- /.dropdown -->
-    </ul>
-    <!-- /.navbar-top-links -->
 
     <div class="navbar-default sidebar" role="navigation" >
         <div class="sidebar-nav navbar-collapse">
+
             <ul class="nav" id="side-menu">
-
-
                 <li>
                     <a href="{{ path('admin',  {'id_clan': clan.id }) }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                 </li>
@@ -88,6 +75,7 @@
 
                 <li data-step="4" data-position='right' data-intro="{{ 'admin.msg4'|trans }}">
                     <a href="#"><span class="badge">{{ numberPlayers }}</span> {{ 'menu.players'|trans }} <span class="fa arrow"></span></a>
+
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="{{ path('admin_players', { 'id_clan': clan.id, 'type' : '0' }) }}">{{ 'menu.players_list'|trans }}</a>
@@ -155,6 +143,11 @@
                 </li>
 
             </ul>
+
+
+
+
+
         </div>
         <!-- /.sidebar-collapse -->
     </div>

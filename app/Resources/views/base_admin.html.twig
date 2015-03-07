@@ -72,9 +72,10 @@
     </script>
 </head>
 <body>
+{% set language_switcher = locale_switcher()%}
 
     <div id="wrapper">
-        {{ render(controller('AdminBundle:Default:menu', {'id_clan' : id_clan  })) }}
+        {{ render(controller('AdminBundle:Default:menu', {'id_clan' : id_clan, 'language_switcher' : language_switcher  })) }}
         <div id="page-wrapper">
             {% block body %}{% endblock %}
 

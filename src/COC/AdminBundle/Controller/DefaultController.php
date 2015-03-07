@@ -76,7 +76,7 @@ class DefaultController extends Controller
         return $this->render('AdminBundle:Default:index.html.twig' , array('numberUsers'=> $numberUsers, 'numberBases5' => $numberBases5, 'numberBases6' => $numberBases6, 'numberBases7' => $numberBases7, 'numberBases8' => $numberBases8, 'numberBases9' => $numberBases9, 'numberBases10' => $numberBases10, 'display' => $display,'clan' => $clan, 'numberImagesBonus'=> $numberImagesBonus,'numberPlayers'=> $numberPlayers,'numberUsersNonAssigned' => $numberUsersNonAssigned, 'numberVideos' => $numberVideos));
     }
 
-    public function menuAction($id_clan)
+    public function menuAction($id_clan, $language_switcher)
     {
 
         if($this->getUser()->getClan()->getId() != $id_clan)
@@ -102,6 +102,6 @@ class DefaultController extends Controller
         $numberUsersNonAssigned = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsersNonAssigned($id_clan);
 
 
-        return $this->render('AdminBundle:Default:menu.html.twig' , array('numberBases5' => $numberBases5, 'numberBases6' => $numberBases6, 'numberBases7' => $numberBases7, 'numberBases8' => $numberBases8, 'numberBases9' => $numberBases9, 'numberBases10' => $numberBases10,'clan' => $clan, 'numberImagesBonus'=> $numberImagesBonus, 'numberPlayers' => $numberPlayers,'numberWars' => $numberWars,'numberUsersNonAssigned' => $numberUsersNonAssigned,'numberVideos' => $numberVideos, 'numberBestAttacks' => $numberBestAttacks, 'numberUsers' => $numberUsers));
+        return $this->render('AdminBundle:Default:menu.html.twig' , array('language_switcher' => $language_switcher, 'numberBases5' => $numberBases5, 'numberBases6' => $numberBases6, 'numberBases7' => $numberBases7, 'numberBases8' => $numberBases8, 'numberBases9' => $numberBases9, 'numberBases10' => $numberBases10,'clan' => $clan, 'numberImagesBonus'=> $numberImagesBonus, 'numberPlayers' => $numberPlayers,'numberWars' => $numberWars,'numberUsersNonAssigned' => $numberUsersNonAssigned,'numberVideos' => $numberVideos, 'numberBestAttacks' => $numberBestAttacks, 'numberUsers' => $numberUsers));
     }
 }

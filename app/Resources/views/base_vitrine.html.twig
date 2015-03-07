@@ -81,8 +81,9 @@
 </head>
 <body>
 
+{% set language_switcher= locale_switcher() %}
 
-{% include "VitrineBundle:Default:menu.html.twig" %}
+{% include 'VitrineBundle:Default:menu.html.twig' with {'language_switcher': language_switcher} %}
 
 <div class="main">
 {% block body %}

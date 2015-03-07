@@ -32,6 +32,7 @@ class AppKernel extends Kernel
             new COC\COCBundle\COCBundle(),
             new COC\AdminBundle\AdminBundle(),
             new COC\VitrineBundle\VitrineBundle(),
+            new Lunetics\LocaleBundle\LuneticsLocaleBundle(),
 
         );
 
