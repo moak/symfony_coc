@@ -163,7 +163,7 @@
                                 <td class="supercell-font white-on-black text-center">{{ loop.index }}  </td>
                                 <td class="supercell-font white-on-black text-center">{{ clan.name }}</td>
                                 <td class="supercell-font white-on-black text-center">{{ clan.nbMember }}</td>
-                                <td class="supercell-font white-on-black text-center">{{ clan.total }}</td>
+                                <td class="supercell-font white-on-black text-center">{{ clan.total|round }}</td>
                                 <td class="supercell-font white-on-black text-center">{{ clan.updated|date('U')|timeago }}</td>
 
                             </tr>

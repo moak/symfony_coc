@@ -23,90 +23,79 @@ class PlayerController extends Controller
         $actualSeason = $em->getRepository('COCBundle:Season')->getActualSeason();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
-        if ( $this->getUser() == null && $clan->getPrivacy() == 1)
+        if ($this->getUser() == null && $clan->getPrivacy() == 1)
             throw $this->createNotFoundException('This page does not exist.');
 
-        $form = $this->createForm(new SeasonType($clan, $actualSeason,  $em));
-
-
-     //   $form = $this->get('form.factory')->create(new SeasonType($clan, $actualSeason, $this->getDoctrine()->getEntityManager());
-       // $calculateInfosService = $this->container->get('coc_cocbundle.calculate_player_info') ;
+        $form = $this->createForm(new SeasonType($clan, $actualSeason, $em));
 
         if ($request->isMethod('POST'))
         {
-            $seasonActuel = $em->getRepository('COCBundle:Season')->getActualSeason();
             $data = $request->request->all();
             $idSeason = $data['season']['season'];
 
-            if(empty($idSeason)){
-                $idSeason = 0 ;
+            if (empty($idSeason)) {
+                $idSeason = 0;
             }
             $data = $request->request->all();
             $idSeason = $data['season']['season'];
             $season = $em->getRepository('COCBundle:Season')->findOneById($idSeason);
 
-            if($season == $seasonActuel)
-            {
-                if ( $type == 0 )
-                {
+            if ($season == $actualSeason) {
+                if ($type == 0) {
                     $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
                 }
 
-                if ( $type == 1 )
-                {
+                if ($type == 1) {
                     $players = $em->getRepository('COCBundle:Player')->getActivityAllPlayers($clan);
                 }
-            }
-            else
-            {
-                if ( $type == 0 )
-                {
+            } else {
+                if ($type == 0) {
                     $players = $em->getRepository('COCBundle:PlayerHistory')->findBySeason($season, $clan);
                 }
 
-                if ( $type == 1 )
-                {
+                if ($type == 1) {
                     $players = $em->getRepository('COCBundle:PlayerHistory')->findActivityBySeason($season, $clan);
                 }
             }
 
 
-            if(!empty($players))
-            {
-                if ( $type == 0)
-                    return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));
+            if (!empty($players)) {
+                if ($type == 0)
+                    return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => $players, 'form' => $form->createView()));
                 else
-                    return $this->render('COCBundle:Player:activity.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));
+                    return $this->render('COCBundle:Player:activity.html.twig', array('clan' => $clan, 'players' => $players, 'form' => $form->createView()));
+            } else {
+                if ($type == 0)
+                    return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => null, 'form' => $form->createView()));
+                else
+                    return $this->render('COCBundle:Player:activity.html.twig', array('clan' => $clan, 'players' => null, 'form' => $form->createView()));
             }
-            else
-            {
-                if ( $type == 0)
-                    return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => null , 'form' => $form->createView() ));
-                else
-                    return $this->render('COCBundle:Player:activity.html.twig', array('clan' => $clan, 'players' => null , 'form' => $form->createView() ));            }
         }
 
 
-        if ( $type == 0 )
+        if ($type == 0) {
             $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
-        if ( $type == 1 )
+
+            if ( $players )
+                return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => $players, 'form' => $form->createView()));
+            else
+                return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => null, 'form' => $form->createView()));
+
+        }
+
+        if ($type == 1)
+        {
             $players = $em->getRepository('COCBundle:Player')->getAllActivityPlayers($clan);
 
-
-        if ($players)
-        {
-            if ( $type == 0)
-                return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));
+            if ( $players )
+                return $this->render('COCBundle:Player:activity.html.twig', array('clan' => $clan, 'players' => $players, 'form' => $form->createView()));
             else
-                return $this->render('COCBundle:Player:activity.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));        }
-        else
-        {
-            if ( $type == 0)
-                return $this->render('COCBundle:Player:index.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));
-            else
-                return $this->render('COCBundle:Player:activity.html.twig', array('clan' => $clan, 'players' => $players , 'form' => $form->createView() ));        }
+                return $this->render('COCBundle:Player:activity.html.twig', array('clan' => $clan, 'players' => null, 'form' => $form->createView()));
+        }
 
     }
+
+
 
 
     public function editActivityAction (Request $request, $id_clan)
@@ -178,8 +167,6 @@ class PlayerController extends Controller
         $em = $this->getDoctrine()->getManager();
         $player = $em->getRepository('COCBundle:Player')->findOneByUser($userId);
         $form = $this->get('form.factory')->create(new PlayerType(), $player );
-
-
 
 
         if ( $this->getUser() == null && $clan->getPrivacy() == 1)
