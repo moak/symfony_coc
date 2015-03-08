@@ -17,11 +17,6 @@
     <link rel="stylesheet" href="{{ asset('css/footable.core.css') }}" />
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
 
-    <link
-            rel="stylesheet"
-            type="text/css"
-            href="//cloud.github.com/downloads/lafeber/world-flags-sprite/flags32.css"
-            />
     <link rel="stylesheet" href="{{ asset('css/heroic-features.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
@@ -42,31 +37,6 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script>
-        function changeLanguage(path, langue, supported) {
-            var DATA = "locale=" + langue;
-            $.ajax({
-                type: "POST",
-                url: Routing.generate('homepage', {'_locale': langue}),
-                data: DATA,
-                success: function (msg) {
-                    for (var key in supported) {
-                        if (path.indexOf(supported[key]) > -1) {
-                            var newPath = path.replace(supported[key], langue);
-                            location.href = newPath;
-                            return;
-                        }
-                    }
-                    location.href = path + langue;
-                    return false;
-                },
-                error: function (msg) {
-                    console.log(msg);
-                    return true;
-                }
-            });
-        }
-    </script>
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

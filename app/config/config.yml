@@ -108,18 +108,18 @@ liip_imagine:
            thumbnail: { size: [250, 190], mode: inset }
 
 lunetics_locale:
+    strict_mode: true
     cookie:
         set_on_change: true
     guessing_order:
         - session
         - cookie
         - browser
-
     allowed_locales:
         - en
         - fr
     switcher:
         template: COCBundle:Languages:switcher.html.twig
-
+        show_current_locale: true
 
 
