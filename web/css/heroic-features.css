@@ -59,8 +59,9 @@ h6
 body
 {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-    background: url('../images/bg.jpg') fixed;
+    background: url('../images/bg.jpg') black fixed;
     background-position: center -10px;
+    background-repeat: no-repeat;
     font-size: 15px;
     font-family: 'Oswald', sans-serif;
     letter-spacing: 0.5px;
@@ -90,7 +91,9 @@ body
 
 }
 
-.main .container{
+.content-section-b,
+.steps,
+.white-bg{
     background: rgba(235,250,255,0.9);
 }
 
