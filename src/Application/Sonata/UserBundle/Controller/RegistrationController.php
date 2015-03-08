@@ -66,6 +66,7 @@ class RegistrationController extends BaseController
                 $clan->setMessage('“One love, one heart, one destiny.” ― Bob Marley');
                 $clan->setCapacity(10);
                 $clan->setStatus(0);
+                $clan->setLevel(1);
                 $clan->setPrivacy(0);
                 $em->persist($clan);
                 $em->flush();

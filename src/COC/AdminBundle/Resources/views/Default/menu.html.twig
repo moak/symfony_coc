@@ -88,7 +88,13 @@
                 </li>
 
                 <li data-step="5" data-position='right' data-intro="{{ 'admin.msg5'|trans }}">
-                    <a href="{{ path('admin_users', { 'id_clan': clan.id }) }}"><span class="badge">{{ numberUsers }}</span> {{ 'menu.accounts'|trans }} ({{ numberUsersNonAssigned }})</a>
+                    <a href="{{ path('admin_users', { 'id_clan': clan.id }) }}">
+                        {% if numberUsersNonAssigned > 0 %}
+                            <span class="badge badge-danger">{{ numberUsers }}</span>
+                        {% else %}
+                            <span class="badge badge-success">{{ numberUsers }}</span>
+                        {% endif %}
+                        {{ 'menu.accounts'|trans }} ({{ numberUsersNonAssigned }} {{ 'menu.waiting'|trans }})</a>
                 </li>
 
 

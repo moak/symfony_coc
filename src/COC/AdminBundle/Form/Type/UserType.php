@@ -22,7 +22,7 @@ class UserType extends AbstractType
             ->add('player', 'entity',
                 array ('class' => 'COCBundle:Player',
                     'property' => 'name',
-                    'mapped'=>false,
+                    'mapped'=> false,
                     'query_builder' => function(\COC\COCBundle\Repository\PlayerRepository $p) use ($options) {
                         return $p->getNotAssociedToUser($this->clan);
                     }))

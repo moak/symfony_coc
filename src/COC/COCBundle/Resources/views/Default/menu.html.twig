@@ -38,9 +38,6 @@
                     </ul>
                 </li>
 
-
-
-
                 {% if active == "media" %} <li class="active dropdown"> {% else %} <li class="dropdown">{% endif %}
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="badge">{{ numberVideos + numberImagesBonus + numberBestAttacks}}</span> {{ 'menu.media'|trans }} <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
@@ -52,9 +49,12 @@
                 </li>
 
                 {% if is_granted('ROLE_USER') %}
-                    {%  if app.user.player.level is defined and clan.id == app.user.player.clan.id and app.user.player.user.id is defined %}
-                        <li><a class="blink-slow" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_player'|trans }}</b></a></li>
+                    {%  if app.user is defined and app.user.player is defined  %}
+                        {% if app.user.player.clan is defined %}
+                            <li><a class="blink-slow" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_player'|trans }}</b></a></li>
+                        {% endif %}
                     {% endif %}
+
                     {% if  app.user.clan.id == clan.id and app.user.player == null  %}
                         <li><a class="blink" href=""><b>[{{ 'account.waiting'|trans }}]</b></a></li>
                     {% endif %}

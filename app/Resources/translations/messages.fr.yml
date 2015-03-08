@@ -76,6 +76,7 @@ menu:
     my_clan: Mon clan
     edit_activity: Editer l'activité de la saison en cours
     account_number: Nombre de comptes
+    waiting: en attente
 
 button:
     add_player: Nouveau joueur

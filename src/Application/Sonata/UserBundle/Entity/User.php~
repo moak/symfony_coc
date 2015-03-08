@@ -2,7 +2,7 @@
 
 namespace Application\Sonata\UserBundle\Entity;
 
-use FOS\UserBundle\Entity\User as BaseUser;
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -18,8 +18,8 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
     /**
-     * @ORM\OneToOne(targetEntity="COC\COCBundle\Entity\Player", mappedBy="user", cascade={"persist"})
-     * @ORM\JoinColumn(name="player_id", referencedColumnName="id", nullable=true)
+     * @ORM\OneToOne(targetEntity="COC\COCBundle\Entity\Player", mappedBy="user")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
      **/
     private $player;
 
@@ -39,14 +39,33 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @ORM\Column(name="locale", type="string", nullable=true)
+     */
+    private $locale;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="clanName", type="string", nullable=true)
      */
     private $clanName;
 
-    public function getClanName()
-    {
-        return $this->clanName;
-    }
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="visited", type="integer", nullable=true)
+     */
+    private $visited;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="learned", type="integer", nullable=true)
+     */
+    private $learned;
+
+
+    protected $pass;
 
     /**
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Video", mappedBy="user")
@@ -77,229 +96,5 @@ class User extends BaseUser
      */
     protected $id;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        parent::__construct();
-        $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->imagebases = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->imagebonuses = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->imagebestattacks = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set player
-     *
-     * @param \COC\COCBundle\Entity\Player $player
-     * @return User
-     */
-    public function setPlayer(\COC\COCBundle\Entity\Player $player = null)
-    {
-        $this->player = $player;
-
-        return $this;
-    }
-
-    /**
-     * Get player
-     *
-     * @return \COC\COCBundle\Entity\Player 
-     */
-    public function getPlayer()
-    {
-        return $this->player;
-    }
-
-    /**
-     * Set clan
-     *
-     * @param \COC\COCBundle\Entity\Clan $clan
-     * @return User
-     */
-    public function setClan(\COC\COCBundle\Entity\Clan $clan = null)
-    {
-        $this->clan = $clan;
-
-        return $this;
-    }
-
-    /**
-     * Get clan
-     *
-     * @return \COC\COCBundle\Entity\Clan 
-     */
-    public function getClan()
-    {
-        return $this->clan;
-    }
-
-    /**
-     * Add videos
-     *
-     * @param \COC\COCBundle\Entity\Video $videos
-     * @return User
-     */
-    public function addVideo(\COC\COCBundle\Entity\Video $videos)
-    {
-        $this->videos[] = $videos;
-
-        return $this;
-    }
-
-    /**
-     * Remove videos
-     *
-     * @param \COC\COCBundle\Entity\Video $videos
-     */
-    public function removeVideo(\COC\COCBundle\Entity\Video $videos)
-    {
-        $this->videos->removeElement($videos);
-    }
-
-    /**
-     * Get videos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getVideos()
-    {
-        return $this->videos;
-    }
-
-    /**
-     * Add imagebases
-     *
-     * @param \COC\COCBundle\Entity\ImageBase $imagebases
-     * @return User
-     */
-    public function addImagebase(\COC\COCBundle\Entity\ImageBase $imagebases)
-    {
-        $this->imagebases[] = $imagebases;
-
-        return $this;
-    }
-
-    /**
-     * Remove imagebases
-     *
-     * @param \COC\COCBundle\Entity\ImageBase $imagebases
-     */
-    public function removeImagebase(\COC\COCBundle\Entity\ImageBase $imagebases)
-    {
-        $this->imagebases->removeElement($imagebases);
-    }
-
-    /**
-     * Get imagebases
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getImagebases()
-    {
-        return $this->imagebases;
-    }
-
-    /**
-     * Add imagebonuses
-     *
-     * @param \COC\COCBundle\Entity\ImageBonus $imagebonuses
-     * @return User
-     */
-    public function addImagebonus(\COC\COCBundle\Entity\ImageBonus $imagebonuses)
-    {
-        $this->imagebonuses[] = $imagebonuses;
-
-        return $this;
-    }
-
-    /**
-     * Remove imagebonuses
-     *
-     * @param \COC\COCBundle\Entity\ImageBonus $imagebonuses
-     */
-    public function removeImagebonus(\COC\COCBundle\Entity\ImageBonus $imagebonuses)
-    {
-        $this->imagebonuses->removeElement($imagebonuses);
-    }
-
-    /**
-     * Get imagebonuses
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getImagebonuses()
-    {
-        return $this->imagebonuses;
-    }
-
-    /**
-     * Add imagebestattacks
-     *
-     * @param \COC\COCBundle\Entity\ImageBestAttack $imagebestattacks
-     * @return User
-     */
-    public function addImagebestattack(\COC\COCBundle\Entity\ImageBestAttack $imagebestattacks)
-    {
-        $this->imagebestattacks[] = $imagebestattacks;
-
-        return $this;
-    }
-
-    /**
-     * Remove imagebestattacks
-     *
-     * @param \COC\COCBundle\Entity\ImageBestAttack $imagebestattacks
-     */
-    public function removeImagebestattack(\COC\COCBundle\Entity\ImageBestAttack $imagebestattacks)
-    {
-        $this->imagebestattacks->removeElement($imagebestattacks);
-    }
-
-    /**
-     * Get imagebestattacks
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getImagebestattacks()
-    {
-        return $this->imagebestattacks;
-    }
-
-
-
-
-    /**
-     * Set phone
-     *
-     * @param integer $phone
-     * @return User
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Get phone
-     *
-     * @return integer 
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
 }

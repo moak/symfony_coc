@@ -22,6 +22,9 @@ class DefaultController extends Controller
         if ( $last_update_bestAttack == null)
             $last_update_bestAttack['updatedAt'] = null;
 
+        if ( $last_update_player  == null)
+            $last_update_player ['updatedAt'] = null;
+
         $user = $this->getUser();
 
         if ( $clan  == null)

@@ -26,6 +26,11 @@ class Player
      */
     private $deletedAt;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", mappedBy="player")
+     **/
+    private $user;
+
 
     /**
      * @ORM\Column(type="datetime")
@@ -36,7 +41,7 @@ class Player
 
     /**
      * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="players")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $clan;
 
@@ -654,14 +659,6 @@ class Player
      */
     private $elixir7 = 0;
 
-
-
-    
-    /**
-     * @ORM\OneToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", inversedBy="player",cascade={"persist"})
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     **/
-    private $user;
 
     /**
      * Get id
@@ -1979,35 +1976,13 @@ class Player
     /**
      * Get playerhistories
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPlayerhistories()
     {
         return $this->playerhistories;
     }
 
-    /**
-     * Set user
-     *
-     * @param \Application\Sonata\UserBundle\Entity\User $user
-     * @return Player
-     */
-    public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Application\Sonata\UserBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 
     public function __toString()
     {
@@ -2757,5 +2732,28 @@ class Player
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $user
+     * @return Player
+     */
+    public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

@@ -27,9 +27,7 @@
                 <tr>
                     <th>{{ 'player.name'|trans }}</th>
                     <th>{{ 'account.name'|trans }}</th>
-                    <th>{{ 'player.defence'|trans }}</th>
-                    <th>{{ 'player.attack'|trans }}</th>
-                    <th>{{ 'player.total'|trans }}</th>
+
                     <th>{{ 'player.updated'|trans }}</th>
                     <th></th>
                 </tr>
@@ -41,16 +39,18 @@
                     <tr>
                         <td>{{ player.name }} ({{ player.level }})</td>
                         <td>
-
+                            {% if player.user is not null %}
+                                {{ player.user }}
+                            {% else %}
+                                -
+                            {% endif %}
                         </td>
-                        <td>{{ player.totalDefence|round}}</td>
-                        <td>{{ player.totalAttack|round}}</td>
-                        <td>{{ player.total|round}}</td>
+
 
                         <td>{{ player.updatedAt|date('U')|timeago }}</td>
                         <td>
                             <a href="{{ path('admin_player_edit', { 'id': player.id , 'id_clan': clan.id }) }}" class="btn btn-default btn-info">{{ 'action.edit'|trans }}</a>
-                            <a href="{{ path('admin_player_delete', { 'id': player.id , 'id_clan': clan.id}) }}" class="btn btn-circle btn-danger">{{ 'action.delete'|trans }}</a>
+                            <a href="{{ path('admin_player_delete', { 'id': player.id , 'id_clan': clan.id}) }}" class="btn btn-default btn-danger">{{ 'action.delete'|trans }}</a>
                         </td>
 
                     </tr>

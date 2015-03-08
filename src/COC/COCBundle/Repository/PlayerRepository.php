@@ -264,14 +264,16 @@ class PlayerRepository extends EntityRepository
     }
 
 
-    public function getPlayers()
-{
-    $qb = $this->createQueryBuilder('u')
-        ->select('u')
-        ->orderBy('u.level', 'DESC');
+    public function getPlayers($clan)
+    {
+        $query = $this->createQueryBuilder('player')
+            ->leftJoin('player.user', 'u')
+            ->where('player.clan = :clan')
 
-    return $qb->getQuery()->getResult();
-}
+            ->setParameter('clan', $clan);
+
+        return $query->getQuery()->getResult();
+    }
 
 
     public function getNumberEntities($clan)
@@ -307,12 +309,16 @@ class PlayerRepository extends EntityRepository
 
     public function getNotAssociedToUser($clan)
     {
+        $query = $this->createQueryBuilder('player')
+            ->leftJoin('player.user', 'u')
+            ->where('player.clan = :clan')
+            ->andWhere('u.player is null')
 
-        $qb = $this->createQueryBuilder('p')
-            ->select('p')
-            ->where('p.user is null')
-            ->andWhere('p.clan = :clan')
             ->setParameter('clan', $clan);
-        return $qb;
+
+        return $query;
     }
+
+
+
 }

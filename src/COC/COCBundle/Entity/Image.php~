@@ -322,4 +322,37 @@ class Image
     {
         return $this->imagebonuses;
     }
+
+    /**
+     * Add clans
+     *
+     * @param \COC\COCBundle\Entity\Clan $clans
+     * @return Image
+     */
+    public function addClan(\COC\COCBundle\Entity\Clan $clans)
+    {
+        $this->clans[] = $clans;
+
+        return $this;
+    }
+
+    /**
+     * Remove clans
+     *
+     * @param \COC\COCBundle\Entity\Clan $clans
+     */
+    public function removeClan(\COC\COCBundle\Entity\Clan $clans)
+    {
+        $this->clans->removeElement($clans);
+    }
+
+    /**
+     * Get clans
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getClans()
+    {
+        return $this->clans;
+    }
 }

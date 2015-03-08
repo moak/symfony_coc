@@ -36,8 +36,9 @@ class PlayerAdminController extends Controller
         $actualSeason = $em->getRepository('COCBundle:Season')->getActualSeason();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
         $form = $this->get('form.factory')->create(new SeasonType($clan, $actualSeason), null);
-        $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
+        $players = $em->getRepository('COCBundle:Player')->getPlayers($clan);
 
+      //  var_dump($players);
 
         if ($players)
         {

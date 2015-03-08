@@ -87,21 +87,10 @@ class UserAdminController extends Controller
         {
             throw $this->createNotFoundException('No user found');
         }
-        $player = $em->getRepository('COCBundle:Player')->find($id);
-        $player->setUser(null);
-        $user->setPlayer(null);
-
-        $em = $this->getDoctrine()->getManager();
         $user->setPlayer(null);
         $user->setPlayer(null);
         $em->flush();
 
-        $user->setPlayer(null);
-        $em->flush();
-
-
-
-        $em->flush();
         return $this->redirect($this->generateUrl('admin_users', array('id_clan' =>  $clan->getId())));
     }
 
@@ -143,6 +132,7 @@ class UserAdminController extends Controller
 
     public function editAction ($id, Request $request, $id_clan)
     {
+
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository('ApplicationSonataUserBundle:User')->find(array('id' => $id, 'clan' => $id_clan));
 
@@ -154,6 +144,8 @@ class UserAdminController extends Controller
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         $form = $this->get('form.factory')->create(new UserType($clan) );
+
+
         if ($form->handleRequest($request)->isValid())
         {
             $data = $request->request->all();
@@ -161,14 +153,13 @@ class UserAdminController extends Controller
             $idPlayer = $data['player']['player'] ;
             $player = $em->getRepository('COCBundle:Player')->findOneById($idPlayer);
 
-            $em = $this->getDoctrine()->getManager();
             $user->setPlayer($player);
-            $player->setUser($user);
             $em->persist($user);
             $em->flush();
 
             return $this->redirect($this->generateUrl('admin_users', array('id_clan' =>  $clan->getId())));
         }
+
         return $this->render('AdminBundle:UserAdmin:edit.html.twig', array('clan' => $clan ,
             'form'      =>  $form->createView(),
             'user'  => $user

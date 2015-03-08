@@ -18,8 +18,8 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
     /**
-     * @ORM\OneToOne(targetEntity="COC\COCBundle\Entity\Player", mappedBy="user", cascade={"persist"})
-     * @ORM\JoinColumn(name="player_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
+     * @ORM\OneToOne(targetEntity="COC\COCBundle\Entity\Player", mappedBy="user")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
      **/
     private $player;
 
@@ -72,45 +72,14 @@ class User extends BaseUser
         return $this->pass;
     }
 
-    public function getLearned()
-    {
-        return $this->learned;
-    }
-
-    public function getVisited()
-    {
-        return $this->visited;
-    }
-
-    public function getLocale()
-    {
-        return $this->locale;
-    }
-
-    public function setLocale($locale)
-    {
-        $this->locale = $locale;
-    }
-
-    public function getClanName()
-    {
-        return $this->clanName;
-    }
-
-    public function setVisited($visited)
-    {
-        $this->visited = $visited;
-    }
-
-    public function setLearned($learned)
-    {
-        $this->learned = $learned;
-    }
 
     public function setPass($pass)
     {
         $this->pass = $pass;
+
+        return $this;
     }
+
     /**
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Video", mappedBy="user")
      **/
@@ -140,16 +109,133 @@ class User extends BaseUser
      */
     protected $id;
 
+
     /**
      * Constructor
      */
     public function __construct()
     {
         parent::__construct();
+
         $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
         $this->imagebases = new \Doctrine\Common\Collections\ArrayCollection();
         $this->imagebonuses = new \Doctrine\Common\Collections\ArrayCollection();
         $this->imagebestattacks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set phone
+     *
+     * @param integer $phone
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return integer 
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     * @return User
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string 
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * Set clanName
+     *
+     * @param string $clanName
+     * @return User
+     */
+    public function setClanName($clanName)
+    {
+        $this->clanName = $clanName;
+
+        return $this;
+    }
+
+    /**
+     * Get clanName
+     *
+     * @return string 
+     */
+    public function getClanName()
+    {
+        return $this->clanName;
+    }
+
+    /**
+     * Set visited
+     *
+     * @param integer $visited
+     * @return User
+     */
+    public function setVisited($visited)
+    {
+        $this->visited = $visited;
+
+        return $this;
+    }
+
+    /**
+     * Get visited
+     *
+     * @return integer 
+     */
+    public function getVisited()
+    {
+        return $this->visited;
+    }
+
+    /**
+     * Set learned
+     *
+     * @param integer $learned
+     * @return User
+     */
+    public function setLearned($learned)
+    {
+        $this->learned = $learned;
+
+        return $this;
+    }
+
+    /**
+     * Get learned
+     *
+     * @return integer 
+     */
+    public function getLearned()
+    {
+        return $this->learned;
     }
 
     /**
@@ -184,6 +270,7 @@ class User extends BaseUser
     {
         return $this->player;
     }
+
 
     /**
      * Set clan
@@ -338,45 +425,5 @@ class User extends BaseUser
     public function getImagebestattacks()
     {
         return $this->imagebestattacks;
-    }
-
-
-
-
-    /**
-     * Set phone
-     *
-     * @param integer $phone
-     * @return User
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Get phone
-     *
-     * @return integer 
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-
-    /**
-     * Set clanName
-     *
-     * @param string $clanName
-     * @return User
-     */
-    public function setClanName($clanName)
-    {
-        $this->clanName = $clanName;
-
-        return $this;
     }
 }
