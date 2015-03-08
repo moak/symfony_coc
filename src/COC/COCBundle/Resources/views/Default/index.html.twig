@@ -13,10 +13,10 @@
    <!-- <a class="btn btn-large btn-success" href="javascript:void(0);" onclick="javascript:introJs().start();">Show me how</a>-->
 
 
-    <div class="row">
+    <div class="row visible-xs visible-sm hidden-md">
     <div class="col-xs-12">
         {% if is_granted('ROLE_USER') %}
-            <div class="row visible-xs visible-sm hidden-md hidden-lg ">
+            <div class="row hidden-lg ">
                 <div class="col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
                     {%  if app.user.player is defined %}
                         {% if app.user.player.clan is defined  %}
@@ -85,17 +85,20 @@
     </div><!-- end well-small -->
     </div></div>
 
-    <div class="row ">
-        <div class="col-md-8 col-md-offset-2 ">
 
-        {% if (clan.id == 1) %}
-            <a class="btn btn-large btn-block btn-success supercell-font" href="javascript:introJs().setOption('showProgress', true).start();">{{ 'coc.launch_demo'|trans }}</a>
-        {% endif %}
-            </div>
-    </div>
     <br>
      <!-- Page Content -->
     <div class="container">
+
+        <div class="row ">
+            <div class="col-md-8 col-md-offset-2 btn-demo">
+
+                {% if (clan.id == 1) %}
+                    <a class="btn btn-large btn-block btn-success supercell-font" href="javascript:introJs().setOption('showProgress', true).start();">{{ 'coc.launch_demo'|trans }}</a>
+                {% endif %}
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-6" data-position='right' data-step="3" data-intro="{{ 'intro.step3'|trans }}" data-position='right'>
 
