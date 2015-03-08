@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{ asset('css/players.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/dataTables_BS3.css') }}" />
 
-<div class="container">
+<div class="container white-bg rounded-corners">
 
     <div class="row">
         <div class="col-lg-12">
@@ -20,83 +20,79 @@
         <!-- /.col-lg-12 -->
     </div>
 
+    <div class="well">
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+        {{ form_errors(form) }}
 
-    <div class="container">
+        <div class="form-group">
+            {{ form_label(form.season, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+            {{ form_errors(form.season) }}
 
-        <div class="well">
-            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-            {{ form_errors(form) }}
-
-            <div class="form-group">
-                {{ form_label(form.season, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                {{ form_errors(form.season) }}
-
-                <div class="col-sm-4">
-                    {{ form_widget(form.season, { 'attr': {'class': 'form-control select_group'} }) }}
-                </div>
-
-                <div class="col-sm-4">
-                    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
-
-                </div>
+            <div class="col-sm-4">
+                {{ form_widget(form.season, { 'attr': {'class': 'form-control select_group'} }) }}
             </div>
-            {{ form_rest(form) }}
-            {{ form_end(form) }}
+
+            <div class="col-sm-4">
+                {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+            </div>
         </div>
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+    </div>
 
 
-        <table class="table table-responsive table-striped activity ">
-            <thead>
-                <tr>
-                    <th class="supercell-font">#</th>
-                    <th class="supercell-font">{{ 'player.name'|trans }}</th>
-                    <th class="supercell-font">{{ 'player.attack'|trans }}</th>
-                    <th class="supercell-font"> <i class="fa fa-trophy"></i> {{ 'player.trop'|trans }}</th>
-                    <th class="supercell-font">{{ 'player.received'|trans }}</th>
-                    <th class="supercell-font">{{ 'player.sent'|trans }} </th>
-                    <th class="supercell-font">{{ 'player.updated'|trans }}</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-            {% if players|length != 0 %}
-                {% for player in players %}
-                    {%  if app.user.player.id is defined %}
-                        {%  if app.user.player.name == player.name %}
-                        <tr data-name="{{ player.name }}" class="active">
-                        {% else %}
-                            <tr data-name="{{ player.name }}" >
-                        {% endif %}
+    <table class="table table-responsive table-striped activity ">
+        <thead>
+            <tr>
+                <th class="supercell-font">#</th>
+                <th class="supercell-font">{{ 'player.name'|trans }}</th>
+                <th class="supercell-font">{{ 'player.attack'|trans }}</th>
+                <th class="supercell-font"> <i class="fa fa-trophy"></i> {{ 'player.trop'|trans }}</th>
+                <th class="supercell-font">{{ 'player.received'|trans }}</th>
+                <th class="supercell-font">{{ 'player.sent'|trans }} </th>
+                <th class="supercell-font">{{ 'player.updated'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% if players|length != 0 %}
+            {% for player in players %}
+                {%  if app.user.player.id is defined %}
+                    {%  if app.user.player.name == player.name %}
+                    <tr data-name="{{ player.name }}" class="active">
                     {% else %}
                         <tr data-name="{{ player.name }}" >
                     {% endif %}
+                {% else %}
+                    <tr data-name="{{ player.name }}" >
+                {% endif %}
 
-                        <td class=""> {{ loop.index }}</td>
-                        <td class="">{{ player.name }}</td>
-                        <td class="">{{ player.attackWon }}</td>
-                        <td class="">{{ player.trophy }}</td>
-                        <td class="">{{ player.troopReceived }}</td>
-                        <td class="">{{ player.troopSent }}</td>
+                    <td class=""> {{ loop.index }}</td>
+                    <td class="">{{ player.name }}</td>
+                    <td class="">{{ player.attackWon }}</td>
+                    <td class="">{{ player.trophy }}</td>
+                    <td class="">{{ player.troopReceived }}</td>
+                    <td class="">{{ player.troopSent }}</td>
 
-                        <td class="">{{ player.updatedAt|date('U')|timeago }}</td>
-                    </tr>
-                {% endfor %}
-            {% else %}
-                <tr>
-                    <td>-</td>
-                    <td>0 joueur trouvé</td>
-                    <td>-</td>
-
-                    <td></td>
+                    <td class="">{{ player.updatedAt|date('U')|timeago }}</td>
                 </tr>
-            {% endif %}
-            </tbody>
-        </table>
-        <hr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>-</td>
+                <td>0 joueur trouvé</td>
+                <td>-</td>
+
+                <td></td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+    <hr>
 
 
-    </div>
-    </div>
+</div>
     <!-- /.container -->
 
     <footer>

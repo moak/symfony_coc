@@ -97,6 +97,16 @@ body
     background: rgba(235,250,255,0.9);
 }
 
+.rounded-corners{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.white-bg.rounded-corners{
+    margin-bottom: 20px;
+}
+
 .btn-demo{
     margin-top: 30px;
     margin-bottom: 30px;

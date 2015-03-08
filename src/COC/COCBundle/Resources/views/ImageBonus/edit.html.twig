@@ -3,7 +3,7 @@
 
 {% block body %}
 
-    <div class="container">
+    <div class="container white-bg rounded-corners">
         <h2>Edition image</h2>
 
         <div class="well">
@@ -48,5 +48,8 @@
         {{ form(form)}}
     </div>
     {{ form(form)}}
+    <footer>
+        {{ render(controller('COCBundle:Default:displaySeason')) }}
+    </footer>
 
 {% endblock %}

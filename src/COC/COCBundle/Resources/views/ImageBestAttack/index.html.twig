@@ -7,44 +7,44 @@
 
 
 
-    <!-- Page Content -->
-    <div class="container">
+<!-- Page Content -->
+<div class="container white-bg rounded-corners">
 
-        <h2>{{ 'menu.bestAttacks'|trans }}</h2>
-        <hr>
-            <a class="btn btn-normal btn-primary btn-lg" href="{{ path('coc_imageBestAttack_add' , {'id_clan': clan.id }) }}">{{ 'menu.bestAttack_add'|trans }}</a>
+    <h2>{{ 'menu.bestAttacks'|trans }}</h2>
+    <hr>
+        <a class="btn btn-normal btn-primary btn-lg" href="{{ path('coc_imageBestAttack_add' , {'id_clan': clan.id }) }}">{{ 'menu.bestAttack_add'|trans }}</a>
 
-        <div class="row">
-            <br>
-            {% if images|length != 0 %}
-                {% for image in images %}
-                    <div class="col-sm-6 col-md-4">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title text-center">{{ loop.index }} - {{ image.user.username }}  <small>{{ image.created|date('U')|timeago }}</small></h3>
-                            </div>
-                            <div class="panel-body">
-                                <a rel="gallery-1"  href="{{ asset('uploads/' ~ image.image.path) }}" class="swipebox" title="">
-                                    <img  class="img-responsive" src="{{ asset('uploads/' ~ image.image.path) }}" />
-                                </a>
+    <div class="row">
+        <br>
+        {% if images|length != 0 %}
+            {% for image in images %}
+                <div class="col-sm-6 col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-center">{{ loop.index }} - {{ image.user.username }}  <small>{{ image.created|date('U')|timeago }}</small></h3>
+                        </div>
+                        <div class="panel-body">
+                            <a rel="gallery-1"  href="{{ asset('uploads/' ~ image.image.path) }}" class="swipebox" title="">
+                                <img  class="img-responsive" src="{{ asset('uploads/' ~ image.image.path) }}" />
+                            </a>
 
-                            </div>
-                            <div class="panel-footer">
-                                <h4 class="panel-title text-center"><img src="{{ asset('images/gold.png') }}">{% if image.gold != null %} {{ image.gold  }}  {% else %} ? {% endif %}  <img src="{{ asset('images/elixir.png') }}"> {% if image.elixir != null %} {{ image.elixir }}  {% else %} ? {% endif %}</h4>
-                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <h4 class="panel-title text-center"><img src="{{ asset('images/gold.png') }}">{% if image.gold != null %} {{ image.gold  }}  {% else %} ? {% endif %}  <img src="{{ asset('images/elixir.png') }}"> {% if image.elixir != null %} {{ image.elixir }}  {% else %} ? {% endif %}</h4>
                         </div>
                     </div>
-                {% endfor %}
-            {% endif %}
-        </div>
-
-
+                </div>
+            {% endfor %}
+        {% endif %}
     </div>
-    <!-- /.container -->
 
-    <footer>
-        {{ render(controller('COCBundle:Default:displaySeason')) }}
-    </footer>
+
+</div>
+<!-- /.container -->
+
+<footer>
+    {{ render(controller('COCBundle:Default:displaySeason')) }}
+</footer>
 
 {% endblock %}
 
