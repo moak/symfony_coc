@@ -10,6 +10,8 @@ body
     src: url("../fonts/supercell.ttf") /* TTF file for CSS3 browsers */
 }
 
+.main{margin-top:-20px;}
+
 footer
 {
     padding: 8px;

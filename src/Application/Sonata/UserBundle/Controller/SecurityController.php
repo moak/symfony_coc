@@ -28,8 +28,6 @@ class SecurityController extends Controller
             $user = $this->get('security.context')->getToken()->getUser();
             $url = $this->container->get('router')->generate('coc', array('id_clan' => $user->getClan()->getId()));
 
-            var_dump($url);
-            die;
             return new RedirectResponse($url);
         }
 
