@@ -26,9 +26,10 @@ class PlayerHistoryRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('p')
             ->select('p')
+            ->innerJoin('p.player', 'u')
             ->where('p.season = :season')
             ->andWhere('p.clan = :clan')
-            ->orderBy('p.level', 'DESC')
+            ->orderBy('p.total', 'DESC')
             ->setParameter('clan', $clan)
             ->setParameter('season', $season);
 

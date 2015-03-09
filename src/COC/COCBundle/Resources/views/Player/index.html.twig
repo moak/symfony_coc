@@ -55,7 +55,6 @@
         <th  class="no-sort"></th>
         <th class="supercell-font">#</th>
         <th class="supercell-font">{{ 'player.name'|trans }}</th>
-        <th class="supercell-font">{{ 'player.ht'|trans }}</th>
         <th class="supercell-font">{{ 'player.level'|trans }}</th>
         <th class="supercell-font">Def</th>
         <th class="supercell-font">Att</th>
@@ -70,8 +69,6 @@
 
     {% if players|length != 0 %}
         {% for player in players %}
-
-
             {%  if app.user.player.id is defined %}
                 {%  if app.user.player.id == player.id %}
                 <tr data-name="{{ player.name }}" class="positionable active">
@@ -83,15 +80,51 @@
             {% endif %}
             <td><span class="glyphicon glyphicon-plus-sign expand" data-name="{{ player.name }}"></span></td>
             <td class="position"></td>
-            <td>{{ player.name }}</td>
-            <td>{{ player.hallTown }}</td>
-            <td>{{ player.level }}</td>
-            <td>{{ player.totalDefence|round }}</td>
-            <td>{{ player.totalAttack|round}}</td>
-            <td>{{ player.total|round }}</td>
-            {% if  isCurrentSeason == false %}
-               ( {{ current_players[loop.index].total }})
-            {% endif %}
+            <td>{{ player.name }} ({{ player.hallTown }})</td>
+            <td>
+
+                {% if  isCurrentSeason == false %}
+                    {% if player.player.level is defined %}
+                        -{{ player.player.level - player.level }}
+                    {% endif %}
+                {% else %}
+                    {{ player.level|round }}
+                {% endif %}
+
+            </td>
+            <td>
+                {% if  isCurrentSeason == false %}
+                    {% if player.player.totalDefence is defined %}
+                        -{{ player.player.totalDefence|round - player.totalDefence|round }}
+                    {% endif %}
+                {% else %}
+                    {{ player.totalDefence|round }}
+                {% endif %}
+
+            </td>
+
+            <td>
+                {% if  isCurrentSeason == false %}
+                    {% if player.player.totalAttack is defined %}
+                        -{{ player.player.totalAttack|round - player.totalAttack|round }}
+                    {% endif %}
+                {% else %}
+                    {{ player.totalAttack|round }}
+                {% endif %}
+
+            </td>
+
+            <td>
+
+                {% if  isCurrentSeason == false %}
+                    {% if player.player.total is defined %}
+                        -{{ player.player.total - player.total }}
+                    {% endif %}
+                {% else %}
+                    {{ player.total|round }}
+                {% endif %}
+            </td>
+
             {% if isCurrentSeason %}
                 <td>{{ player.updatedAt|date('U')|timeago }}</td>
             {% endif %}
