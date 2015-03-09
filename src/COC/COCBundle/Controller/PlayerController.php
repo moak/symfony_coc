@@ -58,7 +58,7 @@ class PlayerController extends Controller
                 if ($type == 0)
                 {
                     $players = $em->getRepository('COCBundle:PlayerHistory')->findBySeason($season, $clan);
-                    $current_players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
+                    $current_players = $em->getRepository('COCBundle:Player')->findByClan($clan,array('total' => 'DESC'));
 
                    // var_dump($current_players);
                 }

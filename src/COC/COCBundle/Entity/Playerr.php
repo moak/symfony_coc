@@ -12,123 +12,14 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * UserInfo
  *
- * @ORM\Table(name="player")
+ * @ORM\Table(name="playerr")
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\PlayerRepository")
  * @ORM\HasLifecycleCallbacks()
 
  */
-class Player
+class Playerr
 {
-    /**
-     * @ORM\PostPersist()
-     * @ORM\PostUpdate()
-     */
-    public function postPersistPostUpdate()
-    {
-        $this->totalAttack = $this->totalAttack();
-        $this->totalDefence = $this->totalDefence();
-        $this->total = $this->totalAttack + $this->totalDefence;
-    }
-
-    public function totalDefence()
-    {
-        return
-            (($this->mortar1 + 1) * $this->mortar1 / 2 ) +
-            (($this->mortar2 + 1) * $this->mortar2 / 2 ) +
-            (($this->mortar3 + 1) * $this->mortar3 / 2 ) +
-            (($this->mortar4 + 1) * $this->mortar4 / 2 ) +
-
-            (($this->inferno1 + 1) * $this->inferno1 / 2) * 3 +
-            (($this->inferno2 + 1) * $this->inferno1 / 2) * 3 +
-
-            (($this->tesla1 + 1) * $this->tesla1 / 2) * 2 +
-            (($this->tesla2 + 1) * $this->tesla2 / 2) * 2 +
-            (($this->tesla3 + 1) * $this->tesla3 / 2) * 2 +
-            (($this->tesla4 + 1) * $this->tesla4 / 2) * 2 +
-
-            (($this->arcx1 + 1) * $this->arcx1 / 2) * 3 +
-            (($this->arcx2 + 1) * $this->arcx2 / 2) * 3 +
-            (($this->arcx3 + 1) * $this->arcx3 / 2) * 3 +
-
-            (($this->air_defence1 + 1) * $this->air_defence1 / 2 ) +
-            (($this->air_defence2 + 1) * $this->air_defence2 / 2 ) +
-            (($this->air_defence3 + 1) * $this->air_defence3 / 2 ) +
-            (($this->air_defence4 + 1) * $this->air_defence4 / 2 ) +
-
-            (($this->tower_magic1 + 1) * $this->tower_magic1 / 2) * 2.5 +
-            (($this->tower_magic2 + 1) * $this->tower_magic2 / 2) * 2.5 +
-            (($this->tower_magic3 + 1) * $this->tower_magic3 / 2) * 2.5 +
-            (($this->tower_magic4 + 1) * $this->tower_magic4 / 2) * 2.5 +
-
-            (($this->canon1 + 1) * $this->canon1 / 2 ) +
-            (($this->canon2 + 1) * $this->canon2 / 2 ) +
-            (($this->canon3 + 1) * $this->canon3 / 2 ) +
-            (($this->canon4 + 1) * $this->canon4 / 2 ) +
-            (($this->canon5 + 1) * $this->canon5 / 2 ) +
-            (($this->canon6 + 1) * $this->canon6 / 2 ) +
-
-            (($this->tower_archer1 + 1) * $this->tower_archer1 / 2 ) +
-            (($this->tower_archer2 + 1) * $this->tower_archer2 / 2 ) +
-            (($this->tower_archer3 + 1) * $this->tower_archer3 / 2 ) +
-            (($this->tower_archer4+ 1) * $this->tower_archer4 / 2 ) +
-            (($this->tower_archer5+ 1) * $this->tower_archer5 / 2 ) +
-            (($this->tower_archer6+ 1) * $this->tower_archer6 / 2 ) +
-            (($this->tower_archer7+ 1) * $this->tower_archer7 / 2) ;
-
-    }
-    public function totalAttack()
-    {
-        return
-            (
-                (($this->archer + 1) * $this->archer / 2)  +
-                (($this->barbar + 1) * $this->barbar / 2) +
-                (($this->geant + 1) * $this->geant / 2) +
-                (($this->wizard + 1) * $this->wizard / 2) +
-                (($this->dragon + 1) * $this->dragon / 2) * 2 +
-                (($this->wall_breaker + 1) * $this->wall_breaker / 2) +
-                (($this->pekka + 1) * $this->pekka / 2) * 2 +
-                (($this->ballon + 1) * $this->ballon / 2) +
-                (($this->healer + 1) * $this->healer / 2) * 1.5 +
-                (($this->gobelin + 1) * $this->gobelin / 2) +
-                (($this->minion + 1) * $this->minion / 2) +
-                (($this->rider + 1) * $this->rider / 2) +
-                (($this->valkyrie + 1) * $this->valkyrie / 2) +
-                (($this->golem + 1) * $this->golem / 2) +
-                (($this->lava + 1) * $this->lava / 2) +
-                (($this->witch + 1) * $this->witch / 2) +
-                (($this->king + 1) * $this->king / 2) +
-                (($this->queen + 1) * $this->queen / 2) +
-                (($this->potion_heal + 1) * $this->potion_heal / 2) +
-                (($this->potion_boost + 1) * $this->potion_boost / 2) +
-                (($this->potion_damage + 1) * $this->potion_damage / 2) +
-                (($this->potion_green + 1) * $this->potion_green / 2) +
-                (($this->potion_freeze + 1) * $this->potion_freeze / 2)
-            ) * 4 ;
-    }
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="total", type="integer", nullable=true)
-     */
-    private $total;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="totalAttack", type="integer", nullable=true)
-     */
-    private $totalAttack;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="totalDefence", type="integer", nullable=true)
-     */
-    private $totalDefence;
-
-
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
@@ -234,6 +125,24 @@ class Player
      * @ORM\Column(name="trophy", type="integer", options={"default" : 0})
      */
     private $trophy;
+
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function prePersistPreUpdate()
+    {
+        $this->total = new \DateTime();
+    }
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="total", type="integer")
+     */
+    private $total;
 
 
     /**
@@ -2950,31 +2859,5 @@ class Player
     public function getBase()
     {
         return $this->base;
-    }
-
-    /**
-     * Set totalAttack
-     *
-     * @param integer $totalAttack
-     * @return Player
-     */
-    public function setTotalAttack($totalAttack)
-    {
-        $this->totalAttack = $totalAttack;
-
-        return $this;
-    }
-
-    /**
-     * Set totalDefence
-     *
-     * @param integer $totalDefence
-     * @return Player
-     */
-    public function setTotalDefence($totalDefence)
-    {
-        $this->totalDefence = $totalDefence;
-
-        return $this;
     }
 }

@@ -19,22 +19,12 @@ class PlayerRepository extends EntityRepository
         $qb = $this->createQueryBuilder('u')
             ->select('u')
             ->where('u.season = :season')
-            ->orderBy('u.level', 'DESC')
+            ->orderBy('p.total', 'DESC')
             ->setParameter('season', $season);
 
         return $qb->getQuery()->getResult();
     }
 
-    public function getTotalDefence()
-    {
-        $qb = $this->createQueryBuilder('u')
-            ->select('p.level')
-            ->from('COCBundle:player','p')
-            ->orderBy('p.id','DESC')
-            ->getQuery();
-
-        return $qb->getResult();
-    }
 
     public function getLastUpdate($clan)
     {
@@ -49,7 +39,6 @@ class PlayerRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('p')
             ->select('p')
-
             ->where('p.clan = :clan')
             ->orderBy('p.updatedAt', 'DESC')
             ->setParameter('clan', $clan)
@@ -64,7 +53,7 @@ class PlayerRepository extends EntityRepository
         $qb = $this->createQueryBuilder('p')
             ->select('p')
             ->where('p.clan = :clan')
-            ->orderBy('p.level', 'DESC')
+            ->orderBy('p.total', 'DESC')
             ->setParameter('clan', $id_clan);
 
         return $qb->getQuery()->getResult();
@@ -83,24 +72,12 @@ class PlayerRepository extends EntityRepository
     }
 
 
-    public function getTotalAttack()
-    {
-        $qb = $this->createQueryBuilder('p');
-        $qb->addSelect('(
-            ((p.mortar1 + 1) * p.mortar1) / 2) + ((p.mortar2 + 1) * p.mortar2) / 2 + ((p.mortar3 + 1) * p.mortar3) / 2 + ((p.mortar4 + 1) * p.mortar4) / 2
-
-            as totalDefence'
-        );
-
-        return $qb->getQuery()->getResult();
-    }
-
-
     public function getPlayers($clan)
     {
-        $query = $this->createQueryBuilder('player')
-            ->leftJoin('player.user', 'u')
-            ->where('player.clan = :clan')
+        $query = $this->createQueryBuilder('p')
+            ->leftJoin('p.user', 'u')
+            ->where('p.clan = :clan')
+            ->orderBy('p.total', 'DESC')
 
             ->setParameter('clan', $clan);
 
@@ -166,8 +143,6 @@ class PlayerRepository extends EntityRepository
         $query = $this->createQueryBuilder('player')
             ->leftJoin('player.user', 'u')
             ->where('u = :user')
-
-
             ->setParameter('user', $user);
 
         return $query->getQuery()->getSingleResult();

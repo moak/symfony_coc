@@ -41,7 +41,7 @@ $( document ).ready(function(){
     var table = $('.datatable').DataTable(
         {
             columnDefs: [{ targets: 'no-sort', orderable: false }],
-            order: [[ 1, "asc" ]],
+            order: [],
             bFilter: false,
             bPaginate: false,
             bLengthChange: false,

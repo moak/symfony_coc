@@ -89,6 +89,9 @@
             <td>{{ player.totalDefence|round }}</td>
             <td>{{ player.totalAttack|round}}</td>
             <td>{{ player.total|round }}</td>
+            {% if  isCurrentSeason == false %}
+               ( {{ current_players[loop.index].total }})
+            {% endif %}
             {% if isCurrentSeason %}
                 <td>{{ player.updatedAt|date('U')|timeago }}</td>
             {% endif %}
