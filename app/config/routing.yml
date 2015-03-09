@@ -2,7 +2,7 @@ homepage:
     pattern:   /{_locale}
     defaults:  { _controller: VitrineBundle:Default:index, _locale: en }
     requirements:
-        _locale:  en|fr
+        _locale:  en|fr|es
     options:
          expose: true
 
@@ -16,13 +16,13 @@ vitrine:
     resource: "@VitrineBundle/Resources/config/routing.yml"
     prefix:   /{_locale}
     requirements:
-        _locale: en|fr
+        _locale: en|fr|es
 
 admin:
     resource: "@AdminBundle/Resources/config/routing.yml"
     prefix:   /{_locale}
     requirements:
-        _locale: en|fr
+        _locale: en|fr|es
     options:
             expose: true
 
@@ -30,7 +30,7 @@ coc:
     resource: "@COCBundle/Resources/config/routing.yml"
     prefix:   /{_locale}
     requirements:
-        _locale: en|fr
+        _locale: en|fr|es
     options:
         expose: true
 

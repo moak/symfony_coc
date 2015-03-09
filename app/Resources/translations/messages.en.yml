@@ -3,8 +3,12 @@ form:
     elixir: Elexir
     image: Image *
     title: Title *
+    my_base: My base
+    my_picture: My picture
 
 menu:
+    my_account: My account
+    my_player: My Player
     go_site: Go on website
     visibility: Clan's visibility
     password: Clan's password

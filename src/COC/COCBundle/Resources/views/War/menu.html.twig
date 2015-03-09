@@ -5,16 +5,16 @@
         </div>
         <div class="panel-body">
             {% if isInPreparation != 0 %}
-                {{ 'war.preparation_day'|trans }} {{ warInProgress.start|date_modify("+1 day")|date('d M H:s') }})
+                {{ 'war.preparation_day'|trans }} {{ warInProgress.start|date_modify("+1 day")|date('d M H:i') }})
             {% else %}
-                {{ 'war.war_day'|trans }} {{ warInProgress.end|date('d M H:s') }})
+                {{ 'war.war_day'|trans }} {{ warInProgress.end|date('d M H:i') }})
             {% endif %}
         </div>
     {% else %}
         <div class="panel-heading supercell-font">{{ 'war.wars'|trans }}  <p class="pull-right"><a href="{{ path('coc_wars', {'id_clan': clan.id}) }}">{{ 'war.history'|trans }} <span class="badge">{{ numberWars }}</span></a></p></div>
         <div class="panel-body">
             {% if nextWar|length !=0 %}
-               <p>  {{ 'war.next_war'|trans }}:  {{ nextWar[0].start|date('d M  à H:s') }}</p>
+               <p>  {{ 'war.next_war'|trans }}:  {{ nextWar[0].start|date('d M  à H:i') }}</p>
             {% else %}
                 <p>{{ 'war.no_next_war'|trans }}</p>
             {% endif %}

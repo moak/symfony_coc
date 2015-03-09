@@ -22,11 +22,12 @@ class DefaultController extends Controller
         foreach ($clans as $clan)
         {
             $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
+
             $total = 0;
             $number = 0;
             foreach ($players as $player)
             {
-               $total = $total + $player['total'];
+               $total = $total + $player->getTotal();
                $number = $number + 1;
             }
             $clan->setTotal($total);

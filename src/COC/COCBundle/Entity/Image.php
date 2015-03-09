@@ -79,6 +79,11 @@ class Image
         return null === $this->path ? null : $this->getUploadRootDir() . '/' . $this->path;
     }
 
+    public function getWebPath() {
+
+        return 'uploads/' . $this->path;
+    }
+
     public function getAssetPath()
     {
         return 'uploads/' . $this->path;

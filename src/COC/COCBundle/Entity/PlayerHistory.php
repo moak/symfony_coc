@@ -21,6 +21,28 @@ class PlayerHistory
     private $clan;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="total", type="integer")
+     */
+    private $total;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="totalAttack", type="integer")
+     */
+    private $totalAttack;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="totalDefence", type="integer")
+     */
+    private $totalDefence;
+
+
+    /**
      * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Player", inversedBy="playerhistories")
      * @ORM\JoinColumn(name="player_id", referencedColumnName="id", onDelete="SET NULL")
      */
@@ -668,7 +690,7 @@ class PlayerHistory
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -678,7 +700,7 @@ class PlayerHistory
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -701,7 +723,7 @@ class PlayerHistory
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -724,7 +746,7 @@ class PlayerHistory
     /**
      * Get hallTown
      *
-     * @return integer 
+     * @return integer
      */
     public function getHallTown()
     {
@@ -747,7 +769,7 @@ class PlayerHistory
     /**
      * Get troopReceived
      *
-     * @return integer 
+     * @return integer
      */
     public function getTroopReceived()
     {
@@ -770,7 +792,7 @@ class PlayerHistory
     /**
      * Get troopSent
      *
-     * @return integer 
+     * @return integer
      */
     public function getTroopSent()
     {
@@ -793,7 +815,7 @@ class PlayerHistory
     /**
      * Get attackWon
      *
-     * @return integer 
+     * @return integer
      */
     public function getAttackWon()
     {
@@ -816,7 +838,7 @@ class PlayerHistory
     /**
      * Get level
      *
-     * @return integer 
+     * @return integer
      */
     public function getLevel()
     {
@@ -839,7 +861,7 @@ class PlayerHistory
     /**
      * Get trophy
      *
-     * @return integer 
+     * @return integer
      */
     public function getTrophy()
     {
@@ -862,7 +884,7 @@ class PlayerHistory
     /**
      * Get canon1
      *
-     * @return integer 
+     * @return integer
      */
     public function getCanon1()
     {
@@ -885,7 +907,7 @@ class PlayerHistory
     /**
      * Get air_defence1
      *
-     * @return integer 
+     * @return integer
      */
     public function getAirDefence1()
     {
@@ -908,7 +930,7 @@ class PlayerHistory
     /**
      * Get air_defence2
      *
-     * @return integer 
+     * @return integer
      */
     public function getAirDefence2()
     {
@@ -931,7 +953,7 @@ class PlayerHistory
     /**
      * Get air_defence3
      *
-     * @return integer 
+     * @return integer
      */
     public function getAirDefence3()
     {
@@ -954,7 +976,7 @@ class PlayerHistory
     /**
      * Get air_defence4
      *
-     * @return integer 
+     * @return integer
      */
     public function getAirDefence4()
     {
@@ -977,7 +999,7 @@ class PlayerHistory
     /**
      * Get canon2
      *
-     * @return integer 
+     * @return integer
      */
     public function getCanon2()
     {
@@ -1000,7 +1022,7 @@ class PlayerHistory
     /**
      * Get canon3
      *
-     * @return integer 
+     * @return integer
      */
     public function getCanon3()
     {
@@ -1023,7 +1045,7 @@ class PlayerHistory
     /**
      * Get canon4
      *
-     * @return integer 
+     * @return integer
      */
     public function getCanon4()
     {
@@ -1046,7 +1068,7 @@ class PlayerHistory
     /**
      * Get canon5
      *
-     * @return integer 
+     * @return integer
      */
     public function getCanon5()
     {
@@ -1069,7 +1091,7 @@ class PlayerHistory
     /**
      * Get canon6
      *
-     * @return integer 
+     * @return integer
      */
     public function getCanon6()
     {
@@ -1092,7 +1114,7 @@ class PlayerHistory
     /**
      * Get tower_archer1
      *
-     * @return integer 
+     * @return integer
      */
     public function getTowerArcher1()
     {
@@ -1115,7 +1137,7 @@ class PlayerHistory
     /**
      * Get tower_archer2
      *
-     * @return integer 
+     * @return integer
      */
     public function getTowerArcher2()
     {
@@ -1138,7 +1160,7 @@ class PlayerHistory
     /**
      * Get tower_archer3
      *
-     * @return integer 
+     * @return integer
      */
     public function getTowerArcher3()
     {
@@ -1161,7 +1183,7 @@ class PlayerHistory
     /**
      * Get tower_archer4
      *
-     * @return integer 
+     * @return integer
      */
     public function getTowerArcher4()
     {
@@ -1184,7 +1206,7 @@ class PlayerHistory
     /**
      * Get tower_archer5
      *
-     * @return integer 
+     * @return integer
      */
     public function getTowerArcher5()
     {
@@ -1207,7 +1229,7 @@ class PlayerHistory
     /**
      * Get tower_archer6
      *
-     * @return integer 
+     * @return integer
      */
     public function getTowerArcher6()
     {
@@ -1230,7 +1252,7 @@ class PlayerHistory
     /**
      * Get tower_archer7
      *
-     * @return integer 
+     * @return integer
      */
     public function getTowerArcher7()
     {
@@ -1253,7 +1275,7 @@ class PlayerHistory
     /**
      * Get tower_magic1
      *
-     * @return integer 
+     * @return integer
      */
     public function getTowerMagic1()
     {
@@ -1276,7 +1298,7 @@ class PlayerHistory
     /**
      * Get tower_magic2
      *
-     * @return integer 
+     * @return integer
      */
     public function getTowerMagic2()
     {
@@ -1299,7 +1321,7 @@ class PlayerHistory
     /**
      * Get tower_magic3
      *
-     * @return integer 
+     * @return integer
      */
     public function getTowerMagic3()
     {
@@ -1322,7 +1344,7 @@ class PlayerHistory
     /**
      * Get tower_magic4
      *
-     * @return integer 
+     * @return integer
      */
     public function getTowerMagic4()
     {
@@ -1345,7 +1367,7 @@ class PlayerHistory
     /**
      * Get mortar1
      *
-     * @return integer 
+     * @return integer
      */
     public function getMortar1()
     {
@@ -1368,7 +1390,7 @@ class PlayerHistory
     /**
      * Get mortar2
      *
-     * @return integer 
+     * @return integer
      */
     public function getMortar2()
     {
@@ -1391,7 +1413,7 @@ class PlayerHistory
     /**
      * Get mortar3
      *
-     * @return integer 
+     * @return integer
      */
     public function getMortar3()
     {
@@ -1414,7 +1436,7 @@ class PlayerHistory
     /**
      * Get mortar4
      *
-     * @return integer 
+     * @return integer
      */
     public function getMortar4()
     {
@@ -1437,7 +1459,7 @@ class PlayerHistory
     /**
      * Get tesla1
      *
-     * @return integer 
+     * @return integer
      */
     public function getTesla1()
     {
@@ -1460,7 +1482,7 @@ class PlayerHistory
     /**
      * Get tesla2
      *
-     * @return integer 
+     * @return integer
      */
     public function getTesla2()
     {
@@ -1483,7 +1505,7 @@ class PlayerHistory
     /**
      * Get tesla3
      *
-     * @return integer 
+     * @return integer
      */
     public function getTesla3()
     {
@@ -1506,7 +1528,7 @@ class PlayerHistory
     /**
      * Get tesla4
      *
-     * @return integer 
+     * @return integer
      */
     public function getTesla4()
     {
@@ -1529,7 +1551,7 @@ class PlayerHistory
     /**
      * Get inferno1
      *
-     * @return integer 
+     * @return integer
      */
     public function getInferno1()
     {
@@ -1552,7 +1574,7 @@ class PlayerHistory
     /**
      * Get inferno2
      *
-     * @return integer 
+     * @return integer
      */
     public function getInferno2()
     {
@@ -1575,7 +1597,7 @@ class PlayerHistory
     /**
      * Get king
      *
-     * @return integer 
+     * @return integer
      */
     public function getKing()
     {
@@ -1598,7 +1620,7 @@ class PlayerHistory
     /**
      * Get queen
      *
-     * @return integer 
+     * @return integer
      */
     public function getQueen()
     {
@@ -1621,7 +1643,7 @@ class PlayerHistory
     /**
      * Get arcx1
      *
-     * @return integer 
+     * @return integer
      */
     public function getArcx1()
     {
@@ -1644,7 +1666,7 @@ class PlayerHistory
     /**
      * Get arcx2
      *
-     * @return integer 
+     * @return integer
      */
     public function getArcx2()
     {
@@ -1667,7 +1689,7 @@ class PlayerHistory
     /**
      * Get arcx3
      *
-     * @return integer 
+     * @return integer
      */
     public function getArcx3()
     {
@@ -1690,7 +1712,7 @@ class PlayerHistory
     /**
      * Get archer
      *
-     * @return integer 
+     * @return integer
      */
     public function getArcher()
     {
@@ -1713,7 +1735,7 @@ class PlayerHistory
     /**
      * Get barbar
      *
-     * @return integer 
+     * @return integer
      */
     public function getBarbar()
     {
@@ -1736,7 +1758,7 @@ class PlayerHistory
     /**
      * Get gobelin
      *
-     * @return integer 
+     * @return integer
      */
     public function getGobelin()
     {
@@ -1759,7 +1781,7 @@ class PlayerHistory
     /**
      * Get geant
      *
-     * @return integer 
+     * @return integer
      */
     public function getGeant()
     {
@@ -1782,7 +1804,7 @@ class PlayerHistory
     /**
      * Get wall_breaker
      *
-     * @return integer 
+     * @return integer
      */
     public function getWallBreaker()
     {
@@ -1805,7 +1827,7 @@ class PlayerHistory
     /**
      * Get ballon
      *
-     * @return integer 
+     * @return integer
      */
     public function getBallon()
     {
@@ -1828,7 +1850,7 @@ class PlayerHistory
     /**
      * Get wizard
      *
-     * @return integer 
+     * @return integer
      */
     public function getWizard()
     {
@@ -1851,7 +1873,7 @@ class PlayerHistory
     /**
      * Get healer
      *
-     * @return integer 
+     * @return integer
      */
     public function getHealer()
     {
@@ -1874,7 +1896,7 @@ class PlayerHistory
     /**
      * Get dragon
      *
-     * @return integer 
+     * @return integer
      */
     public function getDragon()
     {
@@ -1897,7 +1919,7 @@ class PlayerHistory
     /**
      * Get pekka
      *
-     * @return integer 
+     * @return integer
      */
     public function getPekka()
     {
@@ -1920,7 +1942,7 @@ class PlayerHistory
     /**
      * Get minion
      *
-     * @return integer 
+     * @return integer
      */
     public function getMinion()
     {
@@ -1943,7 +1965,7 @@ class PlayerHistory
     /**
      * Get rider
      *
-     * @return integer 
+     * @return integer
      */
     public function getRider()
     {
@@ -1966,7 +1988,7 @@ class PlayerHistory
     /**
      * Get valkyrie
      *
-     * @return integer 
+     * @return integer
      */
     public function getValkyrie()
     {
@@ -1989,7 +2011,7 @@ class PlayerHistory
     /**
      * Get golem
      *
-     * @return integer 
+     * @return integer
      */
     public function getGolem()
     {
@@ -2012,7 +2034,7 @@ class PlayerHistory
     /**
      * Get witch
      *
-     * @return integer 
+     * @return integer
      */
     public function getWitch()
     {
@@ -2035,7 +2057,7 @@ class PlayerHistory
     /**
      * Get lava
      *
-     * @return integer 
+     * @return integer
      */
     public function getLava()
     {
@@ -2058,7 +2080,7 @@ class PlayerHistory
     /**
      * Get potion_heal
      *
-     * @return integer 
+     * @return integer
      */
     public function getPotionHeal()
     {
@@ -2081,7 +2103,7 @@ class PlayerHistory
     /**
      * Get potion_boost
      *
-     * @return integer 
+     * @return integer
      */
     public function getPotionBoost()
     {
@@ -2104,7 +2126,7 @@ class PlayerHistory
     /**
      * Get potion_damage
      *
-     * @return integer 
+     * @return integer
      */
     public function getPotionDamage()
     {
@@ -2127,7 +2149,7 @@ class PlayerHistory
     /**
      * Get potion_green
      *
-     * @return integer 
+     * @return integer
      */
     public function getPotionGreen()
     {
@@ -2150,7 +2172,7 @@ class PlayerHistory
     /**
      * Get potion_freeze
      *
-     * @return integer 
+     * @return integer
      */
     public function getPotionFreeze()
     {
@@ -2173,7 +2195,7 @@ class PlayerHistory
     /**
      * Get gold1
      *
-     * @return integer 
+     * @return integer
      */
     public function getGold1()
     {
@@ -2196,7 +2218,7 @@ class PlayerHistory
     /**
      * Get gold2
      *
-     * @return integer 
+     * @return integer
      */
     public function getGold2()
     {
@@ -2219,7 +2241,7 @@ class PlayerHistory
     /**
      * Get gold3
      *
-     * @return integer 
+     * @return integer
      */
     public function getGold3()
     {
@@ -2242,7 +2264,7 @@ class PlayerHistory
     /**
      * Get gold4
      *
-     * @return integer 
+     * @return integer
      */
     public function getGold4()
     {
@@ -2265,7 +2287,7 @@ class PlayerHistory
     /**
      * Get gold5
      *
-     * @return integer 
+     * @return integer
      */
     public function getGold5()
     {
@@ -2288,7 +2310,7 @@ class PlayerHistory
     /**
      * Get gold6
      *
-     * @return integer 
+     * @return integer
      */
     public function getGold6()
     {
@@ -2311,7 +2333,7 @@ class PlayerHistory
     /**
      * Get gold7
      *
-     * @return integer 
+     * @return integer
      */
     public function getGold7()
     {
@@ -2334,7 +2356,7 @@ class PlayerHistory
     /**
      * Get elixir1
      *
-     * @return integer 
+     * @return integer
      */
     public function getElixir1()
     {
@@ -2357,7 +2379,7 @@ class PlayerHistory
     /**
      * Get elixir2
      *
-     * @return integer 
+     * @return integer
      */
     public function getElixir2()
     {
@@ -2380,7 +2402,7 @@ class PlayerHistory
     /**
      * Get elixir3
      *
-     * @return integer 
+     * @return integer
      */
     public function getElixir3()
     {
@@ -2403,7 +2425,7 @@ class PlayerHistory
     /**
      * Get elixir4
      *
-     * @return integer 
+     * @return integer
      */
     public function getElixir4()
     {
@@ -2426,7 +2448,7 @@ class PlayerHistory
     /**
      * Get elixir5
      *
-     * @return integer 
+     * @return integer
      */
     public function getElixir5()
     {
@@ -2449,7 +2471,7 @@ class PlayerHistory
     /**
      * Get elixir6
      *
-     * @return integer 
+     * @return integer
      */
     public function getElixir6()
     {
@@ -2472,7 +2494,7 @@ class PlayerHistory
     /**
      * Get elixir7
      *
-     * @return integer 
+     * @return integer
      */
     public function getElixir7()
     {
@@ -2495,7 +2517,7 @@ class PlayerHistory
     /**
      * Get clan
      *
-     * @return \COC\COCBundle\Entity\Clan 
+     * @return \COC\COCBundle\Entity\Clan
      */
     public function getClan()
     {
@@ -2518,7 +2540,7 @@ class PlayerHistory
     /**
      * Get season
      *
-     * @return \COC\COCBundle\Entity\Season 
+     * @return \COC\COCBundle\Entity\Season
      */
     public function getSeason()
     {
@@ -2541,10 +2563,79 @@ class PlayerHistory
     /**
      * Get player
      *
-     * @return \COC\COCBundle\Entity\Player 
+     * @return \COC\COCBundle\Entity\Player
      */
     public function getPlayer()
     {
         return $this->player;
+    }
+
+    /**
+     * Set total
+     *
+     * @param integer $total
+     * @return PlayerHistory
+     */
+    public function setTotal($total)
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    /**
+     * Get total
+     *
+     * @return integer
+     */
+    public function getTotal()
+    {
+        return $this->total;
+    }
+
+    /**
+     * Set totalAttack
+     *
+     * @param integer $totalAttack
+     * @return PlayerHistory
+     */
+    public function setTotalAttack($totalAttack)
+    {
+        $this->totalAttack = $totalAttack;
+
+        return $this;
+    }
+
+    /**
+     * Get totalAttack
+     *
+     * @return integer
+     */
+    public function getTotalAttack()
+    {
+        return $this->totalAttack;
+    }
+
+    /**
+     * Set totalDefence
+     *
+     * @param integer $totalDefence
+     * @return PlayerHistory
+     */
+    public function setTotalDefence($totalDefence)
+    {
+        $this->totalDefence = $totalDefence;
+
+        return $this;
+    }
+
+    /**
+     * Get totalDefence
+     *
+     * @return integer
+     */
+    public function getTotalDefence()
+    {
+        return $this->totalDefence;
     }
 }

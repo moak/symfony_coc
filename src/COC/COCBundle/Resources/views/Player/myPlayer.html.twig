@@ -1,0 +1,73 @@
+{% extends "::base.html.twig" %}
+{% set id_clan = clan.id %}
+{% set active = "" %}
+
+ {% block title %}
+     <title>{{ 'menu.my_player'|trans }}</title>
+ {% endblock %}
+
+{% block body %}
+
+
+    <div class="container white-bg rounded-corners">
+        <h2> {{ 'menu.my_player'|trans }}</h2>
+
+        <div class="well">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6 col-xs-4">
+                            {% if player.picture.path is defined %}
+                                <a rel="gallery-1"  href="{{ asset('uploads/' ~ player.picture.path) }}" class="swipebox" title="">
+                                    <img  class="img-responsive" src="{{ asset('uploads/' ~ player.picture.path) }}" />
+                                </a>
+                            {% else %}
+                                <img class="img-responsive" src="{{ asset('images/non_available_picture.jpg') }}" />
+                            {% endif %}
+
+                        </div>
+                        <div class="col-md-6">
+                            <h2>{{ player.name }}</h2>
+                            <h3>{{ 'player.level'|trans }} {{ player.level }}</h3>
+                        </div>
+                    </div>
+
+                    <h3>Information</h3>
+                    <br>
+                   IMPORT PLAYER INTERFACE IMPORT PLAYER INTERFACE IMPORT PLAYER INTERFACE <br>
+                    IMPORT PLAYER INTERFACE IMPORT PLAYER INTERFACE IMPORT PLAYER INTERFACE <br>
+                    IMPORT PLAYER INTERFACE IMPORT PLAYER INTERFACE IMPORT PLAYER INTERFACE <br>
+                    IMPORT PLAYER INTERFACE IMPORT PLAYER INTERFACE IMPORT PLAYER INTERFACE <br>
+                    IMPORT PLAYER INTERFACE IMPORT PLAYER INTERFACE IMPORT PLAYER INTERFACE <br>
+                    IMPORT PLAYER INTERFACE IMPORT PLAYER INTERFACE IMPORT PLAYER INTERFACE <br>
+                    IMPORT PLAYER INTERFACE IMPORT PLAYER INTERFACE IMPORT PLAYER INTERFACE <br>
+                    IMPORT PLAYER INTERFACE IMPORT PLAYER INTERFACE IMPORT PLAYER INTERFACE <br>
+                </div>
+                <div class="col-md-6">
+                    {% if player.base.path is defined %}
+                        <a rel="gallery-1"  href="{{ asset('uploads/' ~ player.base.path) }}" class="swipebox" title="">
+                            <img  class="img-responsive"src="{{ asset('uploads/' ~ player.base.path) }}" />
+                        </a>
+                    {% else %}
+                        <img class="img-responsive" src="{{ asset('images/non_available.jpg') }}" />
+                    {% endif %}
+                    <br>
+                    <a class="btn btn-primary btn-block" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_player'|trans }}</b></a>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <h3>Progress</h3>
+            </div>
+
+
+
+        </div>
+
+    </div>
+    <footer>
+        {{ render(controller('COCBundle:Default:displaySeason')) }}
+    </footer>
+{% endblock %}
+

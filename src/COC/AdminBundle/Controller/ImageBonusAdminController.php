@@ -19,9 +19,8 @@ class ImageBonusAdminController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository('COCBundle:ImageBonus')->findAll();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
-
+        $list = $em->getRepository('COCBundle:ImageBonus')->findByClan($clan);
         // $season = $em->getRepository('COCBundle:Season')->getActualSeason();
         // var_dump($season);
         return $this->render('AdminBundle:ImageBonusAdmin:index.html.twig', array('clan' => $clan,'images' => $list));

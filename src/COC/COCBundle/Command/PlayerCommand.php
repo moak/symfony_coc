@@ -42,7 +42,11 @@ class PlayerCommand extends ContainerAwareCommand
         foreach ($players as $player)
         {
 
-            $playerHistory = new PlayerHistory();
+           /* $playerHistory = new PlayerHistory();
+
+            $playerHistory->setTotal($player->getTotal());
+            $playerHistory->setTotalAttack($player->getTotalAttack());
+            $playerHistory->setTotalDefence($player->getTotalDefence());
             $playerHistory->setClan($player->getClan());
             $playerHistory->setSeason($actualSeason);
             $playerHistory->setName($player->getName());
@@ -145,14 +149,15 @@ class PlayerCommand extends ContainerAwareCommand
             $player->setTroopReceived(0);
             $player->setTrophy(0);
             $player->setAttackWon(0);
-
+*/
+            $player->setUpdatedAt(new \Datetime());
             $em->persist($player);
             $em->flush();
 
 
             // $output->writeln($playerHistory);
-            $em->persist($playerHistory);
-            $em->flush();
+           // $em->persist($playerHistory);
+            //$em->flush();
 
         }
 

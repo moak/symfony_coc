@@ -89,11 +89,15 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <i class="fa fa-user fa-fw"></i> {{ app.user.username }} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            {% if is_granted('ROLE_USER') %}
+
                             <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out fa-fw"></i>  {{ 'menu.disconnect'|trans }}</a>
-                                {% endif %}
-                                {% if is_granted('ROLE_USER') and clan.id != app.user.clan.id %}
-                            <li><a href="{{ path('coc', {'id_clan' : app.user.clan.id }) }}"><i class="fa fa-heart"></i> {{ 'vitrine.my_clan'|trans }}</a></li>
+
+                            {% if is_granted('ROLE_USER') and app.user.clan != null %}
+                            <li><a href="{{ path('coc_my_player', {'id_clan' : app.user.clan.id }) }}"><i class="fa fa-heart"></i> {{ 'menu.my_player'|trans }}</a></li>
+                            {% endif %}
+
+                            {% if is_granted('ROLE_USER') and clan.id != app.user.clan.id %}
+                                <li><a href="{{ path('coc', {'id_clan' : app.user.clan.id }) }}"><i class="fa fa-heart"></i> {{ 'vitrine.my_clan'|trans }}</a></li>
                             {% endif %}
                         </ul>
                     </li>

@@ -28,7 +28,6 @@
                                 <a rel="gallery-1"  href="{{ asset('uploads/' ~ image.image.path) }}" class="swipebox" title="">
                                     <img  class="img-responsive" src="{{ asset('uploads/' ~ image.image.path) }}" />
                                 </a>
-
                             </div>
                             <div class="panel-footer">
                                 <h3 class="panel-title text-center">Posté par {{ image.user.username }}  <small>{{ image.createdAt|date('U')|timeago }}</small></h3>

@@ -36,9 +36,6 @@ class PlayerRepository extends EntityRepository
         return $qb->getResult();
     }
 
-
-
-
     public function getLastUpdate($clan)
     {
         $query = $this->_em->createQuery('SELECT m.updatedAt FROM COCBundle:Player m WHERE m.clan = :clan ORDER BY m.updatedAt DESC')
@@ -51,86 +48,7 @@ class PlayerRepository extends EntityRepository
     public function getAllPlayersModule($clan)
     {
         $qb = $this->createQueryBuilder('p')
-            ->select('p.id, p.level, p.name, p.troopSent, p.troopReceived, p.attackWon, p.trophy, p.hallTown,
-
-            p.updatedAt,
-
-           (p.mortar1 + 1) * p.mortar1 / 2 + (p.mortar2 + 1) * p.mortar2 / 2 + (p.mortar3 + 1) * p.mortar3 / 2 + (p.mortar4+ 1) * p.mortar4 / 2 +
-            ((p.inferno1 + 1) * p.inferno1 / 2) * 3 + ((p.inferno2 + 1) * p.inferno1 / 2 ) * 3 +
-            ((p.tesla1 + 1) * p.tesla1 / 2) * 2 + ((p.tesla2 + 1) * p.tesla2 / 2) * 2 + ((p.tesla3 + 1) * p.tesla3 / 2) * 2 + ((p.tesla4 + 1) * p.tesla4 / 2) * 2 +
-            ((p.arcx1 + 1) * p.arcx1 / 2) * 3 + ((p.arcx2 + 1) * p.arcx2 / 2) * 3 + ((p.arcx3 + 1) * p.arcx3 / 2) * 3 +
-            (p.air_defence1 + 1) * p.air_defence1 / 2 + (p.air_defence2 + 1) * p.air_defence2 / 2 + (p.air_defence3 + 1) * p.air_defence3 / 2 + (p.air_defence4+ 1) * p.air_defence4 / 2 +
-            ((p.tower_magic1 + 1) * p.tower_magic1 / 2) * 2.5 + ((p.tower_magic2 + 1) * p.tower_magic2 / 2) * 2.5 + ((p.tower_magic3 + 1) * p.tower_magic3 / 2) * 2.5 + ((p.tower_magic4+ 1) * p.tower_magic4 / 2) * 2.5 +
-            (p.canon1 + 1) * p.canon1 / 2 + (p.canon2 + 1) * p.canon2 / 2 + (p.canon3 + 1) * p.canon3 / 2 + (p.canon4+ 1) * p.canon4 / 2 + (p.canon5+ 1) * p.canon5 / 2 + (p.canon6+ 1) * p.canon6 / 2 +
-            (p.tower_archer1 + 1) * p.tower_archer1 / 2 + (p.tower_archer2 + 1) * p.tower_archer2 / 2 + (p.tower_archer3 + 1) * p.tower_archer3 / 2 + (p.tower_archer4+ 1) * p.tower_archer4 / 2 + (p.tower_archer5+ 1) * p.tower_archer5 / 2 + (p.tower_archer6+ 1) * p.tower_archer6 / 2 + (p.tower_archer7+ 1) * p.tower_archer7 / 2
-
-            as totalDefence,
-
-            (((p.archer + 1) * p.archer / 2)  +
-            ((p.barbar + 1) * p.barbar / 2) +
-            ((p.geant + 1) * p.geant / 2) +
-            ((p.wizard + 1) * p.wizard / 2) +
-            ((p.dragon + 1) * p.dragon / 2) +
-            ((p.wall_breaker + 1) * p.wall_breaker / 2) +
-            ((p.pekka + 1) * p.pekka / 2) +
-            ((p.ballon + 1) * p.ballon / 2) +
-            ((p.healer + 1) * p.healer / 2) +
-            ((p.gobelin + 1) * p.gobelin / 2) +
-            ((p.minion + 1) * p.minion / 2) +
-            ((p.rider + 1) * p.rider / 2) +
-            ((p.valkyrie + 1) * p.valkyrie / 2) +
-            ((p.golem + 1) * p.golem / 2) +
-            ((p.lava + 1) * p.lava / 2) +
-            ((p.witch + 1) * p.witch / 2) +
-            ((p.king + 1) * p.king / 2) +
-            ((p.queen + 1) * p.queen / 2) +
-            ((p.potion_heal + 1) * p.potion_heal / 2) +
-            ((p.potion_boost + 1) * p.potion_boost / 2) +
-            ((p.potion_damage + 1) * p.potion_damage / 2) +
-            ((p.potion_green + 1) * p.potion_green / 2) +
-            ((p.potion_freeze + 1) * p.potion_freeze / 2) ) * 4
-
-            as totalAttack,
-
-            (p.mortar1 + 1) * p.mortar1 / 2 + (p.mortar2 + 1) * p.mortar2 / 2 + (p.mortar3 + 1) * p.mortar3 / 2 + (p.mortar4+ 1) * p.mortar4 / 2 +
-            (p.inferno1 + 1) * p.inferno1 / 2 + (p.inferno2 + 1) * p.inferno1 / 2 +
-            (p.tesla1 + 1) * p.tesla1 / 2 + (p.tesla2 + 1) * p.tesla2 / 2 + (p.tesla3 + 1) * p.tesla3 / 2 + (p.tesla4 + 1) * p.tesla4 / 2 +
-            (p.arcx1 + 1) * p.arcx1 / 2 + (p.arcx2 + 1) * p.arcx2 / 2 + (p.arcx3 + 1) * p.arcx3 / 2 +
-            (p.air_defence1 + 1) * p.air_defence1 / 2 + (p.air_defence2 + 1) * p.air_defence2 / 2 + (p.air_defence3 + 1) * p.air_defence3 / 2 + (p.air_defence4+ 1) * p.air_defence4 / 2 +
-            (p.tower_magic1 + 1) * p.tower_magic1 / 2 + (p.tower_magic2 + 1) * p.tower_magic2 / 2 + (p.tower_magic3 + 1) * p.tower_magic3 / 2 + (p.tower_magic4+ 1) * p.tower_magic4 / 2 +
-            (p.canon1 + 1) * p.canon1 / 2 + (p.canon2 + 1) * p.canon2 / 2 + (p.canon3 + 1) * p.canon3 / 2 + (p.canon4+ 1) * p.canon4 / 2 + (p.canon5+ 1) * p.canon5 / 2 + (p.canon6+ 1) * p.canon6 / 2 +
-            (p.tower_archer1 + 1) * p.tower_archer1 / 2 + (p.tower_archer2 + 1) * p.tower_archer2 / 2 + (p.tower_archer3 + 1) * p.tower_archer3 / 2 + (p.tower_archer4+ 1) * p.tower_archer4 / 2 + (p.tower_archer5+ 1) * p.tower_archer5 / 2 + (p.tower_archer6+ 1) * p.tower_archer6 / 2 + (p.tower_archer7+ 1) * p.tower_archer7 / 2 +
-
-            (((p.archer + 1) * p.archer / 2)  +
-            ((p.barbar + 1) * p.barbar / 2) +
-            ((p.geant + 1) * p.geant / 2) +
-            ((p.wizard + 1) * p.wizard / 2) +
-            ((p.dragon + 1) * p.dragon / 2) +
-            ((p.wall_breaker + 1) * p.wall_breaker / 2) +
-            ((p.pekka + 1) * p.pekka / 2) +
-            ((p.ballon + 1) * p.ballon / 2) +
-            ((p.healer + 1) * p.healer / 2) +
-            ((p.gobelin + 1) * p.gobelin / 2) +
-            ((p.minion + 1) * p.minion / 2) +
-            ((p.rider + 1) * p.rider / 2) +
-            ((p.valkyrie + 1) * p.valkyrie / 2) +
-            ((p.golem + 1) * p.golem / 2) +
-            ((p.lava + 1) * p.lava / 2) +
-            ((p.witch + 1) * p.witch / 2) +
-            ((p.king + 1) * p.king / 2) +
-            ((p.queen + 1) * p.queen / 2) +
-            ((p.potion_heal + 1) * p.potion_heal / 2) +
-            ((p.potion_boost + 1) * p.potion_boost / 2) +
-            ((p.potion_damage + 1) * p.potion_damage / 2) +
-            ((p.potion_green + 1) * p.potion_green / 2) +
-            ((p.potion_freeze + 1) * p.potion_freeze / 2) ) * 4
-            as total
-
-
-
-            '
-
-            )
+            ->select('p')
 
             ->where('p.clan = :clan')
             ->orderBy('p.updatedAt', 'DESC')
@@ -144,95 +62,9 @@ class PlayerRepository extends EntityRepository
     public function getAllPlayers($id_clan)
     {
         $qb = $this->createQueryBuilder('p')
-            ->select('p.id, p.level, p.name, p.troopSent, p.troopReceived, p.attackWon, p.trophy, p.hallTown,
-            p.mortar1, p.mortar2, p.mortar3, p.mortar4,
-            p.inferno1, p.inferno2,
-            p.tesla1, p.tesla2, p.tesla3, p.tesla4,
-            p.arcx1, p.arcx2, p.arcx3,
-            p.air_defence1, p.air_defence2, p.air_defence3, p.air_defence4,
-            p.tower_magic1, p.tower_magic2, p.tower_magic3, p.tower_magic4,
-            p.canon1, p.canon2, p.canon3, p.canon4, p.canon5, p.canon6,
-            p.tower_archer1, p.tower_archer2, p.tower_archer3, p.tower_archer4, p.tower_archer5, p.tower_archer6, p.tower_archer7,
-
-            p.archer, p.barbar, p.geant, p.wizard, p.dragon, p.wall_breaker, p.pekka, p.ballon, p.healer, p.gobelin, p.minion, p.rider, p.valkyrie, p.golem, p.rider, p.golem, p.lava,
-            p.witch, p.queen, p.king, p.potion_heal, p.potion_boost,  p.potion_green, p.potion_freeze, p.potion_damage,
-
-             p.updatedAt,
-
-           (p.mortar1 + 1) * p.mortar1 / 2 + (p.mortar2 + 1) * p.mortar2 / 2 + (p.mortar3 + 1) * p.mortar3 / 2 + (p.mortar4+ 1) * p.mortar4 / 2 +
-            ((p.inferno1 + 1) * p.inferno1 / 2) * 3 + ((p.inferno2 + 1) * p.inferno1 / 2 ) * 3 +
-            ((p.tesla1 + 1) * p.tesla1 / 2) * 2 + ((p.tesla2 + 1) * p.tesla2 / 2) * 2 + ((p.tesla3 + 1) * p.tesla3 / 2) * 2 + ((p.tesla4 + 1) * p.tesla4 / 2) * 2 +
-            ((p.arcx1 + 1) * p.arcx1 / 2) * 3 + ((p.arcx2 + 1) * p.arcx2 / 2) * 3 + ((p.arcx3 + 1) * p.arcx3 / 2) * 3 +
-            (p.air_defence1 + 1) * p.air_defence1 / 2 + (p.air_defence2 + 1) * p.air_defence2 / 2 + (p.air_defence3 + 1) * p.air_defence3 / 2 + (p.air_defence4+ 1) * p.air_defence4 / 2 +
-            ((p.tower_magic1 + 1) * p.tower_magic1 / 2) * 2.5 + ((p.tower_magic2 + 1) * p.tower_magic2 / 2) * 2.5 + ((p.tower_magic3 + 1) * p.tower_magic3 / 2) * 2.5 + ((p.tower_magic4+ 1) * p.tower_magic4 / 2) * 2.5 +
-            (p.canon1 + 1) * p.canon1 / 2 + (p.canon2 + 1) * p.canon2 / 2 + (p.canon3 + 1) * p.canon3 / 2 + (p.canon4+ 1) * p.canon4 / 2 + (p.canon5+ 1) * p.canon5 / 2 + (p.canon6+ 1) * p.canon6 / 2 +
-            (p.tower_archer1 + 1) * p.tower_archer1 / 2 + (p.tower_archer2 + 1) * p.tower_archer2 / 2 + (p.tower_archer3 + 1) * p.tower_archer3 / 2 + (p.tower_archer4+ 1) * p.tower_archer4 / 2 + (p.tower_archer5+ 1) * p.tower_archer5 / 2 + (p.tower_archer6+ 1) * p.tower_archer6 / 2 + (p.tower_archer7+ 1) * p.tower_archer7 / 2
-
-            as totalDefence,
-
-            (((p.archer + 1) * p.archer / 2)  +
-            ((p.barbar + 1) * p.barbar / 2) +
-            ((p.geant + 1) * p.geant / 2) +
-            ((p.wizard + 1) * p.wizard / 2) +
-            (((p.dragon + 1) * p.dragon / 2)) * 2 +
-            ((p.wall_breaker + 1) * p.wall_breaker / 2) +
-            (((p.pekka + 1) * p.pekka / 2)) * 2 +
-            ((p.ballon + 1) * p.ballon / 2) +
-            (((p.healer + 1) * p.healer / 2)) * 1.5 +
-            ((p.gobelin + 1) * p.gobelin / 2) +
-            ((p.minion + 1) * p.minion / 2) +
-            ((p.rider + 1) * p.rider / 2) +
-            ((p.valkyrie + 1) * p.valkyrie / 2) +
-            ((p.golem + 1) * p.golem / 2) +
-            ((p.lava + 1) * p.lava / 2) +
-            ((p.witch + 1) * p.witch / 2) +
-            ((p.king + 1) * p.king / 2) +
-            ((p.queen + 1) * p.queen / 2) +
-            ((p.potion_heal + 1) * p.potion_heal / 2) +
-            ((p.potion_boost + 1) * p.potion_boost / 2) +
-            ((p.potion_damage + 1) * p.potion_damage / 2) +
-            ((p.potion_green + 1) * p.potion_green / 2) +
-            ((p.potion_freeze + 1) * p.potion_freeze / 2) ) * 4
-
-            as totalAttack,
-
-           (p.mortar1 + 1) * p.mortar1 / 2 + (p.mortar2 + 1) * p.mortar2 / 2 + (p.mortar3 + 1) * p.mortar3 / 2 + (p.mortar4+ 1) * p.mortar4 / 2 +
-            ((p.inferno1 + 1) * p.inferno1 / 2) * 3 + ((p.inferno2 + 1) * p.inferno1 / 2 ) * 3 +
-            ((p.tesla1 + 1) * p.tesla1 / 2) * 2 + ((p.tesla2 + 1) * p.tesla2 / 2) * 2 + ((p.tesla3 + 1) * p.tesla3 / 2) * 2 + ((p.tesla4 + 1) * p.tesla4 / 2) * 2 +
-            ((p.arcx1 + 1) * p.arcx1 / 2) * 3 + ((p.arcx2 + 1) * p.arcx2 / 2) * 3 + ((p.arcx3 + 1) * p.arcx3 / 2) * 3 +
-            (p.air_defence1 + 1) * p.air_defence1 / 2 + (p.air_defence2 + 1) * p.air_defence2 / 2 + (p.air_defence3 + 1) * p.air_defence3 / 2 + (p.air_defence4+ 1) * p.air_defence4 / 2 +
-            ((p.tower_magic1 + 1) * p.tower_magic1 / 2) * 2.5 + ((p.tower_magic2 + 1) * p.tower_magic2 / 2) * 2.5 + ((p.tower_magic3 + 1) * p.tower_magic3 / 2) * 2.5 + ((p.tower_magic4+ 1) * p.tower_magic4 / 2) * 2.5 +
-            (p.canon1 + 1) * p.canon1 / 2 + (p.canon2 + 1) * p.canon2 / 2 + (p.canon3 + 1) * p.canon3 / 2 + (p.canon4+ 1) * p.canon4 / 2 + (p.canon5+ 1) * p.canon5 / 2 + (p.canon6+ 1) * p.canon6 / 2 +
-            (p.tower_archer1 + 1) * p.tower_archer1 / 2 + (p.tower_archer2 + 1) * p.tower_archer2 / 2 + (p.tower_archer3 + 1) * p.tower_archer3 / 2 + (p.tower_archer4+ 1) * p.tower_archer4 / 2 + (p.tower_archer5+ 1) * p.tower_archer5 / 2 + (p.tower_archer6+ 1) * p.tower_archer6 / 2 + (p.tower_archer7+ 1) * p.tower_archer7 / 2 +
-
-            (((p.archer + 1) * p.archer / 2)  +
-            ((p.barbar + 1) * p.barbar / 2) +
-            ((p.geant + 1) * p.geant / 2) +
-            ((p.wizard + 1) * p.wizard / 2) +
-            (((p.dragon + 1) * p.dragon / 2)) * 2 +
-            ((p.wall_breaker + 1) * p.wall_breaker / 2) +
-            (((p.pekka + 1) * p.pekka / 2)) * 2 +
-            ((p.ballon + 1) * p.ballon / 2) +
-            (((p.healer + 1) * p.healer / 2)) * 1.5 +
-            ((p.gobelin + 1) * p.gobelin / 2) +
-            ((p.minion + 1) * p.minion / 2) +
-            ((p.rider + 1) * p.rider / 2) +
-            ((p.valkyrie + 1) * p.valkyrie / 2) +
-            ((p.golem + 1) * p.golem / 2) +
-            ((p.lava + 1) * p.lava / 2) +
-            ((p.witch + 1) * p.witch / 2) +
-            ((p.king + 1) * p.king / 2) +
-            ((p.queen + 1) * p.queen / 2) +
-            ((p.potion_heal + 1) * p.potion_heal / 2) +
-            ((p.potion_boost + 1) * p.potion_boost / 2) +
-            ((p.potion_damage + 1) * p.potion_damage / 2) +
-            ((p.potion_green + 1) * p.potion_green / 2) +
-            ((p.potion_freeze + 1) * p.potion_freeze / 2) ) * 4
-            as total
-            '
-            )
-
+            ->select('p')
             ->where('p.clan = :clan')
+            ->orderBy('p.level', 'DESC')
             ->setParameter('clan', $id_clan);
 
         return $qb->getQuery()->getResult();
@@ -273,6 +105,16 @@ class PlayerRepository extends EntityRepository
             ->setParameter('clan', $clan);
 
         return $query->getQuery()->getResult();
+    }
+
+    public function getPlayer($id_player)
+    {
+        $query = $this->createQueryBuilder('player')
+            ->leftJoin('player.user', 'u')
+            ->where('player.id = :id')
+            ->setParameter('id', $id_player);
+
+        return $query->getQuery()->getSingleResult();
     }
 
 

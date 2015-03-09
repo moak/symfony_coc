@@ -4,6 +4,8 @@
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
         {%  if (current_locale == "fr") %}
             <img style="width:20px;height:20px;vertical-align:middle" src="{{ asset('images/fr.png') }}" >
+        {% elseif (current_locale == "es") %}
+            <img style="width:20px;height:20px;vertical-align:middle" src="{{ asset('images/es.png') }}" >
         {% else %}
             <img style="width:20px;height:20px;vertical-align:middle" src="{{ asset('images/en.png') }}" >
         {% endif %}

@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="{{ asset('css/dataTables_BS3.css') }}" />
 
 
-   <!-- <div id="chartContainer" style="height: 300px; width: 100%;"></div>-->
+    <!-- <div id="chartContainer" style="height: 300px; width: 100%;"></div>-->
 
 
-<div class="container white-bg rounded-corners">
+    <div class="container white-bg rounded-corners">
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">{{ 'menu.general_ranking'|trans }}
@@ -60,7 +60,9 @@
         <th class="supercell-font">Def</th>
         <th class="supercell-font">Att</th>
         <th class="supercell-font">Tot</th>
-        <th class="supercell-font no-sort">{{ 'player.updated'|trans }}</th>
+        {% if isCurrentSeason %}
+            <th class="supercell-font no-sort">{{ 'player.updated'|trans }}</th>
+        {% endif %}
 
     </tr>
     </thead>
@@ -68,6 +70,8 @@
 
     {% if players|length != 0 %}
         {% for player in players %}
+
+
             {%  if app.user.player.id is defined %}
                 {%  if app.user.player.id == player.id %}
                 <tr data-name="{{ player.name }}" class="positionable active">
@@ -85,8 +89,9 @@
             <td>{{ player.totalDefence|round }}</td>
             <td>{{ player.totalAttack|round}}</td>
             <td>{{ player.total|round }}</td>
-            <td>{{ player.updatedAt|date('U')|timeago }}</td>
-
+            {% if isCurrentSeason %}
+                <td>{{ player.updatedAt|date('U')|timeago }}</td>
+            {% endif %}
             </tr>
             <tr class="hidden expendables hidden" id="{{ player.name }}" data-total-points="{{ player.total|round }}">
             <td colspan="6">
@@ -95,98 +100,98 @@
                     <!-- CAONNONS -->
                     {% if player.canon1 != 0 %}
                         <div class="col-md-3 cannon">
-											<span>
-												{{player.canon1}}
-                                                {% if player.canon2 != 0 %} - {{player.canon2}} {% endif %}
-                                                {% if player.canon3 != 0 %} - {{player.canon3}} {% endif %}
-                                                {% if player.canon4 != 0 %} - {{player.canon4}} {% endif %}
-                                                {% if player.canon5 != 0 %} - {{player.canon5}} {% endif %}
-                                                {% if player.canon6 != 0 %} - {{player.canon6}} {% endif %}
-											</span>
+                                <span>
+                                    {{player.canon1}}
+                                    {% if player.canon2 != 0 %} - {{player.canon2}} {% endif %}
+                                    {% if player.canon3 != 0 %} - {{player.canon3}} {% endif %}
+                                    {% if player.canon4 != 0 %} - {{player.canon4}} {% endif %}
+                                    {% if player.canon5 != 0 %} - {{player.canon5}} {% endif %}
+                                    {% if player.canon6 != 0 %} - {{player.canon6}} {% endif %}
+                                </span>
                             <img src="{{ asset('images/Buildings/Cannon/100px-Cannon6.png') }}" />
                         </div>
                     {% endif %}
                     <!-- ARCHER -->
-                    {% if player.tower_archer1 != 0 %}
+                    {% if player.towerarcher1 != 0 %}
                         <div class="col-md-3 archer-tower">
-											<span>
-												{{player.tower_archer1}}
-                                                {% if player.tower_archer2 != 0 %} - {{player.tower_archer2}} {% endif %}
-                                                {% if player.tower_archer3 != 0 %} - {{player.tower_archer3}} {% endif %}
-                                                {% if player.tower_archer4 != 0 %} - {{player.tower_archer4}} {% endif %}
-                                                {% if player.tower_archer5 != 0 %} - {{player.tower_archer5}} {% endif %}
-                                                {% if player.tower_archer6 != 0 %} - {{player.tower_archer6}} {% endif %}
-                                                {% if player.tower_archer7 != 0 %} - {{player.tower_archer7}} {% endif %}
-											</span>
+                                <span>
+                                    {{player.towerarcher1}}
+                                    {% if player.towerarcher2 != 0 %} - {{player.towerarcher2}} {% endif %}
+                                    {% if player.towerarcher3 != 0 %} - {{player.towerarcher3}} {% endif %}
+                                    {% if player.towerarcher4 != 0 %} - {{player.towerarcher4}} {% endif %}
+                                    {% if player.towerarcher5 != 0 %} - {{player.towerarcher5}} {% endif %}
+                                    {% if player.towerarcher6 != 0 %} - {{player.towerarcher6}} {% endif %}
+                                    {% if player.towerarcher7 != 0 %} - {{player.towerarcher7}} {% endif %}
+                                </span>
                             <img src="{{ asset('images/Buildings/Archer_tower/75px-Archer_Tower4.png') }}" />
                         </div>
                     {% endif %}
                     <!-- MORTIER -->
                     {% if player.mortar1 != 0 %}
                         <div class="col-md-3 mortar">
-											<span>
-												{{player.mortar1}}
-                                                {% if player.mortar2 != 0 %} - {{player.mortar2}} {% endif %}
-                                                {% if player.mortar3 != 0 %} - {{player.mortar3}} {% endif %}
-                                                {% if player.mortar4 != 0 %} - {{player.mortar4}} {% endif %}
-											</span>
+                            <span>
+                                {{player.mortar1}}
+                                {% if player.mortar2 != 0 %} - {{player.mortar2}} {% endif %}
+                                {% if player.mortar3 != 0 %} - {{player.mortar3}} {% endif %}
+                                {% if player.mortar4 != 0 %} - {{player.mortar4}} {% endif %}
+                            </span>
                             <img src="{{ asset('images/Buildings/Mortar/mortar.png') }}" />
                         </div>
                     {% endif %}
                     <!-- ANTI AERIEN -->
-                    {% if player.air_defence1 != 0 %}
+                    {% if player.airdefence1 != 0 %}
                         <div class="col-md-3 anti-air">
-											<span>
-												{{player.air_defence1}}
-                                                {% if player.air_defence2 != 0 %} - {{player.air_defence2}} {% endif %}
-                                                {% if player.air_defence3 != 0 %} - {{player.air_defence3}} {% endif %}
-                                                {% if player.air_defence4 != 0 %} - {{player.air_defence4}} {% endif %}
-											</span>
+                            <span>
+                                {{player.airdefence1}}
+                                {% if player.airdefence2 != 0 %} - {{player.airdefence2}} {% endif %}
+                                {% if player.airdefence3 != 0 %} - {{player.airdefence3}} {% endif %}
+                                {% if player.airdefence4 != 0 %} - {{player.airdefence4}} {% endif %}
+                            </span>
                             <img src="{{ asset('images/Buildings/Anti-air/anti-air.png') }}"/>
                         </div>
                     {% endif %}
                     <!-- WIZARD -->
-                    {% if player.tower_magic1 != 0 %}
+                    {% if player.towermagic1 != 0 %}
                         <div class="col-md-3 wizard">
-											<span>
-												{{player.tower_magic1}}
-                                                {% if player.tower_magic2 != 0 %} - {{player.tower_magic2}} {% endif %}
-                                                {% if player.tower_magic3 != 0 %} - {{player.tower_magic3}} {% endif %}
-                                                {% if player.tower_magic4 != 0 %} - {{player.tower_magic4}} {% endif %}
-											</span>
+                            <span>
+                                {{ player.towermagic1 }}
+                                {% if player.towermagic2 != 0 %} - {{player.towermagic2}} {% endif %}
+                                {% if player.towermagic3 != 0 %} - {{player.towermagic3}} {% endif %}
+                                {% if player.towermagic4 != 0 %} - {{player.towermagic4}} {% endif %}
+                            </span>
                             <img src="{{ asset('images/Buildings/Wizard/wizard.png') }}" />
                         </div>
                     {% endif %}
                     <!-- TESLA -->
                     {% if player.tesla1 != 0 %}
                         <div class="col-md-3 tesla">
-											<span>
-												{{player.tesla1}}
-                                                {% if player.tesla2 != 0 %} - {{player.tesla2}} {% endif %}
-                                                {% if player.tesla3 != 0 %} - {{player.tesla3}} {% endif %}
-                                                {% if player.tesla4 != 0 %} - {{player.tesla4}} {% endif %}
-											</span>
+                                <span>
+                                    {{ player.tesla1 }}
+                                    {% if player.tesla2 != 0 %} - {{player.tesla2}} {% endif %}
+                                    {% if player.tesla3 != 0 %} - {{player.tesla3}} {% endif %}
+                                    {% if player.tesla4 != 0 %} - {{player.tesla4}} {% endif %}
+                                </span>
                             <img src="{{ asset('images/Buildings/Tesla/tesla.png') }}" />
                         </div>
                     {% endif %}
                     <!-- ARC-X -->
                     {% if player.arcx1 != 0 %}
                         <div class="col-md-3 arc-x">
-											<span>
-												 {{player.arcx1}}
-                                                {% if player.arcx2 != 0 %} - {{player.arcx2}} {% endif %}
-                                                {% if player.arcx3 != 0 %} - {{player.arcx3}} {% endif %}
-											</span>
+                            <span>
+                                 {{player.arcx1}}
+                                {% if player.arcx2 != 0 %} - {{player.arcx2}} {% endif %}
+                                {% if player.arcx3 != 0 %} - {{player.arcx3}} {% endif %}
+                            </span>
                             <img src="{{ asset('images/Buildings/Arc-X/arc-x.png') }}"/>
                         </div>
                     {% endif %}
                     <!-- INFERNO -->
                     {% if player.inferno1 != 0 %}
                         <div class="col-md-3 inferno">
-											<span>
-												 {{player.inferno1}}
-                                                {% if player.inferno2 != 0 %} - {{player.inferno2}} {% endif %}
-											</span>
+                            <span>
+                                 {{player.inferno1}}
+                                {% if player.inferno2 != 0 %} - {{player.inferno2}} {% endif %}
+                            </span>
                             <img src="{{ asset('images/Buildings/Inferno/inferno.png') }}"/>
                         </div>
                     {% endif %}
@@ -205,24 +210,24 @@
                     </div>
                     <div class="col-md-7">
                         <div class="portrait">
-                            <div>{% if player.potion_damage != 0 %}{{player.potion_damage}}{% endif %}</div>
-                            <img src="{% if player.potion_damage != 0 %}{{ asset('images/laboratoire/potion_damage.jpg') }}{% else %}{{ asset('images/laboratoire/potion_damage0.jpg') }}{% endif %}"/>
+                            <div>{% if player.potiondamage != 0 %}{{player.potiondamage}}{% endif %}</div>
+                            <img src="{% if player.potiondamage != 0 %}{{ asset('images/laboratoire/potion_damage.jpg') }}{% else %}{{ asset('images/laboratoire/potion_damage0.jpg') }}{% endif %}"/>
                         </div>
                         <div class="portrait">
-                            <div>{% if player.potion_heal != 0 %}{{player.potion_heal}}{% endif %}</div>
-                            <img src="{% if player.potion_heal != 0 %}{{ asset('images/laboratoire/potion_heal.jpg') }}{% else %}{{ asset('images/laboratoire/potion_heal0.jpg') }}{% endif %}"/>
+                            <div>{% if player.potionheal != 0 %}{{player.potionheal}}{% endif %}</div>
+                            <img src="{% if player.potionheal != 0 %}{{ asset('images/laboratoire/potion_heal.jpg') }}{% else %}{{ asset('images/laboratoire/potion_heal0.jpg') }}{% endif %}"/>
                         </div>
                         <div class="portrait">
-                            <div>{% if player.potion_boost != 0 %}{{player.potion_boost}}{% endif %}</div>
-                            <img src="{% if player.potion_boost != 0 %}{{ asset('images/laboratoire/potion_boost.jpg') }}{% else %}{{ asset('images/laboratoire/potion_boost0.jpg') }}{% endif %}"/>
+                            <div>{% if player.potionboost != 0 %}{{player.potionboost}}{% endif %}</div>
+                            <img src="{% if player.potionboost != 0 %}{{ asset('images/laboratoire/potion_boost.jpg') }}{% else %}{{ asset('images/laboratoire/potion_boost0.jpg') }}{% endif %}"/>
                         </div>
                         <div class="portrait">
-                            <div>{% if player.potion_green != 0 %}{{player.potion_green}}{% endif %}</div>
-                            <img src="{% if player.potion_green != 0 %}{{ asset('images/laboratoire/potion_green.jpg') }}{% else %}{{ asset('images/laboratoire/potion_green0.jpg') }}{% endif %}"/>
+                            <div>{% if player.potiongreen != 0 %}{{player.potiongreen}}{% endif %}</div>
+                            <img src="{% if player.potiongreen != 0 %}{{ asset('images/laboratoire/potion_green.jpg') }}{% else %}{{ asset('images/laboratoire/potion_green0.jpg') }}{% endif %}"/>
                         </div>
                         <div class="portrait">
-                            <div>{% if player.potion_freeze != 0 %}{{player.potion_freeze}}{% endif %}</div>
-                            <img src="{% if player.potion_freeze != 0 %}{{ asset('images/laboratoire/potion_freeze.jpg') }}{% else %}{{ asset('images/laboratoire/potion_freeze0.jpg') }}{% endif %}"/>
+                            <div>{% if player.potionfreeze != 0 %}{{player.potionfreeze}}{% endif %}</div>
+                            <img src="{% if player.potionfreeze != 0 %}{{ asset('images/laboratoire/potion_freeze.jpg') }}{% else %}{{ asset('images/laboratoire/potion_freeze0.jpg') }}{% endif %}"/>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -334,7 +339,7 @@
         {% endif %}
     </table>
     <hr>
-</div>
+    </div>
 
     <!-- /.container -->
 
@@ -350,7 +355,7 @@
     <script src="{{ asset('js/players.js') }}" type="text/javascript"></script>
 
     <script type="text/javascript">
-        window.onload = function () {
+       /* window.onload = function () {
             var chart = new CanvasJS.Chart("chartContainer",
                     {
                         theme:"theme2",
@@ -370,7 +375,7 @@
                             {
                                 showInLegend: true,
                                 type: "spline",
-                               // showInLegend: true,
+                                // showInLegend: true,
                                 name: "Ludo",
                                 // markerSize: 0,
                                 // color: "rgba(54,158,173,.6)",
@@ -416,7 +421,7 @@
                     });
 
             chart.render();
-        }
+        }*/
     </script>
     <script type="text/javascript" src="{{ asset('js/canvasjs.min.js') }}"></script>
 {% endblock %}

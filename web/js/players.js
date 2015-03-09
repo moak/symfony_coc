@@ -13,6 +13,7 @@ $( document ).ready(function(){
 
     // récupération des row à stocker
     $( ".expendables" ).each(function( index ) {
+
         myArray[index] = {
             name : $(this).attr('id'),
             html : $(this).find('td').html(),

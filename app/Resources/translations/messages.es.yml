@@ -1,42 +1,33 @@
-form:
-    gold: Or
-    elixir: Elexir
-    image: Image *
-    title: Titre *
-    my_base: Ma base
-    my_picture: Ma photo
 menu:
-    my_account: Mon compte
-    my_player: Mon joueur
     go_site: Go on website
-    visibility: Visibilité du clan
-    password: Mot de passe clan
-    players: Joueurs
-    players_list: Liste des joueurs
-    players_all: Tous les joueurs
-    player_add: Nouveau joueur
-    player_edit: Editer joueur
-    activity: Activité des joueurs
-    accounts: Comptes
-    current_season: Saison en cours
-    history_season: Historiques saisons
+    visibility: Visibilidad del clan
+    password: Contraseña Clan
+    players: Jugadores
+    players_list: Lista de jugadores
+    players_all: Todos los jugadores
+    player_add: Nuevo jugador
+    player_edit: Editar jugador
+    activity: Actividades de los jugadores
+    accounts: Cuentas
+    current_season: Temporada actual
+    history_season: Temporada histórica
     history_edit: Editer historique joueur
-    history: Historique
+    history: Editar jugador histórico
     wars: Clan Wars
-    war_add: Nouvelle guerre de clan
-    war_edit: Editer guerre de clan
-    wars_list: Liste des guerres de clan
-    bases_list: Liste des bases
-    base_add: Nouvelle base
-    base_edit: Editer une base
-    videos: Videos
-    videos_list: Liste des vidéos
-    video_list: Liste des vidéos
-    video_all: Toutes les vidéos
-    video_add: Nouvelle vidéo
-    video_number: Nombre de vidéos
-    bonus: Images bonus
-    bonus_list: Images bonus
+    war_add: Nueva guerra de clanes
+    war_edit: Guerra de ediciones del clan
+    wars_list: Guerras de clanes
+    bases_list: Lista de bases de datos
+    base_add: Nueva base
+    base_edit: Editar una base
+    videos: Publicacioness
+    videos_list: Lista de publicaciones
+    video_list: Lista de publicaciones
+    video_all: Todos los vídeos
+    video_add: Nuevo vídeo
+    video_number: Número de películas
+    bonus: Imágenes bono
+    bonus_list: mágenes bono
     bonus_add: Nouvelle image bonus
     bases: Plans de base
     base_add: Ajouter une base
@@ -63,47 +54,47 @@ menu:
     ht8: HDV 8
     ht9: HDV 9
     ht10: HDV 10
-    ht: Hotel de ville
-    best_attacks: Meilleures attaques
-    best_players: Meilleurs joueurs
+    ht: Ayuntamiento
+    best_attacks: Mejores ataques
+    best_players: Mejores jugadores
     media: Médias
     video: Vidéos
     bonus: Bonus images
-    edit_player: Editer mon joueur
-    new_base: Nouvelle base
-    general_ranking: Classement général
-    title_page: Clan manager pour Clash of Clans
-    my_player_edit: Edit my player
-    no_war: Le clan n'a pas encore de guerre.
-    edit_clan: Editer clan
-    assign_player: Assigner joueur
-    account_non_assigned: Compte non assigné
-    welcome: Bienvenue
+    edit_player: Edite Mi jugador
+    new_base: Nueva base de
+    general_ranking: Clasificación general
+    title_page: Gerente del clan a Clash of Clans
+    my_player_edit: EEditar mi jugador
+    no_war: El clan no tiene guerra.
+    edit_clan: Editar clan
+    assign_player: asignar jugador
+    account_non_assigned: Cuenta sin asignar
+    welcome: bienvenida
     welcome_msg: Si ce sont vos premiers pas sur l'administration, pensez à créer vos joueurs
-    here: ici
+    here: aquí
     admin_clan: Administration clan
-    my_clan: Mon clan
+    my_clan: mi clan
     edit_activity: Editer l'activité de la saison en cours
-    account_number: Nombre de comptes
-    waiting: en attente
+    account_number: Número de cuentas
+    waiting: en espera
 
 button:
-    add_player: Nouveau joueur
+    add_player: Crear un jugador
 
 action:
-    edit: Editer
-    delete: Supprimer
+    edit: Editar
+    delete: Quitar
     set_admin : Donner droit leader
     set_user : Donner droit utilisateur
 
-notFound: Aucun résultat trouvé.
-notPlayerFound: Aucun joueur trouvé.
+notFound: No se encontraron resultados .
+notPlayerFound: Ningún jugador se encontró .
 
 player:
-   name: Nom
-   level: Niveau
-   defence: Défence
-   attack: Attaque
+   name: Nombre
+   level: Nivel
+   defence: Defensa
+   attack: Ataque
    ht: HDV
    total: Total
    updated: Mis à jour
@@ -113,15 +104,15 @@ player:
    trophy: Trophés
    labotory: Laboratoire
    general: Général
-   hall_town: Hôtel de ville
-   mortar1: Mortier 1
-   mortar2: Mortier 2
-   mortar3: Mortier 3
-   mortar4: Mortier 4
-   tower_magic1: Tour de magie 1
-   tower_magic2: Tour de magie 2
-   tower_magic3: Tour de magie 3
-   tower_magic4: Tour de magie 4
+   hall_town: Ayuntamiento
+   mortar1: Mortero 1
+   mortar2: Mortero 2
+   mortar3: Mortero 3
+   mortar4: Mortero 4
+   tower_magic1: Truco de magia 1
+   tower_magic2: Truco de magia 2
+   tower_magic3: Truco de magia 3
+   tower_magic4: Truco de magia 4
    canon1: Canon 1
    canon2: Canon 2
    canon3: Canon 3
@@ -180,7 +171,7 @@ player:
    trop: Troph
 
 account:
-    name: Compte
+    name: Cuenta
     player_assigned: Joueur assigné
     player: Joueur
     association: Associé
@@ -190,38 +181,38 @@ account:
     forgot_password: Mot de passe oublié?
 
 war:
-   result: Résultat
-   date: Date
-   wars: Guerres
-   waiting: En attente de résultat
-   not_found: Aucune guerre trouvée.
-   history: Historique
-   live: War is live !!
-   preparation_day: Jour de préparation (Démarre à
+   result: resultado
+   date: Ffecha
+   wars: Guerras
+   waiting: A la espera de los resultados
+   not_found: No se encontró ninguna guerra.
+   history: Histórico
+   live: La guerra es en vivo!!
+   preparation_day: Día Preparación (Démarre à
    war_day: Jour de guerre!! (Se termine à
-   next_war: Prochaine guerre
-   no_next_war: Prochaine guerre: aucune
+   next_war: Siguiente guerra
+   no_next_war: Siguiente guerra: no
 
 video:
-    title: Titre
+    title: título
     youtube_link: Lien youtube
-    published: Publiée
+    published: Publicado
 
 coc:
-    launch_demo: Essayer la démo !
-    message: Message de clan
-    ranking: Classement des joueurs
-    visit_ranking: Afficher tous les joueurs
-    best_attacks: Meilleures attaques
-    visit_best_attacks: Toutes les attaques
+    launch_demo: Prueba la demo !
+    message: Mensaje del clan
+    ranking: Mejores jugadores
+    visit_ranking: Ver todos los jugadores
+    best_attacks: Mejores ataques
+    visit_best_attacks: Todos los ataques
     bases: Bases
-    visit_bases: Toutes les bases
-    features: Fonctionnalités
+    visit_bases: Todas las basess
+    features: Características
     visit_activity: Activity ranking
 
 vitrine:
     title: Gestionnaire de clan pour Clash of Clans
-    my_clan : Mon clan
+    my_clan : Mi clan
     create_clan2 : Managez facilement votre clan
     create_clan: Créer un clan
     join_clan: Rejoindre clan

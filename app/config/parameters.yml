@@ -13,4 +13,4 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
-    supported_locale: [en, fr]
+    supported_locale: [en, fr, es]

@@ -19,7 +19,9 @@ coc_players_history:
     path:     /players/history
     defaults: { _controller: COCBundle:Player:historyPlayers }
 
-
+coc_my_player:
+    path:     /{id_clan}/my_player
+    defaults: { _controller: COCBundle:Player:myPlayer }
 
 coc_wars:
     path:     /{id_clan}/wars
