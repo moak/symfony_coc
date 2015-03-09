@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
     /**
-     * @ORM\OneToOne(targetEntity="COC\COCBundle\Entity\Player", mappedBy="user")
+     * @ORM\OneToOne(targetEntity="COC\COCBundle\Entity\Player", inversedBy="user")
      * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
      **/
     private $player;

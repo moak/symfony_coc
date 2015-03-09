@@ -150,24 +150,18 @@ class PlayerController extends Controller
 
     public function editAction (Request $request, $id_clan)
     {
+
         $user = $this->getUser();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         if ( $this->getUser() == null && $clan->getPrivacy() == 1)
             throw $this->createNotFoundException('This page does not exist.');
 
-        if($user == null)
-        {
-            throw $this->createNotFoundException('Page not found');
-        }
-
-        $user = $this->getUser();
         $userId = $user->getId();
-
         $em = $this->getDoctrine()->getManager();
-        $player = $em->getRepository('COCBundle:Player')->findOneByUser($userId);
-        $form = $this->get('form.factory')->create(new PlayerType(), $player );
 
+        $player = $em->getRepository('COCBundle:Player')->getPlayerFromSession($user);
+        $form = $this->get('form.factory')->create(new PlayerType(), $player );
 
         if ( $this->getUser() == null && $clan->getPrivacy() == 1)
             throw $this->createNotFoundException('This page does not exist.');
@@ -177,8 +171,6 @@ class PlayerController extends Controller
             $clan->setUpdated(new \Datetime());
             $em->persist($clan);
             $em->flush();
-
-            $em = $this->getDoctrine()->getManager();
             $em->persist($player);
             $em->flush();
             return $this->redirect($this->generateUrl('coc_players', array('type' => 0, 'id_clan' =>  $clan->getId())));

@@ -319,6 +319,17 @@ class PlayerRepository extends EntityRepository
         return $query;
     }
 
+    public function getPlayerFromSession($user)
+    {
+        $query = $this->createQueryBuilder('player')
+            ->leftJoin('player.user', 'u')
+            ->where('u = :user')
+
+
+            ->setParameter('user', $user);
+
+        return $query->getQuery()->getSingleResult();
+    }
 
 
 }
