@@ -182,10 +182,14 @@ footer
     font-size: 16px;
 }
 
+
+
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {
-    .btn{
-
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto
     }
 }
 
@@ -195,6 +199,11 @@ footer
 @media (max-width: 480px)
 {
 
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto
+    }
     label
     {
         text-align: center;

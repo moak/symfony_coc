@@ -208,10 +208,10 @@ class PlayerController extends Controller
     {
         $user = $this->getUser();
 
-        if ( $this->getUser() == null)
+      /*  if ( $this->getUser() == null)
             throw $this->createNotFoundException('This page does not exist.');
 
-
+*/
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
         $em = $this->getDoctrine()->getManager();
 
