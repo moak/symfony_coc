@@ -21,3 +21,5 @@ $( "#players_hall_town" ).on( "change", function() {
 		});
 	}			
 });
+
+
