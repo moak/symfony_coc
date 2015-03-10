@@ -94,7 +94,7 @@ class PlayerType extends AbstractType
             ->add('witch' ,  'choice', array('label' => 'player.witch','choices' => array(0, 1, 2)))
             ->add('lava' ,  'choice', array('label' => 'player.lava','choices' => array(0, 1, 2, 3)))
 
-           /* ->add('gold1' , 'choice', array('label' => 'player.gold','choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
+            ->add('gold1' , 'choice', array('label' => 'player.gold','choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
             ->add('gold2' , 'choice', array('label' => 'player.gold','choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
             ->add('gold3' , 'choice', array('label' => 'player.gold','choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
             ->add('gold4' , 'choice', array('label' => 'player.gold','choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
@@ -108,7 +108,7 @@ class PlayerType extends AbstractType
             ->add('elixir4' , 'choice', array('label' => 'player.elixir','choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
             ->add('elixir5' , 'choice', array('label' => 'player.elixir','choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
             ->add('elixir6' , 'choice', array('label' => 'player.elixir','choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
-            ->add('elixir7' , 'choice', array('label' => 'player.elixir','choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))*/
+            ->add('elixir7' , 'choice', array('label' => 'player.elixir','choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
 
 
 
