@@ -3,6 +3,7 @@
 namespace COC\COCBundle\Controller;
 
 use COC\COCBundle\Entity\Clan;
+use COC\COCBundle\Form\Type\ImageProfileType;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Model\UserInterface;
 use COC\COCBundle\Entity\Player;
@@ -203,22 +204,31 @@ class PlayerController extends Controller
         ));
     }
 
-    public function myPlayerAction ($id_clan)
+    public function playerAction (Request $request, $id_clan, $id_player)
     {
         $user = $this->getUser();
-
 
         if ( $this->getUser() == null)
             throw $this->createNotFoundException('This page does not exist.');
 
+
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
         $em = $this->getDoctrine()->getManager();
 
-        $player = $em->getRepository('COCBundle:Player')->getPlayer($user->getPlayer()->getId());
+        $player = $em->getRepository('COCBundle:Player')->find($id_player);
        // var_dump($player);
+        $form = $this->get('form.factory')->create(new ImageProfileType(), $player);
+
+        if ($form->handleRequest($request)->isValid())
+        {
+            $em->persist($player);
+            $em->flush();
+        }
+
 
         return $this->render('COCBundle:Player:myPlayer.html.twig', array( 'clan'      =>  $clan,
             'player'      =>  $player,
+            'form'      =>  $form->createView(),
         ));
     }
 

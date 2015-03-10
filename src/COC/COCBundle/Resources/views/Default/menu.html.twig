@@ -92,8 +92,8 @@
 
                             <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out fa-fw"></i>  {{ 'menu.disconnect'|trans }}</a>
 
-                            {% if is_granted('ROLE_USER') and app.user.clan != null %}
-                            <li><a href="{{ path('coc_my_player', {'id_clan' : app.user.clan.id }) }}"><i class="fa fa-heart"></i> {{ 'menu.my_player'|trans }}</a></li>
+                            {% if is_granted('ROLE_USER') and app.user.clan != null and app.user.player is defined %}
+                            <li><a href="{{ path('coc_player', {'id_clan' : app.user.clan.id , 'id_player' :  app.user.player.id }) }}"><i class="fa fa-heart"></i> {{ 'menu.my_player'|trans }}</a></li>
                             {% endif %}
 
                             {% if is_granted('ROLE_USER') and clan.id != app.user.clan.id %}

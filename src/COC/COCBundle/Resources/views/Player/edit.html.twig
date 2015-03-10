@@ -14,53 +14,50 @@
                     <h4 class="panel-title">{{ 'player.general'|trans }}</h4>
                 </div>
                 <div>
-                    <div class="panel-body defences">
+                    <div class="panel-body">
                         {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
                         {{ form_errors(form) }}
 
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     {{ form_label(form.hall_town, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                                     {{ form_errors(form.hall_town) }}
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-8">
                                         {{ form_widget(form.hall_town, {'attr': {'class': 'form-control hall-town-level'}}) }}
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-6" >
+
+
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     {{ form_label(form.level, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
                                     {{ form_errors(form.level) }}
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-8">
                                         {{ form_widget(form.level, {'attr': {'class': 'form-control'}}) }}
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-4" >
                                 <div class="form-group">
-                                    {{ form_label(form.base, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                    {{ form_label(form.base, null, {'label_attr': {'class': 'col-sm-4 control-label '}}) }}
                                     {{ form_errors(form.base) }}
                                     <div class="col-sm-4">
-                                        {{ form_widget(form.base, {'attr': {'class': 'form-control hall-town-level'}}) }}
+                                        {{ form_widget(form.base, {'attr': {'class': 'filestyle'}}) }}
+                                    </div>
+                                    <div class="col-sm-4 hidden-sm hidden-xs">  {{ form_widget(form.base, {'attr': {'class': 'filestyle test block'}}) }}
+                                        {% if player.base.path is defined %}
+                                            <img  class="img-responsive" src="{{ asset('uploads/' ~ player.base.path) }}" />
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-6" >
-                                <div class="form-group">
-                                    {{ form_label(form.picture, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                                    {{ form_errors(form.picture) }}
-                                    <div class="col-sm-4">
-                                        {{ form_widget(form.picture, {'attr': {'class': 'form-control'}}) }}
-                                    </div>
-                                </div>
-                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -774,4 +771,5 @@
 
 {% block javascripts %}
     <script src="{{ asset('js/player_edit.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/input_file.js') }}" type="text/javascript"></script>
 {% endblock %}

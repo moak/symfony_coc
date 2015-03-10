@@ -10,26 +10,92 @@
 
 
     <div class="container white-bg rounded-corners">
-        <h2> {{ 'menu.my_player'|trans }}</h2>
+        <h2> {{ player.name }} <span> ({{ player.updatedAt|date('U')|timeago }})</span> </h2>
 
         <div class="well">
             <div class="row">
                 <div class="col-md-6">
                     <div class="row">
-                        <div class="col-md-6 col-xs-4">
-                            {% if player.picture.path is defined %}
-                                <a rel="gallery-1"  href="{{ asset('uploads/' ~ player.picture.path) }}" class="swipebox" title="">
-                                    <img  class="img-responsive" src="{{ asset('uploads/' ~ player.picture.path) }}" />
-                                </a>
-                            {% else %}
-                                <img class="img-responsive" src="{{ asset('images/non_available_picture.jpg') }}" />
-                            {% endif %}
+                        <div class="col-md-6">
 
+                            {% if player.picture.path is defined %}
+
+                                {{ form_start(form) }}
+                                {{ form_errors(form) }}
+
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-6 col-sm-12">
+                                        <a rel="gallery-1"  href="{{ asset('uploads/' ~ player.picture.path) }}" class="swipebox" title="">
+                                            <img  class="img-responsive" src="{{ asset('uploads/' ~ player.picture.path) }}" />
+                                        </a>
+                                    </div>
+
+                                </div>
+
+                                {% if app.user.player.id == player.id %}
+                                    <div class="row"><!-- panel-footer -->
+                                        <div class="col-xs-6 col-md-6">
+                                            <div class="previous">
+                                                {{ form_errors(form.picture) }}
+                                                {{ form_widget(form.picture, {'attr': {'class': 'filestyle'}}) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="next">
+                                                {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                                            </div>
+                                        </div>
+                                    </div><!-- end panel-footer -->
+                                {% endif %}
+                            {% else %}
+                                <div class="hidden-sm hidden-xs">
+                                    <img class="img-responsive" src="{{ asset('images/non_available_picture.jpg') }}" />
+                                </div>
+                            {% endif %}
                         </div>
                         <div class="col-md-6">
-                            <h2>{{ player.name }}</h2>
-                            <h3>{{ 'player.level'|trans }} {{ player.level }}</h3>
-                            <h3>{{ 'player.hall_town'|trans }} {{ player.hallTown }}</h3>
+
+                            <div class="row info ">
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <th class="text-nowrap" scope="row"><i class="fa fa-area-chart"></i> {{ player.total }} </th>
+                                        <td class="pull-right text-muted">{{ 'player.level'|trans }} <b>{{ player.level }} </b> </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <table class="table table-bordered table-striped">
+                                    <tbody>
+                                    <tr>
+                                        <th class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.attackWon'|trans }}</th>
+                                        <td class="text-muted"><b>{{ player.attackWon }} </b> </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th class="text-nowrap" scope="row"><i class="fa fa-trophy"></i>  {{ 'player.trophy'|trans }}</th>
+                                        <td class="text-muted"><b>{{ player.trophy }} </b> </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-nowrap" scope="row"><i class="fa fa-arrow-circle-right"></i> {{ 'player.troopSent'|trans }}</th>
+                                        <td class="text-muted"><b>{{ player.troopSent }} </b> </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-nowrap" scope="row"><i class="fa fa-arrows-alt"></i> {{ 'player.troopReceived'|trans }}</th>
+                                        <td class="text-muted"><b>{{ player.troopReceived }} </b> </td>
+
+                                    </tr>
+
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+
+
+
+
                         </div>
                     </div>
 
@@ -50,11 +116,12 @@
                             <img  class="img-responsive"src="{{ asset('uploads/' ~ player.base.path) }}" />
                         </a>
                     {% else %}
-                        <img class="img-responsive" src="{{ asset('images/non_available.jpg') }}" />
+                        <img class="hidden-sm hidden-xs img-responsive" src="{{ asset('images/non_available.jpg') }}" />
                     {% endif %}
                     <br>
-                    <a class="btn btn-primary btn-block" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_player'|trans }}</b></a>
-
+                    {% if app.user.player.id == player.id %}
+                        <a class="btn btn-primary btn-block" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_player'|trans }}</b></a>
+                    {% endif %}
                 </div>
             </div>
 
@@ -70,5 +137,9 @@
     <footer>
         {{ render(controller('COCBundle:Default:displaySeason')) }}
     </footer>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/input_file.js') }}" type="text/javascript"></script>
 {% endblock %}
 
