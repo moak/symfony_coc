@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             new COC\VitrineBundle\VitrineBundle(),
             new Lunetics\LocaleBundle\LuneticsLocaleBundle(),
 
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
