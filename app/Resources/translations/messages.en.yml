@@ -250,6 +250,34 @@ intro:
     feature2_title: Ranking system
     feature2_description: Sort the members of your clan by trophies like in Clash of Clans, but also by levels, level of labotory or level of defences.
 
+country:
+    in: International
+    eu: Europe
+    na: North America
+    ns: South America
+    a: Asia
+    aus: Australia
+    none: None
+
+clan:
+    level: Clan's level
+    message: Clan's message
+    capacity: Maximum capacity clan
+    country: Nationality
+    image: Image Clan
+    technical_info: Technical information
+    general_info: General information
+    image: Image clan
+    image_upload: Upload clan image
+    parameters: Parameters clan
+    recruitment: Recruitment status
+    total_points: Total points
+    total_attackWon: Total attacks won
+    total_troopReceived: Total troops received
+    total_troopSent: Total troops Sent
+
+
+
 label:
     or: OR
     name: Title
@@ -257,8 +285,8 @@ label:
     create: Create
     update: Update
     save: Save
-    site_visible: Site visible for visitors
-    site_invisible: Site invisible for visitors
+    site_visible: Site public (visible for visitors)
+    site_invisible: Site private (invisible for visitors)
     clan_visible: Clan visible when joining clans
     clan_invisible: Clan invisible when joining clans
     clan_registration: Clan registration

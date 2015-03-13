@@ -61,6 +61,49 @@ class Clan
      */
     private $level;
 
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="totalTroopReceived", type="integer" ))
+     */
+    private $totalTroopReceived;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="totalGeneral", type="integer" ))
+     */
+    private $totalGeneral;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="totalTroopSent", type="integer" ))
+     */
+    private $totalTroopSent;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="rank", type="integer" ))
+     */
+    private $rank;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="totalAttackWon", type="integer" ))
+     */
+    private $totalAttackWon;
+
+
+
+
+
     /**
      * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Image", inversedBy="clans", cascade={"persist"})
      * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
@@ -129,6 +172,27 @@ class Clan
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $country;
+
+    /**
+     * @ORM\OneToOne(targetEntity="COC\COCBundle\Entity\Image",cascade={"persist"}))
+     * @ORM\JoinColumn(name="image_picture", referencedColumnName="id", nullable=true)
+     **/
+    private $picture;
+
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="hiring", type="integer", nullable=true ))
+     */
+    private $hiring;
+
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -767,5 +831,189 @@ class Clan
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     * @return Clan
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string 
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set hiring
+     *
+     * @param integer $hiring
+     * @return Clan
+     */
+    public function setHiring($hiring)
+    {
+        $this->hiring = $hiring;
+
+        return $this;
+    }
+
+    /**
+     * Get hiring
+     *
+     * @return integer 
+     */
+    public function getHiring()
+    {
+        return $this->hiring;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param \COC\COCBundle\Entity\Image $picture
+     * @return Clan
+     */
+    public function setPicture(\COC\COCBundle\Entity\Image $picture = null)
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return \COC\COCBundle\Entity\Image 
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Set totalTroopReceived
+     *
+     * @param integer $totalTroopReceived
+     * @return Clan
+     */
+    public function setTotalTroopReceived($totalTroopReceived)
+    {
+        $this->totalTroopReceived = $totalTroopReceived;
+
+        return $this;
+    }
+
+    /**
+     * Get totalTroopReceived
+     *
+     * @return integer 
+     */
+    public function getTotalTroopReceived()
+    {
+        return $this->totalTroopReceived;
+    }
+
+    /**
+     * Set totalTroopSent
+     *
+     * @param integer $totalTroopSent
+     * @return Clan
+     */
+    public function setTotalTroopSent($totalTroopSent)
+    {
+        $this->totalTroopSent = $totalTroopSent;
+
+        return $this;
+    }
+
+    /**
+     * Get totalTroopSent
+     *
+     * @return integer 
+     */
+    public function getTotalTroopSent()
+    {
+        return $this->totalTroopSent;
+    }
+
+    /**
+     * Set totalAttackWon
+     *
+     * @param integer $totalAttackWon
+     * @return Clan
+     */
+    public function setTotalAttackWon($totalAttackWon)
+    {
+        $this->totalAttackWon = $totalAttackWon;
+
+        return $this;
+    }
+
+    /**
+     * Get totalAttackWon
+     *
+     * @return integer 
+     */
+    public function getTotalAttackWon()
+    {
+        return $this->totalAttackWon;
+    }
+
+    /**
+     * Set totalGeneral
+     *
+     * @param integer $totalGeneral
+     * @return Clan
+     */
+    public function setTotalGeneral($totalGeneral)
+    {
+        $this->totalGeneral = $totalGeneral;
+
+        return $this;
+    }
+
+    /**
+     * Get totalGeneral
+     *
+     * @return integer 
+     */
+    public function getTotalGeneral()
+    {
+        return $this->totalGeneral;
+    }
+
+    /**
+     * Set rank
+     *
+     * @param integer $rank
+     * @return Clan
+     */
+    public function setRank($rank)
+    {
+        $this->rank = $rank;
+
+        return $this;
+    }
+
+    /**
+     * Get rank
+     *
+     * @return integer 
+     */
+    public function getRank()
+    {
+        return $this->rank;
     }
 }

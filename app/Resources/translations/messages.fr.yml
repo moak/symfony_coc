@@ -248,6 +248,32 @@ intro:
     feature2_title: Système de classement complet
     feature2_description: Classez les membres du clan par trophés comme sur Clash of Clans, mais aussi par niveaux de défence ou laboratoire.
 
+country:
+    in: International
+    eu: Europe
+    na: Amérique du Nord
+    ns: Amérique du Sud
+    a: Asie
+    aus: Australie
+    none: Aucun
+
+clan:
+    level: Level du clan
+    message: Message clan
+    capacity: Capacité max du clan
+    country: Nationnalité
+    image: Image du clan
+    technical_info: Information technique
+    general_info: Information générale
+    image: Image du clan
+    image_upload: Upload image de clan
+    parameters: Paramètres du clan
+    recruitment: Recrutement
+    total_points: Total points
+    total_attackWon: Total attaques gagnées
+    total_troopReceived: Total troupes recues
+    total_troopSent: Total troupes envoyées
+
 label:
     or: OU
     name: Titre
@@ -255,14 +281,13 @@ label:
     create: Ajouter
     update: Modifier
     save: Sauvegarder
-    site_visible: Site visible pour les visiteurs
-    site_invisible: Site invisible pour les visiteurs
+    site_visible: Site public (visible aux visiteurs)
+    site_invisible: Site privé (invisible aux visiteurs)
     clan_visible: Il est possible de rejoindre mon clan
     clan_invisible: Impossible de rejoindre mon clan
     clan_registration: Rejoindre mon clan
     site_visibility: Visibilité du site
     password: Mot de passe du clan
-    capacity: Capacité max
     choose_ht: Choisir hôtel de ville
     search: Rechercher
     victory: Victoire

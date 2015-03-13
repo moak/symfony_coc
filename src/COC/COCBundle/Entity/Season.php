@@ -3,15 +3,22 @@
 namespace COC\COCBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use JsonSerializable;
 /**
  * Season
  *
  * @ORM\Table(name="season")
  * @ORM\Entity(repositoryClass="COC\COCBundle\Repository\SeasonRepository")
  */
-class Season
+class Season //implements JsonSerializable
 {
+   /* public function jsonSerialize()
+    {
+        return array(
+            'name' => $this->name
+        );
+    }
+*/
     /**
      * @var integer
      *

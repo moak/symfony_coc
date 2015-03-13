@@ -12,6 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class SeasonRepository extends EntityRepository
 {
+    public function findSeasonsName()
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u.name');
+
+        return $qb->getQuery()->getResult();
+    }
     public function getActualSeason()
     {
         $now = new \DateTime();

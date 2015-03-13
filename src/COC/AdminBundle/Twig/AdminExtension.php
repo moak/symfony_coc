@@ -10,7 +10,23 @@ class AdminExtension extends \Twig_Extension
             new \Twig_SimpleFilter('result', array($this, 'resultFilter')),
             new \Twig_SimpleFilter('timeago', array($this, 'timeagoFilter')),
             new \Twig_SimpleFilter('boolean', array($this, 'booleanFilter')),
+            new \Twig_SimpleFilter('position', array($this, 'positionFilter')),
         );
+    }
+
+    public function positionFilter($number)
+    {
+        if ( $number == 1)
+        {
+            return "rst";
+        }
+        elseif ( $number == 2)
+        {
+            return "nd";
+        }
+        else{
+            return "th";
+        }
     }
 
     public function booleanFilter($boolean)

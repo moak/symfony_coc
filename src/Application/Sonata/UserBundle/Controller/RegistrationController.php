@@ -422,6 +422,11 @@ class RegistrationController extends BaseController
                 $clan->setName($user->getClanName());
                 $clan->setMessage('“One love, one heart, one destiny.” ― Bob Marley');
                 $clan->setCapacity(10);
+                $clan->setCountry('none');
+                $clan->setLevel(1);
+                $clan->setTotalAttackWon(0);
+                $clan->setTotalTroopReceived(0);
+                $clan->setTotalTroopSent(0);
                 $clan->setStatus(0);
                 $clan->setPrivacy(0);
                 $em->persist($clan);

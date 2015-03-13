@@ -158,6 +158,34 @@ class PlayerController extends Controller
         return $this->render('COCBundle:Player:show.html.twig', array('player' => $player));
     }
 
+    public function updateClan($clan)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $players = $em->getRepository('COCBundle:Player')->findByClan($clan);
+
+        $totalAW = 0;
+        $totalTR = 0;
+        $totalTS = 0;
+        $totalGEN = 0;
+
+        foreach ( $players as $player )
+        {
+            $totalAW = $totalAW + $player->getAttackWon();
+            $totalTR =  $totalTR + $player->getTroopReceived();
+            $totalTS = $totalTS+  $player->getTroopSent();
+            $totalGEN = $totalGEN + $player->getTotal();
+        }
+
+        $clan->setTotalGeneral ($totalGEN );
+        $clan->setTotalTroopReceived ($totalTR);
+        $clan->setTotalTroopSent ($totalTS);
+        $clan->setTotalAttackWon ($totalAW);
+        $em->persist($clan);
+        $em->flush();
+
+    }
+
+
     public function editAction (Request $request, $id_clan)
     {
 
@@ -183,6 +211,8 @@ class PlayerController extends Controller
             $em->flush();
             $em->persist($player);
             $em->flush();
+            $this->updateClan($clan);
+
             return $this->redirect($this->generateUrl('coc_players', array('type' => 0, 'id_clan' =>  $clan->getId())));
         }
 
@@ -197,13 +227,77 @@ class PlayerController extends Controller
         $em = $this->getDoctrine()->getManager();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
         $players = $em->getRepository('COCBundle:Player')->getAllPlayersModule($clan);
+        $numberPlayers = $em->getRepository('COCBundle:Player')->getNumberEntities($clan);
 
-
-        return $this->render('COCBundle:Player:historyPlayers.html.twig', array( 'clan'      =>  $clan,
+        return $this->render('COCBundle:Player:historyPlayers.html.twig', array( 'clan'      =>  $clan, 'numberPlayers' => $numberPlayers,
             'players'      =>  $players,
         ));
     }
 
+    public function getPositions($player, $clan)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $playersByTotal = $em->getRepository('COCBundle:Player')->findBy(array('clan' => $clan),array('total' => 'DESC'));
+        $playersByTR = $em->getRepository('COCBundle:Player')->findBy(array('clan' => $clan),array('troopReceived' => 'DESC'));
+        $playersByTS = $em->getRepository('COCBundle:Player')->findBy(array('clan' => $clan),array('troopSent' => 'DESC'));
+        $playersByAW = $em->getRepository('COCBundle:Player')->findBy(array('clan' => $clan),array('attackWon' => 'DESC'));
+        $playersByTrophy = $em->getRepository('COCBundle:Player')->findBy(array('clan' => $clan),array('trophy' => 'DESC'));
+
+        $positions =  Array();
+
+        $i = 1;
+        foreach ($playersByTotal as $pTotal)
+        {
+            if ( $pTotal->getId() == $player->getId())
+            {
+                $positions['total'] = $i;
+            }
+            $i = $i + 1;
+        }
+
+        $i = 1;
+        foreach ($playersByTrophy as $playerByTrophy)
+        {
+            if ( $playerByTrophy->getId() == $player->getId())
+            {
+                $positions['trophy'] = $i;
+            }
+            $i = $i + 1;
+        }
+
+        $i = 1;
+        foreach ($playersByTR as $pTR)
+        {
+            if ( $pTR->getId() == $player->getId())
+            {
+                $positions['troopReceived'] = $i;
+            }
+            $i = $i + 1;
+        }
+
+        $i = 1;
+        foreach ($playersByTS as $pTS)
+        {
+            if ( $pTS->getId() == $player->getId())
+            {
+                $positions['troopSent'] = $i;
+            }
+            $i = $i + 1;
+        }
+
+        $i = 1;
+        foreach ($playersByAW as $pAW)
+        {
+            if ( $pAW->getId() == $player->getId())
+            {
+                $positions['attackWon'] = $i;
+            }
+            $i = $i + 1;
+        }
+
+
+        return $positions;
+    }
     public function playerAction (Request $request, $id_clan, $id_player)
     {
         $user = $this->getUser();
@@ -214,9 +308,11 @@ class PlayerController extends Controller
 */
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
         $em = $this->getDoctrine()->getManager();
-
+        $seasons = $em->getRepository('COCBundle:Season')->findSeasonsName();
         $player = $em->getRepository('COCBundle:Player')->find($id_player);
-       // var_dump($player);
+        $history = $em->getRepository('COCBundle:PlayerHistory')->findByPlayer($player, array('season'=> 'ASC'));
+        $actualSeason = $em->getRepository('COCBundle:Season')->getActualSeason();
+
         $form = $this->get('form.factory')->create(new ImageProfileType(), $player);
 
         if ($form->handleRequest($request)->isValid())
@@ -226,8 +322,8 @@ class PlayerController extends Controller
         }
 
 
-        return $this->render('COCBundle:Player:myPlayer.html.twig', array( 'clan'      =>  $clan,
-            'player'      =>  $player,
+        return $this->render('COCBundle:Player:myPlayer.html.twig', array( 'actualSeason' => $actualSeason, 'clan' =>  $clan, 'seasons'=>  $seasons, 'history' => $history,
+            'player'      =>  $player, 'positions' => $this->getPositions($player, $clan),
             'form'      =>  $form->createView(),
         ));
     }

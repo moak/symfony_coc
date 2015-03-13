@@ -15,6 +15,15 @@ class DefaultController extends Controller
         $last_update_player = $em->getRepository('COCBundle:Player')->getLastUpdate($clan);
         $last_update_base = $em->getRepository('COCBundle:ImageBase')->getLastUpdate($clan);
         $last_update_bestAttack = $em->getRepository('COCBundle:ImageBestAttack')->getLastUpdate($clan);
+        $numberWars = $em->getRepository('COCBundle:War')->getHistoryWar($clan);
+
+       // $position = $em->getRepository('COCBundle:Clan')->position();
+        $position = $em->getRepository('COCBundle:Clan')->find($clan->getId());
+
+
+        // Get position depending of second attribute (troopSent, Received, total, etc.. )
+
+
 
         if ( $last_update_base == null)
             $last_update_base['updatedAt'] = null;
@@ -52,9 +61,9 @@ class DefaultController extends Controller
             if ($id_clan == 1)
                 $display = true;
         }
-        $numberPlayers = $em->getRepository('COCBundle:Player')->getNumberEntities($clan);
 
-        return $this->render('COCBundle:Default:index.html.twig', array('last_update_bestAttack' => $last_update_bestAttack,'last_update_base' => $last_update_base,'last_update_player' => $last_update_player, 'display' => $display, 'numberPlayers' => $numberPlayers, 'clan' => $clan));
+
+        return $this->render('COCBundle:Default:index.html.twig', array('numberWars' => $numberWars, 'position' => $position, 'last_update_bestAttack' => $last_update_bestAttack,'last_update_base' => $last_update_base,'last_update_player' => $last_update_player, 'display' => $display, 'clan' => $clan));
     }
 
     public function displaySeasonAction()

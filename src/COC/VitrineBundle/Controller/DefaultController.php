@@ -21,17 +21,10 @@ class DefaultController extends Controller
         $clans = $em->getRepository('COCBundle:Clan')->findBy(array('status' => array(0, 1)));
         foreach ($clans as $clan)
         {
-            $players = $em->getRepository('COCBundle:Player')->getAllPlayers($clan);
+            $info = $em->getRepository('COCBundle:Clan')->getClanInfoVitrine($clan);
 
-            $total = 0;
-            $number = 0;
-            foreach ($players as $player)
-            {
-               $total = $total + $player->getTotal();
-               $number = $number + 1;
-            }
-            $clan->setTotal($total);
-            $clan->setNbMember($number);
+            $clan->setTotal($info[0]['total']);
+            $clan->setNbMember($info[0]['nbMember']);
         }
 
         usort($clans, function ($a, $b) {

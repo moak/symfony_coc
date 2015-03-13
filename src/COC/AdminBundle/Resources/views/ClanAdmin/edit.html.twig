@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">{{ 'menu.edit_clan'|trans }}</h1>
+            <h1 class="page-header">{{ 'clan.parameters'|trans }}</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -17,46 +17,125 @@
         <li class="active">{{ 'menu.edit_clan'|trans }}</li>
     </ol>
 
-    <div class="container">
 
 
         <div class="well">
             {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
             {{ form_errors(form) }}
 
-            <div class="form-group">
-                {{ form_label(form.message, 'Message', {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                {{ form_errors(form.message) }}
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>{{ 'clan.general_info'|trans }}</h3>
+                    <hr>
 
-                <div class="col-sm-4">
-                    {{ form_widget(form.message, {'attr': {'class': 'form-control'}}) }}
+                    <div class="form-group">
+                        {{ form_label(form.message, 'Message', {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+                        {{ form_errors(form.message) }}
+
+                        <div class="col-sm-8">
+                            {{ form_widget(form.message, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.level, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+                        {{ form_errors(form.level) }}
+
+                        <div class="col-sm-3">
+                            {{ form_widget(form.level, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        {{ form_label(form.image, null, {'label_attr': {'class': 'col-sm-4 control-label '}}) }}
+                        {{ form_errors(form.image) }}
+                        <div class="col-sm-8">
+                            {{ form_widget(form.image, {'attr': {'class': 'filestyle'}}) }}
+                        </div>
+                    </div>
+
+                    {% if clan.image.path is defined %}
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">{{ 'clan.image'|trans }}</label>
+                            <div class="col-sm-8">
+                                <img  class="img-responsive" src="{{ asset('uploads/' ~ clan.image.path) }}" />
+                            </div>
+                        </div>
+                    {% endif %}
+
+
+
+
+                </div>
+                <div class="col-md-6">
+                    <h3>{{ 'clan.technical_info'|trans }}</h3>
+                    <hr>
+                    <div class="form-group">
+                        {{ form_label(form.country, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+                        {{ form_errors(form.country) }}
+
+                        <div class="col-sm-7">
+                            {{ form_widget(form.country, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.capacity, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+                        {{ form_errors(form.capacity) }}
+
+                        <div class="col-sm-7">
+                            {{ form_widget(form.capacity, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.status, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+                        {{ form_errors(form.status) }}
+
+                        <div class="col-sm-7">
+                            {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.privacy, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+                        {{ form_errors(form.privacy) }}
+
+                        <div class="col-sm-7">
+                            {{ form_widget(form.privacy, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.password, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+                        {{ form_errors(form.password) }}
+
+                        <div class="col-sm-7">
+                            {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
 
-            <div class="form-group">
-                {{ form_label(form.capacity, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-                {{ form_errors(form.capacity) }}
-
-                <div class="col-sm-4">
-                    {{ form_widget(form.capacity, {'attr': {'class': 'form-control'}}) }}
-                </div>
-            </div>
 
             <div class="form-group">
-
-                <div class="col-sm-3"></div>
-                <div class="col-sm-4">
-                    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                <div class="col-sm-12 text-center">
+                    {{ form_widget(form.save, {'attr': {'class': 'btn btn-lg btn-primary'}}) }}
                 </div>
             </div>
-
             {{ form_rest(form) }}
             {{ form_end(form) }}
+            {{ form(form)}}
         </div>
 
-        {{ form(form)}}
-    </div>
-    
-    {{ form(form)}}
 
+    
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/input_file.js') }}" type="text/javascript"></script>
 {% endblock %}

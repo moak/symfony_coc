@@ -50,11 +50,9 @@
                 <i class="fa fa-refresh"></i> {{ last_update_player['updatedAt']|date("U")|timeago }}
             </div>
             <div class="panel-body">
-
                 <a class="btn btn-large btn-block btn-danger" href="{{ path('coc_players', {'id_clan': clan.id, 'type' : 0 }) }}"><i class="fa fa-sort-numeric-asc"></i> {{ 'phone.players'|trans }} <i class="fa fa-sort-numeric-asc"></i></a>
                 <br>
                 <a class="btn btn-large btn-block btn-success" href="{{ path('coc_players', {'id_clan': clan.id, 'type' : 1 }) }}"><i class="fa fa-rocket"></i> {{ 'phone.activity'|trans }} <i class="fa fa-rocket"></i></a>
-
             </div>
         </div>
     </div><!-- end well-small -->
@@ -100,19 +98,59 @@
         </div>
 
         <div class="row">
+
             <div class="col-md-6" data-position='right' data-step="3" data-intro="{{ 'intro.step3'|trans }}" data-position='right'>
+
 
                 <div class="panel panel-default" data-step="1" data-position='right' data-intro="{{ 'intro.step1'|trans }}">
                     <div class="panel-heading supercell-font">
-                        {{ 'coc.message'|trans }}  <p class="pull-right"><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0'}) }}">{{ numberPlayers }} / {{ clan.capacity }}  </a></p>
+                        <img  class="" width="30" height="30" src="{{ asset('uploads/' ~ clan.image.path) }}" /> {{ clan.name }}
+                        <p class="pull-right"><a href="{{ path('coc_wars', {'id_clan': clan.id}) }}">{{ 'war.wars'|trans }} <span class="badge">{{ numberWars }}</span></a></p>
                     </div>
+
                     <div class="panel-body">
-                        {{ clan.message }}
+                        <div class="well">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table  table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th><i class="fa fa-refresh"></i> End season:<b> 2 days</b></th>
+                                            <th>Totals</th>
+                                            <th>Rank</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-nowrap" scope="row"><i class="fa fa-trophy"></i>  {{ 'clan.total_points'|trans }}</td>
+                                                <td class="text-muted"><b>{{ clan.totalGeneral }} </b> </td>
+                                                <td class="text-muted"><b>:-( </b> </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'clan.total_attackWon'|trans }}</td>
+                                                <td class="text-muted"><b>{{ clan.totalAttackWon }} </b> </td>
+                                                <td class="text-muted"><b>:-(</b> </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="text-nowrap" scope="row"><i class="fa fa-arrow-circle-right"></i> {{ 'clan.total_troopSent'|trans }}</td>
+                                                <td class="text-muted"><b>{{ clan.totalTroopSent }} </b> </td>
+                                                <td class="text-muted"><b>:-(</b> </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-nowrap" scope="row"><i class="fa fa-arrows-alt"></i> {{ 'clan.total_troopReceived'|trans }}</td>
+                                                <td class="text-muted"><b>{{ clan.totalTroopReceived  }} </b> </td>
+                                                <td class="text-muted"><b>:-( </b> </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <hr>
-                {{ render(controller('COCBundle:War:menu', {'id_clan': clan.id })) }}
-
 
                 <!--End of Tawk.to Script-->
             </div>
@@ -120,11 +158,6 @@
                 {{ render(controller('COCBundle:Player:historyPlayers', {'id_clan': clan.id })) }}
             </div>
         </div>
-
-
-
-
-
 
         <div class="row supercell-font  hidden-sm hidden-xs" data-position='top' data-step="2" data-intro="{{ 'intro.step2'|trans }}">
             <div class="col-md-4">

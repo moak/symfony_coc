@@ -3,7 +3,7 @@
 namespace COC\COCBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-
+use Doctrine\ORM\Query\ResultSetMapping;
 /**
  * ClanRepository
  *
@@ -22,6 +22,70 @@ class ClanRepository extends EntityRepository
         return count($qb->getQuery()->getResult());
     }
 
+    public function getPosition($clan, $order_by)
+    {
+        $query = $this->_em->createQuery('SELECT c.name, SUM(p.total) as total, COUNT(p.id) as nbMember, SUM(p.attackWon) as attackWon, SUM(p.troopSent) as troopSent, SUM(p.troopReceived) as troopReceived
+                                            FROM COCBundle:Clan c
+                                            INNER JOIN COCBundle:Player p WITH c = p.clan
+                                            GROUP BY p.clan
+
+                                            ORDER BY ' . $order_by . ' DESC
+
+                                                                      ');
+                                            //WHERE m.clan = :clan');
+
+
+        return $query->getResult();
+    }
+
+    public function position($clan)
+    {
+
+     //   $query = $this->_em->createQuery('SELECT c.id,  c.total,  c.name, @curRank := @curRank + 1 AS rank FROM COCBundle:Clan c, (SELECT @curRank := 0) q ORDER BY c.total DESC');
+       // $query = $this->_em->createQuery('SELECT id, total, name, @curRank := @curRank + 1 AS rank FROM player p, (SELECT @curRank := 0) q ORDER BY total DESC');
+        $rsm = new ResultSetMapping();
+        $rsm->addEntityResult('COCBundle:Clan', 'c');
+        $rsm->addFieldResult('c', 'id', 'id');
+        $rsm->addFieldResult('c', 'name', 'name');
+        $rsm->addFieldResult('c', 'totalGeneral', 'totalGeneral');
+        $rsm->addFieldResult('c', 'rank', 'rank');
+
+       // $query = $this->_em->createNativeQuery('SELECT id, name, totalGeneral, @curRank := @curRank + 1 AS rank FROM clan , (SELECT @curRank := 0) q  WHERE id = ? ORDER BY totalGeneral DESC', $rsm);
+       $query = $this->_em->createNativeQuery('SELECT id, name, totalGeneral, @curRank := @curRank + 1 AS rank FROM clan , (SELECT @curRank := 0) q WHERE id = ?  ORDER BY totalGeneral DESC', $rsm);
+        $query->setParameter(1, $clan);
+
+        return $query->getResult();
+
+        /* $query = "SET @rownum := 0;SELECT id, totalTroopReceived, rank FROM SELECT @rownum := @rownum + 1 AS rank, id, totalTroopReceived FROM clan ORDER BY totalTroopReceived) AS temp WHERE id = 2";
+        $stmt =  $this->_em->getConnection()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll();*/
+
+       /* $query = $this->_em->createQuery('SET @rownum := 0;SELECT id, totalTroopReceived, rank FROM SELECT @rownum := @rownum + 1 AS rank, id, totalTroopReceived FROM clan ORDER BY totalTroopReceived) AS temp WHERE id = :id;')
+            ->setParameter('id', $clan->getId());
+        return $query->getResult();*/
+    }
+
+
+
+
+
+
+    public function getClanInfoVitrine($clan)
+    {
+        $query = $this->_em->createQuery('SELECT COUNT(m.id) as nbMember, SUM(m.total) as total FROM COCBundle:Player m  WHERE m.clan = :clan')
+            ->setParameter('clan', $clan);
+
+        return $query->getResult();
+    }
+
+    public function getTotals($clan)
+    {
+        $query = $this->_em->createQuery('SELECT SUM(m.attackWon) as attackWon, SUM(m.troopSent) as troopSent, SUM(m.troopReceived) as troopReceived, SUM(m.total) as total FROM COCBundle:Player m  WHERE m.clan = :clan')
+            ->setParameter('clan', $clan);
+
+        return $query->getResult();
+    }
     public function getClans()
     {
         $query = $this->createQueryBuilder('e')
