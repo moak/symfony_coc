@@ -1,0 +1,72 @@
+/*
+FULL TABLE
+}*/
+
+.info-player-defence .cannon span,
+.info-player-defence .mortar span,
+.info-player-defence .arc-x span,
+.info-player-defence .inferno span,
+.info-player-defence .wizard span,
+.info-player-defence .archer-tower span,
+.info-player-defence .tesla span,
+.info-player-defence .anti-air span,
+.info-player-ressources .elixir span,
+.info-player-ressources .gold span,
+.info-player-ressources .dark-elixir span{
+    position: absolute;
+    margin-top: 12px;
+    margin-left: 54px;
+}
+
+.info-player-defence .archer-tower img,
+.info-player-defence .anti-air img{
+    width: 35px;
+}
+
+.info-player-defence .tesla img,
+.info-player-defence .wizard img,
+.info-player-defence .inferno img{
+    width: 46px;
+}
+
+.info-player-defence .cannon img,
+.info-player-defence .mortar img,
+.info-player-defence .arc-x img{
+    width: 45px;
+}
+
+.info-player-ressources .elixir img,
+.info-player-ressources .gold img,
+.info-player-ressources .dark-elixir img{
+    width: 45px;
+}
+
+.info-player-defence .expand-title,
+.info-player-ressources .expand-title,
+.info-player-attack .expand-title {
+    position: relative;
+    left: 18px;
+}
+.info-player-defence .expand-title:after,
+.info-player-ressources .expand-title:after,
+.info-player-attack .expand-title:after {
+    content :'\n';
+}
+
+.info-player-attack .portrait{
+    display: inline-block;
+}
+.info-player-attack .portrait div{
+    position: relative;
+    color : white;
+    top: 44px;
+    left: 7px;
+}
+
+.info-player-attack .expendables{
+    /*background-color: rgba(80, 232, 77, 0.2)*/
+}
+
+.info-player-attack .expendables h5{
+    margin-left : 17px;
+}
