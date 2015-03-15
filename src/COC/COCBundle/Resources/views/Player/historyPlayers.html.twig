@@ -11,10 +11,10 @@
                     <table class="table classement-list datatable">
                         <thead>
                             <tr>
-
                                 <th class="supercell-font">{{ 'player.name'|trans }}</th>
                                 <th class="supercell-font">{{ 'player.level'|trans }}</th>
-                                <th class="supercell-font">{{ 'player.ht'|trans }}</th>
+                                <th class="supercell-font">{{ 'player.def'|trans }}</th>
+                                <th class="supercell-font">{{ 'player.att'|trans }}</th>
                                 <th class="supercell-font">{{ 'player.total'|trans }}</th>
                                 <th class="supercell-font no-sort"></th>
                             </tr>
@@ -22,9 +22,10 @@
                         <tbody>
                         {% for player in players %}
                             <tr>
-                                <td>{{ player.name }}</td>
+                                <td><a href="{{ path('coc_player', {'id_clan' : clan.id , 'id_player' :  player.id }) }}">  {{ player.name }} ({{ player.hallTown }})</a></td>
                                 <td>{{ player.level }}</td>
-                                <td>{{ player.hallTown }}</td>
+                                <td>{{ player.totalDefence|round }}</td>
+                                <td>{{ player.totalAttack|round }}</td>
                                 <td>{{ player.total|round }}</td>
                                 <td>{{ player.updatedAt|date('U')|timeago }}</td>
                             </tr>

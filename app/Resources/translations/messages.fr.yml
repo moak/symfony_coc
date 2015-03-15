@@ -100,6 +100,8 @@ notFound: Aucun résultat trouvé.
 notPlayerFound: Aucun joueur trouvé.
 
 player:
+   def: Def
+   att: Att
    name: Nom
    level: Niveau
    defence: Défence
@@ -273,6 +275,7 @@ clan:
     total_attackWon: Total attaques gagnées
     total_troopReceived: Total troupes recues
     total_troopSent: Total troupes envoyées
+    total_trophies: Total trophés
 
 label:
     or: OU
@@ -305,7 +308,7 @@ label:
     farm: Base de dévelopement
     posted_by: Posted by
     previous_seasons: Saisons précédentes
-    season: Saison en cours
+    season: Saison
     ends_in: se termine dans
     day: j
     hour: h

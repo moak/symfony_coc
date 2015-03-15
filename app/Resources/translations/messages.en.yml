@@ -8,7 +8,7 @@ form:
 
 menu:
     my_account: My account
-    my_player: My Player
+    my_player: My player
     go_site: Go on website
     visibility: Clan's visibility
     password: Clan's password
@@ -103,6 +103,8 @@ action:
     set_user : Give user priviledges
 
 player:
+   def: Def
+   att: Att
    name: Name
    level: Level
    defence: Defence
@@ -274,8 +276,8 @@ clan:
     total_points: Total points
     total_attackWon: Total attacks won
     total_troopReceived: Total troops received
-    total_troopSent: Total troops Sent
-
+    total_troopSent: Total troops sent
+    total_trophies: Total trophies
 
 
 label:
@@ -310,7 +312,7 @@ label:
     farm: Farm base
     posted_by: Posted by
     previous_seasons: Previous seasons
-    season: Current season
+    season: Season
     ends_in: ends in
     day: d
     hour: h

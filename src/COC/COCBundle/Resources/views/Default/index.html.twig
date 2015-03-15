@@ -88,9 +88,8 @@
      <!-- Page Content -->
     <div class="container white-bg rounded-corners">
 
-        <div class="row ">
+        <div class="row"  id="demo" style="display:none;">
             <div class="col-md-8 col-md-offset-2 btn-demo">
-
                 {% if (clan.id == 1) %}
                     <a class="btn btn-large btn-block btn-success supercell-font" href="javascript:introJs().setOption('showProgress', true).start();">{{ 'coc.launch_demo'|trans }}</a>
                 {% endif %}
@@ -98,63 +97,69 @@
         </div>
 
         <div class="row">
-
-            <div class="col-md-6" data-position='right' data-step="3" data-intro="{{ 'intro.step3'|trans }}" data-position='right'>
-
-
+            <br>
+            <div class="col-md-5" data-position='right' data-step="3" data-intro="{{ 'intro.step3'|trans }}" data-position='right'>
                 <div class="panel panel-default" data-step="1" data-position='right' data-intro="{{ 'intro.step1'|trans }}">
                     <div class="panel-heading supercell-font">
-                        <img  class="" width="30" height="30" src="{{ asset('uploads/' ~ clan.image.path) }}" /> {{ clan.name }}
-                        <p class="pull-right"><a href="{{ path('coc_wars', {'id_clan': clan.id}) }}">{{ 'war.wars'|trans }} <span class="badge">{{ numberWars }}</span></a></p>
+                        {%  if clan.image.path is defined %}
+                            <img  class="" width="30" height="30" src="{{ asset('uploads/' ~ clan.image.path) }}" />
+                        {% endif  %}
+                        {{ clan.name }}<p class="pull-right"><a href="{{ path('coc_wars', {'id_clan': clan.id}) }}">{{ 'war.wars'|trans }} <span class="badge">{{ numberWars }}</span></a></p>
                     </div>
 
                     <div class="panel-body">
-                        <div class="well">
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <table class="table  table-striped">
-                                        <thead>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-responsive table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th><i class="fa fa-refresh"></i> End season:<b> 2 days</b></th>
+                                        <th>Totals</th>
+                                        <th>Rank</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
                                         <tr>
-                                            <th><i class="fa fa-refresh"></i> End season:<b> 2 days</b></th>
-                                            <th>Totals</th>
-                                            <th>Rank</th>
+                                            <td class="text-nowrap" scope="row"><i class="fa fa-trophy"></i>  {{ 'clan.total_points'|trans }}</td>
+                                            <td class="text-muted"><b>{{ clan.totalGeneral }} </b> </td>
+                                            <td class="text-muted"><b>{{ positions['totalGeneral']}} {{ positions['totalGeneral']|position }}</b> </td>
                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-nowrap" scope="row"><i class="fa fa-trophy"></i>  {{ 'clan.total_points'|trans }}</td>
-                                                <td class="text-muted"><b>{{ clan.totalGeneral }} </b> </td>
-                                                <td class="text-muted"><b>:-( </b> </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'clan.total_attackWon'|trans }}</td>
-                                                <td class="text-muted"><b>{{ clan.totalAttackWon }} </b> </td>
-                                                <td class="text-muted"><b>:-(</b> </td>
-                                            </tr>
 
-                                            <tr>
-                                                <td class="text-nowrap" scope="row"><i class="fa fa-arrow-circle-right"></i> {{ 'clan.total_troopSent'|trans }}</td>
-                                                <td class="text-muted"><b>{{ clan.totalTroopSent }} </b> </td>
-                                                <td class="text-muted"><b>:-(</b> </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="text-nowrap" scope="row"><i class="fa fa-arrows-alt"></i> {{ 'clan.total_troopReceived'|trans }}</td>
-                                                <td class="text-muted"><b>{{ clan.totalTroopReceived  }} </b> </td>
-                                                <td class="text-muted"><b>:-( </b> </td>
-                                            </tr>
 
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                                        <tr>
+                                            <td class="text-nowrap" scope="row"><i class="fa fa-trophy"></i>  {{ 'clan.total_trophies'|trans }}</td>
+                                            <td class="text-muted"><b>{{ clan.totalTrophy }} </b> </td>
+                                            <td class="text-muted"><b>{{ positions['totalTrophy']}} {{ positions['totalTrophy']|position }}</b> </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'clan.total_attackWon'|trans }}</td>
+                                            <td class="text-muted"><b>{{ clan.totalAttackWon }} </b> </td>
+                                            <td class="text-muted"><b>{{ positions['totalAttackWon']}} {{ positions['totalAttackWon']|position }}</b> </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="text-nowrap" scope="row"><i class="fa fa-arrow-circle-right"></i> {{ 'clan.total_troopSent'|trans }}</td>
+                                            <td class="text-muted"><b>{{ clan.totalTroopSent }} </b> </td>
+                                            <td class="text-muted"><b>{{ positions['totalTroopSent']}} {{ positions['totalTroopSent']|position }}</b> </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-nowrap" scope="row"><i class="fa fa-arrows-alt"></i> {{ 'clan.total_troopReceived'|trans }}</td>
+                                            <td class="text-muted"><b>{{ clan.totalTroopReceived  }} </b> </td>
+                                            <td class="text-muted"><b>{{ positions['totalTroopReceived']}} {{ positions['totalTroopReceived']|position }}</b> </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                        </div>
                         </div>
                     </div>
                 </div>
 
                 <!--End of Tawk.to Script-->
             </div>
-            <div class="col-md-6  hidden-sm hidden-xs"  data-position='left' data-step="4" data-intro="{{ 'intro.step4'|trans }}" data-position='right'>
+            <div class="col-md-7  hidden-sm hidden-xs"  data-position='left' data-step="3" data-intro="{{ 'intro.step4'|trans }}" data-position='right'>
                 {{ render(controller('COCBundle:Player:historyPlayers', {'id_clan': clan.id })) }}
             </div>
         </div>
@@ -213,6 +218,19 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script>
+        // 'Getting' data-attributes using getAttribute
+        var demo = document.getElementById('demo');
+        //  var clan_id = demo.getAttribute('data-clan'); // fruitCount = '12'
+
+        if ('{{ clan.id }}' == 1)
+        {
+            demo.style.display = 'block';
+        }
+
+    </script>
+
+
     <script>
         if ('{{ display }}' && screen.width > 479)
         {

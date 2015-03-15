@@ -9,20 +9,12 @@ class DefaultController extends Controller
     public function indexAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
-        $service = $this->container->get('coc_cocbundle.clan_info') ;
-        $clan = $service->getClan($id_clan);
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         $last_update_player = $em->getRepository('COCBundle:Player')->getLastUpdate($clan);
         $last_update_base = $em->getRepository('COCBundle:ImageBase')->getLastUpdate($clan);
         $last_update_bestAttack = $em->getRepository('COCBundle:ImageBestAttack')->getLastUpdate($clan);
         $numberWars = $em->getRepository('COCBundle:War')->getHistoryWar($clan);
-
-       // $position = $em->getRepository('COCBundle:Clan')->position();
-        $position = $em->getRepository('COCBundle:Clan')->find($clan->getId());
-
-
-        // Get position depending of second attribute (troopSent, Received, total, etc.. )
-
 
 
         if ( $last_update_base == null)
@@ -63,7 +55,7 @@ class DefaultController extends Controller
         }
 
 
-        return $this->render('COCBundle:Default:index.html.twig', array('numberWars' => $numberWars, 'position' => $position, 'last_update_bestAttack' => $last_update_bestAttack,'last_update_base' => $last_update_base,'last_update_player' => $last_update_player, 'display' => $display, 'clan' => $clan));
+        return $this->render('COCBundle:Default:index.html.twig', array('positions' => $this->getPositions($clan), 'numberWars' => $numberWars, 'last_update_bestAttack' => $last_update_bestAttack,'last_update_base' => $last_update_base,'last_update_player' => $last_update_player, 'display' => $display, 'clan' => $clan));
     }
 
     public function displaySeasonAction()
@@ -92,8 +84,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $service = $this->container->get('coc_cocbundle.clan_info') ;
-        $clan = $service->getClan($id_clan);
+        $clan  = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
         $numberPlayers = $em->getRepository('COCBundle:Player')->getNumberEntities($clan);
 
@@ -111,5 +102,69 @@ class DefaultController extends Controller
         $numberImagesBonus = $em->getRepository('COCBundle:ImageBonus')->getNumberEntities($clan);
 
         return $this->render('COCBundle:Default:menu.html.twig' , array('language_switcher' => $language_switcher, 'numberPlayers' => $numberPlayers, 'active' => $active,  'clan' => $clan, 'numberImagesBonus' => $numberImagesBonus,'numberUsersNonAssigned' => $numberUsersNonAssigned,'numberVideos' => $numberVideos, 'numberBestAttacks' => $numberBestAttacks, 'numberBases5' => $numberBases5, 'numberBases6' => $numberBases6, 'numberBases7' => $numberBases7, 'numberBases8' => $numberBases8, 'numberBases9' => $numberBases9, 'numberBases10' => $numberBases10));
+    }
+
+
+    public function getPositions($clan)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $clansByTotal = $em->getRepository('COCBundle:Clan')->findBy(array(),array('totalGeneral' => 'DESC'));
+        $clansByTR = $em->getRepository('COCBundle:Clan')->findBy(array(),array('totalTroopReceived' => 'DESC'));
+        $clansByTS = $em->getRepository('COCBundle:Clan')->findBy(array(),array('totalTroopSent' => 'DESC'));
+        $clansByAW = $em->getRepository('COCBundle:Clan')->findBy(array(),array('totalAttackWon' => 'DESC'));
+        $clansByTrophy = $em->getRepository('COCBundle:Clan')->findBy(array(),array('totalTrophy' => 'DESC'));
+
+        $positions =  Array();
+
+        $i = 1;
+        foreach ($clansByTotal as $clanByTotal)
+        {
+            if ( $clanByTotal->getId() == $clan->getId())
+            {
+                $positions['totalGeneral'] = $i;
+            }
+            $i = $i + 1;
+        }
+        $i = 1;
+        foreach ($clansByTrophy as $clanByTrophy)
+        {
+            if ( $clanByTrophy->getId() == $clan->getId())
+            {
+                $positions['totalTrophy'] = $i;
+            }
+            $i = $i + 1;
+        }
+
+        $i = 1;
+        foreach ($clansByTR as $clanByTR)
+        {
+            if ( $clanByTR->getId() == $clan->getId())
+            {
+                $positions['totalTroopReceived'] = $i;
+            }
+            $i = $i + 1;
+        }
+
+        $i = 1;
+        foreach ($clansByTS as $clanByTS)
+        {
+            if ( $clanByTS->getId() == $clan->getId())
+            {
+                $positions['totalTroopSent'] = $i;
+            }
+            $i = $i + 1;
+        }
+
+        $i = 1;
+        foreach ($clansByAW as $clanByAW)
+        {
+            if ( $clanByAW->getId() == $clan->getId())
+            {
+                $positions['totalAttackWon'] = $i;
+            }
+            $i = $i + 1;
+        }
+
+        return $positions;
     }
 }

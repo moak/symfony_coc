@@ -7,6 +7,7 @@ use COC\COCBundle\Entity\Player;
 use COC\COCBundle\Entity\PlayerHistory;
 use COC\COCBundle\Form\Type\SeasonType;
 use COC\COCBundle\Form\Type\PlayerActualSeasonType;
+use COC\COCBundle\Form\Type\PlayersActualSeasonType;
 use COC\COCBundle\Form\Type\PlayerAdminType;
 use COC\COCBundle\Form\Type\PlayerType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -90,6 +91,37 @@ class PlayerAdminController extends Controller
         return $this->render('AdminBundle:PlayerAdmin:editPlayerActualSeason.html.twig', array('clan' => $clan ,
             'form'      =>  $form->createView(),
             'player'  => $player
+        ));
+    }
+
+
+    public function editPlayersActualSeasonAction ( Request $request, $id_clan)
+    {
+
+        if($this->getUser()->getClan()->getId() != $id_clan)
+        {
+            throw $this->createNotFoundException('Page not found');
+        }
+
+        $em = $this->getDoctrine()->getManager();
+
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+        $players = $em->getRepository('COCBundle:Player')->findByClan($clan);
+
+        $form = $this->get('form.factory')->create(new PlayerActualSeasonType(),  array('players' => $players) );
+
+
+        if ($form->handleRequest($request)->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($players);
+            $em->flush();
+            return $this->redirect($this->generateUrl('admin_players_actual_season', array('type' => '1','id_clan' =>  $clan->getId())));
+        }
+
+        return $this->render('AdminBundle:PlayerAdmin:editPlayersActualSeason.html.twig', array('clan' => $clan ,
+            'form'      =>  $form->createView(),
+            'players'  => $players
         ));
     }
 

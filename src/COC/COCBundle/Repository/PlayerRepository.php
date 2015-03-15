@@ -42,7 +42,7 @@ class PlayerRepository extends EntityRepository
             ->where('p.clan = :clan')
             ->orderBy('p.updatedAt', 'DESC')
             ->setParameter('clan', $clan)
-            ->setMaxResults( 5 );
+            ->setMaxResults( 4 );
 
         return $qb->getQuery()->getResult();
     }
@@ -63,7 +63,7 @@ class PlayerRepository extends EntityRepository
     public function getAllActivityPlayers($id_clan)
     {
         $qb = $this->createQueryBuilder('p')
-            ->select('p.id, p.level, p.name, p.troopSent, p.troopReceived, p.attackWon, p.trophy, p.updatedAt')
+            ->select('p.id, p.level, p.name, p.troopSent, p.troopReceived, p.attackWon, p.trophy, p.hallTown, p.updatedAt')
             ->where('p.clan = :clan')
             ->orderBy('p.attackWon', 'DESC')
             ->setParameter('clan', $id_clan);

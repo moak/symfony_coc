@@ -54,10 +54,10 @@
 
 </head>
 <body>
-{% set language_switcher= locale_switcher()%}
+{% set language_switcher = locale_switcher() %}
 
 
-{{ render(controller('COCBundle:Default:menu' , {'id_clan' : id_clan , 'active' : active, 'language_switcher' : language_switcher})) }}
+{{ render(controller('COCBundle:Default:menu' , {'id_clan' : id_clan , 'active' : active, 'language_switcher' : language_switcher })) }}
 
 
 <div class="main">

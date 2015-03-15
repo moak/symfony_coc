@@ -50,6 +50,10 @@ admin_player_edit_actual_season:
     path:     coc/{id_clan}/admin/player/actualSeason/{id}
     defaults: { _controller: AdminBundle:PlayerAdmin:editPlayerActualSeason }
 
+admin_players_edit_actual_season:
+    path:     coc/{id_clan}/admin/players/actualSeason
+    defaults: { _controller: AdminBundle:PlayerAdmin:editPlayersActualSeason }
+
 
 
 

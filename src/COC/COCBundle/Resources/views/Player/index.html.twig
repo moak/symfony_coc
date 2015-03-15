@@ -11,17 +11,20 @@
 
 
     <div class="container white-bg rounded-corners">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">{{ 'menu.general_ranking'|trans }}
-                {%  if app.user.player.level is defined and clan.id == app.user.player.clan.id %}
-                    <a class="btn btn-normal pull-right btn-primary" href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}">{{ 'menu.current_season'|trans }}</a>
+        <div class="row">
+            <div class="col-lg-12">
+                {% if isCurrentSeason %}
+                    <h1 class="page-header">{{ 'menu.general_ranking'|trans }}  ({{ season.name }})</h1>
+                {% else %}
+                    <h1 class="page-header">{{ 'label.season'|trans }}: {{ season.name }}
+                        {%  if app.user.player.level is defined and clan.id == app.user.player.clan.id %}
+                            <a class="btn btn-normal pull-right btn-primary" href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}">{{ 'menu.current_season'|trans }}</a>
+                        {% endif %}
+                    </h1>
                 {% endif %}
-            </h1>
-
+            </div>
+            <!-- /.col-lg-12 -->
         </div>
-        <!-- /.col-lg-12 -->
-    </div>
 
 
     <div class="well">
@@ -33,7 +36,7 @@
             {{ form_errors(form.season) }}
 
             <div class="col-sm-4">
-                {{ form_widget(form.season, { 'attr': {'class': 'form-control select_group'}}) }}
+                {{ form_widget(form.season, { 'attr': {'class': 'form-control select_group'}, 'empty_value': '-- Add to Group --' }) }}
             </div>
 
             <div class="col-sm-4">
@@ -80,7 +83,7 @@
             {% endif %}
             <td><span class="glyphicon glyphicon-plus-sign expand" data-name="{{ player.name }}"></span></td>
             <td class="position"></td>
-            <td>{{ player.name }} ({{ player.hallTown }})</td>
+            <td><a href="{{ path('coc_player', {'id_clan' : clan.id , 'id_player' :  player.id }) }}">  {{ player.name }} ({{ player.hallTown }})</a></td>
             <td>
 
                 {% if  isCurrentSeason == false %}

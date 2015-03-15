@@ -85,6 +85,12 @@ class Clan
      */
     private $totalTroopSent;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="totalTrophy", type="integer" ))
+     */
+    private $totalTrophy;
 
     /**
      * @var integer
@@ -1015,5 +1021,28 @@ class Clan
     public function getRank()
     {
         return $this->rank;
+    }
+
+    /**
+     * Set totalTrophy
+     *
+     * @param integer $totalTrophy
+     * @return Clan
+     */
+    public function setTotalTrophy($totalTrophy)
+    {
+        $this->totalTrophy = $totalTrophy;
+
+        return $this;
+    }
+
+    /**
+     * Get totalTrophy
+     *
+     * @return integer 
+     */
+    public function getTotalTrophy()
+    {
+        return $this->totalTrophy;
     }
 }

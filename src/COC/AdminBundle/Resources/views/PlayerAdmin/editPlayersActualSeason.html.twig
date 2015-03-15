@@ -1,0 +1,43 @@
+{% extends "::base_admin.html.twig" %}
+{% set id_clan = clan.id %}
+
+{% block body %}
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{ 'menu.history_edit'|trans }}</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+
+    <ol class="breadcrumb">
+        <li><a href="{{ path('admin', { 'id_clan': clan.id }) }}"><p class="fa fa-home"></p> Dashboard</a></li>
+        <li><a href="{{ path('admin_users', { 'id_clan': clan.id }) }}">{{ 'menu.history'|trans }}</a></li>
+        <li class="active">{{ 'menu.history_edit'|trans }}</li>
+    </ol>
+
+    <div class="container">
+
+
+        <div class="well">
+            {{ form_start(form, {'attr': {'class': 'form-horizontal' }}) }}
+
+            {% for player in form.players %}
+gh
+                {{ form_widget(form.troopSent) }}
+
+            {% endfor %}
+
+            {{ form_rest(form) }}
+
+            {{ form_end(form) }}
+        </div>
+
+        {{ form(form)}}
+    </div>
+
+    {{ form(form)}}
+
+{% endblock %}
