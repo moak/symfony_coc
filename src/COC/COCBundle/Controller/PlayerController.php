@@ -18,6 +18,14 @@ use Doctrine\ORM\EntityManager;
 
 class PlayerController extends Controller
 {
+    private static $production_by_mine_level    =   array(null=>0, 0=>0, 1=>200, 2=> 400, 3=> 600, 4=> 800, 5=> 1000, 6=> 1300, 7=> 1600, 8=> 1900, 9=> 2200, 10=> 2500, 11=>3000, 12=>3500);
+    private static $mine_level_by_hall          =   array(1=>2, 2=>4, 3=>6, 4=>8, 5=> 10, 6=>10, 7=>11, 8=>12, 9=>12, 10=>12);
+    private static $nb_mines_by_hall_town_level =   array(1=>1, 2=>2, 3=>3 , 4=>4, 5=>5, 6=>6, 7=>6, 8=>6, 9=>6, 10=> 7);
+
+    private static $production_dark_by_mine_level    =   array(null=>0, 0=>0, 1=>20, 2=>30, 3=>45, 4=> 60, 5=> 80, 6=> 100);
+    private static $mine_dark_level_by_hall          =   array(1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>3, 8=>3, 9=>6, 10=>6);
+    private static $nb_mines_dark_by_hall_town_level =   array(1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>1, 7=>1, 8=>2, 9=>2, 10=>3);
+
     public function indexAction(Request $request, $id_clan, $type)
     {
         $em = $this->get('doctrine.orm.entity_manager');
@@ -108,9 +116,6 @@ class PlayerController extends Controller
         }
 
     }
-
-
-
 
     public function editActivityAction (Request $request, $id_clan)
     {
@@ -334,10 +339,20 @@ class PlayerController extends Controller
             $em->flush();
         }
 
-
-        return $this->render('COCBundle:Player:myPlayer.html.twig', array( 'playerPreviousSeason' => $playerPreviousSeason, 'actualSeason' => $actualSeason, 'clan' =>  $clan, 'seasons'=>  $seasons, 'history' => $historyPlayer,
-            'player'      =>  $player, 'positions' => $this->getPositions($player, $clan, $previousSeason),
+        return $this->render('COCBundle:Player:myPlayer.html.twig', array(
+            'playerPreviousSeason' => $playerPreviousSeason,
+            'actualSeason' => $actualSeason,
+            'clan' =>  $clan,
+            'seasons'=>  $seasons,
+            'history' => $historyPlayer,
+            'player'      =>  $player,
+            'positions' => $this->getPositions($player, $clan, $previousSeason),
             'form'      =>  $form->createView(),
+            'myGold'    => $this->getMyGoldPerHour($player),
+            'myElixir'  => $this->getMyElixirPerHour($player),
+            'myDarkElixir'  => $this->getMyDarkElixirPerHour($player),
+            'maxDarkElixir' => $this->getMaxDarkElixirPerHour($player),
+            'maxElixirGold' => $this->getMaxGoldElixirPerHour($player)
         ));
     }
 
@@ -353,4 +368,46 @@ class PlayerController extends Controller
         ));
     }
 
+    public function getMaxGoldElixirPerHour($player){
+        return self::$nb_mines_by_hall_town_level[$player->getHallTown()] * self::$production_by_mine_level[self::$mine_level_by_hall[$player->getHallTown()]];
+    }
+
+    public function getMyDarkElixirPerHour($player){
+        $temp = array(
+            self::$production_dark_by_mine_level[1],
+            self::$production_dark_by_mine_level[1],
+            self::$production_dark_by_mine_level[1]
+        );
+        return array_sum($temp);
+    }
+
+    public function getMaxDarkElixirPerHour($player){
+        return self::$nb_mines_dark_by_hall_town_level[$player->getHallTown()] * self::$production_dark_by_mine_level[self::$mine_dark_level_by_hall[$player->getHallTown()]];
+    }
+
+    public function getMyGoldPerHour($player){
+        $temp = array(
+            self::$production_by_mine_level[$player->getGold1()],
+            self::$production_by_mine_level[$player->getGold2()],
+            self::$production_by_mine_level[$player->getGold3()],
+            self::$production_by_mine_level[$player->getGold4()],
+            self::$production_by_mine_level[$player->getGold5()],
+            self::$production_by_mine_level[$player->getGold6()],
+            self::$production_by_mine_level[$player->getGold7()]
+        );
+        return array_sum($temp);
+    }
+
+    public function getMyElixirPerHour($player){
+        $temp = array(
+            self::$production_by_mine_level[$player->getElixir1()],
+            self::$production_by_mine_level[$player->getElixir2()],
+            self::$production_by_mine_level[$player->getElixir3()],
+            self::$production_by_mine_level[$player->getElixir4()],
+            self::$production_by_mine_level[$player->getElixir5()],
+            self::$production_by_mine_level[$player->getElixir6()],
+            self::$production_by_mine_level[$player->getElixir7()]
+        );
+        return array_sum($temp);
+    }
 }

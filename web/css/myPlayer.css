@@ -35,6 +35,11 @@ FULL TABLE
     width: 45px;
 }
 
+.info-player-defence img,
+.info-player-ressources img{
+    margin-left: 0px;
+}
+
 .info-player-ressources .elixir img,
 .info-player-ressources .gold img,
 .info-player-ressources .dark-elixir img{
@@ -46,11 +51,6 @@ FULL TABLE
 .info-player-attack .expand-title {
     position: relative;
     left: 18px;
-}
-.info-player-defence .expand-title:after,
-.info-player-ressources .expand-title:after,
-.info-player-attack .expand-title:after {
-    content :'\n';
 }
 
 .info-player-attack .portrait{
