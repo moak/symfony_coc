@@ -121,18 +121,18 @@
                                     </tr>
 
                                     <tr>
-                                        <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.trophy'|trans }}</td>
+                                        <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.troopReceived'|trans }}</td>
 
                                         <td class="text-muted small text-center">
-                                            {{ playerPreviousSeason.trophy }}
+                                            {{ playerPreviousSeason.troopReceived }}
                                         </td>
                                         <td class="text-muted small text-center">
-                                            {%  if positions['trophy'] is defined %}
-                                                {{ positions['trophy']}} {{ positions['trophy']|position }}
+                                            {%  if positions['troopReceived'] is defined %}
+                                                {{ positions['troopReceived']}} {{ positions['troopReceived']|position }}
                                             {% endif%}
                                         </td>
 
-                                        <td class="text-nowrap small text-center">{{ player.trophy }}</td>
+                                        <td class="text-nowrap small text-center">{{ player.troopReceived }}</td>
                                     </tr>
 
 
