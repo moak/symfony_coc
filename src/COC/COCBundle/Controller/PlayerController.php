@@ -328,9 +328,9 @@ class PlayerController extends Controller
         $actualSeason = $em->getRepository('COCBundle:Season')->getActualSeason();
         $previousSeason = $em->getRepository('COCBundle:Season')->getPreviousSeason($actualSeason);
         $playerPreviousSeason = $em->getRepository('COCBundle:PlayerHistory')->findOneBy(array('player' => $player->getId(), 'season' => $previousSeason));
+        $players = $em->getRepository('COCBundle:Player')->findBy(array('clan' => $clan), array('total'=> 'DESC'));
 
-
-
+        
         $form = $this->get('form.factory')->create(new ImageProfileType(), $player);
 
         if ($form->handleRequest($request)->isValid())
@@ -353,7 +353,8 @@ class PlayerController extends Controller
             'myElixir'  => $this->getMyElixirPerHour($player),
             'myDarkElixir'  => $this->getMyDarkElixirPerHour($player),
             'maxDarkElixir' => $this->getMaxDarkElixirPerHour($player),
-            'maxElixirGold' => $this->getMaxGoldElixirPerHour($player)
+            'maxElixirGold' => $this->getMaxGoldElixirPerHour($player),
+            'players' => $players
         ));
     }
 

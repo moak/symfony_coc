@@ -102,7 +102,7 @@ notPlayerFound: Aucun joueur trouvé.
 
 player:
    quantity_per_day: Par jour
-   quantity_max_per_day: Max pa jour
+   quantity_max_per_day: Max par jour
    darkElixir: Elixir noir
    ressources: Ressources
    def: Def

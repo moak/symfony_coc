@@ -13,8 +13,26 @@
     <div class="container white-bg rounded-corners">
     <div class="row">
     <div class="col-md-12">
-        <h2> {{ player.name }} <small>({{ player.updatedAt|date('U')|timeago }})</small>
-            <span class="text-nowrap pull-right" scope="row">{{ 'player.level'|trans }} {{ player.level }} </span>
+
+
+
+        <h2>
+
+
+            {{ player.name }} <small>({{ player.updatedAt|date('U')|timeago }})</small>
+            <span class="text-nowrap pull-right" scope="row">
+
+
+                  <div class="dropdown">
+                      <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">All players
+                          <span class="caret"></span></button>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                          {% for player in players %}
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ path('coc_player', {'id_clan' : clan.id , 'id_player' :  player.id }) }}">{{ player.name }}</a></li>
+                          {% endfor %}
+                      </ul>
+                  </div>
+            </span>
         </h2>
 
 </div>
