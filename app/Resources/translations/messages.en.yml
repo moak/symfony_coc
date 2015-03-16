@@ -104,6 +104,7 @@ action:
     set_user : Give user priviledges
 
 player:
+   darkElixir: Dark elixir
    ressources: Ressources
    def: Def
    att: Att

@@ -128,6 +128,27 @@ class Player
      */
     private $totalDefence;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="darkElixir1", type="integer", nullable=true)
+     */
+    private $darkElixir1;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="darkElixir2", type="integer", nullable=true)
+     */
+    private $darkElixir2;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="darkElixir3", type="integer", nullable=true)
+     */
+    private $darkElixir3;
+
 
     /**
      * @Gedmo\Timestampable(on="create")
@@ -141,7 +162,7 @@ class Player
     private $deletedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", mappedBy="player")
+     * @ORM\OneToOne(targetEntity="Application\Sonata\UserBundle\Entity\User", mappedBy="player" )
      **/
     private $user;
 
@@ -2997,4 +3018,74 @@ class Player
     {
         return $this->totalDefence;
     }
+
+    /**
+     * Set darkElixir1
+     *
+     * @param integer $darkElixir1
+     * @return Player
+     */
+    public function setDarkElixir1($darkElixir1)
+    {
+        $this->darkElixir1 = $darkElixir1;
+
+        return $this;
+    }
+
+    /**
+     * Get darkElixir1
+     *
+     * @return integer 
+     */
+    public function getDarkElixir1()
+    {
+        return $this->darkElixir1;
+    }
+
+    /**
+     * Set darkElixir2
+     *
+     * @param integer $darkElixir2
+     * @return Player
+     */
+    public function setDarkElixir2($darkElixir2)
+    {
+        $this->darkElixir2 = $darkElixir2;
+
+        return $this;
+    }
+
+    /**
+     * Get darkElixir2
+     *
+     * @return integer 
+     */
+    public function getDarkElixir2()
+    {
+        return $this->darkElixir2;
+    }
+
+    /**
+     * Set darkElixir3
+     *
+     * @param integer $darkElixir3
+     * @return Player
+     */
+    public function setDarkElixir3($darkElixir3)
+    {
+        $this->darkElixir3 = $darkElixir3;
+
+        return $this;
+    }
+
+    /**
+     * Get darkElixir3
+     *
+     * @return integer 
+     */
+    public function getDarkElixir3()
+    {
+        return $this->darkElixir3;
+    }
+
 }

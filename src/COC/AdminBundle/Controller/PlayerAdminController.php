@@ -194,6 +194,10 @@ class PlayerAdminController extends Controller
             throw $this->createNotFoundException('Page not found');
         }
 
+
+        $user = $player->getUser();
+
+
         $em = $this->getDoctrine()->getManager();
         $player = $em->getRepository('COCBundle:Player')->find($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
@@ -202,7 +206,14 @@ class PlayerAdminController extends Controller
         {
             throw $this->createNotFoundException('Page not found');
         }
-        $em = $this->getDoctrine()->getManager();
+
+        if ( $user != null)
+        {
+            $user->setPlayer(null);
+            $em->persist($user);
+            $em->flush();
+        }
+
         $em->remove($player);
         $em->flush();
 

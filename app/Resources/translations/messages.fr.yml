@@ -101,6 +101,7 @@ notFound: Aucun résultat trouvé.
 notPlayerFound: Aucun joueur trouvé.
 
 player:
+   darkElixir: Elixir noir
    ressources: Ressources
    def: Def
    att: Att

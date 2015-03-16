@@ -18,7 +18,7 @@ class User extends BaseUser
 {
     /**
      * @ORM\OneToOne(targetEntity="COC\COCBundle\Entity\Player", inversedBy="user")
-     * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id", onDelete="SET NULL")
      **/
     private $player;
 

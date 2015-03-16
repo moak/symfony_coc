@@ -374,9 +374,9 @@ class PlayerController extends Controller
 
     public function getMyDarkElixirPerHour($player){
         $temp = array(
-            self::$production_dark_by_mine_level[1],
-            self::$production_dark_by_mine_level[1],
-            self::$production_dark_by_mine_level[1]
+            self::$production_dark_by_mine_level[$player->getDarkElixir1()],
+            self::$production_dark_by_mine_level[$player->getDarkElixir2()],
+            self::$production_dark_by_mine_level[$player->getDarkElixir3()],
         );
         return array_sum($temp);
     }

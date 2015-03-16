@@ -111,6 +111,9 @@ class PlayerType extends AbstractType
             ->add('elixir7' , 'choice', array('label' => 'player.elixir','choices' => array(0, 1, 2, 3, 4,5, 6, 7, 8, 9,10,11,12)))
 
 
+            ->add('darkElixir1' , 'choice', array('label' => 'player.darkElixir','choices' => array(0, 1, 2, 3, 4,5, 6)))
+            ->add('darkElixir2' , 'choice', array('label' => 'player.darkElixir','choices' => array(0, 1, 2, 3, 4,5, 6)))
+            ->add('darkElixir3' , 'choice', array('label' => 'player.darkElixir','choices' => array(0, 1, 2, 3, 4,5, 6)))
 
             // ->add('utilisateurs', 'entity', array ('class' => 'Utilisateurs\UtilisateursBundle\Entity\Utilisateurs'))
             ->add('save', 'submit', array('label' => 'label.update'));
