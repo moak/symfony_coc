@@ -16,6 +16,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
 
+                <li><a class="" href=""><b>{{ 'home'|trans }}</b></a></li>
+
                 {% if active == "classement" %} <li class="active dropdown"> {% else %} <li class="dropdown">{% endif %}
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="badge">{{ numberPlayers }}</span> {{ 'menu.rankings'|trans }} <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
