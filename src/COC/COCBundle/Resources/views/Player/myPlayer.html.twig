@@ -467,8 +467,8 @@
                     <canvas id="chart-total"></canvas>
                 </div>
                 <div class="col-md-6">
-                    <h4>{{ 'chart.ressource'|trans }}</h4>
-
+                    <h4>{{ 'chart.trophy'|trans }}</h4>
+                    <canvas id="chart-trophy"></canvas>
                 </div>
             </div>
 
@@ -493,6 +493,7 @@
         var label_chart =  [{% for hist in history %}'{{ hist.season.name }}',{%endfor  %}'{{ actualSeason.name }}',];
         var result_attackWon =  [{% for hist in history %}'{{ hist.attackWon }}',{%endfor  %}'{{ player.attackWon }}',];
         var result_troopSent =  [{% for hist in history %}'{{ hist.troopSent }}',{%endfor  %}'{{ player.troopSent }}',];
+        var result_trophy =  [{% for hist in history %}'{{ hist.trophy }}',{%endfor  %}'{{ player.trophy }}',];
         var result_troopReceived =  [{% for hist in history %}'{{ hist.troopReceived }}',{%endfor  %}'{{ player.troopReceived }}',];
         var result_total =  [{% for hist in history %}'{{ hist.total }}',{%endfor  %}'{{ player.total }}',];
        //var label = '{##} seasons #} '.replace(/&#039;/g, "'");
@@ -514,6 +515,21 @@
                     data : result_attackWon
                 },
 
+            ]
+
+        }
+
+        var trophyChartData = {
+            labels : label_chart,
+            datasets : [
+                {
+                    label: "Trophies",
+                    strokeColor : "green",
+                    pointColor : "green",
+                    pointStrokeColor : "green",
+                    pointHighlightStroke : "rgba(220,220,220,1)",
+                    data : result_trophy
+                }
             ]
 
         }
@@ -584,6 +600,21 @@
 
             var ctxActivity = document.getElementById("chart-activity").getContext("2d");
             window.myLine = new Chart(ctxActivity).Line(activityChartData, {
+//String - Colour of the grid lines
+                scaleGridLineColor : "rgba(200,200,200,.05)",
+                responsive: true,
+                scaleOverride: false,
+                datasetFill : false,
+                scaleSteps: 7,
+                scaleStepWidth: 300,
+                scaleStartValue: 0,
+                bezierCurve : false,
+                scaleShowGridLines : true
+            });
+
+
+            var ctxTrophy = document.getElementById("chart-trophy").getContext("2d");
+            window.myLine = new Chart(ctxTrophy).Line(trophyChartData, {
 //String - Colour of the grid lines
                 scaleGridLineColor : "rgba(200,200,200,.05)",
                 responsive: true,

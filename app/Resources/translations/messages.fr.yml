@@ -344,6 +344,7 @@ language:
 
 chart:
     stat: Stats
+    trophy: Trophés
     attack: Attaques par saison
     troop: Troupes reçues / envoyées
     total: Total points
