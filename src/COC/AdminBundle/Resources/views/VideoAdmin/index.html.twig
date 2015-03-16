@@ -18,7 +18,7 @@
 
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="row">
         <a class="btn btn-normal btn-success" href="{{ path('admin_video_add', { 'id_clan': clan.id }) }}">{{ 'menu.video_add'|trans }}</a>
         <hr>
         <table class="table">
@@ -26,7 +26,6 @@
             <tr>
                 <th>{{ 'video.title'|trans }}</th>
                 <th>{{ 'video.youtube_link'|trans }}</th>
-                <th>{{ 'video.published'|trans }}</th>
                 <th></th>
             </tr>
             </thead>
@@ -37,7 +36,6 @@
                     <tr>
                         <td>{{ video.title }}</td>
                         <td>{{ video.url| raw }}</td>
-                        <td>{{ video.published|boolean }}</td>
                         <td>
                             <a href="{{ path('admin_video_edit', { 'id': video.id , 'id_clan': clan.id }) }}" class="btn btn-default btn-info">{{ 'action.edit'|trans }}</a>
                             <a href="{{ path('admin_video_delete', { 'id': video.id , 'id_clan': clan.id}) }}" class="btn btn-default btn-danger">{{ 'action.delete'|trans }}</a>

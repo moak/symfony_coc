@@ -26,12 +26,12 @@ class Player
      */
     public function postPersistPostUpdate()
     {
-        $this->totalAttack = $this->getTotalAttack();
-        $this->totalDefence = $this->getTotalDefence();
+        $this->totalAttack = $this->totalAttack();
+        $this->totalDefence = $this->totalDefence();
         $this->total = $this->totalAttack + $this->totalDefence;
     }
 
-    public function getTotalDefence()
+    public function totalDefence()
     {
         return
             (($this->mortar1 + 1) * $this->mortar1 / 2 ) +
@@ -77,7 +77,7 @@ class Player
             (($this->tower_archer7+ 1) * $this->tower_archer7 / 2) ;
 
     }
-    public function getTotalAttack()
+    public function totalAttack()
     {
         return
             (
@@ -110,21 +110,21 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="total", type="integer")
+     * @ORM\Column(name="total", type="integer", nullable=true)
      */
     private $total;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="totalAttack", type="integer")
+     * @ORM\Column(name="totalAttack", type="integer", nullable=true)
      */
     private $totalAttack;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="totalDefence", type="integer")
+     * @ORM\Column(name="totalDefence", type="integer", nullable=true)
      */
     private $totalDefence;
 
@@ -2950,5 +2950,31 @@ class Player
     public function getBase()
     {
         return $this->base;
+    }
+
+    /**
+     * Set totalAttack
+     *
+     * @param integer $totalAttack
+     * @return Player
+     */
+    public function setTotalAttack($totalAttack)
+    {
+        $this->totalAttack = $totalAttack;
+
+        return $this;
+    }
+
+    /**
+     * Set totalDefence
+     *
+     * @param integer $totalDefence
+     * @return Player
+     */
+    public function setTotalDefence($totalDefence)
+    {
+        $this->totalDefence = $totalDefence;
+
+        return $this;
     }
 }

@@ -36,13 +36,13 @@ class PlayerCommand extends ContainerAwareCommand
         $players = $em->getRepository('COCBundle:Player')->findAll();
 
 
-        $actualSeason = $em->getRepository('COCBundle:Season')->find(4);
+        $actualSeason = $em->getRepository('COCBundle:Season')->find(5);
 
 
         foreach ($players as $player)
         {
 
-           /* $playerHistory = new PlayerHistory();
+            $playerHistory = new PlayerHistory();
 
             $playerHistory->setTotal($player->getTotal());
             $playerHistory->setTotalAttack($player->getTotalAttack());
@@ -147,17 +147,17 @@ class PlayerCommand extends ContainerAwareCommand
 
             $player->setTroopSent(0);
             $player->setTroopReceived(0);
-            $player->setTrophy(0);
+           // $player->setTrophy(0);
             $player->setAttackWon(0);
-*/
+
             $player->setUpdatedAt(new \Datetime());
             $em->persist($player);
             $em->flush();
 
 
             // $output->writeln($playerHistory);
-           // $em->persist($playerHistory);
-            //$em->flush();
+            $em->persist($playerHistory);
+            $em->flush();
 
         }
 

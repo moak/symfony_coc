@@ -5,76 +5,67 @@
     <link rel="stylesheet" href="{{ asset('css/players.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/dataTables_BS3.css') }}" />
 
-    <div class="container">
 
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
-                {{ 'menu.current_season'|trans }}
-            </h1>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    {{ 'menu.current_season'|trans }}
+                </h1>
+            </div>
+            <!-- /.col-lg-12 -->
         </div>
-        <!-- /.col-lg-12 -->
-    </div>
 
 
-    <div class="container">
+        <div class="row">
 
 
-    <table class="table classement-list datatable">
-    <thead>
-    <tr>
-        <th>#</th>
-        <th>{{ 'player.name'|trans }}</th>
-        <th>{{ 'player.troopSent'|trans }}</th>
-        <th>{{ 'player.troopReceived'|trans }}</th>
-        <th>{{ 'player.attackWon'|trans }}</th>
-        <th>{{ 'player.trophy'|trans }}</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
+            <table class="table classement-list datatable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>{{ 'player.name'|trans }}</th>
+                        <th>{{ 'player.troopSent'|trans }}</th>
+                        <th>{{ 'player.troopReceived'|trans }}</th>
+                        <th>{{ 'player.attackWon'|trans }}</th>
+                        <th>{{ 'player.trophy'|trans }}</th>
+                        <th>{{ 'player.updated'|trans }}</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
 
-    {% if players|length != 0 %}
-        {% for player in players %}
-            <tr data-name="{{ player.name }}" class="positionable">
-                <td class="position"></td>
-                <td>{{ player.name }}</td>
-                <td>{{ player.troopSent }}</td>
-                <td>{{ player.troopReceived }}</td>
-                <td>{{ player.attackWon }}</td>
-                <td>{{ player.trophy }}</td>
-                <td>
-                    <a href="{{ path('admin_player_edit_actual_season', {  'id': player.id , 'id_clan': clan.id }) }}" class="btn btn-default btn-info">{{ 'action.edit'|trans }}</a>
-                </td>
-            </tr>
-            <tr class="hidden expendables hidden" id="{{ player.name }}" data-total-points="">
-            <td colspan="6">
-                <div class="row">
+                    {% if players|length != 0 %}
+                        {% for player in players %}
+                            <tr data-name="{{ player.name }}" class="positionable">
+                                <td class="position"></td>
+                                <td>{{ player.name }}</td>
+                                <td>{{ player.troopSent }}</td>
+                                <td>{{ player.troopReceived }}</td>
+                                <td>{{ player.attackWon }}</td>
+                                <td>{{ player.trophy }}</td>
+                                <td>{{ player.updatedAt|date('U')|timeago }}</td>
+                                <td>
+                                    <a href="{{ path('admin_player_edit_actual_season', {  'id': player.id , 'id_clan': clan.id }) }}" class="btn btn-default btn-info">{{ 'action.edit'|trans }}</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td>{{ 'notFound'|trans }}</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td></td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+            <hr>
 
-                </div>
-                <hr />
-            </td>
-            <td></td>
-            </tr>
-        {% endfor %}
-    {% else %}
-        <tr>
+        </div>
 
-            <td>{{ 'notFound'|trans }}</td>
-            <td>-</td>
-            <td>-</td>
 
-            <td></td>
-        </tr>
-    {% endif %}
-    </tbody>
-    </table>
-    <hr>
 
-    </div>
-
-    </div>
-    </div>
     <!-- /.container -->
 
 {% endblock %}

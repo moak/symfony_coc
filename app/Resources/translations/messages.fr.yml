@@ -6,6 +6,7 @@ form:
     my_base: Ma base
     my_picture: Ma photo
 menu:
+    clan_parameters: Paramètres du clan
     my_account: Mon compte
     my_player: Mon joueur
     go_site: Go on website
@@ -100,6 +101,7 @@ notFound: Aucun résultat trouvé.
 notPlayerFound: Aucun joueur trouvé.
 
 player:
+   ressources: Ressources
    def: Def
    att: Att
    name: Nom
@@ -319,12 +321,11 @@ label:
 
 admin:
     msg1: Bienvenue sur l'administration de votre clan !
-    msg2: Editez la visiblité de votre clan sur OhMyClan.
-    msg3: Editez le mot de passe servant à rejoindre votre clan.
-    msg4: Créer et managez les joueur du clan.
-    msg5: Associez les comptes OhMyClan aux joueurs Clash of Clans
-    msg6: Mettez à jour les informations des joueurs (troupes reçues, envoyées, trophés et nombres d'attaques réussies) avant la fin de chaque saisons (une saison dure 2 semaines et commence les lundis).
-    msg7: Managez et mettez à jour vos guerres de clans.
+    msg2: Modifiez les paramètres de votre comme par exemple son mot de passe ou encore la visibility du site.
+    msg3: Créer et managez les joueurs du clan.
+    msg4: Associez les comptes crées par vos amis avec les joueurs précedemment crées.
+    msg5: Mettez à jour le nombres d'attaques réussies, les troupes reçues et envoyées de vos joueurs (si ils ne le font pas eux mêmes) avant la fin de chaques saisons (une saison dure 2 semaines et commence les lundis).
+    msg6: Managez et mettez à jour vos guerres de clans.
 
 notif:
     user_waiting: Nouveaux comptes en attente d'association

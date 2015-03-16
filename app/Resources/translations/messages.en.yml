@@ -7,6 +7,7 @@ form:
     my_picture: My picture
 
 menu:
+    clan_parameters: Parameters clan
     my_account: My account
     my_player: My player
     go_site: Go on website
@@ -103,6 +104,7 @@ action:
     set_user : Give user priviledges
 
 player:
+   ressources: Ressources
    def: Def
    att: Att
    name: Name
@@ -326,12 +328,11 @@ label:
 
 admin:
     msg1: Welcome on the administration
-    msg2: Define the visibility of your clan on Oh My Clan.
-    msg3: Define the password that will be used to join your clan.
-    msg4: Create and update the players of your clan.
-    msg5: Associate the OhMyClan accounts to Clash of Clan players.
-    msg6: Update the information of the players (troops received, sent, trophies and attacks won) before the end of each seasons (a season lasts two weeks and starts the Mondays).
-    msg7: Manage you clan wars.
+    msg2: Define the parameters of the clan like your clan's password or the visibility of the website.
+    msg3: Create and update the players of your clan.
+    msg4: Associate the accounts created by your friends with the players previously made on the website.
+    msg5: Update the attacks won, troops received and sent of yours players (if they do not do it themselves) before the end of each seasons (a season lasts two weeks and starts the Mondays).
+    msg6: Manage you clan wars.
 
 notif:
     user_waiting: New accounts need to be associated.

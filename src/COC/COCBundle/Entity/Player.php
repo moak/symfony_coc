@@ -2977,4 +2977,24 @@ class Player
 
         return $this;
     }
+
+    /**
+     * Get totalAttack
+     *
+     * @return integer 
+     */
+    public function getTotalAttack()
+    {
+        return $this->totalAttack;
+    }
+
+    /**
+     * Get totalDefence
+     *
+     * @return integer 
+     */
+    public function getTotalDefence()
+    {
+        return $this->totalDefence;
+    }
 }

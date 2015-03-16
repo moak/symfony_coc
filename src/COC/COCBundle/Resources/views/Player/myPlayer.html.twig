@@ -68,41 +68,70 @@
                                 <table class="table table-bordered table-striped table-condensed">
                                     <thead>
                                     <tr>
-                                        <th></th>
-                                        <th class="text-center" colspan="2">Total</th>
-                                        <th class="text-center">Rank</th>
+                                        <th>Total per seasons</th>
+                                        <th class="text-center"  colspan="2" >Previous </th>
+                                        <th class="text-center">Current</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
                                         <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.attackWon'|trans }}</td>
-                                        <td class="text-muted text-center"><b>{{ player.attackWon }} </b> </td>
-                                        <td class="text-muted text-center"><b>{{ player.attackWon }} </b> </td>
-                                        <td class="text-muted small text-center"><b>{{ positions['attackWon']}} {{ positions['attackWon']|position }} </b> </td>
+
+                                        <td class="text-muted small text-center">
+                                            {{ playerPreviousSeason.attackWon }}
+                                        </td>
+                                        <td class="text-muted small text-center">
+                                            {%  if positions['attackWon'] is defined %}
+                                                {{ positions['attackWon']}} {{ positions['attackWon']|position }}
+                                            {% endif%}
+                                        </td>
+
+                                        <td class="text-nowrap small text-center">{{ player.attackWon }}</td>
                                     </tr>
 
                                     <tr>
-                                        <td class="text-nowrap" scope="row"><i class="fa fa-trophy"></i>  {{ 'player.trophy'|trans }}</td>
-                                        <td class="text-muted text-center"><b>{{ player.trophy }} </b> </td>
-                                        <td class="text-muted text-center"><b>{{ player.trophy }} </b> </td>
-                                        <td class="text-muted small text-center"><b>{{ positions['trophy']}} {{ positions['attackWon']|position }} </b> </td>
+                                        <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.trophy'|trans }}</td>
 
+                                        <td class="text-muted small text-center">
+                                            {{ playerPreviousSeason.trophy }}
+                                        </td>
+                                        <td class="text-muted small text-center">
+                                            {%  if positions['trophy'] is defined %}
+                                                {{ positions['trophy']}} {{ positions['trophy']|position }}
+                                            {% endif%}
+                                        </td>
 
+                                        <td class="text-nowrap small text-center">{{ player.trophy }}</td>
                                     </tr>
-                                    <tr>
-                                        <td class="text-nowrap" scope="row"><i class="fa fa-arrow-circle-right"></i> {{ 'player.troopSent'|trans }}</td>
-                                        <td class="text-muted text-center"><b>{{ player.troopSent }} </b> </td>
-                                        <td class="text-muted text-center"><b>{{ player.troopSent }} </b> </td>
-                                        <td class="text-muted small text-center"><b>{{ positions['troopSent']}} {{ positions['troopSent']|position }} </b> </td>
 
+                                    <tr>
+                                        <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.troopSent'|trans }}</td>
+
+                                        <td class="text-muted small text-center">
+                                            {{ playerPreviousSeason.troopSent }}
+                                        </td>
+                                        <td class="text-muted small text-center">
+                                            {%  if positions['troopSent'] is defined %}
+                                                {{ positions['troopSent']}} {{ positions['troopSent']|position }}
+                                            {% endif%}
+                                        </td>
+
+                                        <td class="text-nowrap small text-center">{{ player.troopSent }}</td>
                                     </tr>
+
                                     <tr>
-                                        <td class="text-nowrap" scope="row"><i class="fa fa-arrows-alt"></i> {{ 'player.troopReceived'|trans }}</td>
-                                        <td class="text-muted text-center"><b>{{ player.troopReceived }} </b> </td>
-                                        <td class="text-muted text-center"><b>{{ player.troopReceived }} </b> </td>
-                                        <td class="text-muted small text-center"><b>{{ positions['troopReceived']}} {{ positions['troopReceived']|position }} </b> </td>
+                                        <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.trophy'|trans }}</td>
 
+                                        <td class="text-muted small text-center">
+                                            {{ playerPreviousSeason.trophy }}
+                                        </td>
+                                        <td class="text-nowrap small text-center">
+                                            {%  if positions['trophy'] is defined %}
+                                                {{ positions['trophy']}} {{ positions['trophy']|position }}
+                                            {% endif%}
+                                        </td>
 
+                                        <td class="text-nowrap small text-center">{{ player.trophy }}</td>
                                     </tr>
 
 
