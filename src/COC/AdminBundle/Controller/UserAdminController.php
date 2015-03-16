@@ -58,8 +58,7 @@ class UserAdminController extends Controller
             $em->remove($user);
             $em->flush();
 
-           echo($user->getClan());
-            die();
+    
             return $this->redirect($this->generateUrl('admin_users', array('id_clan' =>  $clan->getId())));
 
         }
