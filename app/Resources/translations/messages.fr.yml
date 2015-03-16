@@ -341,3 +341,10 @@ phone:
 language:
     french: Français
     english: Anglais
+
+chart:
+    stat: Stats
+    attack: Attaques par saison
+    troop: Troupes reçues / envoyées
+    total: Total points
+    ressource: Ressources

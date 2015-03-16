@@ -1,8 +1,5 @@
 {% extends "::base_vitrine.html.twig" %}
-
-
 {% block body %}
-
     <div class="container">
         {% for type, messages in app.session.flashbag.all() %}
             {% for message in messages %}
@@ -15,43 +12,30 @@
         {% block fos_user_content %}
         {% endblock fos_user_content %}
     </div>
-
-
-
-
-
-
 {% endblock %}
 
 {% block javascripts %}
-
     <script>
 
-
-    function displayButton(typeButton)
-    {
-        if (typeButton == "create")
+        function displayButton(typeButton)
         {
-            $('#join-clan').hide();
-            $('#create-clan').show();
-            $(".page-header").html("<h2>Create a clan</h2>");
+            if (typeButton == "create")
+            {
+                $('#join-clan').hide();
+                $('#create-clan').show();
+                $(".page-header").html("<h2>Create a clan</h2>");
 
+            }
+            if (typeButton == "join")
+            {
+                $('#join-clan').show();
+                $('#create-clan').hide();
+
+                $(".page-header").html("<h2>Join a clan</h2>");
+                document.getElementById('fos_user_registration_form_clanName').value= null;
+                document.getElementById('fos_user_registration_form_pass').value= null;
+            }
         }
-        if (typeButton == "join")
-        {
-            $('#join-clan').show();
-            $('#create-clan').hide();
-
-            $(".page-header").html("<h2>Join a clan</h2>");
-            document.getElementById('fos_user_registration_form_clanName').value= null;
-            document.getElementById('fos_user_registration_form_pass').value= null;
-
-
-
-        }
-
-    }
-
     </script>
 {% endblock %}
 

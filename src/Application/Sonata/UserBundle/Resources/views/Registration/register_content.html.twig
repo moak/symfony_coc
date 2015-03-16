@@ -91,7 +91,7 @@
                         <div class="form-group">
                             {{ form_label(form.clan, null, {'label_attr': {'class': 'col-sm-5 control-label'}}) }}
                             <div class="col-sm-6">
-                                {{ form_widget(form.clan, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_widget(form.clan, {'attr': {'class': 'form-control selectpicker show-tick'}}) }}
                                 {% if form.clan.vars.errors[0].message is defined %}
                                     <span class="help-block">{{ form.clan.vars.errors[0].message }}</span>
                                 {% endif %}

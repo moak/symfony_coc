@@ -453,21 +453,21 @@
             </div>
             <hr/>
             <div class="row">
-                <div class="col-md-12"><h3>Charts</h3></div>
+                <div class="col-md-12"><h3>{{ 'chart.stat'|trans }}</h3></div>
                 <div class="col-md-6">
-                    <h4>Attacks</h4>
+                    <h4>{{ 'chart.attack'|trans }}</h4>
                     <canvas id="chart-attacks"></canvas>
                 </div>
                 <div class="col-md-6">
-                    <h4>Troops</h4>
+                    <h4>{{ 'chart.troop'|trans }}</h4>
                     <canvas id="chart-activity"></canvas>
                 </div>
                 <div class="col-md-6">
-                    <h4>Total</h4>
+                    <h4>{{ 'chart.total'|trans }}</h4>
                     <canvas id="chart-total"></canvas>
                 </div>
                 <div class="col-md-6">
-                    <h4>Ressources</h4>
+                    <h4>{{ 'chart.ressource'|trans }}</h4>
 
                 </div>
             </div>
@@ -505,7 +505,7 @@
                 {
                     label: "Attacks",
                     fillColor : "rgba(220,220,220,0.2)",
-                    strokeColor : "rgba(220,220,220,1)",
+                    strokeColor : "rgba(0,128,0,0.9)",
                     pointColor : "rgba(220,220,220,1)",
                     pointStrokeColor : "#fff",
                     pointHighlightFill : "#fff",
@@ -525,11 +525,11 @@
             datasets : [
                 {
                     label: "Attacks",
-                    fillColor : "rgba(220,220,220,0.2)",
-                    strokeColor : "rgba(220,220,220,1)",
-                    pointColor : "rgba(220,220,220,1)",
+                    fillColor : "green",
+                    strokeColor : "#9CFF88",
+                    pointColor : "orange",
                     pointStrokeColor : "#fff",
-                    pointHighlightFill : "#fff",
+                    pointHighlightFill : "white",
                     pointHighlightStroke : "rgba(220,220,220,1)",
 
                     data : result_total

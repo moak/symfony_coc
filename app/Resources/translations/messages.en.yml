@@ -355,3 +355,10 @@ email:
 
     title_create: Welcome on OhMyClan !
     content_create: Welcome on OhMyClan, we hope you will enjoy the website of your clan !
+
+chart:
+    stat: Stats
+    attack: Attacks per season
+    troop: Troops sent / received
+    total: Total points
+    ressource: Ressources
