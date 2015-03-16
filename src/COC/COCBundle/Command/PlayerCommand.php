@@ -13,7 +13,7 @@ class PlayerCommand extends ContainerAwareCommand
     {
 
         $this
-            ->setName('coc:player')
+            ->setName('coc:playersave')
             ->setDescription('Update players for a new season')
         ;
     }
@@ -145,23 +145,13 @@ class PlayerCommand extends ContainerAwareCommand
             $playerHistory->setPotionGreen($player->getPotionGreen());
 
 
-            $player->setTroopSent(0);
-            $player->setTroopReceived(0);
-           // $player->setTrophy(0);
-            $player->setAttackWon(0);
-
-            $player->setUpdatedAt(new \Datetime());
-            $em->persist($player);
-            $em->flush();
-
-
             // $output->writeln($playerHistory);
             $em->persist($playerHistory);
             $em->flush();
 
         }
 
-
+        $output->writeln('<info>Players saved succesfully</info>');
     }
 }
 
