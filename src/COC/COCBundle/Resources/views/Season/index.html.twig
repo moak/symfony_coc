@@ -2,4 +2,16 @@
     <div class="col-sm-6 col-sm-offset-4" data-position='top' data-step="4" data-intro="{{ 'intro.step5'|trans }}">
         <i class="fa fa-bell-o"></i> {{ 'label.season'|trans }} <i class="fa fa-angle-double-left"></i></i> {{ season.name }} <i class="fa fa-angle-double-right"></i> {{ 'label.ends_in'|trans }} <b>{{ days|round }}{{ 'label.day'|trans }} {{ hours|round }}{{ 'label.hour'|trans }} {{ min|round }}{{ 'label.min'|trans }}</b> <i class="fa fa-bell-o"></i>
     </div>
+    <div class="col-sm-2 hidden-sm hidden-xs">
+        <ul class="list-inline">
+            <li>
+                <a href="#"><img src="{{ asset('images/facebook.svg') }}"></a>
+            </li>
+            <li class="footer-menu-divider">-</li>
+
+            <li>
+                <a href="#"><img src="{{ asset('images/twitter.svg') }}"></a>
+            </li>
+        </ul>
+    </div>
 </div>

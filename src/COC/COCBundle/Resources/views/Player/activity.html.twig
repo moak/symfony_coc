@@ -77,7 +77,7 @@
                 {% endif %}
 
                     <td class=""> {{ loop.index }}</td>
-                    <td class="">{{ player.name }}</td>
+                    <td><a href="{{ path('coc_player', {'id_clan' : clan.id , 'id_player' :  player.id }) }}">  {{ player.name }} ({{ player.hallTown }})</a></td>
                     <td class="">{{ player.attackWon }}</td>
                     <td class="">{{ player.trophy }}</td>
                     <td class="">{{ player.troopReceived }}</td>

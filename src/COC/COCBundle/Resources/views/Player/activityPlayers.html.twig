@@ -22,7 +22,7 @@
                         {% for player in players %}
                             <tr data-name="{{ player.name }}" class="positionable">
                                 <td>{{ loop.index }}</td>
-                                <td>{{ player.name }}</td>
+                                <td><a href="{{ path('coc_player', {'id_clan' : clan.id , 'id_player' :  player.id }) }}">  {{ player.name }} ({{ player.hallTown }})</a></td>
                                 <td>{{ player.level }}</td>
                                 <td>{{ player.hallTown }}</td>
                                 <td>{{ player.total|round }}</td>

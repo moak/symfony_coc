@@ -197,7 +197,11 @@
                         {% for clan in clans %}
                             <tr>
                                 <td class="supercell-font white-on-black text-center">{{ loop.index }} {% if loop.index == 1 %}<i class="fa fa-trophy"></i>{% endif %} </td>
-                                <td class="supercell-font white-on-black text-center">{{ clan.name }}</td>
+                                {% if clan.privacy == 0 %}
+                                    <td class="supercell-font white-on-black text-center"><a href="{{ path('coc', {'id_clan' : clan.id }) }}"> {{ clan.name }}</a></td>
+                                {% else %}
+                                    <td class="supercell-font white-on-black text-center">{{ clan.name }}</td>
+                                {% endif %}
                                 <td class="supercell-font white-on-black text-center">{{ clan.nbMember }}</td>
                                 <td class="supercell-font white-on-black text-center">{{ clan.total|round }}</td>
                                 <td class="supercell-font white-on-black text-center">{{ clan.updated|date('U')|timeago }}</td>

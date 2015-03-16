@@ -142,28 +142,28 @@
                                     <thead>
                                     <tr>
                                         <th></th>
-                                        <th class="text-center">Qté/h</th>
-                                        <th class="text-center">Qté/h (max)</th>
+                                        <th class="text-center">Qté/d</th>
+                                        <th class="text-center">Qté/d (max)</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
                                         <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> Gold</td>
-                                        <td class="text-muted text-center"><b>{{ myGold }}</b> </td>
-                                        <td class="text-muted small text-center"><b>{{ maxElixirGold }}</b> </td>
+                                        <td class="text-muted small text-center"><b>{{ myGold * 24 }}</b> </td>
+                                        <td class="text-muted small text-center"><b>{{ maxElixirGold * 24 }}</b> </td>
                                     </tr>
 
                                     <tr>
                                         <td class="text-nowrap" scope="row"><i class="fa fa-trophy"></i>  Elixir</td>
-                                        <td class="text-muted text-center"><b>{{ myElixir }}</b> </td>
-                                        <td class="text-muted small text-center"><b>{{ maxElixirGold }}</b> </td>
+                                        <td class="text-muted small text-center"><b>{{ myElixir * 24 }}</b> </td>
+                                        <td class="text-muted small text-center"><b>{{ maxElixirGold * 24 }}</b> </td>
 
 
                                     </tr>
                                     <tr>
                                         <td class="text-nowrap" scope="row"><i class="fa fa-arrow-circle-right"></i> D4rk Elixir</td>
-                                        <td class="text-muted text-center"><b> {{ myDarkElixir }} </b> </td>
-                                        <td class="text-muted small text-center"><b>{{ maxDarkElixir }}</b> </td>
+                                        <td class="text-muted  small text-center"><b> {{ myDarkElixir * 24 }} </b> </td>
+                                        <td class="text-muted small text-center"><b>{{ maxDarkElixir * 24 }}</b> </td>
 
                                     </tr>
 
