@@ -251,11 +251,11 @@ class PlayerController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $playersByTotal = $em->getRepository('COCBundle:Player')->findBy(array('clan' => $clan),array('total' => 'DESC'));
-        $playersByTR = $em->getRepository('COCBundle:PlayerHistory')->findBy(array('clan' => $clan, 'season'=> $season),array('troopReceived' => 'DESC'));
-        $playersByTS = $em->getRepository('COCBundle:PlayerHistory')->findBy(array('clan' => $clan, 'season'=> $season),array('troopSent' => 'DESC'));
-        $playersByAW = $em->getRepository('COCBundle:PlayerHistory')->findBy(array('clan' => $clan, 'season'=> $season),array('attackWon' => 'DESC'));
-        $playersByTrophy = $em->getRepository('COCBundle:PlayerHistory')->findBy(array('clan' => $clan, 'season'=> $season),array('trophy' => 'DESC'));
+        $playersByTotal     = $em->getRepository('COCBundle:Player')->findBy(array('clan' => $clan),array('total' => 'DESC'));
+        $playersByTR        = $em->getRepository('COCBundle:PlayerHistory')->findBy(array('clan' => $clan, 'season'=> $season->getId()),array('troopReceived' => 'DESC'));
+        $playersByTS        = $em->getRepository('COCBundle:PlayerHistory')->findBy(array('clan' => $clan, 'season'=> $season->getId()),array('troopSent' => 'DESC'));
+        $playersByAW        = $em->getRepository('COCBundle:PlayerHistory')->findBy(array('clan' => $clan, 'season'=> $season->getId()),array('attackWon' => 'DESC'));
+        $playersByTrophy    = $em->getRepository('COCBundle:PlayerHistory')->findBy(array('clan' => $clan, 'season'=> $season->getId()),array('trophy' => 'DESC'));
 
         $positions =  Array();
 
@@ -272,7 +272,7 @@ class PlayerController extends Controller
         $i = 1;
         foreach ($playersByTrophy as $playerByTrophy)
         {
-            if ( $playerByTrophy->getId() == $player->getId())
+            if ( $playerByTrophy->getPlayer()->getId() == $player->getId())
             {
                 $positions['trophy'] = $i;
             }
@@ -282,7 +282,7 @@ class PlayerController extends Controller
         $i = 1;
         foreach ($playersByTR as $pTR)
         {
-            if ( $pTR->getId() == $player->getId())
+            if ( $pTR->getPlayer()->getId() == $player->getId())
             {
                 $positions['troopReceived'] = $i;
             }
@@ -292,7 +292,7 @@ class PlayerController extends Controller
         $i = 1;
         foreach ($playersByTS as $pTS)
         {
-            if ( $pTS->getId() == $player->getId())
+            if ( $pTS->getPlayer()->getId() == $player->getId())
             {
                 $positions['troopSent'] = $i;
             }
@@ -302,7 +302,7 @@ class PlayerController extends Controller
         $i = 1;
         foreach ($playersByAW as $pAW)
         {
-            if ( $pAW->getId() == $player->getId())
+            if ( $pAW->getPlayer()->getId() == $player->getId())
             {
                 $positions['attackWon'] = $i;
             }
@@ -338,6 +338,7 @@ class PlayerController extends Controller
             $em->persist($player);
             $em->flush();
         }
+
 
         return $this->render('COCBundle:Player:myPlayer.html.twig', array(
             'playerPreviousSeason' => $playerPreviousSeason,

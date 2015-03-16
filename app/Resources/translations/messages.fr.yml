@@ -101,6 +101,8 @@ notFound: Aucun résultat trouvé.
 notPlayerFound: Aucun joueur trouvé.
 
 player:
+   quantity_per_day: Par jour
+   quantity_max_per_day: Max pa jour
    darkElixir: Elixir noir
    ressources: Ressources
    def: Def
@@ -347,5 +349,5 @@ chart:
     trophy: Trophés
     attack: Attaques par saison
     troop: Troupes reçues / envoyées
-    total: Total points
+    total: Total points Oh My Clan
     ressource: Ressources

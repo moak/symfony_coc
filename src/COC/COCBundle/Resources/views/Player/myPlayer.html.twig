@@ -80,6 +80,7 @@
                                         <td class="text-muted small text-center">
                                             {{ playerPreviousSeason.attackWon }}
                                         </td>
+
                                         <td class="text-muted small text-center">
                                             {%  if positions['attackWon'] is defined %}
                                                 {{ positions['attackWon']}} {{ positions['attackWon']|position }}
@@ -125,7 +126,7 @@
                                         <td class="text-muted small text-center">
                                             {{ playerPreviousSeason.trophy }}
                                         </td>
-                                        <td class="text-nowrap small text-center">
+                                        <td class="text-muted small text-center">
                                             {%  if positions['trophy'] is defined %}
                                                 {{ positions['trophy']}} {{ positions['trophy']|position }}
                                             {% endif%}
@@ -142,8 +143,8 @@
                                     <thead>
                                     <tr>
                                         <th></th>
-                                        <th class="text-center">Qté/d</th>
-                                        <th class="text-center">Qté/d (max)</th>
+                                        <th class="text-center">{{ 'player.quantity_per_day'|trans }}</th>
+                                        <th class="text-center">{{ 'player.quantity_max_per_day'|trans }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>

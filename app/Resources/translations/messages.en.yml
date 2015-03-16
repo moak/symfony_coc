@@ -104,6 +104,8 @@ action:
     set_user : Give user priviledges
 
 player:
+   quantity_per_day: per day
+   quantity_max_per_day: max per day
    darkElixir: Dark elixir
    ressources: Ressources
    def: Def
@@ -361,5 +363,5 @@ chart:
     stat: Stats
     attack: Attacks per season
     troop: Troops sent / received
-    total: Total points
+    total: Total points Oh My Clan
     ressource: Ressources
