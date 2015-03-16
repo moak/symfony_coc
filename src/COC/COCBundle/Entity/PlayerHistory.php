@@ -23,21 +23,21 @@ class PlayerHistory
     /**
      * @var integer
      *
-     * @ORM\Column(name="total", type="integer")
+     * @ORM\Column(name="total", type="integer", nullable=true)
      */
     private $total;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="totalAttack", type="integer")
+     * @ORM\Column(name="totalAttack", type="integer", nullable=true)
      */
     private $totalAttack;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="totalDefence", type="integer")
+     * @ORM\Column(name="totalDefence", type="integer", nullable=true)
      */
     private $totalDefence;
 
