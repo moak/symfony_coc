@@ -1,6 +1,6 @@
 <div class="row">
 
-
+    <div class="col-md-12">
     {% if images|length != 0 %}
         <h3><a href="{{ path('coc_images_base_category', {'id': hall_town , 'id_clan': clan.id }) }}">{{ 'player.hall_town'|trans }} {{ hall_town }}</a>
 
@@ -21,5 +21,6 @@
             </div>
         {% endfor %}
     {% endif %}
+</div>
 </div>
 

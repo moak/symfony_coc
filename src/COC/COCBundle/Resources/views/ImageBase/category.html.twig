@@ -7,11 +7,8 @@
     <!-- Page Content -->
     <div class="container white-bg rounded-corners">
 
-        <h2>{{ 'menu.ht'|trans }} {{ hall_town }}</h2>
 
-        <hr>
-
-        <p><a class="btn btn-normal btn-primary btn-lg" href="{{ path('coc_images_base_add', {'id_clan': clan.id }) }}">{{ 'menu.base_add'|trans }}</a></p>
+        <h1 class="page-header">{{ 'menu.ht'|trans }} {{ hall_town }}  <a class="btn btn-lg btn-primary pull-right" href="{{ path('coc_images_base_add', {'id_clan': clan.id }) }}"> {{ 'menu.base_add'|trans }}</a></h1>
 
         <br>
 
@@ -45,7 +42,7 @@
             {% endif %}
         </div>
     </div>
-        <hr>
+
 
 
     </div>

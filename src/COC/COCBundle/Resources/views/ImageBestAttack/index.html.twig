@@ -10,10 +10,7 @@
 <!-- Page Content -->
 <div class="container white-bg rounded-corners">
 
-    <h2>{{ 'menu.bestAttacks'|trans }}</h2>
-    <hr>
-        <a class="btn btn-normal btn-primary btn-lg" href="{{ path('coc_imageBestAttack_add' , {'id_clan': clan.id }) }}">{{ 'menu.bestAttack_add'|trans }}</a>
-
+    <h1 class="page-header">{{ 'menu.bestAttacks'|trans }} <a class="btn btn-normal btn-primary pull-right btn-lg" href="{{ path('coc_imageBestAttack_add' , {'id_clan': clan.id }) }}">{{ 'menu.bestAttack_add'|trans }}</a></h1>
     <div class="row">
         <br>
         {% if images|length != 0 %}
