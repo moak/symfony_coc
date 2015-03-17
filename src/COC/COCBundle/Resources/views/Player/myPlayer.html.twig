@@ -18,8 +18,12 @@
 
         <h2>
 
+        <div>
 
-            {{ player.name }} <small>({{ player.updatedAt|date('U')|timeago }})</small>
+            {{ player.name }}
+            <small>{{ player.trophy|division|raw }} {{ player.updatedAt|date('U')|timeago }}</small>
+
+        </div>
             <span class="text-nowrap pull-right" scope="row">
 
 
@@ -120,7 +124,7 @@
                                             {% endif%}
                                         </td>
 
-                                        <td class="text-nowrap small text-center">{{ player.trophy }}</td>
+                                        <td class="text-nowrap small text-center">{{ player.trophy }}  </td>
                                     </tr>
 
                                     <tr>

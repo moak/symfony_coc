@@ -4,6 +4,8 @@ namespace COC\AdminBundle\Twig;
 
 class AdminExtension extends \Twig_Extension
 {
+
+
     public function getFilters()
     {
         return array(
@@ -11,8 +13,84 @@ class AdminExtension extends \Twig_Extension
             new \Twig_SimpleFilter('timeago', array($this, 'timeagoFilter')),
             new \Twig_SimpleFilter('boolean', array($this, 'booleanFilter')),
             new \Twig_SimpleFilter('position', array($this, 'positionFilter')),
+            new \Twig_SimpleFilter('division', array($this, 'divisionFilter')),
         );
     }
+
+    public function divisionFilter($trophy)
+    {
+        switch ($trophy)
+        {
+            case $trophy > 400 && $trophy <= 499:
+                $league = "Bronze 3";
+                break;
+
+            case $trophy >= 500 && $trophy <= 599:
+                $league = "Bronze 2";
+                break;
+
+            case $trophy >= 600 && $trophy <= 799:
+                $league = "Bronze 1";
+                break;
+
+            case $trophy >= 800 && $trophy <= 999:
+                $league = "Silver 3";
+                break;
+
+            case $trophy >= 1000 && $trophy <= 1199:
+                $league = "Silver 2";
+                break;
+
+            case $trophy >= 1200 && $trophy <= 1399:
+                $league = '<img align="right" class="img-responsive" src="/symfony_coc/web/images/gold.png">';
+                break;
+
+            case $trophy >= 1400 && $trophy <= 1599:
+                $league = "Gold 3";
+                break;
+
+            case $trophy >= 1600 && $trophy <= 1799:
+                $league = "Gold 2";
+                break;
+
+            case $trophy >= 1800 && $trophy <= 1999:
+                $league = "Gold 1";
+                break;
+
+            case $trophy >= 2000 && $trophy <= 2199:
+                $league = "Crystal 3";
+                break;
+
+            case $trophy >= 2200 && $trophy <= 2399:
+                $league = "Crystal 2";
+                break;
+
+            case $trophy >= 2400 && $trophy <= 2599:
+                $league = "Crystal 1";
+                break;
+
+            case $trophy >= 2600 && $trophy <= 2799:
+                $league = "Master 3";
+                break;
+
+            case $trophy >= 2800 && $trophy <= 2999:
+                $league = "Master 2";
+                break;
+
+            case $trophy >= 3000 && $trophy <= 3199:
+                $league = "Master 1";
+                break;
+
+            case $trophy > 3200:
+                $league = "Champion";
+                break;
+
+            default:
+                $league = "bronze 3";
+        }
+        return $league;
+    }
+
 
     public function positionFilter($number)
     {

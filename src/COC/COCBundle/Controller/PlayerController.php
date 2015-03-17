@@ -330,7 +330,7 @@ class PlayerController extends Controller
         $playerPreviousSeason = $em->getRepository('COCBundle:PlayerHistory')->findOneBy(array('player' => $player->getId(), 'season' => $previousSeason));
         $players = $em->getRepository('COCBundle:Player')->findBy(array('clan' => $clan), array('total'=> 'DESC'));
 
-        
+
         $form = $this->get('form.factory')->create(new ImageProfileType(), $player);
 
         if ($form->handleRequest($request)->isValid())
