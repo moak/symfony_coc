@@ -13,8 +13,8 @@
                         <h3 class="panel-title">Base {{ loop.index }}</h3>
                     </div>
                     <div class="panel-body">
-                        <a rel="gallery-1"  href="{{ asset('uploads/' ~ image.image.path) }}" class="swipebox" title="">
-                            <img  class="img-responsive" src="{{ asset('uploads/' ~ image.image.path) }}" />
+                        <a rel="gallery-1"  href="{{ asset(image.image.getWebPath()) }}" class="swipebox" title="">
+                            <img  class="img-responsive" src="{{ asset(image.image.getWebPath()) }}" />
                         </a>
                     </div>
                 </div>

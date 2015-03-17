@@ -21,8 +21,8 @@
                             <h3 class="panel-title text-center">{{ loop.index }} - {{ image.user.username }}  <small>{{ image.created|date('U')|timeago }}</small></h3>
                         </div>
                         <div class="panel-body">
-                            <a rel="gallery-1"  href="{{ asset('uploads/' ~ image.image.path) }}" class="swipebox" title="">
-                                <img  class="img-responsive" src="{{ asset('uploads/' ~ image.image.path) }}" />
+                            <a rel="gallery-1"  href="{{ asset(image.image.getWebPath()) }}" class="swipebox" title="">
+                                <img  class="img-responsive" src="{{ asset(image.image.getWebPath()) }}" />
                             </a>
 
                         </div>

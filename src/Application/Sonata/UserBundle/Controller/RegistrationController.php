@@ -27,6 +27,35 @@ class RegistrationController extends BaseController
         return 'FOSUserBundle';
     }
 
+
+
+
+    static function copy($source, $target) {
+        if (!is_dir($source)) {//it is a file, do a normal copy
+            copy($source, $target);
+            return;
+        }
+
+        //it is a folder, copy its files & sub-folders
+        @mkdir($target);
+        $d = dir($source);
+        $navFolders = array('.', '..');
+        while (false !== ($fileEntry=$d->read() )) {//copy one by one
+            //skip if it is navigation folder . or ..
+            if (in_array($fileEntry, $navFolders) ) {
+                continue;
+            }
+
+            //do copy
+            $s = "$source/$fileEntry";
+            $t = "$target/$fileEntry";
+            self::copy($s, $t);
+        }
+        $d->close();
+    }
+
+
+
     public function registerAction(Request $request)
     {
         $type = $request->query->get('type');
@@ -68,6 +97,13 @@ class RegistrationController extends BaseController
                 $clan->setStatus(0);
                 $clan->setLevel(1);
                 $clan->setPrivacy(0);
+                $clan->setTotalAttackWon(0);
+                $clan->setTotalTroopReceived(0);
+                $clan->setTotalTroopSent(0);
+                $clan->setTotalGeneral(7);
+                $clan->setTotalTrophy(0);
+
+
                 $em->persist($clan);
                 $em->flush();
 
@@ -88,6 +124,12 @@ class RegistrationController extends BaseController
                 $bestAttack->setGold(346732);
                 $bestAttack->setImage($imageBestAttack);
                 $bestAttack->setUser($user);
+
+                $src =  __dir__ . '/../../../../../web/uploads/1/';
+                $dest =  __dir__ . '/../../../../../web/uploads/' . $idClan ;
+
+                // copy the images in the new clan's folder
+                $this->copy($src,$dest);
 
                 $imageBonus1 = $em->getRepository('COCBundle:Image')->findOneByPath("bonus1.png");
                 $bonus1 = new ImageBonus();
@@ -218,7 +260,7 @@ class RegistrationController extends BaseController
                 $player1 = new Player();
                 $player1->setClan($clan);
                 $player1->setName($user->getUsername());
-                $player1->setHallTown(5);
+                $player1->setHallTown(1);
                 $player1->setLevel(1);
                 $player1->setTroopReceived(0);
                 $player1->setTroopSent(0);

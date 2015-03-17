@@ -238,9 +238,9 @@ class Player
     /**
      * @var integer
      *
-     * @ORM\Column(name="attack_won", type="integer", options={"default" : 0})
+     * @ORM\Column(name="attack_won", type="integer",  options={"default":0})
      */
-    private $attackWon= 0;
+    private $attackWon;
 
     /**
      * @var integer

@@ -80,7 +80,7 @@
 
                 <!--  if connected AND not his clan-->
                 {% if is_granted('ROLE_USER') and app.user.clan != clan %}
-                    <li><a href="{{ path('coc', {'id_clan' : app.user.clan.id }) }}"><i class="fa fa-arrow-circle-right"></i> {{ 'vitrine.my_clan'|trans }} </a></li>
+                    <li><a href="{{ path('coc', {'id_clan' : app.user.clan.id }) }}"><i class="fa fa-arrow-circle-right"></i> {{ 'vitrine.back_my_clan'|trans }} </a></li>
                 {% else %}
 
                     {% if is_granted('ROLE_USER') and app.user.clan != null and app.user.player is defined %}

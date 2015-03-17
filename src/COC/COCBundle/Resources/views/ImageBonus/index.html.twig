@@ -25,8 +25,8 @@
                                 <h3 class="panel-title text-center">{{ image.title }}</small></h3>
                             </div>
                             <div class="panel-body">
-                                <a rel="gallery-1"  href="{{ asset('uploads/' ~ image.image.path) }}" class="swipebox" title="">
-                                    <img  class="img-responsive" src="{{ asset('uploads/' ~ image.image.path) }}" />
+                                <a rel="gallery-1"  href="{{ asset(image.image.getWebPath()) }}" class="swipebox" title="">
+                                    <img  class="img-responsive" src="{{ asset('uploads/' ~ clan.id ~ '/' ~ image.image.path) }}" />
                                 </a>
                             </div>
                             <div class="panel-footer">

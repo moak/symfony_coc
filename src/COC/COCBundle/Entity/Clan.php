@@ -65,7 +65,7 @@ class Clan
     /**
      * @var integer
      *
-     * @ORM\Column(name="totalTroopReceived", type="integer" ))
+     * @ORM\Column(name="totalTroopReceived", type="integer" , nullable=true)
      */
     private $totalTroopReceived;
 
@@ -73,7 +73,7 @@ class Clan
     /**
      * @var integer
      *
-     * @ORM\Column(name="totalGeneral", type="integer" ))
+     * @ORM\Column(name="totalGeneral", type="integer" , nullable=true)
      */
     private $totalGeneral;
 
@@ -81,28 +81,23 @@ class Clan
     /**
      * @var integer
      *
-     * @ORM\Column(name="totalTroopSent", type="integer" ))
+     * @ORM\Column(name="totalTroopSent", type="integer" , nullable=true)
      */
     private $totalTroopSent;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="totalTrophy", type="integer" ))
+     * @ORM\Column(name="totalTrophy", type="integer" , nullable=true)
      */
     private $totalTrophy;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="rank", type="integer" ))
-     */
-    private $rank;
+
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="totalAttackWon", type="integer" ))
+     * @ORM\Column(name="totalAttackWon", type="integer", nullable=true)
      */
     private $totalAttackWon;
 

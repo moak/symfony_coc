@@ -48,6 +48,7 @@ class Image
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Clan", mappedBy="image", cascade={"persist"})
      **/
     private $clans;
+    private $lol;
 
 
     /**
@@ -67,11 +68,17 @@ class Image
      * @ORM\Column(type="string",length=255, nullable=true)
      */
     private $path;
+
+    /**
+     * @Assert\File(maxSize="4M", maxSizeMessage = "The maximimum allowed file size is 4MB.")
+     */
     public $file;
+
+    private $clan;
 
     public function getUploadRootDir()
     {
-        return __dir__ . '/../../../../web/uploads';
+        return __dir__ . '/../../../../web/uploads/'. $this->getClan();
     }
 
     public function getAbsolutePath()
@@ -81,12 +88,12 @@ class Image
 
     public function getWebPath() {
 
-        return 'uploads/' . $this->path;
+        return 'uploads/' . $this->getClan() . '/' . $this->path;
     }
 
     public function getAssetPath()
     {
-        return 'uploads/' . $this->path;
+        return 'uploads/' . $this->getClan() . '/' . $this->path;
     }
 
     /**
@@ -102,6 +109,13 @@ class Image
     public function getPath()
     {
         return $this->path;
+    }
+
+    public function getClan()
+    {
+       // return $this->clan;
+
+        return "1";
     }
 
     /**
@@ -218,6 +232,13 @@ class Image
     public function setPath($path)
     {
         $this->path = $path;
+
+        return $this;
+    }
+
+    public function setClan($clan)
+    {
+        $this->clan = $clan;
 
         return $this;
     }

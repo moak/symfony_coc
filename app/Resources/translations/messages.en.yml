@@ -229,6 +229,7 @@ coc:
     features: Features
 
 vitrine:
+    back_my_clan: Return to my clan
     title: Clan manager for Clash of Clans
     my_clan : My clan
     create_clan2 : Easy way to manage your clan
@@ -278,7 +279,7 @@ clan:
     image_upload: Upload clan image
     parameters: Parameters clan
     recruitment: Recruitment status
-    total_points: Total points
+    total_points: Oh My Clan points
     total_attackWon: Total attacks won
     total_troopReceived: Total troops received
     total_troopSent: Total troops sent

@@ -83,6 +83,7 @@ class ImageBonusController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
+
             $clan->setUpdated(new \Datetime());
             $em->persist($clan);
             $em->flush();
@@ -90,6 +91,9 @@ class ImageBonusController extends Controller
             $user = $this->get('security.context')->getToken()->getUser();
             $image->setUser($user);
             $image->setClan($user->getClan());
+            $image->getImage()->setClan($clan->getId());
+
+
             $em->persist($image);
             $em->flush();
             return $this->redirect($this->generateUrl('coc_imagesBonus', array('id_clan' =>  $clan->getId())));

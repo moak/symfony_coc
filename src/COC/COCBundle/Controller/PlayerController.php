@@ -314,6 +314,7 @@ class PlayerController extends Controller
     }
     public function playerAction (Request $request, $id_clan, $id_player)
     {
+
         $user = $this->getUser();
 
       /*  if ( $this->getUser() == null)
@@ -321,6 +322,9 @@ class PlayerController extends Controller
 
 */
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+
+        var_dump($clan);
+        die();
         $em = $this->getDoctrine()->getManager();
         $seasons = $em->getRepository('COCBundle:Season')->findSeasonsName();
         $player = $em->getRepository('COCBundle:Player')->find($id_player);
@@ -335,6 +339,10 @@ class PlayerController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
+            $player->getPicture()->setClan($clan->getId());
+
+            var_dump($player->getPicture()->getClan());
+            die();
             $em->persist($player);
             $em->flush();
         }

@@ -227,6 +227,7 @@ coc:
     visit_activity: Activity ranking
 
 vitrine:
+    back_my_clan: Retourner sur mon clan
     title: Gestionnaire de clan pour Clash of Clans
     my_clan : Mon clan
     create_clan2 : Managez facilement votre clan
@@ -276,7 +277,7 @@ clan:
     image_upload: Upload image de clan
     parameters: Paramètres du clan
     recruitment: Recrutement
-    total_points: Total points
+    total_points: Points Oh My Clan
     total_attackWon: Total attaques gagnées
     total_troopReceived: Total troupes recues
     total_troopSent: Total troupes envoyées

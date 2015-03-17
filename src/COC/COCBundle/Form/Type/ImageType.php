@@ -18,7 +18,6 @@ class ImageType extends AbstractType
     {
         $builder
             ->add('file','file', array('label' => false, 'required' => true, 'image_path' => 'webPath'));
-
     }
     /**
      * @param OptionsResolverInterface $resolver
