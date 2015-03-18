@@ -74,12 +74,16 @@ class ImageBonusController extends Controller
 
     public function addAction (Request $request, $id_clan)
     {
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan) ;
+
+        if ( $this->getUser() == null || $this->getUser()->getClan() != $clan )
+            throw $this->createNotFoundException('This page does not exist.');
+
+
         $image = new ImageBonus();
         $em = $this->getDoctrine()->getManager();
         $form = $this->get('form.factory')->create(new ImageBonusType(), $image);
 
-        $service = $this->container->get('coc_cocbundle.clan_info') ;
-        $clan = $service->getClan($id_clan);
 
         if ($form->handleRequest($request)->isValid())
         {
@@ -88,9 +92,11 @@ class ImageBonusController extends Controller
             $em->persist($clan);
             $em->flush();
 
-            $user = $this->get('security.context')->getToken()->getUser();
-            $image->setUser($user);
-            $image->setClan($user->getClan());
+            var_dump($this->getUser());
+            die();
+
+            $image->setUser($this->getUser());
+            $image->setClan($clan);
             $image->getImage()->setClan($clan->getId());
 
 

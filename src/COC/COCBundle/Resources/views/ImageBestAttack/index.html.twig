@@ -10,7 +10,12 @@
 <!-- Page Content -->
 <div class="container white-bg rounded-corners">
 
-    <h1 class="page-header">{{ 'menu.bestAttacks'|trans }} <a class="btn btn-normal btn-primary pull-right btn-lg" href="{{ path('coc_imageBestAttack_add' , {'id_clan': clan.id }) }}">{{ 'menu.bestAttack_add'|trans }}</a></h1>
+    <h1 class="page-header">{{ 'menu.bestAttacks'|trans }}
+        {% if app.user is defined and app.user.clan.id == clan.id  %}
+            <a class="btn btn-normal btn-primary pull-right btn-lg" href="{{ path('coc_imageBestAttack_add' , {'id_clan': clan.id }) }}">{{ 'menu.bestAttack_add'|trans }}</a>
+        {% endif %}
+
+    </h1>
     <div class="row">
         <br>
         {% if images|length != 0 %}
@@ -21,8 +26,8 @@
                             <h3 class="panel-title text-center">{{ loop.index }} - {{ image.user.username }}  <small>{{ image.created|date('U')|timeago }}</small></h3>
                         </div>
                         <div class="panel-body">
-                            <a rel="gallery-1"  href="{{ asset(image.image.getWebPath()) }}" class="swipebox" title="">
-                                <img  class="img-responsive" src="{{ asset(image.image.getWebPath()) }}" />
+                            <a rel="gallery-1"  href="{{ asset(image.image.getWebPath(clan)) }}" class="swipebox" title="">
+                                <img  class="img-responsive" src="{{ asset(image.image.getWebPath(clan)) }}" />
                             </a>
 
                         </div>

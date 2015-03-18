@@ -201,10 +201,11 @@ class PlayerController extends Controller
 
     public function editAction (Request $request, $id_clan)
     {
-
+        $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
-        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+      //  $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
+        $clan = $em->getRepository('COCBundle:Clan')->find($id_clan);
         if ( $this->getUser() == null && $clan->getPrivacy() == 1)
             throw $this->createNotFoundException('This page does not exist.');
 
@@ -212,19 +213,29 @@ class PlayerController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $player = $em->getRepository('COCBundle:Player')->getPlayerFromSession($user);
+
         $form = $this->get('form.factory')->create(new PlayerType(), $player );
+
 
         if ( $this->getUser() == null && $clan->getPrivacy() == 1)
             throw $this->createNotFoundException('This page does not exist.');
 
         if ($form->handleRequest($request)->isValid())
         {
+            $player->getBase()->setClan($clan->getId());
+
+         // $player->getPicture()->preUpload();
+
             $clan->setUpdated(new \Datetime());
             $em->persist($clan);
             $em->flush();
+
             $em->persist($player);
             $em->flush();
             $this->updateClan($clan);
+
+          //  var_dump($player->setPicture()->setClan($clan));
+          //  die();
 
             return $this->redirect($this->generateUrl('coc_players', array('type' => 0, 'id_clan' =>  $clan->getId())));
         }
@@ -315,17 +326,8 @@ class PlayerController extends Controller
     public function playerAction (Request $request, $id_clan, $id_player)
     {
 
-        $user = $this->getUser();
-
-      /*  if ( $this->getUser() == null)
-            throw $this->createNotFoundException('This page does not exist.');
-
-*/
-        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
-
-        var_dump($clan);
-        die();
         $em = $this->getDoctrine()->getManager();
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
         $seasons = $em->getRepository('COCBundle:Season')->findSeasonsName();
         $player = $em->getRepository('COCBundle:Player')->find($id_player);
         $historyPlayer = $em->getRepository('COCBundle:PlayerHistory')->findByPlayer($player, array('season'=> 'ASC'));
@@ -334,35 +336,30 @@ class PlayerController extends Controller
         $playerPreviousSeason = $em->getRepository('COCBundle:PlayerHistory')->findOneBy(array('player' => $player->getId(), 'season' => $previousSeason));
         $players = $em->getRepository('COCBundle:Player')->findBy(array('clan' => $clan), array('total'=> 'DESC'));
 
-
         $form = $this->get('form.factory')->create(new ImageProfileType(), $player);
 
         if ($form->handleRequest($request)->isValid())
         {
             $player->getPicture()->setClan($clan->getId());
-
-            var_dump($player->getPicture()->getClan());
-            die();
             $em->persist($player);
             $em->flush();
         }
 
-
         return $this->render('COCBundle:Player:myPlayer.html.twig', array(
-            'playerPreviousSeason' => $playerPreviousSeason,
-            'actualSeason' => $actualSeason,
-            'clan' =>  $clan,
-            'seasons'=>  $seasons,
-            'history' => $historyPlayer,
-            'player'      =>  $player,
-            'positions' => $this->getPositions($player, $clan, $previousSeason),
-            'form'      =>  $form->createView(),
-            'myGold'    => $this->getMyGoldPerHour($player),
-            'myElixir'  => $this->getMyElixirPerHour($player),
-            'myDarkElixir'  => $this->getMyDarkElixirPerHour($player),
-            'maxDarkElixir' => $this->getMaxDarkElixirPerHour($player),
-            'maxElixirGold' => $this->getMaxGoldElixirPerHour($player),
-            'players' => $players
+            'playerPreviousSeason'  => $playerPreviousSeason,
+            'actualSeason'          => $actualSeason,
+            'clan'                  => $clan,
+            'seasons'               => $seasons,
+            'history'               => $historyPlayer,
+            'player'                => $player,
+            'positions'             => $this->getPositions($player, $clan, $previousSeason),
+            'form'                  => $form->createView(),
+            'myGold'                => $this->getMyGoldPerHour($player),
+            'myElixir'              => $this->getMyElixirPerHour($player),
+            'myDarkElixir'          => $this->getMyDarkElixirPerHour($player),
+            'maxDarkElixir'         => $this->getMaxDarkElixirPerHour($player),
+            'maxElixirGold'         => $this->getMaxGoldElixirPerHour($player),
+            'players'               => $players
         ));
     }
 

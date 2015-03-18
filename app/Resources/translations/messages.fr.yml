@@ -6,6 +6,7 @@ form:
     my_base: Ma base
     my_picture: Ma photo
 menu:
+    edit_base: Modifier ma base
     clan_parameters: Paramètres du clan
     my_account: Mon compte
     my_player: Mon joueur

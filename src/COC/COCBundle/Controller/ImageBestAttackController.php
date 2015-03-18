@@ -68,8 +68,12 @@ class ImageBestAttackController extends Controller
             $em->flush();
 
             $user = $this->get('security.context')->getToken()->getUser();
+
+
             $image->setUser($user);
             $image->setClan($user->getClan());
+
+            $image->getImage()->setClan($clan->getId());
 
             $em->persist($image);
             $em->flush();

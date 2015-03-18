@@ -48,8 +48,6 @@ class Image
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\Clan", mappedBy="image", cascade={"persist"})
      **/
     private $clans;
-    private $lol;
-
 
     /**
      * @ORM\PostLoad()
@@ -86,9 +84,9 @@ class Image
         return null === $this->path ? null : $this->getUploadRootDir() . '/' . $this->path;
     }
 
-    public function getWebPath() {
+    public function getWebPath($clan) {
 
-        return 'uploads/' . $this->getClan() . '/' . $this->path;
+        return 'uploads/' . $clan->getId() . '/' . $this->path;
     }
 
     public function getAssetPath()
@@ -113,9 +111,7 @@ class Image
 
     public function getClan()
     {
-       // return $this->clan;
-
-        return "1";
+        return $this->clan;
     }
 
     /**

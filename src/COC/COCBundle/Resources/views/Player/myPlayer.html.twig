@@ -8,54 +8,40 @@
 
 {% block body %}
     <link rel="stylesheet" href="{{ asset('css/myPlayer.css') }}" />
-
-
     <div class="container white-bg rounded-corners">
-    <div class="row">
-    <div class="col-md-12">
-
-
-
-        <h2>
-
-        <div>
-
-            {{ player.name }}
-            <small>{{ player.trophy|division|raw }} {{ player.updatedAt|date('U')|timeago }}</small>
-
+        <div class="row">
+            <div class="col-md-12">
+                <div><h2>
+                    {{ player.name }}
+                    <small>{{ player.trophy|division|raw }} {{ player.updatedAt|date('U')|timeago }}</small>
+                    </h2>
+                </div>
+                <span class="text-nowrap pull-right" scope="row">
+                      <div class="dropdown">
+                          <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">All players
+                              <span class="caret"></span></button>
+                          <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                              {% for player in players %}
+                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ path('coc_player', {'id_clan' : clan.id , 'id_player' :  player.id }) }}">{{ player.name }}</a></li>
+                              {% endfor %}
+                          </ul>
+                      </div>
+                </span>
+            </div>
         </div>
-            <span class="text-nowrap pull-right" scope="row">
-
-
-                  <div class="dropdown">
-                      <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">All players
-                          <span class="caret"></span></button>
-                      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                          {% for player in players %}
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ path('coc_player', {'id_clan' : clan.id , 'id_player' :  player.id }) }}">{{ player.name }}</a></li>
-                          {% endfor %}
-                      </ul>
-                  </div>
-            </span>
-        </h2>
-
-</div>
-    </div>
         <div class="well">
             <div class="row">
                 <div class="col-md-7">
                     <div class="row">
                         <div class="col-md-5">
-
                             {% if player.picture.path is defined %}
                                 <div class="row">
                                     <div class="col-md-12 ">
-                                        <a rel="gallery-1 "  href="{{ asset(player.picture.getWebPath()) }}" class="swipebox text-center" title="">
-                                            <img  class="img-responsive " src="{{ asset(player.picture.getWebPath()) }}" />
+                                        <a rel="gallery-1 "  href="{{ asset(player.picture.getWebPath(clan)) }}" class="swipebox text-center" title="">
+                                            <img  class="img-responsive " src="{{ asset(player.picture.getWebPath(clan)) }}" />
                                         </a>
                                     </div>
                                 </div>
-
                             {% else %}
                                 <img class="img-responsive" src="{{ asset('images/non_available_picture.jpg') }}" />
                             {% endif %}
@@ -80,13 +66,10 @@
                             {% endif %}
                         </div>
                         <div class="col-md-7">
-
                             <div class="row info ">
                                 <div class="col-md-12">
-
                                     <h2><i class="fa fa-area-chart"></i> {{ player.total }}  <small class="pull-right"> {{ positions['total']}} {{ positions['total']|position }} </small></h2>
                                 </div>
-
                                 <table class="table table-bordered table-striped table-condensed">
                                     <thead>
                                     <tr>
@@ -96,136 +79,121 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.attackWon'|trans }}</td>
-                                        <td class="text-muted small text-center">
-                                            {% if playerPreviousSeason.attackWon is defined %}
-                                                {{ playerPreviousSeason.attackWon }}
-                                            {% else %}
-                                                -
-                                            {% endif %}
-                                        </td>
+                                        <tr>
+                                            <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.attackWon'|trans }}</td>
+                                            <td class="text-muted small text-center">
+                                                {% if playerPreviousSeason.attackWon is defined %}
+                                                    {{ playerPreviousSeason.attackWon }}
+                                                {% else %}
+                                                    -
+                                                {% endif %}
+                                            </td>
+                                            <td class="text-muted small text-center">
+                                                {%  if positions['attackWon'] is defined %}
+                                                    {{ positions['attackWon']}} {{ positions['attackWon']|position }}
+                                                {% endif%}
+                                            </td>
+                                            <td class="text-nowrap small text-center">{{ player.attackWon }}</td>
+                                        </tr>
 
-                                        <td class="text-muted small text-center">
-                                            {%  if positions['attackWon'] is defined %}
-                                                {{ positions['attackWon']}} {{ positions['attackWon']|position }}
-                                            {% endif%}
-                                        </td>
-                                        <td class="text-nowrap small text-center">{{ player.attackWon }}</td>
-                                    </tr>
+                                        <tr>
+                                            <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.trophy'|trans }}</td>
+                                            <td class="text-muted small text-center">
+                                                {% if playerPreviousSeason.trophy is defined %}
+                                                    {{ playerPreviousSeason.trophy }}
+                                                {% else %}
+                                                    -
+                                                {% endif %}
+                                            </td>
+                                            <td class="text-muted small text-center">
+                                                {%  if positions['trophy'] is defined %}
+                                                    {{ positions['trophy']}} {{ positions['trophy']|position }}
+                                                {% endif%}
+                                            </td>
+                                            <td class="text-nowrap small text-center">{{ player.trophy }}  </td>
+                                        </tr>
 
-                                    <tr>
-                                        <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.trophy'|trans }}</td>
-                                        <td class="text-muted small text-center">
-                                            {% if playerPreviousSeason.trophy is defined %}
-                                                {{ playerPreviousSeason.trophy }}
-                                            {% else %}
-                                                -
-                                            {% endif %}
-                                        </td>
-                                        <td class="text-muted small text-center">
-                                            {%  if positions['trophy'] is defined %}
-                                                {{ positions['trophy']}} {{ positions['trophy']|position }}
-                                            {% endif%}
-                                        </td>
-                                        <td class="text-nowrap small text-center">{{ player.trophy }}  </td>
-                                    </tr>
+                                        <tr>
+                                            <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.troopSent'|trans }}</td>
+                                            <td class="text-muted small text-center">
+                                                {% if playerPreviousSeason.troopSent is defined %}
+                                                    {{ playerPreviousSeason.troopSent }}
+                                                {% else %}
+                                                    -
+                                                {% endif %}
+                                            </td>
+                                            <td class="text-muted small text-center">
+                                                {%  if positions['troopSent'] is defined %}
+                                                    {{ positions['troopSent']}} {{ positions['troopSent']|position }}
+                                                {% endif%}
+                                            </td>
+                                            <td class="text-nowrap small text-center">{{ player.troopSent }}</td>
+                                        </tr>
 
-                                    <tr>
-                                        <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.troopSent'|trans }}</td>
-                                        <td class="text-muted small text-center">
-                                            {% if playerPreviousSeason.troopSent is defined %}
-                                                {{ playerPreviousSeason.troopSent }}
-                                            {% else %}
-                                                -
-                                            {% endif %}
-                                        </td>
-                                        <td class="text-muted small text-center">
-                                            {%  if positions['troopSent'] is defined %}
-                                                {{ positions['troopSent']}} {{ positions['troopSent']|position }}
-                                            {% endif%}
-                                        </td>
-                                        <td class="text-nowrap small text-center">{{ player.troopSent }}</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.troopReceived'|trans }}</td>
-                                        <td class="text-muted small text-center">
-                                            {% if playerPreviousSeason.troopReceived is defined %}
-                                                {{ playerPreviousSeason.troopReceived }}
-                                            {% else %}
-                                                -
-                                            {% endif %}
-                                        </td>
-                                        <td class="text-muted small text-center">
-                                            {%  if positions['troopReceived'] is defined %}
-                                                {{ positions['troopReceived']}} {{ positions['troopReceived']|position }}
-                                            {% endif%}
-                                        </td>
-
-                                        <td class="text-nowrap small text-center">{{ player.troopReceived }}</td>
-                                    </tr>
-
-
+                                        <tr>
+                                            <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.troopReceived'|trans }}</td>
+                                            <td class="text-muted small text-center">
+                                                {% if playerPreviousSeason.troopReceived is defined %}
+                                                    {{ playerPreviousSeason.troopReceived }}
+                                                {% else %}
+                                                    -
+                                                {% endif %}
+                                            </td>
+                                            <td class="text-muted small text-center">
+                                                {%  if positions['troopReceived'] is defined %}
+                                                    {{ positions['troopReceived']}} {{ positions['troopReceived']|position }}
+                                                {% endif%}
+                                            </td>
+                                            <td class="text-nowrap small text-center">{{ player.troopReceived }}</td>
+                                        </tr>
                                     </tbody>
                                 </table>
 
                                 <table class="table table-bordered table-striped table-condensed">
                                     <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th class="text-center">{{ 'player.quantity_per_day'|trans }}</th>
-                                        <th class="text-center">{{ 'player.quantity_max_per_day'|trans }}</th>
-                                    </tr>
+                                        <tr>
+                                            <th></th>
+                                            <th class="text-center">{{ 'player.quantity_per_day'|trans }}</th>
+                                            <th class="text-center">{{ 'player.quantity_max_per_day'|trans }}</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> Gold</td>
-                                        <td class="text-muted small text-center"><b>{{ myGold * 24 }}</b> </td>
-                                        <td class="text-muted small text-center"><b>{{ maxElixirGold * 24 }}</b> </td>
-                                    </tr>
+                                        <tr>
+                                            <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> Gold</td>
+                                            <td class="text-muted small text-center"><b>{{ myGold * 24 }}</b> </td>
+                                            <td class="text-muted small text-center"><b>{{ maxElixirGold * 24 }}</b> </td>
+                                        </tr>
 
-                                    <tr>
-                                        <td class="text-nowrap" scope="row"><i class="fa fa-trophy"></i>  Elixir</td>
-                                        <td class="text-muted small text-center"><b>{{ myElixir * 24 }}</b> </td>
-                                        <td class="text-muted small text-center"><b>{{ maxElixirGold * 24 }}</b> </td>
-
-
-                                    </tr>
-                                    <tr>
-                                        <td class="text-nowrap" scope="row"><i class="fa fa-arrow-circle-right"></i> D4rk Elixir</td>
-                                        <td class="text-muted  small text-center"><b> {{ myDarkElixir * 24 }} </b> </td>
-                                        <td class="text-muted small text-center"><b>{{ maxDarkElixir * 24 }}</b> </td>
-
-                                    </tr>
-
-
-
+                                        <tr>
+                                            <td class="text-nowrap" scope="row"><i class="fa fa-trophy"></i>  Elixir</td>
+                                            <td class="text-muted small text-center"><b>{{ myElixir * 24 }}</b> </td>
+                                            <td class="text-muted small text-center"><b>{{ maxElixirGold * 24 }}</b> </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-nowrap" scope="row"><i class="fa fa-arrow-circle-right"></i> D4rk Elixir</td>
+                                            <td class="text-muted  small text-center"><b> {{ myDarkElixir * 24 }} </b> </td>
+                                            <td class="text-muted small text-center"><b>{{ maxDarkElixir * 24 }}</b> </td>
+                                        </tr>
                                     </tbody>
                                 </table>
-
                             </div>
-
-
-
-
-
                         </div>
                     </div>
-
                 </div>
                 <div class="col-md-5">
+                    {% if app.user.player.id is defined and app.user.player.id == player.id %}
+                        <a class="btn btn-primary btn-block" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_base'|trans }}</b></a>
+                    {% endif %}
+                    <br>
                     {% if player.base.path is defined %}
-                        <a rel="gallery-1"  href="{{ asset('uploads/' ~ player.base.path) }}" class="swipebox" title="">
-                            <img  class="img-responsive"src="{{ asset('uploads/' ~ player.base.path) }}" />
+                        <a rel="gallery-1"  href="{{ asset(player.base.getWebPath(clan)) }}" class="swipebox" title="">
+                            <img  class="img-responsive"src="{{ asset(player.base.getWebPath(clan)) }}" />
                         </a>
                     {% else %}
                         <img class="img-responsive" src="{{ asset('images/non_available.jpg') }}" />
                     {% endif %}
-                    <br>
-                    {% if app.user.player.id is defined and app.user.player.id == player.id %}
-                        <a class="btn btn-primary btn-block" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_player'|trans }}</b></a>
-                    {% endif %}
+
+
 
                 </div>
             </div>

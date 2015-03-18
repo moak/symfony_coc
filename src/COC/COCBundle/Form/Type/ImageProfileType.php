@@ -27,6 +27,6 @@ class ImageProfileType extends AbstractType
 
     public function getName()
     {
-        return 'players';
+        return 'image_profile';
     }
 }
