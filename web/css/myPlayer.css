@@ -1,4 +1,11 @@
 /*
+DROPDOWN
+*/
+.player.dropdown{
+    top: 18px;
+}
+
+/*
 FULL TABLE
 }*/
 
@@ -70,3 +77,4 @@ FULL TABLE
 .info-player-attack .expendables h5{
     margin-left : 17px;
 }
+
