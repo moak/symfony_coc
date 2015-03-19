@@ -9,10 +9,11 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ImageProfileType extends AbstractType
 {
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('picture', new ImageType(), array('label' => 'form.my_picture', 'required' => false))
+            ->add('picture', new ImageType(), array('clan' => $options['clan'], 'label' => 'form.my_picture', 'required' => false))
             ->add('save', 'submit', array('label' => 'label.update'));
     }
 
@@ -21,6 +22,7 @@ class ImageProfileType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'COC\COCBundle\Entity\Player',
+            'clan'         => null
         ));
     }
 

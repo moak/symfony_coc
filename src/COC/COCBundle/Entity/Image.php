@@ -72,11 +72,11 @@ class Image
      */
     public $file;
 
-    private $clan;
+    private $idclan;
 
     public function getUploadRootDir()
     {
-        return __dir__ . '/../../../../web/uploads/'. $this->getClan();
+        return __dir__ . '/../../../../web/uploads/'. $this->getIdclan();
     }
 
     public function getAbsolutePath()
@@ -84,14 +84,18 @@ class Image
         return null === $this->path ? null : $this->getUploadRootDir() . '/' . $this->path;
     }
 
-    public function getWebPath($clan) {
-
-        return 'uploads/' . $clan->getId() . '/' . $this->path;
+    public function getWebPath($id_clan = null)
+    {
+        if ( $id_clan == null)
+        {
+            $id_clan = $this->idclan;
+        }
+        return 'uploads/' . $id_clan . '/' . $this->path;
     }
 
     public function getAssetPath()
     {
-        return 'uploads/' . $this->getClan() . '/' . $this->path;
+        return 'uploads/' . $this->getIdclan() . '/' . $this->path;
     }
 
     /**
@@ -109,9 +113,9 @@ class Image
         return $this->path;
     }
 
-    public function getClan()
+    public function getIdclan()
     {
-        return $this->clan;
+        return $this->idclan;
     }
 
     /**
@@ -232,9 +236,9 @@ class Image
         return $this;
     }
 
-    public function setClan($clan)
+    public function setIdclan($clan)
     {
-        $this->clan = $clan;
+        $this->idclan = $clan;
 
         return $this;
     }
@@ -344,6 +348,8 @@ class Image
     {
         return $this->imagebonuses;
     }
+
+
 
     /**
      * Add clans
