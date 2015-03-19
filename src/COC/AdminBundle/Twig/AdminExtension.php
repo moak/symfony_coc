@@ -22,72 +22,71 @@ class AdminExtension extends \Twig_Extension
         switch ($trophy)
         {
             case $trophy > 400 && $trophy <= 499:
-                $league = "bronze-3";
+                $league = "Bronze 3";
                 break;
 
             case $trophy >= 500 && $trophy <= 599:
-                $league = "bronze-2";
+                $league = "Bronze 2";
                 break;
 
-
             case $trophy >= 600 && $trophy <= 799:
-                $league = "bronze-1";
+                $league = "Bronze 1";
                 break;
 
             case $trophy >= 800 && $trophy <= 999:
-                $league = "silver-3";
+                $league = "Silver 3";
                 break;
 
             case $trophy >= 1000 && $trophy <= 1199:
-                $league = "silver-2";
+                $league = "Silver 2";
                 break;
 
             case $trophy >= 1200 && $trophy <= 1399:
-                $league = "silver-1";
+                $league = '<img align="right" class="img-responsive" src="/symfony_coc/web/images/gold.png">';
                 break;
 
             case $trophy >= 1400 && $trophy <= 1599:
-                $league = "gold-3";
+                $league = "Gold 3";
                 break;
 
             case $trophy >= 1600 && $trophy <= 1799:
-                $league = "gold-2";
+                $league = "Gold 2";
                 break;
 
             case $trophy >= 1800 && $trophy <= 1999:
-                $league = "gold-1";
+                $league = "Gold 1";
                 break;
 
             case $trophy >= 2000 && $trophy <= 2199:
-                $league = "crystal-3";
+                $league = "Crystal 3";
                 break;
 
             case $trophy >= 2200 && $trophy <= 2399:
-                $league = "crystal-2";
+                $league = "Crystal 2";
                 break;
 
             case $trophy >= 2400 && $trophy <= 2599:
-                $league = "crystal-1";
+                $league = "Crystal 1";
                 break;
 
             case $trophy >= 2600 && $trophy <= 2799:
-                $league = "master-3";
+                $league = "Master 3";
                 break;
 
             case $trophy >= 2800 && $trophy <= 2999:
-                $league = "master-2";
+                $league = "Master 2";
                 break;
 
             case $trophy >= 3000 && $trophy <= 3199:
-                $league = "master-1";
+                $league = "Master 1";
                 break;
 
             case $trophy > 3200:
-                $league = "champion";
+                $league = "Champion";
                 break;
 
             default:
-                $league = "bronze-3";
+                $league = "bronze 3";
         }
         return $league;
     }
@@ -112,7 +111,7 @@ class AdminExtension extends \Twig_Extension
     {
         if ( $boolean == 1)
         {
-            return $this->get('translator')->trans('menu.oui') ;
+            return "Oui";
         }
         else
         {

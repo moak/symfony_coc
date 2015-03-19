@@ -73,7 +73,7 @@ class ImageBestAttackController extends Controller
             $image->setUser($user);
             $image->setClan($user->getClan());
 
-            $image->getImage()->setIdclan($clan->getId());
+            $image->getImage()->setClan($clan->getId());
 
             $em->persist($image);
             $em->flush();

@@ -10,7 +10,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ImageType extends AbstractType
 {
-
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -26,8 +25,7 @@ class ImageType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'COC\COCBundle\Entity\Image',
-            'clan'         => null
+            'data_class' => 'COC\COCBundle\Entity\Image'
         ));
     }
     /**

@@ -92,10 +92,12 @@ class ImageBonusController extends Controller
             $em->persist($clan);
             $em->flush();
 
+            var_dump($this->getUser());
+            die();
 
             $image->setUser($this->getUser());
             $image->setClan($clan);
-            $image->getImage()->setIdclan($clan->getId());
+            $image->getImage()->setClan($clan->getId());
 
 
             $em->persist($image);
