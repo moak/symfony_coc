@@ -98,6 +98,7 @@ action:
     set_user : Give user priviledges
 
 player:
+   last_update: Last update
    name: Name
    level: Level
    defence: Defence

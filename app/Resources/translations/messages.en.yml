@@ -105,6 +105,7 @@ action:
     set_user : Give user priviledges
 
 player:
+   last_update: Last update
    quantity_per_day: per day
    quantity_max_per_day: max per day
    darkElixir: Dark elixir

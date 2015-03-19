@@ -102,6 +102,7 @@ notFound: Aucun résultat trouvé.
 notPlayerFound: Aucun joueur trouvé.
 
 player:
+   last_update: Dernière MAJ
    quantity_per_day: Par jour
    quantity_max_per_day: Max par jour
    darkElixir: Elixir noir
