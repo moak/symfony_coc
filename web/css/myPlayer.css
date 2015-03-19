@@ -16,6 +16,9 @@ h2 > small > div.division{
     /*background-color: black;*/
     display:inline-block;
     background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-size: 100%;
 }
 
 .division.bronze-1{
@@ -37,28 +40,28 @@ h2 > small > div.division{
     background-image: url("../images/divisions/silver-3.png");
 }
 .division.gold-1{
-    background-image: url("../images/divisions/gold-3.png");
+    background-image: url("../images/divisions/gold-1.png");
 }
 .division.gold-2{
-    background-image: url("../images/divisions/gold-3.png");
+    background-image: url("../images/divisions/gold-2.png");
 }
 .division.gold-3{
     background-image: url("../images/divisions/gold-3.png");
 }
 .division.crystal-1{
-    background-image: url("../images/divisions/crystal-3.png");
+    background-image: url("../images/divisions/crystal-1.png");
 }
 .division.crystal-2{
-    background-image: url("../images/divisions/crystal-3.png");
+    background-image: url("../images/divisions/crystal-2.png");
 }
 .division.crystal-3{
     background-image: url("../images/divisions/crystal-3.png");
 }
 .division.master-1{
-    background-image: url("../images/divisions/master-3.png");
+    background-image: url("../images/divisions/master-1.png");
 }
 .division.master-2{
-    background-image: url("../images/divisions/master-3.png");
+    background-image: url("../images/divisions/master-2.png");
 }
 .division.master-3{
     background-image: url("../images/divisions/master-3.png");
@@ -72,7 +75,8 @@ TABLES
 */
 .gold > img,
 .elixir > img,
-.d4rk-elixir > img{
+.d4rk-elixir > img,
+.trophy > img{
     width: 20px;
 }
 

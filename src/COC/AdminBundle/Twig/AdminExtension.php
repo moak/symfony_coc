@@ -22,49 +22,49 @@ class AdminExtension extends \Twig_Extension
         switch ($trophy)
         {
             case $trophy > 400 && $trophy <= 499:
-                $league = "bronze-3";
+                $league = "bronze-1";
                 break;
             case $trophy >= 500 && $trophy <= 599:
                 $league = "bronze-2";
                 break;
             case $trophy >= 600 && $trophy <= 799:
-                $league = "bronze-1";
+                $league = "bronze-3";
                 break;
             case $trophy >= 800 && $trophy <= 999:
-                $league = "silver-3";
+                $league = "silver-1";
                 break;
             case $trophy >= 1000 && $trophy <= 1199:
                 $league = "silver-2";
                 break;
             case $trophy >= 1200 && $trophy <= 1399:
-                $league = "silver-1";
+                $league = "silver-3";
                 break;
             case $trophy >= 1400 && $trophy <= 1599:
-                $league = "gold-3";
+                $league = "gold-1";
                 break;
             case $trophy >= 1600 && $trophy <= 1799:
                 $league = "gold-2";
                 break;
             case $trophy >= 1800 && $trophy <= 1999:
-                $league = "gold-1";
+                $league = "gold-3";
                 break;
             case $trophy >= 2000 && $trophy <= 2199:
-                $league = "crystal-3";
+                $league = "crystal-1";
                 break;
             case $trophy >= 2200 && $trophy <= 2399:
                 $league = "crystal-2";
                 break;
             case $trophy >= 2400 && $trophy <= 2599:
-                $league = "crystal-1";
+                $league = "crystal-3";
                 break;
             case $trophy >= 2600 && $trophy <= 2799:
-                $league = "master-3";
+                $league = "master-1";
                 break;
             case $trophy >= 2800 && $trophy <= 2999:
                 $league = "master-2";
                 break;
             case $trophy >= 3000 && $trophy <= 3199:
-                $league = "master-1";
+                $league = "master-3";
                 break;
             case $trophy > 3200:
                 $league = "champion";
