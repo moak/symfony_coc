@@ -91,6 +91,7 @@ notFound: No se encontraron resultados .
 notPlayerFound: Ningún jugador se encontró .
 
 player:
+   last_update: Last update
    name: Nombre
    level: Nivel
    defence: Defensa

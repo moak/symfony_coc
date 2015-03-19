@@ -1,4 +1,5 @@
 echo Mise à jour de composer;
+sudo php composer.phar self-update;
 sudo php composer.phar update;
 echo Droits ecriture à images - cache - logs;
 sudo chmod -R 777 app/cache app/logs web/images web/uploads;

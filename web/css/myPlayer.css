@@ -1,4 +1,83 @@
 /*
+TITLE + DIVISION
+*/
+.player.dropdown{
+    top: 18px;
+}
+
+small.last-update{
+    font-size: .5em;
+    margin-top: 14px;
+}
+
+h2 > small > div.division{
+    width: 25px;
+    height: 25px;
+    /*background-color: black;*/
+    display:inline-block;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.division.bronze-1{
+    background-image: url("../images/divisions/bronze-1.png");
+}
+.division.bronze-2{
+    background-image: url("../images/divisions/bronze-2.png");
+}
+.division.bronze-3{
+    background-image: url("../images/divisions/bronze-3.png");
+}
+.division.silver-1{
+    background-image: url("../images/divisions/silver-1.png");
+}
+.division.silver-2{
+    background-image: url("../images/divisions/silver-2.png");
+}
+.division.silver-3{
+    background-image: url("../images/divisions/silver-3.png");
+}
+.division.gold-1{
+    background-image: url("../images/divisions/gold-3.png");
+}
+.division.gold-2{
+    background-image: url("../images/divisions/gold-3.png");
+}
+.division.gold-3{
+    background-image: url("../images/divisions/gold-3.png");
+}
+.division.crystal-1{
+    background-image: url("../images/divisions/crystal-3.png");
+}
+.division.crystal-2{
+    background-image: url("../images/divisions/crystal-3.png");
+}
+.division.crystal-3{
+    background-image: url("../images/divisions/crystal-3.png");
+}
+.division.master-1{
+    background-image: url("../images/divisions/master-3.png");
+}
+.division.master-2{
+    background-image: url("../images/divisions/master-3.png");
+}
+.division.master-3{
+    background-image: url("../images/divisions/master-3.png");
+}
+.division.champion{
+    background-image: url("../images/divisions/champion.png");
+}
+
+/*
+TABLES
+*/
+.gold > img,
+.elixir > img,
+.d4rk-elixir > img{
+    width: 20px;
+}
+
+/*
 FULL TABLE
 }*/
 
@@ -70,3 +149,4 @@ FULL TABLE
 .info-player-attack .expendables h5{
     margin-left : 17px;
 }
+
