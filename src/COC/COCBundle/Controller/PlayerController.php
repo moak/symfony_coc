@@ -354,11 +354,11 @@ class PlayerController extends Controller
             'player'                => $player,
             'positions'             => $this->getPositions($player, $clan, $previousSeason),
             'form'                  => $form->createView(),
-            'myGold'                => $this->getMyGoldPerHour($player),
-            'myElixir'              => $this->getMyElixirPerHour($player),
-            'myDarkElixir'          => $this->getMyDarkElixirPerHour($player),
-            'maxDarkElixir'         => $this->getMaxDarkElixirPerHour($player),
-            'maxElixirGold'         => $this->getMaxGoldElixirPerHour($player),
+            'myGold'                => $this->perDay($this->getMyGoldPerHour($player)),
+            'myElixir'              => $this->perDay($this->getMyElixirPerHour($player)),
+            'myDarkElixir'          => $this->perDay($this->getMyDarkElixirPerHour($player)),
+            'maxDarkElixir'         => $this->perDay($this->getMaxDarkElixirPerHour($player)),
+            'maxElixirGold'         => $this->perDay($this->getMaxGoldElixirPerHour($player)),
             'players'               => $players
         ));
     }
@@ -416,5 +416,9 @@ class PlayerController extends Controller
             self::$production_by_mine_level[$player->getElixir7()]
         );
         return array_sum($temp);
+    }
+
+    private function perDay($val){
+        return $val*24 / 1000 . ' K';
     }
 }
