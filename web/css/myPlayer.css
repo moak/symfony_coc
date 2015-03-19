@@ -15,7 +15,6 @@ h2 > small > div.division{
     height: 25px;
     /*background-color: black;*/
     display:inline-block;
-    background-size: 100%;
     background-repeat: no-repeat;
 }
 
