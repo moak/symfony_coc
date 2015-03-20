@@ -10,22 +10,34 @@
     <link rel="stylesheet" href="{{ asset('css/myPlayer.css') }}" />
     <div class="container white-bg rounded-corners">
         <div class="row">
-            <div class="col-md-1 hidden-xs hidden-sm">
+
+            <div class="col-md-4">
+                <h2>
+                    <small>&nbsp;<div class="{{ player.trophy|division }} division"></div></small> {{ player.name }} <small>({{ player.level }})</small>
+                </h2>
+            </div>
+
+            <div class="col-md-4">
+
                 <div class="dropdown player text-nowrap">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">All players
+                    <button class="btn btn-default btn-primary btn-block" type="button" id="menu1" data-toggle="dropdown">
+                        {{ 'menu.select_player'|trans }}
                         <span class="caret"></span></button>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                    <ul class="dropdown-menu"  role="menu" aria-labelledby="menu1">
                         {% for player in players %}
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ path('coc_player', {'id_clan' : clan.id , 'id_player' :  player.id }) }}">{{ player.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
+
             </div>
-            <div class="col-md-11">
-                <h2>
-                    <small>&nbsp;<div class="{{ player.trophy|division }} division"></div></small> {{ player.name }} <small>({{ player.level }})</small>
-                    <small class="last-update pull-right hidden-xs hidden-sm">({{ 'player.last_update'|trans }} : {{ player.updatedAt|date('U')|timeago }})</small>
-                </h2>
+
+
+            <div class="col-md-4">
+
+                <h3 class="last-update pull-right hidden-xs hidden-sm"><small>({{ 'player.last_update'|trans }} : {{ player.updatedAt|date('U')|timeago }})</small></h3>
+
+
             </div>
 
         </div>
@@ -33,7 +45,7 @@
             <div class="row">
                 <div class="col-md-7">
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-5 ">
                             {% if player.picture.path is defined %}
                                 <div class="row">
                                     <div class="col-md-12 ">

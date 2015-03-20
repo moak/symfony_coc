@@ -8,6 +8,7 @@ form:
     my_picture: My picture
 
 menu:
+    select_player: Select a player
     total_per_season: Total per season
     current: Current
     previous: Last season
@@ -296,6 +297,8 @@ clan:
 
 
 label:
+    start_date: Starting date
+    chose_result: Select result
     or: OR
     name: Title
     link: Youtube address

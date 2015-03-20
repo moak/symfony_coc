@@ -103,7 +103,7 @@
                     <div class="panel panel-default" data-step="1" data-position='right' data-intro="{{ 'intro.step1'|trans }}">
                         <div class="panel-heading supercell-font">
                             {%  if clan.image.path is defined %}
-                                <img  class="" width="30" height="30" src="{{ asset('uploads/' ~ clan.image.path) }}" />
+                                <img  class="" width="30" height="30" src="{{ asset(clan.image.getWebPath(clan.id)) }}" />
                             {% endif  %}
                             {{ clan.name }}<p class="pull-right"><a href="{{ path('coc_wars', {'id_clan': clan.id}) }}">{{ 'war.wars'|trans }} <span class="badge">{{ numberWars }}</span></a></p>
                         </div>

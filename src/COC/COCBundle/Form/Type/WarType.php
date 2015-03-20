@@ -12,9 +12,9 @@ class WarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('start', 'datetime')
+            ->add('start', null, array('label'=> 'label.start_date', 'widget' => 'single_text',))
             ->add('result', 'choice', array(
-                'choices'   => array('0' => 'label.waiting', '2' => 'label.victory', '1' => 'label.defeat'),
+                'choices'   => array( '0' => 'label.waiting', '2' => 'label.victory', '1' => 'label.defeat'),
                 'required'  => false,
             ))
             ->add('opponent' , null, array('label'=> 'label.opponent'))

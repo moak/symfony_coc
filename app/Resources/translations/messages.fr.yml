@@ -7,6 +7,7 @@ form:
     my_base: Ma base
     my_picture: Ma photo
 menu:
+    select_player: Selectionner un joueur
     total_per_season: Total par saison
     current: En cours
     previous: Précédent
@@ -293,6 +294,8 @@ clan:
     total_trophies: Total trophés
 
 label:
+    start_date: Date de début
+    chose_result: Sélectionner résultat
     or: OU
     name: Titre
     link: Lien youtube

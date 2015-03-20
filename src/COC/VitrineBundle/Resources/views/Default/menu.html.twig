@@ -29,6 +29,10 @@
                         <li><a target="_blank" href="{{ path('admin', {'id_clan': app.user.clan.id }) }}">Admin clan</a></li>
                     {% endif %}
 
+                    {% if is_granted('ROLE_USER') and app.user.clan != null and app.user.player is defined %}
+                        <li><a href="{{ path('coc_player', {'id_clan' : app.user.clan.id , 'id_player' :  app.user.player.id }) }}"> {{ 'menu.my_player'|trans }}</a></li>
+                    {% endif %}
+
                     {% if app.user.clan is defined %}
                         <li><a href="{{ path('coc', {'id_clan' : app.user.clan.id }) }}"><b>{{ 'vitrine.my_clan'|trans }}</b></a></li>
                         <li class="dropdown">

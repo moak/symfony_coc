@@ -59,7 +59,7 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label">{{ 'clan.image'|trans }}</label>
                             <div class="col-sm-8">
-                                <img  class="img-responsive" src="{{ asset('uploads/' ~ clan.image.path) }}" />
+                                <img  class="img-responsive" src="{{ asset(clan.image.getWebPath(clan.id)) }}" />
                             </div>
                         </div>
                     {% endif %}
@@ -123,7 +123,7 @@
 
             <div class="form-group">
                 <div class="col-sm-12 text-center">
-                    {{ form_widget(form.save, {'attr': {'class': 'btn btn-lg btn-primary'}}) }}
+                    {{ form_widget(form.save, {'attr': {'class': 'btn btn-standard btn-primary'}}) }}
                 </div>
             </div>
             {{ form_rest(form) }}

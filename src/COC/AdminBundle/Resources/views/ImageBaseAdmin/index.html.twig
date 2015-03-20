@@ -36,7 +36,7 @@
                                 </h3>
                             </div>
                             <div class="panel-body">
-                                <img  class="img-responsive" src="{{ asset('uploads/' ~ image.image.path) }}" />
+                                <img  class="img-responsive" src="{{ asset(image.image.getWebPath(clan.id)) }}" />
                             </div>
                             <div class="panel-footer supercell-font">
                                 <p>
