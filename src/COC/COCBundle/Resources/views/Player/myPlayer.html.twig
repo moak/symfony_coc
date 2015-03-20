@@ -37,8 +37,8 @@
                             {% if player.picture.path is defined %}
                                 <div class="row">
                                     <div class="col-md-12 ">
-                                        <a rel="gallery-1 "  href="{{ asset(player.picture.getWebPath(clan)) }}" class="swipebox text-center" title="">
-                                            <img  class="img-responsive " src="{{ asset(player.picture.getWebPath(clan)) }}" />
+                                        <a rel="gallery-1 "  href="{{ asset(player.picture.getWebPath(clan.id)) }}" class="swipebox text-center" title="">
+                                            <img  class="img-responsive " src="{{ asset(player.picture.getWebPath(clan.id)) }}" />
                                         </a>
                                     </div>
                                 </div>
@@ -186,8 +186,8 @@
                     {% endif %}
                     <br>
                     {% if player.base.path is defined %}
-                        <a rel="gallery-1"  href="{{ asset(player.base.getWebPath(clan)) }}" class="swipebox" title="">
-                            <img  class="img-responsive"src="{{ asset(player.base.getWebPath(clan)) }}" />
+                        <a rel="gallery-1"  href="{{ asset(player.base.getWebPath(clan.id)) }}" class="swipebox" title="">
+                            <img  class="img-responsive"src="{{ asset(player.base.getWebPath(clan.id)) }}" />
                         </a>
                     {% else %}
                         <img class="img-responsive" src="{{ asset('images/non_available.jpg') }}" />

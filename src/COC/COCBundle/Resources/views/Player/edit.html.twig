@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="col-sm-4 hidden-sm hidden-xs">  {{ form_widget(form.base, {'attr': {'class': 'filestyle test block'}}) }}
                                         {% if player.base.path is defined %}
-                                            <img  class="img-responsive" src="{{ asset(player.base.getWebPath(clan)) }}" />
+                                            <img  class="img-responsive" src="{{ asset(player.base.getWebPath(clan.id)) }}" />
                                         {% endif %}
                                     </div>
                                 </div>

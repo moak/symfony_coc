@@ -222,7 +222,7 @@ class PlayerController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
-            $player->getBase()->setClan($clan->getId());
+            $player->getBase()->setIdclan($clan->getId());
 
          // $player->getPicture()->preUpload();
 
@@ -340,7 +340,7 @@ class PlayerController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
-            $player->getPicture()->setClan($clan->getId());
+            $player->getPicture()->setIdclan($clan->getId());
             $em->persist($player);
             $em->flush();
         }

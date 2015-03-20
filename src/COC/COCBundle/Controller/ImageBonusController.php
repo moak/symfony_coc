@@ -97,7 +97,7 @@ class ImageBonusController extends Controller
 
             $image->setUser($this->getUser());
             $image->setClan($clan);
-            $image->getImage()->setClan($clan->getId());
+            $image->getImage()->setIdclan($clan->getId());
 
 
             $em->persist($image);

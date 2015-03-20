@@ -124,7 +124,7 @@ class ImageBaseController extends Controller
 
             $image->setClan($clan);
 
-            $image->getImage()->setClan($clan->getId());
+            $image->getImage()->setIdclan($clan->getId());
 
             $em->persist($image);
             $em->flush();

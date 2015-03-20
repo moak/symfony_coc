@@ -3,9 +3,8 @@
     <div class="col-md-12">
     {% if images|length != 0 %}
         <h3><a href="{{ path('coc_images_base_category', {'id': hall_town , 'id_clan': clan.id }) }}">{{ 'player.hall_town'|trans }} {{ hall_town }}</a>
-
         </h3>
-
+        <div class="row">
         {% for image in images %}
             <div class="col-sm-6 col-md-4">
                 <div class="panel panel-default">
@@ -13,10 +12,11 @@
                         <h3 class="panel-title">Base {{ loop.index }}</h3>
                     </div>
                     <div class="panel-body">
-                        <a rel="gallery-1"  href="{{ asset(image.image.getWebPath(clan)) }}" class="swipebox" title="">
-                            <img  class="img-responsive" src="{{ asset(image.image.getWebPath(clan)) }}" />
+                        <a rel="gallery-1"  href="{{ asset(image.image.getWebPath(clan.id)) }}" class="swipebox" title="">
+                            <img  class="img-responsive" src="{{ asset(image.image.getWebPath(clan.id)) }}" />
                         </a>
                     </div>
+                </div>
                 </div>
             </div>
         {% endfor %}

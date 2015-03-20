@@ -67,7 +67,7 @@ class Image
      */
     private $path;
 
-    
+
     public $file;
 
     private $idclan;
