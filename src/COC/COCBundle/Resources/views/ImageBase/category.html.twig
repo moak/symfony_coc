@@ -10,7 +10,7 @@
         <h1 class="page-header">{{ 'menu.ht'|trans }} {{ hall_town }}  <a class="btn btn-lg btn-primary pull-right" href="{{ path('coc_images_base_add', {'id_clan': clan.id }) }}"> {{ 'menu.base_add'|trans }}</a></h1>
 
         <br>
-        <div class="row">
+
             {% if images|length != 0 %}
                 {% for image in images %}
                     <div class="col-sm-6 col-md-4">
@@ -37,7 +37,7 @@
                 {% endfor %}
             {% endif %}
         </div>
-    </div>
+
 
 
     <!-- /.container -->
