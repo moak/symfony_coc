@@ -84,6 +84,7 @@ $( document ).ready(function(){
 
     // activation / desactivation des tr en plus (MINI VERSION)
     $( "body" ).on( "click", ".expand-mini", function() {
+        alert('test');
         var tr = $(this).closest('tr');
         var row = table_mini.row( tr );
 
