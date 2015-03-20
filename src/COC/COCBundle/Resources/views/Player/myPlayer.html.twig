@@ -37,14 +37,15 @@
                             {% if player.picture.path is defined %}
                                 <div class="row">
                                     <div class="col-md-12 ">
-                                        <a rel="gallery-1 "  href="{{ asset(player.picture.getWebPath(clan.id)) }}" class="swipebox text-center" title="">
-                                            <img  class="img-responsive " src="{{ asset(player.picture.getWebPath(clan.id)) }}" />
+                                        <a rel="gallery-1 "  href="{{ asset(player.picture.getWebPath(clan.id)) }}" class="swipebox" title="">
+                                            <img  class="img-responsive" src="{{ asset(player.picture.getWebPath(clan.id)) }}" />
                                         </a>
                                     </div>
                                 </div>
                             {% else %}
                                 <img class="img-responsive" src="{{ asset('images/non_available_picture.jpg') }}" />
                             {% endif %}
+                            <br>
                             {% if app.user.player.id is defined and app.user.player.id == player.id %}
                                 <div class="row">
                                     <div class="col-xs-6">
@@ -67,15 +68,13 @@
                         </div>
                         <div class="col-md-7">
                             <div class="row info ">
-                                <div class="col-md-12">
-                                    <h2><i class="fa fa-area-chart"></i> {{ player.total }}  <small class="pull-right"> {{ positions['total']}} {{ positions['total']|position }} </small></h2>
-                                </div>
+
                                 <table class="table table-bordered table-striped table-condensed">
                                     <thead>
                                     <tr>
-                                        <th>Total per seasons</th>
-                                        <th class="text-center"  colspan="2" >Previous </th>
-                                        <th class="text-center">Current</th>
+                                        <th>{{ 'menu.total_per_season'|trans }}</th>
+                                        <th class="text-center"  colspan="2" >{{ 'menu.previous'|trans }} </th>
+                                        <th class="text-center">{{ 'menu.current'|trans }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -159,18 +158,18 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="text-nowrap gold" scope="row"><img src="{{ asset('images/gold-32.png') }}" /> Gold</td>
+                                            <td class="text-nowrap gold" scope="row"><img src="{{ asset('images/gold-32.png') }}" /> {{ 'form.gold'|trans }}</td>
                                             <td class="text-muted small text-center"><b>{{ myGold }}</b> </td>
                                             <td class="text-muted small text-center"><b>{{ maxElixirGold }}</b> </td>
                                         </tr>
 
                                         <tr>
-                                            <td class="text-nowrap elixir" scope="row"><img src="{{ asset('images/elixir-32.png') }}" /> Elixir</td>
+                                            <td class="text-nowrap elixir" scope="row"><img src="{{ asset('images/elixir-32.png') }}" /> {{ 'form.elixir'|trans }}</td>
                                             <td class="text-muted small text-center"><b>{{ myElixir }}</b> </td>
                                             <td class="text-muted small text-center"><b>{{ maxElixirGold }}</b> </td>
                                         </tr>
                                         <tr>
-                                            <td class="text-nowrap d4rk-elixir" scope="row"><img src="{{ asset('images/d4rk-elixir-32.png') }}" /> D4rk Elixir</td>
+                                            <td class="text-nowrap d4rk-elixir" scope="row"><img src="{{ asset('images/d4rk-elixir-32.png') }}" /> {{ 'form.dark_elixir'|trans }}</td>
                                             <td class="text-muted  small text-center"><b> {{ myDarkElixir }} </b> </td>
                                             <td class="text-muted small text-center"><b>{{ maxDarkElixir }}</b> </td>
                                         </tr>
@@ -181,10 +180,12 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    {% if app.user.player.id is defined and app.user.player.id == player.id %}
-                        <a class="btn btn-primary btn-block" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_base'|trans }}</b></a>
-                    {% endif %}
-                    <br>
+
+
+                    <div class="col-md-12">
+                        <h2><i class="fa fa-area-chart"></i> {{ player.total }}  <small class="pull-right"> {{ positions['total']}} {{ positions['total']|position }} </small></h2>
+                    </div>
+
                     {% if player.base.path is defined %}
                         <a rel="gallery-1"  href="{{ asset(player.base.getWebPath(clan.id)) }}" class="swipebox" title="">
                             <img  class="img-responsive"src="{{ asset(player.base.getWebPath(clan.id)) }}" />
@@ -192,12 +193,13 @@
                     {% else %}
                         <img class="img-responsive" src="{{ asset('images/non_available.jpg') }}" />
                     {% endif %}
-
-
-
+                    <br>
+                    {% if app.user.player.id is defined and app.user.player.id == player.id %}
+                        <a class="btn btn-primary btn-block" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_base'|trans }}</b></a>
+                    {% endif %}
                 </div>
             </div>
-            <hr />
+
             <div class="row">
                 <div class="col-md-12">
                     <h3>Information</h3>

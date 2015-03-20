@@ -1,12 +1,16 @@
 form:
     gold: Gold
     elixir: Elexir
+    dark_elixir: Dark elexir
     image: Image *
     title: Title *
     my_base: My base
     my_picture: My picture
 
 menu:
+    total_per_season: Total per season
+    current: Current
+    previous: Last season
     edit_base: Modify my base
     clan_parameters: Parameters clan
     my_account: My account
@@ -281,10 +285,13 @@ clan:
     image_upload: Upload clan image
     parameters: Parameters clan
     recruitment: Recruitment status
-    total_points: Oh My Clan points
+    total_points: Points OMC
     total_attackWon: Total attacks won
+    total_attackWon_mobile: Total att
     total_troopReceived: Total troops received
+    total_troopReceived_mobile: Total rec
     total_troopSent: Total troops sent
+    total_troopSent_mobile: Total sent
     total_trophies: Total trophies
 
 
@@ -294,6 +301,7 @@ label:
     link: Youtube address
     create: Create
     update: Update
+    modify: Modify
     save: Save
     site_visible: Site public (visible for visitors)
     site_invisible: Site private (invisible for visitors)

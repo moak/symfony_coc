@@ -11,13 +11,12 @@
     <!-- Page Content -->
     <div class="container white-bg rounded-corners">
 
-        <h2>{{ 'menu.bonus'|trans }}</h2>
-        <hr>
+        <h1 class="page-header">{{ 'menu.bonus'|trans }}
+            {% if app.user is defined and app.user.clan.id == clan.id  %}
+                <a class="btn btn-normal btn-primary pull-right btn-lg" href="{{ path('coc_imageBonus_add', {'id_clan': clan.id }) }}">{{ 'menu.bonus_add'|trans }}</a>
+            {% endif %}
+        </h1>
 
-        {% if app.user is defined and  app.user.clan is defined %}
-
-            <a class="btn btn-normal btn-primary btn-lg" href="{{ path('coc_imageBonus_add', {'id_clan': clan.id }) }}">{{ 'menu.bonus_add'|trans }}</a>
-        {% endif %}
         <div class="row">
             <br>
             {% if images|length != 0 %}

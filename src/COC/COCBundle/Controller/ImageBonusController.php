@@ -87,13 +87,9 @@ class ImageBonusController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
-
             $clan->setUpdated(new \Datetime());
             $em->persist($clan);
             $em->flush();
-
-            var_dump($this->getUser());
-            die();
 
             $image->setUser($this->getUser());
             $image->setClan($clan);

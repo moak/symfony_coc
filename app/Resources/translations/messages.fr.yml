@@ -1,11 +1,15 @@
 form:
     gold: Or
     elixir: Elexir
+    dark_elixir: Elixir noir
     image: Image *
     title: Titre *
     my_base: Ma base
     my_picture: Ma photo
 menu:
+    total_per_season: Total par saison
+    current: En cours
+    previous: Précédent
     edit_base: Modifier ma base
     clan_parameters: Paramètres du clan
     my_account: Mon compte
@@ -279,10 +283,13 @@ clan:
     image_upload: Upload image de clan
     parameters: Paramètres du clan
     recruitment: Recrutement
-    total_points: Points Oh My Clan
+    total_points: Points OMC
     total_attackWon: Total attaques gagnées
+    total_attackWon_mobile: Total att
     total_troopReceived: Total troupes recues
+    total_troopReceived_mobile: Total rec
     total_troopSent: Total troupes envoyées
+    total_troopSent_mobile: Total env
     total_trophies: Total trophés
 
 label:
