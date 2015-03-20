@@ -82,10 +82,9 @@ $( document ).ready(function(){
         }
     });
 
-    
+
     // activation / desactivation des tr en plus (MINI VERSION)
     $('.expand-mini').on('click touchstart',function(){
-        alert('test');
         var tr = $(this).closest('tr');
         var row = table_mini.row( tr );
 
