@@ -136,3 +136,7 @@ MINI TABLE
 .datatable-mini th{
     text-align: center;
 }
+
+.expand{
+    cursor: pointer;
+}
