@@ -114,9 +114,11 @@
 
 
     <section class="steps">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h1 class="title-vitrine text-center supercell-font">{{ 'vitrine.how'|trans }}</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="title-vitrine text-center supercell-font">{{ 'vitrine.how'|trans }}</h1>
+                </div>
             </div>
         </div>
 
@@ -146,7 +148,7 @@
             <h2 class="text-center">Best clans</h2>
             <br>
             <div class="row text-center">
-                <table class="table ">
+                <table class="table table-condensed table-mini table-responsive">
                     <thead>
                     <tr>
                         <th class="supercell-font white-on-black text-center"><i class="fa fa-star-o fa-lg hidden-sm hidden-xs"></i><i class="fa fa-star-half-o fa-lg hidden-sm hidden-xs"></i><i class="fa fa-star fa-lg"></i></th>
@@ -195,12 +197,12 @@
                     <tbody>
                     {% if clans|length != 0 %}
                         {% for clan in clans %}
-                            <tr>
+                            <tr class="clan">
                                 <td class="supercell-font white-on-black text-center">{{ loop.index }} {% if loop.index == 1 %}<i class="fa fa-trophy"></i>{% endif %} </td>
                                 {% if clan.privacy == 0 %}
                                     <td class="supercell-font white-on-black text-center"><a href="{{ path('coc', {'id_clan' : clan.id }) }}"> {{ clan.name }}</a></td>
                                 {% else %}
-                                    <td class="supercell-font white-on-black text-center">{{ clan.name }}</td>
+                                    <td class="supercell-font white-on-black text-center"><span>{{ clan.name }}</span></td>
                                 {% endif %}
                                 <td class="supercell-font white-on-black text-center">{{ clan.nbMember }}</td>
                                 <td class="supercell-font white-on-black text-center">{{ clan.total|round }}</td>

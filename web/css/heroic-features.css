@@ -1,3 +1,7 @@
+
+
+
+
 /*!
  * Start Bootstrap - Heroic Features HTML Template (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
@@ -186,10 +190,11 @@ footer
 
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {
-    img {
+    .content-section-a img ,
+    .content-section-b img {
         display: block;
         margin-left: auto;
-        margin-right: auto
+        margin-right: auto;
     }
 }
 
@@ -199,10 +204,11 @@ footer
 @media (max-width: 480px)
 {
 
-    img {
+    .content-section-a img ,
+    .content-section-b img {
         display: block;
         margin-left: auto;
-        margin-right: auto
+        margin-right: auto;
     }
     label
     {
