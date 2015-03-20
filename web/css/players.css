@@ -140,4 +140,5 @@ MINI TABLE
 .expand-mini,
 .expand{
     cursor: pointer;
+    color: black;
 }

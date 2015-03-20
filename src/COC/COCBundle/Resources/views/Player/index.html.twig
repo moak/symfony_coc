@@ -370,9 +370,9 @@
                     <tr data-name="{{ player.name }}" class="positionable">
                 {% endif %}
                 <td class="position"></td>
-                <td><span class="expand-mini" data-name="{{ player.name }}">{{ player.name }} ({{ player.level }})</span></td>
-                <td><span class="expand-mini" data-name="{{ player.name }}">{{ player.hallTown }}</span></td>
-                <td><span class="expand-mini" data-name="{{ player.name }}">{{ player.total|round }}</span></td>
+                <td><a class="expand-mini" data-name="{{ player.name }}">{{ player.name }} ({{ player.level }})</a></td>
+                <td><a class="expand-mini" data-name="{{ player.name }}">{{ player.hallTown }}</a></td>
+                <td><a class="expand-mini" data-name="{{ player.name }}">{{ player.total|round }}</a></td>
                 </tr>
             {% endfor %}
         {% endif %}
