@@ -137,6 +137,7 @@ MINI TABLE
     text-align: center;
 }
 
+.expand-mini,
 .expand{
     cursor: pointer;
 }
