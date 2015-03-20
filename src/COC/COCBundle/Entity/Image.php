@@ -67,9 +67,7 @@ class Image
      */
     private $path;
 
-    /**
-     * @Assert\File(maxSize="4M", maxSizeMessage = "The maximimum allowed file size is 4MB.")
-     */
+
     public $file;
 
     private $idclan;
