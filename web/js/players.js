@@ -67,7 +67,7 @@ $( document ).ready(function(){
         var row = table.row( tr );
 
         if ( row.child.isShown() ) {
-            $(this).removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign');
+            $(this).removeClass('glyphicon-minus-sign').addClass('glyphicon-plus-sign'); // test
             // This row is already open - close it
             row.child.hide();
             tr.removeClass('shown');
