@@ -1,3 +1,16 @@
+/*
+BY FLO
+*/
+.clan a{
+    color: white;
+}
+.clan span{
+    color: rgba(200,200,200,.8);
+}
+
+.table-mini td{
+    font-size: .7em;
+}
 
 body
 {
