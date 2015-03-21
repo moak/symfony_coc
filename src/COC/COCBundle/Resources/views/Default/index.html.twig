@@ -21,21 +21,27 @@
                     {%  if app.user.player is defined %}
                         {% if app.user.player.clan is defined  %}
                             {% if app.user.player.clan.id == clan.id  %}
-                                <a class="btn btn-large btn-block btn-primary supercell-font" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_player'|trans }}</b></a>
-                            {% endif %}
+
+                                <a class="btn btn-large btn-block btn-primary supercell-font"  href="{{ path('coc_player', {'id_clan' : app.user.clan.id , 'id_player' :  app.user.player.id }) }}"> {{ 'menu.my_player'|trans }}</a>
+                                <br>
+
+                                <a class="btn btn-large btn-block btn-success supercell-font" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_player'|trans }}</b></a>
+
+
                         {% endif %}
-                    {% endif %}
+                        {% endif %}
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-        {% endif %}
+            {% endif %}
 
-    <br>
+            <br>
 
 
-        {% if is_granted('ROLE_USER') %}
-            {% if  app.user.clan.id == clan.id and app.user.player == null  %}
-                <div class="row visible-xs visible-sm hidden-md hidden-lg">
-                    <div class="col-sm-12 text-center">
+            {% if is_granted('ROLE_USER') %}
+                {% if  app.user.clan.id == clan.id and app.user.player == null  %}
+                    <div class="row visible-xs visible-sm hidden-md hidden-lg">
+                        <div class="col-sm-12 text-center">
                          <p class="supercell-font" href=""><b>{{ 'account.waiting'|trans }}</b></p>
                     </div>
                 </div>
