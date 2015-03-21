@@ -351,10 +351,10 @@
     <table class="hidden-lg hidden-md table table-striped table-condensed datatable-mini">
         <thead>
         <tr>
-            <th class="supercell-font">#<br/></th>
-            <th class="supercell-font">{{ 'player.name'|trans }}<br/></th>
-            <th class="supercell-font">{{ 'player.ht'|trans }}<br/></th>
-            <th class="supercell-font">Tot<br/></th>
+            <th class="">#<br/></th>
+            <th class="">{{ 'player.name'|trans }}<br/></th>
+            <th class="">{{ 'player.ht'|trans }}<br/></th>
+            <th class="">Def/Att<br/></th>
         </tr>
         </thead>
 
@@ -372,7 +372,7 @@
                 <td class="position"></td>
                 <td><a class="expand-mini" data-name="{{ player.name }}" href="#">{{ player.name }} ({{ player.level }})</a></td>
                 <td><a class="expand-mini" data-name="{{ player.name }}" href="#">{{ player.hallTown }}</a></td>
-                <td><a class="expand-mini" data-name="{{ player.name }}" href="#">{{ player.total|round }}</a></td>
+                <td><a class="expand-mini" data-name="{{ player.name }}" href="#">{{ player.totalDefence|round }} / {{ player.totalAttack|round }}</a></td>
                 </tr>
             {% endfor %}
         {% endif %}

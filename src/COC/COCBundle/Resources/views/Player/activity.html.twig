@@ -47,7 +47,7 @@
     </div>
 
 
-    <table class="table table-responsive table-striped activity ">
+    <table class="table table-responsive table-striped activity hidden-xs hidden-sm ">
         <thead>
             <tr>
                 <th class="supercell-font">#</th>
@@ -96,6 +96,38 @@
             </tr>
         {% endif %}
         </tbody>
+    </table>
+
+    <table class="hidden-lg hidden-md table table-striped table-condensed datatable-mini">
+        <thead>
+        <tr>
+            <th class="">#<br/></th>
+            <th class="">{{ 'player.name'|trans }}<br/></th>
+            <th class="">Att<br/></th>
+            <th class="">Troph<br/></th>
+            <th class="">R/S<br/></th>
+        </tr>
+        </thead>
+
+        {% if players|length != 0 %}
+            {% for player in players %}
+                {%  if app.user.player.id is defined %}
+                    {%  if app.user.player.id == player.id %}
+                    <tr data-name="{{ player.name }}" class="positionable active">
+                    {% else %}
+                        <tr data-name="{{ player.name }}" class="positionable">
+                    {% endif %}
+                {% else %}
+                    <tr data-name="{{ player.name }}" class="positionable">
+                {% endif %}
+                <td class="position"></td>
+                <td><a class="expand-mini" data-name="{{ player.name }}" href="#">{{ player.name }} ({{ player.level }})</a></td>
+                <td><a class="expand-mini" data-name="{{ player.name }}" href="#">{{ player.attackWon }}</a></td>
+                <td><a class="expand-mini" data-name="{{ player.name }}" href="#">{{ player.trophy }}</a></td>
+                <td><a class="expand-mini" data-name="{{ player.name }}" href="#">{{ player.troopReceived }}/{{ player.troopSent }}</a></td>
+                </tr>
+            {% endfor %}
+        {% endif %}
     </table>
     <hr>
 
