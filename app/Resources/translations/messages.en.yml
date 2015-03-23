@@ -8,12 +8,15 @@ form:
     my_picture: My picture
 
 menu:
+    receivedSent: Sent / Received
+    totalReceivedSent: Total troops  sent/rec
     select_player: Select a player
     total_per_season: Total per season
+    stats_per_season: Stats per saison
     current: Current
     previous: Last season
     edit_base: Modify my base
-    clan_parameters: Parameters clan
+    clan_parameters: Configuration clan
     my_account: My account
     my_player: My player
     go_site: Go on website
@@ -94,6 +97,14 @@ menu:
     edit_activity: Edit activity current season
     account_number: Number of accounts
     waiting: waiting
+    admin_video: Admin videos
+    admin_bestAttack: Admin best attacks
+    admin_bonus: Admin bonus
+    admin_base: Admin bases
+    admin_activity: Admin activity
+    admin_players: Admin players
+
+
 
 
 button:
@@ -225,7 +236,7 @@ video:
     published: Published
 
 coc:
-    launch_demo: Launch demo
+    launch_demo: Visit demo
     message: Clan message
     ranking: Players ranking
     visit_ranking: Display all players
@@ -242,7 +253,7 @@ vitrine:
     create_clan2 : Easy way to manage your clan
     create_clan: Create clan
     join_clan: Join a clan
-    demo: Try the demo !
+    demo: Visit the demo's clan !
     step1_title: Create the clan
     step1_description: Create your Clash of Clans website in one click and access to loads of different features to improve your clan and get more fun with your friends.
     step2_title: Create the players

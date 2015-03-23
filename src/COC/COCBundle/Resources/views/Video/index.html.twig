@@ -11,7 +11,25 @@
     <!-- Page Content -->
     <div class="container white-bg rounded-corners">
 
-        <h1 class="page-header">{{ 'menu.video'|trans }} <a class="btn btn-normal btn-primary btn-lg pull-right" href="{{ path('coc_video_add', {'id_clan': clan.id } ) }}">{{ 'menu.video_add'|trans }}</a></h1>
+        <h1 class="page-header">
+
+            {{ 'menu.video'|trans }}
+
+            {% if is_granted('ROLE_ADMIN') and app.user.clan == clan %}
+                <a class="btn btn-normal btn-success btn-normal" href="{{ path('admin_videos', {'id_clan': clan.id } ) }}">{{ 'menu.admin_video'|trans }}</a>
+            {% endif %}
+
+            {%  if app.user is defined  %}
+                {% if app.user.player.clan is defined and app.user.player is defined  %}
+                    {% if app.user.player.clan == clan %}
+                        <a class="btn btn-normal btn-primary btn-lg pull-right" href="{{ path('coc_video_add', {'id_clan': clan.id } ) }}">{{ 'menu.video_add'|trans }}</a>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+
+
+
+        </h1>
 
         <div class="row">
             <br>

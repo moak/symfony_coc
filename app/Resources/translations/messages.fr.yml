@@ -7,8 +7,11 @@ form:
     my_base: Ma base
     my_picture: Ma photo
 menu:
+    receivedSent: Env / Reçues
+    totalReceivedSent: Total troupes env / reçes
     select_player: Selectionner un joueur
     total_per_season: Total par saison
+    stats_per_season: Stats par saison
     current: En cours
     previous: Précédent
     edit_base: Modifier ma base
@@ -93,6 +96,13 @@ menu:
     edit_activity: Editer l'activité de la saison en cours
     account_number: Nombre de comptes
     waiting: en attente
+    admin_video: Admin videos
+    admin_bestAttack: Admin meilleures attaques
+    admin_bonus: Admin bonus
+    admin_base: Admin bases
+    admin_activity: Admin activité
+    admin_players: Admin joueurs
+
 
 button:
     add_player: Nouveau joueur
@@ -100,8 +110,8 @@ button:
 action:
     edit: Editer
     delete: Supprimer
-    set_admin : Donner droit leader
-    set_user : Donner droit utilisateur
+    set_admin : Donner access admin OMC
+    set_user : Retirer access admin OMC
 
 notFound: Aucun résultat trouvé.
 notPlayerFound: Aucun joueur trouvé.
@@ -222,7 +232,7 @@ video:
     published: Publiée
 
 coc:
-    launch_demo: Essayer la démo !
+    launch_demo: Visiter le clan démo !
     message: Message de clan
     ranking: Classement des joueurs
     visit_ranking: Afficher tous les joueurs

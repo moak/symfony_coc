@@ -22,6 +22,19 @@ class ClanRepository extends EntityRepository
         return count($qb->getQuery()->getResult());
     }
 
+    public function getDifferenceTroops($id)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->select('p')
+            ->where('p.id = :id')
+            ->orderBy('p.totalTroopSent - p.totalTroopReceived', 'DESC')
+            ->setParameter('id', $id)
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
+
+
     public function getPosition($clan, $order_by)
     {
         $query = $this->_em->createQuery('SELECT c.name, SUM(p.total) as total, COUNT(p.id) as nbMember, SUM(p.attackWon) as attackWon, SUM(p.troopSent) as troopSent, SUM(p.troopReceived) as troopReceived

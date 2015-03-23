@@ -11,8 +11,18 @@
 <div class="container white-bg rounded-corners">
 
     <h1 class="page-header">{{ 'menu.bestAttacks'|trans }}
-        {% if app.user is defined and app.user.clan.id == clan.id  %}
-            <a class="btn btn-normal btn-primary pull-right btn-lg" href="{{ path('coc_imageBestAttack_add' , {'id_clan': clan.id }) }}">{{ 'menu.bestAttack_add'|trans }}</a>
+
+        {% if is_granted('ROLE_ADMIN') and app.user.clan == clan %}
+            <a class="btn btn-normal btn-success btn-normal" href="{{ path('admin_bestAttacks', {'id_clan': clan.id } ) }}">{{ 'menu.admin_bestAttack'|trans }}</a>
+        {% endif %}
+
+
+        {%  if app.user is defined  %}
+            {% if app.user.player.clan is defined and app.user.player is defined  %}
+                {% if app.user.player.clan == clan %}
+                    <a class="btn btn-normal btn-primary pull-right btn-lg" href="{{ path('coc_imageBestAttack_add' , {'id_clan': clan.id }) }}">{{ 'menu.bestAttack_add'|trans }}</a>
+                {% endif %}
+            {% endif %}
         {% endif %}
 
     </h1>

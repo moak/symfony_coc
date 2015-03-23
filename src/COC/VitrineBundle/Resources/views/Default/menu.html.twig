@@ -48,10 +48,14 @@
                     {% endif %}
                 {% else %}
                     <li class="page-scroll">
-                        <a href="{{ path('fos_user_registration_register', {'type' : 'create'}) }}"><i class="fa fa-check-circle"></i> {{ 'vitrine.create_clan'|trans }}</a>
+                        <a href="{{ path('fos_user_registration_register', {'type' : 'create'}) }}">{{ 'vitrine.create_clan'|trans }}</a>
+                    </li>
+
+                    <li class="page-scroll">
+                        <a href="{{ path('fos_user_registration_register', {'type' : 'join'}) }}">{{ 'vitrine.join_clan'|trans }}</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="{{ path('fos_user_security_login') }}">Login  <i class="fa fa-user"></i></a>
+                        <a href="{{ path('fos_user_security_login') }}">Login</a>
                     </li>
                 {% endif %}
 

@@ -84,7 +84,7 @@
                                 <table class="table table-bordered table-striped table-condensed">
                                     <thead>
                                     <tr>
-                                        <th>{{ 'menu.total_per_season'|trans }}</th>
+                                        <th>{{ 'menu.stats_per_season'|trans }}</th>
                                         <th class="text-center"  colspan="2" >{{ 'menu.previous'|trans }} </th>
                                         <th class="text-center">{{ 'menu.current'|trans }}</th>
                                     </tr>
@@ -108,7 +108,7 @@
                                         </tr>
 
                                         <tr>
-                                            <td class="text-nowrap trophy" scope="row"><img src="{{ asset('images/trophy.png') }}" /> {{ 'player.trophy'|trans }}</td>
+                                            <td class="text-nowrap trophy" scope="row"><i class="fa fa-trophy"></i> {{ 'player.trophy'|trans }}</td>
                                             <td class="text-muted small text-center">
                                                 {% if playerPreviousSeason.trophy is defined %}
                                                     {{ playerPreviousSeason.trophy }}
@@ -125,37 +125,20 @@
                                         </tr>
 
                                         <tr>
-                                            <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.troopSent'|trans }}</td>
+                                            <td class="text-nowrap" scope="row"><i class="fa fa-exchange"></i> {{ 'menu.receivedSent'|trans }}</td>
                                             <td class="text-muted small text-center">
-                                                {% if playerPreviousSeason.troopSent is defined %}
-                                                    {{ playerPreviousSeason.troopSent }}
+                                                {% if playerPreviousSeason.troopReceived is defined and playerPreviousSeason.troopSent is defined  %}
+                                                    {{ playerPreviousSeason.troopSent }} / {{ playerPreviousSeason.troopReceived }}
                                                 {% else %}
                                                     -
                                                 {% endif %}
                                             </td>
                                             <td class="text-muted small text-center">
-                                                {%  if positions['troopSent'] is defined %}
-                                                    {{ positions['troopSent']}} {{ positions['troopSent']|position }}
+                                                {%  if positions['troop'] is defined %}
+                                                    {{ positions['troop']}} {{ positions['troop']|position }}
                                                 {% endif%}
                                             </td>
-                                            <td class="text-nowrap small text-center">{{ player.troopSent }}</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td class="text-nowrap" scope="row"><i class="fa fa-rocket"></i> {{ 'player.troopReceived'|trans }}</td>
-                                            <td class="text-muted small text-center">
-                                                {% if playerPreviousSeason.troopReceived is defined %}
-                                                    {{ playerPreviousSeason.troopReceived }}
-                                                {% else %}
-                                                    -
-                                                {% endif %}
-                                            </td>
-                                            <td class="text-muted small text-center">
-                                                {%  if positions['troopReceived'] is defined %}
-                                                    {{ positions['troopReceived']}} {{ positions['troopReceived']|position }}
-                                                {% endif%}
-                                            </td>
-                                            <td class="text-nowrap small text-center">{{ player.troopReceived }}</td>
+                                            <td class="text-nowrap small text-center">{{ player.troopSent }} / {{ player.troopReceived }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -163,7 +146,7 @@
                                 <table class="table table-bordered table-striped table-condensed">
                                     <thead>
                                         <tr>
-                                            <th></th>
+                                            <th>{{ 'chart.ressource'|trans }}</th>
                                             <th class="text-center">{{ 'player.quantity_per_day'|trans }}</th>
                                             <th class="text-center">{{ 'player.quantity_max_per_day'|trans }}</th>
                                         </tr>
@@ -213,12 +196,10 @@
             </div>
 
             <div class="row">
-                <div class="col-md-12">
-                    <h3>Information</h3>
-                </div>
+
                 <div class="col-md-8 info-player-defence">
                     <div class="row">
-                        <span class="supercell-font white-on-black exp-title clearfix expand-title">{{ 'player.defence'|trans }}</span>
+                        <h3 class="supercell-font exp-title clearfix expand-title">{{ 'player.defence'|trans }}</h3>
                         <!-- CAONNONS -->
                         {% if player.canon1 != 0 %}
                             <div class="col-md-6 cannon">
@@ -321,7 +302,8 @@
                 </div>
                 <div class="col-md-4 info-player-ressources">
                     <div class="row">
-                        <span class="supercell-font white-on-black clearfix expand-title">{{ 'player.ressources'|trans }}</span>
+                        <h3 class="supercell-font exp-title clearfix expand-title">{{ 'player.ressources'|trans }}</h3>
+
                         <!-- GOLD -->
                         {% if player.gold1 != 0 %}
                             <div class="col-md-12 gold">
@@ -369,7 +351,7 @@
             <div class="row info-player-attack"><br />
                 <div class="col-md-12">
                     <div class="row">
-                        <span class="supercell-font white-on-black clearfix expand-title">{{ 'player.labotory'|trans }}</span>
+                        <h3 class="supercell-font exp-title clearfix expand-title">{{ 'player.attack'|trans }}</h3>
                         <div class="col-md-12">
                             <div class="portrait">
                                 <div>{% if player.king != 0 %}{{player.king}}{% endif %}</div>

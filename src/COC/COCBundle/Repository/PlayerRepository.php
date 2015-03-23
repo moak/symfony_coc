@@ -26,6 +26,18 @@ class PlayerRepository extends EntityRepository
     }
 
 
+    public function getDifferenceTroops($clan)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->select('p')
+            ->where('p.clan = :clan')
+            ->orderBy('p.troopSent - p.troopReceived', 'DESC')
+            ->setParameter('clan', $clan)
+            ;
+
+        return $qb->getQuery()->getResult();
+    }
+
     public function getLastUpdate($clan)
     {
         $query = $this->_em->createQuery('SELECT m.updatedAt FROM COCBundle:Player m WHERE m.clan = :clan ORDER BY m.updatedAt DESC')

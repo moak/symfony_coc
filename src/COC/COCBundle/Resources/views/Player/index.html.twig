@@ -13,15 +13,20 @@
     <div class="container white-bg rounded-corners">
         <div class="row">
             <div class="col-lg-12">
-                {% if isCurrentSeason %}
-                    <h1 class="page-header">{{ 'menu.general_ranking'|trans }}  ({{ season.name }})</h1>
-                {% else %}
-                    <h1 class="page-header">{{ 'label.season'|trans }}: {{ season.name }}
+                <h1 class="page-header">
+                    {% if isCurrentSeason %}
+                        {{ 'menu.general_ranking'|trans }}  ({{ season.name }})
+                    {% else %}
+                       {{ 'label.season'|trans }}: {{ season.name }}
                         {%  if app.user.player.level is defined and clan.id == app.user.player.clan.id %}
                             <a class="btn btn-normal pull-right btn-primary" href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}">{{ 'menu.current_season'|trans }}</a>
                         {% endif %}
-                    </h1>
-                {% endif %}
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') and app.user.clan == clan %}
+                        <a class="btn btn-normal btn-success btn-normal pull-right" href="{{ path('admin_players', {'id_clan': clan.id } ) }}">{{ 'menu.admin_players'|trans }}</a>
+                    {% endif %}
+                </h1>
+
             </div>
             <!-- /.col-lg-12 -->
         </div>

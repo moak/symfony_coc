@@ -120,14 +120,14 @@
                                     <table class="table table-responsive table-striped">
                                         <thead>
                                         <tr>
-                                            <th></th>
+                                            <th>Stats clans</th>
                                             <th>Totals</th>
                                             <th>Rank</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td class="text-nowrap" scope="row"><i class="fa fa-trophy"></i>  {{ 'clan.total_points'|trans }}</td>
+                                                <td class="text-nowrap" scope="row"><i class="fa fa-area-chart"></i>  {{ 'clan.total_points'|trans }}</td>
                                                 <td class="text-muted"><b>{{ clan.totalGeneral }} </b> </td>
                                                 <td class="text-muted"><b>{{ positions['totalGeneral']}} {{ positions['totalGeneral']|position }}</b> </td>
                                             </tr>
@@ -146,14 +146,15 @@
                                             </tr>
 
                                             <tr>
-                                                <td class="text-nowrap" scope="row"><i class="fa fa-arrow-circle-right"></i>  <span class="hidden-xs hidden-sm">{{ 'clan.total_troopSent'|trans }}</span><span class="hidden-lg hidden-md">{{ 'clan.total_troopSent_mobile'|trans }}</span></td>
-                                                <td class="text-muted"><b>{{ clan.totalTroopSent }} </b> </td>
-                                                <td class="text-muted"><b>{{ positions['totalTroopSent']}} {{ positions['totalTroopSent']|position }}</b> </td>
+                                                <td class="text-nowrap" scope="row"><i class="fa fa-exchange"></i>  <span class="hidden-xs hidden-sm">{{ 'menu.totalReceivedSent'|trans }}</span><span class="hidden-lg hidden-md">{{ 'clan.total_troopReceived_mobile' |trans }}</span></td>
+                                                <td class="text-muted"><b>{{ clan.totalTroopSent  }} / {{ clan.totalTroopReceived  }} </b> </td>
+                                                <td class="text-muted"><b>{{ positions['totalTroop']}} {{ positions['totalTroop']|position }}</b> </td>
                                             </tr>
+
                                             <tr>
-                                                <td class="text-nowrap" scope="row"><i class="fa fa-arrows-alt"></i>  <span class="hidden-xs hidden-sm">{{ 'clan.total_troopReceived'|trans }}</span><span class="hidden-lg hidden-md">{{ 'clan.total_troopReceived_mobile' |trans }}</span></td>
-                                                <td class="text-muted"><b>{{ clan.totalTroopReceived  }} </b> </td>
-                                                <td class="text-muted"><b>{{ positions['totalTroopReceived']}} {{ positions['totalTroopReceived']|position }}</b> </td>
+                                                <td class="text-nowrap" scope="row"><i class="fa fa-trophy"></i>  {{ 'war.wars'|trans }}</td>
+                                                <td class="text-muted"><b>{{ clan.totalTrophy }} </b> </td>
+                                                <td class="text-muted"><b>{{ positions['totalTrophy']}} {{ positions['totalTrophy']|position }}</b> </td>
                                             </tr>
 
                                         </tbody>

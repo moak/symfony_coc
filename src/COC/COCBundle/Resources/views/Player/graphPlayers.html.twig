@@ -1,0 +1,105 @@
+{% extends "::base.html.twig" %}
+{% set id_clan = clan.id %}
+{% set active = "" %}
+
+ {% block title %}
+     <title>{{ 'menu.my_player'|trans }}</title>
+ {% endblock %}
+
+{% block body %}
+    <div class="container white-bg rounded-corners">
+        <hr/>
+        <div class="row">
+            <div class="col-md-12"><h3>{{ 'chart.stat'|trans }}</h3></div>
+            <div class="col-md-12">
+                <h4>{{ 'chart.attack'|trans }}</h4>
+                <canvas id="chart-players"></canvas>
+            </div>
+        </div>
+    </div>
+    <footer>
+        {{ render(controller('COCBundle:Default:displaySeason')) }}
+    </footer>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/graphPlayers.js') }}" type="text/javascript"></script>
+    <script>
+        var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+
+        var label_chart =  [{% for season in seasons %}'{{ season.name }}',{%endfor  %}];
+
+        var players = [];
+
+        var history = '{{ history|json_encode|raw }}';
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF'.split('');
+            var color = '#';
+            for (var i = 0; i < 6; i++ ) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        var i = 1;
+        {% for player in players %}
+            {% set loop1 = loop.index %}
+                players[i] =
+                    [{% for hist in history %}
+                        {% if hist.player.id is defined  %}
+                            {% if hist.player.id == loop1  %}
+                            '{{ hist.attackWon }}',
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}];
+                    i++;
+        {% endfor %}
+
+        var datasetValue = [];
+
+        for (var j = 0; j < players.length; j++) {
+            var randomColor = getRandomColor();
+            datasetValue[j] =
+            {
+                strokeColor : randomColor,
+                pointColor : randomColor,
+                pointStrokeColor : randomColor,
+                pointHighlightStroke : "rgba(220,220,220,1)",
+                data : [{% for player in players %}Math.floor(Math.random() * (41)),{%endfor  %}]
+            }
+        }
+
+        var attackWonChartData =
+        {
+            labels : label_chart,
+            datasets : datasetValue
+        }
+
+
+        window.onload = function(){
+            var ctxAttacks = document.getElementById("chart-players").getContext("2d");
+            window.myLine = new Chart(ctxAttacks).Line(attackWonChartData, {
+//String - Colour of the grid lines
+                scaleGridLineColor : "rgba(200,200,200,.05)",
+
+
+
+                scaleGridLineColor : "rgba(200,200,200,.05)",
+                responsive: true,
+                scaleOverride: false,
+                datasetFill : false,
+                scaleSteps: 7,
+                scaleStepWidth: 300,
+                scaleStartValue: 0,
+                bezierCurve : false,
+                scaleShowGridLines : true
+            });
+
+        }
+
+    </script>
+
+{% endblock %}
+

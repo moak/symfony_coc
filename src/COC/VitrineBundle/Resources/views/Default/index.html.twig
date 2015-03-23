@@ -19,9 +19,7 @@
                                 <li>
                                     <a href="{{ path('coc' , { 'id_clan': 1 }) }}" class="btn btn-default  btn-lg"><i class="fa fa-coffee"></i> {{ 'vitrine.demo'|trans }}</a>
                                 </li>
-                                <li>
-                                    <a href="{{ path('fos_user_security_login') }}" class="btn btn-default  btn-lg">Login  <i class="fa fa-user"></i></a>
-                                </li>
+
                             {% else %}
 
                                 <li><a href="{{ path('coc', {'id_clan' : app.user.clan.id }) }}" class="btn btn-default btn-lg">{{ 'vitrine.my_clan'|trans }}</a></li>
@@ -156,29 +154,31 @@
             <h2 class="text-center">Best clans</h2>
             <br>
             <div class="row text-center">
-                <table class="table table-condensed table-mini table-responsive">
-                    <thead>
-                    <tr>
-                        <th class="supercell-font white-on-black text-center"><i class="fa fa-star-o fa-lg hidden-sm hidden-xs"></i><i class="fa fa-star-half-o fa-lg hidden-sm hidden-xs"></i><i class="fa fa-star fa-lg"></i></th>
-                        <th class="supercell-font white-on-black text-center"></i><i class="fa fa-heart fa-lg"></i> Clans</th>
-                        <th class="supercell-font white-on-black text-center"><i class="fa fa-calculator fa-lg"></i> </th>
-                        <th class="supercell-font white-on-black text-center"> <i class="fa fa-refresh"></i></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% if clans|length != 0 %}
-                        {% for clan in clans %}
-                            <tr>
-                                <td class="supercell-font white-on-black text-center">{{ loop.index }}  </td>
-                                <td class="supercell-font white-on-black text-center">{{ clan.name[:6] }} ({{ clan.nbMember }})</td>
-                                <td class="supercell-font white-on-black text-center">{{ clan.total|round }}</td>
-                                <td class="supercell-font white-on-black text-center">{{ clan.updated|date('U')|timeago }}</td>
 
-                            </tr>
-                        {% endfor %}
-                    {% endif %}
-                    </tbody>
-                </table>
+                    <table class="table table-condensed table-mini table-responsive">
+                        <thead>
+                        <tr>
+                            <th class="supercell-font white-on-black text-center"><i class="fa fa-star-o fa-lg hidden-sm hidden-xs"></i><i class="fa fa-star-half-o fa-lg hidden-sm hidden-xs"></i><i class="fa fa-star fa-lg"></i></th>
+                            <th class="supercell-font white-on-black text-center"></i><i class="fa fa-heart fa-lg"></i> Clans</th>
+                            <th class="supercell-font white-on-black text-center"><i class="fa fa-calculator fa-lg"></i> </th>
+                            <th class="supercell-font white-on-black text-center"> <i class="fa fa-refresh"></i></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if clans|length != 0 %}
+                            {% for clan in clans %}
+                                <tr>
+                                    <td class="supercell-font white-on-black text-center">{{ loop.index }}  </td>
+                                    <td class="supercell-font white-on-black text-center">{{ clan.name[:6] }} ({{ clan.nbMember }})</td>
+                                    <td class="supercell-font white-on-black text-center">{{ clan.total|round }}</td>
+                                    <td class="supercell-font white-on-black text-center">{{ clan.updated|date('U')|timeago }}</td>
+
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+
             </div>
 
         </div>
@@ -190,6 +190,7 @@
             <h2 class="text-center">Best clans</h2>
             <br>
             <div class="row text-center">
+                <div class="col-md-10 col-md-offset-1">
                 <table class="table ">
                     <thead>
                     <tr>
@@ -219,7 +220,7 @@
                     {% endif %}
                     </tbody>
                 </table>
-            </div>
+            </div></div>
 
         </div>
         <!-- /.container -->

@@ -268,6 +268,11 @@ class PlayerController extends Controller
         $playersByAW        = $em->getRepository('COCBundle:PlayerHistory')->findBy(array('clan' => $clan, 'season'=> $season->getId()),array('attackWon' => 'DESC'));
         $playersByTrophy    = $em->getRepository('COCBundle:PlayerHistory')->findBy(array('clan' => $clan, 'season'=> $season->getId()),array('trophy' => 'DESC'));
 
+        $playersByTroop        = $em->getRepository('COCBundle:Player')->getDifferenceTroops($clan);
+
+
+       // var_dump(gettype($playersByTroop));
+
         $positions =  Array();
 
         $i = 1;
@@ -286,6 +291,17 @@ class PlayerController extends Controller
             if ( $playerByTrophy->getPlayer()->getId() == $player->getId())
             {
                 $positions['trophy'] = $i;
+            }
+            $i = $i + 1;
+        }
+
+        $i = 1;
+        foreach ($playersByTroop as $playerByTroop)
+        {
+           // var_dump($playerByTroop);
+            if ( $playerByTroop->getId() == $player->getId())
+            {
+                $positions['troop'] = $i;
             }
             $i = $i + 1;
         }
@@ -360,6 +376,26 @@ class PlayerController extends Controller
             'maxDarkElixir'         => $this->perDay($this->getMaxDarkElixirPerHour($player)),
             'maxElixirGold'         => $this->perDay($this->getMaxGoldElixirPerHour($player)),
             'players'               => $players
+        ));
+    }
+
+    public function graphPlayersAction($id_clan)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+        $seasons = $em->getRepository('COCBundle:Season')->findSeasonsName();
+        $historyPlayers = $em->getRepository('COCBundle:PlayerHistory')->findByClan($clan);
+        $actualSeason = $em->getRepository('COCBundle:Season')->getActualSeason();
+        $players = $em->getRepository('COCBundle:Player')->findBy(array('clan' => $clan), array('total'=> 'DESC'));
+
+
+        return $this->render('COCBundle:Player:graphPlayers.html.twig', array(
+            'clan' => $clan,
+            'actualSeason'          => $actualSeason,
+            'seasons'  => $seasons,
+            'history'               => $historyPlayers,
+            'players'               => $players
+
         ));
     }
 

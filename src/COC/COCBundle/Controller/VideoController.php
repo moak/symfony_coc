@@ -73,6 +73,8 @@ class VideoController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
+            $video->setClan($clan);
+
             $clan->setUpdated(new \Datetime());
             $em->persist($clan);
             $em->flush();

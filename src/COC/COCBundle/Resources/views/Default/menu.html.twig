@@ -29,8 +29,16 @@
                 {% if active == "base" %} <li class="active dropdown"> {% else %} <li class="dropdown">{% endif %}
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="badge"> {{ numberBases5 + numberBases6 + numberBases7 + numberBases8 + numberBases9 + numberBases10 }}</span> {{ 'menu.bases'|trans }} <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="{{ path('coc_images_base_add', {'id_clan': clan.id }) }}"><i class="fa fa-plus-circle"></i> {{ 'menu.new_base'|trans }}</a></li>
-                        <li class="divider"></li>
+                        {%  if app.user is defined  %}
+                            {% if app.user.player.clan is defined and app.user.player is defined  %}
+                                {% if app.user.player.clan == clan %}
+                                    <li><a href="{{ path('coc_images_base_add', {'id_clan': clan.id }) }}"><i class="fa fa-plus-circle"></i> {{ 'menu.new_base'|trans }}</a></li>
+                                    <li class="divider"></li>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+
+
                         <li><a href="{{ path('coc_images_base_category', {'id': 5, 'id_clan': clan.id} ) }}"><i class="fa fa-chevron-right"></i> {{ 'menu.ht5'|trans }} {% if numberBases5 > 0 %} <span class="badge pull-right"> {{ numberBases5 }}</span> {% endif %} </a></li>
                         <li><a href="{{ path('coc_images_base_category', {'id': 6, 'id_clan': clan.id} ) }}"><i class="fa fa-chevron-right"></i> {{ 'menu.ht6'|trans }} {% if numberBases6 > 0 %}<span class="badge pull-right"> {{ numberBases6 }}</span> {% endif %}</a></li>
                         <li><a href="{{ path('coc_images_base_category', {'id': 7, 'id_clan': clan.id} ) }}"><i class="fa fa-chevron-right"></i> {{ 'menu.ht7'|trans }} {% if numberBases7 > 0 %}<span class="badge pull-right"> {{ numberBases7 }}</span>{% endif %}</a></li>
@@ -51,9 +59,11 @@
                 </li>
 
                 {% if is_granted('ROLE_USER') %}
-                    {%  if app.user is defined and app.user.player is defined and app.user.player.clan == clan %}
-                        {% if app.user.player.clan is defined %}
-                            <li><a class="blink-slow" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_player'|trans }}</b></a></li>
+                    {%  if app.user is defined  %}
+                        {% if app.user.player.clan is defined and app.user.player is defined  %}
+                            {% if app.user.player.clan == clan %}
+                                <li><a class="blink-slow" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_player'|trans }}</b></a></li>
+                            {% endif %}
                         {% endif %}
                     {% endif %}
 
@@ -83,7 +93,7 @@
                     <li><a href="{{ path('coc', {'id_clan' : app.user.clan.id }) }}"><i class="fa fa-arrow-circle-right"></i> {{ 'vitrine.back_my_clan'|trans }} </a></li>
                 {% else %}
 
-                    {% if is_granted('ROLE_USER') and app.user.clan != null and app.user.player is defined %}
+                    {% if is_granted('ROLE_USER') and app.user.clan is defined and app.user.player is defined and app.user.player.id is defined %}
                         <li><a href="{{ path('coc_player', {'id_clan' : app.user.clan.id , 'id_player' :  app.user.player.id }) }}"> {{ 'menu.my_player'|trans }}</a></li>
                     {% endif %}
 
@@ -107,7 +117,11 @@
 
                     {% else %}
                         <li class="page-scroll">
-                            <a href="{{ path('fos_user_registration_register') }}">{{ 'vitrine.join_clan'|trans }}</a>
+                            <a href="{{ path('fos_user_registration_register', {'type' : 'create'}) }}">{{ 'vitrine.create_clan'|trans }}</a>
+                        </li>
+
+                        <li class="page-scroll">
+                            <a href="{{ path('fos_user_registration_register', {'type' : 'join'}) }}">{{ 'vitrine.join_clan'|trans }}</a>
                         </li>
                         <li class="page-scroll">
                             <a href="{{ path('fos_user_security_login') }}">Login</a>

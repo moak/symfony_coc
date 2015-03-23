@@ -55,7 +55,13 @@ class DefaultController extends Controller
         }
 
 
-        return $this->render('COCBundle:Default:index.html.twig', array('positions' => $this->getPositions($clan), 'numberWars' => $numberWars, 'last_update_bestAttack' => $last_update_bestAttack,'last_update_base' => $last_update_base,'last_update_player' => $last_update_player, 'display' => $display, 'clan' => $clan));
+        return $this->render('COCBundle:Default:index.html.twig', array(    'positions' => $this->getPositions($clan),
+                                                                            'numberWars' => $numberWars,
+                                                                            'last_update_bestAttack' => $last_update_bestAttack,
+                                                                            'last_update_base' => $last_update_base,
+                                                                            'last_update_player' => $last_update_player,
+                                                                            'display' => $display, 'clan' => $clan
+                                                                        ));
     }
 
     public function displaySeasonAction()
@@ -108,13 +114,24 @@ class DefaultController extends Controller
     public function getPositions($clan)
     {
         $em = $this->getDoctrine()->getManager();
-        $clansByTotal = $em->getRepository('COCBundle:Clan')->findBy(array(),array('totalGeneral' => 'DESC'));
-        $clansByTR = $em->getRepository('COCBundle:Clan')->findBy(array(),array('totalTroopReceived' => 'DESC'));
-        $clansByTS = $em->getRepository('COCBundle:Clan')->findBy(array(),array('totalTroopSent' => 'DESC'));
-        $clansByAW = $em->getRepository('COCBundle:Clan')->findBy(array(),array('totalAttackWon' => 'DESC'));
-        $clansByTrophy = $em->getRepository('COCBundle:Clan')->findBy(array(),array('totalTrophy' => 'DESC'));
+        $clansByTotal   = $em->getRepository('COCBundle:Clan')->findBy(array(),array('totalGeneral' => 'DESC'));
+        $clansByTR      = $em->getRepository('COCBundle:Clan')->findBy(array(),array('totalTroopReceived' => 'DESC'));
+        $clansByTS      = $em->getRepository('COCBundle:Clan')->findBy(array(),array('totalTroopSent' => 'DESC'));
+        $clansByAW      = $em->getRepository('COCBundle:Clan')->findBy(array(),array('totalAttackWon' => 'DESC'));
+        $clansByTrophy  = $em->getRepository('COCBundle:Clan')->findBy(array(),array('totalTrophy' => 'DESC'));
+        $clansByTroop   = $em->getRepository('COCBundle:Clan')->getDifferenceTroops($clan->getId());
 
         $positions =  Array();
+
+        $i = 1;
+        foreach ($clansByTroop as $clanByTroop)
+        {
+            if ( $clanByTroop->getId() == $clan->getId())
+            {
+                $positions['totalTroop'] = $i;
+            }
+            $i = $i + 1;
+        }
 
         $i = 1;
         foreach ($clansByTotal as $clanByTotal)

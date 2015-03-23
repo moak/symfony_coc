@@ -14,7 +14,7 @@ class UserAdminController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
-        $users = $em->getRepository('ApplicationSonataUserBundle:User')->findByClan($clan);
+        $users = $em->getRepository('ApplicationSonataUserBundle:User')->findBy( array('clan' =>$clan), array('player' => 'ASC'));
         return $this->render('AdminBundle:UserAdmin:index.html.twig', array('clan' => $clan,'users' => $users));
     }
 

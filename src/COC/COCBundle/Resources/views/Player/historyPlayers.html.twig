@@ -1,7 +1,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <p class="supercell-font"> <i class="fa fa-refresh"></i>  {{ 'label.last_updates'|trans }}
-               <a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0'}) }}">({{ numberPlayers }} / {{ clan.capacity }})  </a>
+                <a class="pull-right" href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0'}) }}">{{ numberPlayers }} members  </a>
             </p>
         </div>
         <!-- /.panel-heading -->
@@ -22,7 +22,7 @@
                         <tbody>
                         {% for player in players %}
                             <tr>
-                                <td><a href="{{ path('coc_player', {'id_clan' : clan.id , 'id_player' :  player.id }) }}">  {{ player.name }} ({{ player.hallTown }})</a></td>
+                                <td><a href="{{ path('coc_player', {'id_clan' : clan.id , 'id_player' :  player.id }) }}"> <i class="fa fa-user"></i> {{ player.name }} ({{ player.hallTown }})</a></td>
                                 <td>{{ player.level }}</td>
                                 <td>{{ player.totalDefence|round }}</td>
                                 <td>{{ player.totalAttack|round }}</td>
