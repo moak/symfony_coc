@@ -214,6 +214,8 @@
 
             {{ render(controller('AdminBundle:VideoAdmin:mainPageModule', {'id_clan': clan.id })) }}
 
+            {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': 'foo'} %}
+
         </div>
     </div>
 
