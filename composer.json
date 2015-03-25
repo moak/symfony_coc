@@ -25,12 +25,15 @@
         "bcc/cron-manager-bundle": "v2.6",
 
         "punkave/symfony2-file-uploader-bundle": "dev-master",
+
         "friendsofsymfony/user-bundle": "~2.0@dev",
 
         "stof/doctrine-extensions-bundle": "~1.1@dev",
 
         "liip/imagine-bundle": "~1.2",
-        "friendsofsymfony/jsrouting-bundle": "~1.5"
+        "friendsofsymfony/jsrouting-bundle": "~1.5",
+        "friendsofsymfony/comment-bundle": "~2.0",
+        "gergelypolonkai/smssender-bundle" : "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

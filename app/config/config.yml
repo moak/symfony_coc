@@ -4,6 +4,7 @@ imports:
     - { resource: @BCCCronManagerBundle/Resources/config/assetic.yml }
     - { resource: @ApplicationSonataUserBundle/Resources/config/services.yml }
 framework:
+    http_method_override: true
     #esi:             ~
     translator:      { fallback: en }
     secret:          "%secret%"
@@ -27,6 +28,7 @@ twig:
 
 # Assetic Configuration
 assetic:
+    bundles: [ "FOSCommentBundle" ]
     debug:          "%kernel.debug%"
     use_controller: false
     bundles:        [ ]
@@ -122,6 +124,14 @@ lunetics_locale:
     switcher:
         template: COCBundle:Languages:switcher.html.twig
         show_current_locale: true
+
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: COC\COCBundle\Entity\Comment
+            thread: COC\COCBundle\Entity\Thread
+
 
 
 

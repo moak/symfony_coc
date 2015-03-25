@@ -32,7 +32,13 @@ class AppKernel extends Kernel
             new COC\COCBundle\COCBundle(),
             new COC\AdminBundle\AdminBundle(),
             new COC\VitrineBundle\VitrineBundle(),
+            new Comment\CommentBundle\CommentCommentBundle(),
+
             new Lunetics\LocaleBundle\LuneticsLocaleBundle(),
+
+            new FOS\RestBundle\FOSRestBundle(),
+            new FOS\CommentBundle\FOSCommentBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle($this),
 
 
         );
