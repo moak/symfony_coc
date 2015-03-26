@@ -25,9 +25,11 @@ class Image
     /**
      * @var \DateTime
      *
-     * @ORM\COlumn(name="updated_at",type="datetime", nullable=false)
+     * @ORM\Column(name="updated_at",type="datetime", nullable=false)
      */
     private $updateAt;
+
+
 
     /**
      * @ORM\OneToMany(targetEntity="COC\COCBundle\Entity\ImageBestAttack", mappedBy="image", cascade={"persist"})

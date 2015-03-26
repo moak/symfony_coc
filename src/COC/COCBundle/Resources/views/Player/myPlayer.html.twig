@@ -13,7 +13,7 @@
 
             <div class="col-md-4">
                 <h2>
-                    <small>&nbsp;<div class="{{ player.trophy|division }} division"></div></small> {{ player.name }} <small>({{ player.level }})</small>
+                    <small>&nbsp;<div class="{{ player.trophy|division }} division"></div></small> {{ player.name|slice(0, 9) }} <small>({{ player.level }})</small>
                 </h2>
             </div>
 

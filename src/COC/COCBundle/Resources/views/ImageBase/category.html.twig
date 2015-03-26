@@ -16,12 +16,11 @@
             {%  if app.user is defined  %}
                 {% if app.user.player.clan is defined and app.user.player is defined  %}
                     {% if app.user.player.clan == clan %}
-                        <a class="btn btn-lg btn-primary pull-right" href="{{ path('coc_images_base_add', {'id_clan': clan.id }) }}"> {{ 'menu.base_add'|trans }}</a></h1>
+                        <a class="btn btn-lg btn-primary pull-right" href="{{ path('coc_images_base_add', {'id_clan': clan.id }) }}"> {{ 'menu.base_add'|trans }}</a>
                     {% endif %}
                 {% endif %}
             {% endif %}
-
-        <br>
+        </h1>
 
             {% if images|length != 0 %}
                 {% for image in images %}
@@ -42,7 +41,7 @@
                                 </a>
                             </div>
                             <div class="panel-footer supercell-font">
-                                {{ 'label.posted_by'|trans }} {{ image.user.username }}
+                                <h3 class="panel-title text-center">{{ 'label.posted_by'|trans }} {{ image.user.username }}</h3>
                             </div>
                         </div>
                     </div>

@@ -69,20 +69,6 @@
             </li>
 
 
-            <li data-step="3" data-position='right' data-intro="{{ 'admin.msg3'|trans }}">
-                <a href="#"><span class="badge">{{ numberPlayers }} <i class="fa fa-user"></i> </span> {{ 'menu.players'|trans }} <span class="fa arrow"></span></a>
-
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="{{ path('admin_players', { 'id_clan': clan.id, 'type' : '0' }) }}">{{ 'menu.players_list'|trans }}</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('admin_player_add', { 'id_clan': clan.id }) }}"><i class="fa fa-user-plus"></i> {{ 'menu.player_add'|trans }}</a>
-                    </li>
-                </ul>
-                <!-- /.nav-second-level -->
-            </li>
-
             <li data-step="4" data-position='right' data-intro="{{ 'admin.msg4'|trans }}">
                 <a href="{{ path('admin_users', { 'id_clan': clan.id }) }}">
                     {% if numberUsersNonAssigned > 0 %}
@@ -94,6 +80,14 @@
             </li>
 
 
+
+            <li data-step="3" data-position='right' data-intro="{{ 'admin.msg3'|trans }}">
+                <a href="{{ path('admin_players', { 'id_clan': clan.id, 'type' : '0' }) }}"><span class="badge">{{ numberPlayers }} <i class="fa fa-user"></i> </span> {{ 'menu.players_list'|trans }}</span></a>
+
+            </li>
+
+
+
             <li data-step="5" data-position='right' data-intro="{{ 'admin.msg5'|trans }}">
 
                 <a href="{{ path('admin_players_actual_season', { 'id_clan': clan.id }) }}"> <span class="badge">{{ numberPlayers }} <i class="fa fa-wheelchair"></i> </span>  {{ 'menu.activity'|trans }}</a>
@@ -101,7 +95,7 @@
 
 
             <li data-step="6" data-position='right' data-intro="{{ 'admin.msg6'|trans }}">
-                <a href="#"><span class="badge">{{ numberWars }}</span></i> {{ 'menu.wars'|trans }} <span class="fa arrow"></span></a>
+                <a href="#"><span class="badge">{{ numberWars }} <i class="fa fa-bolt"></i></span></i> {{ 'menu.wars'|trans }} <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="{{ path('admin_wars', { 'id_clan': clan.id }) }}">{{ 'menu.wars_list'|trans }}</a>
@@ -114,11 +108,11 @@
             </li>
 
             <li>
-                <a href="{{ path('admin_bases', { 'id_clan': clan.id }) }}"><span class="badge">{{ numberBases5 + numberBases6 + numberBases7 + numberBases8 + numberBases9 + numberBases10 }}</span></i> {{ 'menu.bases'|trans }} </a>
+                <a href="{{ path('admin_bases', { 'id_clan': clan.id }) }}"><span class="badge">{{ numberBases5 + numberBases6 + numberBases7 + numberBases8 + numberBases9 + numberBases10 }} <i class="fa fa-camera"></i></span> {{ 'menu.bases'|trans }} </a>
             </li>
 
             <li>
-                <a href="#"><span class="badge">{{ numberVideos }}</span> {{ 'menu.videos'|trans }} <span class="fa arrow"></span></a>
+                <a href="#"><span class="badge">{{ numberVideos }} <i class="fa fa-video-camera"></i></span> {{ 'menu.videos'|trans }}  <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="{{ path('admin_video_add', { 'id_clan': clan.id }) }}">{{ 'menu.video_add'|trans }}</a>
@@ -130,7 +124,7 @@
             </li>
 
             <li>
-                <a href="{{ path('admin_bestAttacks', { 'id_clan': clan.id }) }}"><span class="badge">{{ numberBestAttacks }}</span></i> {{ 'menu.bestAttacks'|trans }}</a>
+                <a href="{{ path('admin_bestAttacks', { 'id_clan': clan.id }) }}"><span class="badge">{{ numberBestAttacks }} <i class="fa fa-star-half-o"></i></span></i> {{ 'menu.bestAttacks'|trans }}</a>
             </li>
 
             <li>

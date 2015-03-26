@@ -258,6 +258,12 @@ class RegistrationController extends BaseController
                 $em->flush();
 
                 $player1 = new Player();
+
+                $profileDefault = $em->getRepository('COCBundle:Image')->findOneByPath("profile.jpg");
+                $baseDefault    = $em->getRepository('COCBundle:Image')->findOneByPath("base.jpg");
+
+                $player1->setBase($baseDefault);
+                $player1->setPicture($profileDefault);
                 $player1->setClan($clan);
                 $player1->setName($user->getUsername());
                 $player1->setHallTown(1);
@@ -620,6 +626,7 @@ class RegistrationController extends BaseController
 
                 $player1 = new Player();
                 $player1->setClan($clan);
+                $player1->setTotal(0);
                 $player1->setName($user->getUsername());
                 $player1->setHallTown(5);
                 $player1->setLevel(1);

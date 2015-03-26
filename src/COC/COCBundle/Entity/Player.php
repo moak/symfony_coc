@@ -175,16 +175,18 @@ class Player
 
 
     /**
-     * @ORM\OneToOne(targetEntity="COC\COCBundle\Entity\Image",cascade={"persist"}))
-     * @ORM\JoinColumn(name="image_base", referencedColumnName="id", nullable=true)
-     **/
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Image")
+     * @ORM\JoinColumn(name="base_id", referencedColumnName="id")
+     */
     private $base;
 
     /**
-     * @ORM\OneToOne(targetEntity="COC\COCBundle\Entity\Image",cascade={"persist"}))
-     * @ORM\JoinColumn(name="image_picture", referencedColumnName="id", nullable=true)
-     **/
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Image")
+     * @ORM\JoinColumn(name="picture_id", referencedColumnName="id")
+     */
     private $picture;
+
+
 
     /**
      * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Clan", inversedBy="players")
@@ -2943,7 +2945,7 @@ class Player
     /**
      * Get picture
      *
-     * @return \COC\COCBundle\Entity\Image 
+     * @return \COC\COCBundle\Entity\Image
      */
     public function getPicture()
     {
@@ -2966,7 +2968,7 @@ class Player
     /**
      * Get base
      *
-     * @return \COC\COCBundle\Entity\Image 
+     * @return \COC\COCBundle\Entity\Image
      */
     public function getBase()
     {

@@ -37,14 +37,11 @@ class PlayerAdminController extends Controller
         $actualSeason = $em->getRepository('COCBundle:Season')->getActualSeason();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
         $form = $this->get('form.factory')->create(new SeasonType($clan, $actualSeason), null);
-        $players = $em->getRepository('COCBundle:Player')->getPlayers($clan);
 
-      //  var_dump($players);
+        $players = $em->getRepository('COCBundle:Player')->findBy(array('clan' =>$clan), array('updatedAt' => 'DESC'));
 
         if ($players)
-        {
             return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('clan' => $clan , 'players' => $players , 'form' => $form->createView() ));
-        }
         else
             return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('clan' => $clan , 'players' => null , 'form' => $form->createView() ));
     }
@@ -136,6 +133,11 @@ class PlayerAdminController extends Controller
 
         if ($form->handleRequest($request)->isValid() && $this->getUser()->getClan()->getId() == $id_clan)
         {
+            $profileDefault = $em->getRepository('COCBundle:Image')->findOneByPath("profile.jpg");
+            $baseDefault    = $em->getRepository('COCBundle:Image')->findOneByPath("base.jpg");
+            $player->setBase($baseDefault);
+            $player->setPicture($profileDefault);
+            $player->setTotal(0);
             $player->setClan($clan);
             $player->setTroopSent(0);
             $player->setTroopReceived(0);

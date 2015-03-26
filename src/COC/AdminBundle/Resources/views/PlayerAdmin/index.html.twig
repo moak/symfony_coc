@@ -17,7 +17,7 @@
     </ol>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="row">
         <a href="{{ path('admin_player_add', { 'id_clan': clan.id })}}"><button class="btn btn-default btn-success">{{ 'button.add_player'|trans }}</button></a>
         <hr>
         {# form_start(form, {'action': path('coc_homepage'), 'method': 'GET'}) }} #}
@@ -27,6 +27,7 @@
                 <tr>
                     <th>{{ 'player.name'|trans }}</th>
                     <th>{{ 'account.name'|trans }}</th>
+                    <th>{{ 'player.total'|trans }}</th>
 
                     <th>{{ 'player.updated'|trans }}</th>
                     <th></th>
@@ -42,11 +43,12 @@
                             {% if player.user is not null %}
                                 {{ player.user }}
                             {% else %}
-                                -
+                                <i class="fa fa-ban"></i>
                             {% endif %}
                         </td>
 
 
+                        <td>{{ player.total }}</td>
                         <td>{{ player.updatedAt|date('U')|timeago }}</td>
                         <td>
                             <a href="{{ path('admin_player_edit', { 'id': player.id , 'id_clan': clan.id }) }}" class="btn btn-default btn-info">{{ 'action.edit'|trans }}</a>

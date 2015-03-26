@@ -222,6 +222,8 @@ class PlayerController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
+
+
             $player->getBase()->setIdclan($clan->getId());
 
          // $player->getPicture()->preUpload();
