@@ -60,15 +60,14 @@ class ImageBestAttackController extends Controller
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
 
-
         if ($form->handleRequest($request)->isValid())
         {
             $clan->setUpdated(new \Datetime());
+            $clan->setNumberBestAttack($clan->getNumberBestAttack() + 1);
             $em->persist($clan);
             $em->flush();
 
             $user = $this->get('security.context')->getToken()->getUser();
-
 
             $image->setUser($user);
             $image->setClan($user->getClan());

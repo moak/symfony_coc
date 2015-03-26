@@ -76,6 +76,7 @@ class VideoController extends Controller
             $video->setClan($clan);
 
             $clan->setUpdated(new \Datetime());
+            $clan->setNumberVideo($clan->getNumberVideo() + 1);
             $em->persist($clan);
             $em->flush();
 

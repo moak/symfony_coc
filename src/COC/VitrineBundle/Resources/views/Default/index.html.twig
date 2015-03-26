@@ -211,8 +211,8 @@
                                 {% else %}
                                     <td class="supercell-font white-on-black text-center"><span>{{ clan.name }}</span></td>
                                 {% endif %}
-                                <td class="supercell-font white-on-black text-center">{{ clan.nbMember }}</td>
-                                <td class="supercell-font white-on-black text-center">{{ clan.total|round }}</td>
+                                <td class="supercell-font white-on-black text-center">{{ clan.numberPlayer }}</td>
+                                <td class="supercell-font white-on-black text-center">{{ clan.totalGeneral|round }}</td>
                                 <td class="supercell-font white-on-black text-center">{{ clan.updated|date('U')|timeago }}</td>
 
                             </tr>

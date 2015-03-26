@@ -103,6 +103,17 @@ class RegistrationController extends BaseController
                 $clan->setTotalGeneral(7);
                 $clan->setTotalTrophy(0);
 
+                $clan->setNumberBase5(0);
+                $clan->setNumberBase6(1);
+                $clan->setNumberBase7(3);
+                $clan->setNumberBase8(3);
+                $clan->setNumberBase9(2);
+                $clan->setNumberBase10(0);
+                $clan->setNumberBonus(2);
+                $clan->setNumberVideo(2);
+                $clan->setNumberBestAttack(1);
+                $clan->setNumberPlayer(1);
+
 
                 $em->persist($clan);
                 $em->flush();
@@ -466,10 +477,22 @@ class RegistrationController extends BaseController
 
             if ( $clanName != null)
             {
+                die();
                 $clan = new Clan();
+                $clan->setNumberBase5(0);
+                $clan->setNumberBase6(1);
+                $clan->setNumberBase7(3);
+                $clan->setNumberBase8(2);
+                $clan->setNumberBase9(2);
+                $clan->setNumberBase10(0);
+                $clan->setNumberBonus(2);
+                $clan->setNumberVideo(2);
+                $clan->setNumberBestAttack(2);
+                $clan->setNumberPlayer(1);
+
                 $clan->setName($user->getClanName());
-                $clan->setMessage('“One love, one heart, one destiny.” ― Bob Marley');
-                $clan->setCapacity(10);
+                $clan->setMessage('“One love, one heart, oneeeeeeeeeeeeee destiny.” ― Bob Marley');
+                $clan->setCapacity(10000);
                 $clan->setCountry('none');
                 $clan->setLevel(1);
                 $clan->setTotalAttackWon(0);
@@ -477,12 +500,17 @@ class RegistrationController extends BaseController
                 $clan->setTotalTroopSent(0);
                 $clan->setStatus(0);
                 $clan->setPrivacy(0);
+
+
+
                 $em->persist($clan);
                 $em->flush();
 
                 $idClan = $clan->getId();
                 $clan = $em->getRepository('COCBundle:Clan')->find($idClan);
 
+                var_dump($clan->getNumberVideo());
+                die();
                 $user->setClan($clan);
                 $user->setRoles(array('ROLE_ADMIN'));
                 $user->setVisited(0);

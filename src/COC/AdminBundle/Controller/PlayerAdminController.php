@@ -143,6 +143,12 @@ class PlayerAdminController extends Controller
             $player->setTroopReceived(0);
             $player->setTrophy(0);
             $player->setAttackWon(0);
+
+            $clan->setNumberPlayer($clan->getNumberPlayer() + 1);
+            $clan->setUpdated(new \Datetime());
+            $em->persist($clan);
+            $em->flush();
+
             $em->persist($player);
             $em->flush();
             return $this->redirect($this->generateUrl('admin_players', array('id_clan' =>  $clan->getId())));
@@ -215,6 +221,11 @@ class PlayerAdminController extends Controller
             $em->persist($user);
             $em->flush();
         }
+
+        $clan->setNumberPlayer($clan->getNumberPlayer() - 1);
+        $clan->setUpdated(new \Datetime());
+        $em->persist($clan);
+        $em->flush();
 
         $em->remove($player);
         $em->flush();

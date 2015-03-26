@@ -59,6 +59,8 @@ class VideoAdminController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
+
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($video);
             $em->flush();
@@ -80,9 +82,15 @@ class VideoAdminController extends Controller
     public function addAction (Request $request, $id_clan)
     {
         $video = new Video();
+
         $em = $this->getDoctrine()->getManager();
         $form = $this->get('form.factory')->create(new VideoAdminType(), $video);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+
+        $clan->setUpdated(new \Datetime());
+        $clan->setNumberVideo($clan->getNumberVideo() + 1);
+        $em->persist($clan);
+        $em->flush();
 
         if ($form->handleRequest($request)->isValid())
         {
@@ -108,13 +116,18 @@ class VideoAdminController extends Controller
             throw $this->createNotFoundException('Page not found');
         }
 
-        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
-
         if(!$video || $this->getUser()->getClan()->getId() != $id_clan)
         {
             throw $this->createNotFoundException('No video found');
         }
-        $em = $this->getDoctrine()->getManager();
+
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+        $clan->setUpdated(new \Datetime());
+        $clan->setNumberVideo($clan->getNumberVideo() - 1);
+
+        $em->persist($clan);
+        $em->flush();
+
         $em->remove($video);
         $em->flush();
 

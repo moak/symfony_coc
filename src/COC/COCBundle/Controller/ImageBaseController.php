@@ -126,6 +126,30 @@ class ImageBaseController extends Controller
 
             $image->getImage()->setIdclan($clan->getId());
 
+            switch ($image->getHallTown()) {
+                case 5:
+                    $clan->setNumberBase5($clan->getNumberBase5() + 1);
+                    break;
+                case 6:
+                    $clan->setNumberBase6($clan->getNumberBase6() + 1);
+                    break;
+                case 7:
+                    $clan->setNumberBase7($clan->getNumberBase7() + 1);
+                    break;
+                case 8:
+                    $clan->setNumberBase8($clan->getNumberBase8() + 1);
+                    break;
+                case 9:
+                    $clan->setNumberBase9($clan->getNumberBase9() + 1);
+                    break;
+                case 10:
+                    $clan->setNumberBase10($clan->getNumberBase10() + 1);
+                    break;
+            }
+
+            $em->persist($clan);
+            $em->flush();
+
             $em->persist($image);
             $em->flush();
             return $this->redirect($this->generateUrl('coc_images_base', array('id_clan' =>  $clan->getId())));

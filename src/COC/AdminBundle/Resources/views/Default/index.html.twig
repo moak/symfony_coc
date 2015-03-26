@@ -45,7 +45,7 @@
                             <i class="fa fa-user fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">{{ numberPlayers }}</div>
+                            <div class="huge">{{ clan.numberPlayer }}</div>
                             <div><a class="btn btn-default" href="{{ path('admin_players', { 'id_clan': clan.id })}}">{{ 'menu.players_all'|trans }}</a></div>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                             <i class="fa fa-camera fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">{{ numberBases5 + numberBases6 + numberBases7 + numberBases8 + numberBases9 + numberBases10 }}</div>
+                            <div class="huge">{{ clan.numberBase5 + clan.numberBase6 + clan.numberBase7 + clan.numberBase8 + clan.numberBase9 + clan.numberBase10 }}</div>
                             <div>{{ 'menu.base_number'|trans }}</div>
                         </div>
                     </div>

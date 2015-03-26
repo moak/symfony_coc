@@ -41,11 +41,10 @@
                                 <h3 class="panel-title text-center">{{ video.title }}</h3>
                             </div>
                             <div class="panel-body">
-
                                 <p>{{ video.url| raw  }}</p>
                             </div>
                             <div class="panel-footer">
-                                <h3 class="panel-title text-center">Posté par {{ video.user.username }}  <small>{{ video.createdAt|date('U')|timeago }}</small></h3>
+                                <h3 class="panel-title text-center">{{ 'label.posted_by'|trans }} {{ video.user.username }}  <small>{{ video.createdAt|date('U')|timeago }}</small></h3>
                             </div>
 
                         </div>

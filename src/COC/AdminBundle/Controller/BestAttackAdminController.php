@@ -80,6 +80,11 @@ class BestAttackAdminController extends Controller
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
         if ($form->handleRequest($request)->isValid())
         {
+            $clan->setNumberBestAttack($clan->getNumberBestAttack() + 1);
+            $clan->setUpdated(new \Datetime());
+            $em->persist($clan);
+            $em->flush();
+
             $em->persist($bestAttack);
             $em->flush();
             return $this->redirect($this->generateUrl('admin_bestAttacks', array('id_clan' =>  $clan->getId())));

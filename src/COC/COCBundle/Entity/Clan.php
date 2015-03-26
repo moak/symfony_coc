@@ -93,6 +93,82 @@ class Clan
     private $totalTrophy;
 
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numberBase5", type="integer" , nullable=true)
+     */
+    private $numberBase5;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numberBase6", type="integer" , nullable=true)
+     */
+    private $numberBase6;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numberBase7", type="integer" , nullable=true)
+     */
+    private $numberBase7;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numberBase8", type="integer" ,nullable=true)
+     */
+    private $numberBase8;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numberBase9", type="integer" , nullable=true)
+     */
+    private $numberBase9;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numberBase10", type="integer" , nullable=true)
+     */
+    private $numberBase10;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numberVideo", type="integer" , nullable=true)
+     */
+    private $numberVideo;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numberBestAttack", type="integer" , nullable=true)
+     */
+    private $numberBestAttack;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numberBonus", type="integer" , nullable=true)
+     */
+    private $numberBonus;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numberPlayer", type="integer" , nullable=true)
+     */
+    private $numberPlayer;
+
+
+
 
     /**
      * @var integer
@@ -1039,5 +1115,237 @@ class Clan
     public function getTotalTrophy()
     {
         return $this->totalTrophy;
+    }
+
+
+
+    /**
+     * Set numberVideo
+     *
+     * @param integer $numberVideo
+     * @return Clan
+     */
+    public function setNumberVideo($numberVideo)
+    {
+        $this->numberVideo = $numberVideo;
+
+        return $this;
+    }
+
+    /**
+     * Get numberVideo
+     *
+     * @return integer 
+     */
+    public function getNumberVideo()
+    {
+        return $this->numberVideo;
+    }
+
+    /**
+     * Set numberBestAttack
+     *
+     * @param integer $numberBestAttack
+     * @return Clan
+     */
+    public function setNumberBestAttack($numberBestAttack)
+    {
+        $this->numberBestAttack = $numberBestAttack;
+
+        return $this;
+    }
+
+    /**
+     * Get numberBestAttack
+     *
+     * @return integer 
+     */
+    public function getNumberBestAttack()
+    {
+        return $this->numberBestAttack;
+    }
+
+    /**
+     * Set numberBonus
+     *
+     * @param integer $numberBonus
+     * @return Clan
+     */
+    public function setNumberBonus($numberBonus)
+    {
+        $this->numberBonus = $numberBonus;
+
+        return $this;
+    }
+
+    /**
+     * Get numberBonus
+     *
+     * @return integer 
+     */
+    public function getNumberBonus()
+    {
+        return $this->numberBonus;
+    }
+
+    /**
+     * Set numberPlayer
+     *
+     * @param integer $numberPlayer
+     * @return Clan
+     */
+    public function setNumberPlayer($numberPlayer)
+    {
+        $this->numberPlayer = $numberPlayer;
+
+        return $this;
+    }
+
+    /**
+     * Get numberPlayer
+     *
+     * @return integer 
+     */
+    public function getNumberPlayer()
+    {
+        return $this->numberPlayer;
+    }
+
+    /**
+     * Set numberBase5
+     *
+     * @param integer $numberBase5
+     * @return Clan
+     */
+    public function setNumberBase5($numberBase5)
+    {
+        $this->numberBase5 = $numberBase5;
+
+        return $this;
+    }
+
+    /**
+     * Get numberBase5
+     *
+     * @return integer 
+     */
+    public function getNumberBase5()
+    {
+        return $this->numberBase5;
+    }
+
+    /**
+     * Set numberBase6
+     *
+     * @param integer $numberBase6
+     * @return Clan
+     */
+    public function setNumberBase6($numberBase6)
+    {
+        $this->numberBase6 = $numberBase6;
+
+        return $this;
+    }
+
+    /**
+     * Get numberBase6
+     *
+     * @return integer 
+     */
+    public function getNumberBase6()
+    {
+        return $this->numberBase6;
+    }
+
+    /**
+     * Set numberBase7
+     *
+     * @param integer $numberBase7
+     * @return Clan
+     */
+    public function setNumberBase7($numberBase7)
+    {
+        $this->numberBase7 = $numberBase7;
+
+        return $this;
+    }
+
+    /**
+     * Get numberBase7
+     *
+     * @return integer 
+     */
+    public function getNumberBase7()
+    {
+        return $this->numberBase7;
+    }
+
+    /**
+     * Set numberBase8
+     *
+     * @param integer $numberBase8
+     * @return Clan
+     */
+    public function setNumberBase8($numberBase8)
+    {
+        $this->numberBase8 = $numberBase8;
+
+        return $this;
+    }
+
+    /**
+     * Get numberBase8
+     *
+     * @return integer 
+     */
+    public function getNumberBase8()
+    {
+        return $this->numberBase8;
+    }
+
+    /**
+     * Set numberBase9
+     *
+     * @param integer $numberBase9
+     * @return Clan
+     */
+    public function setNumberBase9($numberBase9)
+    {
+        $this->numberBase9 = $numberBase9;
+
+        return $this;
+    }
+
+    /**
+     * Get numberBase9
+     *
+     * @return integer 
+     */
+    public function getNumberBase9()
+    {
+        return $this->numberBase9;
+    }
+
+    /**
+     * Set numberBase10
+     *
+     * @param integer $numberBase10
+     * @return Clan
+     */
+    public function setNumberBase10($numberBase10)
+    {
+        $this->numberBase10 = $numberBase10;
+
+        return $this;
+    }
+
+    /**
+     * Get numberBase10
+     *
+     * @return integer 
+     */
+    public function getNumberBase10()
+    {
+        return $this->numberBase10;
     }
 }

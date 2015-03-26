@@ -57,23 +57,14 @@ class DefaultController extends Controller
             }
         }
 
-
         $em = $this->getDoctrine()->getManager();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
-        $numberPlayers = $em->getRepository('COCBundle:Player')->getNumberEntities($id_clan);
-        $numberBases5 = $em->getRepository('COCBundle:ImageBase')->getNumberEntities($clan, 5);
-        $numberBases6 = $em->getRepository('COCBundle:ImageBase')->getNumberEntities($clan, 6);
-        $numberBases7 = $em->getRepository('COCBundle:ImageBase')->getNumberEntities($clan, 7);
-        $numberBases8 = $em->getRepository('COCBundle:ImageBase')->getNumberEntities($clan, 8);
-        $numberBases9 = $em->getRepository('COCBundle:ImageBase')->getNumberEntities($clan, 9);
-        $numberBases10 = $em->getRepository('COCBundle:ImageBase')->getNumberEntities($clan, 10);
-        $numberVideos = $em->getRepository('COCBundle:Video')->getNumberEntities($id_clan);
+
         $numberUsersNonAssigned = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsersNonAssigned($id_clan);
-        $numberImagesBonus = $em->getRepository('COCBundle:ImageBonus')->getNumberEntities($id_clan);
+
         $numberUsers = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberEntities($id_clan);
 
-
-        return $this->render('AdminBundle:Default:index.html.twig' , array('numberUsers'=> $numberUsers, 'numberBases5' => $numberBases5, 'numberBases6' => $numberBases6, 'numberBases7' => $numberBases7, 'numberBases8' => $numberBases8, 'numberBases9' => $numberBases9, 'numberBases10' => $numberBases10, 'display' => $display,'clan' => $clan, 'numberImagesBonus'=> $numberImagesBonus,'numberPlayers'=> $numberPlayers,'numberUsersNonAssigned' => $numberUsersNonAssigned, 'numberVideos' => $numberVideos));
+        return $this->render('AdminBundle:Default:index.html.twig' , array('numberUsers'=> $numberUsers,'display' => $display,'clan' => $clan,'numberUsersNonAssigned' => $numberUsersNonAssigned));
     }
 
     public function menuAction($id_clan, $language_switcher)
@@ -85,23 +76,10 @@ class DefaultController extends Controller
         }
         $em = $this->getDoctrine()->getManager();
         $numberUsers = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsers($id_clan);
-
-        $numberImagesBonus = $em->getRepository('COCBundle:ImageBonus')->getNumberEntities($id_clan);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
-        $numberPlayers = $em->getRepository('COCBundle:Player')->getNumberEntities($id_clan);
-        $numberBases5 = $em->getRepository('COCBundle:ImageBase')->getNumberEntities($clan, 5);
-        $numberBases6 = $em->getRepository('COCBundle:ImageBase')->getNumberEntities($clan, 6);
-        $numberBases7 = $em->getRepository('COCBundle:ImageBase')->getNumberEntities($clan, 7);
-        $numberBases8 = $em->getRepository('COCBundle:ImageBase')->getNumberEntities($clan, 8);
-        $numberBases9 = $em->getRepository('COCBundle:ImageBase')->getNumberEntities($clan, 9);
-        $numberBases10 = $em->getRepository('COCBundle:ImageBase')->getNumberEntities($clan, 10);
 
-        $numberVideos = $em->getRepository('COCBundle:Video')->getNumberEntities($id_clan);
         $numberWars = $em->getRepository('COCBundle:War')->getNumberEntities($id_clan);
-        $numberBestAttacks = $em->getRepository('COCBundle:ImageBestAttack')->getNumberEntities($id_clan);
         $numberUsersNonAssigned = $em->getRepository('ApplicationSonataUserBundle:User')->getNumberUsersNonAssigned($id_clan);
-
-
-        return $this->render('AdminBundle:Default:menu.html.twig' , array('language_switcher' => $language_switcher, 'numberBases5' => $numberBases5, 'numberBases6' => $numberBases6, 'numberBases7' => $numberBases7, 'numberBases8' => $numberBases8, 'numberBases9' => $numberBases9, 'numberBases10' => $numberBases10,'clan' => $clan, 'numberImagesBonus'=> $numberImagesBonus, 'numberPlayers' => $numberPlayers,'numberWars' => $numberWars,'numberUsersNonAssigned' => $numberUsersNonAssigned,'numberVideos' => $numberVideos, 'numberBestAttacks' => $numberBestAttacks, 'numberUsers' => $numberUsers));
+        return $this->render('AdminBundle:Default:menu.html.twig' , array('language_switcher' => $language_switcher,'clan' => $clan, 'numberWars' => $numberWars,'numberUsersNonAssigned' => $numberUsersNonAssigned,'numberUsers' => $numberUsers));
     }
 }

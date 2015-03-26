@@ -13,10 +13,14 @@ class ImageBonusController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $list = $em->getRepository('COCBundle:ImageBonus')->findBy( array('clan' => $id_clan));
 
         $service = $this->container->get('coc_cocbundle.clan_info') ;
         $clan = $service->getClan($id_clan);
+
+
+        $list = $em->getRepository('COCBundle:ImageBonus')->findBy(array('clan' => $id_clan));
+
+
 
         if ( $this->getUser() == null && $clan->getPrivacy() == 1)
             throw $this->createNotFoundException('This page does not exist.');
@@ -87,6 +91,7 @@ class ImageBonusController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
+            $clan->setNumberBonus($clan->getNumberBonus() + 1);
             $clan->setUpdated(new \Datetime());
             $em->persist($clan);
             $em->flush();

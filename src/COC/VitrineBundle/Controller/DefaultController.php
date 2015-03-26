@@ -18,19 +18,7 @@ class DefaultController extends Controller
         $this->dispatcher->dispatch(LocaleBundleEvents::onLocaleChange, $localeSwitchEvent);
 */
         $em = $this->getDoctrine()->getManager();
-        $clans = $em->getRepository('COCBundle:Clan')->findBy(array('status' => array(0, 1)));
-        foreach ($clans as $clan)
-        {
-            $info = $em->getRepository('COCBundle:Clan')->getClanInfoVitrine($clan);
-
-            $clan->setTotal($info[0]['total']);
-            $clan->setNbMember($info[0]['nbMember']);
-        }
-
-        usort($clans, function ($a, $b) {
-            return strnatcmp($b->getTotal(), $a->getTotal());
-        });
-
+        $clans = $em->getRepository('COCBundle:Clan')->findBy(array('status' => array(0, 1)), array('totalGeneral' => 'DESC'));
         return $this->render('VitrineBundle:Default:index.html.twig', array('clans' => $clans));
     }
 

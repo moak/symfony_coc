@@ -68,6 +68,11 @@ class ImageBonusAdminController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
+            $clan->setNumberBonus($clan->getNumberBonus() + 1);
+            $clan->setUpdated(new \Datetime());
+            $em->persist($clan);
+            $em->flush();
+
             $em->persist($imageBonus);
             $em->flush();
             return $this->redirect($this->generateUrl('admin_imagesBonus', array('id_clan' =>  $clan->getId())));
@@ -89,13 +94,18 @@ class ImageBonusAdminController extends Controller
             throw $this->createNotFoundException('Page not found');
         }
 
-        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
-
         if(!$imageBonus || $this->getUser()->getClan()->getId() != $id_clan)
         {
             throw $this->createNotFoundException('No bestAttack found');
         }
-        $em = $this->getDoctrine()->getManager();
+
+        $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
+        $clan->setNumberBonus($clan->getNumberBonus() - 1);
+        $clan->setUpdated(new \Datetime());
+
+        $em->persist($clan);
+        $em->flush();
+
         $em->remove($imageBonus);
         $em->flush();
 

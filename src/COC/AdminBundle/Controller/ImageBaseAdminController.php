@@ -91,6 +91,32 @@ class ImageBaseAdminController extends Controller
         {
             throw $this->createNotFoundException('Page not found');
         }
+
+        switch ($imageBase->getHallTown()) {
+            case 5:
+                $clan->setNumberBase5($clan->getNumberBase5() - 1);
+                break;
+            case 6:
+                $clan->setNumberBase6($clan->getNumberBase6() - 1);
+                break;
+            case 7:
+                $clan->setNumberBase7($clan->getNumberBase7() - 1);
+                break;
+            case 8:
+                $clan->setNumberBase8($clan->getNumberBase8() - 1);
+                break;
+            case 9:
+                $clan->setNumberBase9($clan->getNumberBase9() - 1);
+                break;
+            case 10:
+                $clan->setNumberBase10($clan->getNumberBase10() - 1);
+                break;
+        }
+
+        $clan->setUpdated(new \Datetime());
+        $em->persist($clan);
+        $em->flush();
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($imageBase);
         $em->flush();
