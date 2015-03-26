@@ -175,13 +175,13 @@ class Player
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Image")
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Image", cascade={"persist"})
      * @ORM\JoinColumn(name="base_id", referencedColumnName="id")
      */
     private $base;
 
     /**
-     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Image")
+     * @ORM\ManyToOne(targetEntity="COC\COCBundle\Entity\Image", cascade={"persist"})
      * @ORM\JoinColumn(name="picture_id", referencedColumnName="id")
      */
     private $picture;
