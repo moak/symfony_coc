@@ -203,7 +203,7 @@ player:
    elixir: Elexir
    activity: Activity
    sent: Sent
-   received: Received
+   received: Rec
    attack: Attacks
    trop: Troph
 

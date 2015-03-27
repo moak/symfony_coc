@@ -12,21 +12,21 @@
                         <thead>
                             <tr>
                                 <th class="supercell-font">{{ 'player.name'|trans }}</th>
-                                <th class="supercell-font">{{ 'player.level'|trans }}</th>
-                                <th class="supercell-font">{{ 'player.def'|trans }}</th>
+                                <th class="supercell-font">{{ 'player.sent'|trans }}</th>
+                                <th class="supercell-font">{{ 'player.received'|trans }}</th>
+                                <th class="supercell-font">{{ 'player.trop'|trans }}</th>
                                 <th class="supercell-font">{{ 'player.att'|trans }}</th>
-                                <th class="supercell-font">{{ 'player.total'|trans }}</th>
                                 <th class="supercell-font no-sort"></th>
                             </tr>
                         </thead>
                         <tbody>
                         {% for player in players %}
                             <tr>
-                                <td><a href="{{ path('coc_player', {'id_clan' : clan.id , 'id_player' :  player.id }) }}"> <i class="fa fa-user"></i> {{ player.name }} ({{ player.hallTown }})</a></td>
-                                <td>{{ player.level }}</td>
-                                <td>{{ player.totalDefence|round }}</td>
-                                <td>{{ player.totalAttack|round }}</td>
-                                <td>{{ player.total|round }}</td>
+                                <td><a href="{{ path('coc_player', {'id_clan' : clan.id , 'id_player' :  player.id }) }}"> <i class="fa fa-user"></i> {{ player.name }}</a></td>
+                                <td>{{ player.troopSent }}</td>
+                                <td>{{ player.troopReceived }}</td>
+                                <td>{{ player.trophy }}</td>
+                                <td>{{ player.attackWon }}</td>
                                 <td>{{ player.updatedAt|date('U')|timeago }}</td>
                             </tr>
                         {% endfor %}

@@ -31,6 +31,8 @@ class RegistrationController extends BaseController
 
 
     static function copy($source, $target) {
+
+
         if (!is_dir($source)) {//it is a file, do a normal copy
             copy($source, $target);
             return;
