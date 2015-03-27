@@ -43,7 +43,13 @@
 
             <div class="col-sm-4">
                 {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+
+                {% if not isCurrentSeason %}
+                    <a class="btn btn-normal pull-right btn-info" href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}">{{ 'menu.current_season'|trans }}</a>
+                {% endif %}
             </div>
+
+
 
         </div>
 
