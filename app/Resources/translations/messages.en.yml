@@ -260,21 +260,23 @@ vitrine:
     step2_description: Create the players in the administration panel. The members have the possibility to join your clan and edit his/her player by cliking on "Join a clan" below.
     step3_title: Be better, more fun !
     step3_description: Reinforce the competitivity of your clan and get more information about your members statistics. 
-    how: Uhm .. How does it work ?
+    how: Uhm, Okay .. How it works ?
 
 intro:
     step1: Welcome onboard, this is your new website ! We hope you will enjoy the experience of OhMyClan.
     step2: Here are a few features available on your website. We already added a few bases and best attacks to show you how it works.
     step3: Communicate with the members of your clan and easily mananage the agenda of the clan wars.
-    step4: The ranking system of OhMyClan allows you to know who is really the best of your clan.
-    step5: Update your player information or your clan information before the end of the season (each season lasts two weeks and start on Mondays).
+    step4: Follow the last updates of the members who recently updated their players.
+    step5: Update your player information or your clan information before the end of the season (each season lasts two weeks and starts the Mondays).
     step6: Manage your clan from the administration. (E.g: Add players, associate new accounts to players, create clan wars, etc..)
     feature3_title: Share the best bases for your clan..
-    feature3_description: Easily manage and upload new bases to help your friends and your clan to have better defences.
-    feature1_title: Know who is active and who should fight!
-    feature1_description: You don't know who should participate to the clan wars? Get information every seasons on who attacked the most, who gave or received the most troops.
-    feature2_title: Ranking system
-    feature2_description: Sort the members of your clan by trophies like in Clash of Clans, but also by levels, level of labotory or level of defences.
+    feature3_description: Easily manage and upload new bases to help your friends and your clan to have better defences. We also give you the possibility to upload the pictures or videos of your best attacks.
+    feature1_title: Improve the Clash of Clans experience!
+    feature1_description: Get additionnal features than the game and have more fun on Clash of Clans. Share the pictures of your map and consult the activity of the players.
+    feature2_title: Unique ranking system!
+    feature2_description: Oh My Clan offers a unique ranking system which sorts the players depending on their real stats! You can sort the members by level of attack and defence, by troops sent or received and by attacks won.
+    feature4_title: Get stats every seasons!
+    feature4_description: You don't know who should participate to the clan wars? Get information every seasons on who attacked the most, who gave or received the most troops. Look the progress of the players to know the most active people.
 
 country:
     in: International

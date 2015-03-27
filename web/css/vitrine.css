@@ -12,6 +12,7 @@ BY FLO
     font-size: .7em;
 }
 
+
 body
 {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
@@ -25,14 +26,7 @@ body
 
 .main{margin-top:-20px;}
 
-footer
-{
-    padding: 8px;
-    background: #E7E7E7;
-    font-size: 18px;
-    font-family: 'Trebuchet MS', Arial, Verdana;
-    margin-bottom: 5px;
-}
+
 
 
 .modal-dialog {
@@ -124,7 +118,6 @@ p.copyright {
 /* ======= Steps ======= */
 .steps {
     padding-top: 40px;
-
 
 }
 

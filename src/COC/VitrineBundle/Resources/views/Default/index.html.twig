@@ -112,12 +112,12 @@
                 <div class="col-lg-4 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">{{ 'intro.feature3_title'|trans }}</h2>
-                    <p class="lead"> {{ 'intro.feature3_description'|trans }}</p>
+                    <h2 class="section-heading">{{ 'intro.feature4_title'|trans }}</h2>
+                    <p class="lead"> {{ 'intro.feature4_description'|trans }}</p>
                 </div>
                 <div class="col-lg-6 col-lg-offset-2 col-sm-6">
-                    <a rel="gallery-1"  href="{{ asset('images/bases.png') }}" class="swipebox" title="">
-                        <img class="img-responsive center-block" src="{{ asset('images/bases.png') }}" alt="">
+                    <a rel="gallery-1"  href="{{ asset('images/graphs.png') }}" class="swipebox" title="">
+                        <img class="img-responsive center-block" src="{{ asset('images/graphs.png') }}" alt="">
                     </a>
 
                 </div>
@@ -126,6 +126,112 @@
         <!-- /.container -->
     </div>
     <!-- /.content-section-a -->
+
+
+    <div class="content-section-b">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-1 col-sm-push-6  col-sm-4">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">{{ 'intro.feature3_title'|trans }}</h2>
+                    <p class="lead"> {{ 'intro.feature3_description'|trans }}</p>
+                </div>
+                <div class="col-lg-6 col-sm-pull-4  col-sm-6">
+                    <a rel="gallery-1"  href="{{ asset('images/bases.png') }}" class="swipebox" title="">
+                        <img class="img-responsive center-block" src="{{ asset('images/bases.png') }}" alt="">
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+
+    <div class="banner" id="register">
+
+        <div class="container hidden-lg hidden-md">
+
+            <h2 class="text-center">Best clans</h2>
+            <br>
+            <div class="row text-center">
+
+                <table class="table table-condensed table-mini table-responsive">
+                    <thead>
+                    <tr>
+                        <th class="supercell-font white-on-black text-center"><i class="fa fa-star-o fa-lg hidden-sm hidden-xs"></i><i class="fa fa-star-half-o fa-lg hidden-sm hidden-xs"></i><i class="fa fa-star fa-lg"></i></th>
+                        <th class="supercell-font white-on-black text-center"><i class="fa fa-heart fa-lg"></i> Clans</th>
+                        <th class="supercell-font white-on-black text-center"><i class="fa fa-calculator fa-lg"></i> </th>
+                        <th class="supercell-font white-on-black text-center"> <i class="fa fa-refresh"></i></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if clans|length != 0 %}
+                        {% for clan in clans %}
+                            <tr>
+                                <td class="supercell-font white-on-black text-center">{{ loop.index }}  </td>
+                                <td class="supercell-font white-on-black text-center">{{ clan.name[:6] }} ({{ clan.nbMember }})</td>
+                                <td class="supercell-font white-on-black text-center">{{ clan.total|round }}</td>
+                                <td class="supercell-font white-on-black text-center">{{ clan.updated|date('U')|timeago }}</td>
+
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+
+        <div class="container hidden-sm hidden-xs">
+
+            <h2 class="text-center">Best clans</h2>
+            <br>
+            <div class="row text-center">
+                <div class="col-md-10 col-md-offset-1">
+                    <table class="table ">
+                        <thead>
+                        <tr>
+                            <th class="supercell-font white-on-black text-center"><i class="fa fa-star-o fa-lg hidden-sm hidden-xs"></i><i class="fa fa-star-half-o fa-lg hidden-sm hidden-xs"></i><i class="fa fa-star fa-lg"></i></th>
+                            <th class="supercell-font white-on-black text-center"><i class="fa fa-user fa-lg"></i> Clan</th>
+                            <th class="supercell-font white-on-black text-center"><i class="fa fa-heart fa-lg"></i> Members</th>
+                            <th class="supercell-font white-on-black text-center"><i class="fa fa-calculator fa-lg"></i> Total</th>
+                            <th class="supercell-font white-on-black text-center"><i class="fa fa-refresh"></i> Last update</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if clans|length != 0 %}
+                            {% for clan in clans %}
+                                <tr class="clan">
+                                    <td class="supercell-font white-on-black text-center">{{ loop.index }} {% if loop.index == 1 %}<i class="fa fa-trophy"></i>{% endif %} </td>
+                                    {% if clan.privacy == 0 %}
+                                        <td class="supercell-font white-on-black text-center"><a href="{{ path('coc', {'id_clan' : clan.id }) }}"> {{ clan.name }}</a></td>
+                                    {% else %}
+                                        <td class="supercell-font white-on-black text-center"><span>{{ clan.name }}</span></td>
+                                    {% endif %}
+                                    <td class="supercell-font white-on-black text-center">{{ clan.numberPlayer }}</td>
+                                    <td class="supercell-font white-on-black text-center">{{ clan.totalGeneral|round }}</td>
+                                    <td class="supercell-font white-on-black text-center">{{ clan.updated|date('U')|timeago }}</td>
+
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div></div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.banner -->
 
 
     <section class="steps">
@@ -156,86 +262,7 @@
         </div>
     </section>
 
-    <div class="banner" id="register">
 
-        <div class="container hidden-lg hidden-md">
-
-            <h2 class="text-center">Best clans</h2>
-            <br>
-            <div class="row text-center">
-
-                    <table class="table table-condensed table-mini table-responsive">
-                        <thead>
-                        <tr>
-                            <th class="supercell-font white-on-black text-center"><i class="fa fa-star-o fa-lg hidden-sm hidden-xs"></i><i class="fa fa-star-half-o fa-lg hidden-sm hidden-xs"></i><i class="fa fa-star fa-lg"></i></th>
-                            <th class="supercell-font white-on-black text-center"><i class="fa fa-heart fa-lg"></i> Clans</th>
-                            <th class="supercell-font white-on-black text-center"><i class="fa fa-calculator fa-lg"></i> </th>
-                            <th class="supercell-font white-on-black text-center"> <i class="fa fa-refresh"></i></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% if clans|length != 0 %}
-                            {% for clan in clans %}
-                                <tr>
-                                    <td class="supercell-font white-on-black text-center">{{ loop.index }}  </td>
-                                    <td class="supercell-font white-on-black text-center">{{ clan.name[:6] }} ({{ clan.nbMember }})</td>
-                                    <td class="supercell-font white-on-black text-center">{{ clan.total|round }}</td>
-                                    <td class="supercell-font white-on-black text-center">{{ clan.updated|date('U')|timeago }}</td>
-
-                                </tr>
-                            {% endfor %}
-                        {% endif %}
-                        </tbody>
-                    </table>
-
-            </div>
-
-        </div>
-        <!-- /.container -->
-
-
-        <div class="container hidden-sm hidden-xs">
-
-            <h2 class="text-center">Best clans</h2>
-            <br>
-            <div class="row text-center">
-                <div class="col-md-10 col-md-offset-1">
-                <table class="table ">
-                    <thead>
-                    <tr>
-                        <th class="supercell-font white-on-black text-center"><i class="fa fa-star-o fa-lg hidden-sm hidden-xs"></i><i class="fa fa-star-half-o fa-lg hidden-sm hidden-xs"></i><i class="fa fa-star fa-lg"></i></th>
-                        <th class="supercell-font white-on-black text-center"><i class="fa fa-user fa-lg"></i> Clan</th>
-                        <th class="supercell-font white-on-black text-center"><i class="fa fa-heart fa-lg"></i> Members</th>
-                        <th class="supercell-font white-on-black text-center"><i class="fa fa-calculator fa-lg"></i> Total</th>
-                        <th class="supercell-font white-on-black text-center"><i class="fa fa-refresh"></i> Last update</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% if clans|length != 0 %}
-                        {% for clan in clans %}
-                            <tr class="clan">
-                                <td class="supercell-font white-on-black text-center">{{ loop.index }} {% if loop.index == 1 %}<i class="fa fa-trophy"></i>{% endif %} </td>
-                                {% if clan.privacy == 0 %}
-                                    <td class="supercell-font white-on-black text-center"><a href="{{ path('coc', {'id_clan' : clan.id }) }}"> {{ clan.name }}</a></td>
-                                {% else %}
-                                    <td class="supercell-font white-on-black text-center"><span>{{ clan.name }}</span></td>
-                                {% endif %}
-                                <td class="supercell-font white-on-black text-center">{{ clan.numberPlayer }}</td>
-                                <td class="supercell-font white-on-black text-center">{{ clan.totalGeneral|round }}</td>
-                                <td class="supercell-font white-on-black text-center">{{ clan.updated|date('U')|timeago }}</td>
-
-                            </tr>
-                        {% endfor %}
-                    {% endif %}
-                    </tbody>
-                </table>
-            </div></div>
-
-        </div>
-        <!-- /.container -->
-
-    </div>
-    <!-- /.banner -->
 
 
     <!-- Footer -->

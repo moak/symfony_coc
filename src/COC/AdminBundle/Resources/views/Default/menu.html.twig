@@ -69,7 +69,7 @@
             </li>
 
 
-            <li data-step="4" data-position='right' data-intro="{{ 'admin.msg4'|trans }}">
+            <li data-step="3" data-position='right' data-intro="{{ 'admin.msg4'|trans }}">
                 <a href="{{ path('admin_users', { 'id_clan': clan.id }) }}">
                     {% if numberUsersNonAssigned > 0 %}
                         <span class="badge badge-danger"> {{ numberUsers }} <i class="fa fa-user"></i></span>
@@ -81,7 +81,7 @@
 
 
 
-            <li data-step="3" data-position='right' data-intro="{{ 'admin.msg3'|trans }}">
+            <li data-step="4" data-position='right' data-intro="{{ 'admin.msg3'|trans }}">
                 <a href="{{ path('admin_players', { 'id_clan': clan.id, 'type' : '0' }) }}"><span class="badge">{{ clan.numberPlayer }} <i class="fa fa-user"></i> </span> {{ 'menu.players_list'|trans }}</span></a>
 
             </li>

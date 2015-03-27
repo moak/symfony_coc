@@ -272,7 +272,8 @@ intro:
     feature1_description: Vous ne savez pas qui mérite de participez aux guerres de clan? Obtenez des informations chaques saisons sur quel membre attaque le plus, ou encore qui a donne ou recu le plus de troupes.
     feature2_title: Système de classement complet
     feature2_description: Classez les membres du clan par trophés comme sur Clash of Clans, mais aussi par niveaux de défence ou laboratoire.
-
+    feature4_title: Stats de chaques saisons
+    feature4_description: Suivez la progression de chaques joueurs et distinguez vos membres les plus actifs.
 country:
     in: International
     eu: Europe
