@@ -1,11 +1,12 @@
 <div class="row">
         {% if images|length != 0 %}
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-10 col-md-offset-1">
                     <h3><a href="{{ path('coc_images_base_category', {'id': hall_town , 'id_clan': clan.id }) }}">{{ 'player.hall_town'|trans }} {{ hall_town }}</a></h3>
                 </div>
             </div>
 
+            <br>
             {% for image in images %}
                 <div class="col-md-4">
                     <div class="panel panel-default text-center">
