@@ -1,13 +1,13 @@
 {% set locales = locales %}
 
 <li class="dropdown">
-    <a href="#" class="language" style="text-align: left;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <a href="#"  style="text-align: left;" class="dropdown-toggle language" data-toggle="dropdown" role="button" aria-expanded="false">
         {%  if (current_locale == "fr") %}
-            <img  style="width:20px;height:20px;vertical-align:middle; text-align: left;" src="{{ asset('images/fr.png') }}" >
+            <img  style="width:20px;height:20px;vertical-align:middle; text-align: left;" src="{{ asset('images/fr.png') }}" alt="fr" >
         {% elseif (current_locale == "es") %}
-            <img style="width:20px;height:20px;vertical-align:middle" src="{{ asset('images/es.png') }}" >
+            <img style="width:20px;height:20px;vertical-align:middle" src="{{ asset('images/es.png') }}" alt="es" >
         {% else %}
-            <img style="width:20px;height:20px;vertical-align:middle" src="{{ asset('images/en.png') }}" >
+            <img style="width:20px;height:20px;vertical-align:middle" src="{{ asset('images/en.png') }}" alt="en"  >
         {% endif %}
         <span class="caret"></span>
 
