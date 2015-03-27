@@ -17,7 +17,7 @@
                     {% if isCurrentSeason %}
                         {{ 'menu.general_ranking'|trans }}  ({{ season.name }})
                     {% else %}
-                       {{ 'label.season'|trans }}: {{ season.name }}
+                        {{ 'menu.general_ranking'|trans }} ({{ season.name }})
                         {%  if app.user.player.level is defined and clan.id == app.user.player.clan.id %}
                             <a class="btn btn-normal pull-right btn-primary" href="{{ path('coc_players', {'id_clan': clan.id, 'type': '0' }) }}">{{ 'menu.current_season'|trans }}</a>
                         {% endif %}
@@ -93,7 +93,7 @@
 
                 {% if  isCurrentSeason == false %}
                     {% if player.player.level is defined %}
-                        - {{ player.player.level - player.level }}
+                         {{ player.level }}
                     {% endif %}
                 {% else %}
                     {{ player.level|round }}
@@ -103,7 +103,7 @@
             <td>
                 {% if  isCurrentSeason == false %}
                     {% if player.player.totalDefence is defined %}
-                        - {{ player.player.totalDefence|round - player.totalDefence|round }}
+                         {{ player.totalDefence|round }}
                     {% endif %}
                 {% else %}
                     {{ player.totalDefence|round }}
@@ -114,7 +114,7 @@
             <td>
                 {% if  isCurrentSeason == false %}
                     {% if player.player.totalAttack is defined %}
-                        - {{ player.player.totalAttack|round - player.totalAttack|round }}
+                        {{ player.totalAttack|round }}
                     {% endif %}
                 {% else %}
                     {{ player.totalAttack|round }}
@@ -126,7 +126,7 @@
 
                 {% if  isCurrentSeason == false %}
                     {% if player.player.total is defined %}
-                        - {{ player.player.total - player.total }}
+                         {{  player.total|round }}
                     {% endif %}
                 {% else %}
                     {{ player.total|round }}
