@@ -53,6 +53,7 @@
                             <br>
                             {% if app.user.player.id is defined and app.user.player.id == player.id %}
                                 <div class="row">
+
                                     <div class="col-xs-6">
                                         <div class="previous">
                                             {{ form_start(form) }}
@@ -178,7 +179,7 @@
                     </div>
                     <br>
                     <div class="row">
-                        <div class="col-lg-10 col-lg-offset-1">
+                        <div class="col-lg-12">
                             {% if player.base.path is defined %}
                                 <a rel="gallery-1"  href="{{ asset(player.base.getWebPath(clan.id)) }}" class="swipebox" title="">
                                     <img  class="img-responsive"src="{{ asset(player.base.getWebPath(clan.id)) }}" />
