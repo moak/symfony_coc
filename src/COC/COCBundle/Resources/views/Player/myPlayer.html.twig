@@ -29,23 +29,16 @@
                         {% endfor %}
                     </ul>
                 </div>
-
             </div>
-
-
             <div class="col-md-4">
-
                 <h3 class="last-update pull-right hidden-xs hidden-sm"><small>({{ 'player.last_update'|trans }} : {{ player.updatedAt|date('U')|timeago }})</small></h3>
-
-
             </div>
-
         </div>
         <div class="well">
             <div class="row">
                 <div class="col-md-7">
                     <div class="row">
-                        <div class="col-md-5 ">
+                        <div class="col-md-4 ">
                             {% if player.picture.path is defined %}
                                 <div class="row">
                                     <div class="col-md-12 ">
@@ -78,7 +71,8 @@
                                 </div>
                             {% endif %}
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-8">
+                            <h2><i class="fa fa-area-chart"></i> {{ player.total }}  <small class="pull-right"> {{ positions['total']}} {{ positions['total']|position }} </small></h2>
                             <div class="row info ">
 
                                 <table class="table table-bordered table-striped table-condensed">
@@ -175,23 +169,26 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-
-
-                    <div class="col-md-12">
-                        <h2><i class="fa fa-area-chart"></i> {{ player.total }}  <small class="pull-right"> {{ positions['total']}} {{ positions['total']|position }} </small></h2>
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            {% if app.user.player.id is defined and app.user.player.id == player.id %}
+                                <a class="btn btn-success btn-block" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_base'|trans }}</b></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-10 col-lg-offset-1">
+                            {% if player.base.path is defined %}
+                                <a rel="gallery-1"  href="{{ asset(player.base.getWebPath(clan.id)) }}" class="swipebox" title="">
+                                    <img  class="img-responsive"src="{{ asset(player.base.getWebPath(clan.id)) }}" />
+                                </a>
+                            {% else %}
+                                <img class="img-responsive" src="{{ asset('images/non_available.jpg') }}" />
+                            {% endif %}
+                        </div>
                     </div>
 
-                    {% if player.base.path is defined %}
-                        <a rel="gallery-1"  href="{{ asset(player.base.getWebPath(clan.id)) }}" class="swipebox" title="">
-                            <img  class="img-responsive"src="{{ asset(player.base.getWebPath(clan.id)) }}" />
-                        </a>
-                    {% else %}
-                        <img class="img-responsive" src="{{ asset('images/non_available.jpg') }}" />
-                    {% endif %}
-                    <br>
-                    {% if app.user.player.id is defined and app.user.player.id == player.id %}
-                        <a class="btn btn-primary btn-block" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_base'|trans }}</b></a>
-                    {% endif %}
                 </div>
             </div>
 
