@@ -215,6 +215,7 @@
             {{ render(controller('AdminBundle:VideoAdmin:mainPageModule', {'id_clan': clan.id })) }}
 
             {% if is_granted('ROLE_USER') and app.user.player.clan.id is defined  %}
+                ye
                 {% include 'FOSCommentBundle:Thread:async.html.twig' with {'id': clan.id} %}
             {% endif %}
 
