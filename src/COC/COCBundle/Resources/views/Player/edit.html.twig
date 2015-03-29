@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    {{ form_label(form.hall_town, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                    {{ form_label(form.hall_town, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
                                     {{ form_errors(form.hall_town) }}
                                     <div class="col-sm-8">
                                         {{ form_widget(form.hall_town, {'attr': {'class': 'form-control hall-town-level'}}) }}
@@ -33,7 +33,7 @@
 
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    {{ form_label(form.level, null, {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                                    {{ form_label(form.level, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
                                     {{ form_errors(form.level) }}
                                     <div class="col-sm-8">
                                         {{ form_widget(form.level, {'attr': {'class': 'form-control'}}) }}
@@ -43,76 +43,56 @@
 
                             <div class="col-sm-4" >
                                 <div class="form-group">
-                                    {{ form_label(form.base, null, {'label_attr': {'class': 'col-sm-4 control-label '}}) }}
-                                    {{ form_errors(form.base) }}
-                                    <div class="col-sm-4">
-                                        {{ form_widget(form.base, {'attr': {'class': 'filestyle'}}) }}
-                                    </div>
-                                    <div class="col-sm-4 hidden-sm hidden-xs">  {{ form_widget(form.base, {'attr': {'class': 'filestyle test block'}}) }}
-                                        {% if player.base.path is defined %}
-                                            <img  class="img-responsive" src="{{ asset(player.base.getWebPath(clan.id)) }}" />
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- PANEL Activity -->
-            <div class="panel panel-info">
-                <div class="panel-heading" role="tab" id="headingFour">
-                    <h4 class="panel-title">
-                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                            {{ 'player.activity'|trans }}
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                    <div class="panel-body defences">
-                        <!-- ATTACK -->
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    {{ form_label(form.attackWon, null, {'label_attr': {'class': 'control-label'}}) }}
-                                    {{ form_errors(form.attackWon) }}
-                                    {{ form_widget(form.attackWon, {'attr': {'class': 'form-control'}}) }}
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6" >
-                                <div class="form-group">
-                                    {{ form_label(form.trophy, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_label(form.trophy, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
                                     {{ form_errors(form.trophy) }}
-                                    {{ form_widget(form.trophy, {'attr': {'class': 'form-control'}}) }}
+                                    <div class="col-sm-8">
+                                        {{ form_widget(form.trophy, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
                                 </div>
                             </div>
+
+
+
                         </div>
+
+
                         <div class="row">
-                            <div class="col-sm-6" >
+
+                            <div class="col-sm-4" >
                                 <div class="form-group">
-                                    {{ form_label(form.troopReceived, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_label(form.troopReceived, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
                                     {{ form_errors(form.troopReceived) }}
-                                    {{ form_widget(form.troopReceived, {'attr': {'class': 'form-control'}}) }}
+                                    <div class="col-sm-8">
+                                        {{ form_widget(form.troopReceived, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
                                 </div>
                             </div>
 
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <div class="form-group">
-                                    {{ form_label(form.troopSent, null, {'label_attr': {'class': 'control-label'}}) }}
+                                    {{ form_label(form.troopSent, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
                                     {{ form_errors(form.troopSent) }}
-                                    {{ form_widget(form.troopSent, {'attr': {'class': 'form-control'}}) }}
+                                    <div class="col-sm-8">
+                                        {{ form_widget(form.troopSent, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
                                 </div>
                             </div>
-                            <!-- ROW END -->
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{ form_label(form.attackWon, null, {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+                                    {{ form_errors(form.attackWon) }}
+                                    <div class="col-sm-8">
+                                        {{ form_widget(form.attackWon, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
+
                     </div>
                 </div>
-
             </div>
 
             <!-- PANEL Defence -->

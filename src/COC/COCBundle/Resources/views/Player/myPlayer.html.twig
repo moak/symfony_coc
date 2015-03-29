@@ -173,7 +173,23 @@
                     <div class="row">
                         <div class="col-lg-8 col-lg-offset-2">
                             {% if app.user.player.id is defined and app.user.player.id == player.id %}
-                                <a class="btn btn-success btn-block" href="{{ path('coc_player_edit', {'id': app.user.player.id ,'id_clan': clan.id }) }}"><b> {{ 'menu.edit_base'|trans }}</b></a>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="previous">
+                                            {{ form_start(formBase) }}
+                                            {{ form_errors(formBase) }}
+                                            {{ form_errors(formBase.picture) }}
+                                            {{ form_widget(formBase.picture, {'attr': {'class': 'filestyle'}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="next">
+                                            {{ form_widget(formBase.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                                            {{ form_rest(formBase) }}
+                                            {{ form_end(formBase) }}
+                                        </div>
+                                    </div>
+                                </div>
                             {% endif %}
                         </div>
                     </div>

@@ -11,6 +11,7 @@ use COC\COCBundle\Entity\PlayerHistory;
 use COC\COCBundle\Form\Type\SeasonType;
 use Symfony\Component\HttpFoundation\Request;
 use COC\COCBundle\Form\Type\PlayerType;
+use COC\COCBundle\Form\Type\BaseType;
 use COC\COCBundle\Form\Type\ActivityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -222,12 +223,6 @@ class PlayerController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
-
-
-            $player->getBase()->setIdclan($clan->getId());
-
-         // $player->getPicture()->preUpload();
-
             $clan->setUpdated(new \Datetime());
             $em->persist($clan);
             $em->flush();
@@ -354,14 +349,40 @@ class PlayerController extends Controller
         $playerPreviousSeason = $em->getRepository('COCBundle:PlayerHistory')->findOneBy(array('player' => $player->getId(), 'season' => $previousSeason));
         $players = $em->getRepository('COCBundle:Player')->findBy(array('clan' => $clan), array('total'=> 'DESC'));
 
-        $form = $this->get('form.factory')->create(new ImageProfileType(), $player);
+        $form       = $this->get('form.factory')->create(new ImageProfileType(), null);
+        $formBase   = $this->get('form.factory')->create(new BaseType(), null);
 
         if ($form->handleRequest($request)->isValid())
         {
-            $player->getPicture()->setIdclan($clan->getId());
-            $em->persist($player);
-            $em->flush();
+            if ($request->request->has('image_profile') )
+            {
+                $img = $form->get('picture')->getData();
+                $img->setIdclan($clan->getId());
+
+                $em->persist($img);
+                $em->flush();
+
+                $player->setPicture($img);
+                $em->persist($player);
+                $em->flush();
+            }
         }
+        if ($formBase->handleRequest($request)->isValid())
+        {
+            if ($request->request->has('image_base') )
+            {
+                $img = $formBase->get('picture')->getData();
+                $img->setIdclan($clan->getId());
+
+                $em->persist($img);
+                $em->flush();
+
+                $player->setBase($img);
+                $em->persist($player);
+                $em->flush();
+            }
+        }
+
 
         return $this->render('COCBundle:Player:myPlayer.html.twig', array(
             'playerPreviousSeason'  => $playerPreviousSeason,
@@ -372,6 +393,7 @@ class PlayerController extends Controller
             'player'                => $player,
             'positions'             => $this->getPositions($player, $clan, $previousSeason),
             'form'                  => $form->createView(),
+            'formBase'              => $formBase->createView(),
             'myGold'                => $this->perDay($this->getMyGoldPerHour($player)),
             'myElixir'              => $this->perDay($this->getMyElixirPerHour($player)),
             'myDarkElixir'          => $this->perDay($this->getMyDarkElixirPerHour($player)),
