@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use COC\COCBundle\Entity\War;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use COC\COCBundle\Form\Type\WarType;
+use COC\COCBundle\Form\Type\EditWarType;
 
 class WarAdminController extends Controller
 {
@@ -29,6 +30,8 @@ class WarAdminController extends Controller
         if ($form->handleRequest($request)->isValid())
         {
             $start = clone $war->getStart();
+            $war->getImage()->setIdclan($clan->getId());
+
             $war->setEnd($start->modify('+2 day'));
             $war->setClan($clan);
             $em->persist($war);
@@ -57,7 +60,7 @@ class WarAdminController extends Controller
         $war = $em->getRepository('COCBundle:War')->find($id);
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
 
-        $form = $this->get('form.factory')->create(new WarType(), $war );
+        $form = $this->get('form.factory')->create(new EditWarType(), $war );
 
         if ($form->handleRequest($request)->isValid())
         {
@@ -70,7 +73,7 @@ class WarAdminController extends Controller
 
         return $this->render('AdminBundle:WarAdmin:edit.html.twig', array( 'clan'=> $clan,
             'form'      =>  $form->createView(),
-            'player'  => $war
+            'war'  => $war
         ));
     }
 

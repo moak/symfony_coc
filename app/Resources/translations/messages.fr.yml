@@ -263,17 +263,17 @@ intro:
     step1: Bienvenue à bord, ceci est votre nouveau site ! Nous espérons que vous apprécierez l'expérience OhMyClan.
     step2: Voici un exemple de fonctionnalités disponibles sur OhMyClan. Nous avons ajouté quelques bases et attaques pour vous montrer comment consulter vos images.
     step3: Communiquez avec les membres du clan et gérez facilement l'agenda et l'historique des guerres.
-    step4: The système de classement de OhMyClan vous permet visualiser les meilleurs membres de votre clan.
+    step4: Suivez les dernières mises à jours des membres qui ont récemment édité leurs profils.
     step5: Mettez à jour vos informations ou celle de votre clan avant la fin de chaques saisons (une saison dure deux semaines et commence les lundis).
     step6: Managez votre clan depuis l'administration. (Ex: Ajouter des joueurs, associer les nouveaux comptes à vos joueur, créer de nouvelles guerres, etc..)
     feature3_title: Partagez les meilleures bases de votre clan
     feature3_description: Uploadez facilement vos bases et partagez les aux membres les moins expérimentés.
-    feature1_title: Surveillez l'évolution des joueurs
-    feature1_description: Vous ne savez pas qui mérite de participez aux guerres de clan? Obtenez des informations chaques saisons sur quel membre attaque le plus, ou encore qui a donne ou recu le plus de troupes.
-    feature2_title: Système de classement complet
-    feature2_description: Classez les membres du clan par trophés comme sur Clash of Clans, mais aussi par niveaux de défence ou laboratoire.
+    feature1_title: Améliorez l'expérience Clash of Clans!
+    feature1_description: Obtenez des informations supplémentaires que le jeu lui même et ayez plus de fun sur Clash of Clans. Partagez votre bases et consultez l'activité des joueurs.
+    feature2_title: Système de classement unique!
+    feature2_description: Oh My Clan offre un système de classement unique qui trie les joueurs en fonction de leurs statistiques réelles! Vous pouvez trier vos membres par niveau d'attaque et de défence, par troupes reçues et envoyéees ou par attaques gagnées.
     feature4_title: Stats de chaques saisons
-    feature4_description: Suivez la progression de chaques joueurs et distinguez vos membres les plus actifs.
+    feature4_description: Vous ne savez pas qui devrait participer aux guerres? Obtenez des informations toutes les saisons sur quels membres attaquent le plus, ou qui a donné ou recu le plus de troupes. Découvrez qui sont les plus actifs!
 country:
     in: International
     eu: Europe

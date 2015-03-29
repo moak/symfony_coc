@@ -26,6 +26,7 @@
             <tr>
                 <th>{{ 'war.wars'|trans }}</th>
                 <th>{{ 'war.date'|trans }}</th>
+                <th></th>
                 <th>{{ 'war.result'|trans }}</th>
                 <th></th>
             </tr>
@@ -45,6 +46,9 @@
                         </td>
                         <td>
                             {{ war.start|date('d M  Y - H:i') }}
+                        </td>
+                        <td>
+                            <img class="img-responsive" src="{{ asset(war.image.getWebPath(clan.id)) }}">
                         </td>
                         <td>
                             {{ war.result|result }}
