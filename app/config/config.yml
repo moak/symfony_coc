@@ -133,5 +133,11 @@ fos_comment:
             thread: COC\COCBundle\Entity\Thread
 
 
+k_phoen_sms_sender:
+    pool:         memory    # can be null (and is by default)
+    providers:    [nexmo]
 
+    nexmo:
+        api_key:     6996a14b
+        api_secret:  56751ffa
 

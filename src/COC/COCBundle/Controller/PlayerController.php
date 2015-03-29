@@ -396,8 +396,8 @@ class PlayerController extends Controller
             'formBase'              => $formBase->createView(),
             'myGold'                => $this->perDay($this->getMyGoldPerHour($player)),
             'myElixir'              => $this->perDay($this->getMyElixirPerHour($player)),
-            'myDarkElixir'          => $this->perDay($this->getMyDarkElixirPerHour($player)),
-            'maxDarkElixir'         => $this->perDay($this->getMaxDarkElixirPerHour($player)),
+            'myDarkElixir'          => $this->$this->getMyDarkElixirPerHour($player)* 24,
+            'maxDarkElixir'         => $this->$this->getMaxDarkElixirPerHour($player) * 24,
             'maxElixirGold'         => $this->perDay($this->getMaxGoldElixirPerHour($player)),
             'players'               => $players
         ));

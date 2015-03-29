@@ -3,11 +3,23 @@
 namespace COC\COCBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
+
+    public function sendSMSAction()
+    {
+
+        $sms_sender = $this->get('sms.sender');
+        $sms_sender->send('0782231874', 'Its thfdgfdgfdge answer.', 'Kévin');
+
+
+    }
+
     public function indexAction($id_clan)
     {
+        self::sendSMSAction();
 
         $em = $this->getDoctrine()->getManager();
         $clan = $this->container->get('coc_cocbundle.clan_info')->getClan($id_clan);
