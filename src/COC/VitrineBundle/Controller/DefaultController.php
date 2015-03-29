@@ -17,6 +17,11 @@ class DefaultController extends Controller
         $localeSwitchEvent = new FilterLocaleSwitchEvent($request, $locale);
         $this->dispatcher->dispatch(LocaleBundleEvents::onLocaleChange, $localeSwitchEvent);
 */
+
+        if ( $this->getUser() != null && $this->getUser()->getClan() != null )
+            return $this->redirect($this->generateUrl('coc', array('id_clan' => $this->getUser()->getClan()->getId())));
+
+
         $em = $this->getDoctrine()->getManager();
         $clans = $em->getRepository('COCBundle:Clan')->findBy(array('status' => array(0, 1)), array('totalGeneral' => 'DESC'));
         return $this->render('VitrineBundle:Default:index.html.twig', array('clans' => $clans));
