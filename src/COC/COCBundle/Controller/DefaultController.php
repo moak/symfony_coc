@@ -16,6 +16,8 @@ class DefaultController extends Controller
         $last_update_base = $em->getRepository('COCBundle:ImageBase')->getLastUpdate($clan);
         $last_update_bestAttack = $em->getRepository('COCBundle:ImageBestAttack')->getLastUpdate($clan);
         $numberWars = $em->getRepository('COCBundle:War')->getHistoryWar($clan);
+        $numberVictory = $em->getRepository('COCBundle:War')->getWarResult($clan, 2);
+        $numberDefeat = $em->getRepository('COCBundle:War')->getWarResult($clan, 1);
 
 
         if ( $last_update_base == null)
@@ -61,7 +63,9 @@ class DefaultController extends Controller
                                                                             'last_update_bestAttack' => $last_update_bestAttack,
                                                                             'last_update_base' => $last_update_base,
                                                                             'last_update_player' => $last_update_player,
-                                                                            'display' => $display, 'clan' => $clan
+                                                                            'display' => $display, 'clan' => $clan,
+                                                                            'numberVictory' => $numberVictory, 'numberDefeat' => $numberDefeat,
+
                                                                         ));
     }
 

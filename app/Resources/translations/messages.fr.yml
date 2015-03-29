@@ -214,6 +214,8 @@ account:
     forgot_password: Mot de passe oublié?
 
 war:
+   vic: vic
+   def: def
    result: Résultat
    date: Date
    wars: Guerres

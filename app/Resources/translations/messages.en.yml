@@ -218,6 +218,8 @@ account:
     forgot_password: Forgot your password ?
 
 war:
+   vic: vic
+   def: def
    result: Result
    date: Date
    wars: Clan wars

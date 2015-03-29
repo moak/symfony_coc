@@ -12,6 +12,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class WarRepository extends EntityRepository
 {
+    public function getWarResult($clan, $type)
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('count(u.id)')
+            ->where('u.clan = :clan')
+            ->andWhere('u.result = :type')
+            ->setParameter('clan', $clan)
+            ->setParameter('type', $type)
+        ;
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
     public function getWarInProgress($clan)
     {
         $now = new \DateTime();
