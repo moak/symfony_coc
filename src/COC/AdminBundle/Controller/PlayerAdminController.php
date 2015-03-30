@@ -15,6 +15,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PlayerAdminController extends Controller
 {
+
+
     public function listModuleAction($id_clan)
     {
         $em = $this->getDoctrine()->getManager();

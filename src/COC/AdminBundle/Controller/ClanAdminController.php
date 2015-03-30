@@ -4,13 +4,60 @@ namespace COC\AdminBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use COC\COCBundle\Form\Type\ClanType;
+use COC\COCBundle\Form\Type\SmsType;
 use COC\COCBundle\Form\Type\ClanPasswordType;
 use COC\COCBundle\Form\Type\ClanHiringType;
+use COC\COCBundle\Entity\Sms;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
 class ClanAdminController extends Controller
 {
+
+    public function smsToolAction(Request $request, $id_clan )
+    {
+        $form = $this->get('form.factory')->create(new SmsType(), null);
+        $em = $this->getDoctrine()->getManager();
+        $clan = $em->getRepository('COCBundle:Clan')->find($id_clan);
+
+        if ($form->handleRequest($request)->isValid())
+        {
+            $users = $form->get('user')->getData();
+            $msg = $form->get('msg')->getData();
+
+            for ( $i = 0; $i < count($users) ; $i++)
+            {
+
+                self::sendSMS($users[$i], $msg, $clan);
+            }
+
+            return $this->redirect($this->generateUrl('admin', array('id_clan' => $id_clan)));
+        }
+
+        return $this->render('AdminBundle:ClanAdmin:smsTool.html.twig', array('clan' => $clan ,
+            'form'      =>  $form->createView(),
+        ));
+    }
+    public function sendSMS($user,$msg,$clan )
+    {
+        $em = $this->getDoctrine()->getManager();
+        $sms = new Sms();
+        $sms->setClan($clan);
+        $sms->setUser($user);
+        $sms->setNumber('0782231874');
+        $sms->setContent($msg);
+        $sms->setNumber($user->getPhone());
+        $em->persist($sms);
+        $em->flush();
+
+
+        $sms_sender = $this->get('sms.sender');
+        $sms_sender->send('0782231874', 'OYOOOO', 'Kévin');
+
+
+        return true;
+       // return $this->render('AdminBundle:PlayerAdmin:index.html.twig', array('id_clan' => $id_clan));
+    }
 
     public function indexAction($id_clan)
     {

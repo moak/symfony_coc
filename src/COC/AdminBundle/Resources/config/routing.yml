@@ -2,7 +2,13 @@ admin:
     path:     coc/{id_clan}/admin
     defaults: { _controller: AdminBundle:Default:index }
 
+sendSMS:
+     pattern:   coc/{id_clan}/admin/sendSMS/{number}/{msg}
+     defaults:  { _controller: AdminBundle:PlayerAdmin:sendSMS }
 
+smsTool:
+    path:     coc/{id_clan}/admin/smsTool
+    defaults: { _controller: AdminBundle:ClanAdmin:smsTool }
 
 admin_users:
     path:     coc/{id_clan}/admin/users
