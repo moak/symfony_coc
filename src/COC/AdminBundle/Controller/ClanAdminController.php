@@ -44,7 +44,7 @@ class ClanAdminController extends Controller
         $sms = new Sms();
         $sms->setClan($clan);
         $sms->setUser($user);
-        $sms->setNumber('0782231874');
+        $sms->setNumber('+33782231874');
         $sms->setContent($msg);
         $sms->setNumber($user->getPhone());
         $em->persist($sms);
@@ -52,7 +52,7 @@ class ClanAdminController extends Controller
 
 
         $sms_sender = $this->get('sms.sender');
-        $sms_sender->send('33782231874', $msg, 'Kévin');
+        $sms_sender->send('+33782231874', $msg, 'Kévin');
 
 
         return true;
