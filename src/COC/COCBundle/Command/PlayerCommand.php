@@ -36,7 +36,7 @@ class PlayerCommand extends ContainerAwareCommand
         $players = $em->getRepository('COCBundle:Player')->findAll();
 
 
-        $actualSeason = $em->getRepository('COCBundle:Season')->find(5);
+        $actualSeason = $em->getRepository('COCBundle:Season')->find(6);
 
 
         foreach ($players as $player)
@@ -118,6 +118,13 @@ class PlayerCommand extends ContainerAwareCommand
             $playerHistory->setGold5($player->getGold5());
             $playerHistory->setGold6($player->getGold6());
             $playerHistory->setGold7($player->getGold7());
+
+            $playerHistory->setDarkElixir1($player->getDarkElixir1());
+            $playerHistory->setDarkElixir2($player->getDarkElixir2());
+            $playerHistory->setDarkElixir3($player->getDarkElixir3());
+
+
+
 
             $playerHistory->setBarbar($player->getBarbar());
             $playerHistory->setArcher($player->getArcher());
