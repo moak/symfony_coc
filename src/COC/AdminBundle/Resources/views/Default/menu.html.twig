@@ -65,10 +65,10 @@
             </li>
 
             <li>
-                <a data-step="2" data-position='right' data-intro="{{ 'admin.msg2'|trans }}" href="{{ path('admin_clan_edit', { 'id_clan': clan.id } ) }}"><i class="fa fa-cogs"></i></i>  {{ 'menu.clan_parameters'|trans }}</a>
+                <a data-step="2" data-position='right' data-intro="{{ 'admin.msg2'|trans }}" href="{{ path('admin_clan_edit', { 'id_clan': clan.id } ) }}"><i class="fa fa-cogs"></i>  {{ 'menu.clan_parameters'|trans }}</a>
             </li>
             <li>
-                <a href="{{ path('smsTool', { 'id_clan': clan.id } ) }}"> SMS Tool</a>
+                <a href="{{ path('smsTool', { 'id_clan': clan.id } ) }}"><i class="fa fa-phone"> </i> {{ 'menu.sendSMS'|trans }} </a>
             </li>
             <li data-step="3" data-position='right' data-intro="{{ 'admin.msg4'|trans }}">
                 <a href="{{ path('admin_users', { 'id_clan': clan.id }) }}">

@@ -17,6 +17,46 @@
 {% block javascripts %}
     <script>
 
+        var telInput = $("#phone"),
+                output = $("#output")
+        errorMsg = $("#error-msg"),
+                validMsg = $("#valid-msg");
+
+        telInput.intlTelInput({
+            nationalMode: true,
+            defaultCountry: "auto",
+            utilsScript: "../../../js/util.js" // just for formatting/placeholders etc
+        });
+
+        // listen to "keyup", but also "change" to update when the user selects a country
+        telInput.on("keyup change", function() {
+            var intlNumber = telInput.intlTelInput("getNumber");
+            var input = document.getElementById('phone');
+
+            if (telInput.intlTelInput("isValidNumber")) {
+                input.style.color = 'green';
+            } else {
+                input.style.color = 'red';
+            }
+
+           if (intlNumber) {
+                document.getElementById("fos_user_registration_form_country").value = intlNumber;
+                //output.text("International: " + intlNumber);
+            }
+
+        });
+
+
+
+        // on keydown: reset
+        telInput.keydown(function() {
+            telInput.removeClass("error");
+            errorMsg.addClass("hide");
+            validMsg.addClass("hide");
+        });
+
+
+
         function displayButton(typeButton)
         {
             if (typeButton == "create")

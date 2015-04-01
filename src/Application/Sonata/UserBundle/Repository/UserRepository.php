@@ -39,6 +39,18 @@ class UserRepository extends EntityRepository
         return $qb;
     }
 
+    public function getUsers($clan)
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->select('u')
+            ->where('u.clan = :clan')
+            ->andWhere('u.phone is NOT NULL')
+            ->orderBy('u.username', 'DESC')
+            ->setParameter('clan', $clan);
+
+        return $qb;
+    }
+
 
     public function findUserInfoBySeason($season)
     {

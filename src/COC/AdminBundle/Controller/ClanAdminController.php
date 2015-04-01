@@ -16,9 +16,10 @@ class ClanAdminController extends Controller
 
     public function smsToolAction(Request $request, $id_clan )
     {
-        $form = $this->get('form.factory')->create(new SmsType(), null);
         $em = $this->getDoctrine()->getManager();
         $clan = $em->getRepository('COCBundle:Clan')->find($id_clan);
+        $form = $this->get('form.factory')->create(new SmsType($clan), null);
+
 
         if ($form->handleRequest($request)->isValid())
         {
@@ -27,7 +28,6 @@ class ClanAdminController extends Controller
 
             for ( $i = 0; $i < count($users) ; $i++)
             {
-
                 self::sendSMS($users[$i], $msg, $clan);
             }
 
@@ -44,15 +44,15 @@ class ClanAdminController extends Controller
         $sms = new Sms();
         $sms->setClan($clan);
         $sms->setUser($user);
-        $sms->setNumber('+33782231874');
         $sms->setContent($msg);
         $sms->setNumber($user->getPhone());
         $em->persist($sms);
         $em->flush();
 
+        $clan->setSmsavailable( $clan->getSmsavailable() - 1 );
 
         $sms_sender = $this->get('sms.sender');
-        $sms_sender->send('+33782231874', $msg, 'Kévin');
+        $sms_sender->send($user->getPhone(), $msg, 'Kévin');
 
 
         return true;

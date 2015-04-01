@@ -47,6 +47,14 @@ class Clan
      */
     private $status;
 
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="smsavailable", type="integer" ))
+     */
+    private $smsavailable;
+
     /**
      * @var integer
      *
@@ -1347,5 +1355,28 @@ class Clan
     public function getNumberBase10()
     {
         return $this->numberBase10;
+    }
+
+    /**
+     * Set smsavailable
+     *
+     * @param integer $smsavailable
+     * @return Clan
+     */
+    public function setSmsavailable($smsavailable)
+    {
+        $this->smsavailable = $smsavailable;
+
+        return $this;
+    }
+
+    /**
+     * Get smsavailable
+     *
+     * @return integer 
+     */
+    public function getSmsavailable()
+    {
+        return $this->smsavailable;
     }
 }

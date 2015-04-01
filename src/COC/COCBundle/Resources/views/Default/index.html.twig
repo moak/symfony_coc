@@ -98,7 +98,10 @@
             <div class="row"  id="demo" style="display:none;">
                 <div class="col-md-8 col-md-offset-2 btn-demo">
                     {% if (clan.id == 1) %}
-                        <a class="btn btn-large btn-block btn-success supercell-font" href="javascript:introJs().setOption('showProgress', true).start();">{{ 'coc.launch_demo'|trans }}</a>
+
+                        <a class="hidden-sm hidden-xs btn-large btn btn-block btn-success supercell-font" href="javascript:void(0);" onclick="javascript:introJs().setOption('showProgress', true).start();">{{ 'coc.launch_demo'|trans }}</a>
+
+
                     {% endif %}
                 </div>
             </div>

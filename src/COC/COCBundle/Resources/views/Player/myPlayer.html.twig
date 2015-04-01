@@ -114,7 +114,9 @@
                                             <td class="text-muted small text-center">
                                                 {%  if positions['trophy'] is defined %}
                                                     {{ positions['trophy']}} {{ positions['trophy']|position }}
-                                                {% endif%}
+                                                {% else %}
+                                                    -
+                                                {% endif %}
                                             </td>
                                             <td class="text-nowrap small text-center">{{ player.trophy }}  </td>
                                         </tr>
@@ -131,7 +133,9 @@
                                             <td class="text-muted small text-center">
                                                 {%  if positions['troop'] is defined %}
                                                     {{ positions['troop']}} {{ positions['troop']|position }}
-                                                {% endif%}
+                                                {% else %}
+                                                    -
+                                                {% endif %}
                                             </td>
                                             <td class="text-nowrap small text-center">{{ player.troopSent }} / {{ player.troopReceived }}</td>
                                         </tr>

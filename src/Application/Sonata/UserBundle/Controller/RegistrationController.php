@@ -88,6 +88,7 @@ class RegistrationController extends BaseController
         {
             $user = $form->getData();
 
+
             // CREATE CLAN
             if ( $form->get('pass')->getData() != null && $form->get('clanName')->getData() != null )
             {
@@ -99,6 +100,7 @@ class RegistrationController extends BaseController
                 $clan->setStatus(0);
                 $clan->setLevel(1);
                 $clan->setPrivacy(0);
+                $clan->setSmsavailable(2);
                 $clan->setTotalAttackWon(0);
                 $clan->setTotalTroopReceived(0);
                 $clan->setTotalTroopSent(0);
@@ -127,6 +129,7 @@ class RegistrationController extends BaseController
                 $user->setRoles(array('ROLE_ADMIN'));
                 $user->setVisited(0);
                 $user->setLearned(0);
+                $user->setPhone($form->get('country')->getData());
                 $em->persist($user);
                 $em->flush($user);
 
@@ -401,6 +404,7 @@ class RegistrationController extends BaseController
                 {
                     $user->setClan($clan);
                     $user->setVisited(0);
+                    $user->setPhone($form->get('country')->getData());
                     $em->persist($user);
                     $em->flush($user);
                 }

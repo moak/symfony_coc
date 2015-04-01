@@ -8,6 +8,9 @@ form:
     my_picture: My picture
 
 menu:
+    phone_edit: Edit my number
+    sendSMS: Send SMS
+    smsavailable: SMS available
     receivedSent: Sent / Received
     totalReceivedSent: Total troops  sent/rec
     select_player: Select a player
@@ -112,6 +115,7 @@ button:
 
 notFound: No results found.
 notPlayerFound: No players found.
+notDefined: Not defined
 
 action:
     edit: Edit

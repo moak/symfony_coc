@@ -19,6 +19,10 @@ coc_player_edit_activity:
     path:     /{id_clan}/player/editActivity
     defaults: { _controller: COCBundle:Player:editActivity }
 
+coc_player_edit_phone:
+    path:     /{id_clan}/editPhone
+    defaults: { _controller: COCBundle:User:editPhone }
+
 coc_players_history:
     path:     /players/history
     defaults: { _controller: COCBundle:Player:historyPlayers }

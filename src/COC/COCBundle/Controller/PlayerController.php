@@ -243,6 +243,10 @@ class PlayerController extends Controller
         ));
     }
 
+
+
+
+
     public function historyPlayersAction ($id_clan)
     {
         $em = $this->getDoctrine()->getManager();
@@ -265,7 +269,7 @@ class PlayerController extends Controller
         $playersByAW        = $em->getRepository('COCBundle:PlayerHistory')->findBy(array('clan' => $clan, 'season'=> $season->getId()),array('attackWon' => 'DESC'));
         $playersByTrophy    = $em->getRepository('COCBundle:PlayerHistory')->findBy(array('clan' => $clan, 'season'=> $season->getId()),array('trophy' => 'DESC'));
 
-        $playersByTroop        = $em->getRepository('COCBundle:Player')->getDifferenceTroops($clan);
+        $playersByTroop      = $em->getRepository('COCBundle:PlayerHistory')->findBy(array('clan' => $clan, 'season'=> $season->getId()),array('troopSent' => 'DESC'));
 
 
        // var_dump(gettype($playersByTroop));

@@ -7,6 +7,10 @@ form:
     my_base: Ma base
     my_picture: Ma photo
 menu:
+    phone_edit: Modifier mon numéro
+    sendSMS: Send SMS
+    smsavailable: SMS disponibles
+
     receivedSent: Env / Reçues
     totalReceivedSent: Total troupes env / reçes
     select_player: Selectionner un joueur
@@ -115,6 +119,7 @@ action:
 
 notFound: Aucun résultat trouvé.
 notPlayerFound: Aucun joueur trouvé.
+notDefined: Non défini
 
 player:
    last_update: Dernière MAJ

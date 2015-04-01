@@ -11,15 +11,17 @@ class RegistrationClanFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('phone', 'integer',  array('label' => 'label.phone', 'required'  => false,))
+        $builder->
 
-            ->add('clan', 'entity', array('label' => 'label.clan',
-                    'class' => 'COCBundle:Clan',
-                    'query_builder' => function(EntityRepository $er) {
-                        return $er->createQueryBuilder('u')
-                            ->where('u.status = 0');
-                    },)
-            )
+        add('phone', 'text',  array('required'  => false,))
+
+        ->add('clan', 'entity', array('label' => 'label.clan',
+                'class' => 'COCBundle:Clan',
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->where('u.status = 0');
+                },)
+        )
 
         /*
             ->add('clan', 'text', [
@@ -28,6 +30,7 @@ class RegistrationClanFormType extends AbstractType
        ->add('clanName', 'text', array('label' => 'label.clanName', 'required'  => false,))
        ->add('pass', null, array('label' => 'label.password', 'required'  => false,))
        ->add('password', null, array('label' => 'label.clanPassword', 'required'  => false,'mapped' => false))
+       ->add('country', 'hidden', ['mapped' => false,])
        ->add('save', 'submit', array('label' => 'label.register'));
     }
 
