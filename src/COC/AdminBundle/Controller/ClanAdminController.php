@@ -79,7 +79,8 @@ class ClanAdminController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
-            $clan->getImage()->setIdclan($clan->getId());
+            if ($clan->getImage() != null)
+                $clan->getImage()->setIdclan($clan->getId());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($clan);

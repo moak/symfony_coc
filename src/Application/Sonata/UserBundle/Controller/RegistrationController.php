@@ -92,8 +92,10 @@ class RegistrationController extends BaseController
             // CREATE CLAN
             if ( $form->get('pass')->getData() != null && $form->get('clanName')->getData() != null )
             {
+
                 $em = $this->getDoctrine()->getManager();
                 $clan = new Clan();
+                $clan->setPassword($form->get('pass')->getData());
                 $clan->setName($user->getClanName());
                 $clan->setMessage('“One love, one heart, one destiny.” ― Bob Marley');
                 $clan->setCapacity(10);

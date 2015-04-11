@@ -44,6 +44,7 @@ menu:
     base_add: Nouvelle base
     base_edit: Editer une base
     videos: Videos
+    video_edit: Editer vidéo
     videos_list: Liste des vidéos
     video_list: Liste des vidéos
     video_all: Toutes les vidéos
@@ -339,6 +340,7 @@ label:
     register: C'est parti !!
     waiting: En attente de résultat
     choose_type: Choisir type de base
+    choose_result: Choose résultat
     type: Type de base
     war: Base de guerre
     farm: Base de dévelopement

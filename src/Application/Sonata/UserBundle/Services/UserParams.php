@@ -47,7 +47,7 @@ class UserParams
     }
 
     public function setLocale( $value) {
-        echo "lol";
+
         if ($this->security->getToken() !== null) {
             $user = $this->security->getToken()->getUser();
             if ($user instanceof User) {

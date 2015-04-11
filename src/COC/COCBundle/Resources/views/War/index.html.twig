@@ -19,8 +19,8 @@
                                 </div>
                                 <div class="panel-body">
                                     {% if war.image.path is defined %}
-                                        <a rel="gallery-1"  href="{{ asset('uploads/' ~ war.image.path) }}" class="swipebox" title="">
-                                            <img  class="img-responsive" src="{{ asset('uploads/' ~ war.image.path) }}" />
+                                        <a rel="gallery-1"  href="{{ asset(war.image.getWebPath(clan.id)) }}" class="swipebox" title="">
+                                            <img class="img-responsive" src="{{ asset(war.image.getWebPath(clan.id)) }}">
                                         </a>
                                     {%  else %}
                                         <img class="img-responsive" src="{{ asset('images/non_available.jpg') }}" />

@@ -53,7 +53,6 @@
                         <td>
                             <a href="{{ path('admin_player_edit', { 'id': player.id , 'id_clan': clan.id }) }}" class="btn btn-default btn-info">{{ 'action.edit'|trans }}</a>
                             <a href="{{ path('admin_player_delete', { 'id': player.id , 'id_clan': clan.id}) }}" class="btn btn-default btn-danger">{{ 'action.delete'|trans }}</a>
-                            <a href="{{ path('sendSMS', { 'id_clan': clan.id,'number': '0782231874' , 'msg': 'test'}) }}" class="btn btn-default btn-warning">SEND SMS</a>
                         </td>
 
                     </tr>

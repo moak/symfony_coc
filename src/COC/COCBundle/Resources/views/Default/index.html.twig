@@ -182,7 +182,7 @@
                             <i class="fa fa-refresh"></i>   {% if (last_update_base['updatedAt'] != null) %} {{ last_update_base['updatedAt']|date("U")|timeago }} {% else %} <i class="fa fa-ban"></i> {% endif %}
                         </div>
                         <div class="panel-body">
-                            <p><a href="{{ path('coc_images_base', {'id_clan': clan.id }) }}"><img class="img-responsive" src="{{ ('images/2014-12-11 22.07.05.png') | imagine_filter('my_thumb') }}"></a></p>
+                            <p><a href="{{ path('coc_images_base', {'id_clan': clan.id }) }}"><img class="img-responsive" src="{{ asset('images/bases2.png') }}"></a></p>
                             <p><a href="{{ path('coc_images_base', {'id_clan': clan.id }) }}"><button class="btn btn-block btn-info">{{ 'coc.visit_bases'|trans }} </button></a></p>
                         </div>
                     </div>
@@ -195,7 +195,7 @@
                         </div>
                         <div class="panel-body">
 
-                            <p><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '1' }) }}"><img class="img-responsive" src="{{ ('images/2015-01-16 13.32.49.png') | imagine_filter('my_thumb') }}"></a></p>
+                            <p><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '1' }) }}"><img class="img-responsive" src="{{ asset('images/activity.png') }}"></a></p>
                             <p><a href="{{ path('coc_players', {'id_clan': clan.id, 'type': '1' }) }}"><button class="btn btn-block btn-danger">{{ 'phone.activity'|trans }} </button></a></p>
                         </div>
                     </div>

@@ -142,7 +142,11 @@ class PlayerController extends Controller
             $em->persist($player);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('coc_players', array('id_clan' => $clan->getId(), 'type' => 1)));
+            return $this->redirect($this->generateUrl('coc_player', array(
+                'id_clan'                  => $clan->getId(),
+                'id_player'                => $player->getId(),
+            )));
+
         }
 
         return $this->render('COCBundle:Player:editActivity.html.twig', array( 'clan' => $clan,
@@ -210,11 +214,7 @@ class PlayerController extends Controller
         if ( $this->getUser() == null && $clan->getPrivacy() == 1)
             throw $this->createNotFoundException('This page does not exist.');
 
-        $userId = $user->getId();
-        $em = $this->getDoctrine()->getManager();
-
         $player = $em->getRepository('COCBundle:Player')->getPlayerFromSession($user);
-
         $form = $this->get('form.factory')->create(new PlayerType(), $player );
 
 
@@ -234,7 +234,12 @@ class PlayerController extends Controller
           //  var_dump($player->setPicture()->setClan($clan));
           //  die();
 
-            return $this->redirect($this->generateUrl('coc_players', array('type' => 0, 'id_clan' =>  $clan->getId())));
+            return $this->redirect($this->generateUrl('coc_player', array(
+                'id_clan'                  => $clan->getId(),
+                'id_player'                => $player->getId(),
+            )));
+
+
         }
 
         return $this->render('COCBundle:Player:edit.html.twig', array('clan' =>  $clan,

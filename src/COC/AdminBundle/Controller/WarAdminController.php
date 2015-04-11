@@ -30,6 +30,8 @@ class WarAdminController extends Controller
         if ($form->handleRequest($request)->isValid())
         {
             $start = clone $war->getStart();
+
+            if ($war->getImage() != null )
             $war->getImage()->setIdclan($clan->getId());
 
             $war->setEnd($start->modify('+2 day'));
@@ -64,6 +66,9 @@ class WarAdminController extends Controller
 
         if ($form->handleRequest($request)->isValid())
         {
+            if ($war->getImage() != null )
+                $war->getImage()->setIdclan($clan->getId());
+
             $start = clone $war->getStart();
             $war->setEnd($start->modify('+2 day'));
             $em->persist($war);

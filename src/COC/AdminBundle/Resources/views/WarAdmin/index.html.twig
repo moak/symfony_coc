@@ -41,14 +41,16 @@
                             {% if war.opponent %}
                                 {{ war.opponent }}
                             {% else %}
-                                {{ 'war.waiting'|trans }}
+                                [???]
                             {% endif %}
                         </td>
                         <td>
                             {{ war.start|date('d M  Y - H:i') }}
                         </td>
                         <td>
-                            <img class="img-responsive" src="{{ asset(war.image.getWebPath(clan.id)) }}">
+                            {% if war.image is not null %}
+                                <img class="img-responsive" src="{{ asset(war.image.getWebPath(clan.id)) }}">
+                            {% endif %}
                         </td>
                         <td>
                             {{ war.result|result }}

@@ -13,13 +13,10 @@ class WarType extends AbstractType
     {
         $builder
             ->add('start', null, array('label'=> 'label.start_date', 'widget' => 'single_text',))
-            ->add('result', 'choice', array(
-                'choices'   => array( '0' => 'label.waiting', '2' => 'label.victory', '1' => 'label.defeat'),
-                'required'  => false,
-            ))
+            ->add('result', 'choice', array('label' => 'label.choose_result', 'choices' =>  array( '0' => 'label.waiting', '1' => 'label.defeat' ,'2' => 'label.victory'),))
             ->add('opponent' , null, array('label'=> 'label.opponent'))
             ->add('image', new ImageType(), array('required'  => false,))
-            // ->add('utilisateurs', 'entity', array ('class' => 'Utilisateurs\UtilisateursBundle\Entity\Utilisateurs'))
+
             ->add('save', 'submit', array('label' => 'label.save'));
     }
 

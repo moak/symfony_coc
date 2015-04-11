@@ -46,6 +46,7 @@ menu:
     videos: Videos
     videos_list: Videos list
     video_list: Videos list
+    video_edit: Edit video
     video_all: All the videos
     video_add: New video
     video_number: Number of videos
@@ -334,6 +335,7 @@ label:
     password: New clan password
     capacity: Capacity max
     choose_ht: Choose hall town
+    choose_result: Choose result
     search: Search
     victory: Victory
     defeat: Defeat
