@@ -174,7 +174,7 @@
                         {% for clan in clans %}
                             <tr>
                                 <td class="supercell-font white-on-black text-center">{{ loop.index }}  </td>
-                                <td class="supercell-font white-on-black text-center">{{ clan.name[:6] }} ({{ clan.nbMember }})</td>
+                                <td class="supercell-font white-on-black text-center">{{ clan.name[:6] }} ({{ clan.numberPlayer }})</td>
                                 <td class="supercell-font white-on-black text-center">{{ clan.total|round }}</td>
                                 <td class="supercell-font white-on-black text-center">{{ clan.updated|date('U')|timeago }}</td>
 
@@ -272,12 +272,12 @@
                 <div class="col-lg-12">
                     <ul class="list-inline pull-right">
                         <li>
-                            <a href="#"><img src="{{ asset('images/facebook.svg') }}" alt="facebook"></a>
+                            <a href="https://www.facebook.com/pages/Ohmyclan/425137487665027?fref=ts"><img src="{{ asset('images/facebook.svg') }}" alt="facebook"></a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
 
                         <li>
-                            <a href="#"><img src="{{ asset('images/twitter.svg') }}" alt="twitter"></a>
+                            <a target="_blank" href="https://twitter.com/clashofclans"><img src="{{ asset('images/twitter.svg') }}" alt="twitter"></a>
                         </li>
                     </ul>
                     <p class="copyright text-muted small">Copyright &copy; OhMyClan 2015. All Rights Reserved</p>
